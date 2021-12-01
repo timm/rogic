@@ -1,0 +1,70 @@
+
+/*
+
+=head1 Prolog Program Files
+
+Here's my standard structure for writing Prolog programs. 
+
+=head2 Easy as 0,1,2
+
+Each application C<App> comes in at least four files:
+
+=over 8
+
+=item App0.pl
+
+Set-up code: 
+
+=over 8
+
+=item Ops
+
+Operator definitions; e.g. */
+
+ :- op(999,xfx,if).
+ :- op(998,xfy,and). /*
+
+=item Flags
+
+Define (e.g.) meta-knowledge of terms such as which one's are
+dynamic, which are discontiguous, where to index, etc, etc. E.g. */
+
+ :- dynamic emp/5.
+ :- discontiguous emp/5.
+ :- index(emp(1,1,0,0,0)). /*
+
+=item Hooks
+
+Hooks into the Prolog reader; e.g. */
+
+  term_expansion((X if Y), (X :- Y)).
+  goal_expansion(X and Y,(X,Y)). /*
+
+=item Hacks
+
+Things we don't tell junior Prolog programmers. Hell, why am I even
+telling you? For example, we might want to fix over-zealous DCG
+expansions: */
+
+  goal_expansion(true(X,X),true).
+
+=back
+
+
+=item App1.pl
+
+The bulk of the system. Should contain no load-time directives.
+
+=item App2.pl
+
+Start-up code.
+
+=item All.pl
+
+The default load program for the application.
+Loads C<App0.pl>, then C<App1.pl>, then C<App2.pl>.
+
+=back 
+
+Why do it this way? Well, when you start mixing and matching Prolog
+code, its good to know what 

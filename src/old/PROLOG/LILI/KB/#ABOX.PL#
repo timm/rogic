@@ -1,0 +1,32 @@
+% head of first rule taken to be the main goal.
+concCon 	if say(prelim) and persons and fOffer and fAccept.
+persons 	if offerors and offerees.
+offerors 	if1 oneOffer or manyOffer.
+
+% any
+fred if	jane or besie or jj.w
+
+% one only jane or besie or jj.
+fred if1 jane or besie or jj.
+
+fred if
+offerees  	if oneOfferee or manyOfferee.
+fOffer 		if 
+		   oProposed and oAddressed and suffDef and boundIntent
+		   and report(rPropose) and oReaches and open 
+		   and concCon. % included for testing
+oProposed	if oneP or series.
+series		if (oInvites or oInitial or oCounter or oInquiry) and
+                    oFinal.
+oAddressed	if specificPerson or specificPersons or nonSpecificPersons
+			and say(iOffer) and oIntend.
+		   % why were these fan 1a, 1b and 2?
+
+% can we check empty inputs?
+% check all rule literals are objects. 
+% check all objects are used in rules 
+wrong if oneP and nP.
+wrong if oneOffer and manyOffer.
+wrong if oneOfferee and manyOfferee.
+
+

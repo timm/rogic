@@ -1,0 +1,3 @@
+ROGIC [v0.1] GNU-copyleft by Tim Menzies, 2000; www.tim.menzies.com/rogic
+"For all is but a woven web of guesses." -- Xenophanes 
+

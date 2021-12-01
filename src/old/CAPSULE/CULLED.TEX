@@ -1,0 +1,16 @@
+swap((W0->X0;Y0),(W->X;Y),In,Out) :- !,
+	swap(W0,W,In,Temp),
+	swap(X0,X,Temp,Out),
+	swap(Y0,Y,In,Out).
+swap((X;Y),Z,In,Out) :- !,
+	(Z0=X;Z0=Y),
+	swap(Z0,Z,In,Out).
+swap(X is Y0,Code,In,Out) :- !,
+	swap(Y0,Y,In,In),
+	(\+ var(X),
+         touch(In,X,_,Z,Out)
+         ->  true 
+         ;   X=Z, In=Out),
+	 ((atomic(Y); var(Y); is_list(Y))
+         -> Code = (Z=Y)
+         ;  Code = (Z is Y)).

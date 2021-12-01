@@ -1,0 +1,55 @@
+/*\documentclass[twocolumn,global]{svjour}
+\usepackage{prod}
+\usepackage{timm}
+
+\begin{document}
+
+\theprogram{OMO} 
+\thetocdepth{2} % e.g. 2
+\thewp{~menzies/src/pl/prod/omo.pl}
+\thepapers{refs}
+\thetitle{Software cost estimation}
+\theauthor{Tim Menzies}
+\thereference{memo9@.ai.wvu.2003. 
+            Available from 
+            \url{http://tim.menzies.com/pdf/03omo.pdf}}
+\theinstitute{Lane Department of Computer Science,
+             West Virginia University,
+             PO Box 6109, Morgantown,
+             WV, 26506-6109, USA;\\
+             \url{http://tim.menzies.us};
+             \url{tim@menzies.us} 
+             }
+\theacknowledgement{\timmthanks}
+\theabstract{
+COCOMO is a software effort estimation tool.
+{\ME} is COCOMO written in SWI-Prolog~\cite{swiprolog}}
+*/
+
+%%%% What is COCOMO?
+%\input{cocomo}
+%%%% Requires %<
+:- load_files([lib        % grab standard stuff \cite{prod6}
+              ,cfg        % options controller \cite{prod7}
+              ,gpl0, gpl1 % GPL-2 license stuff \cite{prod8}
+              ,omo0       % pre-load actions
+              ,omolib     % local libraries
+              ,omo1       % predicates
+              ,omo2       % start-up commands
+              ,ufp2sloc   % function points per LOC database
+              ],[silent(yes),if(changed)]).
+%>
+%\input{omo0}
+%\input{omo1}
+%\input{omolib}
+%\input{omokb3}
+%\input{omo2}
+
+%%%% Bugs 
+%None known but many suspected.
+
+
+/*
+\theend
+\end{document}
+*/

@@ -1,0 +1,132 @@
+
+=head1 Abudctive Knowledge Engineering
+
+Abductive knowledge engineering (AKE) is an experiment in building
+simpler tools for knowledge engineering. 
+
+
+AKE exploits a
+phenomenum seen in many domains; i.e. very often a small number
+of I<funnel> variables appear in all useful solutions.
+The metaphor here is that while software can shoot off in any direction,
+eventually all paths seem to run down through
+the same narrow funnel.
+
+This funnel
+phenomeunm has been called many things in many domains  such as:
+
+
+=over 8
+
+=item *
+
+Pareto's 80/20 rule (most of the solution can be found
+with just a little effort);
+
+=item *
+
+L<master-slave variables|Crawford94> in scheduling;
+
+=item *
+
+feature subset selection in data mining
+
+=item *
+
+backbones in L<constraint satisfaction problems|Parkes99>;
+
+=item *
+
+the minimal environments of the L<ATMS|DeKleer86>;
+
+=item *
+
+the base controversial assumptions of L<HT4|Me03c>.
+
+=back 
+
+Whatever the name, the core intuition is the same:
+what happens in the total space of a program
+is controlled by a small critical region within the
+program. If so, then it is possible that
+complete and complex
+methods for software development and execution may be overkill.
+
+AKE is both the test and the application of this possibility.
+All its mechanisms assume that finding a few
+funnel variables is enough to control a device.
+
+There is a slow way and a fast way to
+find the funnel. For example, computing
+the base controversial assumptions of HT4 is theoretically
+L<NP-hard|Me03c> and, in practice, HT4 ran in time exponential
+on model size.
+However, if the funnels control the
+search space, then we need not seek the funnel: they will
+find us. I<Any> stochastically selected pathway to goals
+must pass through the funnel (by definition). That is,
+repeated application of some fast stochastic search
+technique will stumble across the key controlling
+variables 
+(providing that search technique reaches the goals).
+
+
+
+=head2 Welcome to the Knowledge Level
+
+In Newell's Knowledge Level (KL) approach, intelligence is modeled as a search for
+appropriate I<operators> that convert some I<current state> to a
+I<goal state>. Domain-specific knowledge as used to select the
+operators according to I<the principle of rationality>; i.e.
+
+=over 8
+
+=item *
+
+An
+intelligent agent will select an operator which its knowledge tells it
+will lead the achievement of some of its goals. 
+
+=back
+
+If implemented, this
+KL is built on top of a I<symbol-level> containing data structures,
+algorithms, etc. However, to a KL agent, these sub-cognitive
+symbol-level constructs are the tools used "sub-consciously" as it
+performs its KL processing [L<Newell82>].
+
+Newell's subsequent exploration of the KL lead to a general rule-based
+language called SOAR [I<Rosen93>] which was the basis for the
+problem-space computational model (PSCM) [L<Yost89>]. Programming
+SOAR using the PSCM involves the consideration of multiple, nested
+problem spaces.  Whenever a "don't know what to do" state is
+reached, a new I<problem space> is forked to solve that problem. Newell
+concluded that the PSCM was the bridge between SOAR and true KL
+modeling [L<Newell91>,L<Newell93>].
+
+=head1 References
+
+=over 8
+
+=include _Crawford94
+
+=include _deKleer86
+
+=include _Me03c
+
+=include _Newell82
+
+=include _Newell91
+
+=include _Newell93
+
+=include _Parkes99
+
+=include _Rosen93
+
+=include _Yost89
+
+=back
+
+
+=include _footer

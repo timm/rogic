@@ -1,0 +1,92 @@
+\usepackage{times,fancyvrb}
+
+\newcommand{\n}{{\tt $\smallsetminus$n}}
+\newcommand{\+}{{\tt $\smallsetminus$+}}
+
+\newcommand{\see}[1]{\mbox{{\em for output, see \fig{#1}}}}
+\newcommand{\MARK}[1]{\label{line:#1}$\blacktriangleleft\dotfill$~{\em {\protect{\ref{line:#1}}}}}
+\newcommand{\Line}[1]{\mbox{line \ref{line:#1}}}
+\newcommand{\LINE}[1]{\mbox{Line \ref{line:#1}}}
+\newcommand{\Where}[2]{{\mbox{line \ref{line:#1:#2}} in \fig{#1}}}
+\newcommand{\WHERE}[2]{{\mbox{Line \ref{line:#1:#2}} in \fig{#1}}}
+
+\newcommand{\SRC}[2]{%
+     \begin{figure}%
+        \fvset{  samepage=true,%
+                 fontsize=\scriptsize,%
+                 commandchars=\\\{\},%
+                 %framesep=3mm,%
+                 label={\small{\textit{#1}}},%
+                 labelposition=topline,%
+		 numbers=none,%
+                 %numbersep=1pt,%
+                 %stepnumber=500%
+                 %numbers=left,%
+                 frame=single%              
+                 }%
+            \VerbatimInput{#1}
+    \caption[#1]{#2}\label{fig:#1}%
+    \end{figure}%
+}
+
+\fvset{  %samepage=true,%
+                 fontsize=\scriptsize,%
+                 commandchars=\\\{\},%
+                 framesep=2mm,%
+		 firstnumber=last,%
+                 labelposition=topline,%
+                 numbersep=3pt,%
+		 tabsize=4,%
+		 %fontseries=b,%
+                 stepnumber=3,%
+                 samepage=true,%
+                 numbers=left,%
+                 %framerule=0.01pt,%
+                 %frame=single%              
+                 }%
+
+%\newenvironment{CODE}{\begin{Vertabum}\scriptsize}{\end{alltt}}
+
+\def\Tex4Log{\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX\kern-.2em\lower-.3ex\hbox{{4}}\kern-.05emL\kern-.32em\lower-1ex\hbox{o}\kern-.025emG}
+
+
+\newcommand{\corefile}[1]{See  \protect\fig{#1eg.pl} for sample usage.}
+\newcommand{\generates}[1]{Starlog sample; generates \protect\fig{#1eg.spy}.}
+\newcommand{\outputfrom}[1]{Output from \protect\fig{#1eg.pl}.}
+
+\newcommand{\showtell}[1]{%
+    \peektell{#1}%
+     \source{#1.pl}{\protect\corefile{#1}}}
+
+\newcommand{\peektell}[1]{%
+     \IfFileExists{#1eg.pl}{\source{#1eg.pl}{\protect\generates{#1}}}%
+     \IfFileExists{#1eg.spy}{\source{#1eg.spy}{\protect\outputfrom{#1}}}}
+
+\usepackage{syntax}
+\usepackage{cite}
+\usepackage{alltt,url,graphicx,amssymb}
+
+
+\newenvironment{LISTING}{\scriptsize\begin{alltt}}{\end{alltt}\normalsize}
+\newenvironment{smallitem}{
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \begin{itemize}
+    \setlength{\leftmargin}{.2in}
+    \setlength{\parsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\itemsep}{0pt}}{\end{itemize}}
+
+ 
+
+\shortverb{`} 
+\newcommand{\bi}{\begin{smallitem}}
+\newcommand{\ei}{\end{smallitem}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\fig}[1]{Figure~\ref{fig:#1}}
+\newcommand{\eq}[1]{Equation~\ref{eq:#1}}
+\newcommand{\tion}[1]{\S\ref{sec:#1}}

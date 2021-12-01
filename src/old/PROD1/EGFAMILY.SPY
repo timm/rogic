@@ -1,0 +1,46 @@
+% output from ':- demos(egfamily).'
+
+
+::[1]:::::::::::::::::::::::::
+The parent of david is james.
+The parent of david is florence.
+
+::[2]:::::::::::::::::::::::::
+The father of david is james.
+
+::[3]:::::::::::::::::::::::::
+The mother of david is florence.
+
+::[4]:::::::::::::::::::::::::
+A son of james is david.
+A son of james is john.
+A son of james is alan.
+
+::[5]:::::::::::::::::::::::::
+A daughter of florence is louise.
+
+::[6]:::::::::::::::::::::::::
+A grandparent of scott is florence.
+A grandparent of jessie is florence.
+A grandparent of rebecca is florence.
+A grandparent of eric is florence.
+A grandparent of katherine is florence.
+A grandparent of donald is florence.
+A grandparent of elizabeth is florence.
+A grandparent of emily is florence.
+
+::[7]:::::::::::::::::::::::::
+An ancestor of david is florence.
+An ancestor of louise is florence.
+An ancestor of john is florence.
+An ancestor of alan is florence.
+An ancestor of scott is florence.
+An ancestor of jessie is florence.
+An ancestor of rebecca is florence.
+An ancestor of eric is florence.
+An ancestor of katherine is florence.
+An ancestor of donald is florence.
+An ancestor of elizabeth is florence.
+An ancestor of emily is florence.
+
+% runtime = 0 sec(s)

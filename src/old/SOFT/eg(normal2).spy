@@ -1,0 +1,6 @@
+% output from ':- demos(eg(normal2)).'
+
+[9.97272, 8.94331, 10.6402, 7.72881, 11.3234, 11.0403, 8.75166, 8.16701, 8.1262, 11.0788]
+are random numbers from normal(10,2).
+
+% runtime = 0 sec(s)

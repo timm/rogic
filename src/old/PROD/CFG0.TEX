@@ -1,0 +1,23 @@
+\section{ Pre-load actions  }
+\subsection{ Operators}
+How to access an  option:
+\begin{Verbatim}
+:- op(700,xfx, :=).
+\end{Verbatim}
+
+We also need a ``?'', but that is predefined,
+in SWI-Prolog as {\tt op(500, fx, ?)}.
+
+\subsection{ Flags}
+Options are stored internally in {\tt option/2}
+facts.
+\begin{Verbatim}
+:- dynamic       option/2.
+:- discontiguous option/2.
+\end{Verbatim}
+\subsection{ Hooks}
+Options are set via a side effect of
+{\tt term_expansion/2}.
+\begin{Verbatim}
+term_expansion(A=B,[]) :- set(A=B).
+\end{Verbatim}

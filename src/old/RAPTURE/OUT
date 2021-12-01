@@ -1,0 +1,81 @@
+
+program
+| terminals init {
+| rstmt
+| | terminals run
+| | symbol
+| | | terminals foo
+| | terminals ; run
+| | symbol
+| | | terminals foo2
+| terminals }
+| proctypes
+| | proctype
+| | | terminals proctype
+| | | symbol
+| | | | terminals foo1
+| | | terminals {
+| | | body
+| | | | terminals do
+| | | | opts
+| | | | | opt
+| | | | | | terminals ::
+| | | | | | guard
+| | | | | | | bexpr
+| | | | | | | | symbol
+| | | | | | | | | terminals x
+| | | | | | | | boperator
+| | | | | | | | | terminals >
+| | | | | | | | value
+| | | | | | | | | terminals 0
+| | | | | | terminals ->
+| | | | | | assgn
+| | | | | | | symbol
+| | | | | | | | terminals x
+| | | | | | | terminals =
+| | | | | | | expr
+| | | | | | | | symbol
+| | | | | | | | | terminals x
+| | | | | | | | operator
+| | | | | | | | | terminals +
+| | | | | | | | value
+| | | | | | | | | terminals 1
+| | | | terminals od
+| | | terminals }
+| | proctypes
+| | | proctype
+| | | | terminals proctype
+| | | | symbol
+| | | | | terminals foo2
+| | | | terminals {
+| | | | body
+| | | | | terminals do
+| | | | | opts
+| | | | | | opt
+| | | | | | | terminals ::
+| | | | | | | guard
+| | | | | | | | bexpr
+| | | | | | | | | symbol
+| | | | | | | | | | terminals y
+| | | | | | | | | boperator
+| | | | | | | | | | terminals >
+| | | | | | | | | value
+| | | | | | | | | | terminals 0
+| | | | | | | terminals ->
+| | | | | | | assgn
+| | | | | | | | symbol
+| | | | | | | | | terminals y
+| | | | | | | | terminals =
+| | | | | | | | expr
+| | | | | | | | | symbol
+| | | | | | | | | | terminals y
+| | | | | | | | | operator
+| | | | | | | | | | terminals +
+| | | | | | | | | value
+| | | | | | | | | | terminals 1
+| | | | | terminals od
+| | | | terminals }
+| terminals eof
+syms/[y, y, y, foo2, x, x, x, foo1, foo2, foo]
+nsyms/10
+

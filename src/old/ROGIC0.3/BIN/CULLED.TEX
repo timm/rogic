@@ -1,0 +1,18 @@
+ror(L,In,Out):- 
+	any(L,Out=In+X,_), 
+	X.
+
+rand([],Out,Out).
+rand([H|T],In,Out) :-
+	any([H|T],Temp=In+X,Rest),
+	X,
+	rand(Rest,Temp,Out).
+
+any([H|T],X,Rest) :-
+	0 is random(2)
+	->(X=H,Rest=T
+          ;Rest=[H|Others],
+	   any(T,X,Others))
+        ; (Rest=[H|Others],
+           any(T,X,Others)
+          ;X=H,Rest=T).

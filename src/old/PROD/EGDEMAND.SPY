@@ -1,0 +1,5 @@
+% output from ':- demos(egdemand).'
+
+%W> failed(10>20)
+
+% runtime = 0 sec(s)

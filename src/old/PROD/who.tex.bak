@@ -1,0 +1,48 @@
+\section{Who?}
+
+{\PROD} emerged after many years of programming. I list here some
+of the people who, along the way, most influenced my thinking.
+These credits are listed alphabetically by main handle; e.g. last
+name or web site title.
+
+
+\bd
+
+\item[Graham Mann:] who always challenges me to reach further.
+
+\item[ Numerous grad students:] who always stared at me funny when
+I confused them, forcing me to say it again, better, simpler, more
+clearer. Special mention to: \bi \item Eliza Chaing \item Lindsay
+Mason \ei
+
+\item[David Poole:] David was the first to show me the the trick
+of adding {\LaTeX} command into a Prolog program. He also ``lead
+from the front'' by writing some of the most   elegant Prolog I
+have ever seen~\cite{poole98}.
+
+\item[Claude Sammut:] who I believed, all those years ago,  when
+he said that Prolog can be used for real world applications. For
+my masters back in the 1980s, he asked me to write a ``good''
+Prolog expert system shell. Well, Claude, I've nearly got it right
+so I hope you'll give me a passing grade.
+
+\item[Roland Sammut and Michael Wise:] who originally taught me
+Prolog.
+
+\ed
+
+The following people have never meet me, probably don't know my
+name, or my face. But I always sought to rise to their
+exceptionally high standards:
+
+\bd
+
+\item[Peter Norvig:] whose {\em Paradigms of Artificial
+Intelligence} is an inspiration to all educators.
+
+\item[Guy L. Steele:] The man who wrote two of the greatest
+technical documents in the world: {\em Common Lisp, the Language}
+and {\em The Hacker's Dictionary}.  Any man who writes a PhD
+thesis where the font sizes change twenty times in a single
+sentence is my kind of Guy (I've been waiting decades to make that
+joke...). \ed

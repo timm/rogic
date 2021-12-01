@@ -1,0 +1,232 @@
+			   Common Lisp Code for
+		Artificial Intelligence: A Modern Approach
+		       Stuart Russell & Peter Norvig
+
+______________________________________________________________________________
+
+EMAIL ACCESS
+
+This is sent by automatic reply from the address aima-request@cs.berkeley.edu.
+It is also available at the ftp site as the README file, and from the World
+Wide Web page.  If you want to report a bug or typo, send mail to
+aima-bug@cs.berkeley.edu.
+
+______________________________________________________________________________
+
+WORLD WIDE WEB ACCESS
+
+You can get a lot of information about the book (including source code) by
+using the World Wide Web (with a viewer such as Mosaic or Netscape) at the
+URL:
+
+	http://www.cs.berkeley.edu/~russell/aima.html
+
+______________________________________________________________________________
+
+ACCESSING THE CODE FILES
+
+You can get the Lisp source code that accompanies the book via the World Wide
+Web page above, or by anonymous ftp from ftp.cs.berkeley.edu, in the directory
+/ucb/people/russell/aima.  On a UNIX system, a typical interaction looks like
+this:
+
+Computer prompts:		You type:
+================		========
+%				cd where-you-want-the-code-to-be
+%				ftp ftp.cs.berkeley.edu
+Name:				anonymous
+Password:			your-login-name@your.mail.address
+ftp>				cd ucb/people/russell/aima
+250 CWD command successful.	
+ftp>				binary
+200 Type set to I.
+ftp>				get code.tar.Z
+150 Opening ASCII connection
+226 Transfer complete.
+ftp> 				quit
+221 Goodbye.
+%				zcat code.tar.Z | tar xvf -
+%				rm code.tar.Z
+
+The only file you really need is code.tar.Z -- it contains all the other
+files, bundled together and compressed.  However, just in case you don't
+have the zcat (or uncompress) or tar programs, we also include all the
+individual files.  (In the future, we will include bundled, compressed
+archives in standard Macintosh and DOS/Windows formats.)
+
+If you don't have access to ftp, but do have an email account, you can
+retrieve the files by sending a message to ftpmail@decwrl.dec.com with
+the following body (or send a message with the body HELP to see all
+your options):
+
+	connect ftp.cs.berkeley.edu
+	binary
+	uuencode
+	get README
+	get code.tar.Z
+	quit
+
+______________________________________________________________________________
+
+INSTALLATION INSTRUCTIONS
+
+(1) Make sure you have both read-permission and write-permission for
+the directory where the code is kept.
+
+(2) Edit the file "aima.lisp" and change the value of the parameter
+*aima-root* to reflect the location of the files.  Make sure to use the
+proper syntax for a directory, not a regular file.  For example, on a Unix
+file system, you want something like "/usr/local/aima/", where the final "/"
+indicates that /usr/local/aima is a directory.
+
+(3) Depending on your version of Lisp, you may need to edit the parameter
+*aima-binary-type* to indicate the type of files created by your Lisp
+compiler.  If the compiler creates files of the form "name.bin", then set
+this parameter to "bin".  Do include the double-quote marks.
+
+(4) Start up your Common Lisp, and enter the following two forms:
+
+	(load "aima.lisp")
+	(aima-compile)
+
+(5) Most versions of Lisp provide a way to dump out an image -- an
+executable file that contains all the code that has been loaded so far.  If
+your Lisp has this feature, it might be a good idea to create such an image
+at this point, and save it for later use.
+
+Then exit from Lisp (and if you like, you can remove write-permission from
+this directory and its sub-directories).  
+
+______________________________________________________________________________
+
+INSTRUCTIONS FOR USE
+
+(1) After the initial compilation, users can access the code either by
+running the image that was dumped in step (5) of the installation
+instructions, or by running Lisp and doing
+
+	(load "aima.lisp")
+	(aima-load 'NAME)
+
+Where NAME is the name of a system you want to work with.  The systems that
+are currently defined are:
+
+	utilities	(Automatically loaded when you load aima.lisp)
+	agents		(Part I:   Agents and Environments)
+	search		(Part II:  Problem Solving and Search)
+	logic		(Part III: Logic, Inference, and Knowledge Rep.)
+	planning	(Part IV:  Planning and Acting)
+	uncertainty	(PART V:   Uncertain Knowledge and Reasoning)
+	learning	(Part VI:  Learning)
+	language	(Part VII, Chapters 22-23: Natural Language)
+	all		(All the above, except utilities)
+	everything	(All the above, including utilities)
+
+Not all Lisps are clever enough to figure out when to load binary files,
+and when to load source files.  If your Lisp has trouble with this, and you
+want to load the binary files, then instead of (aima-load 'NAME) you can do:
+
+	(aima-load-binary 'NAME)
+
+(2) To get an idea of what you can do with the code, look at the source
+files, or run the tests on the various systems.  For example, try:
+
+	(aima-load 'agents)
+	(test 'agents)
+
+This will print a transcript of various operations from the agent code.
+Besides printing the transcript, it also counts up the number of unexpected
+answers, and returns the total at the end.  If this is not 0, it means
+something is wrong.  Note that many of the tests involve generating random
+environments and running agents in them.  The most recent run of (test 'all)
+on a Sparc-10 took about a minute total.  But it may take longer if you have
+a slower machine, if you have not compiled the files first, or if you just
+have bad luck: many of the tests involve generating random environments, and
+there is a chance that a particularly difficult environment will be
+generated, and the agents will perform slowly on it.  If you have to wait
+more than a minute or two for any one environment, you might want to abort
+out of the test and try again.  Note that an index of all the defined
+functions, types, and variables is in the file "index.txt".
+
+Have fun with the code.  If you find bugs or have suggestions, write to
+aima-bug@cs.berkeley.edu.
+
+______________________________________________________________________________
+
+TO DO LIST
+
+The code is still being worked on; that's why we're not yet at version 1.0.
+The list of things we plan to do is:
+
+logic:
+	simple resolution prover
+	an interface to dtp or some other efficient prover
+	fix the perception code for the shopping world
+	simple logical agent for wumpus world and shopping
+planning:
+	provide an existing planner like SNLP or UCPOP, or build our own
+	provide appropriate interfaces to this planner
+uncertainty:
+	simple belief nets algorithm
+	maybe an interface to an exisitng full-power system, such as SPI
+language:
+	fix up the DCG code which is currently shown in the directory
+	add chart-parser code
+	provide grammars from chapters 22 and 23
+robotics and vision:
+	?? probably nothing for version 1.0
+in general:
+   	a graphical user interface for everything (not for version 1.0)
+	an index listing functions, the source file each one appears in, 
+	  and corresponding page in the book
+
+______________________________________________________________________________
+
+VERSION HISTORY
+
+
+0.94 AIMA Code, Ground Hog Day Version, 2-Feb-1995
+
+        Ray Liere and David Palmer pointed out that non-square
+	grid-environments were incorrectly initialized in grid-env.lisp.
+	Roger Kirchner pointed out that the precedence of the | operator in
+	infix.lisp was wrong.  John Sterling discovered some files where we
+	still referenced the USER package, and suggested removing the
+	(declare (ignore contained?)) from DEFSETF GRID-CONTENTS to avoid a
+	warning in MCL.  The infix reader was enhanced to turn lowercase
+	symbols into variables, i.e. "F(x,C)" turns into (F ?X C).  Some code
+	that answers exercises from the book was moved out of the code
+	repository and into the soon-to-be-released instructor's manual.
+	Added file "index.txt", which lists all functions, types, and
+	variables, the page they appear on in the book, and the file they
+	appear in.
+
+0.93 AIMA Code, Oral Roberts' Birthday Version, 24-Jan-1995
+
+	There were problems with older Common Lisps stemming from the
+	difference between the USER and CL-USER packages, so I just decided to
+	eliminate all code that deals with packages.  There were a few other
+	changes to fix problems in Clisp.  When compiling under Clisp, if you
+	get an error message that says a macro is being redefined, just type
+	"continue".  After you've compiled once, you won't get the message
+	again when you load.  The code has now been tested in Harlequin, Lucid,
+	Franz, AKCL and Clisp.
+
+0.92 AIMA Code, Martin Luther King Day Version, 16-Jan-1995
+
+	Added new game-playing and logic code, and new systems for learning and
+	uncertainty.  Added some documentation and minor changes to agents and
+	search code.
+
+0.91 AIMA Code, Newer Years Version, 5-Jan-1995
+
+	Fixed a few minor bugs that resulted from too-quickly merging two
+	versions of the code, and added some (declare (ignore variable))s.
+	Tested in several implementations of Common Lisp: Harlequin, Lucid,
+	Franz, and AKCL.
+
+0.9  AIMA Code, New Years Version, 4-Jan-1995
+
+	A preliminary version, released because several instructors were
+	starting courses this week.  Only the AGENTS and SEARCH systems are
+	supported, although unsupported code for other systems is included.

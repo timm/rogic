@@ -1,0 +1,183 @@
+
+opt(A, B) :-
+	opt(A, B, C).
+
+opt(fresh, A, B) :-
+	opt(C, D, E, F, B), !.
+opt(A<-B, C, D) :-
+	opt(A, E, B, C, D).
+opt(A=B, C, D) :-
+	opt(A, B, B, C, D).
+opt(+A, B, C) :-
+	opt(A, D, E, B, F),
+	E is D+1,
+	C=F.
+opt(-A, B, C) :-
+	opt(A, D, E, B, F),
+	E is D-1,
+	C=F.
+opt(random, opt(A, B, C, D, E, F, G), opt(A, B, C, D, random, F, G)).
+opt(l2r, opt(A, B, C, D, E, F, G), opt(A, B, C, D, l2r, F, G)).
+opt(need(some), opt(A, B, C, D, E, F, G), opt(A, B, C, D, E, H, G)) :-
+	true,
+	H is random(D)+1,
+	true.
+opt(need(one), opt(A, B, C, D, E, F, G), opt(A, B, C, D, E, 1, G)).
+opt(need(all), opt(A, B, C, D, E, F, G), opt(A, B, C, D, E, D, G)) :-
+	true,
+	true.
+opt(want(all), opt(A, B, C, D, E, F, G), opt(A, B, C, D, E, F, D)) :-
+	true,
+	true.
+opt(want(some), opt(A, B, C, D, E, F, G), opt(A, B, C, D, E, F, D)) :-
+	true,
+	true.
+opt(want(one), opt(A, B, C, D, E, F, G), opt(A, B, C, D, E, F, 1)).
+opt(fresh(A), B, C) :-
+	opt(D, E, F, G, opt(H, I, J, K, L, M, N)), !,
+	length(A, O),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, O, l2r, 1, N), C).
+opt(one*A, B, C) :-
+	opt(D, E, F, G, opt(H, I, J, K, L, M, N)), !,
+	length(A, O),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, O, l2r, 1, N), C).
+opt((and)*A, B, opt(C, D, E, F, G, F, F)) :-
+	opt(H, I, J, K, opt(L, M, N, O, P, Q, R)), !,
+	length(A, S),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, S, l2r, 1, R), opt(C, D, E, F, G, T, U)),
+	true,
+	true,
+	true,
+	true.
+opt((or)*A, B, opt(C, D, E, F, l2r, 1, G)) :-
+	opt(H, I, J, K, opt(L, M, N, O, P, Q, R)), !,
+	length(A, S),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, S, l2r, 1, R), opt(C, D, E, F, T, U, G)),
+	true,
+	true.
+opt((ors)*A, B, C) :-
+	opt(D, E, F, G, opt(H, I, J, K, L, M, N)), !,
+	length(A, O),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, O, l2r, 1, N), opt(P, Q, R, S, T, U, V)),
+	true,
+	true,
+	opt(need(lots), opt(P, Q, R, S, l2r, 1, V), C).
+opt(any*A, B, opt(C, D, E, F, G, H, 1)) :-
+	opt(I, J, K, L, opt(M, N, O, P, Q, R, S)), !,
+	length(A, T),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, T, l2r, 1, S), opt(C, D, E, F, G, U, V)),
+	true,
+	H is random(F)+1,
+	true,
+	true.
+opt((rand)*A, B, opt(C, D, E, F, random, F, F)) :-
+	opt(G, H, I, J, opt(K, L, M, N, O, P, Q)), !,
+	length(A, R),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, R, l2r, 1, Q), opt(C, D, E, F, S, T, U)),
+	true,
+	true,
+	true,
+	true,
+	true.
+opt((rors)*A, B, opt(C, D, E, F, random, G, H)) :-
+	opt(I, J, K, L, opt(M, N, O, P, Q, R, S)), !,
+	length(A, T),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, T, l2r, 1, S), opt(U, V, W, X, Y, Z, A1)),
+	true,
+	true,
+	opt(need(lots), opt(U, V, W, X, l2r, 1, A1), opt(C, D, E, F, B1, G, H)),
+	true.
+opt((rany)*A, B, opt(C, D, E, F, random, G, 1)) :-
+	opt(H, I, J, K, opt(L, M, N, O, P, Q, R)), !,
+	length(A, S),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, S, l2r, 1, R), opt(C, D, E, F, T, U, V)),
+	true,
+	G is random(F)+1,
+	true,
+	true,
+	true.
+opt((rand)*A, B, opt(C, D, E, F, random, 1, G)) :-
+	opt(H, I, J, K, opt(L, M, N, O, P, Q, R)), !,
+	length(A, S),
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	opt(want(less), opt(A, 0, 0, S, l2r, 1, R), opt(C, D, E, F, T, U, G)),
+	true,
+	true,
+	true.
+opt(pop(A), opt(B, C, D, E, random, F, G), H) :-
+	true,
+	true,
+	rone(B, A, I),
+	H=opt(I, C, D, E, random, F, G).
+opt(pop(A), opt(B, C, D, E, r2l, F, G), H) :-
+	true,
+	true,
+	rone(B, A, I),
+	H=opt(I, C, D, E, r2l, F, G).
+
+opt(items, A, B, opt(A, C, D, E, F, G, H), opt(B, C, D, E, F, G, H)).
+opt(done, A, B, opt(C, A, D, E, F, G, H), opt(C, B, D, E, F, G, H)).
+opt(failed, A, B, opt(C, D, A, E, F, G, H), opt(C, D, B, E, F, G, H)).
+opt(size, A, B, opt(C, D, E, A, F, G, H), opt(C, D, E, B, F, G, H)).
+opt(order, A, B, opt(C, D, E, F, A, G, H), opt(C, D, E, F, B, G, H)).
+opt(min, A, B, opt(C, D, E, F, G, A, H), opt(C, D, E, F, G, B, H)).
+opt(max, A, B, opt(C, D, E, F, G, H, A), opt(C, D, E, F, G, H, B)).

@@ -1,0 +1,10 @@
+To use foil to process the data in (say) foil_1.pl:
+
+?- [foil].
+
+?- load_data(foil_1).
+
+?- foil(can_reach/2).
+
+To process a new data file, you will need to exit and re-enter prolog.
+Then, proceed as above.

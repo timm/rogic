@@ -1,0 +1,10 @@
+call venusc aasimp
+call venusc bbsimp
+call venusc ccsimp
+call venusc ddstring
+call venusc eemt
+call venusc ffxshape
+call venusc ggdeepx
+call venusc hh2x
+call venusc iiands
+call moonc  qc1

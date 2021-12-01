@@ -1,0 +1,2 @@
+/Program\ Files/pl/BIN/Plcon   -g "load_files([main],[silent(true)]),switches" -- $* 
+

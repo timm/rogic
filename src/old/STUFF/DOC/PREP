@@ -1,0 +1,16 @@
+dos2unix() {
+   cat $1 | perl -e \
+     'while ($l=<>){$l =~ s/\015\012$/\012/;print($l);}'             
+}
+
+for i in $*
+do
+        if podchecker $i.pl 
+	then
+          dos2unix $i.pl > prep$$.pl	
+	  pod2text prep$$.pl > $i.txt
+	  pod2html -back "[TOP]" -css style.css -title $i prep$$.pl > $i.html
+          pod2latex -o $i.tex prep$$.pl 
+	  rm prep$$.pl
+       fi 
+done

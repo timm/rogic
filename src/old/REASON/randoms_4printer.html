@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>randoms</title>
+<link rel="stylesheet" href="printer_mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#random_predicates">Random Predicates</a></li>
+	<li><a href="#header">Header</a></li>
+	<ul>
+
+		<li><a href="#flags_*/">Flags */</a></li>
+	</ul>
+
+	<li><a href="#any_random_solution_*/">Any  Random Solution  */</a></li>
+	<li><a href="#best">Best</a></li>
+	<li><a href="#rand_*/">Rand  */</a></li>
+	<ul>
+
+		<li><a href="#beta_*/">Beta */</a></li>
+		<li><a href="#normal_*/">Normal  */</a></li>
+		<li><a href="#gamma">Gamma</a></li>
+		<li><a href="#random_strings_*/">Random Strings */</a></li>
+		<li><a href="#random_symbols_*/">Random Symbols */</a></li>
+		<li><a href="#random_members_of_a_list_*/">Random Members of a List */</a></li>
+		<li><a href="#random_numeric_taken_from_some_range">Random Numeric Taken From Some Range</a></li>
+	</ul>
+
+	<li><a href="#footer">Footer</a></li>
+	<ul>
+
+		<li><a href="#startups_*/">Start-ups */</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+This document is also available in  the following formats:
+         <a href="randoms.pdf">pdf</a>; a
+        <a href="randoms_4printer.html">printer-friendly</a> format; a
+        <a href="randoms.html">display-friendly</a> format;
+        <a href="randoms.txt">plain text</a>; or
+         text with <a href="randoms.man">bold escape characters</a>.
+/*<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="random_predicates">Random Predicates</a></h1>
+<p>Lets thrash around a little.</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="header">Header</a></h1>
+<p>
+</p>
+<h2><a name="flags_*/">Flags */</a></h2>
+<pre>
+ :- arithmetic_function(inf/0).
+ :- arithmetic_function(rand/0).
+ :- arithmetic_function(rand/2).
+ :- arithmetic_function(rand/3).
+ :- arithmetic_function(normal/2).
+ :- arithmetic_function(beta/1). 
+ :- arithmetic_function(gamma/2).  /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="any_random_solution_*/">Any  Random Solution  */</a></h1>
+<pre>
+ any(X) :- 
+        setof(One,X^any1(X,One),All), 
+        member(_/X,All).</pre>
+<pre>
+ any1(X,Score/X) :- 
+        X, 
+        Score is rand. /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="best">Best</a></h1>
+<p>Same code as above, but with some assessment criteria thrown in. */</p>
+<pre>
+ best(X) :- 
+        setof(One,X^best1(X,One),All0), 
+        beam(X,All0,All), 
+        member(_/X,All).</pre>
+<pre>
+ best1(X,Score/X) :- 
+        X, 
+        score(X,Score0), 
+        bound(X,Score0), 
+        Score is -1 * Score0. /*</pre>
+<p>If we have no knowledge of <code>X</code>, give it a random number. */</p>
+<pre>
+ score(_,N) :- 
+        N is  rand(2147483647). /*</pre>
+<p>If we have knowledge of minimum values for a score,  test it here. */</p>
+<pre>
+ bound(_,Score) :- 
+        Score &gt; 0. /*</pre>
+<p>Sometimes, we may just want to select the top <em>N</em> values:
+makes this a beam search. The default
+case is that there is no selection knowledge. */</p>
+<pre>
+ beam(_,L,L).  /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="rand_*/">Rand  */</a></h1>
+<pre>
+ rand(X)         :- X is random(inf)/inf.
+ rand(Min,Max,X) :-  X is Min + (Max-Min)*rand. /*</pre>
+<p>
+</p>
+<h2><a name="beta_*/">Beta */</a></h2>
+<pre>
+ rand(Min,Max,B,X) :-
+    X is Min + (Max-Min)*beta(B).</pre>
+<pre>
+ beta(B,X) :- beta1(B,X),!.
+ beta(B,X) :- beta1(0.5,X),print(user,badBeta(B)).</pre>
+<pre>
+ beta1(0,0).
+ beta1(0.1,X)  :- X is 1- rand^(1/9).
+ beta1(0.20,X) :- X is 1- rand^0.25.
+ beta1(0.25,X) :- X is 1- rand^0.33.
+ beta1(0.33,X) :- X is 1- rand^0.5.
+ beta1(0.4,X)  :- X is 1- rand^0.67.
+ beta1(0.50,X) :- X is rand.
+ beta1(0.60,X) :- X is rand^0.67.
+ beta1(0.67,X) :- X is rand^0.5.
+ beta1(0.75,X) :- X is rand^0.33.
+ beta1(0.80,X) :- X is rand^0.25.
+ beta1(0.9,X)  :- X is rand^(1/9).
+ beta1(1,1). /*</pre>
+<p>
+</p>
+<h2><a name="normal_*/">Normal  */</a></h2>
+<pre>
+ normal(M,S,N) :- box_muller(M,S,N).</pre>
+<pre>
+ box_muller(M,S,N) :-
+    wloop(W0,X),
+    W is sqrt((-2.0 * log(W0))/W0),
+    Y1 is X * W,
+    N is M + Y1*S.</pre>
+<pre>
+ wloop(W,X) :-
+    X1 is 2.0 * rand - 1,
+    X2 is 2.0 * rand - 1,
+    W0 is X1*X1 + X2*X2,
+    (W0  &gt;= 1.0 -&gt; wloop(W,X) ; W0=W, X = X1). /*</pre>
+<p>
+</p>
+<h2><a name="gamma">Gamma</a></h2>
+<p>(Only works for integer Alphas.)</p>
+<p>A standard random <em>gamma</em> distribution has 
+<em>mean=alpha/beta</em>.
+The <em>alpha</em> value is the ``spread'' of the 
+distribution and controls the
+clustering of  the distribution
+around the mean. As
+<em>alpha</em> increases,
+the <em>gamma</em> distribution evens out to become 
+more evenly-distributed about the mean. That is, for large
+<em>alpha</em> (i.e. above 20), <em>gamma</em> can be modeled as a noraml
+function.
+The standard <em>alpha,beta</em> terminology can be confusing
+to some audiences. Hence, I define a
+(slightly) more-intuitive <em>gamma</em>
+distribution where:</p>
+<p><em>myGamma(mean,alpha) = standardGamma(alpha,alpha/mean)</em> */</p>
+<pre>
+ gamma(Mean,Alpha,Out) :-
+    Beta is Mean/Alpha,
+    (Alpha &gt; 20
+    -&gt;  Mean is Alpha * Beta,
+        Sd is sqrt(Alpha*Beta*Beta),
+        Out is normal(Mean,Sd)
+    ;   gamma(Alpha,Beta,0,Out)).</pre>
+<pre>
+ gamma(0,_,X,X) :- !.
+ gamma(Alpha,Beta, In, Gamma) :-
+    Temp is In + ( -1 * Beta * log(1-rand)),
+    Alpha1 is Alpha - 1,
+    gamma(Alpha1,Beta,Temp,Gamma). /*</pre>
+<p>
+</p>
+<h2><a name="random_strings_*/">Random Strings */</a></h2>
+<pre>
+ rstring(_,X)  :- nonvar(X),!.
+ rstring(A,X)  :- gensym(A,X). /*</pre>
+<p>
+</p>
+<h2><a name="random_symbols_*/">Random Symbols */</a></h2>
+<pre>
+ rsym(X) :- rsym(g,X).</pre>
+<pre>
+ rsym(_,X)  :- nonvar(X),!, atom(X).
+ rsym(A,X)  :- gensym(A,X). /*</pre>
+<p>
+</p>
+<h2><a name="random_members_of_a_list_*/">Random Members of a List */</a></h2>
+<pre>
+ rin(X,L) :- number(X),!, member(Y,L), X =:= Y. 
+ rin(X,L) :- nonvar(X),!, member(X,L). 
+ rin(X,L) :- any(member(X,L)).  /*</pre>
+<p>
+</p>
+<h2><a name="random_numeric_taken_from_some_range">Random Numeric Taken From Some Range</a></h2>
+<p>The default case is that we step from some <code>Min</code>
+to <code>Max</code> number in incremets of one. */</p>
+<pre>
+ rin(Min,Max,X) :- rin(Min,Max,1,X). /*</pre>
+<p>The usual case is that we step from some <code>Min</code>
+to <code>Max</code> number in incremets of <code>I</code>. */</p>
+<pre>
+ rin(Min,Max,_,X) :- nonvar(X),!, number(X),Min =&lt; X, X =&lt; Max.
+ rin(Min,Max,I,X) :- any(rin1(Min,Max,I,X)).</pre>
+<pre>
+ rin1(Min,Max,I,X) :-
+        Steps is integer((Max-Min)/I),
+        between(0,Steps,Step), 
+        Num is Min + Step*I,
+        X is min(Num,Max).  /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="footer">Footer</a></h1>
+<p>
+</p>
+<h2><a name="startups_*/">Start-ups */</a></h2>
+<pre>
+ :- current_prolog_flag(max_integer,X), 
+    X1 is X - 1, 
+    retractall(inf(_)),
+    assert(inf(X1)).</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

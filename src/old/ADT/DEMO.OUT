@@ -1,0 +1,61 @@
+1 ?- 
+r(A, B) :-
+	r1(A, B), !.
+
+r0(A, error(var)) :-
+	var(A).
+r0(A, A) :-
+	prim(A).
+r0(empty(new(A)), true).
+r0(empty(A), false).
+r0(A, error(B)) :-
+	sub(A, error(C)),
+	functor(A, D, E),
+	returns(D, B).
+
+r1(A, B) :-
+	r0(A, B).
+r1(cons(A, B), cons(A, C)) :-
+	aSort(int, A),
+	r(B, C).
+r1(head(cons(A, B)), C) :-
+	r(A, C).
+r1(tail(new(list)), new(list)).
+r1(tail(cons(A, B)), C) :-
+	r(B, C).
+r1(sum(new(list)), 0).
+r1(sum(int(A)), A).
+r1(sum(cons(A, B)), C) :-
+	r(cons(A, B), cons(D, E)),
+	r(sum(D), F),
+	r(sum(E), G),
+	C is F+G.
+r1(head(A), error(B)) :-
+	prim(A),
+	returns(head, B).
+r1(tail(A), error(B)) :-
+	prim(A),
+	returns(tail, B).
+r1(sum(A), B) :-
+	r(A, C),
+	r(sum(C), B).
+r1(head(A), B) :-
+	r(A, C),
+	r(head(C), B).
+r1(tail(A), B) :-
+	r(A, C),
+	r(tail(C), B).
+
+test(a, head(tail(cons(int(3), tail(cons(int(5), new(list)))))), error(int)).
+test(b, head(cons(int(1), new(list))), int(1)).
+test(c, tail(cons(int(1), new(list))), new(list)).
+test(d, sum(cons(int(1), cons(int(2), cons(int(4), new(list))))), 7).
+test(e, som(cons(int(1), cons(int(2), cons(int(4), new(list))))), r2Failure).
+test(f, sum(cons(int(1), cons(int(2), cons(int(4), new(list))))), shouldBeAFailure).
+
+a: PASSED. Found [error(int)].
+b: PASSED. Found [int(1)].
+c: PASSED. Found [new(list)].
+d: PASSED. Found [7].
+e: FAILED. Expected=[r2Failure]. Actual=[call to r/2 failed].
+f: FAILED. Expected=[shouldBeAFailure]. Actual=[7].

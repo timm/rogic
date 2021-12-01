@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ake.pod Abductive Software Engineering</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#abudctive_knowledge_engineering">Abudctive Knowledge Engineering</a></li>
+	<ul>
+
+		<li><a href="#welcome_to_the_knowledge_level">Welcome to the Knowledge Level</a></li>
+	</ul>
+
+	<li><a href="#references">References</a></li>
+	<li><a href="#about_this_document">About this Document</a></li>
+	<ul>
+
+		<li><a href="#disclaimer">Disclaimer</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="abudctive_knowledge_engineering">Abudctive Knowledge Engineering</a></h1>
+<p>Abductive knowledge engineering (AKE) is an experiment in building
+simpler tools for knowledge engineering.</p>
+<p>AKE exploits a
+phenomenum seen in many domains; i.e. very often a small number
+of <em>funnel</em> variables appear in all useful solutions.
+The metaphor here is that while software can shoot off in any direction,
+eventually all paths seem to run down through
+the same narrow funnel.</p>
+<p>This funnel
+phenomeunm has been called many things in many domains  such as:</p>
+<ul>
+<li></li>
+Pareto's 80/20 rule (most of the solution can be found
+with just a little effort);
+<p></p>
+<li></li>
+<a href="#item_crawford94">master-slave variables</a> in scheduling;
+<p></p>
+<li></li>
+feature subset selection in data mining
+<p></p>
+<li></li>
+backbones in <a href="#item_parkes99">constraint satisfaction problems</a>;
+<p></p>
+<li></li>
+the minimal environments of the <a href="#item_dekleer86">ATMS</a>;
+<p></p>
+<li></li>
+the base controversial assumptions of <a href="#item_me03c">HT4</a>.
+<p></p></ul>
+<p>Whatever the name, the core intuition is the same:
+what happens in the total space of a program
+is controlled by a small critical region within the
+program. If so, then it is possible that
+complete and complex
+methods for software development and execution may be overkill.</p>
+<p>AKE is both the test and the application of this possibility.
+All its mechanisms assume that finding a few
+funnel variables is enough to control a device.</p>
+<p>There is a slow way and a fast way to
+find the funnel. For example, computing
+the base controversial assumptions of HT4 is theoretically
+<a href="#item_me03c">NP-hard</a> and, in practice, HT4 ran in time exponential
+on model size.
+However, if the funnels control the
+search space, then we need not seek the funnel: they will
+find us. <em>Any</em> stochastically selected pathway to goals
+must pass through the funnel (by definition). That is,
+repeated application of some fast stochastic search
+technique will stumble across the key controlling
+variables 
+(providing that search technique reaches the goals).</p>
+<p>
+</p>
+<h2><a name="welcome_to_the_knowledge_level">Welcome to the Knowledge Level</a></h2>
+<p>In Newell's Knowledge Level (KL) approach, intelligence is modeled as a search for
+appropriate <em>operators</em> that convert some <em>current state</em> to a
+<em>goal state</em>. Domain-specific knowledge as used to select the
+operators according to <em>the principle of rationality</em>; i.e.</p>
+<ul>
+<li></li>
+An
+intelligent agent will select an operator which its knowledge tells it
+will lead the achievement of some of its goals.
+<p></p></ul>
+<p>If implemented, this
+KL is built on top of a <em>symbol-level</em> containing data structures,
+algorithms, etc. However, to a KL agent, these sub-cognitive
+symbol-level constructs are the tools used ``sub-consciously'' as it
+performs its KL processing [<a href="#item_newell82">Newell82</a>].</p>
+<p>Newell's subsequent exploration of the KL lead to a general rule-based
+language called SOAR [<em>Rosen93</em>] which was the basis for the
+problem-space computational model (PSCM) [<a href="#item_yost89">Yost89</a>]. Programming
+SOAR using the PSCM involves the consideration of multiple, nested
+problem spaces.  Whenever a ``don't know what to do'' state is
+reached, a new <em>problem space</em> is forked to solve that problem. Newell
+concluded that the PSCM was the bridge between SOAR and true KL
+modeling [<a href="#item_newell91">Newell91</a>,<a href="#item_newell93">Newell93</a>].</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="references">References</a></h1>
+<dl>
+<dt><strong><a name="item_crawford94">Crawford94</a></strong><br />
+</dt>
+<dd>
+<em> Experimental Results on the Application of
+                  Satisfiability Algorithms to Scheduling Problems</em>,
+(1994)
+by J. Crawford and A. Baker,
+AAAI '94,
+</dd>
+<p></p>
+<dt><strong><a name="item_dekleer86">DeKleer86</a></strong><br />
+</dt>
+<dd>
+<em>An Assumption-Based TMS</em>,
+(1986),
+by J. DeKleer,
+Artificial Intelligence,
+vol. 28,
+pages  163-196
+</dd>
+<p></p>
+<dt><strong><a name="item_me03c">Me03c</a></strong><br />
+</dt>
+<dd>
+<em>Applications of Abduction: 
+Testing Very Long Qualitative Simulations</em>,
+(2003),
+T.J. Menzies and R.F. Cohen and S. Waugh and S. Goss,
+IEEE Transactions of Data and 
+Knowledge Engineering,
+November/December,
+pages 1362-1375,
+<a href="http://menzies.us/pdf/97iedge.pdf">http://menzies.us/pdf/97iedge.pdf</a>
+</dd>
+<p></p>
+<dt><strong><a name="item_newell82">Newell82</a></strong><br />
+</dt>
+<dd>
+<em>The Knowledge Level</em>
+(1982)
+by A. Newell,
+Artificial Intelligence,
+Vol. 18,
+pages 87-127
+</dd>
+<p></p>
+<dt><strong><a name="item_newell91">Newell91</a></strong><br />
+</dt>
+<dd>
+<em>Formulating the Problem Space Computational
+                  Model</em>
+(1991)
+A. Newell and G.R. Yost and J.E Laird and
+                  P.S. Rosenbloom and E. Altmann,
+in [<a href="#item_rosen93">The Soar Papers</a>],
+volume 2, 
+pages 1321-1359.
+</dd>
+<p></p>
+<dt><strong><a name="item_newell93">Newell93</a></strong><br />
+</dt>
+<dd>
+<em>Reflections on the {K}nowledge {L}evel</em>
+(1993)
+by A. Newell,
+Artificial Intelligence,
+Feburary,
+Vol. 59,
+pages 31-38
+</dd>
+<p></p>
+<dt><strong><a name="item_parkes99">Parkes99</a></strong><br />
+</dt>
+<dd>
+<em>Lifted Search Engines for Satisfiability</em>,
+(1999),
+Lifted Search Engines for
+Satisfiability. PhD thesis, University of Oregon,
+<a href="http://citeseer.nj.nec.com/parkes99lifted.html.">http://citeseer.nj.nec.com/parkes99lifted.html.</a>
+</dd>
+<p></p>
+<dt><strong><a name="item_rosen93">Rosen93</a></strong><br />
+</dt>
+<dd>
+<em>The SOAR Papers</em>
+(1993)
+P.S. Rosenbloom and J.E. Laird and A. Newell (editors),
+The MIT Press
+</dd>
+<p></p>
+<dt><strong><a name="item_yost89">Yost89</a></strong><br />
+</dt>
+<dd>
+<em>A Problem Space Approach to Expert System
+                  Specification</em>
+(1989)
+by G.R. Yost and A. Newell,
+IJCAI'89,
+pages 621-627.
+</dd>
+<p></p></dl>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="about_this_document">About this Document</a></h1>
+<p>Copyright (C)
+2003
+by
+Tim Menzies
+&lt;<a href="mailto:tim@menzies.us">tim@menzies.us</a>&gt;
+home page=
+<a href="http://menzies.us">http://menzies.us</a></p>
+<p>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; 
+see <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a>.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</p>
+<p>
+</p>
+<h2><a name="disclaimer">Disclaimer</a></h2>
+<p>The content from or through this web page are provided 'as is' and the
+author makes no warranties or representations regarding the accuracy
+or completeness of the information.  Your use of this web page and
+information is at your own risk. You assume full responsibility and
+risk of loss resulting from the use of this web page or information.
+If your use of materials from this page results in the need for
+servicing, repair or correction of equipment, you assume any costs
+thereof.  Follow all external links at your own risk and liability.</p>
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

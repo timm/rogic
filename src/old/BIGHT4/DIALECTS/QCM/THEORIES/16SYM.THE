@@ -1,0 +1,12 @@
+name = '16. Smythe 87'.
+
+objects(e) = [coldSwim,dex].
+objects(m) = [nna, acth, cortico,temp].
+
+coldSwim ++ nna     .
+nna      ++ acth    .
+acth     ++ cortico .
+cortico  ++ temp    .
+temp     -- acth    .
+temp     -- nna     .
+dex      ++ temp    .

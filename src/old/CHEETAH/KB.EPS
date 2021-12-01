@@ -1,0 +1,1707 @@
+%!PS-Adobe-2.0
+%%Creator: dot version 1.0 (06-14-99)
+%%For: Bill Gates
+%%Title: G
+%%Pages: (atend)
+%%BoundingBox: 36 36 1963 1853
+%%EndComments
+%%BeginProlog
+save
+/DotDict 200 dict def
+DotDict begin
+
+%%BeginResource: procset
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+	dup 1 exch div /InvScaleFactor exch def
+	dup scale
+} bind def
+
+% styles
+/solid { } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw aligned label in bounding box aligned to current point
+% alignfactor tells what fraction to place on the left.
+% -.5 is centered.
+/alignedtext {			% text labelwidth fontsz alignfactor
+	/alignfactor exch def
+	/fontsz exch def
+	/width exch def
+	/text exch def
+	gsave
+		% even if node or edge is dashed, don't paint text with dashes
+		[] 0 setdash
+		currentpoint newpath moveto
+		text stringwidth pop
+		alignfactor mul fontsz -.3 mul rmoveto
+		text show
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+%%EndProlog
+%%Page: 1 1
+%%PageBoundingBox: 36 36 1963 1853
+%%PageOrientation: Portrait
+gsave
+35 35 1928 1818 boxprim clip newpath
+36 36 translate
+0 0 1 beginpage
+0 0 translate 0 rotate
+0.000 0.000 0.000 graphcolor
+14.00 /Times-Roman set_font
+
+%	authorizationToProceed=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 381 moveto (authorizationToProceed) 134 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	authorization=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 381 moveto (authorization) 73 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	authorizationToProceed=t -> authorization=t
+newpath 479 380 moveto
+534 380 607 380 657 380 curveto
+stroke
+newpath 657 378 moveto
+667 380 lineto
+657 383 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 389 moveto ($0.7 to 1.3 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	rand(rand172)
+gsave 10 dict begin
+gsave 10 dict begin
+979 383 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	authorization=t -> rand(rand172)
+newpath 755 380 moveto
+809 381 897 381 945 382 curveto
+stroke
+newpath 942 380 moveto
+952 382 lineto
+942 385 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 390 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	rany(rany46)
+gsave 10 dict begin
+gsave 10 dict begin
+405 435 moveto (rany) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	effectiveReqReviews=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 435 moveto (effectiveReqReviews) 119 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rany(rany46) -> effectiveReqReviews=t
+newpath 432 434 moveto
+477 434 569 434 635 434 curveto
+stroke
+newpath 634 432 moveto
+644 434 lineto
+634 437 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 443 moveto ($10 to 20 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	effectiveReqReviews=t -> rand(rand172)
+newpath 778 423 moveto
+815 417 861 410 891 404 curveto
+891 404 919 397 943 391 curveto
+stroke
+newpath 942 389 moveto
+952 389 lineto
+943 394 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 428 moveto (?0.63 to 1.17 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	rand(rand173)
+gsave 10 dict begin
+gsave 10 dict begin
+979 149 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	effectiveReqReviews=t -> rand(rand173)
+newpath 778 423 moveto
+784 421 790 417 792 410 curveto
+799 392 789 201 799 185 curveto
+811 168 893 157 942 152 curveto
+stroke
+newpath 942 150 moveto
+952 151 lineto
+942 154 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 194 moveto (?0.63 to 1.17 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	rand(rand180)
+gsave 10 dict begin
+gsave 10 dict begin
+979 915 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	effectiveReqReviews=t -> rand(rand180)
+newpath 778 448 moveto
+786 451 791 454 792 458 curveto
+806 507 785 716 799 766 curveto
+809 795 867 764 891 784 curveto
+919 806 950 858 967 890 curveto
+stroke
+newpath 968 886 moveto
+970 896 lineto
+963 888 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 793 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	peerReviewOfRequirements=t
+gsave 10 dict begin
+gsave 10 dict begin
+128 354 moveto (peerReviewOfRequirements) 159 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	peerReviewOfRequirements=t -> rany(rany46)
+newpath 215 366 moveto
+230 369 245 373 256 377 curveto
+268 381 261 405 272 410 curveto
+304 422 339 419 371 424 curveto
+stroke
+newpath 368 421 moveto
+378 425 lineto
+368 426 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	conductFormalInspectionOfRequirements=t
+gsave 10 dict begin
+gsave 10 dict begin
+128 516 moveto (conductFormalInspectionOfRequirements) 235 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	conductFormalInspectionOfRequirements=t -> rany(rany46)
+newpath 237 497 moveto
+244 495 250 493 256 491 curveto
+268 486 261 462 272 458 curveto
+272 458 330 448 370 440 curveto
+stroke
+newpath 368 438 moveto
+378 439 lineto
+368 443 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	softwareAssuranceReviewOfRequirements=t
+gsave 10 dict begin
+gsave 10 dict begin
+128 462 moveto (softwareAssuranceReviewOfRequirements) 241 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	softwareAssuranceReviewOfRequirements=t -> rany(rany46)
+newpath 256 449 moveto
+297 445 340 440 369 438 curveto
+stroke
+newpath 368 436 moveto
+378 437 lineto
+368 441 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	conductFormalReviews=t
+gsave 10 dict begin
+gsave 10 dict begin
+128 408 moveto (conductFormalReviews) 132 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	conductFormalReviews=t -> rany(rany46)
+newpath 202 414 moveto
+256 420 327 426 369 430 curveto
+stroke
+newpath 368 427 moveto
+378 431 lineto
+368 432 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	problemReportAndCorrectiveActionSystem=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 44 moveto (problemReportAndCorrectiveActionSystem) 247 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	problemReport=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 44 moveto (problemReport) 84 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	problemReportAndCorrectiveActionSystem=t -> problemReport=t
+newpath 536 43 moveto
+576 43 618 43 650 43 curveto
+stroke
+newpath 651 41 moveto
+661 43 lineto
+651 46 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 52 moveto ($3.5 to 6.5 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	problemReport=t -> rand(rand172)
+newpath 754 61 moveto
+770 70 786 80 792 92 curveto
+802 110 788 193 799 208 curveto
+818 234 869 205 891 226 curveto
+921 256 952 321 968 357 curveto
+stroke
+newpath 969 354 moveto
+971 364 lineto
+965 356 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 235 moveto (?0.63 to 1.17 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	problemReport=t -> rand(rand173)
+newpath 761 40 moveto
+802 39 859 40 891 52 curveto
+917 62 945 97 962 122 curveto
+stroke
+newpath 964 120 moveto
+967 130 lineto
+960 123 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 61 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	implementFormalConfigurationManagement=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 489 moveto (implementFormalConfigurationManagement) 251 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	configurationManagement=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 489 moveto (configurationManagement) 148 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	implementFormalConfigurationManagement=t -> configurationManagement=t
+newpath 538 488 moveto
+566 488 595 488 621 488 curveto
+stroke
+newpath 620 486 moveto
+630 488 lineto
+620 491 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 497 moveto ($20 to 30 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	configurationManagement=t -> rand(rand172)
+newpath 792 470 moveto
+827 462 866 452 891 442 curveto
+908 435 931 420 949 406 curveto
+stroke
+newpath 947 405 moveto
+956 400 lineto
+950 408 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 477 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	planAndScheduleIV&Vactivities=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 123 moveto (planAndScheduleIV&Vactivities) 185 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	iv&v=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 123 moveto (iv&v) 28 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	planAndScheduleIV&Vactivities=t -> iv&v=t
+newpath 505 122 moveto
+564 122 634 122 676 122 curveto
+stroke
+newpath 674 120 moveto
+684 122 lineto
+674 125 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 131 moveto ($70 to 130 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	iv&v=t -> rand(rand172)
+newpath 721 140 moveto
+738 169 772 224 799 249 curveto
+824 272 865 269 891 288 curveto
+913 303 940 335 958 357 curveto
+stroke
+newpath 959 355 moveto
+964 364 lineto
+956 358 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 297 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	iv&v=t -> rand(rand173)
+newpath 738 107 moveto
+757 97 782 85 799 81 curveto
+829 75 863 71 891 81 curveto
+910 88 935 108 953 124 curveto
+stroke
+newpath 954 122 moveto
+960 130 lineto
+951 125 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 90 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	stableRequirements=t
+gsave 10 dict begin
+gsave 10 dict begin
+1238 383 moveto (stableRequirements) 110 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand172) -> stableRequirements=t
+newpath 1006 382 moveto
+1044 382 1115 382 1169 382 curveto
+stroke
+newpath 1166 380 moveto
+1176 382 lineto
+1166 385 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	rand(rand174)
+gsave 10 dict begin
+gsave 10 dict begin
+1443 383 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	stableRequirements=t -> rand(rand174)
+newpath 1300 382 moveto
+1334 382 1376 382 1406 382 curveto
+stroke
+newpath 1406 380 moveto
+1416 382 lineto
+1406 385 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	documentedRequirements=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 277 moveto (documentedRequirements) 146 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	documentedRequirements=t -> rand(rand172)
+newpath 757 294 moveto
+809 315 894 348 942 367 curveto
+stroke
+newpath 944 365 moveto
+952 371 lineto
+942 370 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 356 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	documentedRequirements=t -> rand(rand173)
+newpath 724 258 moveto
+742 231 774 182 792 152 curveto
+796 147 793 135 799 133 curveto
+838 126 904 135 944 142 curveto
+stroke
+newpath 942 139 moveto
+952 143 lineto
+942 144 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 144 moveto (?0.63 to 1.17 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	designReqReview=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 1123 moveto (designReqReview) 101 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	designReqReview=t -> rand(rand172)
+newpath 722 1104 moveto
+739 1075 773 1019 799 992 curveto
+824 966 884 971 891 936 curveto
+906 864 887 571 898 500 curveto
+902 470 932 433 954 408 curveto
+stroke
+newpath 953 406 moveto
+961 400 lineto
+956 409 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1001 moveto (?0.63 to 1.17 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	designReqReview=t -> rand(rand173)
+newpath 720 1104 moveto
+739 1065 783 974 792 919 curveto
+801 868 788 661 799 612 curveto
+811 562 873 538 891 491 curveto
+908 447 887 396 898 352 curveto
+912 302 948 217 967 174 curveto
+stroke
+newpath 964 174 moveto
+971 166 lineto
+969 176 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 621 moveto (?0.63 to 1.17 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	rand(rand175)
+gsave 10 dict begin
+gsave 10 dict begin
+979 1395 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	designReqReview=t -> rand(rand175)
+newpath 720 1140 moveto
+737 1174 774 1249 792 1293 curveto
+797 1303 790 1320 799 1327 curveto
+827 1344 861 1346 891 1358 curveto
+905 1363 926 1371 943 1378 curveto
+stroke
+newpath 944 1376 moveto
+952 1382 lineto
+942 1380 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	rand(rand176)
+gsave 10 dict begin
+gsave 10 dict begin
+979 1641 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	designReqReview=t -> rand(rand176)
+newpath 720 1140 moveto
+741 1184 792 1293 792 1293 curveto
+800 1323 786 1454 799 1483 curveto
+813 1511 868 1479 891 1500 curveto
+920 1525 951 1582 967 1615 curveto
+stroke
+newpath 968 1612 moveto
+970 1622 lineto
+964 1614 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	rand(rand178)
+gsave 10 dict begin
+gsave 10 dict begin
+979 1201 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	designReqReview=t -> rand(rand178)
+newpath 739 1140 moveto
+758 1152 782 1166 799 1171 curveto
+837 1181 903 1191 944 1196 curveto
+stroke
+newpath 942 1193 moveto
+952 1197 lineto
+942 1198 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1197 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	designReqReview=t -> rand(rand180)
+newpath 733 1104 moveto
+752 1088 780 1066 799 1055 curveto
+828 1037 865 1035 891 1015 curveto
+913 998 942 964 960 940 curveto
+stroke
+newpath 958 939 moveto
+966 932 lineto
+962 942 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1064 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	completeRequirements=t
+gsave 10 dict begin
+gsave 10 dict begin
+1238 284 moveto (completeRequirements) 128 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand173) -> completeRequirements=t
+newpath 1006 162 moveto
+1052 186 1142 234 1196 261 curveto
+stroke
+newpath 1196 258 moveto
+1203 265 lineto
+1193 262 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	completeRequirements=t -> rand(rand174)
+newpath 1276 301 moveto
+1313 320 1372 348 1408 365 curveto
+stroke
+newpath 1408 362 moveto
+1416 369 lineto
+1406 367 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	goodRequirements=t
+gsave 10 dict begin
+gsave 10 dict begin
+1626 543 moveto (goodRequirements) 105 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand174) -> goodRequirements=t
+newpath 1464 400 moveto
+1497 429 1561 485 1598 517 curveto
+stroke
+newpath 1600 515 moveto
+1605 524 lineto
+1596 519 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	rand(rand183)
+gsave 10 dict begin
+gsave 10 dict begin
+1733 697 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	goodRequirements=t -> rand(rand183)
+newpath 1639 560 moveto
+1658 588 1695 640 1716 672 curveto
+stroke
+newpath 1717 668 moveto
+1720 678 lineto
+1712 671 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	designMeetsRequirementsReview=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 1123 moveto (designMeetsRequirementsReview) 191 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	designMeetsRequirementsReview=t -> designReqReview=t
+newpath 508 1122 moveto
+553 1122 605 1122 645 1122 curveto
+stroke
+newpath 643 1120 moveto
+653 1122 lineto
+643 1125 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 1131 moveto ($3.5 to 6.5 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	documentPreliminary&DetailedDesigns=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 1518 moveto (documentPreliminary&DetailedDesigns) 224 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	documentDesign=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 1518 moveto (documentDesign) 94 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	documentPreliminary&DetailedDesigns=t -> documentDesign=t
+newpath 525 1517 moveto
+567 1517 613 1517 649 1517 curveto
+stroke
+newpath 646 1515 moveto
+656 1517 lineto
+646 1520 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 1526 moveto ($7 to 13 ) 49 14.00 -0.50 alignedtext
+end grestore
+
+%	documentDesign=t -> rand(rand175)
+newpath 744 1535 moveto
+787 1557 860 1587 891 1559 curveto
+924 1528 955 1458 969 1420 curveto
+stroke
+newpath 966 1420 moveto
+972 1412 lineto
+971 1422 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1579 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	documentDesign=t -> rand(rand176)
+newpath 731 1535 moveto
+755 1556 793 1590 799 1593 curveto
+836 1610 902 1625 944 1633 curveto
+stroke
+newpath 943 1630 moveto
+952 1635 lineto
+942 1635 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1629 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	documentDesign=t -> rand(rand178)
+newpath 743 1499 moveto
+784 1475 854 1434 891 1404 curveto
+902 1395 893 1376 898 1364 curveto
+916 1325 948 1260 966 1225 curveto
+stroke
+newpath 963 1225 moveto
+970 1218 lineto
+967 1228 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1474 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	documentDesign=t -> rand(rand180)
+newpath 718 1499 moveto
+733 1462 768 1381 799 1342 curveto
+822 1313 874 1317 891 1286 curveto
+901 1269 894 1188 898 1170 curveto
+914 1103 953 989 971 939 curveto
+stroke
+newpath 968 941 moveto
+973 932 lineto
+973 942 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1351 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	rany(rany47)
+gsave 10 dict begin
+gsave 10 dict begin
+405 1324 moveto (rany) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	designReviews=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 1324 moveto (designReviews) 84 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rany(rany47) -> designReviews=t
+newpath 432 1323 moveto
+482 1323 586 1323 652 1323 curveto
+stroke
+newpath 651 1321 moveto
+661 1323 lineto
+651 1326 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 1332 moveto ($7 to 13 ) 49 14.00 -0.50 alignedtext
+end grestore
+
+%	designReviews=t -> rand(rand175)
+newpath 744 1341 moveto
+762 1350 784 1361 799 1365 curveto
+837 1375 903 1385 944 1390 curveto
+stroke
+newpath 942 1387 moveto
+952 1391 lineto
+942 1392 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1390 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	designReviews=t -> rand(rand176)
+newpath 720 1341 moveto
+737 1374 773 1445 792 1487 curveto
+796 1493 793 1503 799 1507 curveto
+828 1521 866 1516 891 1536 curveto
+914 1552 943 1589 961 1614 curveto
+stroke
+newpath 963 1613 moveto
+967 1622 lineto
+959 1616 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1545 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	designReviews=t -> rand(rand178)
+newpath 734 1305 moveto
+753 1290 780 1271 799 1263 curveto
+837 1245 903 1223 944 1211 curveto
+stroke
+newpath 942 1209 moveto
+952 1208 lineto
+944 1214 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1272 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	designReviews=t -> rand(rand180)
+newpath 720 1305 moveto
+737 1271 775 1196 792 1152 curveto
+798 1137 787 1116 799 1107 curveto
+825 1087 870 1101 891 1078 curveto
+922 1045 953 977 969 940 curveto
+stroke
+newpath 966 940 moveto
+972 932 lineto
+971 942 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1116 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	peerReviewsOnDesign=t
+gsave 10 dict begin
+gsave 10 dict begin
+128 1378 moveto (peerReviewsOnDesign) 128 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	peerReviewsOnDesign=t -> rany(rany47)
+newpath 200 1363 moveto
+254 1353 327 1338 369 1330 curveto
+stroke
+newpath 368 1328 moveto
+378 1328 lineto
+369 1333 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	conductFormalDesignInspections=t
+gsave 10 dict begin
+gsave 10 dict begin
+128 1324 moveto (conductFormalDesignInspections) 188 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	conductFormalDesignInspections=t -> rany(rany47)
+newpath 229 1323 moveto
+278 1323 335 1323 371 1323 curveto
+stroke
+newpath 368 1321 moveto
+378 1323 lineto
+368 1326 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	conductFormalDesignReviews=t
+gsave 10 dict begin
+gsave 10 dict begin
+128 1270 moveto (conductFormalDesignReviews) 172 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	conductFormalDesignReviews=t -> rany(rany47)
+newpath 221 1287 moveto
+272 1297 333 1309 370 1317 curveto
+stroke
+newpath 368 1314 moveto
+378 1318 lineto
+368 1319 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	createBaselineForDesign=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 1799 moveto (createBaselineForDesign) 140 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	baselineDesign=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 1799 moveto (baselineDesign) 85 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	createBaselineForDesign=t -> baselineDesign=t
+newpath 482 1798 moveto
+534 1798 603 1798 651 1798 curveto
+stroke
+newpath 651 1796 moveto
+661 1798 lineto
+651 1801 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 1807 moveto ($3.5 to 6.5 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	baselineDesign=t -> rand(rand176)
+newpath 761 1789 moveto
+802 1780 860 1766 891 1748 curveto
+917 1733 946 1693 963 1666 curveto
+stroke
+newpath 961 1665 moveto
+968 1658 lineto
+965 1668 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1788 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	placeDesignUnderCM=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 1745 moveto (placeDesignUnderCM) 125 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	cmForDesign=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 1745 moveto (cmForDesign) 76 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	placeDesignUnderCM=t -> cmForDesign=t
+newpath 475 1744 moveto
+530 1744 605 1744 656 1744 curveto
+stroke
+newpath 656 1742 moveto
+666 1744 lineto
+656 1747 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 1753 moveto ($3.5 to 6.5 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	cmForDesign=t -> rand(rand176)
+newpath 756 1735 moveto
+797 1727 856 1713 891 1700 curveto
+908 1693 931 1678 949 1664 curveto
+stroke
+newpath 948 1662 moveto
+957 1658 lineto
+951 1666 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1734 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	formalChangeControlForDesign=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 1691 moveto (formalChangeControlForDesign) 181 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	designChangeControl=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 1691 moveto (designChangeControl) 122 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	formalChangeControlForDesign=t -> designChangeControl=t
+newpath 503 1690 moveto
+546 1690 595 1690 635 1690 curveto
+stroke
+newpath 633 1688 moveto
+643 1690 lineto
+633 1693 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 1699 moveto ($3.5 to 6.5 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	designChangeControl=t -> rand(rand176)
+newpath 779 1681 moveto
+817 1675 862 1668 891 1663 curveto
+905 1660 925 1655 943 1651 curveto
+stroke
+newpath 942 1649 moveto
+952 1648 lineto
+943 1654 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1686 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	meetSpecs=t
+gsave 10 dict begin
+gsave 10 dict begin
+1238 1395 moveto (meetSpecs) 59 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand175) -> meetSpecs=t
+newpath 1006 1394 moveto
+1051 1394 1140 1394 1194 1394 curveto
+stroke
+newpath 1191 1392 moveto
+1201 1394 lineto
+1191 1397 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1113 1403 moveto ($3.5 to 6.5 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	rand(rand177)
+gsave 10 dict begin
+gsave 10 dict begin
+1443 1395 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	meetSpecs=t -> rand(rand177)
+newpath 1275 1394 moveto
+1313 1394 1372 1394 1408 1394 curveto
+stroke
+newpath 1406 1392 moveto
+1416 1394 lineto
+1406 1397 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	achievableDesign=t
+gsave 10 dict begin
+gsave 10 dict begin
+1238 1497 moveto (achievableDesign) 99 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand176) -> achievableDesign=t
+newpath 1006 1625 moveto
+1052 1599 1145 1548 1199 1518 curveto
+stroke
+newpath 1196 1517 moveto
+1206 1514 lineto
+1199 1521 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1113 1600 moveto ($3.5 to 6.5 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	achievableDesign=t -> rand(rand177)
+newpath 1274 1478 moveto
+1312 1459 1371 1430 1408 1411 curveto
+stroke
+newpath 1406 1409 moveto
+1416 1407 lineto
+1408 1414 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	goodDesign=t
+gsave 10 dict begin
+gsave 10 dict begin
+1626 932 moveto (goodDesign) 67 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand177) -> goodDesign=t
+newpath 1450 1376 moveto
+1478 1304 1583 1039 1616 956 curveto
+stroke
+newpath 1613 957 moveto
+1619 949 lineto
+1617 959 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1516 1316 moveto ($3.5 to 6.5 ) 63 14.00 -0.50 alignedtext
+end grestore
+
+%	goodDesign=t -> rand(rand183)
+newpath 1634 913 moveto
+1653 872 1698 773 1721 724 curveto
+stroke
+newpath 1719 722 moveto
+1725 714 lineto
+1724 724 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	rany(rany48)
+gsave 10 dict begin
+gsave 10 dict begin
+405 655 moveto (rany) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	codeReviews=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 655 moveto (codeReviews) 74 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rany(rany48) -> codeReviews=t
+newpath 432 654 moveto
+483 654 593 654 658 654 curveto
+stroke
+newpath 657 652 moveto
+667 654 lineto
+657 657 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 663 moveto ($10 to 20 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	codeReviews=t -> rand(rand178)
+newpath 723 672 moveto
+745 707 792 780 792 780 curveto
+803 837 784 1073 799 1130 curveto
+808 1160 862 1136 891 1148 curveto
+906 1154 927 1166 944 1177 curveto
+stroke
+newpath 945 1175 moveto
+952 1182 lineto
+942 1179 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 1157 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	rand(rand179)
+gsave 10 dict begin
+gsave 10 dict begin
+979 681 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	codeReviews=t -> rand(rand179)
+newpath 755 645 moveto
+796 638 856 630 891 639 curveto
+905 642 926 652 943 660 curveto
+stroke
+newpath 944 658 moveto
+952 665 lineto
+942 662 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 648 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	codeReviews=t -> rand(rand180)
+newpath 723 672 moveto
+742 699 775 749 792 780 curveto
+797 788 791 802 799 807 curveto
+827 822 864 819 891 836 curveto
+911 848 937 871 956 890 curveto
+stroke
+newpath 957 887 moveto
+962 896 lineto
+953 891 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 845 moveto (?0.63 to 1.17 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	rand(rand182)
+gsave 10 dict begin
+gsave 10 dict begin
+1443 602 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	codeReviews=t -> rand(rand182)
+newpath 755 638 moveto
+771 633 787 629 799 628 curveto
+976 614 1298 605 1407 602 curveto
+stroke
+newpath 1406 600 moveto
+1416 602 lineto
+1406 605 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1113 624 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	conductCodeWalkthrough=t
+gsave 10 dict begin
+gsave 10 dict begin
+128 628 moveto (conductCodeWalkthrough) 147 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	conductCodeWalkthrough=t -> rany(rany48)
+newpath 209 635 moveto
+262 641 329 647 370 650 curveto
+stroke
+newpath 368 647 moveto
+378 651 lineto
+368 652 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	conductCodeReview=t
+gsave 10 dict begin
+gsave 10 dict begin
+128 682 moveto (conductCodeReview) 116 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	conductCodeReview=t -> rany(rany48)
+newpath 193 675 moveto
+248 669 324 662 369 658 curveto
+stroke
+newpath 368 656 moveto
+378 657 lineto
+368 661 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	feasibleDesignToCode=t
+gsave 10 dict begin
+gsave 10 dict begin
+1238 970 moveto (feasibleDesignToCode) 128 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand178) -> feasibleDesignToCode=t
+newpath 999 1182 moveto
+1045 1140 1158 1039 1211 993 curveto
+stroke
+newpath 1209 992 moveto
+1218 987 lineto
+1212 995 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1113 1130 moveto ($10 to 20 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	rand(rand181)
+gsave 10 dict begin
+gsave 10 dict begin
+1443 738 moveto (rand) 24 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	feasibleDesignToCode=t -> rand(rand181)
+newpath 1255 951 moveto
+1289 914 1367 831 1409 783 curveto
+1413 778 1420 770 1426 761 curveto
+stroke
+newpath 1422 762 moveto
+1430 755 lineto
+1427 765 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	testPlansDocumented=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 890 moveto (testPlansDocumented) 121 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	testPlans=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 890 moveto (testPlans) 49 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	testPlansDocumented=t -> testPlans=t
+newpath 473 889 moveto
+533 889 618 889 669 889 curveto
+stroke
+newpath 669 887 moveto
+679 889 lineto
+669 892 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 898 moveto ($14 to 26 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	testPlans=t -> rand(rand179)
+newpath 743 876 moveto
+762 867 784 854 792 840 curveto
+801 826 789 755 799 743 curveto
+819 717 861 724 891 714 curveto
+905 709 926 701 943 694 curveto
+stroke
+newpath 942 692 moveto
+952 691 lineto
+943 697 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 752 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	testPlans=t -> rand(rand180)
+newpath 743 899 moveto
+762 904 784 909 799 911 curveto
+838 915 904 915 944 914 curveto
+stroke
+newpath 942 912 moveto
+952 914 lineto
+942 917 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 922 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	unitTestConducted=t
+gsave 10 dict begin
+gsave 10 dict begin
+405 811 moveto (unitTestConducted) 106 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	unitTest=t
+gsave 10 dict begin
+gsave 10 dict begin
+711 811 moveto (unitTest) 45 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	unitTestConducted=t -> unitTest=t
+newpath 466 810 moveto
+527 810 618 810 670 810 curveto
+stroke
+newpath 671 808 moveto
+681 810 lineto
+671 813 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+584 819 moveto ($14 to 26 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	unitTest=t -> rand(rand179)
+newpath 720 792 moveto
+735 762 767 706 799 691 curveto
+835 673 902 674 944 676 curveto
+stroke
+newpath 942 673 moveto
+952 677 lineto
+942 678 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 700 moveto (?0.63 to 1.17 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	unitTest=t -> rand(rand180)
+newpath 741 828 moveto
+759 839 783 852 799 859 curveto
+837 873 903 892 944 904 curveto
+stroke
+newpath 943 901 moveto
+952 906 lineto
+942 906 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+845 897 moveto (?0.21 to 0.39 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	goodTesting=t
+gsave 10 dict begin
+gsave 10 dict begin
+1238 681 moveto (goodTesting) 70 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand179) -> goodTesting=t
+newpath 1006 680 moveto
+1050 680 1134 680 1189 680 curveto
+stroke
+newpath 1186 678 moveto
+1196 680 lineto
+1186 683 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1113 689 moveto ($14 to 26 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	goodTesting=t -> rand(rand181)
+newpath 1280 692 moveto
+1318 702 1373 718 1409 727 curveto
+stroke
+newpath 1407 724 moveto
+1416 729 lineto
+1406 729 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	goodTesting=t -> rand(rand182)
+newpath 1280 664 moveto
+1318 649 1373 628 1409 614 curveto
+stroke
+newpath 1406 613 moveto
+1416 611 lineto
+1408 617 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1363 658 moveto (?0.07 to 0.13 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	goodCoding=t
+gsave 10 dict begin
+gsave 10 dict begin
+1238 814 moveto (goodCoding) 69 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand180) -> goodCoding=t
+newpath 1006 903 moveto
+1050 886 1135 853 1189 832 curveto
+stroke
+newpath 1186 831 moveto
+1196 829 lineto
+1188 835 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1113 888 moveto ($14 to 26 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	goodCoding=t -> rand(rand181)
+newpath 1280 797 moveto
+1318 783 1373 763 1409 750 curveto
+stroke
+newpath 1406 749 moveto
+1416 747 lineto
+1408 753 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	goodImplemenation=t
+gsave 10 dict begin
+gsave 10 dict begin
+1626 726 moveto (goodImplemenation) 112 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand181) -> goodImplemenation=t
+newpath 1470 735 moveto
+1491 734 1523 732 1552 730 curveto
+stroke
+newpath 1552 728 moveto
+1562 729 lineto
+1552 732 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1516 743 moveto ($14 to 26 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	goodImplemenation=t -> rand(rand183)
+newpath 1690 708 moveto
+1692 708 1695 707 1697 706 curveto
+stroke
+newpath 1696 704 moveto
+1706 704 lineto
+1697 709 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	conductSystemIntegration=t
+gsave 10 dict begin
+gsave 10 dict begin
+979 531 moveto (conductSystemIntegration) 146 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	systemIntegration=t
+gsave 10 dict begin
+gsave 10 dict begin
+1238 534 moveto (systemIntegration) 100 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	conductSystemIntegration=t -> systemIntegration=t
+newpath 1060 531 moveto
+1096 532 1139 532 1174 532 curveto
+stroke
+newpath 1171 530 moveto
+1181 532 lineto
+1171 535 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1113 541 moveto ($14 to 26 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	systemIntegration=t -> rand(rand182)
+newpath 1295 534 moveto
+1333 535 1380 539 1409 549 curveto
+1419 552 1427 564 1433 577 curveto
+stroke
+newpath 1434 573 moveto
+1436 583 lineto
+1429 575 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1363 558 moveto (?0.63 to 1.17 ) 76 14.00 -0.50 alignedtext
+end grestore
+
+%	goodIntegration=t
+gsave 10 dict begin
+gsave 10 dict begin
+1626 670 moveto (goodIntegration) 89 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand182) -> goodIntegration=t
+newpath 1470 611 moveto
+1496 621 1537 636 1570 648 curveto
+stroke
+newpath 1569 645 moveto
+1577 651 lineto
+1567 649 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1516 651 moveto ($14 to 26 ) 56 14.00 -0.50 alignedtext
+end grestore
+
+%	goodIntegration=t -> rand(rand183)
+newpath 1678 682 moveto
+1685 683 1691 685 1697 687 curveto
+stroke
+newpath 1697 684 moveto
+1706 689 lineto
+1696 689 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	goodProject=t
+gsave 10 dict begin
+gsave 10 dict begin
+1885 697 moveto (goodProject) 67 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	rand(rand183) -> goodProject=t
+newpath 1760 696 moveto
+1780 696 1809 696 1834 696 curveto
+stroke
+newpath 1834 694 moveto
+1844 696 lineto
+1834 699 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+gsave 10 dict begin
+1802 705 moveto ($14 to 26 ) 56 14.00 -0.50 alignedtext
+end grestore
+endpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+end
+restore
+%%EOF

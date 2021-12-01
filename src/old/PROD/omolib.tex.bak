@@ -1,0 +1,155 @@
+\section{ OMO Support code}
+\subsection{Defining expected variables.}
+
+The assertion ``\call{Var of Pred.}''
+gives OMO the expectation that
+the predicate \call{Pred(Value)}
+can be used
+to check supplied values for \call{Var}.
+Alternatively, if none are generated,
+then \call{Pred(Value)} can be used to generate
+a value for \call{Var}.
+
+Internally,  ``\call{Var of Pred.}'' is stored
+in an \call{of/3} assertion:
+\begin{LISTING}
+of(Var,Pred(Value),Value).
+\end{LISTING}
+
+\begin{Verbatim}
+ofs(A,Bs) :-
+	bagof(B,A^of1(A,B),Bs).
+
+of1(X of Y,_) :-
+	\+ ground(X of Y),
+	!,barphln(mustBeLowerCase(X of Y)).
+of1(_ of Y,_) :-
+	Pred=.. [Y,_],
+	\+ clause(Pred,_),
+	!,barphln(unknownType(Y)).
+of1(X of Y,Out) :-
+	Head=.. [X,Value],
+	Body=.. [Y,Value],
+	(Out=(Head :- Body)
+        ;Out=of(X,Head,Value)).
+\end{Verbatim}
+\subsection{Checking supplied variables}
+
+(Assumes \call{of/3} facts has been previously
+generated).
+
+Users of this system can supply values to be used in
+the simuation. That input description includes
+mostly {\em range} values and a few {\em goal}
+values. Simulations backtrack over the {\em range} of values.
+Optimizers of this simulation can query the {\em goal} values
+to constrain their optimizations to just the {\em goal}s.
+
+Syntactically,
+	goal values are marked with a question mark (e.g. \call{X?})
+and anything not marked in this way is a range value.
+\fig{rangeseg} shows the various forms.
+
+\begin{figure}
+{\small
+\begin{center}
+\begin{tabular}{p{3cm}p{2.5cm}p{2cm}}\hline
+General form & Notes & Example\\\hline
+\call{Var = List?} & \call{Var} can take on the variables in \call{List}.
+mark all items in \call{List} as goals & 
+\call{cplx = [vh,xh]?}.\\\hline
+\call{Var= [X1,X2?,X3,...]} &\call{Var} can take any of the variables
+in the list. Some of these values are goal values. 
+&\call{ruse = [l,n,h?].}\\\hline
+\call{Var= [X1,X2,X3,...]} &\call{Var} can take any of the variables
+in the list. None of these values are goal values. 
+&\call{time = [n,h,vh].}\\\hline
+\call{Var= X?} &\call{Var} can take only take one value.
+and that value is a goal.
+&\call{pvol = h? .}\\\hline
+\call{Var= ?} &\call{Var} can take any value over its
+range and all of those values are goals. 
+&\call{data = ? .}\\\hline
+\call{Var= X} &\call{Var} can take one  value
+and that value is not a goal. 
+&\call{pcap = n.}\\\hline
+\end{tabular}
+\end{center}
+}
+\caption{Specifying ranges for variables.}\label{fig:rangeseg}
+\end{figure}
+
+Via  a \call{term_expansion}, the \call{ready} assertion
+triggers the following code;
+
+\begin{Verbatim}
+readies(L) :- bagof(X,ready(X),L).
+\end{Verbatim}
+For variables with no settings, use
+the \call{of/3}'s \call{Pred} to get a value.
+\begin{Verbatim}
+ready((oneOf(X,Value) :- Pred)) :-
+	of(X,Pred,Value),
+	\+ option(X,_).
+\end{Verbatim}
+Complain if a variable's setting
+is illegal.
+\begin{Verbatim}
+ready((:- burp(badValue(W,Value)))) :- 
+	of(W,Pred,Value),
+	option(W,X),
+	once(ready0(X,_,_,Y)),
+	member(mark(item,Value),Y),
+	\+ Pred.
+\end{Verbatim}
+Otherwise, generate appropiate \call{range}
+% and \call{goal} assertions.
+\begin{Verbatim}
+ready(Out):- 
+	of(W,Pred,Value),
+	option(W,X),
+	once(ready0(X,Pred,Value,Y)),
+	member(Z,Y),
+	ready1(Z,W,Out).
+\end{Verbatim}
+\begin{Verbatim}
+ready0([H|T]?, _,_,L) :- maplist(ready0aGoal,[H|T],L).
+ready0([H|T],  _,_,L) :- maplist(ready0a,[H|T],L).
+ready0(Item?,  _,_,[mark(goal,Item)]).
+ready0( ?   ,  P,V,[pred(P,V)]).
+ready0(Item,   _,_,[mark(range,Item)]).
+
+ready0a(X?,mark(goal,X)).
+ready0a(X, mark(range,X)) :- atomic(X).
+
+ready0aGoal(X,mark(goal,X)).
+\end{Verbatim}
+Anything marked as a range generates a \call{range} fact.
+\begin{Verbatim}
+ready1(mark(range,Y),   X, range(X,Y)).
+\end{Verbatim}
+Anything marked as a goal generated a \call{range} and a \call{goal} fact.
+\begin{Verbatim}
+ready1(mark(goal,One), X, range(X,One)).
+ready1(mark(goal,One), X, goal(X,One)).
+\end{Verbatim}
+Anything marked as a goal of unknwon range
+generates range and goal rules which pull all
+values from the predicate \call{P}.
+\begin{Verbatim}
+ready1(pred(P,V),      X, (range(X,V) :- P)).
+ready1(pred(P,V),      X, (goal(X,V)  :- P)).
+\end{Verbatim}
+\subsection{ w/2}
+Convert scores to numeric weights
+\begin{Verbatim}
+w(A,W) :-
+	range(A,S),
+	postArch(A,S,W),
+	num10(W).
+
+postArch(A,S,W) :-
+	cocomo(When),
+	call(lookUp(postArch(When,_),A,S,W)).
+\end{Verbatim}
+

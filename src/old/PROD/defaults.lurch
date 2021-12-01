@@ -1,0 +1,6 @@
+program   = "LURCH".
+version   = "0.1".
+copyright = "2003".
+copywho   = "Tim Menzies".
+motto     = "Not random, but run-some.".
+verbose   = 0.

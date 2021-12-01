@@ -1,0 +1,6 @@
+% output from ':- demos(egrand).'
+
+0.764183 is a random number between 0 and 1.
+10.2779 is a random number between 10 and 20.
+
+% runtime = 0.0100144 sec(s)

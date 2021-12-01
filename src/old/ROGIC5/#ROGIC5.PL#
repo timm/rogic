@@ -1,0 +1,2 @@
+:- [lib], 
+   -[ops,old,capsule,xpand,run,demos].

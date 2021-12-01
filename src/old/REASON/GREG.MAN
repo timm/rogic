@@ -1,0 +1,6 @@
+GGrreegg''ss  ssttuuffff  **//
+
+     sumDCG([H|T],Out) :- sumDCG(H,Out,T,[]).
+
+     sumDCG(Out,Out) --> [].
+     sumDCG(Temp,Out) -->  [H], {New is Temp + H}, sumDCG(New,Out).

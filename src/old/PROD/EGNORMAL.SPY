@@ -1,0 +1,5 @@
+% output from ':- demos(egnormal).'
+
+[10.479, 11.2775, 7.82854, 9.13898, 5.80684]
+ are random numbers from normal(10,2).
+% runtime = 0 sec(s)

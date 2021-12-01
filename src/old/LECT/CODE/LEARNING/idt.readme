@@ -1,0 +1,21 @@
+To use idt to process the data in (say) idt_1.pl:
+
+?- [idt].
+
+?- idt.
+
+Which file to use ? idt_1.
+
+.
+.
+.
+
+Quit (y/n) ? y.
+
+yes
+
+?-
+
+You may answer 'n' for the quit prompt to enter a new data file.
+No need to exit and re-enter prolog.
+

@@ -1,0 +1,127 @@
+\section{Style notes}
+
+\subsection{{\LaTeX} Requirements}
+
+Predicates can't have long argument lists. Practically speaking,
+this often implies that you need DCGs to handle carrying round
+updatable state.
+
+Divide code up into lots of little files. If it can't fit into one
+column, it is too big. In practice, this means  no file is more than
+60 characters wide and 80 lines long.
+
+Source code should be included into the {\LaTeX} source using the
+!\code{file}{Caption}! command. This will generate a {\LaTeX}
+reference !fig:file! which can be accessed in the usual way using
+!\ref{fig:file}!.
+
+For application !X! create one main file called !X.pl! (e.g., see
+\fig{starlog.pl}). Include this main file into your {\LaTeX}
+source.
+
+Anytime a Prolog program loads a file, it should be followed by a
+{\LaTeX} figure reference. For example:
+\newcommand{\bslash}{$\backslash$}
+
+\begin{ccode}
+:- [abc]. % see {\bslash}fig\{abc.pl\}
+\end{ccode}
+
+This way, if you forget to include !abc.pl! , you'll get one of
+those ``?'' warnings that {\LaTeX} generates (so you'll know if
+you've missed anything).
+
+You application will comprise: \bi \item {\em One main file} that
+loads everything else; \item {\em Many library files} that set
+things up; \item {\em Some core files} that combine the libraries
+to perform
+ some interesting task;
+ \item
+ {\em Some  example files} that
+show off the core code. \ei For every core file !core.pl!, there
+should be a !coreeg.pl! example file containing   a !coreeg!
+predicate that does the showing off. !coreeg.pl! should have  the
+following structure:
+
+\begin{ccode}
+:- [lib1 % see {\bslash}fig\{lib1.pl\}
+   ,lib2 % see {\bslash}fig\{lib2.pl\}
+   ].
+
+...
+
+ccode :- doSomething.
+
+:- demos(coreeg). % call to the core code that traps output
+\end{ccode}
+
+A file with this structure will generate a file !coreeg.out! as a
+side effect of loading !coreeg.pl!. In order to include the core,
+example, and output files, the macro !\showtell{core}! is useful.
+The call !\showtell{core}! generates three figures: one for
+!coreeg.pl!, one for !coreeg.out! and one for !core.pl!.
+
+It is good practice to reference the core, example, and output
+files in the main file; e.g.
+\begin{ccode}
+:-  [abc]. % see {\bslash}fig\{abc.pl\},  {\bslash}fig\{abceg.pl\} &  {\bslash}fig\{abceg.out\}
+\end{ccode}
+
+
+
+Never use a backslash such as !\X! so: \bi \item Use !not(X)!
+instead of !\+ X! \item Use !nl! instead of  !\n! . \ei
+
+Never use !{X}! since {\LaTeX} can't print that. So: \bi \item
+Define !goal_expansion/2! to repair over-zealous DCG expansions
+(see \fig{hacks.pl}). \item Use !code(X)! to denote code that
+should be not be DCG-expanded. Then add the following item to
+!hooks.pl!
+
+\begin{ccode}
+goal_expansion(call(A,B,B),A).
+\end{ccode}
+
+\ei
+\subsection{Other Requirements}
+
+\subsubsection{Peekers}
+
+A {\em peeker} is a set of predicate sthat  ``looks before it
+leaps''. The idea is that before doing anything on !X!, the code
+peeks at !X! and then uses what it sees to determine what actions
+to perform. Peekers, as used in this code, are filters that
+convert !X! to !Y!. Their general form is three predicates:
+!p,p0,p1!:
+
+\begin{ccode}
+p(X,Y) :- once(p0(X,Z)), p1(Z,Y).
+
+p0(X,          barph(X) ) :- var(X). % usual top peeker
+p0(X,  barph(number(X)) ) :- number(X). % e.g.
+p0((X,Y),         (X,Y) ). ...
+p0(X,       standard(X) ). % some final default action
+
+p1(barph(X),  _)   :- print(bad(X)), fail.
+p1(standard(X),Y)  :- Y is X % e.g.
+p1((X0,Y0), (X,Y)) :- p(X0,X), p(Y0,Y). ...
+\end{ccode}
+
+The !p0! predicate classifies the incoming structure into one of
+$N$ terms. One !p1! predicate is written for each such term. If
+!p1! recurses, then the recursive call is back to !p!.
+
+Peekers have several  useful features: \bi \item Fewer/no cuts in
+the code. \item Stepping through the !spy! outputs over for a
+peeker is usually easier since only one choice for !p1! is ever
+shown and the !p0! processing is often simple enough that the
+programmer can just skip it. \item Often there are less !p1!
+predicates than !p0! predicates since !p0! might map different
+incoming terms to the same functor (e.g., in the above, while
+there are two situations where we want to !barph!, we only needed
+to write !barph! once. \item If !p0! is constrained to key just on
+features available when the source code is loaded for the first
+time, then the peeker can be optimized as follows. At load time,
+pre-compute and cache all the !p0! results on the loaded code.
+Then, at runtime, replace all the !p0! with !p0(X,X)! and all that
+lookup computation disappears. \ei

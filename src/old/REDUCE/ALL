@@ -1,0 +1,185 @@
+    
+    ------| rtypes.pl |--------------------------------------------
+    
+    % strings
+    rstring(X)  :- nonvar(X),!.
+    rstring(X)  :- gensym(rsym,X).
+    
+    % atoms (not strings)
+    rsym(X)  :- nonvar(X), !,atom(X).
+    rsym(X)  :- var(X),  gensym(rsym,X).
+    
+    % ranges
+    rnum(M,N,X) :- rnum(M,N,1,X).
+    
+    rnum(M,N,_,X) :-  nonvar(X), !, number(X),M =< X, X =< N.
+    rnum(M,N,O,X) :- rnum1(M,N,O,X).
+    
+    rnum1(M,N,_,_) :- M > N, !, fail.
+    rnum1(M,N,O, X) :-
+    	D is floor((N - M)/2/O), 
+    	rone(l([1,2,3],3),Control,_),
+    	rnum1(Control,M,N,D,O,X).
+    
+    rnum1(1, M,_,D,O,X) :- 	X is M+D*O.
+    rnum1(2, M,_,D,O,X) :-  Upper is M+((D-1)*O), rnum1(M,Upper,O,X).
+    rnum1(3, M,N,D,O,X) :-  Lower is M+((D+1)*O), rnum1(Lower,N,O,X).
+    
+    % lists	
+    rin(X,L) :- number(X),!, member(Y,L), X =:= Y. 
+    rin(X,L) :- nonvar(X),!, member(X,L). 
+    rin(X,L) :- length(L,N), rone(l(L,N),X,_).
+    
+    rone(l([H]  ,_),H,l([],  0)) :- !.
+    rone(l([H|T],N),X,l(Out,N1)) :-
+    	N1 is N - 1,
+    	Pos is random(N) + 1,
+    	oneLessN(Pos,[H|T],Y,L),
+    	(X=Y, Out=L
+    	; Out=[Y|Rest],
+    	  rone(l(L,N1),X,l(Rest,_))).
+    
+    oneLessN(1,[H|T],H,T) :- !.
+    oneLessN(N0,[H|T],X,[H|Rest]) :- N is N0 - 1, oneLessN(N,T,X,Rest).	
+    
+    ------| dd.pl |--------------------------------------------
+    
+    % otuer facts get a first arg Iid
+    % 
+    
+    %at X, what do we expect
+    %@ X.
+    
+    :- [header,sysdd]. % must start the "-" definitions
+    
+    @aka(A:key,B:asString,X=meta) :-
+    	X@meta 
+            rand @xid(A) 
+            rand @string(B).
+    @cost(A) :- 
+    	rin(A,[0,1,2,3,4]).
+    @dec10(X) :-
+    	rnum(0.05,1,0.05,X).
+    @effect(A:key,B,C,M=meta) : sometimes :-
+    	@fId(A)
+    	rand @pId(B)
+            rand @dec10(C)
+    	rand M@meta.
+    @f(A:key,B,C,D,L,M=meta) : sometimes :-
+    	@gen(A,B,C,D,M)
+    	rand fId // L.
+    @fId(A) :-
+    	f(A,_,_,_,_,_),
+    	rsym(A).
+    @gen(A,B,C,D,M) :- % no inter-connections- so "," ok
+    	@sym(A)
+    	rand @strength(B) 
+    	rand @probability(C)
+    	rand @cost(D)
+    	rand M@meta.
+    @impact(A:key,B,C,M) : sometimes :-
+    	@fId(A)
+    	rand @rId(B)
+    	rand M@meta
+    	rand @dec10(C).
+    @liklihood(X) :- 
+    	@dec10(X).
+    @meta(A=source,B=charmed) :-
+    	@boolean(B) 
+            rand @sourceId(A).
+    @p(A:key,B,C,D,L,M=meta) : sometimes :-
+    	@gen(A,B,C,D,M)
+    	rand pId // L.
+    @pId(A) :-
+    	p(A,_,_,_,_,_),
+    	rsym(A).
+    @probability(X) :-
+    	rnum(0,100,P),
+    	X is P/100.
+    @r(A:key,B,C,D,L,M=meta) : sometimes :-
+    	@gen(A,B,C,D,M)
+            rand  rId // L.
+    @rId(A) :-
+    	r(A,_,_,_,_,_), 
+            % when to check for existance?, when to add its?
+            rsym(A).
+    @sourceId(X)  :-
+    	source(X,_,_,_),
+    	rsym(X).
+    @source(A : key, % note- 1st arg not always a key
+                 B, When = when,
+    	     M): sometimes :- 
+    	M@meta
+            rand @sym(A) 
+    	rand @sym(B) 
+            rand When@when.
+    @strength(X) :- 
+    	rnum(1,10,X).
+    @uid(X) :- rsym(X).
+    @xid(X) :-
+    	@pId(X) ror @fId(X) ror  @rId(X) ror @uid(X).
+    
+    %:- verify.
+    ------| sysdd.pl |--------------------------------------------
+    
+    :- [timedd].
+    
+    @boolean(B) % not- ehader msut always be var
+          :- member(B,[f,t]).
+    
+    @list(L,N) :- rnum(0,20,N),length(L,N).
+    
+    @posint(A) :- 
+    	rnum(1,65535,A).
+    
+    @string(A) :- rstring(A).
+    @sysArg(In=in, Name=name,Key=key,
+            noop(In,Out)=filter,Out=out) :-
+    	var(In),
+    	var(Out),
+    	rsym(Name),
+    	@sysIndexList(Key).
+    @sysIndexList(L) :- 
+    	@sysList(L,4).
+    @sym(A) :- 
+    	rsym(A).
+    
+    
+    ------| timedd.pl |--------------------------------------------
+    
+    @day(Day,Mn,_) :- 
+    	rin(Mn,[4,6,9,11]) 
+            rand rnum(0,30,Day).
+    @day(Day,Mn,_) :- 
+    	rin(Mn,[1,3,5,7,8,10,12]) 
+            rand rnum(0,31,Day).
+    % leap years need more work. one day.
+    @day(Day,2,Yr) :- 
+    	@year(Yr), 
+    	0 is Yr mod 4, 
+    	rnum(0,29,Day).
+    @day(Day,2,Yr) :- 
+    	@year(Yr), 
+    	N is Yr mod 4, 
+    	N > 0, 
+    	rnum(0,28,Day).
+    @hour(A) :- 
+    	rnum(0,23,A).
+    @minute(A) :- 
+    	rnum(0,59,A).
+    @second(X) :- 
+    	rnum(0,59,X).
+    @when(A=year,B=month,C=day,D=hour,E=minute,F=second) :- 
+    	@year(A),  % note that we are setting year first, before the rest.
+                       % so sometimes we assume an ordering. so no thanks for auto-gen
+    	           % the body
+            (@day(C,B,A) 
+            rand @hour(D) 
+            rand @minute(E)
+    	rand @second(F)
+    	).
+    @year(X) :- 
+    	X= 2000 
+            ror X=2000
+            ror rnum(1974,1999,X) 
+            ror rnum(2001,2050,X).

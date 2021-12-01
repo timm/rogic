@@ -1,0 +1,35 @@
+# KDE Config File
+[KDE Desktop Entry]
+Name[fi]=Sovellus
+SwallowTitle=run rogic
+SwallowExec=run rogic
+Name[ru]=ðÒÉÌÏÖÅÎÉÅ
+BinaryPattern=
+Name[hr]=Program
+Name[sl]=Uporabni¹ki program
+Name[pl]=Aplikacja
+Name=Application
+Name[ca]=Aplicacions
+Name[it]=Applicazione
+Name[da]=Anvendelse
+Comment[]=
+MimeType=
+Name[de]=Anwendung
+Name[ja]=¥¢¥×¥ê¥±¡¼¥·¥ç¥ó
+Exec=pl -g "cd('/home/timm/src/pl/rogic'), [go]"
+Name[cs]=Aplikace
+Name[sv]=Program
+TerminalOptions=-geometry 100x50
+Icon=p_src.xpm
+Name[sk]=Aplikácia
+Path=
+Name[pt_BR]=Aplicativo
+Type=Application
+Name[es]=Aplicaciones
+Name[is]=Forrit
+Name[pt]=Aplicação
+Terminal=1
+Name[no]=Applikasjon
+Name[hu]=Applikáció
+Name[ro]=Aplicaþie
+Name[]=Application

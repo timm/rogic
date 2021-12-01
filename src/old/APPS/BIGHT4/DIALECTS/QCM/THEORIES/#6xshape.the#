@@ -1,0 +1,22 @@
+name = '6. x-shape with strings (1 of 3 inexplicable)'.
+
+objects(e) = [aa,mm].
+objects(m) = [bb,cc,dd,ee,ff,gg,hh,ii,jj,kk,ll,nn].
+
+aa ++ ll. 
+ll ++ bb.                             
+mm ++ nn. 
+nn ++ bb.                             
+bb ++ cc. 
+cc ++ dd. 
+dd ++ ee.                             
+bb ++ ff. 
+ff ++ gg. 
+gg ++ hh.
+bb ++ ii. 
+ii ++ jj. 
+jj ++ kk.
+
+
+
+

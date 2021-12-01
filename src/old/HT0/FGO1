@@ -1,0 +1,25 @@
+
+go(1760, A, B) :-
+	ht0(1760, [nna= -1, cortico= -1, acth= -1], [dex=1, dex_now=1, coldSwim_now= -1], A, B).
+go(1761, A, B) :-
+	ht0(1761, [nna=1, cortico=1, acth=1], [dex_now= -1, coldSwim=1, coldSwim_now=1], A, B).
+go(1762, A, B) :-
+	ht0(1762, [nna=1, cortico= -1, acth= -1], [dex=1, dex_now=1, coldSwim=1, coldSwim_now=1], A, B).
+go(1763, A, B) :-
+	ht0(1763, [nna=1, cortico=1, acth=1], [dex= -1, dex_now= -1, coldSwim_now= -1], A, B).
+go(1764, A, B) :-
+	ht0(1764, [nna=1, cortico=1, acth=1], [dex= -1, dex_now= -1, coldSwim=1, coldSwim_now=1], A, B).
+go(1765, A, B) :-
+	ht0(1765, [nna=1, cortico=1, acth=0], [dex_now=1, coldSwim=1, coldSwim_now=1], A, B).
+go(1766, A, B) :-
+	ht0(1766, [nna= -1, cortico= -1, acth= -1], [dex_now= -1, coldSwim= -1, coldSwim_now= -1], A, B).
+go(1767, A, B) :-
+	ht0(1767, [nna= -1, cortico= -1, acth= -1], [dex=1, dex_now=1, coldSwim= -1, coldSwim_now= -1], A, B).
+go(1768, A, B) :-
+	ht0(1768, [nna=1, cortico= -1, acth= -1], [dex=1, dex_now=1, coldSwim_now=1], A, B).
+go(1769, A, B) :-
+	ht0(1769, [nna= -1, cortico=1, acth=1], [dex= -1, dex_now= -1, coldSwim= -1, coldSwim_now= -1], A, B).
+go(1770, A, B) :-
+	ht0(1770, [nna= -1, cortico= -1, acth=0], [dex_now=1, coldSwim= -1, coldSwim_now= -1], A, B).
+go(1771, A, B) :-
+	ht0(1771, [nna= -1, cortico=1, acth=1], [dex= -1, dex_now= -1, coldSwim_now=1], A, B).

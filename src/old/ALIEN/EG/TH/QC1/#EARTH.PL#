@@ -1,0 +1,24 @@
+:- [ops].
+
+*boolean are oneOf=[t, f].
+*authors are[groups=[1], persons=[bashar='ban@doc.ic.ac.uk', russo='ar3@doc.ic.ac.uk'], members=[1=[bashar, russo]]].
+*author=1.
+*boolean are[accident(peter, londonRoad)].
+*boolean are[oops(0)].
+*0 if not accident(peter, londonRoad)then oops(0).
+*boolean are[medicalEmergency(londonRoad)].
+*boolean are[oops(1)].
+*1 if not (not accident(peter, londonRoad)or medicalEmergency(londonRoad))then oops(1).
+*boolean are[dispatchAmbulanceTo(londonRoad)].
+*boolean are[oops(2)].
+*2 if not (not medicalEmergency(londonRoad)or dispatchAmbulanceTo(londonRoad))then oops(2).
+*boolean are[ambulanceAvailable].
+*boolean are[oops(3)].
+*3 if not (not ambulanceAvailable or dispatchAmbulanceTo(londonRoad))then oops(3).
+*boolean are[oops(4)].
+*4 if not not ambulanceAvailable then oops(4).
+
+
+
+
+

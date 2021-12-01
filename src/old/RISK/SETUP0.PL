@@ -1,0 +1,1 @@
+:- multifile db/1.

@@ -1,0 +1,13 @@
+name = '8. the 2x shape'.
+
+objects(e) = [aa,bb].
+objects(m) = [cc,dd,ee,ff,gg,hh,ii].
+
+aa ++ cc.
+bb -- cc.
+cc ++ ee.
+cc ++ ff.
+cc ++ dd.
+dd ++ gg.
+dd ++ hh.
+dd ++ ii.

@@ -1,0 +1,272 @@
+%---------------------------------------------
+% copyright stuff
+ver :- write('% SOFTGOAL v1.0; (type ''about'' for more)\n'). 
+
+about:-
+      forall(member(Line,
+      ["Welcome to SOFTGOAL (Version 1.0);" 
+      ,"Copyright (c) 2001 Tim Menzies (tim@menzies.com)." 
+      ,"Copy policy: GPL-2 (see www.gnu.org)."
+      ,""
+      ,"Reference: L. Chung and B.A. Nixon and E. Yu and J. Mylopoulos,"
+      ,"\"Non-Functional Requirements in Software Engineering\","
+      ,"Kluwer Academic Publishers, 2000."
+      ,""
+      ,"For all is but a woven web of guesses -Xenophanes"
+       ]),format('~s\n',[Line])).
+
+%---------------------------------------------
+% operator stuff
+%:- op(999, xfx, means).
+%:- op(999, xfx, makes).
+%:- op(999, xfx, helps).
+%:- op(999, xfx, hurts).
+%:- op(999, xfx, breaks).
+:- op(999, xfx, if).
+:- op(998, xfy, or).
+:- op(997, xfy, and).
+:- op(996,  fy, not).
+:- op(2,    fx, critical).
+:- op(2,    fx, veryCritical).
+:- op(2,   xfx, by).
+:- op(2,   xfx, says).
+:- op(1,   xfx, of).
+
+/*
+%---------------------------------------------
+% magic prolog stuff
+:- index(ako(1,1,0)).
+:- discontiguous value/2,
+	         (critical)/1,
+		 (veryCritical)/1.
+
+%---------------------------------------------
+% compile-time macro expansion stuff
+
+% just do the first expand you can
+xpand(X,Y) :- xpand1(X,Y),!.
+
+% iteration of a list of xpands
+xpand1([],[]).
+xpand1([H0|T0],[H|T]) :- xpand(H0,H), xpand(T0,T).
+
+% top-of-kb declarations
+xpand1(define(L0),Out) :-
+	sort([claim|L0],L1),
+	maplist(isdef,L1,L2),
+	xpand(L2,Out).
+xpand1(def(X),ako(X,Head,Goal)) :-
+	discontiguous(type/3),
+	discontiguous(X/2),
+	Head =.. [X,F],
+	Goal =.. [X,F,__].
+xpand1(author(X),author(X)).
+xpand1(creation(X),creation(X)).
+
+% psuedo english to rules
+xpand1(_ says X of Y if C ,Out) :-
+	xpand(of(X,Y),Head),
+	expand_term((Head :- C),Out).
+
+% de morgan stuff
+xpand1(not(X and Y),Out) :- !,
+	xpand1(not X or not Y,Out).
+xpand1(not(X or Y),Out)  :- !,
+	xpand1(not X and not Y,Out).
+xpand1(not not X ,Out)   :- !,
+	xpand1(X,Out).
+
+% ands become counted random ands (rand)
+xpand1(and(X0, and(Y,Z)),todo([X|Rest],rand,N)) :- 
+	xpand([X0,and(Y,Z)],
+	      [X, todo(Rest,rand,N0)]),
+	N is N0 + 1.
+xpand1(and(X0,Y0),todo([X,Y],rand,2)) :-
+	xpand([X0,Y0],[X,Y]).
+
+% ors become counted random ors (rors)
+xpand1(or(X0, or(Y,Z)),todo([X|Rest],ror,N)) :- 
+	xpand([X0,or(Y,Z)],
+	      [X, toto(Rest,ror,N0)]),
+	N is N0 + 1.
+xpand1(or(X0,Y0),todo([X,Y],ror,2)) :-
+	xpand([X0,Y0],[X,Y]).
+
+% erroring checking for base stuff
+xpand1(X by _,[]) :-
+	\+ impact(X),
+	error(unknownImpact(X)).
+xpand1(X of _,[]) :-
+	\+ ako(X,_,_),
+	error(unknownType(X)).
+
+% base stuff
+xpand1(W by X,(W,Out)) :-
+	xpand(X,Out).
+xpand1(X of Y,value(Out,t)) :-
+	Out =.. [X,Y].
+xpand1(not X of Y,value(Out,f))  :-
+	Out =.. [X,Y].
+
+isdef(X,def(X)).
+impact(helped).
+impact(made).
+impact(unbroken).
+impact(unhurt).
+
+%---------------------------------------------
+% more compile-time stuff
+% handles data carried round DCGs
+term_expansion(X=Y,Z) :- capsules(X=Y,Z).
+
+capsules(X = Y,Out) :-	bagof(Z,X^Y^capsule(X=Y,Z),Out).
+
+capsule(Handle = Wme,(portray(Term) :- write(Handle))) :-
+	functor(Wme,  Functor,Arity),
+	functor(Term, Functor,Arity).
+capsule(Handle = _,  (goal_expansion(Term,true) :- Term)) :-
+	Term =.. [Handle,_,_,_,_,_].
+capsule(Handle = _,  goal_expansion(In,Out)) :-
+	In =..  [Handle,X,Y,W0,W],
+	Out =.. [Handle,X,Y,Y,W0,W].
+capsule(Handle = Wme,Out) :-
+	functor(Wme,F,Arity),
+	arg(Pos,Wme,Item),
+        joinArgs(F,Arity,Pos,Old,New,Term1,Term2),
+	Out =.. [Handle,Item,Old,New,Term1,Term2].
+
+joinArgs(F,Arity,Pos,Old,New,Term1,Term2) :-
+	length(L1,Arity),
+	Pos0 is Pos - 1,
+	length(Before,Pos0),
+	append(Before,[Old|After],L1),
+	append(Before,[New|After],L2),
+	Term1 =.. [F|L1],
+	Term2 =.. [F|L2].
+
+%---------------------------------------------
+% runtime stuff
+step(X,In,Out) :- set_newel(In,X,Out).
+
+wme=w(path,returnValues).
+
+prove(X) :- prove(X,_,_).
+prove(X) --> wme0, prove1(X).
+
+wme0 --> {reset}, wme(path,[]), wme(returnValues,[]).
+
+prove1(true).
+%prove1(todo(A,B,C) --> to
+
+todo([],_,_) --> [].
+todo([H|T],ror,Size) -->
+	{rone([H|T],Size,One,Others,Size1)},
+	(prove(One)
+	;todo(Others,ror,Size1)).
+
+%---------------------------------------------
+% runtime stuff
+
+reset :- retractall(memo0(_,_,_)).
+
+memo(Key=Value) :-
+	hash_term(Key,Hash),
+	memo1(Key,Hash,Value).
+
+memo1(Key,Hash,Value) :-
+	memo0(Hash,Key,Value0),!,
+	Value0=Value.
+memo1(Key,Hash,Value) :-
+	ako(_,Key,Value),
+        prove(Key,Value),
+	bassert(memo0(Hash,Key,Value)).
+
+%---------------------------------------------
+% random stuff
+
+% remove a randomly selected item from a list.
+rone(L,X)  :- length(L,N), rone(L,N,X,_,_).
+rone(L,X,Rest,Size) :- length(L,N), rone(L,N,X,Rest,Size).
+
+rone([H],_,H,[],0) :- !.
+rone([H|T],N0,X,Out,N) :-
+	N is N0 - 1,
+	Pos is random(N0) + 1,
+	oneLessN(Pos,[H|T],One,Rest),
+	(X=One, Out=Rest
+	; Out=[One|Tail],
+	  N1 is N0 - 1,
+	  rone(Rest,N1,X,Tail,_)).
+
+% oneLessN, worse case, is linear on length of list.
+% i spent some time trying to improve on this using
+% btrees that were built via a pre-sorting of the values.
+% problem was that, on deletion, i could not ensure that
+% the balance will remain, unless i got kinda complicated.
+% so i did some  timing tests on the rone using oneLessN
+% and it pulls items at random from lists of
+% length 80 in 10^(-4) seconds so, what the heck.
+oneLessN(1,[H|T],H,T) :- !.
+oneLessN(N0,[H|T],X,[H|Rest]) :-
+	N is N0 - 1,
+	oneLessN(N,T,X,Rest).	
+
+%---------------------------------------------
+% display stuff
+kb :- ako(X,_,_), listing(X), fail.
+kb.
+
+%---------------------------------------------
+% standard stuff
+
+t2l(X,X) :- var(X),!.
+t2l(X,X) :- functor(X,X,0),!.
+t2l([H|T],Out) :- !, maplist(t2l,[H|T],Out).
+t2l(T,L) :-
+	T =.. L0,
+	maplist(t2l,L0,L).
+
+lprint(L) :- lprint(L, -1, '.. '). 
+lprint([], _,_) :- !.
+lprint([H|T],Indent,String) :- !,
+	lprint(H,Indent+1,String),
+	lprint(T,Indent,String).
+lprint(X, Indent0, String) :-
+	Indent is Indent0,
+	forall(between(1,Indent,_),write(String)),
+        format('~w\n',X).
+
+tprint(T) :- t2l(T,L), lprint(L).
+
+
+bassert(X) :- assert(X).
+bassert(X) :- retract(X), fail.
+
+error(X) :-
+	write('% ERROR '),
+        warning(X),
+	fail.
+
+warning(X) :-
+	source_location(File, Line),
+	file_base_name(File,Base),
+        format('% ?? ~w, line ~w: ~w\n',[Base,Line,X]).
+
+% add a new Key/Value pair into an ordered set-
+% fails if Key already there
+set_newel([],Key=Value,[Key=Value]).
+set_newel([Key0=Value0|T],Key=Value,Add) :-
+	compare(Order,Key0,Key),
+	set_newel(Order,Key0=Value0,T, Key=Value,Add).
+
+set_newel(<,H,T,    X,[H|Add]) :- set_newel(T,X,Add).
+set_newel(>,H,T,Key=X,[Key=X,H|T]).
+
+%---------------------------------------------
+% stuff to go at end.
+:- ver.
+
+term_expansion(X,Y) :- xpand(X,Y).
+goal_expansion(X,Y) :- xpand(X,Y).
+
+*/

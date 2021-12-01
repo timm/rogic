@@ -1,0 +1,10 @@
+* boolean are oneOf = [t,f].
+* authors are [groups = [1],persons= [tim ='tim@menzies.com']
+	      ,members= [1 = [tim]]].
+* boolean are [aa,bb,cc,dd].
+* author = 1.
+* 1 if aa then cc.
+* 2 if cc then dd.
+* 3 if dd then bb.
+* 4 if dd then bb.
+* 5 if dd then cc.

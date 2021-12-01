@@ -1,0 +1,12 @@
+% output from ':- demos(ddeg).'
+
+releg_(aa, A, B, releg(A, C, D), releg(B, C, D)).
+releg_(bb, A, B, releg(C, A, D), releg(C, B, D)).
+releg_(cc, A, B, releg(C, D, A), releg(C, D, B)).
+
+meta(releg, releg_(A, B, C), releg(num, [x, y, z], num)).
+
+oo(releg(A, B, C), D, E) :-
+	releg_(D, releg(A, B, C), E).
+
+% runtime = 0 sec(s)

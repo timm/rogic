@@ -1,0 +1,347 @@
+\section{What?}
+
+\begin{figure*}[!b]
+\begin{center}
+\includegraphics[width=6in]{prod.eps}
+\end{center}
+\caption[Applications within the current release of
+{\PROD}]{Applications within the current release of {\PROD}. $Y
+\rightarrow X$ indicates that $Y$ has to first load
+$X$.}\label{fig:components}
+\end{figure*}
+
+
+ {\PROD} can be used to
+  {\em document} or {\em deliver}
+ a Prolog application:
+
+ \bd
+ \item[Delivery:]
+ The current {\PROD} distribution comes with a set of standard Prolog applications
+  shown
+in \fig{components}. These programs are written in
+the {\em {\PROD}-compatible file convention} (described in \tion{prodcompat})
+which
+ simplifies using
+Prolog code from different programmers. {\PROD} files are valid
+Prolog code that can be loaded into a Prolog interpreter, without
+modification.
+ \item[Documentation:]A {\PROD} file also
+  contains{\LaTeX} commands inside Prolog's comment
+characters; i.e. on a line after the {\tt \%} character or between
+ {$\backslash$}{\tt *}...{\tt *}{$\backslash$} characters.
+ That is, as a programmer
+ writes their code  they can add in comments which,
+ subsequently, can be typeset.
+\ed
+
+The typeset form of a {\PROD} document looks just like this
+document and includes a table of contents; a list of figures;
+automatic numbering of sections, figures, and citations. Also, all
+the Prolog code is displayed as verbatim text (in a {\tt
+typewriter font}).
+
+{\PROD} is distributed under the GNU General Public License. Every
+{\PROD} document automatically includes that license as part of
+its appendix.
+
+\begin{figure}
+{\scriptsize \begin{verbatim}
+ 1 /*\documentclass[twocolumn,global]{svjour}
+ 2 \usepackage{prod}\begin{document}
+ 3
+ 4 \theprogram{NAME}
+ 5 \thetocdepth{2}
+ 6 \thepapers{refs}
+ 7 \thewp{PATHNAME}
+ 8 \thetitle{TITLE}
+ 9 \theauthor{AUTHOR1\inst{1},AUTHOR2\inst{2}}
+10 \theinstitute{WHERE AUTHOR1 WORKS;\\
+11           \url{author1@email1.com},
+12           \url{http://where.to.find.author1}
+13              \and
+14              WHERE AUTHOR2 WORKS}
+15 \thereference{WVU, CSEE, AI lab memo \#3. Available from
+16         \url{http://tim.menzies.com.pdf/03prod0.pdf}}
+17 \theacknowledgement{ACKNOWLEDGEMENTS}
+18 \theabstract{ONE PARAGRAPH SUMMARY}
+19 */
+20
+21 %%%% SECTION1 heading
+22 /*
+23 BODY OF DOCUMENT WITH A REFERNCE~\cite{swiprolog}.
+24 */
+25 %\input{prod0a}
+26 We can include text like that shown in \fig{prod0a.tex}.
+27 \SRC{prod0a.tex}{A sample include file.}
+28
+29 /* Some text to be typeset
+30 */
+31 %%% SECTION2 heading
+32 /* Some text to be typeset
+33 */
+34 %% SECTION3 heading
+35 /* Some text to be typeset
+36 */
+37 %%%% SECTION1 heading %<
+38 somePrologCode :-
+39     subGoal1,
+40     subGoal2.
+41 %>
+42 /* Some text between code.
+43 */
+44 %<
+45 someMorePrologCode :-
+46     subGoal1,
+47     subGoal2.
+48 %>
+49 /*
+50 \theend
+51 \end{document}
+52 */
+\end{verbatim}}
+\caption[{\tt prod0.pl}]{{\tt prod0.pl}, a sample {\PROD}
+file.}\label{fig:prod0sample}
+\end{figure}
+
+\fig{proddocuments}, at the end of this document, lists other
+documents relating to {\PROD}.
+
+\subsection{Inside a {\PROD} file}
+
+\fig{prod0sample} shows a sample {\PROD} file. When typeset,
+{\LaTeX} converts this document to the PDF file shown at
+\url{http://tim.menzies.com/pdf/prod0.pdf}. This file contains a
+{\em header}, a {\em preamble}, a {\em body}, and a {\em footer}.
+
+\subsubsection{The header and footer}
+
+A {\PROD} file begins with a standard {\em header}:
+
+{\scriptsize \begin{verbatim}
+/*\documentclass[twocolumn,global]{svjour}
+\usepackage{prod}\begin{document}
+\end{verbatim}}
+
+\noindent which starts a {\LaTeX} document and loads the {\tt
+prod.sty} style file. The file also ends with a standard {\em
+footer}:
+
+{\scriptsize \begin{verbatim}
+/*
+\theend
+\end{document}
+*/
+\end{verbatim}}
+
+
+
+
+
+\subsubsection{The Premable}
+
+In between the footer and the header there is a
+{\em preamble} and a {\em body}.
+The preamble defines
+certain key parameters of the file using the following commands.
+ For a detailed example of the use of these commands,
+see \fig{samplepreamble}.
+
+\bd
+\item[{\tt $\backslash$theprogram\{NAME\}}]: Defines the {\tt NAME} of the program
+being described. I use very short names for my programs (less than 3 letters).
+\item[{\tt $\backslash$thetocdepth\{LEVEL\}}]: Controls how detailed is the table of contents.
+A {\tt LEVEL=N}, the table of contents only includes down to level {\tt N}. For very short
+tables of contents, use {\tt N=1}.
+\item[{\tt $\backslash$theref\{FILE\}}]:
+Shows the location of the file {\tt FILE.bib} which
+contains
+the citations
+for this file.
+For those not familiar with {\LaTeX}'s citation system, \fig{bib} shows a sample
+of the {\tt refs.bib} database.
+\item[{\tt $\backslash$thewp\{PATHNAME\}}]: Shows where to find the source code file
+for this document.
+\item[{\tt $\backslash$thetitle\{TITLE\}}]: Defines the {\tt TITLE} of the paper.
+\item[{\tt $\backslash$theauthor\{AUTHOR1 $\backslash$inst\{1\},
+                                   AUTHOR2{\tt $\backslash$inst\{2\}}\}}]:
+Defines the {\tt AUTHOR}s and maps those authors to their {\tt INSTITUTIONS}.
+\item[{\tt $\backslash$theinstitute\{WORK PLACE\}}]: Defines where the {\tt AUTHOR}s
+work.
+Multiple {\tt INSTITUTIONS} are separated by ``$\backslash${\tt and}''.
+\item[{\tt $\backslash$thereference\{REFERENCE\}}]: Where this paper appears and where it
+can it be downloaded from.
+\item[{\tt $\backslash$theacknowledgement\{ACKNOWLEDGEMENTS\}}]: Credit given where credit is due.
+\item[{\tt $\backslash$theabstract\{ONE PARAGRAPH SUMMARY\}}]: A short summary of the paper.
+\ed
+
+Some of the above commands can be entered in a different order
+but, for safety's sake, it is best to use the above ordering for
+the preamble.
+
+\begin{figure}
+{\scriptsize \begin{verbatim}
+\theprogram{PROD1}
+\thetocdepth{2}
+\therefs{refs}
+\thewp{~menzies/src/pl/prod/prod0.tex}
+
+\thetitle{An example of the {\PROD}\newline Prolog
+             delivery and documentation system}
+
+\theauthor{Tim Menzies\inst{1}, Sant A. Clause\inst{2}}
+
+\theinstitute{Lane Department of Computer Science,
+             University of West Virginia,
+             PO Box 6109, Morgantown,
+             WV, 26506-6109, USA;\\
+             \url{http://tim.menzies.us};
+             \url{tim@menzies.us}
+             \and
+            Artic Software Solutions:
+              no ice cube too small, no iceberg too big;\\
+             \url{http://north.pole/~santac};
+             \url{santa@north.pole}
+}
+
+\thereference{WVU, CSEE, AI lab memo \#1, 2003.
+            Available from
+            \url{http://tim.menzies.com/pdf/03prod1.pdf}
+}
+
+\theacknowledgement{This research was conducted at
+
+            West Virginia University under NASA
+            contract NCC2-0979.
+            The work was sponsored by the NASA
+            Office of Safety and Mission Assurance
+            under the Software Assurance Research
+            Program led by the NASA IV\&V Facility.
+            Reference herein to any specific
+            commercial product, process, or
+            service by  trade name, trademark,
+            manufacturer, or otherwise, does not
+            constitute or imply its endorsement
+            by the United States Government.
+}
+
+\theabstract{This document is a minimal example of
+            using the {\PROD} Prolog documentation and
+            delivery  system.
+}
+
+\end{verbatim}}
+\caption[A sample {\PROD} preamble.]{A sample {\PROD} preamble from {\tt prod1.pl}. The results
+of this preamble can be viewed at
+\protect\url{http://tim.menzies.com/pdf/prod1.pdf}.}\label{fig:samplepreamble}
+\end{figure}
+
+\begin{figure}
+{\scriptsize \begin{verbatim}
+@Book{bratko01,
+  Author =   "I. Bratko",
+  Title =    "Prolog Programming for Artificial
+                  Intelligence. (third edition)",
+  Publisher =    "Addison-Wesley",
+  Year =     2001
+}
+
+@article{me89zb,
+  author =   "T.J. Menzies",
+  title =    "Domain-Specific Knowledge Representations",
+  month =    "Summer",
+  journal =  "AI Expert",
+  year =     "1989",
+}
+
+@InProceedings{menz91,
+  AUTHOR =   "T.J. Menzies",
+  YEAR =     " 1991",
+  TITLE =    "{ISA} {O}bject {PARTOF}
+              {K}nowledge {R}epresentation (Part Two)?",
+  BOOKTITLE =    " Tools Pacific 4",
+  EDITOR =   " B. Meyer",
+  Note =     "Available from
+     \url{http://tim.menzies.com/pdf/tools91.pdf}"
+}
+
+@PhdThesis{me95,
+  AUTHOR =   " T.J. Menzies",
+  YEAR =     " 1995",
+  TITLE =    " Principles for Generalised
+                Testing of Knowledge  Bases",
+  School =   " University of New South Wales",
+  Note =     "Ph.D. thesis. Available from
+     \url{http://tim.menzies.com/pdf/95thesis.pdf}"
+}
+
+@TechReport{me96c,
+  Author =   "T. Menzies and P. Haynes",
+  Title =    "Empirical Observations of Class-level
+               Encapsulation and Inheritance",
+  Institution =  "Department of Software Development,
+                  Monash University",
+  Year =     1996,
+  Note =     "Available from
+        \url{http://tim.menzies.com/pdf/96encap.pdf}"
+}
+
+@InCollection{mich90,
+  author =   {R.S. Michalski},
+  editor =   {B.G. Buchanan and D.C. Wilkins},
+  booktitle =    {Reading in Knowledge
+                 Acquisition and Learning},
+  title =    {Toward a Unified Theory of Learning},
+  publisher =    {Morgan Kaufmann},
+  year =     1993,
+  pages =    {7-38}
+}
+
+@unpublished{spinmanual,
+  author = "{G}erard {J}. {H}olzmann",
+  title = "{B}asic {SPIN} {M}anual",
+  note = "{A}vailable at
+  \url{http://cm.bell-labs.com/cm/cs/what/spin/Man/Manual.htm}
+"}
+
+@Manual{swiprolog,
+  Title =    "SWI-Prolog",
+  Author =   "Jan Wielemaker",
+  Note =     "Available from
+    \url{http://swi.psy.uva.nl/projects/xpce/SWI-Prolog.html}."
+}
+
+\end{verbatim}}
+\caption{A sample {\LaTeX} citation database.}\label{fig:bib}
+\end{figure}
+
+
+\subsubsection{The Body}
+
+The {\em body} of a {\PROD} file contains Prolog source code
+embedded in {\LaTeX} commands. Within the body, the
+following conventions
+hold:
+
+\bi  \item Anything found between {\tt \%<} and {\tt \%>} is
+preserved as verbatim text (e.g. see lines 44 to 48 of
+\fig{prod0sample}).  \item A line starting with {\tt
+\%{$\backslash$}command} is converted to {\tt
+{$\backslash$}command} (e.g. line 25 of \fig{prod0sample}). \item
+A {\em level 1 heading} is declared for text found after {\tt
+\%\%\%\%} (e.g. line 37 of \fig{prod0sample}).
+ \item A {\em level 2 heading} is declared for text
+found after {\tt \%\%\%} (e.g. line 31 of \fig{prod0sample}).
+ \item A {\em level 3 heading} is declared for text
+found after {\tt \%\%} (e.g. line 34 of \fig{prod0sample}).
+ \ei
+
+In the case of level 1,2,3  headings:
+\bi \item There can be no characters to the left of the comment
+characters. \item If the line ends in {\tt \%<}, then the heading
+is declared and verbatim text starts straight after the heading.
+\ei
+
+Currently, {\PROD} does not support headings levels greater than
+3.
+\clearpage

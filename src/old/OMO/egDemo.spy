@@ -1,0 +1,6 @@
+
+ %% egDemo.spy (output from ':- demos(egDemo).')
+ i
+ love
+ prolog
+ %% runtime = 0 sec(s)

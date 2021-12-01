@@ -1,0 +1,14 @@
+init { run Foo; run Foo2 }
+
+Proctype         Foo1      {
+do
+:: x > 0 -> x = x + 1 
+od
+}
+
+Proctype foo2 {
+do
+:: y > 0 -> y = y + 1 
+od 
+}
+

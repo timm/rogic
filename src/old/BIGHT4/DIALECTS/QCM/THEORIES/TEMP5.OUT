@@ -1,0 +1,1689 @@
+
+:- style_check(-discontiguous).
+:- discontiguous fSweepNumbers/7, result/8, ticks/1, about/4.
+
+%about(d,nands,nOrs,fanout).
+about('102. reduced fishery over time', 0, 144, 2.597222).
+fsweep
+bsweep
+wsweep
+
+%#1
+
+%fSweepNumbers(a, ac, ab, pinStar, pa, pac, worlds).
+fSweepNumbers(0, 0, 0, 47.916667, 0, 0, 1).
+
+%result(expName, compNumber, exp,
+result('102. reduced fishery over time', 1, 'fishery model (seed 1)' / 'fishery model (seed 201224)',
+%nProofs/avSize/sd/min/max, nWs, nBWs, bestPercCov, time_secs).
+57/4.1/1.6/2/7, 1, 1, 95.0, 0.5).
+
+%mean explicable : 95.0 %
+%abduction time  : 0.53 secs
+%total run time  : 0.65 secs
+
+ticks([total - 0.630000 / 100,validate - 0.100000 / 16,worldsSweep - 0.050000 / 8,backwardsSweep - 0.260000 / 41,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#2
+
+fSweepNumbers(0, 0, 0, 45.833333, 0, 0, 1).
+
+result('102. reduced fishery over time', 2, 'fishery model (seed 1)' / 'fishery model (seed 204256)',
+54/4.1/1.6/2/7, 1, 1, 90.0, 0.5).
+
+%mean explicable : 92.5 %
+%abduction time  : 1.00 secs
+%total run time  : 1.32 secs
+
+ticks([total - 0.580000 / 100,validate - 0.080000 / 14,worldsSweep - 0.040000 / 7,backwardsSweep - 0.240000 / 41,forwardSweep - 0.090000 / 16,prep - 0.020000 / 3,data - 0.110000 / 19]).
+fsweep
+bsweep
+wsweep
+
+%#3
+
+fSweepNumbers(0, 0, 0, 36.111111, 0, 0, 1).
+
+result('102. reduced fishery over time', 3, 'fishery model (seed 1)' / 'fishery model (seed 276454)',
+40/3.7/1.4/2/6, 1, 1, 66.7, 0.4).
+
+%mean explicable : 83.9 %
+%abduction time  : 1.38 secs
+%total run time  : 1.88 secs
+
+ticks([total - 0.480000 / 100,validate - 0.050000 / 10,worldsSweep - 0.030000 / 6,backwardsSweep - 0.190000 / 40,forwardSweep - 0.080000 / 17,prep - 0.020000 / 4,data - 0.110000 / 23]).
+fsweep
+bsweep
+wsweep
+
+%#4
+
+fSweepNumbers(0, 0, 0, 47.222222, 0, 0, 1).
+
+result('102. reduced fishery over time', 4, 'fishery model (seed 1)' / 'fishery model (seed 308318)',
+56/4.2/1.6/2/7, 1, 1, 93.3, 0.5).
+
+%mean explicable : 86.2 %
+%abduction time  : 1.88 secs
+%total run time  : 2.59 secs
+
+ticks([total - 0.610000 / 100,validate - 0.090000 / 15,worldsSweep - 0.040000 / 7,backwardsSweep - 0.250000 / 41,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.110000 / 18]).
+fsweep
+bsweep
+wsweep
+
+%#5
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 5, 'fishery model (seed 1)' / 'fishery model (seed 326592)',
+55/5.5/2.9/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 87.3 %
+%abduction time  : 2.49 secs
+%total run time  : 3.38 secs
+
+ticks([total - 0.710000 / 100,validate - 0.080000 / 11,worldsSweep - 0.050000 / 7,backwardsSweep - 0.370000 / 52,forwardSweep - 0.090000 / 13,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#6
+
+fSweepNumbers(1, 0, 0, 39.583333, 0.694444, 0, 1).
+
+result('102. reduced fishery over time', 6, 'fishery model (seed 1)' / 'fishery model (seed 423778)',
+44/4.0/1.6/2/7, 1, 1, 80.0, 0.4).
+
+%mean explicable : 86.1 %
+%abduction time  : 2.87 secs
+%total run time  : 3.96 secs
+
+ticks([total - 0.470000 / 100,validate - 0.050000 / 11,worldsSweep - 0.040000 / 9,backwardsSweep - 0.190000 / 40,forwardSweep - 0.080000 / 17,prep - 0.020000 / 4,data - 0.090000 / 19]).
+fsweep
+bsweep
+wsweep
+
+%#7
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 7, 'fishery model (seed 1)' / 'fishery model (seed 424897)',
+55/5.5/2.9/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 86.9 %
+%abduction time  : 3.47 secs
+%total run time  : 4.76 secs
+
+ticks([total - 0.710000 / 100,validate - 0.080000 / 11,worldsSweep - 0.040000 / 6,backwardsSweep - 0.360000 / 51,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.110000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#8
+
+fSweepNumbers(1, 0, 0, 47.916667, 0.694444, 0, 1).
+
+result('102. reduced fishery over time', 8, 'fishery model (seed 1)' / 'fishery model (seed 49635)',
+56/4.1/1.5/2/6, 1, 1, 94.9, 0.5).
+
+%mean explicable : 87.9 %
+%abduction time  : 3.97 secs
+%total run time  : 5.46 secs
+
+ticks([total - 0.600000 / 100,validate - 0.090000 / 15,worldsSweep - 0.050000 / 8,backwardsSweep - 0.240000 / 40,forwardSweep - 0.090000 / 15,prep - 0.030000 / 5,data - 0.100000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#9
+
+fSweepNumbers(0, 0, 0, 23.611111, 0, 0, 1).
+
+result('102. reduced fishery over time', 9, 'fishery model (seed 1)' / 'fishery model (seed 50780)',
+22/2.7/0.8/2/4, 1, 1, 36.7, 0.2).
+
+%mean explicable : 82.2 %
+%abduction time  : 4.14 secs
+%total run time  : 5.82 secs
+
+ticks([total - 0.280000 / 100,validate - 0.020000 / 7,worldsSweep - 0.010000 / 4,backwardsSweep - 0.070000 / 25,forwardSweep - 0.050000 / 18,prep - 0.020000 / 7,data - 0.110000 / 39]).
+fsweep
+bsweep
+wsweep
+
+%#10
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 10, 'fishery model (seed 1)' / 'fishery model (seed 51995)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 84.0 %
+%abduction time  : 4.67 secs
+%total run time  : 6.53 secs
+
+ticks([total - 0.640000 / 100,validate - 0.090000 / 14,worldsSweep - 0.060000 / 9,backwardsSweep - 0.250000 / 39,forwardSweep - 0.120000 / 19,prep - 0.010000 / 2,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#11
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 11, 'fishery model (seed 1)' / 'fishery model (seed 648339)',
+55/5.5/2.8/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 84.7 %
+%abduction time  : 5.25 secs
+%total run time  : 7.32 secs
+
+ticks([total - 0.690000 / 100,validate - 0.070000 / 10,worldsSweep - 0.050000 / 7,backwardsSweep - 0.360000 / 52,forwardSweep - 0.090000 / 13,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#12
+
+fSweepNumbers(0, 0, 0, 42.361111, 0, 0, 1).
+
+result('102. reduced fishery over time', 12, 'fishery model (seed 1)' / 'fishery model (seed 677507)',
+49/5.6/3.3/2/12, 1, 1, 81.7, 0.6).
+
+%mean explicable : 84.4 %
+%abduction time  : 5.80 secs
+%total run time  : 8.04 secs
+
+ticks([total - 0.650000 / 100,validate - 0.070000 / 11,worldsSweep - 0.030000 / 5,backwardsSweep - 0.350000 / 54,forwardSweep - 0.080000 / 12,prep - 0.020000 / 3,data - 0.100000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#13
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 13, 'fishery model (seed 1)' / 'fishery model (seed 70116)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 85.6 %
+%abduction time  : 6.34 secs
+%total run time  : 8.77 secs
+
+ticks([total - 0.640000 / 100,validate - 0.090000 / 14,worldsSweep - 0.050000 / 8,backwardsSweep - 0.270000 / 42,forwardSweep - 0.110000 / 17,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#14
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 14, 'fishery model (seed 1)' / 'fishery model (seed 92038)',
+59/5.3/2.4/2/10, 1, 1, 98.3, 0.6).
+
+%mean explicable : 86.5 %
+%abduction time  : 6.97 secs
+%total run time  : 9.60 secs
+
+ticks([total - 0.730000 / 100,validate - 0.080000 / 11,worldsSweep - 0.050000 / 7,backwardsSweep - 0.380000 / 52,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#15
+
+fSweepNumbers(0, 0, 0, 47.916667, 0, 0, 1).
+
+result('102. reduced fishery over time', 15, 'fishery model (seed 201224)' / 'fishery model (seed 204256)',
+57/4.4/1.6/2/8, 1, 1, 95.0, 0.5).
+
+%mean explicable : 87.1 %
+%abduction time  : 7.51 secs
+%total run time  : 10.33 secs
+
+ticks([total - 0.640000 / 100,validate - 0.080000 / 13,worldsSweep - 0.050000 / 8,backwardsSweep - 0.290000 / 45,forwardSweep - 0.090000 / 14,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#16
+
+fSweepNumbers(0, 0, 0, 47.916667, 0, 0, 1).
+
+result('102. reduced fishery over time', 16, 'fishery model (seed 201224)' / 'fishery model (seed 276454)',
+57/4.0/1.4/2/7, 1, 1, 95.0, 0.5).
+
+%mean explicable : 87.6 %
+%abduction time  : 8.02 secs
+%total run time  : 11.04 secs
+
+ticks([total - 0.630000 / 100,validate - 0.100000 / 16,worldsSweep - 0.050000 / 8,backwardsSweep - 0.240000 / 38,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.120000 / 19]).
+fsweep
+bsweep
+wsweep
+
+%#17
+
+fSweepNumbers(0, 0, 0, 42.361111, 0, 0, 1).
+
+result('102. reduced fishery over time', 17, 'fishery model (seed 201224)' / 'fishery model (seed 308318)',
+49/3.8/1.3/2/6, 1, 1, 81.7, 0.4).
+
+%mean explicable : 87.2 %
+%abduction time  : 8.41 secs
+%total run time  : 11.63 secs
+
+ticks([total - 0.500000 / 100,validate - 0.060000 / 12,worldsSweep - 0.040000 / 8,backwardsSweep - 0.180000 / 36,forwardSweep - 0.090000 / 18,prep - 0.020000 / 4,data - 0.110000 / 22]).
+fsweep
+bsweep
+wsweep
+
+%#18
+
+fSweepNumbers(1, 0, 0, 50, 0.694444, 0, 1).
+
+result('102. reduced fishery over time', 18, 'fishery model (seed 201224)' / 'fishery model (seed 326592)',
+60/4.8/1.9/2/9, 1, 1, 100.0, 0.6).
+
+%mean explicable : 88.0 %
+%abduction time  : 9.02 secs
+%total run time  : 12.44 secs
+
+ticks([total - 0.710000 / 100,validate - 0.100000 / 14,worldsSweep - 0.060000 / 8,backwardsSweep - 0.330000 / 46,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#19
+
+fSweepNumbers(0, 0, 0, 47.916667, 0, 0, 1).
+
+result('102. reduced fishery over time', 19, 'fishery model (seed 201224)' / 'fishery model (seed 423778)',
+57/4.1/1.6/2/7, 1, 1, 95.0, 0.5).
+
+%mean explicable : 88.3 %
+%abduction time  : 9.52 secs
+%total run time  : 13.15 secs
+
+ticks([total - 0.600000 / 100,validate - 0.090000 / 15,worldsSweep - 0.040000 / 7,backwardsSweep - 0.260000 / 43,forwardSweep - 0.100000 / 17,prep - 0.010000 / 2,data - 0.100000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#20
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 20, 'fishery model (seed 201224)' / 'fishery model (seed 424897)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 88.9 %
+%abduction time  : 10.04 secs
+%total run time  : 13.86 secs
+
+ticks([total - 0.620000 / 100,validate - 0.110000 / 18,worldsSweep - 0.050000 / 8,backwardsSweep - 0.240000 / 39,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#21
+
+fSweepNumbers(0, 0, 0, 47.222222, 0, 0, 1).
+
+result('102. reduced fishery over time', 21, 'fishery model (seed 201224)' / 'fishery model (seed 49635)',
+56/4.4/1.6/2/7, 1, 1, 93.3, 0.5).
+
+%mean explicable : 89.1 %
+%abduction time  : 10.56 secs
+%total run time  : 14.59 secs
+
+ticks([total - 0.630000 / 100,validate - 0.080000 / 13,worldsSweep - 0.050000 / 8,backwardsSweep - 0.280000 / 44,forwardSweep - 0.090000 / 14,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#22
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 22, 'fishery model (seed 201224)' / 'fishery model (seed 50780)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 89.6 %
+%abduction time  : 11.08 secs
+%total run time  : 15.29 secs
+
+ticks([total - 0.630000 / 100,validate - 0.090000 / 14,worldsSweep - 0.060000 / 10,backwardsSweep - 0.250000 / 40,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#23
+
+fSweepNumbers(0, 0, 0, 28.472222, 0, 0, 1).
+
+result('102. reduced fishery over time', 23, 'fishery model (seed 201224)' / 'fishery model (seed 51995)',
+29/3.1/1.2/2/6, 1, 1, 48.3, 0.2).
+
+%mean explicable : 87.8 %
+%abduction time  : 11.30 secs
+%total run time  : 15.70 secs
+
+ticks([total - 0.320000 / 100,validate - 0.030000 / 9,worldsSweep - 0.010000 / 3,backwardsSweep - 0.090000 / 28,forwardSweep - 0.070000 / 22,prep - 0.010000 / 3,data - 0.110000 / 34]).
+fsweep
+bsweep
+wsweep
+
+%#24
+
+fSweepNumbers(0, 0, 0, 28.472222, 0, 0, 1).
+
+result('102. reduced fishery over time', 24, 'fishery model (seed 201224)' / 'fishery model (seed 648339)',
+29/3.1/1.2/2/6, 1, 1, 48.3, 0.2).
+
+%mean explicable : 86.2 %
+%abduction time  : 11.53 secs
+%total run time  : 16.12 secs
+
+ticks([total - 0.330000 / 100,validate - 0.030000 / 9,worldsSweep - 0.010000 / 3,backwardsSweep - 0.100000 / 30,forwardSweep - 0.070000 / 21,prep - 0.020000 / 6,data - 0.100000 / 30]).
+fsweep
+bsweep
+wsweep
+
+%#25
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 25, 'fishery model (seed 201224)' / 'fishery model (seed 677507)',
+60/4.8/1.9/2/9, 1, 1, 100.0, 0.6).
+
+%mean explicable : 86.7 %
+%abduction time  : 12.13 secs
+%total run time  : 16.91 secs
+
+ticks([total - 0.700000 / 100,validate - 0.090000 / 13,worldsSweep - 0.060000 / 9,backwardsSweep - 0.330000 / 47,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#26
+
+fSweepNumbers(0, 0, 0, 28.472222, 0, 0, 1).
+
+result('102. reduced fishery over time', 26, 'fishery model (seed 201224)' / 'fishery model (seed 70116)',
+29/3.1/1.2/2/6, 1, 1, 48.3, 0.2).
+
+%mean explicable : 85.3 %
+%abduction time  : 12.34 secs
+%total run time  : 17.29 secs
+
+ticks([total - 0.310000 / 100,validate - 0.030000 / 10,worldsSweep - 0.020000 / 6,backwardsSweep - 0.090000 / 29,forwardSweep - 0.050000 / 16,prep - 0.020000 / 6,data - 0.100000 / 32]).
+fsweep
+bsweep
+wsweep
+
+%#27
+
+fSweepNumbers(1, 0, 0, 49.305556, 0.694444, 0, 1).
+
+result('102. reduced fishery over time', 27, 'fishery model (seed 201224)' / 'fishery model (seed 92038)',
+58/4.1/1.5/2/7, 1, 1, 98.3, 0.5).
+
+%mean explicable : 85.7 %
+%abduction time  : 12.85 secs
+%total run time  : 18.00 secs
+
+ticks([total - 0.610000 / 100,validate - 0.090000 / 15,worldsSweep - 0.050000 / 8,backwardsSweep - 0.250000 / 41,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#28
+
+fSweepNumbers(0, 0, 0, 47.916667, 0, 0, 1).
+
+result('102. reduced fishery over time', 28, 'fishery model (seed 204256)' / 'fishery model (seed 276454)',
+57/4.2/1.5/2/8, 1, 1, 95.0, 0.5).
+
+%mean explicable : 86.1 %
+%abduction time  : 13.36 secs
+%total run time  : 18.70 secs
+
+ticks([total - 0.610000 / 100,validate - 0.090000 / 15,worldsSweep - 0.050000 / 8,backwardsSweep - 0.250000 / 41,forwardSweep - 0.090000 / 15,prep - 0.030000 / 5,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#29
+
+fSweepNumbers(0, 0, 0, 36.111111, 0, 0, 1).
+
+result('102. reduced fishery over time', 29, 'fishery model (seed 204256)' / 'fishery model (seed 308318)',
+40/3.5/1.2/2/6, 1, 1, 66.7, 0.3).
+
+%mean explicable : 85.4 %
+%abduction time  : 13.69 secs
+%total run time  : 19.21 secs
+
+ticks([total - 0.430000 / 100,validate - 0.050000 / 12,worldsSweep - 0.020000 / 5,backwardsSweep - 0.160000 / 37,forwardSweep - 0.080000 / 19,prep - 0.020000 / 5,data - 0.100000 / 23]).
+fsweep
+bsweep
+wsweep
+
+%#30
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 30, 'fishery model (seed 204256)' / 'fishery model (seed 326592)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 85.9 %
+%abduction time  : 14.22 secs
+%total run time  : 19.92 secs
+
+ticks([total - 0.630000 / 100,validate - 0.100000 / 16,worldsSweep - 0.060000 / 10,backwardsSweep - 0.240000 / 38,forwardSweep - 0.110000 / 17,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#31
+
+fSweepNumbers(0, 0, 0, 45.833333, 0, 0, 1).
+
+result('102. reduced fishery over time', 31, 'fishery model (seed 204256)' / 'fishery model (seed 423778)',
+54/4.1/1.6/2/7, 1, 1, 90.0, 0.5).
+
+%mean explicable : 86.0 %
+%abduction time  : 14.71 secs
+%total run time  : 20.60 secs
+
+ticks([total - 0.590000 / 100,validate - 0.090000 / 15,worldsSweep - 0.040000 / 7,backwardsSweep - 0.250000 / 42,forwardSweep - 0.090000 / 15,prep - 0.020000 / 3,data - 0.100000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#32
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 32, 'fishery model (seed 204256)' / 'fishery model (seed 424897)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 86.5 %
+%abduction time  : 15.24 secs
+%total run time  : 21.34 secs
+
+ticks([total - 0.630000 / 100,validate - 0.100000 / 16,worldsSweep - 0.050000 / 8,backwardsSweep - 0.260000 / 41,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#33
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 33, 'fishery model (seed 204256)' / 'fishery model (seed 49635)',
+55/3.9/1.4/2/6, 1, 1, 91.7, 0.5).
+
+%mean explicable : 86.6 %
+%abduction time  : 15.70 secs
+%total run time  : 21.99 secs
+
+ticks([total - 0.570000 / 100,validate - 0.090000 / 16,worldsSweep - 0.040000 / 7,backwardsSweep - 0.220000 / 39,forwardSweep - 0.090000 / 16,prep - 0.020000 / 4,data - 0.110000 / 19]).
+fsweep
+bsweep
+wsweep
+
+%#34
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 34, 'fishery model (seed 204256)' / 'fishery model (seed 50780)',
+59/4.1/1.4/2/6, 1, 1, 98.3, 0.5).
+
+%mean explicable : 87.0 %
+%abduction time  : 16.22 secs
+%total run time  : 22.71 secs
+
+ticks([total - 0.630000 / 100,validate - 0.090000 / 14,worldsSweep - 0.050000 / 8,backwardsSweep - 0.260000 / 41,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#35
+
+fSweepNumbers(0, 0, 0, 25.694444, 0, 0, 1).
+
+result('102. reduced fishery over time', 35, 'fishery model (seed 204256)' / 'fishery model (seed 51995)',
+25/3.2/1.3/2/6, 1, 1, 41.7, 0.2).
+
+%mean explicable : 85.7 %
+%abduction time  : 16.42 secs
+%total run time  : 23.10 secs
+
+ticks([total - 0.300000 / 100,validate - 0.030000 / 10,worldsSweep - 0.010000 / 3,backwardsSweep - 0.090000 / 30,forwardSweep - 0.050000 / 17,prep - 0.020000 / 7,data - 0.100000 / 33]).
+fsweep
+bsweep
+wsweep
+
+%#36
+
+fSweepNumbers(0, 0, 0, 28.472222, 0, 0, 1).
+
+result('102. reduced fishery over time', 36, 'fishery model (seed 204256)' / 'fishery model (seed 648339)',
+29/3.1/1.2/2/6, 1, 1, 48.3, 0.2).
+
+%mean explicable : 84.6 %
+%abduction time  : 16.65 secs
+%total run time  : 23.51 secs
+
+ticks([total - 0.330000 / 100,validate - 0.030000 / 9,worldsSweep - 0.010000 / 3,backwardsSweep - 0.110000 / 33,forwardSweep - 0.060000 / 18,prep - 0.020000 / 6,data - 0.100000 / 30]).
+fsweep
+bsweep
+wsweep
+
+%#37
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 37, 'fishery model (seed 204256)' / 'fishery model (seed 677507)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.6).
+
+%mean explicable : 85.0 %
+%abduction time  : 17.21 secs
+%total run time  : 24.27 secs
+
+ticks([total - 0.670000 / 100,validate - 0.100000 / 15,worldsSweep - 0.060000 / 9,backwardsSweep - 0.270000 / 40,forwardSweep - 0.110000 / 16,prep - 0.020000 / 3,data - 0.100000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#38
+
+fSweepNumbers(0, 0, 0, 28.472222, 0, 0, 1).
+
+result('102. reduced fishery over time', 38, 'fishery model (seed 204256)' / 'fishery model (seed 70116)',
+29/3.1/1.2/2/6, 1, 1, 48.3, 0.2).
+
+%mean explicable : 84.1 %
+%abduction time  : 17.45 secs
+%total run time  : 24.70 secs
+
+ticks([total - 0.340000 / 100,validate - 0.030000 / 9,worldsSweep - 0.020000 / 6,backwardsSweep - 0.100000 / 29,forwardSweep - 0.060000 / 18,prep - 0.020000 / 6,data - 0.110000 / 32]).
+fsweep
+bsweep
+wsweep
+
+%#39
+
+fSweepNumbers(0, 0, 0, 47.916667, 0, 0, 1).
+
+result('102. reduced fishery over time', 39, 'fishery model (seed 204256)' / 'fishery model (seed 92038)',
+57/4.1/1.5/2/6, 1, 1, 95.0, 0.6).
+
+%mean explicable : 84.4 %
+%abduction time  : 18.01 secs
+%total run time  : 25.46 secs
+
+ticks([total - 0.660000 / 100,validate - 0.090000 / 14,worldsSweep - 0.050000 / 8,backwardsSweep - 0.280000 / 42,forwardSweep - 0.110000 / 17,prep - 0.030000 / 5,data - 0.100000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#40
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 40, 'fishery model (seed 276454)' / 'fishery model (seed 308318)',
+60/4.0/1.5/2/7, 1, 1, 100.0, 0.6).
+
+%mean explicable : 84.7 %
+%abduction time  : 18.57 secs
+%total run time  : 26.22 secs
+
+ticks([total - 0.660000 / 100,validate - 0.100000 / 15,worldsSweep - 0.060000 / 9,backwardsSweep - 0.270000 / 41,forwardSweep - 0.100000 / 15,prep - 0.030000 / 5,data - 0.100000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#41
+
+fSweepNumbers(0, 0, 0, 25.694444, 0, 0, 1).
+
+result('102. reduced fishery over time', 41, 'fishery model (seed 276454)' / 'fishery model (seed 326592)',
+25/3.0/1.1/2/6, 1, 1, 41.7, 0.2).
+
+%mean explicable : 83.7 %
+%abduction time  : 18.77 secs
+%total run time  : 26.60 secs
+
+ticks([total - 0.310000 / 100,validate - 0.020000 / 6,worldsSweep - 0.020000 / 6,backwardsSweep - 0.080000 / 26,forwardSweep - 0.050000 / 16,prep - 0.020000 / 6,data - 0.120000 / 39]).
+fsweep
+bsweep
+wsweep
+
+%#42
+
+fSweepNumbers(0, 0, 0, 36.111111, 0, 0, 1).
+
+result('102. reduced fishery over time', 42, 'fishery model (seed 276454)' / 'fishery model (seed 423778)',
+40/3.7/1.4/2/6, 1, 1, 66.7, 0.3).
+
+%mean explicable : 83.3 %
+%abduction time  : 19.10 secs
+%total run time  : 27.12 secs
+
+ticks([total - 0.430000 / 100,validate - 0.050000 / 12,worldsSweep - 0.020000 / 5,backwardsSweep - 0.170000 / 40,forwardSweep - 0.070000 / 16,prep - 0.020000 / 5,data - 0.100000 / 23]).
+fsweep
+bsweep
+wsweep
+
+%#43
+
+fSweepNumbers(0, 0, 0, 28.472222, 0, 0, 1).
+
+result('102. reduced fishery over time', 43, 'fishery model (seed 276454)' / 'fishery model (seed 424897)',
+29/3.1/1.2/2/6, 1, 1, 48.3, 0.2).
+
+%mean explicable : 82.5 %
+%abduction time  : 19.33 secs
+%total run time  : 27.55 secs
+
+ticks([total - 0.330000 / 100,validate - 0.030000 / 9,worldsSweep - 0.020000 / 6,backwardsSweep - 0.100000 / 30,forwardSweep - 0.060000 / 18,prep - 0.020000 / 6,data - 0.100000 / 30]).
+fsweep
+bsweep
+wsweep
+
+%#44
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 44, 'fishery model (seed 276454)' / 'fishery model (seed 49635)',
+59/4.3/1.5/2/8, 1, 1, 98.3, 0.6).
+
+%mean explicable : 82.8 %
+%abduction time  : 19.88 secs
+%total run time  : 28.30 secs
+
+ticks([total - 0.650000 / 100,validate - 0.090000 / 14,worldsSweep - 0.060000 / 9,backwardsSweep - 0.280000 / 43,forwardSweep - 0.100000 / 15,prep - 0.020000 / 3,data - 0.100000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#45
+
+fSweepNumbers(0, 0, 0, 33.333333, 0, 0, 1).
+
+result('102. reduced fishery over time', 45, 'fishery model (seed 276454)' / 'fishery model (seed 50780)',
+36/3.6/1.4/2/6, 1, 1, 60.0, 0.3).
+
+%mean explicable : 82.3 %
+%abduction time  : 20.17 secs
+%total run time  : 28.77 secs
+
+ticks([total - 0.400000 / 100,validate - 0.040000 / 10,worldsSweep - 0.020000 / 5,backwardsSweep - 0.150000 / 37,forwardSweep - 0.070000 / 17,prep - 0.010000 / 3,data - 0.100000 / 25]).
+fsweep
+bsweep
+wsweep
+
+%#46
+
+fSweepNumbers(1, 0, 0, 49.305556, 0.694444, 0, 1).
+
+result('102. reduced fishery over time', 46, 'fishery model (seed 276454)' / 'fishery model (seed 51995)',
+59/4.4/1.6/2/8, 1, 1, 98.3, 0.6).
+
+%mean explicable : 82.7 %
+%abduction time  : 20.74 secs
+%total run time  : 29.54 secs
+
+ticks([total - 0.680000 / 100,validate - 0.100000 / 15,worldsSweep - 0.060000 / 9,backwardsSweep - 0.290000 / 43,forwardSweep - 0.100000 / 15,prep - 0.020000 / 3,data - 0.110000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#47
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 47, 'fishery model (seed 276454)' / 'fishery model (seed 648339)',
+60/4.0/1.5/2/7, 1, 1, 100.0, 0.5).
+
+%mean explicable : 83.0 %
+%abduction time  : 21.27 secs
+%total run time  : 30.28 secs
+
+ticks([total - 0.640000 / 100,validate - 0.090000 / 14,worldsSweep - 0.060000 / 9,backwardsSweep - 0.250000 / 39,forwardSweep - 0.110000 / 17,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#48
+
+fSweepNumbers(0, 0, 0, 25.694444, 0, 0, 1).
+
+result('102. reduced fishery over time', 48, 'fishery model (seed 276454)' / 'fishery model (seed 677507)',
+25/3.0/1.2/2/6, 1, 1, 41.7, 0.2).
+
+%mean explicable : 82.2 %
+%abduction time  : 21.48 secs
+%total run time  : 30.69 secs
+
+ticks([total - 0.320000 / 100,validate - 0.030000 / 9,worldsSweep - 0.010000 / 3,backwardsSweep - 0.090000 / 28,forwardSweep - 0.060000 / 19,prep - 0.020000 / 6,data - 0.110000 / 34]).
+fsweep
+bsweep
+wsweep
+
+%#49
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 49, 'fishery model (seed 276454)' / 'fishery model (seed 70116)',
+60/4.0/1.5/2/7, 1, 1, 100.0, 0.5).
+
+%mean explicable : 82.5 %
+%abduction time  : 22.01 secs
+%total run time  : 31.42 secs
+
+ticks([total - 0.640000 / 100,validate - 0.100000 / 16,worldsSweep - 0.060000 / 9,backwardsSweep - 0.240000 / 37,forwardSweep - 0.110000 / 17,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#50
+
+fSweepNumbers(0, 0, 0, 28.472222, 0, 0, 1).
+
+result('102. reduced fishery over time', 50, 'fishery model (seed 276454)' / 'fishery model (seed 92038)',
+29/3.1/1.2/2/6, 1, 1, 48.3, 0.2).
+
+%mean explicable : 81.9 %
+%abduction time  : 22.23 secs
+%total run time  : 31.85 secs
+
+ticks([total - 0.330000 / 100,validate - 0.030000 / 9,worldsSweep - 0.010000 / 3,backwardsSweep - 0.100000 / 30,forwardSweep - 0.060000 / 18,prep - 0.020000 / 6,data - 0.110000 / 33]).
+fsweep
+bsweep
+wsweep
+
+%#51
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 51, 'fishery model (seed 308318)' / 'fishery model (seed 326592)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 82.2 %
+%abduction time  : 22.77 secs
+%total run time  : 32.60 secs
+
+ticks([total - 0.650000 / 100,validate - 0.100000 / 15,worldsSweep - 0.050000 / 8,backwardsSweep - 0.260000 / 40,forwardSweep - 0.100000 / 15,prep - 0.030000 / 5,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#52
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 52, 'fishery model (seed 308318)' / 'fishery model (seed 423778)',
+59/4.1/1.5/2/7, 1, 1, 98.3, 0.5).
+
+%mean explicable : 82.5 %
+%abduction time  : 23.29 secs
+%total run time  : 33.31 secs
+
+ticks([total - 0.620000 / 100,validate - 0.090000 / 15,worldsSweep - 0.040000 / 6,backwardsSweep - 0.260000 / 42,forwardSweep - 0.110000 / 18,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#53
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 53, 'fishery model (seed 308318)' / 'fishery model (seed 424897)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 82.9 %
+%abduction time  : 23.83 secs
+%total run time  : 34.05 secs
+
+ticks([total - 0.640000 / 100,validate - 0.100000 / 16,worldsSweep - 0.060000 / 9,backwardsSweep - 0.250000 / 39,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#54
+
+fSweepNumbers(0, 0, 0, 36.111111, 0, 0, 1).
+
+result('102. reduced fishery over time', 54, 'fishery model (seed 308318)' / 'fishery model (seed 49635)',
+40/3.5/1.2/2/6, 1, 1, 66.7, 0.3).
+
+%mean explicable : 82.6 %
+%abduction time  : 24.16 secs
+%total run time  : 34.59 secs
+
+ticks([total - 0.440000 / 100,validate - 0.050000 / 11,worldsSweep - 0.030000 / 7,backwardsSweep - 0.150000 / 34,forwardSweep - 0.070000 / 16,prep - 0.030000 / 7,data - 0.110000 / 25]).
+fsweep
+bsweep
+wsweep
+
+%#55
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 55, 'fishery model (seed 308318)' / 'fishery model (seed 50780)',
+59/4.1/1.5/2/7, 1, 1, 98.3, 0.5).
+
+%mean explicable : 82.8 %
+%abduction time  : 24.70 secs
+%total run time  : 35.33 secs
+
+ticks([total - 0.640000 / 100,validate - 0.100000 / 16,worldsSweep - 0.050000 / 8,backwardsSweep - 0.260000 / 41,forwardSweep - 0.100000 / 16,prep - 0.030000 / 5,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#56
+
+fSweepNumbers(0, 0, 0, 41.666667, 0, 0, 1).
+
+result('102. reduced fishery over time', 56, 'fishery model (seed 308318)' / 'fishery model (seed 51995)',
+48/3.9/1.4/2/6, 1, 1, 80.0, 0.4).
+
+%mean explicable : 82.8 %
+%abduction time  : 25.09 secs
+%total run time  : 35.93 secs
+
+ticks([total - 0.500000 / 100,validate - 0.070000 / 14,worldsSweep - 0.030000 / 6,backwardsSweep - 0.190000 / 38,forwardSweep - 0.080000 / 16,prep - 0.020000 / 4,data - 0.110000 / 22]).
+fsweep
+bsweep
+wsweep
+
+%#57
+
+fSweepNumbers(0, 0, 0, 45.138889, 0, 0, 1).
+
+result('102. reduced fishery over time', 57, 'fishery model (seed 308318)' / 'fishery model (seed 648339)',
+53/4.3/1.6/2/7, 1, 1, 88.3, 0.5).
+
+%mean explicable : 82.9 %
+%abduction time  : 25.58 secs
+%total run time  : 36.61 secs
+
+ticks([total - 0.590000 / 100,validate - 0.080000 / 14,worldsSweep - 0.050000 / 8,backwardsSweep - 0.250000 / 42,forwardSweep - 0.090000 / 15,prep - 0.020000 / 3,data - 0.100000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#58
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 58, 'fishery model (seed 308318)' / 'fishery model (seed 677507)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 83.2 %
+%abduction time  : 26.12 secs
+%total run time  : 37.35 secs
+
+ticks([total - 0.640000 / 100,validate - 0.100000 / 16,worldsSweep - 0.050000 / 8,backwardsSweep - 0.260000 / 41,forwardSweep - 0.110000 / 17,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#59
+
+fSweepNumbers(1, 0, 0, 47.222222, 0.694444, 0, 1).
+
+result('102. reduced fishery over time', 59, 'fishery model (seed 308318)' / 'fishery model (seed 70116)',
+55/4.3/1.6/2/7, 1, 1, 93.2, 0.5).
+
+%mean explicable : 83.4 %
+%abduction time  : 26.66 secs
+%total run time  : 38.08 secs
+
+ticks([total - 0.640000 / 100,validate - 0.080000 / 13,worldsSweep - 0.060000 / 9,backwardsSweep - 0.280000 / 44,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#60
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 60, 'fishery model (seed 308318)' / 'fishery model (seed 92038)',
+60/4.1/1.4/2/6, 1, 1, 100.0, 0.6).
+
+%mean explicable : 83.6 %
+%abduction time  : 27.21 secs
+%total run time  : 38.84 secs
+
+ticks([total - 0.670000 / 100,validate - 0.100000 / 15,worldsSweep - 0.050000 / 7,backwardsSweep - 0.270000 / 40,forwardSweep - 0.110000 / 16,prep - 0.020000 / 3,data - 0.120000 / 18]).
+fsweep
+bsweep
+wsweep
+
+%#61
+
+fSweepNumbers(0, 0, 0, 42.361111, 0, 0, 1).
+
+result('102. reduced fishery over time', 61, 'fishery model (seed 326592)' / 'fishery model (seed 423778)',
+49/5.6/3.3/2/12, 1, 1, 81.7, 0.6).
+
+%mean explicable : 83.6 %
+%abduction time  : 27.79 secs
+%total run time  : 39.62 secs
+
+ticks([total - 0.690000 / 100,validate - 0.070000 / 10,worldsSweep - 0.040000 / 6,backwardsSweep - 0.370000 / 54,forwardSweep - 0.080000 / 12,prep - 0.020000 / 3,data - 0.110000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#62
+
+fSweepNumbers(1, 0, 0, 47.916667, 0.694444, 0, 1).
+
+result('102. reduced fishery over time', 62, 'fishery model (seed 326592)' / 'fishery model (seed 424897)',
+56/4.1/1.5/2/6, 1, 1, 96.6, 0.5).
+
+%mean explicable : 83.8 %
+%abduction time  : 28.30 secs
+%total run time  : 40.32 secs
+
+ticks([total - 0.610000 / 100,validate - 0.100000 / 16,worldsSweep - 0.050000 / 8,backwardsSweep - 0.240000 / 39,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#63
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 63, 'fishery model (seed 326592)' / 'fishery model (seed 49635)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 84.1 %
+%abduction time  : 28.82 secs
+%total run time  : 41.04 secs
+
+ticks([total - 0.620000 / 100,validate - 0.090000 / 15,worldsSweep - 0.060000 / 10,backwardsSweep - 0.250000 / 40,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#64
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 64, 'fishery model (seed 326592)' / 'fishery model (seed 50780)',
+59/5.2/2.4/2/10, 1, 1, 98.3, 0.6).
+
+%mean explicable : 84.3 %
+%abduction time  : 29.45 secs
+%total run time  : 41.87 secs
+
+ticks([total - 0.740000 / 100,validate - 0.090000 / 12,worldsSweep - 0.050000 / 7,backwardsSweep - 0.370000 / 50,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#65
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 65, 'fishery model (seed 326592)' / 'fishery model (seed 51995)',
+60/4.8/1.9/2/9, 1, 1, 100.0, 0.7).
+
+%mean explicable : 84.5 %
+%abduction time  : 30.10 secs
+%total run time  : 42.72 secs
+
+ticks([total - 0.750000 / 100,validate - 0.110000 / 15,worldsSweep - 0.060000 / 8,backwardsSweep - 0.350000 / 47,forwardSweep - 0.110000 / 15,prep - 0.020000 / 3,data - 0.100000 / 13]).
+fsweep
+bsweep
+wsweep
+
+%#66
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 66, 'fishery model (seed 326592)' / 'fishery model (seed 648339)',
+55/5.5/2.9/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 84.6 %
+%abduction time  : 30.68 secs
+%total run time  : 43.50 secs
+
+ticks([total - 0.690000 / 100,validate - 0.070000 / 10,worldsSweep - 0.050000 / 7,backwardsSweep - 0.340000 / 49,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.110000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#67
+
+fSweepNumbers(5, 0, 0, 47.916667, 3.472222, 0, 1).
+
+result('102. reduced fishery over time', 67, 'fishery model (seed 326592)' / 'fishery model (seed 677507)',
+53/4.1/1.5/2/6, 1, 1, 94.6, 0.5).
+
+%mean explicable : 84.8 %
+%abduction time  : 31.15 secs
+%total run time  : 44.17 secs
+
+ticks([total - 0.570000 / 100,validate - 0.080000 / 14,worldsSweep - 0.040000 / 7,backwardsSweep - 0.230000 / 40,forwardSweep - 0.100000 / 18,prep - 0.020000 / 4,data - 0.100000 / 18]).
+fsweep
+bsweep
+wsweep
+
+%#68
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 68, 'fishery model (seed 326592)' / 'fishery model (seed 70116)',
+55/5.5/2.9/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 84.9 %
+%abduction time  : 31.76 secs
+%total run time  : 45.01 secs
+
+ticks([total - 0.720000 / 100,validate - 0.080000 / 11,worldsSweep - 0.040000 / 6,backwardsSweep - 0.380000 / 53,forwardSweep - 0.090000 / 12,prep - 0.020000 / 3,data - 0.110000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#69
+
+fSweepNumbers(1, 0, 0, 45.138889, 0.694444, 0, 1).
+
+result('102. reduced fishery over time', 69, 'fishery model (seed 326592)' / 'fishery model (seed 92038)',
+52/4.2/1.6/2/8, 1, 1, 88.1, 0.5).
+
+%mean explicable : 84.9 %
+%abduction time  : 32.23 secs
+%total run time  : 45.69 secs
+
+ticks([total - 0.570000 / 100,validate - 0.070000 / 12,worldsSweep - 0.050000 / 9,backwardsSweep - 0.240000 / 42,forwardSweep - 0.090000 / 16,prep - 0.020000 / 4,data - 0.100000 / 18]).
+fsweep
+bsweep
+wsweep
+
+%#70
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 70, 'fishery model (seed 423778)' / 'fishery model (seed 424897)',
+55/5.5/2.9/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 85.0 %
+%abduction time  : 32.83 secs
+%total run time  : 46.48 secs
+
+ticks([total - 0.700000 / 100,validate - 0.080000 / 11,worldsSweep - 0.040000 / 6,backwardsSweep - 0.370000 / 53,forwardSweep - 0.090000 / 13,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#71
+
+fSweepNumbers(0, 0, 0, 45.833333, 0, 0, 1).
+
+result('102. reduced fishery over time', 71, 'fishery model (seed 423778)' / 'fishery model (seed 49635)',
+54/4.1/1.6/2/7, 1, 1, 90.0, 0.5).
+
+%mean explicable : 85.1 %
+%abduction time  : 33.31 secs
+%total run time  : 47.15 secs
+
+ticks([total - 0.580000 / 100,validate - 0.080000 / 14,worldsSweep - 0.050000 / 9,backwardsSweep - 0.240000 / 41,forwardSweep - 0.090000 / 16,prep - 0.020000 / 3,data - 0.100000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#72
+
+fSweepNumbers(0, 0, 0, 25, 0, 0, 1).
+
+result('102. reduced fishery over time', 72, 'fishery model (seed 423778)' / 'fishery model (seed 50780)',
+24/2.9/1.0/2/5, 1, 1, 40.0, 0.2).
+
+%mean explicable : 84.5 %
+%abduction time  : 33.49 secs
+%total run time  : 47.53 secs
+
+ticks([total - 0.290000 / 100,validate - 0.020000 / 7,worldsSweep - 0.010000 / 3,backwardsSweep - 0.080000 / 28,forwardSweep - 0.050000 / 17,prep - 0.020000 / 7,data - 0.110000 / 38]).
+fsweep
+bsweep
+wsweep
+
+%#73
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 73, 'fishery model (seed 423778)' / 'fishery model (seed 51995)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 84.7 %
+%abduction time  : 34.02 secs
+%total run time  : 48.26 secs
+
+ticks([total - 0.630000 / 100,validate - 0.090000 / 14,worldsSweep - 0.060000 / 10,backwardsSweep - 0.260000 / 41,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#74
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 74, 'fishery model (seed 423778)' / 'fishery model (seed 648339)',
+59/5.3/2.3/2/10, 1, 1, 98.3, 0.6).
+
+%mean explicable : 84.9 %
+%abduction time  : 34.66 secs
+%total run time  : 49.10 secs
+
+ticks([total - 0.740000 / 100,validate - 0.080000 / 11,worldsSweep - 0.050000 / 7,backwardsSweep - 0.380000 / 51,forwardSweep - 0.100000 / 14,prep - 0.030000 / 4,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#75
+
+fSweepNumbers(0, 0, 0, 42.361111, 0, 0, 1).
+
+result('102. reduced fishery over time', 75, 'fishery model (seed 423778)' / 'fishery model (seed 677507)',
+49/5.6/3.3/2/12, 1, 1, 81.7, 0.6).
+
+%mean explicable : 84.8 %
+%abduction time  : 35.23 secs
+%total run time  : 49.87 secs
+
+ticks([total - 0.680000 / 100,validate - 0.070000 / 10,worldsSweep - 0.040000 / 6,backwardsSweep - 0.350000 / 51,forwardSweep - 0.090000 / 13,prep - 0.020000 / 3,data - 0.110000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#76
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 76, 'fishery model (seed 423778)' / 'fishery model (seed 70116)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.6).
+
+%mean explicable : 85.0 %
+%abduction time  : 35.78 secs
+%total run time  : 50.59 secs
+
+ticks([total - 0.650000 / 100,validate - 0.100000 / 15,worldsSweep - 0.060000 / 9,backwardsSweep - 0.270000 / 42,forwardSweep - 0.100000 / 15,prep - 0.020000 / 3,data - 0.100000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#77
+
+fSweepNumbers(2, 2, 1, 50, 1.388889, 1.388889, 1).
+
+result('102. reduced fishery over time', 77, 'fishery model (seed 423778)' / 'fishery model (seed 92038)',
+58/5.3/2.4/2/10, 1, 1, 98.3, 0.7).
+
+%mean explicable : 85.2 %
+%abduction time  : 36.43 secs
+%total run time  : 51.43 secs
+
+ticks([total - 0.750000 / 100,validate - 0.090000 / 12,worldsSweep - 0.050000 / 7,backwardsSweep - 0.380000 / 51,forwardSweep - 0.110000 / 15,prep - 0.010000 / 1,data - 0.110000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#78
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 78, 'fishery model (seed 424897)' / 'fishery model (seed 49635)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 85.4 %
+%abduction time  : 36.94 secs
+%total run time  : 52.15 secs
+
+ticks([total - 0.620000 / 100,validate - 0.090000 / 15,worldsSweep - 0.060000 / 10,backwardsSweep - 0.250000 / 40,forwardSweep - 0.110000 / 18,prep - 0.010000 / 2,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#79
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 79, 'fishery model (seed 424897)' / 'fishery model (seed 50780)',
+60/4.8/1.9/2/9, 1, 1, 100.0, 0.6).
+
+%mean explicable : 85.6 %
+%abduction time  : 37.58 secs
+%total run time  : 52.99 secs
+
+ticks([total - 0.740000 / 100,validate - 0.100000 / 14,worldsSweep - 0.060000 / 8,backwardsSweep - 0.350000 / 47,forwardSweep - 0.110000 / 15,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#80
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 80, 'fishery model (seed 424897)' / 'fishery model (seed 51995)',
+60/4.8/1.9/2/9, 1, 1, 100.0, 0.6).
+
+%mean explicable : 85.8 %
+%abduction time  : 38.20 secs
+%total run time  : 53.82 secs
+
+ticks([total - 0.730000 / 100,validate - 0.110000 / 15,worldsSweep - 0.050000 / 7,backwardsSweep - 0.340000 / 47,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.110000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#81
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 81, 'fishery model (seed 424897)' / 'fishery model (seed 648339)',
+55/5.5/2.9/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 85.8 %
+%abduction time  : 38.82 secs
+%total run time  : 54.65 secs
+
+ticks([total - 0.730000 / 100,validate - 0.080000 / 11,worldsSweep - 0.050000 / 7,backwardsSweep - 0.370000 / 51,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.110000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#82
+
+fSweepNumbers(1, 0, 0, 47.916667, 0.694444, 0, 1).
+
+result('102. reduced fishery over time', 82, 'fishery model (seed 424897)' / 'fishery model (seed 677507)',
+56/4.1/1.5/2/6, 1, 1, 94.9, 0.5).
+
+%mean explicable : 85.9 %
+%abduction time  : 39.35 secs
+%total run time  : 55.38 secs
+
+ticks([total - 0.640000 / 100,validate - 0.090000 / 14,worldsSweep - 0.060000 / 9,backwardsSweep - 0.260000 / 41,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#83
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 83, 'fishery model (seed 424897)' / 'fishery model (seed 70116)',
+55/5.5/2.9/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 86.0 %
+%abduction time  : 39.95 secs
+%total run time  : 56.17 secs
+
+ticks([total - 0.710000 / 100,validate - 0.080000 / 11,worldsSweep - 0.030000 / 4,backwardsSweep - 0.370000 / 52,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.110000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#84
+
+fSweepNumbers(0, 0, 0, 45.138889, 0, 0, 1).
+
+result('102. reduced fishery over time', 84, 'fishery model (seed 424897)' / 'fishery model (seed 92038)',
+53/4.2/1.6/2/8, 1, 1, 88.3, 0.5).
+
+%mean explicable : 86.0 %
+%abduction time  : 40.43 secs
+%total run time  : 56.83 secs
+
+ticks([total - 0.580000 / 100,validate - 0.080000 / 14,worldsSweep - 0.050000 / 9,backwardsSweep - 0.240000 / 41,forwardSweep - 0.090000 / 16,prep - 0.020000 / 3,data - 0.100000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#85
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 85, 'fishery model (seed 49635)' / 'fishery model (seed 50780)',
+59/4.1/1.4/2/6, 1, 1, 98.3, 0.5).
+
+%mean explicable : 86.2 %
+%abduction time  : 40.97 secs
+%total run time  : 57.57 secs
+
+ticks([total - 0.650000 / 100,validate - 0.090000 / 14,worldsSweep - 0.060000 / 9,backwardsSweep - 0.260000 / 40,forwardSweep - 0.110000 / 17,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#86
+
+fSweepNumbers(2, 0, 0, 45.138889, 1.388889, 0, 1).
+
+result('102. reduced fishery over time', 86, 'fishery model (seed 49635)' / 'fishery model (seed 51995)',
+51/4.4/1.8/2/8, 1, 1, 87.9, 0.5).
+
+%mean explicable : 86.2 %
+%abduction time  : 41.46 secs
+%total run time  : 58.25 secs
+
+ticks([total - 0.590000 / 100,validate - 0.070000 / 12,worldsSweep - 0.050000 / 8,backwardsSweep - 0.250000 / 42,forwardSweep - 0.090000 / 15,prep - 0.020000 / 3,data - 0.110000 / 19]).
+fsweep
+bsweep
+wsweep
+
+%#87
+
+fSweepNumbers(0, 0, 0, 25.694444, 0, 0, 1).
+
+result('102. reduced fishery over time', 87, 'fishery model (seed 49635)' / 'fishery model (seed 648339)',
+25/3.2/1.3/2/6, 1, 1, 41.7, 0.2).
+
+%mean explicable : 85.7 %
+%abduction time  : 41.66 secs
+%total run time  : 58.64 secs
+
+ticks([total - 0.310000 / 100,validate - 0.020000 / 6,worldsSweep - 0.020000 / 6,backwardsSweep - 0.090000 / 29,forwardSweep - 0.050000 / 16,prep - 0.020000 / 6,data - 0.110000 / 35]).
+fsweep
+bsweep
+wsweep
+
+%#88
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 88, 'fishery model (seed 49635)' / 'fishery model (seed 677507)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.6).
+
+%mean explicable : 85.9 %
+%abduction time  : 42.21 secs
+%total run time  : 59.42 secs
+
+ticks([total - 0.660000 / 100,validate - 0.100000 / 15,worldsSweep - 0.050000 / 8,backwardsSweep - 0.270000 / 41,forwardSweep - 0.110000 / 17,prep - 0.020000 / 3,data - 0.110000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#89
+
+fSweepNumbers(0, 0, 0, 25.694444, 0, 0, 1).
+
+result('102. reduced fishery over time', 89, 'fishery model (seed 49635)' / 'fishery model (seed 70116)',
+25/3.2/1.3/2/6, 1, 1, 41.7, 0.2).
+
+%mean explicable : 85.4 %
+%abduction time  : 42.41 secs
+%total run time  : 59.81 secs
+
+ticks([total - 0.310000 / 100,validate - 0.020000 / 6,worldsSweep - 0.020000 / 6,backwardsSweep - 0.090000 / 29,forwardSweep - 0.050000 / 16,prep - 0.020000 / 6,data - 0.110000 / 35]).
+fsweep
+bsweep
+wsweep
+
+%#90
+
+fSweepNumbers(0, 0, 0, 47.916667, 0, 0, 1).
+
+result('102. reduced fishery over time', 90, 'fishery model (seed 49635)' / 'fishery model (seed 92038)',
+57/4.1/1.5/2/6, 1, 1, 95.0, 0.5).
+
+%mean explicable : 85.5 %
+%abduction time  : 42.91 secs
+%total run time  : 60.51 secs
+
+ticks([total - 0.600000 / 100,validate - 0.090000 / 15,worldsSweep - 0.060000 / 10,backwardsSweep - 0.240000 / 40,forwardSweep - 0.090000 / 15,prep - 0.020000 / 3,data - 0.100000 / 17]).
+fsweep
+bsweep
+wsweep
+
+%#91
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 91, 'fishery model (seed 50780)' / 'fishery model (seed 51995)',
+60/4.8/1.9/2/9, 1, 1, 100.0, 0.6).
+
+%mean explicable : 85.6 %
+%abduction time  : 43.55 secs
+%total run time  : 61.37 secs
+
+ticks([total - 0.750000 / 100,validate - 0.100000 / 13,worldsSweep - 0.050000 / 7,backwardsSweep - 0.370000 / 49,forwardSweep - 0.100000 / 13,prep - 0.020000 / 3,data - 0.110000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#92
+
+fSweepNumbers(0, 0, 0, 42.361111, 0, 0, 1).
+
+result('102. reduced fishery over time', 92, 'fishery model (seed 50780)' / 'fishery model (seed 648339)',
+49/5.6/3.3/2/12, 1, 1, 81.7, 0.6).
+
+%mean explicable : 85.6 %
+%abduction time  : 44.13 secs
+%total run time  : 62.15 secs
+
+ticks([total - 0.690000 / 100,validate - 0.070000 / 10,worldsSweep - 0.030000 / 4,backwardsSweep - 0.370000 / 54,forwardSweep - 0.090000 / 13,prep - 0.020000 / 3,data - 0.110000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#93
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 93, 'fishery model (seed 50780)' / 'fishery model (seed 677507)',
+59/5.2/2.4/2/10, 1, 1, 98.3, 0.7).
+
+%mean explicable : 85.7 %
+%abduction time  : 44.79 secs
+%total run time  : 63.01 secs
+
+ticks([total - 0.770000 / 100,validate - 0.120000 / 16,worldsSweep - 0.060000 / 8,backwardsSweep - 0.360000 / 47,forwardSweep - 0.100000 / 13,prep - 0.020000 / 3,data - 0.110000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#94
+
+fSweepNumbers(0, 0, 0, 42.361111, 0, 0, 1).
+
+result('102. reduced fishery over time', 94, 'fishery model (seed 50780)' / 'fishery model (seed 70116)',
+49/5.6/3.3/2/12, 1, 1, 81.7, 0.6).
+
+%mean explicable : 85.7 %
+%abduction time  : 45.38 secs
+%total run time  : 63.79 secs
+
+ticks([total - 0.690000 / 100,validate - 0.060000 / 9,worldsSweep - 0.040000 / 6,backwardsSweep - 0.380000 / 55,forwardSweep - 0.090000 / 13,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#95
+
+fSweepNumbers(0, 0, 0, 45.833333, 0, 0, 1).
+
+result('102. reduced fishery over time', 95, 'fishery model (seed 50780)' / 'fishery model (seed 92038)',
+54/4.0/1.6/2/8, 1, 1, 90.0, 0.5).
+
+%mean explicable : 85.7 %
+%abduction time  : 45.86 secs
+%total run time  : 64.48 secs
+
+ticks([total - 0.590000 / 100,validate - 0.080000 / 14,worldsSweep - 0.050000 / 8,backwardsSweep - 0.230000 / 39,forwardSweep - 0.100000 / 17,prep - 0.020000 / 3,data - 0.110000 / 19]).
+fsweep
+bsweep
+wsweep
+
+%#96
+
+fSweepNumbers(0, 0, 0, 28.472222, 0, 0, 1).
+
+result('102. reduced fishery over time', 96, 'fishery model (seed 51995)' / 'fishery model (seed 648339)',
+29/3.1/1.2/2/6, 1, 1, 48.3, 0.2).
+
+%mean explicable : 85.3 %
+%abduction time  : 46.08 secs
+%total run time  : 64.88 secs
+
+ticks([total - 0.320000 / 100,validate - 0.030000 / 9,worldsSweep - 0.020000 / 6,backwardsSweep - 0.090000 / 28,forwardSweep - 0.060000 / 19,prep - 0.020000 / 6,data - 0.100000 / 31]).
+fsweep
+bsweep
+wsweep
+
+%#97
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 97, 'fishery model (seed 51995)' / 'fishery model (seed 677507)',
+60/4.8/1.9/2/9, 1, 1, 100.0, 0.6).
+
+%mean explicable : 85.5 %
+%abduction time  : 46.68 secs
+%total run time  : 65.67 secs
+
+ticks([total - 0.700000 / 100,validate - 0.100000 / 14,worldsSweep - 0.050000 / 7,backwardsSweep - 0.320000 / 46,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.110000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#98
+
+fSweepNumbers(0, 0, 0, 28.472222, 0, 0, 1).
+
+result('102. reduced fishery over time', 98, 'fishery model (seed 51995)' / 'fishery model (seed 70116)',
+29/3.1/1.2/2/6, 1, 1, 48.3, 0.2).
+
+%mean explicable : 85.1 %
+%abduction time  : 46.91 secs
+%total run time  : 66.09 secs
+
+ticks([total - 0.330000 / 100,validate - 0.030000 / 9,worldsSweep - 0.020000 / 6,backwardsSweep - 0.100000 / 30,forwardSweep - 0.060000 / 18,prep - 0.020000 / 6,data - 0.100000 / 30]).
+fsweep
+bsweep
+wsweep
+
+%#99
+
+fSweepNumbers(0, 0, 0, 50, 0, 0, 1).
+
+result('102. reduced fishery over time', 99, 'fishery model (seed 51995)' / 'fishery model (seed 92038)',
+60/4.0/1.4/2/6, 1, 1, 100.0, 0.5).
+
+%mean explicable : 85.3 %
+%abduction time  : 47.43 secs
+%total run time  : 66.81 secs
+
+ticks([total - 0.620000 / 100,validate - 0.100000 / 16,worldsSweep - 0.050000 / 8,backwardsSweep - 0.250000 / 40,forwardSweep - 0.100000 / 16,prep - 0.020000 / 3,data - 0.100000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#100
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 100, 'fishery model (seed 648339)' / 'fishery model (seed 677507)',
+55/5.5/2.9/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 85.3 %
+%abduction time  : 48.02 secs
+%total run time  : 67.61 secs
+
+ticks([total - 0.700000 / 100,validate - 0.070000 / 10,worldsSweep - 0.050000 / 7,backwardsSweep - 0.360000 / 51,forwardSweep - 0.090000 / 13,prep - 0.020000 / 3,data - 0.110000 / 16]).
+fsweep
+bsweep
+wsweep
+
+%#101
+
+fSweepNumbers(0, 0, 0, 39.583333, 0, 0, 1).
+
+result('102. reduced fishery over time', 101, 'fishery model (seed 648339)' / 'fishery model (seed 70116)',
+45/4.0/1.6/2/7, 1, 1, 77.6, 0.4).
+
+%mean explicable : 85.2 %
+%abduction time  : 48.42 secs
+%total run time  : 68.20 secs
+
+ticks([total - 0.500000 / 100,validate - 0.060000 / 12,worldsSweep - 0.040000 / 8,backwardsSweep - 0.200000 / 40,forwardSweep - 0.080000 / 16,prep - 0.020000 / 4,data - 0.100000 / 20]).
+fsweep
+bsweep
+wsweep
+
+%#102
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 102, 'fishery model (seed 648339)' / 'fishery model (seed 92038)',
+59/5.3/2.3/2/10, 1, 1, 98.3, 0.6).
+
+%mean explicable : 85.4 %
+%abduction time  : 49.04 secs
+%total run time  : 69.02 secs
+
+ticks([total - 0.740000 / 100,validate - 0.080000 / 11,worldsSweep - 0.050000 / 7,backwardsSweep - 0.380000 / 51,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.110000 / 15]).
+fsweep
+bsweep
+wsweep
+
+%#103
+
+fSweepNumbers(0, 0, 0, 46.527778, 0, 0, 1).
+
+result('102. reduced fishery over time', 103, 'fishery model (seed 677507)' / 'fishery model (seed 70116)',
+55/5.5/2.9/2/11, 1, 1, 91.7, 0.6).
+
+%mean explicable : 85.4 %
+%abduction time  : 49.63 secs
+%total run time  : 69.80 secs
+
+ticks([total - 0.690000 / 100,validate - 0.080000 / 12,worldsSweep - 0.040000 / 6,backwardsSweep - 0.360000 / 52,forwardSweep - 0.090000 / 13,prep - 0.020000 / 3,data - 0.100000 / 14]).
+fsweep
+bsweep
+wsweep
+
+%#104
+
+fSweepNumbers(4, 4, 2, 47.222222, 2.777778, 2.777778, 1).
+
+result('102. reduced fishery over time', 104, 'fishery model (seed 677507)' / 'fishery model (seed 92038)',
+52/4.1/1.6/2/8, 1, 1, 89.7, 0.5).
+
+%mean explicable : 85.5 %
+%abduction time  : 50.10 secs
+%total run time  : 70.48 secs
+
+ticks([total - 0.570000 / 100,validate - 0.080000 / 14,worldsSweep - 0.050000 / 9,backwardsSweep - 0.230000 / 40,forwardSweep - 0.100000 / 18,prep - 0.010000 / 2,data - 0.100000 / 18]).
+fsweep
+bsweep
+wsweep
+
+%#105
+
+fSweepNumbers(0, 0, 0, 49.305556, 0, 0, 1).
+
+result('102. reduced fishery over time', 105, 'fishery model (seed 70116)' / 'fishery model (seed 92038)',
+59/5.3/2.3/2/10, 1, 1, 98.3, 0.6).
+
+%mean explicable : 85.6 %
+%abduction time  : 50.73 secs
+%total run time  : 71.30 secs
+
+ticks([total - 0.730000 / 100,validate - 0.090000 / 12,worldsSweep - 0.050000 / 7,backwardsSweep - 0.370000 / 51,forwardSweep - 0.100000 / 14,prep - 0.020000 / 3,data - 0.100000 / 14]).

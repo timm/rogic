@@ -1,0 +1,23 @@
+Tested 340, errors 78 (22.9%)   <<
+Tested 38, errors 12 (31.6%)   <<
+Tested 340, errors 81 (23.8%)   <<
+Tested 38, errors 9 (23.7%)   <<
+Tested 340, errors 80 (23.5%)   <<
+Tested 38, errors 10 (26.3%)   <<
+Tested 340, errors 78 (22.9%)   <<
+Tested 38, errors 12 (31.6%)   <<
+Tested 340, errors 77 (22.6%)   <<
+Tested 38, errors 13 (34.2%)   <<
+Tested 340, errors 79 (23.2%)   <<
+Tested 38, errors 11 (28.9%)   <<
+Tested 340, errors 81 (23.8%)   <<
+Tested 38, errors 9 (23.7%)   <<
+Tested 340, errors 79 (23.2%)   <<
+Tested 38, errors 11 (28.9%)   <<
+Tested 341, errors 80 (23.5%)   <<
+Tested 37, errors 10 (27.0%)   <<
+Tested 341, errors 79 (23.2%)   <<
+Tested 37, errors 11 (29.7%)   <<
+
+train:	Tested 340.2, errors 79.2 (23.3%)   <<
+test:	Tested 37.8, errors 10.8 (28.6%)   <<

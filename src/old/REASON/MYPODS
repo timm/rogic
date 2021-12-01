@@ -1,0 +1,33 @@
+. mypods.rc
+
+echo "TODO: "
+echo "$files" | fmt
+
+echo ""
+
+htmls() {
+font="<font face=Arial size=0>"
+(echo "<table>"
+for i in $files
+do      cat <<-EOF
+        <tr>
+           <td><a target=Content href=$i.html>${font}$i</a>
+           </td>
+           <td>${font}: (<a target=Content href=$i.pdf>${font}pdf</a>)
+           </td>
+        </tr>
+EOF
+done
+echo "</table>") > menu.html
+}
+
+files() {
+for i in $files
+do
+	mypod  $i
+done
+}
+
+htmls
+files
+

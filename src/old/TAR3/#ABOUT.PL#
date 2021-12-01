@@ -1,0 +1,23 @@
+
+% license
+hello :- 
+   aboutme(Name,Ver,Year,Creator,Mantra),
+   format('~s version ~s',[Name,Ver]),nl,
+   format('Copyright (C) ~s by ~s',[Year,Creator]),
+   nl,format('~s',[Mantra]),
+   nl,nl,format('~s ',[Name]),
+   chars('nowarranty.txt'). 
+   
+warranty :-
+    aboutme(Name,_,Year,Creator,_),
+    format('~s by ~s',[Name,Creator]),nl,
+    format('Copyright (C) ~s\n\n',[Year]),
+    chars('warranty.txt'),nl. 
+
+conditions :- chars('conditions.txt'),nl. 
+
+wave :- 
+   aboutme(Name,Ver,_,_,_),
+   format('~s version ~s',[Name,Ver]),nl.
+
+

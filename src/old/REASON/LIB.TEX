@@ -1,0 +1,62 @@
+\documentclass{article}
+
+%%  Latex generated from POD in document /cygdrive/i/tim/src/pl/reason/mypod_tmp.pl
+%%  Using the perl module Pod::LaTeX
+%%  Converted on Mon Aug 25 04:30:44 2003
+
+
+\usepackage{makeidx}
+\makeindex
+
+
+\input{mypodstyle}
+
+\tableofcontents
+
+\clearpage
+\section{Library\label{Library}\index{Library}}
+\subsection{Random clause */\label{Random_clause_}\index{Random clause */}}
+\begin{verbatim}
+ one(X) :- 
+        setof(One,X^one1(X,One),All0), 
+        beam(X,All0,All), 
+        member(_/X,All).
+\end{verbatim}
+\begin{verbatim}
+ one1(X,Score/X) :- 
+        X, 
+        score(X,Score0), 
+        bound(X,Score0), 
+        Score is -1 * Score0. /*
+\end{verbatim}
+
+
+If we have no knowledge of \texttt{X}, give it a random number. */
+
+\begin{verbatim}
+ score(_,N) :- 
+        N is  rand(2147483647). /*
+\end{verbatim}
+
+
+If we have knowledge of minimum values for a score,  test it here. */
+
+\begin{verbatim}
+ bound(_,Score) :- 
+        Score > 0. /*
+\end{verbatim}
+
+
+Sometimes, we may just want to select the top \textit{N} values:
+makes this a beam search
+
+
+
+But right now, we have no selection knowledge. */
+
+\begin{verbatim}
+ beam(_,L,L).
+\end{verbatim}
+\printindex
+
+\end{document}

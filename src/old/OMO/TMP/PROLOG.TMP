@@ -1,0 +1,82 @@
+
+/*
+
+=head1 Prolog Program Files
+
+Here's my standard structure for writing Prolog programs. 
+
+If an application sets global flags, changes
+operator, definitions, runs start-up code, etc etc,
+then it can conflict with your code.
+
+So, to let us mix and match Prolog code, we seperate start-up
+actions from set-up actions from the bulk of the code.
+Then, if you want,
+you can load only I<part> of the other code and customize the
+start-up actions.
+
+So, unless they are very simple,
+each of my applications C<App> comes in at  four files:
+C<App.pl>, C<App0.pl> (start-up code), C<App1.pl> (the bulk
+of the system), and C<App2.pl> (start-up actions).
+
+
+
+C<App.pl> is the default load program for the application.
+Loads the other files in the order
+C<App0.pl>, C<App1.pl>, then C<App2.pl>.
+
+(Exception: sometimes there is no need for, say, start-ups.
+In which case one or more of the above is ignored.)
+
+C<App1.pl> contains
+the bulk of the system. Should contain no load-time directives.
+
+C<App2.pl> contains
+start-up actions that happen as a side-effect of loading the
+code.
+
+C<App0.pl> contains the set-up code that proceeds all the above.
+There are several types of interesting set-up actions.
+
+=over 8
+
+=item Uses
+
+Load code from other applications.
+
+=item Ops
+
+Operator definitions; e.g. */
+
+ :- op(999,xfx,if).
+ :- op(998,xfy,and). /*
+
+=item Flags
+
+Define (e.g.) meta-knowledge of terms such as which one's are
+dynamic, which are discontiguous, where to index, etc, etc. E.g. */
+
+ :- dynamic emp/5.
+ :- discontiguous emp/5.
+ :- index(emp(1,1,0,0,0)). /*
+
+=item Hooks
+
+Hooks into the Prolog reader; e.g. */
+
+  term_expansion((X if Y), (X :- Y)).
+  goal_expansion(X and Y,(X,Y)). /*
+
+=item Hacks
+
+Things we don't tell junior Prolog programmers. Hell, why am I even
+telling you? For example, we might want to fix over-zealous DCG
+expansions: */
+
+  goal_expansion(true(X,X),true).
+
+=back
+
+
+

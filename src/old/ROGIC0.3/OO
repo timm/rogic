@@ -1,0 +1,259 @@
+
+o A :-
+	o(A, B, C, D, E).
+
+A o B :-
+	o(A, C, D, E, B).
+
+o(A, B/C, D) :-
+	o(A, B, E, B/C, D).
+
+o(true, A, true, B, B).
+o(as A, B, A, A, A).
+o(A of B=C, D, C, E, F) :-
+	hashi(A, B, G, C),
+	o(G, D, C, E, F).
+o(not A, B, C, D, D) :-
+	\+o(A, B, C, D, E).
+o(A ask B, C, D, E, F) :-
+	o(A=G, C, D, E, F),
+	B o G.
+o(A keep B, C, D, E, F) :-
+	o(A was G now H, C, D, E, F),
+	o(B, G, H).
+o(new(A), A, B, C, D) :-
+	o(isa(A, C)o init(A), A, B, C, D).
+o(new, A, B, C, D) :-
+	o(isa(A, E), A, F, C, G),
+	o(new(A), A, B, G, D).
+o(map(A, B), C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	maplist(B, G, D).
+o(sort(A), B, C, D, E) :-
+	o(A was F now C, B, C, D, E),
+	sort(F, C).
+o(in(A, B), C, D, E, F) :-
+	o(A=G, C, D, E, F),
+	member(B, G).
+o(+A, B, C, D, E) :-
+	o(A was F now C, B, C, D, E),
+	C is F+1.
+o(-A, B, C, D, E) :-
+	o(A was F now C, B, C, D, E),
+	C is F-1.
+o(A+B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G+B.
+o(A-B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G-B.
+o(A*B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G*B.
+o(A/B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G/B.
+o(A^B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G^B.
+o(A<<B, C, D, E, F) :-
+	o(A was G now[B|G], C, D, E, F).
+o(A>>B, C, D, E, F) :-
+	o(A was[B|G]now G, C, D, E, F).
+o(A so B, C, B, D, E) :-
+	o(A, C, B, D, E).
+o(o A, B, C, D, E) :-
+	o(A, B, C, D, E).
+o(A o B, C, D, E, F) :-
+	o(A, C, G, E, H),
+	o(B, C, D, H, F).
+o(print(A), B, C, D, E) :-
+	o(A=F, B, C, D, E),
+	print(F).
+o(write(A), B, C, D, E) :-
+	o(A=F, B, C, D, E),
+	write(F).
+o(println(A), B, C, D, E) :-
+	o(A=F, B, C, D, E),
+	print(F),
+	nl.
+o(writeln(A), B, C, D, E) :-
+	o(A=F, B, C, D, E),
+	write(F),
+	nl.
+o(print, A, B, C, C) :-
+	print(C).
+o(write, A, B, C, C) :-
+	write(C).
+o(println, A, B, C, C) :-
+	print(C),
+	nl.
+o(writeln, A, B, C, C) :-
+	write(C),
+	nl.
+o(A rand B, C, D, E, F) :-
+	(   maybe
+	->  o(A, C, D, E, G),
+	    o(B, C, D, G, F)
+	;   o(B, C, D, E, G),
+	    o(A, C, D, G, F)
+	).
+o(A ror B, C, D, E, F) :-
+	(   maybe
+	->  (   o(A, C, D, E, F)
+	    ;   o(B, C, D, E, F)
+	    )
+	;   o(B, C, D, E, F)
+	;   o(A, C, D, E, F)
+	).
+o(A=B, C, B, C/D, C/D) :-
+	o0(C, A, E),
+	arg(E, D, B).
+o(A is B, C, D, C/E, C/E) :-
+	D is B,
+	o0(C, A, F),
+	setarg(F, E, D).
+o(A:=B, C, B, C/D, C/D) :-
+	o0(C, A, E),
+	setarg(E, D, B).
+o(A was B now C, D, C, D/E, D/E) :-
+	o0(D, A, F),
+	arg(F, E, B),
+	setarg(F, E, C).
+o(A was B do C now D, E, D, E/F, E/G) :-
+	o0(E, A, H),
+	arg(H, G, B),
+	o(C, E, I, F, G),
+	setarg(H, G, D).
+o(self(A/B, A/C), A, D, A/B, A/C).
+o(show, A, B, A/C, A/C) :-
+	showo(A/C).
+o(init(goal), goal, A, goal/B, C) :-
+	o(weight:=0 o true, goal/B, C).
+o(dd(goal, [weight:=0, id, aov]), goal, A, goal/B, C) :-
+	true(goal/B, C).
+o(isa(goal, goal/goal(A, B, C)), goal, D, goal/E, F) :-
+	true(goal/E, F).
+o(inc(A), goal, B, goal/C, D) :-
+	is(A, 1+random(10^4)/10^6, goal/C, D).
+o(incw, goal, A, goal/B, C) :-
+	o(inc(D)o weight+D, goal/B, C).
+o(decw, goal, A, goal/B, C) :-
+	o(inc(D)o weight-D, goal/B, C).
+o(init(ht0), ht0, A, ht0/B, C) :-
+	o(nGoals:=0 o maxProved:=0 o goalsProved:=[]o nProved:=0 o true, ht0/B, C).
+o(dd(ht0, [i, nGoals:=0, maxProved:=0, goalsProved:=[], goals, nProved:=0, wme]), ht0, A, ht0/B, C) :-
+	true(ht0/B, C).
+o(isa(ht0, ht0/ht0(A, B, C, D, E, F, G)), ht0, H, ht0/I, J) :-
+	true(ht0/I, J).
+o(ht0(A, B), ht0, C, ht0/D, E) :-
+	o(new(ht0), ht0/D, F),
+	o(i:=A, F, G),
+	o(prep(B, H), G, I),
+	o(goals:=H, I, J),
+	o(run, J, K),
+	o(maxProved=C, K, L),
+	o(show, L, E).
+o(prep(A, B), ht0, xreturn, C, D) :-
+	prep(A, B, ht0, C, D).
+o(run, ht0, A, ht0/B, C) :-
+	o(i=0, ht0/B, C), !.
+o(run, ht0, A, ht0/B, C) :-
+	o(notes, ht0/B, D),
+	o(reset, D, E),
+	o(proves, E, F),
+	o(-i, F, G),
+	o(run, G, C).
+o(reset, ht0, A, ht0/B, C) :-
+	retractall(a(D, E, F, G, H)),
+	I=ht0/B,
+	o(nProved:=0, I, C).
+o(notes, ht0, A, ht0/B, C) :-
+	o(nProved=D, ht0/B, E),
+	o(nGoals=F, E, G),
+	is(H, D/F, G, I),
+	o(maxProved=J, I, K),
+	(   =<(H, J, K, L)
+	->  true(L, C)
+	;   newBest(H, K, C)
+	).
+o(newBest(A), ht0, B, ht0/C, D) :-
+	o(maxProved is A, ht0/C, E),
+	retractall(best(F)),
+	forall(a(G, H, I, J, K), assert(best(G, H, I, J, K))),
+	D=E.
+o(proves, ht0, A, ht0/B, C) :-
+	o(sort(goals)so D, ht0/B, E),
+	o new(wme)o as F,
+	G=E,
+	o(wme:=F, G, H),
+	o(goalsProved:=[], H, I),
+	o(prove(D, J), I, K),
+	o(goals:=J, K, C).
+o(prove(A, B), ht0, xreturn, C, D) :-
+	prove(A, B, ht0, C, D).
+o(init(wme), wme, A, wme/B, C) :-
+	o(time:=1 o route:=[1=[]]o true, wme/B, C).
+o(dd(wme, [time:=1, id, route:=[1=[]]]), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(isa(wme, wme/wme(A, B, C)), wme, D, wme/E, F) :-
+	true(wme/E, F).
+o(reset, wme, A, wme/B, C) :-
+	o(time:=1, wme/B, D),
+	o(route=[1=[]], D, C).
+o(prove(A, B), wme, C, wme/D, E) :-
+	o(reset, wme/D, F),
+	o(id:=B, F, G),
+	o(A, G, E).
+o(hop(A, B), wme, C, wme/D, E) :-
+	o(time=F, wme/D, G),
+	o(id=H, G, I),
+	o(now(J), I, K),
+	o(assume(A, F, H, L), K, M),
+	(   L<H,
+	    N=M
+	->  o(push(A), N, E)
+	;   \+member(A, J),
+	    O=M,
+	    o(push(A), O, P),
+	    o(B, P, E)
+	).
+o(push(A), wme, B, wme/C, D) :-
+	print(pushing(A)),
+	E=wme/C,
+	o(route was[F=G|H]now[F=[A|G]|H], E, I),
+	print(pushed(A)),
+	D=I.
+o(now(A), wme, B, wme/C, D) :-
+	o(time=E o route was F now[E=A|G], wme/C, H),
+	less1(F, E=A, G),
+	D=H.
+o(assume(A of B=C, D, E, F), wme, G, wme/H, I) :-
+	a(A, B, D, F, J), !,
+	J=C,
+	I=wme/H.
+o(assume(A of B=C, D, E, E), wme, F, wme/G, H) :-
+	assert(a(A, B, D, E, C)),
+	H=wme/G.
+o(assume(A of B=C, D, E, F), wme, G, wme/H, I) :-
+	retract(a(A, B, D, E, C)),
+	J=wme/H,
+	fail(J, I).
+o(plus(1, 1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(plus(-1, -1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(minus(1, -1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(minus(-1, 1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o('58567'(A), wme, B, wme/C, D) :-
+	o(hop(val of cortico=A, plus(A, E)o val of acth=E), wme/C, D).
+o('16727575'(A), wme, B, wme/C, D) :-
+	o(hop(val of nna=A,  (plus(A, E)o val of coldSwim=E)ror (minus(A, E)o val of temp=E)), wme/C, D).
+o('923875'(A), wme, B, wme/C, D) :-
+	o(hop(val of temp=A,  (plus(A, E)o val of cortico=E)ror (plus(A, E)o val of dex=E)), wme/C, D).
+o('16724567'(A), wme, B, wme/C, D) :-
+	o(hop(val of acth=A,  (minus(A, E)o val of temp=E)ror (plus(A, E)o val of nna=E)), wme/C, D).
+o('16338735'(1), wme, A, wme/B, C) :-
+	o(hop(val of coldSwim=1, true), wme/B, C).

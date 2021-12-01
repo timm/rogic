@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>circEg</title>
+<link rel="stylesheet" href="printer_mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#circ1_examples">Circ1 Examples</a></li>
+	<ul>
+
+		<li><a href="#loads_*/">Loads */</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+This document is also available in  the following formats:
+         <a href="circEg.pdf">pdf</a>; a
+        <a href="circEg_4printer.html">printer-friendly</a> format; a
+        <a href="circEg.html">display-friendly</a> format;
+        <a href="circEg.txt">plain text</a>; or
+         text with <a href="circEg.man">bold escape characters</a>.
+/*<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="circ1_examples">Circ1 Examples</a></h1>
+<p>
+</p>
+<h2><a name="loads_*/">Loads */</a></h2>
+<pre>
+ :- [demo,circ].</pre>
+<pre>
+ eg(bulb) :-
+    write('\nBEFORE\n'),listing(assumption),
+    reset,
+    write('\nRESET DONE\n'),listing(assumption),
+    bulb(a,A,B,C,D),
+    write(bulb(a,A,B,C,D)),nl,
+    write('\nAFTER\n'),listing(assumption).</pre>
+<pre>
+ eg(circ1) :-
+    XS1= xs1, XB1= xb1, XS2= xs2, XB2=xb2, XS3=xs3,XB3= xb3,
+    Goal=
+        circuit(   switch(XS1, _Sw1,  _VSw1, _C1),
+                   bulb(XB1,   _B1,   _L1,   _VB1, _C1),
+                   switch(XS2, _Sw2,  _VSw2, _C2),
+                   bulb(XB2,   _B2,   _L2,   _VB2, _C2),
+                   switch(XS3, _Sw3,  _VSw3, _CSw3),
+                   bulb(XB3,   _B3,   _L3,   _VB3, _CB3),
+                   _Shine),
+    reset, 
+    Goal,
+    write('\nAFTER\n'),listing(assumption).</pre>
+<pre>
+ eg(sample) :-
+    tell('circ.out'),forall(between(1,1000,I),(sample(I),once(circuit(_)))),told.</pre>
+<pre>
+ sample(I) :- 0 is I mod 50,!, write(user,' '),write(user, I),flush_output(user).
+ sample(_).</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

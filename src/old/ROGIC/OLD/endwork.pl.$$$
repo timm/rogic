@@ -1,0 +1,78 @@
+:- dynamic enough_said/1.
+
+ends(Out) :-
+	retractall(enough_said(_)),
+	bagof((Head if Body),temp(Head,Body),L0),
+	msort(L0,L1), 
+	combineClauses(L1,L2),
+	xpand(L2,Out,_).
+
+combineClauses([],[]).
+combineClauses([(H if X),(H if Y)|Rest],Out) :- !,
+	combineClauses([(H if Y or X)|Rest], Out).
+combineClauses([H|T],[H|Rest]) :-
+	combineClauses(T,Rest).
+
+xpand([],[],_).
+xpand([H0|T0], [H|T], P) :- 
+	xpand(H0,H,P), xpand(T0,T,P).
+xpand((kb1(X,Y,P) if If0),(kb1(X,Y,P) :- If),_) :-
+	xpand(If0,If,P).
+xpand(not(X and Y),Z, P) :- !,
+	xpand(not X or  not Y, Z, P).
+xpand(not(X or  Y),Z, P) :- !,
+	xpand(not X and not Y, Z, P).
+xpand(not not X0, X, P) :- !,
+	xpand(X0, X, P).
+xpand(X0 and Y0, X rand Y, P) :- 
+	xpand(X0,X,P), 
+	xpand(Y0, Y, P).
+xpand(X0 or  Y0, X ror  Y,P) :- 
+	xpand(X0,X,P), 
+	xpand(Y0, Y, P).
+xpand(not A=B, Out, P) :- 
+	negates(A=B,Temp), 
+	xpand(Temp,Out,P).
+xpand(not X, Out, P) :- 
+	thing(_,X,bool), !,
+	xpand(not X=1,Out,P).
+xpand(not X0, not X, P) :- 
+	xpand(X0,X,P).
+xpand(X, Out, P) :- 
+	thing(_,X,bool), !, 
+	xpand(X=1,Out,P).
+xpand(X=Y, Goal, P) :- 
+	\+ badThing(X,Y),Goal = kb(X,Y,P).
+xpand(true,  true, _).
+
+negates(A=B,Out) :-
+	bagof(One,A^B^negate(A=B,One),Temp),
+	l2d(Temp,Out).
+
+negate(A=B,A=C) :- 
+	+thing(A,Type), 
+	type(Type,C), B \= C.
+	
+badThing(X,Y) :-
+	once(( \+ +thing(X,_), 
+	  oops(unknownThing(X))
+	; +thing(X,Type),
+	  \+ type(Type,_), 
+	  oops(varOfUnknownType(X,Type))
+	; +thing(X,Type),
+	  \+ type(Type,Y),
+	  oops(unknownValue(X,Y))
+	)),
+	write('%'),print(X),nl.
+	
+l2d([X],X) :- !.
+l2d([X|Y],X or Rest) :- 
+	sl2d(Y,Rest).
+
+
+oops(OOps) :-   
+	enough_said(OOps),!,fail.
+oops(OOps) :-
+	print(oops(OOps)),nl,
+	assert(enough_said(OOps)),
+	fail.

@@ -1,0 +1,15 @@
+name         = '000. simple steady'.
+
+objects(e)   = [aa,bb].
+objects(m)   = [cc].
+
+aa ++ cc.
+bb ++ cc.
+	   
+
+
+
+
+
+
+

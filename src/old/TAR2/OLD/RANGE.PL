@@ -1,0 +1,2 @@
+range :-
+  rule(A,B),

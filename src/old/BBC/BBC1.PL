@@ -1,0 +1,128 @@
+:- op(899,  fx,  at).
+:- op(899, xfx, has).
+:- op(701, yfx,  in).
+:- op(700, xfx,  :=).
+:- op(2,   xfx,  of).
+:- op(1,    fx, [the,our]).
+
+items    has [contents=[]
+             ].
+item     has [name=_
+             ,allNumbers=t
+	     ,summary=Num
+	     ] :- at(new(numeric),Num).
+numeric  has [n=0
+             ,max=Max
+	     ,min=Min
+	     ] :- most(+ Min), most(- Max).
+discrete has [contents=[]
+             ].
+buckets  has [contents=[]
+             ,skip=nOtHing
+	     ].
+cache    has [fields=[]
+             ,line=0
+	     ,items=Items
+	     ] :- at(new(items),Items).
+
+portray(thing(_,_,_,_)) :- write(thing).
+
+thingp(C,Fields,X) :- at((our class=C,our contents=Fields),X,X).
+
+at(our class,    A0,A, thing(A0,B,C,D), thing(A,B,C,D)).
+at(our identity, B0,B, thing(A,B0,C,D), thing(A,B,C,D)).
+at(our index,    C0,C, thing(A,B,C0,D), thing(A,B,C,D)).
+at(our contents, D0,D, thing(A,B,C,D0), thing(A,B,C,D)).
+at(our defaults, _,L) --> at(our class=C), {has(C,L)}. 
+at(our blank,    _,B) --> at(our defaults,_,D),
+	                  {maplist(key,D,B)}.
+
+at our K/V0/V  --> at(our K,V0,V).
+at the K/V0/V  --> at our contents/L0/L, {swap(L0,K/V0/V,L)}.
+at max(X,N)    --> at X/V0/V,            {V is max(V0,N)}.
+at min(X,N)    --> at X/V0/V,            {V is min(V0,N)}.
+at X + T       --> at X/V0/V,            {V is V0 + T}.
+at Y in X      --> at X/V0/V,            {at(Y,V0,V)}.
+at X = Y       --> at X/Y/Y.
+at X:= Y       --> at X/_/Y.
+at X of empty  --> \+ at X of something.
+at X of something  --> at X of nonvar, at X=[_|_].
+at X of var    --> at X=Y,{var(Y)}.
+at X of nonvar --> at X=Y,{nonvar(Y)}.
+at X of number --> at X=Y,{number(Y)}.
+at X of list   --> at X of something.
+at size(X,N)   --> at X=Y,    {length(Y,N)}.
+at (X,Y)       --> at X, at Y.
+
+at new(C) -->
+	{flag(C,Id,Id+1)},
+	at (our class     =  C % important: set the class first
+           , our defaults =  D % now, getting the defaults will work
+	   , our contents := D
+	   , our identity := Id
+           , our index    := 0
+           ).
+
+at(X)   :- at(X,_,_).
+at(X,Y) :- at(X,_,Y).
+
+cache(F,Cache) :- reads(F,cache,Cache).
+ranges(F,Range) :- reads(F,range,Range).
+
+cell(V,F) --> at our class=cache.
+
+% gizmo for calling "cell" on each non-header row argument
+reads(F,C,Out) :- see(F), read(X),ignore(read1(X,C,_,Out)),seen.
+read1(X,C) --> at(new(C)),at the line+1,header(X). %{read(Y)},rows(Y).
+
+%header(_)  --> at the contents of something in the items.
+header(L0) --> at the contents of empty   in the items,
+	{at(new(items),Items),
+	 c2lSome(L0,L),
+	 findall(Item,item0(L,Item),Items)},
+	at the contents := Items.
+
+item0(Items0,Item) :-
+	member(Item0,Items0),
+	at((new(item), the name=Item0),Item).
+
+rows(end_of_file) --> !.
+rows(X) -->
+	{c2lSome(X,L)},
+	at our fields=FNs,
+	at line+1,
+	row(L,FNs),
+	{read(Y)},
+	rows(Y).
+
+row([],[]) --> [].
+row([V|Vs],[F|Fs]) --> cell(V,F), row(Vs,Fs).
+
+%%% utils
+
+swap([Goal=Old|L], Goal/Old/New, [Goal=New|L]).
+swap([Field|L0], Goal, [Field|L]) :- swap(L0,Goal,L).
+
+c2lSome((H,Y), [H|T]) :- !, c2lSome(Y,T).
+c2lSome(_,[]).
+
+key(K=_,K=_).
+
+most(+ Num) :- current_prolog_flag(max_integer,Num).
+most(- Num) :- current_prolog_flag(min_integer,Num).
+
+show(Thing) :- forall(show1(Thing,0),true).
+
+show1(thing(A,B,C,D),In) :- at(our X =Y,thing(A,B,C,D)),show1(X=Y,In).
+show1(contents=_,In) :- tab(In),   format('~w\n',contents).
+show1(contents=Y,In) :- nonvar(Y), member(X,Y), show1(X,In+2).
+show1(X=Y,In)        :- X\=contents, show1(Y,In+2).
+show1(X=Y,In)        :- X\=contents, atomic(Y),
+	               tab(In),   format('~w ',X),
+	               pad(10,X), format('~w\n',Y).
+
+pad(S,A) :-
+    atom_length(A,N),
+    Pad is S - N,
+    forall(between(1,Pad,_),write('.')).
+

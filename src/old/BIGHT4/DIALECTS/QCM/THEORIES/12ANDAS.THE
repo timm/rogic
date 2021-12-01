@@ -1,0 +1,17 @@
+name = '12. ands + assumptions'.
+
+objects(e) = [hh,ii,kk].
+objects(m) = [aa,bb,cc,dd,ee,ff,gg,jj].
+
+hh ++ gg.
+ii -- gg.
+gg ++ aa.
+gg ++ bb.
+aa ++ cc.
+aa ++ dd.
+aa ++ jj.
+bb ++ jj.
+bb ++ ee.
+bb ++ ff.
+kk ++ bb.
+

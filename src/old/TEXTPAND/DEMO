@@ -1,0 +1,4 @@
+`f put*images='c:/usr/tim.src/perl/wprep/icons'` 
+`f put*icon(astro)=gif*astroflys`
+and how are you `f get*images` and after than
+we get to see   `f get*icon(astro)`jsadasdaskkas

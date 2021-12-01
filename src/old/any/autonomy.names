@@ -1,0 +1,20 @@
+-8000,-7000,-6000,-5000,-4000,-3000,-2000,-1000,0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,1600
+
+target_critical_mission_phases: y,n.
+target_critical_commands: y,n.
+target_critical_events: y,n.
+onboard_checking: y,n. 
+reduce_flight_complexity: y,n.
+test_fly_prototypes: y,n. 
+enhance_safing: y,n. 
+certification: y,n. 
+increase_vv: y,n.
+reduce_onboard_autonomy: y,n.
+reuse_across_missions: y,n.
+increase_developer_capabilities: y,n.
+increase_developer_tool_use: y,n.
+implement_optional_functions_after_launch: y,n.
+reduce_vv_cost: y,n.
+increase_vv_speed: y,n.
+increase_vv_capabilities: y,n.
+score: continuous.

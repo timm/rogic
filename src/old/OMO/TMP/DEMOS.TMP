@@ -1,0 +1,199 @@
+
+/*
+
+=head1 Demo
+
+After defining some example predicate such as: */
+
+  egDemo :-
+	forall(member(X,[i,love,prolog]),
+	      format(' ~p\n',[X])). /*
+
+Then also define a one-liner that wraps the example predicate
+in a call to C<demo>. */
+
+  egDemos :- demo(egDemo). /*
+
+If executed, this generates the file C<egDemo.spy>:
+
+
+ %% egDemo.spy (output from ':- demos(egDemo).')
+ i
+ love
+ prolog
+ %% runtime = 0 sec(s)
+
+Note that if it is planned to include demo output to a
+pod file, like this one, then 
+its good practice to print a leading
+blank space before each line of output..
+
+=head1 Source Code
+
+C<Demo/1> runs a goal C<G> and catches the output to the file
+C<G.spy>. Also, just so you know what is going on,
+it runs the goal C<G> a second time and sends the output to the screen. */
+
+ demo(G) :-
+     sformat(Out,'~w.spy',G),
+     sformat(Header,'\n %% ~w (output from '':- demos(~w).'')\n',[Out,G]),
+     write(Header), 
+     T1 is cputime,
+     ignore(forall(G,true)),
+     T2 is (cputime - T1),
+     sformat(Footer,' %% runtime = ~w sec(s)',T2),
+     write(Footer),
+     freshFile(Out),
+     tell(Out),
+     write(Header),
+     ignore(forall(G,true)),
+     write(Footer),
+     told. /*
+
+C<Demo/1> needs a helper predicate. C<FreshFile/1>
+makes sure that no one
+else has scribbled, or is currently scribbling, on our output file. */
+
+ freshFile(X) :- 
+    (current_stream(X,_,S) -> close(S)       ; true),
+    (exists_file(X)        -> delete_file(X) ; true).
+
+
+=head1 About this Document
+
+Copyright (C)
+2003
+by
+Tim Menzies
+<Z<>tim@menzies.usZ<>>
+home page=
+http://menzies.us
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; 
+see http://www.gnu.org/copyleft/gpl.htmlZ<>.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+=head2 Disclaimer
+
+The content from or through this web page are provided 'as is' and the
+author makes no warranties or representations regarding the accuracy
+or completeness of the information.  Your use of this web page and
+information is at your own risk. You assume full responsibility and
+risk of loss resulting from the use of this web page or information.
+If your use of materials from this page results in the need for
+servicing, repair or correction of equipment, you assume any costs
+thereof.  Follow all external links at your own risk and liability.
+
+=begin html
+
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+
+=end html
+

@@ -1,0 +1,35 @@
+\begin{thebibliography}{1}
+
+\bibitem{bratko01}
+I.~Bratko.
+\newblock {\em Prolog Programming for Artificial Intelligence. (third
+  edition)}.
+\newblock Addison-Wesley, 2001.
+
+\bibitem{der96}
+P.~Deransart, A.~Ed-Dbali, and L.~Cervoni.
+\newblock {\em Prolog: The Standard}.
+\newblock Sprunger, 1996.
+
+\bibitem{me89zb}
+T.~Menzies.
+\newblock Domain-specific knowledge representations.
+\newblock {\em AI Expert}, Summer 1989.
+
+\bibitem{ok90}
+R.~O'Keefe.
+\newblock {\em The Craft of Prolog}.
+\newblock MIT Press, 1990.
+
+\bibitem{sterling94}
+L.~Sterling and E.~Shapiro.
+\newblock {\em The Art of Prolog (second edition)}.
+\newblock MIT Press, 1994.
+
+\bibitem{swiprolog}
+J.~Wielemaker.
+\newblock {\em SWI-Prolog}.
+\newblock Available from
+  \url{http://swi.psy.uva.nl/projects/xpce/SWI-Prolog.html}.
+
+\end{thebibliography}

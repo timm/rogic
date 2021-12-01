@@ -1,0 +1,18 @@
+%%%% Pre-load actions
+%<
+:- dynamic knownBuiltIn/1.
+:- op(1001,fx,do).
+:- op(1001,fx,one).
+
+goal_expansion((do X0),rand(X)) :-
+    c2l(X0,X1),
+    maplist(my_goal_expansion,X1,X).
+
+goal_expansion((one X0),ror(X)) :-
+    c2l(X0,X1),
+    maplist(my_goal_expansion,X1,X).
+
+my_goal_expansion(X,Y) :- goal_expansion(X,Y),!.
+my_goal_expansion(X,X).
+%>
+    

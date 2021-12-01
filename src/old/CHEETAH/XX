@@ -1,0 +1,99 @@
+[ (rule(authorization, ?authorization=t, rule138, 1, 1, A, B):-do(?authorizationToProceed=t, A, B))].
+[ (rule(effectiveReqReviews, ?effectiveReqReviews=t, rule139, range(10, 20, 0.5), 1, A, B):-do(rany([?peerReviewOfRequirements=t, ?conductFormalInspectionOfRequirements=t, ?softwareAssuranceReviewOfRequirements=t, ?conductFormalReviews=t]), A, B))].
+[ (rule(problemReport, ?problemReport=t, rule140, 5, 1, A, B):-do(?problemReportAndCorrectiveActionSystem=t, A, B))].
+[ (rule(configurationManagement, ?configurationManagement=t, rule141, range(20, 30, 0.5), 1, A, B):-do(?implementFormalConfigurationManagement=t, A, B))].
+[ (rule('iv&v', ?'iv&v'=t, rule142, 100, 1, A, B):-do(?'planAndScheduleIV&Vactivities'=t, A, B))].
+[ (rule(stableRequirements, ?stableRequirements=t, rule143, 0, 1, A, B):-do(rand([?authorization(2)=t, ?effectiveReqReviews(6)=t, ?problemReport(4)=t, ?configurationManagement(2)=t, ?'iv&v'(4)=t, ?documentedRequirements(4)=t, ?designReqReview(8)=t]), A, B))].
+[ (rule(authorization(2), ?authorization(2)=t, rule144, 0, 0.1, A, B):-do(?authorization=t, A, B))].
+jim says changes=1.
+[ (rule(effectiveReqReviews(6), ?effectiveReqReviews(6)=t, rule145, 0, 0.9, A, B):-do(?effectiveReqReviews=t, A, B))].
+jim says changes=1.
+[ (rule(problemReport(4), ?problemReport(4)=t, rule146, 0, 0.9, A, B):-do(?problemReport=t, A, B))].
+jim says changes=1.
+[ (rule(configurationManagement(2), ?configurationManagement(2)=t, rule147, 0, 0.3, A, B):-do(?configurationManagement=t, A, B))].
+jim says changes=1.
+[ (rule('iv&v'(4), ?'iv&v'(4)=t, rule148, 0, 0.1, A, B):-do(?'iv&v'=t, A, B))].
+jim says changes=1.
+[ (rule(documentedRequirements(4), ?documentedRequirements(4)=t, rule149, 0, 0.3, A, B):-do(?documentedRequirements=t, A, B))].
+jim says changes=1.
+[ (rule(designReqReview(8), ?designReqReview(8)=t, rule150, 0, 0.9, A, B):-do(?designReqReview=t, A, B))].
+jim says changes=1.
+[ (rule(completeRequirements, ?completeRequirements=t, rule151, 0, 1, A, B):-do(rand([?effectiveReqReviews(7)=t, ?'iv&v'(5)=t, ?documentedRequirements(5)=t, ?problemReport(5)=t, ?designReqReview(9)=t]), A, B))].
+[ (rule(effectiveReqReviews(7), ?effectiveReqReviews(7)=t, rule152, 0, 0.9, A, B):-do(?effectiveReqReviews=t, A, B))].
+jim says changes=1.
+[ (rule('iv&v'(5), ?'iv&v'(5)=t, rule153, 0, 0.1, A, B):-do(?'iv&v'=t, A, B))].
+jim says changes=1.
+[ (rule(documentedRequirements(5), ?documentedRequirements(5)=t, rule154, 0, 0.9, A, B):-do(?documentedRequirements=t, A, B))].
+jim says changes=1.
+[ (rule(problemReport(5), ?problemReport(5)=t, rule155, 0, 0.3, A, B):-do(?problemReport=t, A, B))].
+jim says changes=1.
+[ (rule(designReqReview(9), ?designReqReview(9)=t, rule156, 0, 0.9, A, B):-do(?designReqReview=t, A, B))].
+jim says changes=1.
+[ (rule(goodRequirements, ?goodRequirements=t, rule157, 0, 0.9, A, B):-do(rand([?stableRequirements=t, ?completeRequirements=t]), A, B))].
+[ (rule(designReqReview, ?designReqReview=t, rule158, 5, 1, A, B):-do(?designMeetsRequirementsReview=t, A, B))].
+[ (rule(documentDesign, ?documentDesign=t, rule159, 10, 1, A, B):-do(?'documentPreliminary&DetailedDesigns'=t, A, B))].
+[ (rule(designReviews, ?designReviews=t, rule160, 10, 1, A, B):-do(rany([?peerReviewsOnDesign=t, ?conductFormalDesignInspections=t, ?conductFormalDesignReviews=t]), A, B))].
+[ (rule(baselineDesign, ?baselineDesign=t, rule161, 5, 1, A, B):-do(?createBaselineForDesign=t, A, B))].
+[ (rule(cmForDesign, ?cmForDesign=t, rule162, 5, 1, A, B):-do(?placeDesignUnderCM=t, A, B))].
+[ (rule(designChangeControl, ?designChangeControl=t, rule163, 5, 1, A, B):-do(?formalChangeControlForDesign=t, A, B))].
+[ (rule(meetSpecs, ?meetSpecs=t, rule164, 5, 1, A, B):-do(rand([?documentDesign(8)=t, ?designReqReview=t, ?designReviews(8)=t]), A, B))].
+[ (rule(documentDesign(8), ?documentDesign(8)=t, rule165, 0, 0.3, A, B):-do(?documentDesign=t, A, B))].
+jim says changes=1.
+[ (rule(designReviews(8), ?designReviews(8)=t, rule166, 0, 0.3, A, B):-do(?designReviews=t, A, B))].
+jim says changes=1.
+[ (rule(achievableDesign, ?achievableDesign=t, rule167, 0, 0.3, A, B):-do(rand([?documentDesign(9)=t, ?designReqReview=t, ?designReviews(9)=t, ?baselineDesign(2)=t, ?cmForDesign(2)=t, ?designChangeControl(2)=t]), A, B))].
+[ (rule(documentDesign(9), ?documentDesign(9)=t, rule168, 0, 0.3, A, B):-do(?documentDesign=t, A, B))].
+jim says changes=0.3.
+[ (rule(designReviews(9), ?designReviews(9)=t, rule169, 0, 0.3, A, B):-do(?designReviews=t, A, B))].
+jim says changes=0.3.
+[ (rule(baselineDesign(2), ?baselineDesign(2)=t, rule170, 0, 0.1, A, B):-do(?baselineDesign=t, A, B))].
+jim says changes=0.3.
+[ (rule(cmForDesign(2), ?cmForDesign(2)=t, rule171, 0, 0.1, A, B):-do(?cmForDesign=t, A, B))].
+jim says changes=0.3.
+[ (rule(designChangeControl(2), ?designChangeControl(2)=t, rule172, 0, 0.1, A, B):-do(?designChangeControl=t, A, B))].
+jim says changes=0.3.
+[ (rule(goodDesign, ?goodDesign=t, rule173, 0, 0.1, A, B):-do(rand([?meetSpecs=t, ?achievableDesign=t]), A, B))].
+[ (rule(codeReviews, ?codeReviews=t, rule174, range(10, 20, 0.5), 1, A, B):-do(rany([?conductCodeWalkthrough=t, ?conductCodeReview=t]), A, B))].
+[ (rule(feasibleDesignToCode, ?feasibleDesignToCode=t, rule175, range(10, 20, 0.5), 1, A, B):-do(rand([?documentDesign(10)=t, ?designReqReview(10)=t, ?designReviews(10)=t, ?codeReviews(8)=t]), A, B))].
+[ (rule(documentDesign(10), ?documentDesign(10)=t, rule176, 0, 0.3, A, B):-do(?documentDesign=t, A, B))].
+jim says changes=1.
+[ (rule(designReqReview(10), ?designReqReview(10)=t, rule177, 0, 0.3, A, B):-do(?designReqReview=t, A, B))].
+jim says changes=1.
+[ (rule(designReviews(10), ?designReviews(10)=t, rule178, 0, 0.1, A, B):-do(?designReviews=t, A, B))].
+jim says changes=1.
+[ (rule(codeReviews(8), ?codeReviews(8)=t, rule179, 0, 0.3, A, B):-do(?codeReviews=t, A, B))].
+jim says changes=1.
+[ (rule(testPlans, ?testPlans=t, rule180, 20, 1, A, B):-do(?testPlansDocumented=t, A, B))].
+[ (rule(unitTest, ?unitTest=t, rule181, 20, 1, A, B):-do(?unitTestConducted=t, A, B))].
+[ (rule(goodTesting, ?goodTesting=t, rule182, 20, 1, A, B):-do(rand([?codeReviews(9)=t, ?testPlans(4)=t, ?unitTest(4)=t]), A, B))].
+[ (rule(codeReviews(9), ?codeReviews(9)=t, rule183, 0, 0.3, A, B):-do(?codeReviews=t, A, B))].
+jim says changes=1.
+[ (rule(testPlans(4), ?testPlans(4)=t, rule184, 0, 0.3, A, B):-do(?testPlans=t, A, B))].
+jim says changes=1.
+[ (rule(unitTest(4), ?unitTest(4)=t, rule185, 0, 0.9, A, B):-do(?unitTest=t, A, B))].
+jim says changes=1.
+[ (rule(goodCoding, ?goodCoding=t, rule186, 0, 0.9, A, B):-do(rand([?effectiveReqReviews(8)=t, ?documentDesign(11)=t, ?designReqReview(11)=t, ?designReviews(11)=t, ?codeReviews(10)=t, ?testPlans(5)=t, ?unitTest(5)=t]), A, B))].
+[ (rule(effectiveReqReviews(8), ?effectiveReqReviews(8)=t, rule187, 0, 0.1, A, B):-do(?effectiveReqReviews=t, A, B))].
+jim says changes=0.9.
+[ (rule(documentDesign(11), ?documentDesign(11)=t, rule188, 0, 0.1, A, B):-do(?documentDesign=t, A, B))].
+jim says changes=0.9.
+[ (rule(designReqReview(11), ?designReqReview(11)=t, rule189, 0, 0.1, A, B):-do(?designReqReview=t, A, B))].
+jim says changes=0.9.
+[ (rule(designReviews(11), ?designReviews(11)=t, rule190, 0, 0.1, A, B):-do(?designReviews=t, A, B))].
+jim says changes=0.9.
+[ (rule(codeReviews(10), ?codeReviews(10)=t, rule191, 0, 0.9, A, B):-do(?codeReviews=t, A, B))].
+jim says changes=0.9.
+[ (rule(testPlans(5), ?testPlans(5)=t, rule192, 0, 0.1, A, B):-do(?testPlans=t, A, B))].
+jim says changes=0.9.
+[ (rule(unitTest(5), ?unitTest(5)=t, rule193, 0, 0.3, A, B):-do(?unitTest=t, A, B))].
+jim says changes=0.9.
+[ (rule(goodImplemenation, ?goodImplemenation=t, rule194, 0, 0.3, A, B):-do(rand([?feasibleDesignToCode=t, ?goodTesting=t, ?goodCoding=t]), A, B))].
+[ (rule(systemIntegration, ?systemIntegration=t, rule195, 20, 1, A, B):-do(?conductSystemIntegration=t, A, B))].
+[ (rule(goodIntegration, ?goodIntegration=t, rule196, 20, 1, A, B):-do(rand([?systemIntegration(2)=t, ?codeReviews(11)=t, ?goodTesting(2)=t]), A, B))].
+[ (rule(systemIntegration(2), ?systemIntegration(2)=t, rule197, 0, 0.9, A, B):-do(?systemIntegration=t, A, B))].
+jim says changes=1.
+[ (rule(codeReviews(11), ?codeReviews(11)=t, rule198, 0, 0.1, A, B):-do(?codeReviews=t, A, B))].
+jim says changes=1.
+[ (rule(goodTesting(2), ?goodTesting(2)=t, rule199, 0, 0.1, A, B):-do(?goodTesting=t, A, B))].
+jim says changes=1.
+[ (rule(goodProject, ?goodProject=t, rule200, 0, 0.1, A, B):-do(rand([?goodRequirements=t, ?goodDesign=t, ?goodImplemenation=t, ?goodIntegration=t]), A, B))].

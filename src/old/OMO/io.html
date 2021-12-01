@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>io.pl Input/Output</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#input/output_stuff">Input/Output Stuff</a></li>
+	<ul>
+
+		<li><a href="#spitting_and_blurting_out_little_messages">Spitting and Blurting out little messages</a></li>
+		<li><a href="#dumping_whole_files_to_the_screen">Dumping whole files to the screen</a></li>
+		<li><a href="#burping_and_barphing_a_warning">Burping and barphing a warning</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="input/output_stuff">Input/Output Stuff</a></h1>
+<pre>
+  :- ensure_loaded([io1]).</pre>
+<p>
+</p>
+<h2><a name="spitting_and_blurting_out_little_messages">Spitting and Blurting out little messages</a></h2>
+<p>Blurt something, then push it to the screen. Useful
+for writing little progress messages to the screen.</p>
+<pre>
+ blurt(X) :- write(user,X), flush_output(user).</pre>
+<p>Spit out something to the screen,  sometimes.
+Useful for tracking a long process since it, only sometimes,
+blurts out a marker.</p>
+<pre>
+ spit(N1,N2,X) :- (0 is N1 mod N2 -&gt; blurt(X) ; true).</pre>
+<p>
+</p>
+<h2><a name="dumping_whole_files_to_the_screen">Dumping whole files to the screen</a></h2>
+<pre>
+ dump(File) :- see(File), get_byte(X), ignore(dump1(X)), seen.</pre>
+<pre>
+ dump1(-1) :- !.
+ dump1(X)  :- put(X), get_byte(Y), dump1(Y).</pre>
+<p>
+</p>
+<h2><a name="burping_and_barphing_a_warning">Burping and barphing a warning</a></h2>
+<p>A basic barph is just a burp</p>
+<pre>
+ burp(X) :- format('%W&gt; ~p\n',X).</pre>
+<p>A more usual barph is to warn, then fail:</p>
+<pre>
+ barph(X) :- burp(X),fail.</pre>
+<p>Our best barph first barphs, then prints line numbers showing
+the origin of the barph.</p>
+<pre>
+ barphln(X) :-
+    here(File,Line),
+    format('%W&gt; ~p@~p : ~p\n',[File,Line,X]),
+    fail.</pre>
+<pre>
+ here(File,Line) :- 
+    source_location(Path,Line), 
+    file_base_name(Path,File).</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

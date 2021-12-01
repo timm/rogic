@@ -1,0 +1,15 @@
+name =  '17. Smythe 87 bug'.
+
+objects(m) = [nna,cortico,acth,temp].
+objects(e) = [dex,  coldSwim].
+
+coldSwim ++ nna     .
+nna      ++ temp    .  % this arc introduced a loop that crashed
+                         % N of my recursive programs.
+nna      ++ acth    .
+acth     ++ cortico .
+cortico  ++ temp    .
+temp     -- acth    .
+temp     -- nna     .
+dex      ++ temp    .
+

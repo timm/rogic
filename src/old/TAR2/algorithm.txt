@@ -1,0 +1,69 @@
+PROMISING= 1
+EXCITING= 1.05
+GRANULARITY=3
+NOW= a description of current situation
+CHANGES= a description of acceptable changes
+NCHANGES=1
+
+categorise all CHANGES attribute ranges into GRANULAIRT percentiles
+
+for all examples 
+do
+	if example in NOW+CHANGES
+	then descritize all CHANGES attributes in example
+             if example in RELEVANT
+             then example.repeats++
+             else example.repeats=1
+	          RELEVANT=RELEVANT+example
+             fi
+        fi
+done
+
+
+ALL= total number of outputs in RELEVANT
+
+for each attribute/range in CHANGES
+do
+	for each class 
+	do 
+		BESTF= number of time a/r appears in best class in RELEVANT
+		DELTA= improvement(class,bestClass)
+		F    = number of time a/r appears in this class in RELEVANT
+		if (DELTA*F/BESTF > PROMISING)
+                then add a/r to CANDIDATES
+                fi
+	done
+done
+
+BASELINE=0
+for X in RELEVANT do BASELINE=+ X.class.score  done;
+
+for CANDIDATE=subset of CANDIDATES of size NCHANGES
+do
+	SELECTED= all RELEVANT that satisfy CANDIDATE
+	CHANGE=0
+	for for X in SELECTED do CHANGE=+ X.class.score  done;  
+        IMPROVEMENT[CANDIDATE]=CHANGE/BASELINE    
+done
+
+return all CANDIDATES with IMPROVEMENT[CANDIDATE] > EXCITING
+
+dont test for NCHANGES candidate til you find a smaller one first
+
+GRANULARITY PROMISING EXCITING NCHANGES BEST    COMMENTS
+A3           1         1.05     1,2,3    1.135   nchanges > 1 cancelled- too long
+B3           8         1.25     1,2      1.32    nchanges =2 ran ok
+C3           12        1.3      3        1.57    to run nchanges=3, needed fewer CANDIDATES 
+                                                so PROMISING set to 12
+                                                LESSON: to increase NCHANGES, need larger PROMISING
+D3           13        1.5      3                fails- not three CANDIDATEs above 13
+E5           12        1.5      2        1.4     Increase granularity, more to search,
+                                                decrease NCHANGES. found a weak change
+                                                that looked exciting
+F5           12        1.43     3        many    too much output
+G5           12        2        3        2.28    a ripper found
+
+
+
+                                       
+

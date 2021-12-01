@@ -1,0 +1,11 @@
+FILES="
+timtemplate 
+prod0 prod1 prod prodabout 
+family
+lib lib0 lib1 lib2 
+cfg cfg0 cfg1 cfg2 
+gpl gpl0 gpl1 gpl2 
+omo omo0 omo1 omo2 omolib omokb3
+lurch lurch0 lurch1 lurch2 fib memo1"
+
+perl prep $FILES 

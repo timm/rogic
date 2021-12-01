@@ -1,0 +1,1 @@
+"c:/program files/pl/bin/plwin.exe" -f lurch.pl -t true

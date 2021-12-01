@@ -1,0 +1,37 @@
+/*\documentclass[twocolumn,global]{svjour}
+\usepackage{prod}
+\usepackage{timm}
+\begin{document}
+ 
+\theprogram{_NAME} 
+\thetocdepth{2} % e.g. 2
+\thewp{~menzies/src/pl/prod/XX.pl}
+\thepapers{_REF_FILE}
+\thetitle{_TITLE}
+\theauthor{\timm\inst{1}}
+\theinstitute{\timwhere}
+\thereference{\timref{10}{2003}{03xx}}
+\theacknowledgement{\timthanks}
+\theabstract{_ONE_PARAGRAPH_SUMMARY}
+*/
+
+%%%% Installation %<
+:- load_files([lib % grab standard stuff~\cite{prodlib}
+              ,cfg % options controller~\cite{prodcfg}
+              ,gpl % GPL-2 license stuff~\cite{prodgpl}
+              ,xx0 % pre-load actions
+              ,xx1 % predicates
+              ,xx2 % start-up commands
+              ],[silent(yes),if(changed)]).
+%>
+%\input{xx0}
+%\input{xx1}
+%\input{xx2}
+%%%% Bugs 
+%None known but many suspected.
+
+
+/*
+\theend
+\end{document}
+*/

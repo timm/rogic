@@ -1,0 +1,48 @@
+% input: record(v(attr, op, value, time, kind))
+% output...
+ 
+recordDefinition(v(attr, op, value, time, kind)).
+:-dynamic v/6.
+:-multifile v/6.
+:-discontiguous v/6.
+:-discontiguous v0/3.
+:-index(v(1, 1, 1, 1, 0, 0)).
+v0(defaults, A, v(B, C, D, E, F, G)).
+v0(A, B) :-
+	v0(A, B, B).
+v0([], A, A).
+v0([A|B], C, D) :-
+	v0(A, C, E),
+	v0(B, E, D).
+v0(id(A, B), v(A, C, D, E, F, G), v(B, C, D, E, F, G)).
+v0(attr(A, B), v(C, A, D, E, F, G), v(C, B, D, E, F, G)).
+v0(op(A, B), v(C, D, A, E, F, G), v(C, D, B, E, F, G)).
+v0(value(A, B), v(C, D, E, A, F, G), v(C, D, E, B, F, G)).
+v0(time(A, B), v(C, D, E, F, A, G), v(C, D, E, F, B, G)).
+v0(kind(A, B), v(C, D, E, F, G, A), v(C, D, E, F, G, B)).
+v0(asList([id=A, attr=B, op=C, value=D, time=E, kind=F]), v(A, B, C, D, E, F), v(A, B, C, D, E, F)).
+v0(id(A), B, C) :-
+	v0(id(A, A), B, C).
+v0(attr(A), B, C) :-
+	v0(attr(A, A), B, C).
+v0(op(A), B, C) :-
+	v0(op(A, A), B, C).
+v0(value(A), B, C) :-
+	v0(value(A, A), B, C).
+v0(time(A), B, C) :-
+	v0(time(A, A), B, C).
+v0(kind(A), B, C) :-
+	v0(kind(A, A), B, C).
+bridge(v(A, B, C, D, E, F), G, v(H, I, J, K, L, M)) :-
+	v0(G, v(A, B, C, D, E, F), v(H, I, J, K, L, M)).
+blank(v, A, v(A, B, C, D, E, F)).
+a(v, v(A, B, C, D, E, F)) :-
+	v(A, B, C, D, E, F).
+a(v, A, v(A, B, C, D, E, F)) :-
+	v(A, B, C, D, E, F).
+update(v(A, B, C, D, E, F)) :-
+	(   retract(v(A, G, H, I, J, K))
+	->  assert(v(A, B, C, D, E, F))
+	;   assert(v(A, B, C, D, E, F))
+	).
+% time= 0 secs

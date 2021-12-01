@@ -1,0 +1,12 @@
+9-Jan,,,18-Oct,,,,,
+9-Jan,,,2000,ga,1983,2000,ga,1983
+-,tool,-,tool,-,tool,team,team,team
+time,time,time,site,site,site,prec,prec,prec
+stor,stor,stor,sced,sced,sced,pmat,pmat,pmat
+ruse,ruse,ruse,-,pvol,-,flex,flex,flex
+rely,rely,rely,pexp,pexp,pexp,arch,arch,arch
+pvol,-,pvol,pcon,pcon,pcon,,,
+docu,docu,docu,pcap,pcap,pcap,,,
+data,data,data,ltex,ltex,ltex,,,
+cplx,cplx,cplx,aexp,aexp,aexp,,,
+,,,acap,acap,acap,,,

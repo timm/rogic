@@ -1,0 +1,6 @@
+program   = "GPL".
+version   = "0.1".
+copyright = "2003".
+copywho   = "Tim Menzies".
+motto     = "Open source rules!".
+verbose   = 0.

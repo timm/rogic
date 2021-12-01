@@ -1,0 +1,18 @@
+\documentclass[twocolumn,10pt]{book}
+\usepackage{fancyhdr,lastpage,tex4log}
+
+\oddsidemargin -1.5cm \evensidemargin -1.5cm
+
+\columnsep 0.3in
+ \topmargin -2cm
+ \textheight 26cm \textwidth 19cm
+
+%\setlength{\headrulewidth}{0.0pt}
+\setlength{\footrulewidth}{0.5pt}
+\lfoot[\fancyplain{}{page~\protect\thepage~of~\protect\pageref{LastPage}}]%        % even pp, pageno on left
+        {\fancyplain{}{}}%              % odd pages nothing on left
+\rfoot[\fancyplain{}{}]%                % even pages nothing on right
+       {\fancyplain{}{page~\protect\thepage~of~\protect\pageref{LastPage}}}%       % odd pp, pageno on right
+\cfoot[\fancyplain{}{\itshape\leftmark}]% section on left
+        {\fancyplain{}{\it }}
+\rhead{} \lhead{}\chead{}

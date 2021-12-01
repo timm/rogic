@@ -1,0 +1,5 @@
+% output from ':- demos(eggamma).'
+
+[19.7148, 7.15347, 4.25717, 8.11787, 16.355]
+ are random numbers from gamma(10,2).
+% runtime = 0 sec(s)

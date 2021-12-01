@@ -1,0 +1,88 @@
+% timm's list cheat
+% tim@menzies.com
+% 
+% after some experimentation, i found that in swi prolog 
+% at least, searching and replacing items in lists up to
+% 100 items long is at least as slow as asserts or member or
+% trees and stuff.
+% 
+% so,  my working memory is a set of N lists stored in a 
+% term of arity N. we hash on the key to generate an arg number
+% then pull that arg number from the term.
+
+% i.e., i divide my working memory N ways
+% and pray my hashing function distributes things evenly amongst
+% the N items. if N=64, then i should be able to get in/ get out
+% 6400 items real at a speed at least as fast as asserts. and i
+% win with other things; e.g. memory updates are now backtracable.
+
+%% config stuff
+% number of lists in working memory.
+wmeLists(64).
+
+setArgsEnabled :- % should fail is this prolog does not support
+	true.     % a backtrackable setarg
+
+%% runtime support
+% high level driver: 
+% get(+Key,?Old, ?New,+Wme0,?Wme)
+% Key  - key
+% Wme0 - old working memory
+% Wme  - new working memory
+% Old  - the current list of values stored at Key in Wme0
+% New  - the new list of values stored at Key in Wme
+get(Key,Old,New,In,Out) :-
+	hash_term(Key,Hash),
+	wmeKey(Hash,Lookup), 
+	wme(Lookup,Old,New,In,Out).
+
+% handy simpler accessor: new value is unchanged from old value
+get(Key,Old,In,Out) :-
+	get(Key,Old,Old,In,Out).
+
+%% compile-time stuff
+% you should be able to ignore everything from here down
+defWme(N,F,wme0(new,Wme)) :-
+	length(L0,N),
+	maplist(empty,L0,L),
+	Wme =.. [F|L].
+defWme(N,F,[wme0(blank,Wme),
+          (portray(Wme) :- 
+                write('#WME'/N))]):-
+	length(L0,N),
+	Wme =.. [F|L0].
+defWme(N,_,(wmeKey(In,Out) :- 
+                Out is (In >> X) + 1)) :-
+	X is (log(N)/log(2)).
+defWme(_,_,(wme(I,Old,New,T1,T1) :- 
+	        arg(I,T1,Old))) :-
+	setArgsEnabled.
+defWme(Size,F,wme(I,Old,New,T1,T2)) :-
+	\+setArgsEnabled,
+	between(1,Size,I),
+	functor(T1,F,Size),
+	functor(T2,F,Size),
+	joinArgs(I,Old,New,T1,T2).
+
+empty([],[]). 
+
+joinArgs(N,Old,New,T1,T2) :-
+	T1 =.. [_|L0],
+	T2 =.. [_|L],
+	joinArgs(1,N,L0,Old,New,L).
+joinArgs(N,N,[Old|Rest],Old,New,[New|Rest]).
+joinArgs(N0,N1,[X|L0],Old,New,[X|L]) :- 
+	N0 < N1, N2 is N0 + 1,
+	joinArgs(N2,N1,L0,Old,New,L).
+
+term_expansion(wmeMake,L) :-
+	wmeLists(N),
+	findall(One,defWme(N,w,One),L).
+
+% this must be last in the file.
+wmeMake.
+	
+
+
+
+

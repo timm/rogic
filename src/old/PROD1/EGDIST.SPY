@@ -1,0 +1,7 @@
+% output from ':- demos(egdist).'
+
+The distribution of symbols
+[a, b, r, a, c, a, d, a, b, r, a] is
+[r=2, d=1, c=1, b=2, a=5].
+
+% runtime = 0 sec(s)

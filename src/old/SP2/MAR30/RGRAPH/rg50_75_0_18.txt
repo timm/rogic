@@ -1,0 +1,106 @@
+"Fri Mar 30 11:00:36 2001"
+
+
+Starting SP2 for rgraph/rg50_75_0...
+
+
+Average run time      = 110.00 ms  
+Average goals covered = 100.00 %   
+Average graph covered = 57.00 %   
+Average coaxing       = 102 times
+
+     H   = H1  + H2  + H3  + H4
+     102 = 5   + 2   + 33  + 62
+
+Finished! Text output file: rgraph/rg50_75_0_19.txt
+
+Starting SP2 for rgraph/rg50_75_0...
+
+
+Average run time      = 110.00 ms  
+Average goals covered = 100.00 %   
+Average graph covered = 59.00 %   
+Average coaxing       = 100 times
+
+     H   = H1  + H2  + H3  + H4
+     100 = 5   + 5   + 34  + 56
+
+Finished! Text output file: rgraph/rg50_75_0_20.txt
+
+Starting SP2 for rgraph/rg50_75_0...
+
+
+Average run time      = 12.86 ms  
+Average goals covered = 10.00 %   
+Average graph covered = 6.00 %   
+Average coaxing       = 36 times
+
+     H   = H1  + H2  + H3  + H4
+     36  = 0   + 0   + 4   + 32
+
+Finished! Text output file: rgraph/rg50_75_0_21.txt
+
+Starting SP2 for rgraph/rg50_75_0...
+
+
+Average run time      = 60.00 ms  
+Average goals covered = 100.00 %   
+Average graph covered = 61.00 %   
+Average coaxing       = 105 times
+
+     H   = H1  + H2  + H3  + H4
+     105 = 1   + 1   + 35  + 68
+
+Finished! Text output file: rgraph/rg50_75_0_22.txt
+
+Starting SP2 for rgraph/rg50_75_0...
+
+
+Average run time      = 100.00 ms  
+Average goals covered = 100.00 %   
+Average graph covered = 59.00 %   
+Average coaxing       = 106 times
+
+     H   = H1  + H2  + H3  + H4
+     106 = 0   + 0   + 34  + 72
+
+Finished! Text output file: rgraph/rg50_75_0_23.txt
+
+Starting SP2 for rgraph/rg50_75_0...
+
+
+Average run time      = 110.00 ms  
+Average goals covered = 100.00 %   
+Average graph covered = 53.00 %   
+Average coaxing       = 109 times
+
+     H   = H1  + H2  + H3  + H4
+     109 = 3   + 5   + 34  + 67
+
+Finished! Text output file: rgraph/rg50_75_0_24.txt
+
+Starting SP2 for rgraph/rg50_75_0...
+
+
+Average run time      = 36.67 ms  
+Average goals covered = 33.33 %   
+Average graph covered = 25.00 %   
+Average coaxing       = 61.3333 times
+
+     H   = H1  + H2  + H3  + H4
+     61.3333 = 0.666667 + 1   + 13.6667 + 46
+
+Finished! Text output file: rgraph/rg50_75_0_25.txt
+
+Starting SP2 for rgraph/rg50_75_0...
+
+
+Average run time      = 110.00 ms  
+Average goals covered = 100.00 %   
+Average graph covered = 59.00 %   
+Average coaxing       = 96 times
+
+     H   = H1  + H2  + H3  + H4
+     96  = 5   + 1   + 34  + 56
+
+Finished! Text output file: rgraph/rg50_75_0_26.txt

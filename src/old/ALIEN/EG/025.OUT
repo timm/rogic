@@ -1,0 +1,11 @@
+nWorlds=1
+world(1):xplain(
+        id    =2,
+        ins   =[aa@t(1)=t],
+        outs  =[bb@t(1)=t],
+        cost  =3,
+        edges =[t(1)@[13, 24, 34, 43]],
+        env   =[],
+        type  =edges).
+
+% time= 0.0100144 secs

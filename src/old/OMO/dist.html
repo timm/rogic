@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>dist.pl Distributions</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#viewing_distributions">Viewing Distributions</a></li>
+	<ul>
+
+		<li><a href="#uses">Uses</a></li>
+	</ul>
+
+	<li><a href="#dist(+list,pairs):_simple_collection_of_histogram_data"><code>dist(+List,-Pairs)</code>: Simple collection of histogram data</a></li>
+	<ul>
+
+		<li><a href="#helper">Helper</a></li>
+		<li><a href="#workers">Workers</a></li>
+	</ul>
+
+	<li><a href="#bars(+num1,+num2,+num3,+pairs):_print_a_bar_chart"><code>bars(+Num1,+Num2,+Num3,+Pairs)</code>: print a bar chart</a></li>
+	<ul>
+
+		<li><a href="#helper_*/">Helper */</a></li>
+		<li><a href="#worker">Worker</a></li>
+	</ul>
+
+	<li><a href="#demos">Demos</a></li>
+	<ul>
+
+		<li><a href="#known_demos">Known Demos</a></li>
+		<li><a href="#demo:_simple_frequency_counts">Demo: simple frequency counts</a></li>
+		<li><a href="#bar_chart_demo_support_code">Bar Chart demo Support Code</a></li>
+		<li><a href="#demo_of_a_normal_distribution">Demo of a normal distribution</a></li>
+		<li><a href="#demo_of_a_beta_distribution">Demo of a beta distribution</a></li>
+		<li><a href="#demo_of_a_gamma_distribution">Demo of a gamma distribution</a></li>
+		<li><a href="#demo_of_a_skewed_gamma_distribution">Demo of a skewed gamma distribution</a></li>
+		<li><a href="#demo_of_a_very_skewed_gamma_distribution">Demo of a very skewed gamma distribution</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="viewing_distributions">Viewing Distributions</a></h1>
+<pre>
+ :- ensure_loaded([dist0,dist1]).</pre>
+<p>
+</p>
+<h2><a name="uses">Uses</a></h2>
+<pre>
+ :- ensure_loaded([demos, strings,random]).</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="dist(+list,pairs):_simple_collection_of_histogram_data"><code>dist(+List,-Pairs)</code>: Simple collection of histogram data</a></h1>
+<p>
+</p>
+<h2><a name="helper">Helper</a></h2>
+<p>The list of <code>key=frequency</code>
+pairs is sorted in decreasing <code>key</code> order.</p>
+<pre>
+ dist(L0,L) :-  dist(L0,_,_,L,_).</pre>
+<p>This variant also returns the largest frequency seen
+in any bucket.</p>
+<pre>
+ dist(L0,L,Most)    :- dist(L0,_,_,L,Most).</pre>
+<p>This variant also returns the keys with the <code>Min/Max</code>frequencies.</p>
+<pre>
+ dist(L0,Min,Max,L) :- dist(L0,Min,Max,L,_).</pre>
+<p>
+</p>
+<h2><a name="workers">Workers</a></h2>
+<p>Preparing to the do the work. Sort the incoming symbols (keeping
+repeated symbols).</p>
+<pre>
+ dist(L0,Min,Max,L,Most) :-
+    msort(L0,[Min|L1]), 
+    dist([Min|L1],[],Min,Max,L,0,Most).</pre>
+<p>Termination.</p>
+<pre>
+ dist([],X,Max,Max,X,Most,Most).</pre>
+<p>If the same two symbols are found next
+to each other, increment the frequency count.</p>
+<pre>
+ dist([H|T],[H=N0|Rest],_,Max,Out,Most0,Most) :- !,
+    N is N0 + 1,
+    Most1 is max(Most0,N),
+    dist(T,[H=N|Rest],H,Max,Out,Most1,Most).</pre>
+<p>Otherwise, start a new pair and set its frequency to <em>1</em>.</p>
+<pre>
+ dist([H|T],In,Min,Max,Out,Most0,Most) :-
+    Most1 is max(Most0,1),
+    dist(T,[H=1|In],Min,Max,Out,Most1,Most).</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="bars(+num1,+num2,+num3,+pairs):_print_a_bar_chart"><code>bars(+Num1,+Num2,+Num3,+Pairs)</code>: print a bar chart</a></h1>
+<p>/*Displays te frequency pairs from <code>dist/2</code> as  a bar chart. Has
+the following arguments:</p>
+<dl>
+<dt><strong><a name="item_num1">Num1</a></strong><br />
+</dt>
+<dd>
+is the width of the first <em>item</em> column
+displaying the name of each bar;
+</dd>
+<p></p>
+<dt><strong><a name="item_num2">Num2</a></strong><br />
+</dt>
+<dd>
+is the width of the second 
+<em>frequency</em> column showing how many items
+fall into that bar;
+</dd>
+<p></p>
+<dt><strong><a name="item_num3">Num3</a></strong><br />
+</dt>
+<dd>
+is the width of the last column showing
+the population size.
+</dd>
+<p></p>
+<dt><strong><a name="item_pairs">Pairs</a></strong><br />
+</dt>
+<dd>
+Symbol/frequency pairs (can be generated from
+<code>dist/2</code>.
+</dd>
+<p></p></dl>
+<p>
+</p>
+<h2><a name="helper_*/">Helper */</a></h2>
+<p>In this helper, the <em>item</em> column is 5 wide (<a href="#item_num1"><code>Num1</code></a>),
+the <em>frequency</em> column is 5 wide (<a href="#item_num2"><code>Num2</code></a>),
+and the <em>scale factor</em> is 3 (<a href="#item_num3"><code>Num3</code></a>).</p>
+<pre>
+ bars(List) :-
+    Num1=5,
+    Num2=5,
+    Num3=3,
+    bars(Num1, Num2, Num3, List). /*</pre>
+<p>
+</p>
+<h2><a name="worker">Worker</a></h2>
+<p>We use <code>sformat</code> to build a string  that
+stores the widths and scale factor
+for our columns. Note the use of <code></code>&gt; and <code>S</code>
+which are special format commands defined in <code>strings.pl</code> */</p>
+<pre>
+ bars(Num1,Num2,Num3,List) :-
+    sformat(S,' ~~~w&gt;  ~~~w&gt; ~~~wS\n',[Num1,Num2,Num3]),
+    dist(List,Dist),
+    nl,
+    format(S,[item,frequency,0]),
+    forall(member(What=N,Dist), format(S,[What,N,N])).</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="demos">Demos</a></h1>
+<p>
+</p>
+<h2><a name="known_demos">Known Demos</a></h2>
+<p>Here's our list of known demos:</p>
+<pre>
+ distDemos :- Demos=[egdist,      egbarsNormal, egbarsBeta,
+                     egbarsGamma1,egbarsGamma2, egbarsGamma3
+                    ],
+              forall(member(Demo,Demos),demo(Demo)).</pre>
+<p>
+</p>
+<h2><a name="demo:_simple_frequency_counts">Demo: simple frequency counts</a></h2>
+<pre>
+ egdist :- 
+    List = [a,b,r,a,c,a,d,a,b,r,a],
+    dist(List,Dist),
+    format('The distribution of symbols\n~w is\n~w.\n',
+          [List,Dist]).</pre>
+<pre>
+ %% egdist.spy (output from ':- demos(egdist).')
+The distribution of symbols
+[a, b, r, a, c, a, d, a, b, r, a] is
+[r=2, d=1, c=1, b=2, a=5].
+ %% runtime = 0 sec(s)</pre>
+<p>
+</p>
+<h2><a name="bar_chart_demo_support_code">Bar Chart demo Support Code</a></h2>
+<p>Need a little tool to generate distributions.
+The tool accepts some distribution function <code>F</code> and
+samples it <code>Repeats</code> number of times (rounding each
+result to the nearest <code>Rounding</code> value0 we'll use <em>1</em>).
+The results are then displayed using <code>bars/4</code>.</p>
+<pre>
+ egbarDemos(Repeats,F) :-
+    format(' ---| ~w * ~w |-------',[Repeats,F]),
+    Rounding=1,
+    findall(X,(between(1,Repeats,_),
+               X is round(F/Rounding)*Rounding),
+            L),
+    bars(5,5,100,L).</pre>
+<p>
+</p>
+<h2><a name="demo_of_a_normal_distribution">Demo of a normal distribution</a></h2>
+<pre>
+ egbarsNormal :-
+        egbarDemos(10000,normal(20,2)).</pre>
+<pre>
+ %% egbarsNormal.spy (output from ':- demos(egbarsNormal).')
+ ---| 10000 * normal(20, 2) |-------
+  item  frequency 
+    27      5 
+    26     27 
+    25     95 ~
+    24    256 ~~~
+    23    711 ~~~~~~~
+    22   1140 ~~~~~~~~~~~
+    21   1798 ~~~~~~~~~~~~~~~~~~
+    20   1908 ~~~~~~~~~~~~~~~~~~~
+    19   1778 ~~~~~~~~~~~~~~~~~~
+    18   1230 ~~~~~~~~~~~~
+    17    664 ~~~~~~~
+    16    266 ~~~
+    15     81 ~
+    14     25 
+    13     12 
+    12      4 
+ %% runtime = 0.380547 sec(s)</pre>
+<p>
+</p>
+<h2><a name="demo_of_a_beta_distribution">Demo of a beta distribution</a></h2>
+<pre>
+ egbarsBeta :-
+        egbarDemos(10000,rand(10,20,0.2)).</pre>
+<pre>
+ %% egbarsBeta.spy (output from ':- demos(egbarsBeta).')
+ ---| 10000 * rand(10, 20, 0.2) |-------
+  item  frequency 
+    19      6 
+    18     42 
+    17    127 ~
+    16    248 ~~
+    15    491 ~~~~~
+    14    866 ~~~~~~~~~
+    13   1375 ~~~~~~~~~~~~~~
+    12   2001 ~~~~~~~~~~~~~~~~~~~~
+    11   2998 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    10   1846 ~~~~~~~~~~~~~~~~~~
+ %% runtime = 0.120173 sec(s)</pre>
+<p>
+</p>
+<h2><a name="demo_of_a_gamma_distribution">Demo of a gamma distribution</a></h2>
+<pre>
+ egbarsGamma1 :-
+        egbarDemos(10000,gamma(10,15)).</pre>
+<pre>
+ %% egbarsGamma1.spy (output from ':- demos(egbarsGamma1).')
+ ---| 10000 * gamma(10, 15) |-------
+  item  frequency 
+    23      1 
+    22      1 
+    21      2 
+    20      6 
+    19     21 
+    18     37 
+    17     65 ~
+    16    149 ~
+    15    247 ~~
+    14    426 ~~~~
+    13    717 ~~~~~~~
+    12    983 ~~~~~~~~~~
+    11   1325 ~~~~~~~~~~~~~
+    10   1506 ~~~~~~~~~~~~~~~
+     9   1605 ~~~~~~~~~~~~~~~~
+     8   1314 ~~~~~~~~~~~~~
+     7    950 ~~~~~~~~~~
+     6    418 ~~~~
+     5    187 ~~
+     4     35 
+     3      5 
+ %% runtime = 0.891282 sec(s)</pre>
+<p>
+</p>
+<h2><a name="demo_of_a_skewed_gamma_distribution">Demo of a skewed gamma distribution</a></h2>
+<pre>
+ egbarsGamma2 :- 
+    egbarDemos(10000,gamma(10,5)).</pre>
+<pre>
+ %% egbarsGamma2.spy (output from ':- demos(egbarsGamma2).')
+ ---| 10000 * gamma(10, 5) |-------
+  item  frequency 
+    38      1 
+    34      1 
+    33      1 
+    32      2 
+    30      3 
+    29      4 
+    28      7 
+    27      7 
+    26     15 
+    25     19 
+    24     32 
+    23     30 
+    22     50 ~
+    21     68 ~
+    20     89 ~
+    19    134 ~
+    18    189 ~~
+    17    243 ~~
+    16    288 ~~~
+    15    353 ~~~~
+    14    446 ~~~~
+    13    575 ~~~~~~
+    12    704 ~~~~~~~
+    11    744 ~~~~~~~
+    10    864 ~~~~~~~~~
+     9    963 ~~~~~~~~~~
+     8    980 ~~~~~~~~~~
+     7    931 ~~~~~~~~~
+     6    801 ~~~~~~~~
+     5    686 ~~~~~~~
+     4    451 ~~~~~
+     3    225 ~~
+     2     87 ~
+     1      7 
+ %% runtime = 0.330475 sec(s)</pre>
+<p>
+</p>
+<h2><a name="demo_of_a_very_skewed_gamma_distribution">Demo of a very skewed gamma distribution</a></h2>
+<pre>
+ egbarsGamma3 :-
+        egbarDemos(10000,gamma(10,2)).</pre>
+<pre>
+ %% egbarsGamma3.spy (output from ':- demos(egbarsGamma3).')
+ ---| 10000 * gamma(10, 2) |-------
+  item  frequency 
+    62      1 
+    57      1 
+    55      1 
+    53      1 
+    51      2 
+    49      2 
+    48      1 
+    47      1 
+    46      3 
+    45      3 
+    44      2 
+    43      4 
+    42      5 
+    41      1 
+    40      6 
+    39      5 
+    38      3 
+    37     13 
+    36     15 
+    35     14 
+    34      8 
+    33     18 
+    32     24 
+    31     20 
+    30     35 
+    29     35 
+    28     40 
+    27     55 ~
+    26     41 
+    25     80 ~
+    24     85 ~
+    23     87 ~
+    22    100 ~
+    21    134 ~
+    20    148 ~
+    19    164 ~~
+    18    167 ~~
+    17    200 ~~
+    16    275 ~~~
+    15    332 ~~~
+    14    349 ~~~
+    13    360 ~~~~
+    12    416 ~~~~
+    11    510 ~~~~~
+    10    545 ~~~~~
+     9    596 ~~~~~~
+     8    621 ~~~~~~
+     7    660 ~~~~~~~
+     6    689 ~~~~~~~
+     5    780 ~~~~~~~~
+     4    737 ~~~~~~~
+     3    656 ~~~~~~~
+     2    561 ~~~~~~
+     1    338 ~~~
+     0     50 ~
+ %% runtime = 0.170245 sec(s)</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

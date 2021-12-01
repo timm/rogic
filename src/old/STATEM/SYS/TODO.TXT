@@ -1,0 +1,16 @@
+remove blank (oo only).
+
+term is t.
+assertion is term
+
+add type checks
+blank is wrong: can down cast on state
+
+the language for accessing things inside an "oo" in a method is
+different to outside of it in a method body. yuck
+
+xterm
+omnipage
+corel draw
+modem
+network card

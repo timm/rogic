@@ -1,0 +1,55 @@
+\begingroup \small 
+\contentsline {section}{\numberline {1} Introduction }{2}
+\contentsline {subsection}{\numberline {1.1} About COCOMO }{2}
+\contentsline {subsection}{\numberline {1.2} Structure of this document }{2}
+\contentsline {section}{\numberline {2} Initializations }{2}
+\contentsline {subsection}{\numberline {2.1} Operators }{2}
+\contentsline {subsection}{\numberline {2.2} Flags }{3}
+\contentsline {subsection}{\numberline {2.3} Hooks }{3}
+\contentsline {subsection}{\numberline {2.4} Hacks }{3}
+\contentsline {subsection}{\numberline {2.5} Library (load) }{4}
+\contentsline {section}{\numberline {3} System code }{4}
+\contentsline {subsection}{\numberline {3.1} Main driver }{4}
+\contentsline {subsection}{\numberline {3.2} Equations }{4}
+\contentsline {subsubsection}{\numberline {3.2.1} Sizing equations }{4}
+\contentsline {subsubsection}{\numberline {3.2.2} Schedule Equations }{4}
+\contentsline {subsubsection}{\numberline {3.2.3} Effort Equations }{4}
+\contentsline {subsection}{\numberline {3.3} Tunings }{4}
+\contentsline {subsubsection}{\numberline {3.3.1} Constants }{4}
+\contentsline {subsubsection}{\numberline {3.3.2} Post-architecture scale factors }{4}
+\contentsline {subsubsection}{\numberline {3.3.3} Post-architecture effort multipliers: }{4}
+\contentsline {subsection}{\numberline {3.4} Data dictionary }{5}
+\contentsline {subsubsection}{\numberline {3.4.1} General }{5}
+\contentsline {subsubsection}{\numberline {3.4.2} "project" }{5}
+\contentsline {subsubsection}{\numberline {3.4.3} "scores" }{5}
+\contentsline {subsubsection}{\numberline {3.4.4} scores2Weight }{5}
+\contentsline {section}{\numberline {4} Shell start up actions }{5}
+\contentsline {section}{\numberline {5} Knowledge base }{6}
+\contentsline {subsection}{\numberline {5.1} Sample project }{6}
+\contentsline {section}{\numberline {6} Library (source code) }{6}
+\contentsline {subsection}{\numberline {6.1} Meta }{6}
+\contentsline {subsection}{\numberline {6.2} Transforms }{6}
+\contentsline {subsection}{\numberline {6.3} I/O }{6}
+\contentsline {subsection}{\numberline {6.4} Maths }{6}
+\contentsline {subsection}{\numberline {6.5} Pretty print a list of terms. }{6}
+\contentsline {subsection}{\numberline {6.6} Random types }{6}
+\contentsline {subsubsection}{\numberline {6.6.1} Random strings }{6}
+\contentsline {subsubsection}{\numberline {6.6.2} Random number within a range }{6}
+\contentsline {subsubsection}{\numberline {6.6.3} Random value of a list }{6}
+\contentsline {subsection}{\numberline {6.7} Fast, named, assertions }{6}
+\contentsline {subsection}{\numberline {6.8} Lookup Tables }{7}
+\contentsline {subsection}{\numberline {6.9} Configuration Control }{7}
+\contentsline {subsection}{\numberline {6.10} Demo support code }{7}
+\contentsline {subsection}{\numberline {6.11} License }{7}
+\contentsline {section}{\numberline {A}License}{7}
+\contentsline {subsection}{\numberline {A.1}nowarranty.txt}{7}
+\contentsline {subsection}{\numberline {A.2}warranty.txt}{7}
+\contentsline {subsection}{\numberline {A.3}conditions.txt}{8}
+\contentsline {section}{\numberline {B} Work-in-progress }{9}
+\contentsline {subsection}{\numberline {B.1} Early design effort multiplers }{9}
+\contentsline {subsection}{\numberline {B.2} Function point calculations }{9}
+\contentsline {subsubsection}{\numberline {B.2.1} Unadjusted function points to SLOC conversion ratios }{9}
+\contentsline {subsubsection}{\numberline {B.2.2} Function point complexity tables }{9}
+\contentsline {subsection}{\numberline {B.3} Key process areas }{9}
+\contentsline {subsubsection}{\numberline {B.3.1} Key process area answers }{9}
+\endgroup 

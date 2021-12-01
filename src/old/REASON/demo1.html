@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>demo1</title>
+<link rel="stylesheet" href="mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#moose1">Moose1</a></li>
+	<li><a href="#header">Header</a></li>
+	<ul>
+
+		<li><a href="#loads_*/">Loads */</a></li>
+	</ul>
+
+	<li><a href="#body_*/">Body */</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+This document is also available in  the following formats:
+         <a href="demo1.pdf">pdf</a>; a
+        <a href="demo1_4printer.html">printer-friendly</a> format; a
+        <a href="demo1.html">display-friendly</a> format;
+        <a href="demo1.txt">plain text</a>; or
+         text with <a href="demo1.man">bold escape characters</a>.
+/*<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="moose1">Moose1</a></h1>
+<p>Sample MOOSE file.</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="header">Header</a></h1>
+<p>
+</p>
+<h2><a name="loads_*/">Loads */</a></h2>
+<p>:- [moose]. /*</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="body_*/">Body */</a></h1>
+<p>:- dynamic p/6,f/6, r/5,effect/4, impact/4.</p>
+<p>@aka(A,B,C) :- 
+	@xid(A)
+        rand @string(B) 
+         rand &amp;sourceId(C).
+@cost(A) :- 
+	rin(A,[0,1,2,3,4]).
+@day(Day,Mn,_) :- 
+	<code>rin(Mn,[4,6,9,11])</code> 
+        rand rin(0,30,Day).
+@day(Day,Mn,_) :- 
+	<code>rin(Mn,[1,3,5,7,8,10,12])</code> 
+        rand rin(0,31,Day).
+% leap years need more work. one day.
+@day(Day,2,Yr) :- 
+	@year(Yr), 
+	0 is Yr mod 4, 
+	rin(0,29,Day).
+@day(Day,2,Yr) :- 
+	@year(Yr), 
+	N is Yr mod 4, 
+	N &gt; 0, 
+	rin(0,28,Day).
+@dec10(C) :-
+	rin(C,[0.05,0.1,0.2,0.3,0.4,0.5,
+               0.6,0.7,0.8,0.9,0.99,1.0]).
+@effect(A,B,C,D) :-
+	&amp;fId(A), 
+	&amp;pId(B),
+    &amp;dec10(C),
+	&amp;sourceId(D). 
+@f(A,B,C,D,E,L) :-
+	@gen(A,B,C,D,E)
+	rand fId // L.
+@fId(f(A)) :-
+	@posint(A),
+	f(A,_,_,_,_,_).
+@gen(A,B,C,D,E) :-
+	@posint(A),
+	@strength(B), 
+	@probaility(C),
+	@cost(D),  
+	&amp;sourceId(E).
+@hour(A) :- 
+	rin(0,23,A).
+@impact(A,B,C,D) :-
+	&amp;fId(A), 
+	&amp;rId(B),
+	&amp;sourceId(D), 
+	@dec10(C).
+@liklihood(X) :- 
+	@dec10(X).
+@minute(A) :- 
+	rin(0,59,A).
+@p(A,B,C,D,E,L) :-
+	@gen(A,B,C,D,E)
+	rand pId // L.
+@pId(p(A)) :-
+	@posint(A),
+	p(A,_,_,_,_,_).
+@posint(A) :- 
+	rin(1,65535,A).
+@probability(X) :-
+	rin(0,100,P),
+	X is P/100.
+@r(A,B,C,D,E) :-
+	@gen(A,B,C,D,E).
+@rId(r(A)) :-
+	@posint(A),
+	r(A,_,_,_,_).
+@second(X) :- 
+	rin(0,59,X).
+@sourceId(X) :- 
+	source(X,_,_).
+@source(A,B,when(C,D,E,F,G,H)) :- 
+	@sym(A) 
+	rand @sym(B) 
+        rand @when(C,D,E,F,G,H).
+@string(A) :- rstring(string,A).
+@strength(X) :- 
+	rin(1,10,X).
+@sym(A) :- 
+	rsym(x,A).
+@uid(X) :- rsym(x,X).
+@when(A,B,C,D,E,F) :- 
+	@year(A), 
+        (@day(C,B,A) 
+        rand @hour(D) 
+        rand @minute(E)
+	rand @second(F)
+	).
+@xid(X) :-
+	@pId(X) ror @fId(X) ror  @rId(X) ror @uid(X).
+@year(X) :- 
+	X= 2000 
+        ror <code>rin(1974,1999,X)</code> 
+        ror rin(2001,2050,X).</p>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

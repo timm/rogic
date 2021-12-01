@@ -1,0 +1,38 @@
+#!/bin/tcsh
+# usage: mytex texFile outputFilePrefix
+# assumes that there exists a directory $HOME/public_html/pdf
+
+set -x 
+
+# example output:
+
+# MYTEX [v0.1]: making /home/menzies/public_html/pdf/02star.pdf
+# - latex 1: starlog.tex
+# - bibtex: starlog.tex
+# - (chasing references) [4] [3] (making pdf) [2] [1] [0]
+
+echo "MYTEX [v0.1]: making $HOME/public_html/pdf/$2.pdf"
+echo  " - latex 1: $1.tex"
+latex $1 > /dev/null
+grep "Warning:" $1.log
+
+echo " - bibtex: $1.tex"
+bibtex $1 > /dev/null
+grep "Warning:" $1.blg
+
+echo -n " - (chasing references) [4]"
+latex $1 > /dev/null
+echo -n " [3]"
+latex $1 >/dev/null
+
+echo -n " (making pdf) [2]"
+dvips -q $1.dvi -o $1.ps
+
+echo -n " [1]"
+ps2pdf $1.ps $1.pdf
+
+rm $1.ps
+
+cp $1.pdf $HOME/public_html/pdf/$2.pdf
+chmod a+r $HOME/public_html/pdf/$2.pdf
+echo " [0]"

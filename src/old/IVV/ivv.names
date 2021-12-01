@@ -1,0 +1,59 @@
+|c0to5,c6to7,c8to9,c10to11,c12to13,c14to19,c20to31
+
+c20to31,c14to19,c12to13,c10to11,c8to9,c6to7,c0to5
+
+cmm : 1, 2, 3, 4, 5
+'from(requirements)/to(design)' : continuous
+'from(design)/to(design)' : continuous
+'from(programming)/to(design)' : continuous
+'from(requirements)/to(programming)' : continuous
+'from(design)/to(programming)' : continuous
+'from(programming)/to(programming)' : continuous
+'from(requirements)/to(integration)' : continuous
+'from(design)/to(integration)' : continuous
+'from(programming)/to(integration)' : continuous
+'from(requirements)/to(deployment)' : continuous
+'from(design)/to(deployment)' : continuous
+'from(programming)/to(deployment)' : continuous
+defectDensity : continuous
+ivv : deployment, design, development, early, fullPhase, integration, programming
+reworkSaved : continuous
+reworkByPhase : coyle99, kan89, remus83
+
+NOW
+cmm : true
+'from(requirements)/to(design)' : true
+'from(design)/to(design)' : true
+'from(programming)/to(design)' : true
+'from(requirements)/to(programming)' : true
+'from(design)/to(programming)' : true
+'from(programming)/to(programming)' : true
+'from(requirements)/to(integration)' : true
+'from(design)/to(integration)' : true
+'from(programming)/to(integration)' : true
+'from(requirements)/to(deployment)' : true
+'from(design)/to(deployment)' : true
+'from(programming)/to(deployment)' : true
+defectDensity : true
+ivv :  true
+reworkSaved : true
+reworkByPhase : true
+
+CHANGES
+cmm : ignore
+'from(requirements)/to(design)' : true
+'from(design)/to(design)' : true
+'from(programming)/to(design)' : ignore
+'from(requirements)/to(programming)' : true
+'from(design)/to(programming)' : true
+'from(programming)/to(programming)' : true
+'from(requirements)/to(integration)' : true
+'from(design)/to(integration)' : true
+'from(programming)/to(integration)' : true
+'from(requirements)/to(deployment)' : true
+'from(design)/to(deployment)' : true
+'from(programming)/to(deployment)' : continuous
+defectDensity : true
+ivv :  true
+reworkSaved : true
+reworkByPhase : true

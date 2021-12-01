@@ -1,0 +1,329 @@
+
+changes1:
+iv&v cost of 100 too big -dominates the example. 
+reset to 40
+
+changes2:
+error in classifications
+
+============================================================
+/cygdrive/c/tim/src/pl/tar2> sh prep.sh 0.5 0.7
+cost chop 328.202 chances chop -81.4704
+cost,LogChances
+
+hilo % <-- worst
+lolo %
+hihi %
+lohi % <-- best
+
+minc, 284.588
+breakc, 325.815
+maxc, 371.816
+minch, -125.068 
+breakch, -88.3194
+maxch, -62.7857
+all, 999
+lolo, 106
+lohi, 223
+hilo, 223
+hihi, 445
+      1 :- dataset(1).
+    247 hihi).
+    358 hilo).
+    155 lohi).
+    239 lolo).
+
+   1 :    1 
+   2 :    5 ~
+   3 :   19 ~~~~~
+   4 :   35 ~~~~~~~~~
+   5 :   32 ~~~~~~~~
+   6 :   51 ~~~~~~~~~~~~~
+   7 :   42 ~~~~~~~~~~~ 
+   8 :   14 ~~~~
+   9 :    6 ~~
+  10 :    1 
+  11 :    3 ~
+  12 :    5 ~
+  13 :    1 
+  17 :    1 
+
+d granularity(3)
+d significant1(1).
+d significant2(1.1).
+
+
+          score :    1 
+        what if : no change? 
+           hilo :   36% ~~~~~~~~~
+           lolo :   24% ~~~~~~
+           hihi :   25% ~~~~~~
+           lohi :   16% ~~~~
+
+
+          score : 1.13526 
+        what if : [[goodImplemenation@142]Cost=1]? 
+           hilo :   27% ~~~~~~~
+           lolo :   31% ~~~~~~~~
+           hihi :   20% ~~~~~
+           lohi :   22% ~~~~~~
+
+          score : 1.13278 
+        what if : [[iv&v@76]Cost=1]? 
+           hilo :   23% ~~~~~~
+           lolo :   39% ~~~~~~~~~~
+           hihi :   15% ~~~~
+           lohi :   24% ~~~~~~
+
+          score : 1.12741 
+        what if : [[goodProject@150]Cost=1]? 
+           hilo :   29% ~~~~~~~
+           lolo :   28% ~~~~~~~
+           hihi :   21% ~~~~~
+           lohi :   22% ~~~~~~
+
+          score : 1.12348 
+        what if : [[feasibleDesignToCode@127]Cost=1]? 
+           hilo :   28% ~~~~~~~
+           lolo :   28% ~~~~~~~
+           hihi :   24% ~~~~~~
+           lohi :   21% ~~~~~
+
+          score : 1.10089 
+        what if : [[systemIntegration@145]Cost=1]? 
+           hilo :   29% ~~~~~~~
+           lolo :   30% ~~~~~~~~
+           hihi :   21% ~~~~~
+           lohi :   21% ~~~~~
+
+problem: but could not do changes of size 2
+
+==================
+d granularity(3)
+d significant1(8).
+d significant2(1.25).
+
+width sig1=1.25
+
+          score : 1.31552 
+        what if : [[goodImplemenation@142]Cost=1, [goodProject@150]Cost=1]? 
+           hilo :   19% ~~~~~
+           lolo :   34% ~~~~~~~~~
+           hihi :   15% ~~~~
+           lohi :   32% ~~~~~~~~
+
+          score : 1.31051 
+        what if : [[iv&v@76]Cost=1, [configurationManagement@73]Cost=1]? 
+           hilo :   16% ~~~~
+           lolo :   44% ~~~~~~~~~~~
+           hihi :    7% ~~
+           lohi :   34% ~~~~~~~~~
+
+          score : 1.29449 
+        what if : [[iv&v@76]Cost=1, [goodIntegration@147]Cost=1]? 
+           hilo :   13% ~~~
+           lolo :   46% ~~~~~~~~~~~~
+           hihi :   10% ~~~
+           lohi :   32% ~~~~~~~~
+
+          score : 1.29264 
+        what if : [[goodImplemenation@142]Cost=1, [feasibleDesignToCode@127]Cost=1]? 
+           hilo :   14% ~~~~
+           lolo :   41% ~~~~~~~~~~
+           hihi :   15% ~~~~
+           lohi :   30% ~~~~~~~~
+
+          score : 1.28484 
+        what if : [[iv&v@76]Cost=1, [goodTesting@136]Cost=1]? 
+           hilo :   13% ~~~
+           lolo :   47% ~~~~~~~~~~~~
+           hihi :    9% ~~
+           lohi :   31% ~~~~~~~~
+
+====================================
+
+   1 :    1 
+   2 :    5 ~
+   3 :   19 ~~~~~
+   4 :   35 ~~~~~~~~~
+   5 :   32 ~~~~~~~~
+   6 :   51 ~~~~~~~~~~~~~
+   7 :   42 ~~~~~~~~~~~
+   8 :   14 ~~~~
+   9 :    6 ~~
+  10 :    1 
+  11 :    3 ~
+  12 :    5 ~
+  13 :    1 
+  17 :    1 
+
+d significant1(12).
+d significant2(1.3).
+
+
+          score : 1.56854 
+        what if : [[iv&v@76]Cost=1, [feasibleDesignToCode@127]Cost=1, [goodProject@150]Cost=1]? 
+           hilo :   11% ~~~
+           lolo :   35% ~~~~~~~~~
+           hihi :    8% ~~
+           lohi :   46% ~~~~~~~~~~~~
+
+          score : 1.49165 
+        what if : [[goodImplemenation@142]Cost=1, [feasibleDesignToCode@127]Cost=1, [goodProject@150]Cost=1]? 
+           hilo :    8% ~~
+           lolo :   40% ~~~~~~~~~~
+           hihi :   13% ~~~
+           lohi :   40% ~~~~~~~~~~
+
+          score : 1.45167 
+        what if : [[iv&v@76]Cost=1, [goodImplemenation@142]Cost=1, [goodProject@150]Cost=1]? 
+           hilo :    7% ~~
+           lolo :   48% ~~~~~~~~~~~~
+           hihi :    5% ~
+           lohi :   40% ~~~~~~~~~~
+
+          score : 1.44275 
+        what if : [[iv&v@76]Cost=1, [feasibleDesignToCode@127]Cost=1, [systemIntegration@145]Cost=1]? 
+           hilo :   13% ~~~
+           lolo :   40% ~~~~~~~~~~
+           hihi :    8% ~~
+           lohi :   40% ~~~~~~~~~~
+
+          score : 1.44146 
+        what if : [[iv&v@76]Cost=1, [systemIntegration@145]Cost=1, [goodProject@150]Cost=1]? 
+           hilo :   11% ~~~
+           lolo :   42% ~~~~~~~~~~~
+           hihi :    8% ~~
+           lohi :   39% ~~~~~~~~~~
+
+=============
+
+d granularity(3).
+d significant1(13).
+d significant2(1.5).
+d nChanges(X) --> {member(X,[3])}.
+
+all fails- not enough combinations
+
+=============
+
+d granularity(5).
+d significant1(12). <--- as changes increase, increase sig1
+d significant2(1.1).
+d nChanges(X) --> {member(X,[2])}.
+
+          score : 1.43308 
+        what if : [[feasibleDesignToCode@127]Cost=1, [unitTest@134]Cost=1]? 
+           hilo :   12% ~~~
+           lolo :   37% ~~~~~~~~~
+           hihi :   14% ~~~~
+           lohi :   37% ~~~~~~~~~
+
+
+          score : 1.40111 
+        what if : [[problemReport@70]Cost=2, [goodTesting@136]Cost=2]? 
+           hilo :   24% ~~~~~~
+           lolo :   19% ~~~~~
+           hihi :   22% ~~~~~~
+           lohi :   35% ~~~~~~~~~
+
+          score : 1.38089 
+        what if : [[unitTest@134]Cost=1, [problemReport@70]Cost=2]? 
+           hilo :   24% ~~~~~~
+           lolo :   24% ~~~~~~
+           hihi :   18% ~~~~~
+           lohi :   35% ~~~~~~~~~
+
+          score : 1.34598 
+        what if : [[iv&v@76]Cost=1, [feasibleDesignToCode@127]Cost=1]? 
+           hilo :   13% ~~~
+           lolo :   46% ~~~~~~~~~~~~
+           hihi :    5% ~
+           lohi :   36% ~~~~~~~~~
+
+          score : 1.34493 
+        what if : [[testPlans@131]Cost=1, [feasibleDesignToCode@127]Cost=1]? 
+           hilo :   13% ~~~
+           lolo :   40% ~~~~~~~~~~
+           hihi :   15% ~~~~
+           lohi :   33% ~~~~~~~~
+
+          score : 1.33943 
+        what if : [[testPlans@131]Cost=1, [problemReport@70]Cost=2]? 
+           hilo :   11% ~~~
+           lolo :   32% ~~~~~~~~
+           hihi :   30% ~~~~~~~~
+           lohi :   27% ~~~~~~~
+
+
+          score : 1.32692 
+        what if : [[iv&v@76]Cost=1, [goodProject@150]Cost=1]? 
+           hilo :   12% ~~~
+           lolo :   44% ~~~~~~~~~~~
+           hihi :   12% ~~~
+           lohi :   33% ~~~~~~~~
+
+          score : 1.32048 
+        what if : [[iv&v@76]Cost=1, [systemIntegration@145]Cost=1]? 
+           hilo :   15% ~~~~
+           lolo :   45% ~~~~~~~~~~~
+           hihi :    5% ~
+           lohi :   35% ~~~~~~~~~
+
+          score : 1.31437 
+        what if : [[systemIntegration@145]Cost=1, [goodTesting@136]Cost=2]? 
+           hilo :   22% ~~~~~~
+           lolo :   28% ~~~~~~~
+           hihi :   19% ~~~~~
+           lohi :   31% ~~~~~~~~
+
+note 1.4011- 
+bands of 2 are '[problemReport@70]Cost'= group(2, 4.0892, 4.7573)
+                '[goodTesting@136]Cost= group(2, 16.49, 18.8336)
+
+i.e, small change, big change in profile
+
+====================================
+
+d granularity(5).
+d significant1(12).
+d significant2(1.43).
+d nChanges(X) --> {member(X,[3])}.
+
+
+lots over 1.43
+
+=============
+d granularity(5).
+d significant1(12).
+d significant2(2).
+d nChanges(X) --> {member(X,[3])}.
+d format('~15> : ~4>~w ~4-\n').
+
+   score : 2.28231 
+        what if : [[testPlans@131]Cost=1, [problemReport@70]Cost=2, [goodTesting@136]Cost=2]? 
+           hilo :    0% 
+           lolo :    0% 
+           hihi :   25% ~~~~~~
+           lohi :   75% ~~~~~~~~~~~~~~~~~~~
+
+          score : 2.15189 
+        what if : [[unitTest@134]Cost=1, [problemReport@70]Cost=2, [goodTesting@136]Cost=2]? 
+           hilo :   20% ~~~~~
+           lolo :    0% 
+           hihi :    0% 
+           lohi :   80% ~~~~~~~~~~~~~~~~~~~~
+
+          score : 2.11929 
+        what if : [[goodProject@150]Cost=1, [systemIntegration@145]Cost=1, [goodTesting@136]Cost=2]? 
+           hilo :    0% 
+           lolo :   25% ~~~~~~
+           hihi :    0% 
+           lohi :   75% ~~~~~~~~~~~~~~~~~~~
+
+          score : 2.03778 
+        what if : [[goodProject@150]Cost=1, [problemReport@70]Cost=2, [goodTesting@136]Cost=2]? 
+           hilo :    0% 
+           lolo :   13% ~~~
+           hihi :   25% ~~~~~~
+           lohi :   63% ~~~~~~~~~~~~~~~~

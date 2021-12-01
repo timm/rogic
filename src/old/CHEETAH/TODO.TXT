@@ -1,0 +1,23 @@
+after proving all(X)=t, can we prove X=t
+
+rany: tense till one proved,
+      after that, as many as we want
+      
+rany proves one, then acts as rors
+
+demorgan out the notes
+
+input facts have costs?
+
+want to test trust(X) facts. how do i handle trusting lots of folks?
+
+propergate the costs and chances.
+
+believe in multiple users
+
+test all the new conjuncts
+
+the facts: not known? pull them from a beta.
+
+backups!!!
+

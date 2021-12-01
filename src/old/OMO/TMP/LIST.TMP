@@ -1,0 +1,48 @@
+
+=head1 List Stuff
+
+  :- ensure_loaded([list0,list1]).
+
+
+=head2 Operators
+
+ :- op(800,xfx,(in)).
+
+
+
+
+=head2 C<halve(+List,?Front,?Mid,?Back)>: split a list in half
+
+Originally by Richard O'Keefe, I think.
+
+ halve([X],[],X,[]).
+ halve([X,Y|L],[X|Front],Mid,Back) :-
+	halve1(L,[Y|L],Front,[Mid|Back]).
+ %
+ halve1([_,_|Count], [H|T], [H|F], B) :- !, halve1(Count, T, F, B).
+ halve1(_, B, [], B).
+
+=head2 C<inOrder(+L0,L)> lets un implement a predicate
+that generates an I<inOrder> traversal of a list.
+
+ inOrder(L0,L)  :- bagof(M,L0^inOrder1(L0,M),L).
+ inOrder1(L0,M) :- msort(L0,L), inOrder11(L,M).
+ inOrder11(L,M) :-
+	halve(L,Front,M0,Back),
+	(M0=M
+        ;inOrder11(Front,M)
+        ;inOrder11(Back,M)).
+
+=head2 Ordered Sets
+
+If a set is always ordered then certain operations can be optimized.
+For example, adding items:
+
+ oset_add([], El, [El]). 
+ oset_add([H|T], El, Add) :-
+    compare(Order, H, El),
+    addel(Order, H, T, El, Add).
+
+ addel(<, H, T,  El, [H|Add]) :- oset_add(T, El, Add).
+ addel(=, H, T, _El, [H|T]). 
+ addel(>, H, T,  El, [El,H|T]).

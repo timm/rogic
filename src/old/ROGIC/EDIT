@@ -1,0 +1,35 @@
+# KDE Config File
+[KDE Desktop Entry]
+Name[fi]=Sovellus
+SwallowExec=rogic edit
+SwallowTitle=rogic edit
+Name[ru]=ðÒÉÌÏÖÅÎÉÅ
+BinaryPattern=
+Name[hr]=Program
+Name[sl]=Uporabni¹ki program
+Name[pl]=Aplikacja
+Name=Application
+Name[ca]=Aplicacions
+Name[it]=Applicazione
+Name[da]=Anvendelse
+Comment[]=
+MimeType=
+Name[de]=Anwendung
+Name[ja]=¥¢¥×¥ê¥±¡¼¥·¥ç¥ó
+Exec=emacs -geometry 100x50 /home/timm/src/pl/rogic/
+Name[cs]=Aplikace
+Name[sv]=Program
+Icon=emacs.xpm
+TerminalOptions=
+Name[sk]=Aplikácia
+Path=
+Name[pt_BR]=Aplicativo
+Type=Application
+Name[es]=Aplicaciones
+Name[is]=Forrit
+Name[pt]=Aplicação
+Terminal=0
+Name[no]=Applikasjon
+Name[hu]=Applikáció
+Name[ro]=Aplicaþie
+Name[]=Application

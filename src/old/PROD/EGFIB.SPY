@@ -1,0 +1,28 @@
+% output from ':- demos(egfib).'
+
+
+             fib(15) takes 0 secs
+             fib(17) takes 0.0200288 secs
+             fib(19) takes 1.90274 secs
+             fib(21) takes 5.51793 secs
+             fib(23) takes 15.1418 secs
+
+            fibM(15) takes 0.000200288 secs
+            fibM(20) takes 0.000100144 secs
+            fibM(25) takes 0.000300432 secs
+            fibM(30) takes 0.000300432 secs
+            fibM(35) takes 0.000300432 secs
+            fibM(40) takes 0.000300432 secs
+            fibM(45) takes 0.00050072 secs
+            fibM(50) takes 0.000400576 secs
+
+      lurch(fib(15)) takes 0.00200288 secs
+      lurch(fib(20)) takes 0.00270389 secs
+      lurch(fib(25)) takes 0.00350504 secs
+      lurch(fib(30)) takes 0.00450648 secs
+      lurch(fib(35)) takes 0.00540778 secs
+      lurch(fib(40)) takes 0.00630907 secs
+      lurch(fib(45)) takes 0.00771109 secs
+      lurch(fib(50)) takes 0.00871253 secs
+
+% runtime = 26.9087 sec(s)

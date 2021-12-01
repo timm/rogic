@@ -1,0 +1,173 @@
+?- 
+impacts(+, A, B) :-
+	sumof(C, A^D^E^impact(A, C, D, E), B).
+impacts(*, A, B) :-
+	prodof(C, A^D^E^impact(A, C, D, E), B).
+
+
+%   NOTE: system definition has been overruled for dde_execute/2
+
+dde_execute(A, B) :-
+	dde_execute(A, B, 0).
+
+gui_setup_ :-
+	feature(gui, true), !.
+gui_setup_ :-
+	(   getenv('DISPLAY', A)
+	;   feature(arch, B),
+	    '$apropos_match'(win32, B)
+	), !,
+	asserta( (help:-!, prolog_help)),
+	asserta( (help(C):-!, prolog_help(C))),
+	asserta( (apropos(C):-!, prolog_apropos(C))),
+	set_feature(gui, true).
+
+prod([], A, A).
+prod([A|B], C, D) :-
+	E is C*A,
+	prod(B, E, D).
+
+%   NOTE: system definition has been overruled for dde_request/3
+
+dde_request(A, B, C) :-
+	dde_request(A, B, C, 0).
+
+f(f, A, B, v1) :-
+	likely(1),
+	C=1,
+	D=0,
+	impacts(*, f, E),
+	A is C-C*E,
+	B is D.
+
+'$user_query'(8, []) :-
+	listing.
+'$user_query'(3, ['S'=A, 'C'=B]) :-
+	r(r0, A, B, C).
+
+dde_control(A) :-
+	term_to_atom(B, A),
+	user:B.
+
+sum([], A, A).
+sum([A|B], C, D) :-
+	E is A+C,
+	sum(B, E, D).
+
+%   NOTE: system definition has been overruled for dde_register_service/2
+
+dde_register_service(A, B) :-
+	A=..[C, D, E, F], !,
+	'$strip_module'(B, G, H),
+	'$dde_register_service'(C, on),
+	asserta(win_dde:dde_service(C, D, E, F, G, H)).
+dde_register_service(A, B) :-
+	A=..[C, D, E], !,
+	'$strip_module'(B, F, G),
+	'$dde_register_service'(C, on),
+	asserta(win_dde:dde_service(C, D, -, E, F, G)).
+dde_register_service(A, B) :-
+	'$warning'('dde_register_service/2: illegal template: ~w', [A]),
+	fail.
+
+pcehome_(A) :-
+	pcehomestore_(A), !.
+pcehome_(A) :-
+	(   getenv('XPCEHOME', B)
+	;   feature(home, C),
+	    (   feature(xpce_version, D),
+		concat('/xpce-', D, E)
+	    ;   E='/xpce'
+	    ),
+	    concat(C, E, B)
+	),
+	exists_directory(B), !,
+	absolute_file_name(B, A),
+	asserta(pcehomestore_(A)).
+
+p(pa, 1, 1, v1) :-
+	likely(1).
+p(pb, 1, 1, v1) :-
+	likely(1).
+
+gen(A, B, C, D, E, F, F) :-
+	likely(C),
+	impacts(+, A, G),
+	E is D-D*G.
+
+pce_setup_ :-
+	feature(xpce, true), !.
+pce_setup_ :-
+	'$argv'([A|B]),
+	\+member('-nopce', B),
+	pcehome_(C),
+	exists_directory(C),
+	gui_setup_,
+	(   member('-pce', B)
+	;   prolog_to_os_filename(D, A),
+	    file_base_name(D, E),
+	    '$apropos_match'(pce, E)
+	), !,
+	object(@pce),
+	use_module(library(pce)),
+	flag('$banner_goal', F, pce_welcome).
+pce_setup_.
+
+%   NOTE: system definition has been overruled for dde_poke/3
+
+dde_poke(A, B, C) :-
+	dde_poke(A, B, C, 0).
+
+sumof(A, B, C) :-
+	bagof(A, B, D), !,
+	sum(D, 0, C).
+sumof(A, B, 0).
+
+rand(A) :-
+	A is random(10000)/10000.
+
+%   NOTE: system definition has been overruled for dde_current_connection/2
+
+dde_current_connection(A, B) :-
+	dde_current_connection(C, A, B).
+
+%   Foreign: window_title/2
+
+impact(r0, A, B, v1) :-
+	likely(1),
+	C=0.9,
+	D=0,
+	f(f, E, F, G),
+	A is C-C*E,
+	B is D+F.
+impact(f, 0.2, A, v1) :-
+	p(pa, B, C, D).
+impact(f, 0.7, A, v1) :-
+	p(pb, B, C, D).
+
+prodof(A, B, C) :-
+	bagof(A, B, D), !,
+	prod(D, 1, C).
+prodof(A, B, 1).
+
+%   NOTE: system definition has been overruled for dde_current_service/2
+
+dde_current_service(A, B) :-
+	dde_service(A, B, C, D, E, F).
+
+%   NOTE: system definition has been overruled for dde_unregister_service/1
+
+dde_unregister_service(A) :-
+	(   retract(dde_service(A, B, C, D, E, F))
+	->  '$dde_register_service'(A, off)
+	;   true
+	),
+	retractall(dde_service(A, G, H, I, J, K)).
+
+r(r0, A, B, v1) :-
+	gen(r0, true, 1, 100, A, 0, B).
+
+likely(A) :-
+	B is rand,
+	B<A.
+?- 

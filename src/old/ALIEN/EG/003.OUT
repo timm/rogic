@@ -1,0 +1,96 @@
+
+rangeP(convictions, lots).
+rangeP(convictions, some).
+rangeP(convictions, none).
+rangeP(guilty, t).
+rangeP(guilty, f).
+rangeP(infant, t).
+rangeP(infant, f).
+rangeP(jail, t).
+rangeP(jail, f).
+rangeP(legally_responsible, t).
+rangeP(legally_responsible, f).
+rangeP(means, t).
+rangeP(means, f).
+rangeP(moron, t).
+rangeP(moron, f).
+rangeP(motive, t).
+rangeP(motive, f).
+rangeP(opportunity, t).
+rangeP(opportunity, f).
+rangeP(witnesses, t).
+rangeP(witnesses, f).
+
+oneOfP(boolean, [t, f]).
+oneOfP(priors, [lots, some, none]).
+
+personP(tim, 'tim@menzies.com').
+personP(tom, 'tom@menzies.com').
+
+groupP(prosecute).
+groupP(defend).
+
+personGroupP(prosecute, tim).
+personGroupP(defend, tom).
+
+numericP(age).
+
+
+object(age).
+object(convictions).
+object(guilty).
+object(infant).
+object(jail).
+object(legally_responsible).
+object(means).
+object(moron).
+object(motive).
+object(opportunity).
+object(witnesses).
+
+
+legally_responsible@t(1)=f :-
+	{prosecute, 1, 1},
+	infant@t(1)=t.
+legally_responsible@t(1)=f :-
+	{prosecute, 1, 1},
+	moron@t(1)=t.
+infant@t(1)=t :-
+	{prosecute, 2, 1},
+	age@t(1)>7.
+jail@t(1)=t :-
+	{prosecute, 3, 1},
+	legally_responsible@t(1)=t,
+	guilty@t(1)=t.
+jail@t(1)=t :-
+	{prosecute, 4, 1},
+	guilty@t(1)=t.
+guilty@t(1)=t :-
+	{prosecute, 5, 1},
+	motive@t(1)=t,
+	means@t(1)=t,
+	opportunity@t(1)=t,
+	witnesses@t(1)=t.
+jail@t(1)=f :-
+	{defence, 6, 1},
+	guilty@t(1)=t,
+	legally_responsible@t(1)=f.
+legally_responsible@t(1)=f :-
+	{defence, 7, 1},
+	infant@t(1)=t.
+legally_responsible@t(1)=f :-
+	{defence, 7, 1},
+	moron@t(1)=t.
+guilty@t(1)=f :-
+	{defence, 8, 1},
+	convictions@t(1)=some.
+guilty@t(1)=f :-
+	{defence, 8, 1},
+	convictions@t(1)=none.
+legally_responsible@t(1)=f :-
+	{defence, 9, 1},
+	infant@t(1)=t.
+legally_responsible@t(1)=f :-
+	{defence, 9, 1},
+	moron@t(1)=t.
+% time= 0.0100144 secs

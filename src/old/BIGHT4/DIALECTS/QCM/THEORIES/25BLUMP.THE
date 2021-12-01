@@ -1,0 +1,16 @@
+name =   '025. bath (with lumps)'.
+
+objects(e) = [tighten,loosen,pull,push].
+objects(m) = [tapFlow,tub,plugFlow,l1,l2,l3,l4,l5,l6,l7,l8,l9l10,11,l12].
+
+tighten  --  l1 .
+l1       --  l2.
+l2       --  tapFlow.
+loosen   ++  l3 .
+l3       ++  tapFlow.
+tapFlow  +-+ l4.
+l4       ++  l5.
+l5       ++  tub .
+plugFlow +-- tub .
+push     ++  plugFlow .
+pull     --  plugFlow .

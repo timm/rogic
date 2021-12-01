@@ -1,0 +1,5 @@
+% output from ':- demos(egtimes).'
+
+In 10000 repeats, each run took 8.01152e-006 seconds.
+
+% runtime = 0.100144 sec(s)

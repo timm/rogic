@@ -1,0 +1,12 @@
+
+ %% eglookup.spy (output from ':- demos(eglookup).')
+[age(20),weight(15)]= low
+[age(20),weight(20)]= low
+[age(20),weight(80)]= avg
+[age(30),weight(15)]= low
+[age(30),weight(20)]= avg
+[age(30),weight(80)]= high
+[age(41),weight(15)]= avg
+[age(41),weight(20)]= high
+[age(41),weight(80)]= high
+ %% runtime = 0.0100144 sec(s)

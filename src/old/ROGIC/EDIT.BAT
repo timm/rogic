@@ -1,0 +1,1 @@
+"C:\Program Files\TextPad 4\TextPad.exe" th\*.pl go.pl bin\*.pl dd\*.pl etc\* 

@@ -1,0 +1,2 @@
+xterm -e ~/prolog/pl*/bin/pl -f system.pl &
+grep timeAbduct ../notes

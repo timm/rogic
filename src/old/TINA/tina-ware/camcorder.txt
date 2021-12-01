@@ -1,0 +1,324 @@
+
+Yes
+go.
+
+    ****************************************************************
+    *Welcome to [7mTinA[m, a program to construct diagnostic strategies.*
+    *                                                              *
+    *                  [7mT[mhis [7mi[ms [7mn[mot [7mA[mcquisition!  :-)               *
+    **hit***********************any****************************key**
+
+What do you want to know? 
+1  applicable_strategies
+2  give_some_strategies_and_why_not_applicable_due_to_user_constraints
+3  supply_strategy_and_get_criteria_and_method_tree
+
+Select option : 
+1.
+
+A situation is defined by characteristics of the case domain. 
+
+There are some pre-specified situation from which you have to choose. 
+1  technical_domain_simple
+2  technical_domain_complex
+3  camcorder
+4  almost_camcorder
+5  medical_domain
+6  empirical_domain
+
+Select option : 
+3.
+
+The situation is the following: 
+
+  component_hypotheses
+  cost_info
+  dependencies_in_model
+  device_model
+  hypothesis_set_dependent
+  local_cost_info
+  threshold_info
+  additional_observations
+  components_replaceable
+  device_accessible
+  imprecise_values
+  measuring_points_reachable
+  measuring_tools
+  complete_expected_value_database
+  hypotheses_can_be_generated
+  no_fault_masking
+  non_intermittency_assumption
+  single_fault_assumption
+
+Strategy number: 1
+  lookup
+  determine_ratio
+  check_against_threshold
+  find_upstream
+  intersect
+  simulate_hypothesis
+  compare
+  estimate_overall_cost
+  order_hypothesis_set
+  select_first
+  obtain
+  symptom_detection
+  spilt_hypothesis_set
+
+Tree: 
+prime_diagnostic_method
+    compare_symptom_detection_method
+        lookup_method
+          lookup
+        threshold_compare_method
+          determine_ratio
+          check_against_threshold
+    model_based_hypothesis_generation_method
+        trace_back_method
+          find_upstream
+        intersection_method
+          intersect
+        corroboration_method
+          simulate_hypothesis
+          compare
+    hypothesis_discrimination_method
+        smart_select_hypothesis_method
+            estimation_based_on_overall_cost_method
+              estimate_overall_cost
+          order_hypothesis_set
+          select_first
+        probing_method
+          obtain
+      symptom_detection
+        spilt_half_interpret_method
+          spilt_hypothesis_set
+
+Strategy number: 2
+  lookup
+  determine_ratio
+  check_against_threshold
+  find_upstream
+  intersect
+  simulate_hypothesis
+  compare
+  estimate_overall_cost
+  order_hypothesis_set
+  select_first
+  obtain
+  symptom_detection
+  model_based_hypothesis_generation
+
+Tree: 
+prime_diagnostic_method
+    compare_symptom_detection_method
+        lookup_method
+          lookup
+        threshold_compare_method
+          determine_ratio
+          check_against_threshold
+    model_based_hypothesis_generation_method
+        trace_back_method
+          find_upstream
+        intersection_method
+          intersect
+        corroboration_method
+          simulate_hypothesis
+          compare
+    hypothesis_discrimination_method
+        smart_select_hypothesis_method
+            estimation_based_on_overall_cost_method
+              estimate_overall_cost
+          order_hypothesis_set
+          select_first
+        probing_method
+          obtain
+      symptom_detection
+        model_based_hypothesis_generation_method
+          model_based_hypothesis_generation
+
+Strategy number: 3
+  lookup
+  determine_ratio
+  check_against_threshold
+  find_upstream
+  intersect
+  simulate_hypothesis
+  compare
+  estimate_overall_cost
+  order_hypothesis_set
+  select_first
+  replace_hypothesis
+  symptom_detection
+  spilt_hypothesis_set
+
+Tree: 
+prime_diagnostic_method
+    compare_symptom_detection_method
+        lookup_method
+          lookup
+        threshold_compare_method
+          determine_ratio
+          check_against_threshold
+    model_based_hypothesis_generation_method
+        trace_back_method
+          find_upstream
+        intersection_method
+          intersect
+        corroboration_method
+          simulate_hypothesis
+          compare
+    hypothesis_discrimination_method
+        smart_select_hypothesis_method
+            estimation_based_on_overall_cost_method
+              estimate_overall_cost
+          order_hypothesis_set
+          select_first
+        replace_method
+          replace_hypothesis
+      symptom_detection
+        spilt_half_interpret_method
+          spilt_hypothesis_set
+
+Strategy number: 4
+  lookup
+  determine_ratio
+  check_against_threshold
+  find_upstream
+  intersect
+  simulate_hypothesis
+  compare
+  estimate_overall_cost
+  order_hypothesis_set
+  select_first
+  replace_hypothesis
+  symptom_detection
+  model_based_hypothesis_generation
+
+Tree: 
+prime_diagnostic_method
+    compare_symptom_detection_method
+        lookup_method
+          lookup
+        threshold_compare_method
+          determine_ratio
+          check_against_threshold
+    model_based_hypothesis_generation_method
+        trace_back_method
+          find_upstream
+        intersection_method
+          intersect
+        corroboration_method
+          simulate_hypothesis
+          compare
+    hypothesis_discrimination_method
+        smart_select_hypothesis_method
+            estimation_based_on_overall_cost_method
+              estimate_overall_cost
+          order_hypothesis_set
+          select_first
+        replace_method
+          replace_hypothesis
+      symptom_detection
+        model_based_hypothesis_generation_method
+          model_based_hypothesis_generation
+
+Strategy number: 5
+  lookup
+  determine_ratio
+  check_against_threshold
+  find_upstream
+  intersect
+  simulate_hypothesis
+  compare
+  estimate_overall_cost
+  order_hypothesis_set
+  select_first
+  compute_indicator
+  obtain
+  symptom_detection
+  spilt_hypothesis_set
+
+Tree: 
+prime_diagnostic_method
+    compare_symptom_detection_method
+        lookup_method
+          lookup
+        threshold_compare_method
+          determine_ratio
+          check_against_threshold
+    model_based_hypothesis_generation_method
+        trace_back_method
+          find_upstream
+        intersection_method
+          intersect
+        corroboration_method
+          simulate_hypothesis
+          compare
+    hypothesis_discrimination_method
+        smart_select_hypothesis_method
+            estimation_based_on_overall_cost_method
+              estimate_overall_cost
+          order_hypothesis_set
+          select_first
+        indicator_method
+          compute_indicator
+          obtain
+      symptom_detection
+        spilt_half_interpret_method
+          spilt_hypothesis_set
+
+Strategy number: 6
+  lookup
+  determine_ratio
+  check_against_threshold
+  find_upstream
+  intersect
+  simulate_hypothesis
+  compare
+  estimate_overall_cost
+  order_hypothesis_set
+  select_first
+  compute_indicator
+  obtain
+  symptom_detection
+  model_based_hypothesis_generation
+
+Tree: 
+prime_diagnostic_method
+    compare_symptom_detection_method
+        lookup_method
+          lookup
+        threshold_compare_method
+          determine_ratio
+          check_against_threshold
+    model_based_hypothesis_generation_method
+        trace_back_method
+          find_upstream
+        intersection_method
+          intersect
+        corroboration_method
+          simulate_hypothesis
+          compare
+    hypothesis_discrimination_method
+        smart_select_hypothesis_method
+            estimation_based_on_overall_cost_method
+              estimate_overall_cost
+          order_hypothesis_set
+          select_first
+        indicator_method
+          compute_indicator
+          obtain
+      symptom_detection
+        model_based_hypothesis_generation_method
+          model_based_hypothesis_generation
+
+What next? 
+1  exit
+2  continue
+
+Select option : 
+1.
+
+
+Yes
+noprotocol.

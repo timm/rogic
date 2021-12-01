@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Extended clause grammers}{2}
+\contentsline {section}{\numberline {2}Header}{2}
+\contentsline {subsection}{\numberline {2.1}Loads */}{2}
+\contentsline {section}{\numberline {3}Body}{2}
+\contentsline {subsection}{\numberline {3.1}Standard Optimizations */}{2}
+\contentsline {subsection}{\numberline {3.2}Reparing DCG expansion}{2}
+\contentsline {subsection}{\numberline {3.3}Hooks into the defs systems */}{2}
+\contentsline {subsection}{\numberline {3.4}Optimizing \textit {Solo} Calls}{2}
+\contentsline {subsection}{\numberline {3.5}Maintaining Context}{3}

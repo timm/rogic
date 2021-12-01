@@ -1,0 +1,7 @@
+name = '24. rats'.
+
+objects(e) = [switch,rats].
+objects(m) = [power,light].
+
+switch  ++  power.
+if rats then not power ++ light.

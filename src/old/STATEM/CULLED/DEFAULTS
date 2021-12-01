@@ -1,0 +1,22 @@
+%%%% programmer settings for statem.bat
+
+% default commands to call at start up
+defaults([ +hello
+	 , +time
+         ]).
+
+% actions to reverse the default actions
+undefaults([ -hello
+           , -time
+           ]).
+
+% your own command line options.
+% strongly recommended you implement A0 and use lower case for
+% any other of your own command line options
+
+com('A0') = 'show (brief) about text' :- 
+        write('STATEM v0.1- a little language for state transistion diagrams.'),
+	nl,write('Copyright (C) 1999 tim@menzies.com'),nl.
+
+
+

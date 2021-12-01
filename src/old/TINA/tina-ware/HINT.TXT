@@ -1,0 +1,22 @@
+1  all_strategies		NIET DOEN
+2  applicable_strategies
+   1  technical_domain_simple  -> 144 strategies
+
+   2  technical_domain_complex  -> 2 strategies  OK
+   3  camcorder			-> 4 strategies OK
+   4  almost_camcorder		-> no strategies
+   5   ,,,,				,,,,,
+   6  empirical_domain		-> 1 strat
+
+3  give_all_strategies_and_why_not_applicable DON'T EVEN THINK ABOUT THIS
+4  give_some_strategies_and_why_not_applicable_due_to_user_constraints
+   1  technical_domain_simple	-> DON'T
+   2  technical_domain_complex	-> DONT
+   3  camcorder			-> DONT
+   4  almost_camcorder		-> DONT
+   5  medical_domain		-> DONT
+   6  empirical_domain 		-> DONT
+5  supply_strategy_and_get_criteria_and_method_tree
+   ALL OK
+6  no
+7  no

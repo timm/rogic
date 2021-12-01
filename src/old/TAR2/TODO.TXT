@@ -1,0 +1,2 @@
+collapse the ranges so for x=[1,2,3,4,5] and the dscovered range is
+x=3,4,5 then i just want to test x >=3 once.

@@ -1,0 +1,83 @@
+On Mon, 17 Jan 2000, you wrote:
+>heh jan,
+>
+>are the key strokes for plwin.exe documented anywhere? see, i could not find
+>it and after much random thrashing, i have found that :
+
+>question: any other secret key bindings? can i change them? is the following
+>the current list of bindings?
+
+Here is the (enhanced en partial) README on the console window (now
+plterm.dll to void a conflict with console.dll that is part of Windows
+2000).
+
+			Win32 `Readline Console'
+
+Author: Jan Wielemaker
+E-mail: jan@swi.psy.uva.nl
+
+Edit functions
+==============
+
+The following edit functions are provided:
+
+	Control-A	Beginning of line
+	Control-B	Character backward
+	Control-C	Generate interrupt
+	Control-D	Delete character forwards, or end-of-file
+	Control-E	End of line
+	Control-F	Character forwards
+	Control-I (TAB)	Complete (filename, may be programmed)
+	Control-J (NL)	Enter (make line available)
+	Control-K	Delete to end-of-line
+	Control-M (RET)	Enter (make line available)
+	Control-N	Next line in history
+	Control-P	Previous line in history
+	Control-T	Toggle characters around caret
+	Control-U	Empty line
+	Control-V	Paste
+	Control-Z	End-of-file
+	DEL		Delete character forwards
+	BACKSPACE	Delete character backwards
+	<-, ->		Move caret in line, with SHIFT down, move
+			by word.
+	Up, down	Move in history list
+
+Mouse-bindings:
+
+	Left:		Start selection, dragging extends the selection.
+			Double-click selects in `word-mode'. The
+			selection is placed on the Windows clipboard.
+	Middle:		Paste the Windows clipboard (also Control-V).
+	Right:		Extends the selection.
+
+Settings:
+=========
+
+Settings are kept in the Windows registry under the key
+
+	Software\<vendor>\<program>\Console
+
+Where
+		
+	<vendor>  is SWI, unless compiled with a different setting for
+		  RLC_VENDOR
+        <program> is the basename of the program without extension
+		  (i.e. plwin for the program C:\Program
+		  Files\pl\bin\plwin.exe).
+
+Maintained values on this key are:
+
+	Name		Type			Description
+	================================================================
+	SaveLines	int (200-100000)	# lines saved for scrollback
+	Width		int (20-300)		# width in characters
+	Height		int (5-100)		# height in characters
+	X		int (0-screen-width)	# X-position of window
+	Y		int (0-screen-height)	# Y-position of window
+	FaceName	str			# Font info (settable using
+	FontFamily	int			# extension of Windows menu)
+	FontSize	int
+	FontWeight	int
+	FontCharSet	int
+

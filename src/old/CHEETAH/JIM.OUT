@@ -1,0 +1,146 @@
+domain= 'tutorial e.g. 1'.
+tim=    [month=jan,day=18,year=2000,elm='tim@menzies.com'].
+known=  [baseball ,content ,exercise ,football ,happy ,healthy
+        ,likesSweat ,overweight ,rich ,running ,sick ,smoker ,swimming
+        ,tranquil].
+
+tim says cost=0 and chances=1.
+happy   if rich rors healthy rors content.
+
+rich if not tranquil.
+content if tranquil.
+
+healthy if no sick.
+
+tim says cost=0 and chances=1.
+sick if smoker.
+sick if overweight.
+
+overweight if no exercise.
+
+exercise if baseball rany running rany swimming rany football.
+
+tim says cost= 1 to ++4 and chances=0 to +1.
+baseball if likesSweat.
+running  if likesSweat.
+football if likesSweat.
+swimming if not likesSweat.
+
+run :- prove(happy).
+
+showJim :- tell('jim.out'), run,run,run,run,told.
+
+========================================================
+
+--| CHEETAH (v0.1) |--------------------------------
+See Cheetah chase Jane. See Jane run. Run Jane, run!
+Thu Jan 18 21:52:43 2001
+
+** POLICIES
+orsCostCombine=max
+orsChancesCombine=sum
+andCostCombine=sum
+andChanceCombine=product
+
+>>% ~~~~~~~~~~~~~~~~~~~~
+
+
+** FINDINGS
+happy=t [cost=3.9626,chances=1]
+
+** REASONS
+content=t [cost=0,chances=1]
+happy=t [cost=3.9626,chances=1]
+healthy=t [cost=3.9626,chances=0]
+likesSweat=t [cost=0,chances=1]
+overweight=t [cost=3.9626,chances=0]
+running=t [cost=3.9626,chances=0.2225]
+smoker=t [cost=0,chances=1]
+tranquil=t [cost=0,chances=1]
+no exercise=t [cost=3.9626,chances=0]
+no sick=t [cost=3.9626,chances=0]
+
+--| CHEETAH (v0.1) |--------------------------------
+See Cheetah chase Jane. See Jane run. Run Jane, run!
+Thu Jan 18 21:52:43 2001
+
+** POLICIES
+orsCostCombine=max
+orsChancesCombine=sum
+andCostCombine=sum
+andChanceCombine=product
+
+>>% ~~~~~~~~~~~~~~~~~~~~
+
+
+** FINDINGS
+happy=t [cost=3.16836,chances=1]
+
+** REASONS
+football=t [cost=3.16836,chances=0.463]
+happy=t [cost=3.16836,chances=1]
+healthy=t [cost=3.16836,chances=0]
+likesSweat=t [cost=0,chances=1]
+overweight=t [cost=3.16836,chances=0]
+rich=t [cost=0,chances=1]
+smoker=t [cost=0,chances=1]
+tranquil=f [cost=0,chances=1]
+no exercise=t [cost=3.16836,chances=0]
+no sick=t [cost=3.16836,chances=0]
+
+--| CHEETAH (v0.1) |--------------------------------
+See Cheetah chase Jane. See Jane run. Run Jane, run!
+Thu Jan 18 21:52:43 2001
+
+** POLICIES
+orsCostCombine=max
+orsChancesCombine=sum
+andCostCombine=sum
+andChanceCombine=product
+
+>>% ~~~~~~~~~~~~~~~~~~~~
+
+
+** FINDINGS
+happy=t [cost=3.71442,chances=1]
+
+** REASONS
+content=t [cost=0,chances=1]
+football=t [cost=3.57075,chances=0.3498]
+happy=t [cost=3.71442,chances=1]
+healthy=t [cost=3.71442,chances=0]
+likesSweat=t [cost=0,chances=1]
+overweight=t [cost=3.71442,chances=0]
+running=t [cost=3.71442,chances=0.1317]
+smoker=t [cost=0,chances=1]
+tranquil=t [cost=0,chances=1]
+no exercise=t [cost=3.71442,chances=0]
+no sick=t [cost=3.71442,chances=0]
+
+--| CHEETAH (v0.1) |--------------------------------
+See Cheetah chase Jane. See Jane run. Run Jane, run!
+Thu Jan 18 21:52:43 2001
+
+** POLICIES
+orsCostCombine=max
+orsChancesCombine=sum
+andCostCombine=sum
+andChanceCombine=product
+
+>>% ~~~~~~~~~~~~~~~~~~~~
+
+
+** FINDINGS
+happy=t [cost=1.54203,chances=1]
+
+** REASONS
+happy=t [cost=1.54203,chances=1]
+healthy=t [cost=1.54203,chances=0]
+likesSweat=f [cost=0,chances=1]
+overweight=t [cost=1.54203,chances=0]
+rich=t [cost=0,chances=1]
+smoker=t [cost=0,chances=1]
+swimming=t [cost=1.54203,chances=0.1219]
+tranquil=f [cost=0,chances=1]
+no exercise=t [cost=1.54203,chances=0]
+no sick=t [cost=1.54203,chances=0]

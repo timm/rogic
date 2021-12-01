@@ -1,0 +1,12 @@
+\section{ Start-up commands}
+Create an infinity assertions.
+\begin{Verbatim}
+:- current_prolog_flag(max_integer,X), 
+    X1 is X - 1, 
+    retractall(inf(_)),
+    assert(inf(X1)).
+\end{Verbatim}
+Initialize the hash tree syste,s.
+\begin{Verbatim}
+:- make=L,initHts(L).
+\end{Verbatim}

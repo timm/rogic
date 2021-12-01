@@ -1,0 +1,2 @@
+sgoal(a).
+tgoal(e).

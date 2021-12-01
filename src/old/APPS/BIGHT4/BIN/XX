@@ -1,0 +1,5 @@
+study('../dialects/qcm/theories/11twox.out').
+[total - 0.06 / 100, data - 0.01 / 17, prep - 0 / 0, forwardSweep - 0.01 / 17, backwardsSweep - 0.02 / 33, worldsSweep - 0.01 / 17, validate - 0.01 / 17]
+Yes
+22 ?- study('../dialects/qcm/theories/28sym.out').
+

@@ -1,0 +1,15 @@
++ X :- load_files(X,[silent(true),if(changed)]).
+
+:- +[ops].
+
+commandLineArguments(Args) :-
+    unix(argv(Args0)),
+    append(_,[--|Args],Args0),
+    !.
+commandLineArguments([]).
+
+topLevelGoal :- 
+    clause(go,_)
+    -> go, 
+       true
+    ;  write('No main program found: halting.'), nl, halt.

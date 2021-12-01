@@ -1,0 +1,59 @@
+\section{Structure of a {\PROD} file}
+
+XXX is alatex and a prolog gile.
+
+
+\begin{figure}
+{\footnotesize \begin{verbatim}
+ /*\documentclass[twocolumn,global]{svjour}
+ \usepackage{prod}\begin{document}
+ 
+ 4. \theprogram{NAME}
+ 5. \thetocdepth{DEPTH} % e.g. 2
+ 6. \thewp{PATHNAME}
+ 7. \thetitle{TITLE}
+ 8. \theauthor{AUTHOR1\inst{1},AUTHOR2\inst{2}}
+ 9. \theinstitute{WHERE AUTHOR1 WORKS
+
+\theinstitute{_WHERE_AUTHOR1_WORKS;\\
+	      \url{author1@email1.com},
+	      \url{http://where.to.find.author1}
+10.              \and
+11.              _WHERE AUTHOR2 WORKS}
+12. \thereference{_REFERENCE \url{_DOWNLOAD_SITE}}
+13. \theacknowledgement{_ACKNOWLEDGEMENTS}}
+14. \theabstract{_ONE_PARAGRAPH_SUMMARY}
+15. */
+16.
+17. /*
+18. _BODY_OF_DOCUMENT
+19. */
+20. %%%% _SECTION1 heading
+21. %\LatexCommand{a}{b}
+22. /* Some text to be typeset
+23. */
+24. %%% _SECTION2 heading
+25. /* Some text to be typeset
+26. */
+27. %% _SECTION3 heading
+28. /* Some text to be typeset
+29. */
+30. %% _SECTION3 heading %<
+31. somePrologCode :-
+32.     subGoal1,
+33.     subGoal2.
+34. %>
+35. /* Some text between code.
+36. */
+37. %<
+38. someMorePrologCode :-
+39.     subGoal1,
+40.     subGoal2.
+41. %>
+42. /*
+43. \theend
+44. \end{document}
+45. */
+\end{verbatim}}
+\caption{\protect\url{template.pl}}
+\end{figure}

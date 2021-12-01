@@ -1,0 +1,1 @@
+pl -g "load_files(['/mnt/win98/src/pl/tar2/tarzan2.pl'],[silent(true)]),go,halt" -- $*

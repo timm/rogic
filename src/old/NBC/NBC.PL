@@ -1,0 +1,1167 @@
+% cd('/tim/src/pl/nbc'), [nbc].
+%\documentclass[twocolumn,global]{svjour}
+%\usepackage{tex4log}
+%\journalname{Submitted to WVU Knowledge Engineering}
+%\date{Wp ref: tim/src/pl/nb/nb \today}
+%\newcommand{\ME}{NBC}
+%\begin{document}
+%\title{
+%\begin{minipage}{.2\linewidth}
+%\includegraphics[width=4cm]{nbc.eps}\end{minipage}\hfill
+%\begin{minipage}{.75\linewidth}
+%\ME: A Prolog-based Naive Bayes Classifier
+%\end{minipage}}
+%\author{Tim Menzies\inst{1}, Santa Clause\inst{2}}
+%\institute{\input{institute}}
+%\maketitle
+%\thispagestyle{empty}\pagestyle{plain}
+/* \begin{abstract}
+{\Tex4Log} is a simple 
+set of macros written in {\LaTeX} allowing 
+for a simple documentation
+scheme for Prolog.
+\end{abstract}
+\setcounter{tocdepth}{4}
+\tableofcontents
+\listoffigures
+\newpage
+*/
+%\input{bayes}
+%%%% Introductions
+/* The following package is a SWI-Prolog system~\cite{swiprolog}.
+Prolog is a useful language for rapdily building
+systems~\cite{der96,me89zb,bratko01,ok90,sterling94}.
+This {\Tex4Log}
+description  follows my standard(ish) pattern:
+\bi
+\item
+Shell
+\item Knowledge base
+\item 
+An appendix with acknowledgements, references, and licensing details.
+\ei
+The shell divides up as follows:
+\bi
+\item Initializations:
+\bi
+\item
+Operator definitions (must be first).
+\item
+Flags (these can usually go just before the start-up
+actions but, for safety's sake, we place them at the
+front).
+\item
+hooks (into the Prolog reader)
+\item
+hacks (shameful things we'd rather hide).
+\ei
+\item
+The actual system code.
+\item
+Library code which, ideally,
+should be good for more than just this application).
+\item
+Start-up code (must be loaded into Prolog last).
+\ei
+*/
+%%%% Initializations
+%%% Operators %<
+:- op(1001,xfx, the). 
+:- op(1001,xfx, a  ).
+:- op(999 ,fx,  *  ).
+:- op(700,xfx, :=).
+:- op(1199 ,xfx, of ).
+:- op(700,xfx, <- ).
+:- op(1 ,fx, (?) ).
+:- op(1 ,fx, (!) ).
+%>
+%%% Flags %<
+:- multifile     option/2, meta/10, oo/5, get/3,zap/3,commit/4. 
+:- dynamic       option/2, meta/10, oo/5, context/1.
+:- discontiguous option/2, meta/10, oo/5, get/3,zap/3,commit/4. 
+
+:- arithmetic_function(inf/0).
+:- arithmetic_function(rand/0).
+:- arithmetic_function(rand/2).
+
+%>
+%%% Hooks %<
+term_expansion((W of X --> Y),Z) :- defmethod((W of X --> Y ),Z).
+term_expansion((W of X),      Z) :- defmethod((W of X --> []),Z).
+term_expansion((X the Rel),Z) :- dd(Rel,X,Z).
+term_expansion((X a   Rel),Z) :- eg(Rel,X,Z).
+term_expansion(A=B,       []) :- set(A=B).
+
+goal_expansion(*(X,Y,Z),W) :-methodCall(*(X,Y,Z),W).
+%>
+%%% Hacks
+/* Shown here are some dark secrets of the Prolog
+wizards. If you don't yet understand
+the following code,
+then you don't need to know it. Trust us,
+we are knowledge engineers. */ %<
+goal_expansion(is(A,B,C,C),            is(A,B)).
+goal_expansion(=(A,B,C,C),              =(A,B)).
+goal_expansion(>=(A,B,C,C),            >=(A,B)).
+goal_expansion(>(A,B,C,C),              >(A,B)).
+goal_expansion(<(A,B,C,C),              <(A,B)).
+goal_expansion(<=(A,B,C,C),            <=(A,B)).
+%>
+%%%% Library code
+%%% Does a goal have only 1 matching clause? %<
+clause1(X,Y) :- singleton(X), clause(X,Y).
+
+singleton(X) :-
+	Sym='$singleton_',
+	flag(Sym,_,0),
+	\+ singleton1(Sym,X),
+	flag(Sym,1,1).
+
+singleton1(Sym,X) :- clause(X,_),flag(Sym,N,N+1),N > 1,!.
+%>
+%%% Does a goal have only 1 way to succeed? %<
+only(X) :-
+	Sym='$only_',
+	flag(Sym,_,0),
+	\+ only1(Sym,X),
+	flag(Sym,1,1).
+
+only1(Sym,X) :- X, flag(Sym,N,N+1),N > 1,!.
+
+solo(X) :- only(X), X.
+%>
+%%% Configuration Control %<
+[] := []    :- !.
+[H0|T0] := [H|T] :- !, H0 := H, T0 := T.
+X := Y      :-  option(X,Z),!, Y=Z.
+X := _      :-  !, barph(missingOption(X)).
+?X          :- atomic(X), X := 1.
+
+set(X=Y) :- retractall(option(X,_)), assert(option(X,Y)).
+
+commandLine :-
+	current_prolog_flag(argv, Argv),
+	append(_, [--|Args], Argv), !,
+	concat_atom(Args, ' ', SingleArg),
+	term_to_atom(Term, SingleArg),
+	c2l(Term,List),
+	forall(member(One,List), set(One)).
+commandLine.
+%>
+%%% Demo support code
+/*
+Catches the output from some predicate X
+and saves it a file X.spy. The command:
+
+{\scriptsize
+\begin{verbatim}
+\SRC{X.spy}{Caption}
+\end{verbatim}}
+\noindent
+includes the generated file into the {\LaTeX} document.
+
+The code `demos/1` deletes any old output and runs some goal twice: once
+to trap it to a file and once to show the results on the screen. */ %<
+freshFile(X) :- 
+	(current_stream(X,_,S) -> close(S)       ; true),
+	(exists_file(X)        -> delete_file(X) ; true).
+
+demos(G) :-
+	sformat(Out,'~w.spy',G),
+	freshFile(Out),
+	tell(Out),
+	format('% output from '':- demos(~w).''\n\n',G),
+        T1 is cputime,
+	ignore(forall(G,true)),
+	T2 is (cputime - T1),
+	format('\n% runtime = ~w sec(s)\n',[T2]),
+        told,
+	format('% output from '':- demos(~w).''\n',G),  
+        ignore(forall(G,true)),
+	format('\n% runtime = ~w sec(s)',[T2]).
+%>
+%%% Ordered counted key value pairs
+%<
+inc([], A, [A=1]).
+inc([A=B|C],D,E) :- 
+	compare(F,A,D),inc(F,A=B,C,D,E).
+
+inc(<, A, B, C, [A|D]) :- inc(B, C, D).
+inc(=, A=B, C, A, [A=D|C]) :- D is B+1.
+inc(>, A, B, C, [C=1, A|B]).
+
+sumtags2(L,To,Out) :- sumtags2(L,To,0,Out).
+
+sumtags2([],_,Out,Out).
+sumtags2([A=B|C],To,In,Out) :-
+	compare(F,A,To),
+	sumtags2(F,B,C,To,In,Out).
+
+sumtags2(>,_ ,_,_ ,N2,N2).
+sumtags2(=,N1,_,_ ,N2,Out) :- Out is N1 + N2.
+sumtags2(<,N1,T,To,N2,Out) :- 
+	Temp is N1 + N2, sumtags2(T,To,Temp,Out).
+
+/*
+n([[V]-Key0|T],Key,X) :- compare(Ord,Key0,Key), n(Ord,V,T,Key,X).
+n(=,V,_,_  ,V).
+n(<,    _,T,Key,X) :- n(T,Key,X).
+*/
+%>
+/* Tagged pairs */ %<
+less1([H|T],H,T).
+less1([H|T],Out,[H|Rest]) :- less1(T,Out,Rest).
+
+less1s(L,All) :- bagof(Less/One,L^less1(L,One,Less),All).
+
+key(L0,K,V0,V,[K=V|L]) :- less1(L0,K=V0,L).
+%>
+%%% Dump a Whole File to the Screen%<
+chars(F) :- see(F), get_byte(X), ignore(chars1(X)), seen.
+    
+chars1(-1) :- !.
+chars1(X)  :- put(X), get_byte(Y), chars1(Y).
+%>
+%%% License %<
+hello :-  % \MARK{hello}
+	[program,version,copyright,motto,copywho]:=[N,V,Y,M,C],
+	format('~s version ~s\n Copyright (C) ~s by ~s\n',
+	       [N,V,Y,C]),
+	format(' "~s"\n\n~s ~s ',[M,N,V]),
+	chars('nowarranty.txt'). % see \tion{nowar}
+   
+warranty :-
+	[program,copyright,copywho]:=[P, Y,C],
+	format('~s by ~s\n Copyright (C) ~s\n\n',[P,C,Y]),
+	chars('warranty.txt'),nl. % see \tion{war}
+
+conditions :-
+	chars('conditions.txt'),nl. % see \tion{cond}
+%>
+%%% Miscalleanous
+/* Pretty print a list of terms. */ %<
+portrays(L) :- portrays(L,_,_).
+
+portrays([],_,_).
+portrays([H|T],F0,A0) :-
+	functor(H,F,A),
+	(F0=F,A0=A
+        -> portray_clause(H),
+           portrays(T,F0,A0)
+         ; nl,portray_clause(H),
+           portrays(T,F,A)).
+%>
+/* Other stuff. */ %<
+rand(X) :- X is random(inf)/inf.
+
+rand(Min,Max,X) :- X is Min + (Max-Min)*rand.
+
+betweenR(N,Freqs,What,Out) :-
+	repeat,
+	Out is round(rand(0.501,N+0.499)),
+	member(What=Freq,Freqs),
+	rand > Freq,
+	!.
+
+memberr(L,Out) :- 
+	repeat, 
+	member(Out=F,L), 
+	rand < F,
+	!.
+
+egmemberr :-
+	In = [5=0.02 , 4=0.06, 3=0.12,  1=0.13, 2=0.67],
+	All=100000,
+	bagof(One,All^In^egmemberr1(All,In,One),One),
+	dist(One,D),
+	normalize(D,Out),
+	write(in=In),nl,
+	write(out=Out),nl.
+
+egmemberr1(All,In,One) :- 
+	normalize(In,X),
+	between(1,All,_),
+	memberr(X,One).
+
+dist(L0,L) :- dist(L0,_,_,L).
+
+dist(L0,Min,Max,L) :-
+	msort(L0,[Min|L1]),
+	dist([Min|L1],[],Min,Max,L).
+
+dist([],X,Max,Max,X).
+dist([H|T],[H=N0|Rest],_,Max,Out) :- !,
+	N is N0 + 1,
+	dist(T,[H=N|Rest],H,Max,Out).
+dist([H|T],In,Min,Max,Out) :-
+	dist(T,[H=1|In],Min,Max,Out).
+
+
+normalize(L,N) :- mostnormal(L,N,_).
+
+mostnormal(L,N,Most) :-
+	sumtags(L,Sum), 
+	mostnormal1(L,Sum,junk= -1,N,Most).
+
+mostnormal1([],_,Out,[],Out).
+mostnormal1([X=V0|T],Sum,Y=N,[X=N1|Out],Most) :-
+	N1 is V0/Sum,
+	(N1 > N
+	-> mostnormal1(T,Sum,X=N1,Out,Most)
+        ;  mostnormal1(T,Sum,Y=N,Out,Most)).
+
+sumtags([_H=V|T],S) :- sumtags(T,V,S).
+
+sumtags([],S,S).
+sumtags([_=V|T],In,Out) :- Temp is V + In, sumtags(T,Temp,Out).
+
+
+writes([H|T]) :- forall(member(One,[H|T]),(print(One),nl)).
+
+times(N,G,Out) :-
+	T1 is cputime, repeats(N,true),
+	T2 is cputime, repeats(N,G),
+	T3 is cputime, Out is (T3-T2-(T2-T1))/N.
+    
+repeats(N0,G) :-
+	N is N0,
+	forall(between(1,N,_),G).
+
+pairs([],[],[]).
+pairs([X|Xs],[Y|Ys],[X=Y|T]) :- pairs(Xs,Ys,T).
+
+c2l((X,Y),[X|Z]) :- !,c2l(Y,Z).
+c2l(X,[X]).
+
+l2c([W,X|Y],(W,Z)) :- l2c([X|Y],Z).
+l2c([X],X).
+
+mostC2l((X,Y),[X|Z]) :- !,mostC2l(Y,Z).
+mostC2l(_,[]).
+
+deletes([],_,[]).
+deletes([Doomed|T],Doomeds,Rest) :- 
+	member(Doomed,Doomeds),!,
+	deletes(T,Doomeds,Rest).
+deletes([Saved|T],Doomeds,[Saved|Rest]) :-
+	deletes(T,Doomeds,Rest).
+	
+sum([H|T],S) :- sum(T,H,S).
+
+sum([],S,S).
+sum([H|T],In,Out) :- Temp is H + In, sum(T,Temp,Out).
+
+average(L,Av)  :- average(L,_,Av).
+average([H|T],N,Av) :- average1(T,1,N,H,Sum), Av is Sum/N.
+
+average1([],N,N,Out,Out).
+average1([H|T],N0,N,In,Out) :-
+	Temp is H+In,
+	N1 is N0 + 1,
+	average1(T,N1,N,Temp,Out).
+
+sneak(X) :- load_files(X,[silent(true),if(changed)]).
+
+spit(N1,N2,X) :- (0 is N1 mod N2 -> spit(X) ; true).
+
+spit(X) :- ?verbose,!,blurt(X).
+spit(_).
+
+blurt(X) :- write(user,X),flush_output(user).
+
+barph(X) :- format('%W> ~p\n',X),fail.
+
+barphln(X) :-
+	here(File,Line),
+	format('%W> ~p@~p : ~p\n',[File,Line,X]),
+        fail. 
+
+here(File,Line) :-
+        source_location(Path,Line),
+        file_base_name(Path,File).
+
+demand(X) :- X,!.
+demand(X) :- numbervars(X,0,_),barph(failed(X)).
+%>
+%%% Defining methods %<
+defmethod((W of X --> Y),[Z|Meta]) :-
+	getContext(X,C),
+	expandInContext(C,(W-->Y),Z0),
+        tidy(Z0,Z),
+	metaMethod(Z,C,Meta).
+
+getContext(X,B) :- o([rel0_ = X,blank_ = B]),!.
+getContext(X,_) :- barphln(X is unknown).
+
+expandInContext(C,(W-->Y),Z) :-
+	retractall(context(_)),
+	assert(context(C)),
+	expand_term((W --> Y),Z),
+	retractall(context(_)).
+
+metaMethod((X :- _),C,Ind) :- !, metaMethod1(X,C,Ind).
+metaMethod(X,C,Ind) :- metaMethod1(X,C,Ind).
+
+metaMethod1(X,C,[(:- index(Index)),(:- discontiguous F/A)]) :-
+	functor(X,F,A),
+	(A=2
+        -> Index=.. [F,1,0],
+           arg(1,X,C)
+        ;  functor(Term,F,A),
+	   A1 is A - 1,
+	   arg(A1,X,C),
+	   Term =.. [F|L],
+	   append([1|Rest],[1,0],L),
+	   zeros(Rest),
+	   Index =.. [F|L]).
+
+zeros([]).
+zeros([0|T]) :- zeros(T).
+%>
+/* Remove stray `true`s. */ %<
+tidy(A,C) :-
+	tidy1(A,B),
+	(B = (Head :- true) -> C=Head ;  C=B).
+
+tidy1(A,C) :- once(tidy2(A,C)).
+
+tidy2(A,             A) :- var(A). 
+tidy2((A,B),    (A,TB)) :- var(A), tidy1(B,TB).
+tidy2((A,B),    (TA,B)) :- var(B), tidy1(A,TA).
+tidy2(((A,B),C),     R) :- tidy1((A,B,C), R).
+tidy2((true,A),      R) :- tidy1(A,R).
+tidy2((A,true),      R) :- tidy1(A,R).
+tidy2((A;B),   (TA;TB)) :- tidy1(A,TA), tidy1(B,TB).
+tidy2((A->B), (TA->TB)) :- tidy1(A,TA), tidy1(B,TB).
+tidy2(not(A),  not(TA)) :- tidy1(A,TA).
+tidy2((A :- B), R) :-
+	tidy1(B,TB),(TB=true-> R=A; R=(A:-TB)).
+tidy2((A,B),  R) :-
+	tidy1(A,TA), tidy1(B,TB),(TB=true -> R=TA; R=(TA,TB)).
+tidy2(A,A).
+%>
+%%% Wrapper
+/* Cool stuff */ %<
+methodCall(*(X,Y,Z),W) :-
+	context(Y),
+	wrapper(X,Y,Z,W).
+%>
+%<
+wrapper(X,A,B,Out) :-
+	wrap(X,Before,[],After,[],Goal),
+	append(Before,[Goal|After],Temp),
+        adds2vars(Temp,A,B,Out).
+
+adds2vars([X0],A,B,X) :- add2vars(X0,A,B,X).
+adds2vars([X0,Y|Z],A,B,(X,Rest)) :-
+	add2vars(X0,A,C,X),
+	adds2vars([Y|Z],C,B,Rest).
+
+add2vars(oo(X,Y,Z),A,B,oo(A,X,Y,Z,B)) :- !.
+add2vars(X,A,A,X).
+%>
+%<
+wrap(X,B0,B,A0,A,Y) :-
+	once(wrap0(X,Z)),
+	wrap1(Z,B0,B,A0,A,Y).
+
+wrap0(X,        leaf(X) ) :- var(X).
+wrap0(X,        leaf(X) ) :- atomic(X).
+wrap0([],    leaf(true) ).
+wrap0([H|T],      [H|T] ).
+wrap0(?X,           ?X  ).
+wrap0(!X,           !X  ).
+wrap0(X,        term(X) ).
+
+wrap1(leaf(X),     B, B, A, A, X). 
+wrap1([H0|T0],     B0,B, A0,A, [H|T]) :-
+	wrap(H0,   B0,B1,A0,A1,H), 
+	wrap(T0,   B1,B, A1,A, T).
+wrap1(term(X),     B0,B, A0,A, Y) :-
+	X =.. L0, 
+	wrap(L0,   B0,B,A0,A,L), 
+	Y =.. L.
+wrap1(?X, [oo(X,Y,Y)|B],B,A,  A,Y).
+wrap1(!X, B,B,[oo(X,_,Y)|A],A,Y).
+%>
+%%% Accessors
+%% Usage %<
+o(Com) :- o(Com,X), X.
+o(Com,X) :- o(Com,X,_).
+
+o([],X,X).
+o([H|T],X,Y)  :- o(H,X,Z), o(T,Z,Y).
+o(F <- V,X,Y)   :- oo(X,F,_,V,Y).
+o(update(F,V0,V),X,Y) :- oo(X,F,V0,V,Y).
+o(F+V,X,Y)    :- oo(X,F,L,[V|L],Y).
+o(F=V,X,X)    :- oo(X,F,V,V,X).
+
+goal_expansion(o(Com),     (o(Com,_,X),X)).
+goal_expansion(o(Com,X),   o(Com,X,_)).
+goal_expansion(o([H],X,Y), o(H,X,Y)) :-
+	nonvar(H).
+goal_expansion(o([H1,H2|T],X,Y), (o(H1,X,Z),o([H2|T],Z,Y))) :-
+	nonvar(H1).
+
+goal_expansion(o(X,Y,Z),Body) :-
+	clause1(o(X,Y,Z),Body).
+
+goal_expansion(oo(X,F,V0,V,Y),_) :-
+	\+ oo(X,F,V0,V,Y),
+	barphln(unknown(F)).
+
+% this clause speeds us up by 30%
+goal_expansion(oo(X,F,V0,V,Y),true) :-
+	nonvar(F),% try un-commenting this to see if it is worth it.
+	solo(oo(X,F,V0,V,Y)).
+%>
+%% Field details
+/* Each field has annotations that indicate:
+\be
+\item If Prolog should index on a particular field.
+\item A fields name and default falue.
+\item Some rule that defines the
+valid range of a field.
+\ee */ %<
+detail(+X:R=D,1,      X,   R,   D).
+detail(+X:R,  1,      X,   R,   _).
+detail(+X=D,  1,      X,   any, D).
+detail(+X,    1,      X,   any, _).
+detail(X:R=D, 0,      X,   R,   D).
+detail(X:R,   0,      X,   R,   _).
+detail(X=D,   0,      X,   any, D).
+detail(X,     0,      X,   any, _).
+%> 
+/*These details are stored in a `meta/9` fact which we
+can manipulate as follows:  */ %<
+oo(meta(A,B,C,D,E,F,G,H,I,J),X,Y,Z,Out) :- % \MARK{meta/5}
+	meta_(X,Y,Z,meta(A,B,C,D,E,F,G,H,I,J),Out).
+
+meta_(rel0_, X,Y,meta(X,B,C,D,E,F,G,H,I,J),
+                 meta(Y,B,C,D,E,F,G,H,I,J)).
+meta_(arity_,X,Y,meta(A,X,C,D,E,F,G,H,I,J),
+                 meta(A,Y,C,D,E,F,G,H,I,J)).
+meta_(rel_  ,X,Y,meta(A,B,X,D,E,F,G,H,I,J),
+                 meta(A,B,Y,D,E,F,G,H,I,J)).
+meta_(index_,X,Y,meta(A,B,C,X,E,F,G,H,I,J),
+                 meta(A,B,C,Y,E,F,G,H,I,J)).
+meta_(names_,X,Y,meta(A,B,C,D,X,F,G,H,I,J),
+                 meta(A,B,C,D,Y,F,G,H,I,J)).
+meta_(rules_,X,Y,meta(A,B,C,D,E,X,G,H,I,J),
+                 meta(A,B,C,D,E,Y,G,H,I,J)).
+meta_(inits_,X,Y,meta(A,B,C,D,E,F,X,H,I,J),
+                 meta(A,B,C,D,E,F,Y,H,I,J)).
+meta_(blank_,X,Y,meta(A,B,C,D,E,F,G,X,I,J),
+                 meta(A,B,C,D,E,F,G,Y,I,J)).
+meta_(vars_, X,Y,meta(A,B,C,D,E,F,G,H,X,J),
+                 meta(A,B,C,D,E,F,G,H,Y,J)).
+meta_(pairs_,X,Y,meta(A,B,C,D,E,F,G,H,I,X),
+                 meta(A,B,C,D,E,F,G,H,I,Y)).
+%>
+%% Core engine
+/* Code for being able to  access and changed
+named fields within a term. */ %<
+dd(Rel0,FieldsC,All) :-
+	dd1s(new(Rel0,FieldsC),Meta0),
+	addPairs(Meta0,Meta),
+	bagof(One, Meta^dd2(Meta,One), All).
+
+dd1s(new(Rel0,Fields0),Out) :-
+	atom_concat(Rel0,'_',Rel),
+	c2l(Fields0,Fields1),
+	reverse([+id_|Fields1], [_|Fields]),
+	length(Fields,Arity),
+	functor(Blank,Rel0,Arity),
+	Blank =.. [_|Vars],
+	dd1(Fields,
+	          meta(Rel0,Arity,Rel,[],[],[],[],Blank,Vars,_),
+	       Out).
+
+dd1([],X,X).
+dd1([H|T]) --> 
+	{detail(H,I,N,R,D)},
+	o([index_ +I, names_ +N,rules_ +R,inits_ +D]),
+	dd1(T).
+
+addPairs(Meta0,Meta) :-
+	o([vars_ =Vars, names_ =Names, pairs_ <- Pairs],Meta0,Meta),
+	pairs(Names,Vars,Pairs).
+
+%>
+%% dd2/2
+/* Reset the counter for this relation to zero. */ %<
+dd2(X,(:- retractall(Blank), flag(Rel0,_,0))) :- 
+	o([rel0_ =Rel0,blank_ = Blank], X).
+%>
+/* Create an index on the indexed fields. */ %<
+dd2(X,(:- index(Index))) :-
+	o([rel0_ =Rel0,index_ =Index0],X),
+	Index =.. [Rel0|Index0].
+%>
+/* Note that assertions in this relation may or may not
+exist at a particular time. */ %<
+dd2(X,(:- dynamic R /A)) :- o([rel0_ =R,arity_ =A],X).
+%>
+/* Automatically generate arity five accessors, just like
+the ones written manually at \Line{meta/5}. */
+%<
+dd2(Meta,Out) :- 
+	o([names_ =Names,rel0_ =Rel0,rel_ =Rel,arity_ =Arity],Meta),
+	nth0(Pos,Names,Name),
+	length(Before,Pos),
+	functor(Term0, Rel0,Arity), Term0 =.. [_|L0],
+	functor(Term,  Rel0,Arity), Term  =.. [_|L1],
+	append(Before,[Old|After],L0),
+	append(Before,[New|After],L1),  
+	Out =.. [Rel,Name,Old,New,Term0,Term].
+%>
+/* Define a {\em bridge} predicate that calls the
+arity five accessor that is relevant to a particular term. */ %<
+dd2(X,(oo(T0,Com,V0,V,T) :- Body)) :-
+	o([rel0_ =Rel0,rel_ =Rel,arity_ =Arity],X),
+	functor(T0,Rel0,Arity),
+	Body =.. [Rel,Com,V0,V,T0,T].
+%>
+/* Finish up the meta-level fact. */ %<
+dd2(X,Y) :-
+	o([rel0_ =Rel0,inits_ =Inits0],X),
+	Inits =.. [Rel0|Inits0],
+	o(inits_ <- Inits,X,Y).
+%>
+/* Write our terms with names fields very succinctly. */ %<
+dd2(X,(portray(Term) :- write(Rel/ Arity))) :-
+	o([rel0_ =Rel,arity_ =Arity],X),
+	functor(Term,Rel,Arity).
+%>
+/* Singlton accessors with arity 3 can be expanded to accessor 5  */ %<
+dd2(X,(goal_expansion(H,Body)  :- clause1(H,Body))) :-
+	o(rel_ =Rel,X),
+	H =.. [Rel,_,_,_].
+%>
+/* Singleton accessors with arity 5 can be evaluated,
+	then replaced with `true`. */ %<
+dd2(X,(goal_expansion(H,true) :- clause1(H,true))) :-
+	o(rel_ =Rel,X),
+	functor(H,Rel,5).
+%>
+/* Match a fact in the global db. */ %<
+dd2(X,(get(Rel,Vars,Term) :- Term)) :-
+	indexVars(X,Rel,Vars,Term).
+%>
+/* Zap a fact in the global db*/ %<
+dd2(X,(zap(Rel,Vars,Term) :- retract(Term))) :-
+	indexVars(X,Rel,Vars,Term).
+%>
+/* Make a fresh fact in the global db. */ %<
+dd2(X,(commit(Rel,Vars,Y,Z) :- retract(Y),assert(Z))) :-
+	indexVars(X,Rel,Vars,Y),
+	indexVars(X,Rel,Vars,Z).
+%>
+/* Create a term with the index variables pre-matched. */ %<
+indexVars(X,Rel,Ind,Term) :-
+	o([rel0_ = Rel, arity_ = Arity, index_ = Nums],X),
+	functor(Term,Rel,Arity),
+	Term =.. [Rel|Args],
+	indexVars1(Nums,Args,Ind).
+
+indexVars1([],_,[]).
+indexVars1([1|T],[X|Args],[X|Ind]) :- indexVars1(T,Args,Ind).
+indexVars1([0|T],[_|Args],   Ind ) :- indexVars1(T,Args,Ind).
+%>
+/* Make a new one. */
+%<
+new(Rel,New) :- o([rel0_ = Rel, inits_ = New]).
+
+new(Rel,Inits,New) :- new(Rel,New0), o(Inits,New0,New).
+
+show(Instance) :- 
+	forall(o(F=V,Instance), 
+               (print(F=V),nl)).
+%>
+%% Demos %<
+egdd :- % \see{egdd.spy}
+    expand_term(
+       (+deptNo : num
+        ,name   : [x,y,z]
+        ,+age   : num = 1
+        ,are the eg),
+       X),
+    portrays(X).
+%>
+/* \SRC{egdd.spy}{}
+*/
+%% Generating an instance
+/* see \Line{d} */ %<
+eg(Rel,FieldsC,Out) :-
+	mostC2l(FieldsC,FieldsL),
+	flag(Rel,M,M+1),
+	N is M + 1,
+	spit(N,50,0), 
+	Datum =.. [Rel,N|FieldsL],
+	(okDatum(Rel,Datum) -> Out = Datum ; Out=[]).
+
+okDatum(X,B) :- o([rel0_ = X,blank_ = B]),!.
+okDatum(_,_) :- barphln(badness).
+%>
+%%% Statistics 
+%% Gaussians %<
+stale=0, mean:num=0, n:num=0, sd:num=0,sum:num=0
+,sumSquared:num=0, min:num=inf,max:num= -1*inf, 
+are the gaussian.
+
+prep of gaussian.
+adds([H|T]) of gaussian --> add(H), adds(T).
+adds([]) of gaussian --> refresh.
+
+add(X) of gaussian -->
+	* !stale=1,
+	* !min is min( ?min,X),
+	* !max is max( ?max,X),
+	* !n is ?n + 1,
+        * !sum is ?sum+X,
+	* !sumSquared is ?sumSquared + X*X.
+
+refresh of gaussian --> * ?stale=0,!.
+refresh of gaussian --> refresh1.
+
+refresh1 of gaussian -->
+	* !mean is ?sum/ ?n,
+	* Var is ( ?sumSquared - (( ?sum^2)/ ?n))/( ?n-1 ),
+	* !sd is sqrt(Var),
+	* !stale=0.
+
+z2x(Z,X) of gaussian -->
+	refresh,
+	* X is Z * ?sd + ?mean.
+
+x2z(X,Z) of gaussian -->
+	refresh,
+	* Z is (X - ?mean)/ ?sd.
+
+percentile(P/N=X) of gaussian -->
+	refresh1,
+	* N0 is N - 1,
+	* between(1,N0,P),
+	* Goal is 1/N*P,
+	* once(zinv(Goal,Z)),
+	z2x(Z,X),
+	* X >= ?min,
+	* X =< ?max.
+        
+area(X,Area) of gaussian -->
+	refresh,
+	* Z is round((X- ?mean)*10/ ?sd)/10,
+	* demand(z(Z,Area)).
+
+adjustedArea(X,A) of gaussian -->
+	* ?min =Min,
+	area(Min,Dead),
+	area(X,Xarea),
+	realArea(Real),
+	* A is (Xarea - Dead)/Real.
+
+realArea(Real) of gaussian -->
+	refresh,
+	* ?max=Max, * ?min=Min,
+	%* print(range(Min,Max)),
+	area( Max, A1),
+	area( Min, A2),
+	* Real is (A1 - A2).
+
+:- load_files([z],[if(changed)]).
+
+nd(Y,Z) of gaussian -->
+	* Z is 1/( sqrt(2*pi))
+               *e^(-1*(Y )^2/2).
+
+f(X=F) of gaussian -->
+	refresh,
+	(* ?sd=0
+        -> * F=1
+	; * F is 1/(sqrt(2*pi)* ?sd)
+               *e^(-1*(X - ?mean)^2
+               /(2 * ( ?sd ^2) ))).
+
+sd(Sd) of gaussian -->
+	refresh,
+	* print(1),
+	* ?sd = Sd.
+
+egDefMethod :-
+	SRC= (refresh of gaussian -->
+	        * !mean is ?sum/ ?n,
+	        * !sd is sqrt( ?sumSquared -( ?sum^2/ ?n)/( ?n-1)),
+	        * !stale=0),
+	defmethod(SRC,Out),
+	portrays(Out).
+%>
+%% Gaussians %<
+bins=[], n: num=0, 
+are the histogram.
+
+prep of histogram.
+add(X) of histogram -->  
+	* inc(?bins,X,!bins), * !n is ?n + 1.
+show(Indent) of histogram -->
+	* forall(member(A=B,?bins),
+	         format('~w~p=~p\n',[Indent,A,B])).
+
+frequency(X=Y) of histogram --> * member(X=Z,?bins), !, * Y = Z.
+frequency(_=0) of histogram.
+
+f(X=F) of histogram --> frequency(X=Y), * F is (Y+1)/( ?n+1).
+
+histogram, granularity=5, stale:num=0, 
+min:num= inf, max:num= -1*inf,
+are the numericHistogram.
+
+adds([H|T]) of numericHistogram --> 
+	add(H), adds(T).
+adds([]) of numericHistogram --> refresh.
+
+percentile(P/N=Threshold) of numericHistogram -->
+	* ?min=Min,
+	* Step is ( ?max - ?min)/N,
+	* between(2,N,P0),
+	* P is P0 - 1,
+	clump( Min +Step*(P),Threshold).
+
+prep of numericHistogram -->
+	* new(histogram,!histogram).
+clump(X,Y) of numericHistogram -->
+	* Y is round(X/ ?granularity) * ?granularity.
+add(X) of numericHistogram -->
+	* !stale = 1,
+	clump(X,Y),
+	* !min is min( ?min, Y),
+	* !max is max( ?max, Y),
+	* add(Y, ?histogram, !histogram).
+refresh of numericHistogram -->
+	* o(update(bins,Old,New),?histogram, !histogram),
+	* msort(Old,New),
+	* !stale =0.
+area(X,A) of numericHistogram -->
+	refresh,
+	clump(X,Y),
+	* o([n=N,bins=Bins],?histogram),
+	* sumtags2(Bins,Y,Sum),
+	* A is Sum/ N.
+
+size(S) of numericHistogram -->
+	* o(n=S,?histogram).
+
+
+		% better {prolog} stuff and hunt for ?x in ordinary
+%stuff
+%>
+%%%% Main %<
+%  go :-  relation := R, classSymbol := Goal,
+ %        o([rel0_ = R,blank_ = B, names_ = Names]).
+
+xvalprep(Rel/Arity,Blank,Files) :- 
+	relation := Rel,
+	nways := N,
+
+	namesData, 
+	summarize(Wmes,Goal,Max), 
+	maplist(classFrequency(Goal,Max),Wmes,Freqs),
+
+	namesData,
+	createXvalFiles(N,Rel,Files0),
+	xvalprep1(Rel,N,Goal,Files0,Freqs),
+	o([rel0_ = Rel, arity_ = Arity, blank_ =Blank]),
+	finishXvalPrep(Files0),
+	maplist(x2file,Files0,Files).
+
+x2file(x(_,File)=_,File).
+
+classFrequency(Goal,Max,Class=Wme,Class=F) :- 
+	o(Goal=ClassC,Wme), 
+	o(n=N,ClassC),
+	F is N/Max.
+
+createXvalFiles(0,_,[]).
+createXvalFiles(N,Rel,[x(N,File)=Stream|Rest]) :- 
+	N > 0,
+	concat_atom([Rel,'__X',N,'.data'],File),
+	freshFile(File),
+	open(File, write,Stream),
+	Nless is N - 1,
+	createXvalFiles(Nless,Rel,Rest).
+
+xvalprep1(Rel,N,Goal,Files,Freqs) :-
+	forall(zap(Rel,[Id],One),
+	       (o(Goal=Class,One),
+	        betweenR(N,Freqs,Class,Bin),
+	        demand(member(x(Bin,_)=Stream,Files)),
+	        spit(Id,50,Id),
+		format(Stream,'~w.\n',One)
+	    )).
+
+finishXvalPrep(Files) :-
+	forall(member(_=Stream,Files),close(Stream)).
+
+yes:num=0,no:num=0, are the accuracy.
+score(X,X) of accuracy --> * !yes is ?yes + 1.
+score(X,Y) of accuracy --> * X \= Y, * !no is ?no + 1.
+report(X)  of accuracy --> 
+	* ?yes + ?no > 0,!, 
+        * X is ?yes*100/( ?yes + ?no).
+report(100)  of accuracy.
+
+egxval(raw) :- time(xval).
+egxval(profiled) :- profile(xval,cumulative,30).
+
+xval :-
+	write('preping...'),nl,
+	xvalprep(Spec,Blank,Files),!,
+	write('xvaling...'),nl,
+	xval(Spec,Blank,Files).
+
+xval(Spec,Blank,Files) :- 
+	multifile(Spec),
+	bagof(One,Files^Blank^xval1(Files,Blank,One),All),
+	average(All,Av),
+	print(av=Av),nl.
+
+xval1(Files,Blank,Out) :-
+	less1(Files,Test,Train),
+	retractall(Blank),
+	names,
+	load_files(Train,[silent(true)]), 
+	summarize(Wmes,Goal,Max),
+        test(Test,Wmes,Goal,Max,Out),
+	print(Out),nl.
+
+test(Test,Wmes,Goal,Max,Out) :-
+	All= '$all__', flag(All,_,0),
+	Yes= '$yes__', flag(Yes,_,0),
+	see(Test),
+	repeat,
+	read(One),
+	test1(One,All,Yes,Wmes,Goal,Max),
+	One = end_of_file,
+	!,
+	seen,
+	flag(All,All1,All1),
+	flag(Yes,Yes1,Yes1),
+	(All1 =0 -> Out=1; Out is Yes1/All1).
+
+test1(end_of_file,_,_,_,_,_).
+test1(Term,All,Yes,Wmes,Goal,Max) :-
+	flag(All,All0,All0+1),
+	o([pairs_ = Pairs,blank_ =Term]),
+	o(Goal=Actual,Term),
+	classify(Wmes,Goal,Max,Pairs,Predicted=_),
+	%write(Term/Predicted),nl,
+	(Predicted=Actual -> N = 1; N=0),
+	flag(Yes,Yes0,Yes0+N).
+
+% XXX max will be wrong- stuff wont be contiguous.
+% strange back tracking and out of stack errors
+
+eggo(profiled(kc2)) :-
+	profile(go([[v(g)=10,loc=1000]]),cumulative,30).
+eggo(raw(kc2)) :-
+	time(go([[v(g)=10,loc=1000]])).
+
+eggo(profiled(car)) :-
+	profile(go([[brand=ford,size=medium]]),cumulative,30).
+eggo(raw(car)) :-
+	time(go([[brand=ford,size=medium]])).
+
+go(Examples) :-
+	T1 is cputime, namesData,
+	T2 is cputime, summarize(Wmes,Goal,Max),
+	retractall(hack(_)),
+	assert(hack(summarize(Wmes,Goal,Max))),
+	T3 is cputime, maplist(classify(Wmes,Goal,Max),
+	                       Examples,Reports),
+	T4 is cputime,
+	Load      is  (T2-T1)*100/(T4-T1),
+	Summarize is  (T3-T2)*100/(T4-T1),
+	Classify  is  (T4-T3)*100/(T4-T1),
+	writes([load=Load,summarize=Summarize,
+	        classify=Classify|Reports]).
+
+classify(Wmes,Goal,Max,Example,Class=Prob) :-
+	classify1(Wmes,Goal,Max,Example,Liklihoods),
+	mostnormal(Liklihoods,_,Class=Prob).
+
+classify1([],_,_,_,[]).
+classify1([Class=Wme|Wmes],Goal,Max,Example,Out) :-
+	o(Goal=ClassC,Wme),
+	o(n=N,ClassC),
+	classify2(Example,Wme,(N+1)/(Max+1),L),
+	( L=:=0 -> Out = Rest ; Out = [Class=L|Rest]),
+	classify1(Wmes,Goal,Max,Example,Rest).
+
+classify2([],_,Temp,Temp).
+classify2([Attr=Value|T],Wme,In,Out) :-
+	o(Attr=Count,Wme),
+	f(Value=F,Count,_), 
+	Temp is F*In,
+	classify2(T,Wme,Temp,Out).
+
+summarize(Wme,Goal,Max) :-
+	reset(Rel,Names,Goal,Wme0),
+	countTerms(Rel,Max),
+	run(Names,Goal,Rel,Wme0,Wme1),
+	cullZeros(Wme1,Wme).
+
+cullZeros([],[]).
+cullZeros([Class=Counts|T],Out) :- 
+	zeroMembers(Counts),!, print(dumping(Class)),nl,cullZeros(T,Out).
+cullZeros([H|T],[H|Out]) :- cullZeros(T,Out).
+
+zeroMembers(Term) :-
+	classSymbol := Class, o(Class=Counts,Term),o(n=0,Counts).
+
+	
+countTerms(Rel,N) :-
+	Flag='$summarize',
+	flag(Flag,_,0),
+	forall(get(Rel,_,_), flag(Flag,X,X+1)),
+	flag(Flag,N,N).
+
+reset(Rel,Names,Goal,Wme) :-
+	classSymbol := Goal,
+	relation := Rel,
+	o([rel0_ =Rel,rules_ =Rules, names_= Names]),
+	nth1(Pos,Names,Goal),
+	nth1(Pos,Rules,Classes),
+	maplist(reset1(Rel,Names),Classes,Wme).
+
+reset1(Rel,Names,Class,Class=Term) :-
+	o([rel0_ =Rel, blank_ = Term, rules_ = Rules]),
+	reset2(Names,Rules,Term).
+	
+reset2([],_,_).
+reset2([Name|Names],[Rule|Rules],Term) :-
+	counter(Rule,Counter),
+        o([rel0_ = Counter,inits_ = H0]),
+	prep(H0,H),
+	o(Name=H,Term,Term),
+	reset2(Names,Rules,Term).
+
+counter(num,gaussian) :- !.
+counter(int,numericHistogram) :- !.
+counter(_,histogram).
+
+run(Names,Goal,Rel,W0,W) :- 
+	one(Rel,_,Goal,Fields,Class),!,
+	key(W0,Class,Counts0,Counts,W1),
+	counts(Names,Fields,Counts0,Counts), 
+	run(Names,Goal,Rel,W1,W).
+run(_,_,_,W,W).
+
+one(Rel,Id,Goal,Fields,Class) :- 
+  o([rel0_ = Rel,blank_ = One, vars_ = Fields]), 
+  o([id_ =Id,Goal=Class], One),
+  zap(Rel,[Id],One).
+
+counts([],_) --> [].
+counts([id_|Names],[_|Fs]) --> !,counts(Names,Fs).
+counts([Name|Names],[F|Fs]) --> count(Name,F), counts(Names,Fs).
+
+count(Name,F,W0,W) :-
+	o(update(Name,C0,C),W0,W), add(F,C0,C).
+
+report(Wme) :- maplist(report1,Wme,_).
+
+report1(Class=Counts,_) :-
+	print(Class),nl,
+	forall(o(F=V,Counts),(format('\t~p:\n',F),
+	                      show('\t\t',V,_))).
+%count1(Name,Class) :- 
+
+
+%>
+%%%% Rocky %<
+
+rocky(All) :- 
+	rockySetup(Stuff),!,
+	setof(One,Stuff^rockyCompare(Stuff,One),All).
+
+rockySetup(setup(Wmes,Utilities,WorstW,Worst,Names)) :- 
+	namesData, 
+	utilities(Utilities,WorstW/Worst),
+	relation := Rel,
+	summarize(Wmes,Goal,_),
+	o([rel0_ = Rel, names_  = Names0]),
+	deletes(Names0,[id_,Goal],Names).
+
+rockyCompare(setup(Wmes,Utilities,_WorstW,Worst,Names),Out) :-
+	less1(Wmes,Worst=CountsW,Others),
+	member(Name,Names),
+	o(Name=CountW,CountsW),
+	o([rel0_ = numericHistogram,blank_ =CountW]),
+	size(PopW,CountW,_),
+	percentile(_/40=Threshold,  CountW,  CountW1),
+	area(Threshold,AreaW,CountW1,_),
+	B is PopW*AreaW,
+	D is PopW - B,
+	rockyCompare1(Name,Others,Utilities,
+                      Threshold,B,D,Out).
+
+rockyCompare1(Name,Others,Utilities,
+              Threshold,B,D,
+	      [Pd1,Dist,Pf]-[name=Name,t=Threshold,
+                             pf=Pf,pd=Pd,acc=Acc]) :-
+	member(Better=CountsB,Others),
+	member(_BetterW/Better,Utilities),
+	o(Name=CountB,CountsB),
+	refresh(CountB,CountB1),
+	size(PopB,CountB1,_),
+	area(Threshold,AreaB,CountB1,_),
+	A    is PopB * AreaB,
+	C    is PopB - A,
+	Pd   is D/(B+D),
+	Pd > 0.15,
+	Pf   is C/(A+C),
+	Pf < 0.15,
+	Acc  is (A+D)/(A+B+C+D),
+	(X1,Y1)=(0,1),
+	(X2,Y2)=(Pf,Pd),
+	Dist is sqrt((X2 -X1)^2+(Y2-Y1)^2)/sqrt(2),
+	Pd1 is 1 - Pd.
+
+utilities([WorstW/Worst|Rest],WorstW/Worst) :-
+	setof(Weight/What,utility(What,Weight),
+                          [WorstW/Worst|Rest]).
+
+%>
+%%%% The NB system
+/*  If an application stands on some library,
+	then there is some hope that the library
+    may be useful elsewhere even if the application
+is not. So, the first rule of Timm: a good application is an empty
+application; i.e. is just a place where
+supposedly reusable components work together for a while.
+*/
+%%% Loading %<
+namesData :- names,data.
+
+names :- relation:=R, names(R).
+data  :- relation:=R, data(R).
+
+names(X) :- atom_concat(X,'.names',Y), load_files([Y],[silent(yes)]).
+data(X)  :- atom_concat(X,'.data', Y), load_files([Y],[silent(yes)]).
+%>
+%%%% Start up actions%<
+:- ['defaults.nbc' % see \tion{defaults}
+   ,'config.nbc'   % see \tion{config}
+   ].
+
+:- current_prolog_flag(max_integer,X), assert(inf(X)).
+
+:- commandLine.
+:- ?verbose -> hello ; true.
+:- namesData.
+%>
+%\acknowledgement{\input{thanks}}
+%\bibliographystyle{abbrv}{
+%\footnotesize \bibliography{refs}
+%\appendix
+%\input{license}
+%\end{document}

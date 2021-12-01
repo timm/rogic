@@ -1,0 +1,47 @@
+% assertion based working memory routines
+
+wme(in(_,_,_)).
+wme(best(_)).
+wme(val(_,_,_)).
+
++in(X,Y)    :- hash_term(X,H), in(H,X,Y).
++val(X,Y)   :- hash_term(X,H), val(H,X,Y).
++thing(X,Y) :- hash_term(X,H), thing(H,X,Y).
+
+oldValue(X,Y) :-
+	hash_term(X,H),
+	oldValue(H,X,Y).
+oldValue(H,X,Y) :-
+	in(H,X,Y)
+	;val(H,X,Y)
+	.
+
+ensure(X,Y) :- hash_term(X,H), val(H,X,Y), !.
+ensure(X,Y) :- hash_term(X,H), assert(val(H,X,Y)).
+
+wmeEmpty :- forall(wme(X),retractall(X)).
+wmeShow  :- forall((wme(X),X),(print(X),write('.'),nl)).
+wmeSetup :- forall(wme(X),(functor(X,F,A), 
+                           (dynamic F/A)
+                          )).
+
+% ram-based working memory routines
+-bigger(N1-_,N2-_) :- N1 > N2.
+-empty(0-[]).
+-size(N-_,N).
+-member(_,0-_) :- !,fail.
+-member(H,_-L) :- member(H,L).
+-pokes(N,L,N-L).
+-pokes(L,N-L) :- length(L,N).
+-poke(Item, N0-L, N-[Item|L]) :- 
+	N is N0 + 1.
+-pull(Item, N0-L0, N-L) :-
+	N0 > 0,
+	Pos is random(N0)+1,
+	pull1(Pos,L0,Item,L),
+	N is N0 - 1.
+
+pull1(1, [Item|Rest],Item,Rest) :- !.
+pull1(N0,[H|T],      Item,[H|Rest]) :- 
+        N is N0 - 1,
+	pull1(N,T,Item,Rest).

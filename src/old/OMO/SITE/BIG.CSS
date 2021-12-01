@@ -1,0 +1,36 @@
+  h1{   font-size: 20px; }
+        h2{   font-size: 20px; }
+        body{ font-size: 12px; }
+
+        body{ 
+          font-family: Verdana,Arial,Helvetica; 
+          color : black;  
+          background: #FFFFEE;   
+       }
+       h1 {  font-family: Verdana,Arial,Helvetica; 
+          font-weight: bold; 
+          text-decoration: none;
+          color: white;
+          padding: .2em .1em .2em .2em; 
+          background: black;
+       }
+       h2 {  font-family: Arial,Helvetica; 
+          font-weight: bold; 
+          text-decoration: none;
+          color: #3366cc;
+       }
+       h3 {  font-family: Arial,Helvetica; 
+          font-weight: bold; 
+          text-decoration: none;
+          color: DarkRed;
+       }
+       li {margin: 0 0 0px 0;
+       }
+       pre { font-weight: bold;
+          padding: .3em .3em .3em .3em; 
+          border: .05em solid #000000;   
+          margin-left: 20;    
+          background: #FFFF99;
+          margin-left: 2em;
+          margin-right: 5em;
+       }

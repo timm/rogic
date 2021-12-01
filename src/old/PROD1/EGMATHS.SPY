@@ -1,0 +1,7 @@
+% output from ':- demos(egmaths).'
+
+The sum and average of
+[2, 3, 5, 2, 4, 6, 3, 4, 2, 4]
+ are 35 and 3.5
+.
+% runtime = 0 sec(s)

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ecgEg</title>
+<link rel="stylesheet" href="printer_mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#defs_example">Defs Example</a></li>
+	<li><a href="#header">Header</a></li>
+	<ul>
+
+		<li><a href="#loads_*/">Loads */</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+This document is also available in  the following formats:
+         <a href="ecgEg.pdf">pdf</a>; a
+        <a href="ecgEg_4printer.html">printer-friendly</a> format; a
+        <a href="ecgEg.html">display-friendly</a> format;
+        <a href="ecgEg.txt">plain text</a>; or
+         text with <a href="ecgEg.man">bold escape characters</a>.
+/*<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="defs_example">Defs Example</a></h1>
+<p>Some examples</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="header">Header</a></h1>
+<p>
+</p>
+<h2><a name="loads_*/">Loads */</a></h2>
+<pre>
+ :- [ecg].</pre>
+<pre>
+ def(emp,[name,age,shoes]).</pre>
+<pre>
+ eg(at3) :-
+    at(in emp with 
+       the name=tim with 
+       the age=23 with 
+       the shoes=20,_,X),
+    print(X).</pre>
+<pre>
+ eg(defs) --&gt; 
+    in emp,
+    the name=tim,
+    the age=23,
+    the age + 1,
+    the shoes=20.</pre>
+<pre>
+ eg(defs) --&gt; 
+    in emp1,
+    the name=tim,
+    the age=23,
+    the shoes=20,
+    the shoes &gt; 13,
+    the age1=1.</pre>
+<pre>
+ eg(oops) --&gt; in emp, the shoes &gt; 13, the age1=1, the crap &lt; 12.</pre>
+<pre>
+ :- listing(eg).</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

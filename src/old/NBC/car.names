@@ -1,0 +1,5 @@
+brand   : [mitsubishi,toyota,benz,bmw,ford,honda]
+,size   : [small,medium,large]
+,hifi   : [yes,no]
+,class  : [coup,suv]
+,are the car.

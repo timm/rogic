@@ -1,0 +1,8 @@
+name = '23. travel (disabler +-+)'.
+
+objects(e) = [wonderlust,roadworks].
+objects(m) = [gas,mileage].
+
+wonderlust ++ gas.
+if roadworks then not gas +-+ mileage.
+

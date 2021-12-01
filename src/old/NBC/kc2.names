@@ -1,0 +1,28 @@
+v(g) : int
+,ev(g) : int
+,iv(g) : int
+,loc : int
+,n : int
+,v : int
+,l : int
+,d : int
+,i : int
+,e : int
+,b : int
+,t : int
+,lOCode           : int
+,lOComment        : int
+,lOBlank          : int
+,lOCodeAndComment : int
+,uniq_Op : int
+,uniq_Opnd : int
+,total_Op : int
+,total_Opnd : int
+,branchCount : int
+,errorRate : int
+,defects : [zero,one]
+,density : int
+,are the kc2.
+
+utility(zero,4).
+utility(one,2).

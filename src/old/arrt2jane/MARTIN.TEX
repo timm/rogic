@@ -1,0 +1,260 @@
+\documentclass[10pt]{article}
+\usepackage{times,alltt,url,graphicx,amssymb}
+
+\newcommand{\fig}[1]{Figure~\ref{fig:#1}}
+
+\title{MARTIN v0.1: \underline{M}enzies' version of the
+\underline{A}r\underline{RT} \underline{IN}terpreter}
+\author{Tim Menzies$^1$\\{ \url{tim@menzies.com}}}
+\begin{document}
+\maketitle
+
+
+ \section{Hello} MARTIN is $\approx$ 250 lines of Prolog
+that is a ghost of the ARRT system~\cite{fea01}.
+
+
+eg002.pl (see \fig{eg}) is stuff in the format of what you are generating from
+arrt
+\begin{figure}
+ {\small
+\begin{alltt}:- [arrt].
++source(v1,u0,when(2001,4,6,17,45,32)).
++aka(goal,"goal",v1).
++aka(u0,"Baseline",v1).
++aka(r9,"Top Level Requirement 1",v1).
++aka(r11,"Subsidiary Requirment 1.1",v1).
++aka(r12,"Subsisiary Requirement 2.1",v1).
++aka(r10,"Top Level Requirement 2",v1).
++aka(f13,"Failure Mode 1",v1).
++aka(f14,"Failure Mode 2",v1).
++aka(f15,"Failure Mode 3",v1).
++aka(p16,"PACT 1",v1).
++aka(p17,"PACT 2",v1).
++aka(p18,"PACT 3",v1).
++r(r10,10,1,0,v1).
++r(r12,1,1,0,v1).
++r(r11,1,1,0,v1).
++r(goal,1,0,0,v1) :- r9.
++r(r9,  1,0,0,v1) :- r11,r12,r10.
++f(f15,0,1,0,v1).
++f(f14,0,1,0,v1).
++f(f13,0,1,0,v1).
++p(p18,0,0.5,100,v1).
++p(p17,0,0.5,10,v1).
++p(p16,0,0.5,1,v1).
++impact(f13,r11,0.1,v1).
++impact(f14,r11,0.2,v1).
++impact(f15,r11,0.3,v1).
++impact(f13,r12,0.4,v1).
++impact(f14,r12,0.5,v1).
++impact(f15,r12,0.6,v1).
++effect(f14,p16,0.22,v1).
++effect(f15,p16,0.33,v1).
++effect(f14,p17,0.55,v1).
++effect(f15,p17,0.66,v1).
++effect(f14,p18,0.88,v1).
++effect(f15,p18,0.99,v1).
+\end{alltt}}
+\caption{A sample KB exported from ARRT.}\label{fig:eg}
+\end{figure}
+
+Internally, MARTIN's models are a directed graphs of nodes and
+edges. This graph is shown  textually in \fig{text} and graphically in \fig{one}.
+
+\begin{figure}
+\begin{center}
+\begin{minipage}{.45\linewidth}
+{\small
+\begin{alltt}
+edge(r9, goal, 1, +).
+edge(r11, r9, 1, +).
+edge(r12, r9, 1, +).
+edge(r10, r9, 1, +).
+edge(f13, r11, 0.9, *).
+edge(f14, r11, 0.8, *).
+edge(f15, r11, 0.7, *).
+edge(f13, r12, 0.6, *).
+edge(f14, r12, 0.5, *).
+edge(f15, r12, 0.4, *).
+edge(p16, f14, 0.22, -).
+edge(p16, f15, 0.33, -).
+edge(p17, f14, 0.55, -).
+edge(p17, f15, 0.66, -).
+edge(p18, f14, 0.88, -).
+edge(p18, f15, 0.99, -).
+\end{alltt}}
+\end{minipage}\hfill\begin{minipage}{.45\linewidth}
+{\small
+\begin{alltt}
+node(r, r10, 10).
+node(r, r12, 1).
+node(r, r11, 1).
+node(r, goal, 0).
+node(r, r9, 0).
+node(f, f15, 0).
+node(f, f14, 0).
+node(f, f13, 0).
+node(p, p18, 0).
+node(p, p17, 0).
+node(p, p16, 0).
+\end{alltt}}
+\end{minipage}
+\end{center}
+\caption{A text dump of the internals of MARTIN.}\label{fig:text}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=5.5in]{report.eps}
+\end{center}
+\caption{A graphical view of \fig{text}.}\label{fig:one}
+\end{figure}
+
+At runtime, some faults and pacts are declared active and the coverage of the top most {\tt goal} is computed.
+At the end of this paper (in \fig{puts})
+are
+ 10 runs (each assumes some randomly selected subset of the
+ faults and pacts are active).
+\begin{figure}
+\begin{center}
+\begin{minipage}{.33\linewidth}{\small
+\begin{alltt}
+IF  true
+    f13
+    f14
+    f15
+    p17
+    p18
+THEN    f13 = 1
+    f14 = 0
+    f15 = 0
+    r10 = 10
+    r11 = 0.1
+    r12 = 0.4
+    goal = 10.5
+    r9 = 10.5
+--------------------
+IF  true
+    f13
+    p16
+    p17
+    p18
+THEN    f13 = 1
+    r10 = 10
+    r11 = 0.1
+    r12 = 0.4
+    goal = 10.5
+    r9 = 10.5
+--------------------
+IF  true
+    f13
+    f14
+    f15
+    p16
+    p18
+THEN    f13 = 1
+    f14 = 0
+    f15 = 0
+    r10 = 10
+    r11 = 0.1
+    r12 = 0.4
+    goal = 10.5
+    r9 = 10.5
+\end{alltt}}\end{minipage}\hfill\begin{minipage}{.33\linewidth}
+{\small \begin{alltt}
+IF  true
+    p16
+    p17
+THEN    r10 = 10
+    r11 = 1
+    r12 = 1
+    goal = 12
+    r9 = 12
+--------------------
+IF  true
+    f13
+    f14
+    f15
+    p16
+    p17
+    p18
+THEN    f13 = 1
+    f14 = 0
+    f15 = 0
+    r10 = 10
+    r11 = 0.1
+    r12 = 0.4
+    goal = 10.5
+    r9 = 10.5
+--------------------
+IF  true
+    f13
+    f14
+    f15
+    p17
+THEN    f13 = 1
+    f14 = 0.45
+    f15 = 0.34
+    r10 = 10
+    r11 = 0
+    r12 = 0.039
+    goal = 10.039
+    r9 = 10.039
+\end{alltt}}\end{minipage}\hfill\begin{minipage}{.33\linewidth}
+{\small \begin{alltt}
+IF  true
+    f13
+    f14
+    f15
+    p18
+THEN    f13 = 1
+    f14 = 0.12
+    f15 = 0.01
+    r10 = 10
+    r11 = 0
+    r12 = 0.336
+    goal = 10.336
+    r9 = 10.336
+--------------------
+IF  true
+    f13
+    f14
+THEN    f13 = 1
+    f14 = 1
+    r10 = 10
+    r11 = 0
+    r12 = 0
+    goal = 10
+    r9 = 10
+--------------------
+IF  true
+    p16
+THEN    r10 = 10
+    r11 = 1
+    r12 = 1
+    goal = 12
+    r9 = 12
+--------------------
+IF  true
+    f13
+    p16
+    p17
+    p18
+THEN    f13 = 1
+    r10 = 10
+    r11 = 0.1
+    r12 = 0.4
+    goal = 10.5
+    r9 = 10.5
+\end{alltt}}
+\end{minipage}
+\end{center}
+\caption{10 random outputs}\label{fig:puts}
+\end{figure}
+
+
+\bibliographystyle{plain}
+\bibliography{/tim/wp/refs}
+
+\end{document}

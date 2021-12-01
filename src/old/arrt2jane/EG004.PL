@@ -1,0 +1,16 @@
+:- load_files([arrt],[if(changed),silent(true)]).
+
++source(v1,u0,when(2001,7,27,23,19,36)).
++aka(u0,"Baseline",v1).
++aka(goal,"goal",v1).
++aka(r9,"Get to Mars",v1).
++aka(r10,"Launch into Earth orbit",v1).
++aka(r11,"Earth orbit to Mars orbit",v1).
++aka(r12,"Land from Mars orbit",v1).
++r(goal,1,0,0,v1) :- r9,
++r(r12,30,0,0,v1).
++r(r11,20,0,0,v1).
++r(r10,10,0,0,v1).
+%+r(r9,0,0,0,v1) :- r10,r11,r12.
++r(r9,1,0,0,v1) :- r10,r11,r12.
+

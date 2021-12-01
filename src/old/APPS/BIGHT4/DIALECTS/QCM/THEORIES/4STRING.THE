@@ -1,0 +1,8 @@
+name         =  '4string'.
+objects(e)   =  [aa,ff].
+objects(m)   =  [bb,cc,dd].
+
+aa ++ cc.
+cc -- dd.
+ff ++ dd.
+dd ++ bb.

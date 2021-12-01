@@ -1,0 +1,11 @@
+name = '26. n ands'.
+
+objects(e) = [head, c1,c2,c3,a,b].
+objects(m) = [shoulders,hips,toes].
+
+
+if c1 then head ++ shoulders.
+a ++ shoulders.
+if c2 then shoulders ++ hips.
+b ++ hips.
+if c3 then hips ++ toes.

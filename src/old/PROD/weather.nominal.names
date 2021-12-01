@@ -1,0 +1,6 @@
+outlook      : [sunny, overcast, rainy]
+,temperature : [hot, mild, cool]
+,attribute   : [high, normal]
+,windy       : [true,false]
+,play        : [yes, no]
+,are the 'weather.nominal'.

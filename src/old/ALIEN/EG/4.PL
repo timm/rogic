@@ -1,0 +1,26 @@
+:- +[lib/lists, lib/timer,lib/io].
+
+merge_eq_oset :- 
+        member(N,[10,100,1000,2500,5000]),
+	go1(N),
+	fail.
+merge_eq_oset :- nl.
+
+go1(N) :-
+	nl,
+	print(settingUp),
+        cprins([n,N]),
+	randomList(N,L1),
+        randomList(N,L2), 
+	sort(L1,L1s),
+	sort(L2,L2s),
+	length(L1s,Len1),
+	length(L2s,Len2),
+	cprins([len1,Len1,len2,Len2,ready]), 
+	timeIt(merge_set(L1s,L2s,_),T2),
+	timeIt(set_union(L1s,L2s,_),T3),
+	Comp is integer((T2*100)/T3),
+	cprins([merge_set/set_union,Comp]),
+	!.
+
+go :- watch(merge_eq_oset).

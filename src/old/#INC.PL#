@@ -1,0 +1,9 @@
+add(X,Leaf,t(_,_,X,1,_,_)) :- var(Leaf),!.
+add(X,t(R,Rn,M,Mn,L,Ln),Out) :- 
+  compare(Op,X,M), add(Op,X,t(R,Rn,M,Mn,L,Ln),Out).
+
+add(=,_,t(R,Rn,M,Mn,L,Ln),t(R,Rn,M,Mn1,L,Ln)) :- Mn1 is Mn + 1.
+add(<,X,t(R,Rn,M,Mn,L,Ln),t(R1,Rn1,M,Mn,L,Ln)) :- Rn1 is Rn + 1, add(X,R,R1).
+add(>,X,t(R,Rn,M,Mn,L,Ln),t(R,Rn,M,Mn,L1,Ln1)) :- Ln1 is Ln + 1, add(X,L,L1).
+
+root(

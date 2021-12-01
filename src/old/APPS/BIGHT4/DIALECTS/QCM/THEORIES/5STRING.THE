@@ -1,0 +1,9 @@
+name = '001. four nodes with strings (inexplicable)'.
+
+objects(e) = [aa].
+objects(m) = [bb,cc,dd].
+
+aa ++ cc.
+cc ++ dd.
+dd ++ bb.
+

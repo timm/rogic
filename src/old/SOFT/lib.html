@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>lib</title>
+<link rel="stylesheet" href="mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#library">Library</a></li>
+	<ul>
+
+		<li><a href="#random_clause_*/">Random clause */</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="library">Library</a></h1>
+<p>
+</p>
+<h2><a name="random_clause_*/">Random clause */</a></h2>
+<pre>
+ one(X) :- 
+        setof(One,X^one1(X,One),All0), 
+        beam(X,All0,All), 
+        member(_/X,All).</pre>
+<pre>
+ one1(X,Score/X) :- 
+        X, 
+        score(X,Score0), 
+        bound(X,Score0), 
+        Score is -1 * Score0. /*</pre>
+<p>If we have no knowledge of <code>X</code>, give it a random number. */</p>
+<pre>
+ score(_,N) :- 
+        N is  rand(2147483647). /*</pre>
+<p>If we have knowledge of minimum values for a score,  test it here. */</p>
+<pre>
+ bound(_,Score) :- 
+        Score &gt; 0. /*</pre>
+<p>Sometimes, we may just want to select the top <em>N</em> values:
+makes this a beam search</p>
+<p>But right now, we have no selection knowledge. */</p>
+<pre>
+ beam(_,L,L).</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

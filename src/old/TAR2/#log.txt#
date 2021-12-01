@@ -1,0 +1,230 @@
+in this first trial, just mess with the design decisions
+
+999 entries
+666 relevant, 391 uniques
+
+conductCodeReview:  [-1 .. 1)  [1 .. 1) 
+conductCodeWalkthrough:  [-1 .. 1)  [1 .. 1) 
+conductFormalDesignInspections:  [-1 .. -1)  [1 .. 1) 
+conductFormalDesignReviews:  [-1 .. 1)  [1 .. 1) 
+conductFormalInspectionOfRequirements:  [-1 .. -1)  [-1 .. 1)  [1 .. 1) 
+conductFormalReviews:  [-1 .. -1)  [-1 .. 1)  [1 .. 1) 
+peerReviewOfRequirements:  [-1 .. -1)  [-1 .. 1)  [1 .. 1) 
+peerReviewsOnDesign:  [-1 .. -1)  [-1 .. 1)  [1 .. 1) 
+softwareAssuranceReviewOfRequirements:  [-1 .. -1)  [-1 .. 1)  [1 .. 1) 
+
+          score :    1 
+        what if : no change? 
+           hihi :   29% ~~~~~~~
+           lohi :   30% ~~~~~~~~
+           hilo :   20% ~~~~~
+           lolo :   22% ~~~~~~
+
+% Can any of [conductCodeReview>=0, conductCodeWalkthrough>=0, conductFormalDesignInspections>=0, conductFormalDesignReviews>=0, conductFormalInspectionOfRequirements>=0, conductFormalReviews>=0, peerReviewOfRequirements>=0, peerReviewsOnDesign>=0, softwareAssuranceReviewOfRequirements>=0]
+% improve this score over [1.1]? Hmmm...
+
+          score : 1.20755 
+        what if : [peerReviewOfRequirements=2, conductCodeWalkthrough=1]? 
+           hihi :   20% ~~~~~
+           lohi :   22% ~~~~~~
+           hilo :   29% ~~~~~~~
+           lolo :   29% ~~~~~~~
+
+          score : 1.18714 
+        what if : [conductFormalReviews=2, conductCodeWalkthrough=1]? 
+           hihi :   24% ~~~~~~
+           lohi :   21% ~~~~~
+           hilo :   24% ~~~~~~
+           lolo :   30% ~~~~~~~~
+
+          score : 1.16573 
+        what if : [peerReviewOfRequirements=2, conductFormalReviews=2]? 
+           hihi :   21% ~~~~~
+           lohi :   25% ~~~~~~
+           hilo :   26% ~~~~~~~
+           lolo :   28% ~~~~~~~
+
+          score : 1.11894 
+        what if : [conductFormalDesignReviews=1, conductCodeReview=1]? 
+           hihi :   25% ~~~~~~
+           lohi :   21% ~~~~~
+           hilo :   29% ~~~~~~~
+           lolo :   25% ~~~~~~
+
+          score : 1.11666 
+        what if : [peerReviewsOnDesign=2, conductCodeReview=1]? 
+           hihi :   27% ~~~~~~~
+           lohi :   20% ~~~~~
+           hilo :   27% ~~~~~~~
+           lolo :   26% ~~~~~~~
+
+          score : 1.11619 
+        what if : [peerReviewsOnDesign=2, peerReviewOfRequirements=2]? 
+           hihi :   26% ~~~~~~~
+           lohi :   26% ~~~~~~~
+           hilo :   21% ~~~~~
+           lolo :   28% ~~~~~~~
+
+          score : 1.11325 
+        what if : [conductFormalDesignReviews=1, conductCodeWalkthrough=1]? 
+           hihi :   22% ~~~~~~
+           lohi :   29% ~~~~~~~
+           hilo :   22% ~~~~~~
+           lolo :   26% ~~~~~~~
+
+          score : 1.10972 
+        what if : [peerReviewsOnDesign=2, conductCodeWalkthrough=1]? 
+           hihi :   23% ~~~~~~
+           lohi :   28% ~~~~~~~
+           hilo :   23% ~~~~~~
+           lolo :   26% ~~~~~~~
+
+          score : 1.10919 
+        what if : [softwareAssuranceReviewOfRequirements=2, conductCodeReview=1]? 
+           hihi :   23% ~~~~~~
+           lohi :   26% ~~~~~~~
+           hilo :   26% ~~~~~~~
+           lolo :   25% ~~~~~~
+
+          score : 1.10745 
+        what if : [conductFormalInspectionOfRequirements=2, conductCodeWalkthrough=1]? 
+           hihi :   24% ~~~~~~
+           lohi :   27% ~~~~~~~
+           hilo :   23% ~~~~~~
+           lolo :   26% ~~~~~~~
+
+          score : 1.10035 
+        what if : [conductFormalInspectionOfRequirements=3, conductFormalDesignReviews=1]? 
+           hihi :   23% ~~~~~~
+           lohi :   29% ~~~~~~~
+           hilo :   22% ~~~~~~
+           lolo :   26% ~~~~~~~
+
+No
+?- 
+|    interestingRange(X,Y).
+Correct to: interestingRanges(X, Y)? yes
+
+X = 34
+Y = ['[achievableDesign@118]Cost', '[authorization@57]Cost', '[baselineDesign@106]Cost', '[cmForDesign@109]Cost', '[codeReviews@125]Cost', '[configurationManagement@73]Cost', '[designChangeControl@112]Cost', '[designReqReview@95]Cost', '[designReviews@101]Cost'|...] 
+threshold set to 1.15
+
+/cygdrive/c/tim/src/pl/tar2> sh prep.sh 0.5 0.7
+cost chop 392.034 chances chop -86.3225
+cost,LogChances
+
+hihi % <-- worst
+lohi %
+hilo %
+lolo % <-- best
+
+minc,333.723
+breakc,379.222
+maxc,450.345
+minch,-141.311
+breakch,-88.8129
+maxch,-62.756
+all,999
+lolo,102
+lohi,226
+hilo,227
+hihi,442
+      1 :- dataset(1)
+    285 hihi).
+    200 hilo).
+    297 lohi).
+    217 lolo).
+
+no solutions at changes =1 but at chances=2:
+
+          score :    1 
+        what if : no change? 
+           hihi :   29% ~~~~~~~
+           lohi :   30% ~~~~~~~~
+           hilo :   20% ~~~~~
+           lolo :   22% ~~~~~~
+
+% Can any of [conductCodeReview>=0, conductCodeWalkthrough>=0, conductFormalDesignInspections>=0, conductFormalDesignReviews>=0, conductFormalInspectionOfRequirements>=0, conductFormalReviews>=0, peerReviewOfRequirements>=0, peerReviewsOnDesign>=0, softwareAssuranceReviewOfRequirements>=0]
+% improve this score over [1.15]? Hmmm...
+
+          score : 1.20755 
+        what if : [peerReviewOfRequirements=2, conductCodeWalkthrough=1]? 
+           hihi :   20% ~~~~~
+           lohi :   22% ~~~~~~
+           hilo :   29% ~~~~~~~
+           lolo :   29% ~~~~~~~
+
+          score : 1.18714 
+        what if : [conductFormalReviews=2, conductCodeWalkthrough=1]? 
+           hihi :   24% ~~~~~~
+           lohi :   21% ~~~~~
+           hilo :   24% ~~~~~~
+           lolo :   30% ~~~~~~~~
+
+          score : 1.16573 
+        what if : [peerReviewOfRequirements=2, conductFormalReviews=2]? 
+           hihi :   21% ~~~~~
+           lohi :   25% ~~~~~~
+           hilo :   26% ~~~~~~~
+           lolo :   28% ~~~~~~~
+
+which is not impressive
+
+so, i switched to the cost ones.
+at changes =1, i get this little gem:
+
+
+          score : 1.29559 
+        what if : [[iv&v@76]Cost=1]? 
+           hihi :    3% ~
+           lohi :   55% ~~~~~~~~~~~~~~
+           hilo :    3% ~
+           lolo :   40% ~~~~~~~~~~
+
+          score : 1.10975 
+        what if : [[goodIntegration@147]Cost=1]? 
+           hihi :   23% ~~~~~~
+           lohi :   30% ~~~~~~~~
+           hilo :   20% ~~~~~
+           lolo :   27% ~~~~~~~
+
+now[achievableDesign@118]Cost:  [3.5021 .. 4.4375)  [4.4477 .. 5.4233)  [5.4251 .. inf) 
+[authorization@57]Cost:  [0.7 .. 0.91942)  [0.91978 .. 1.10254)  [1.10344 .. inf) 
+[baselineDesign@106]Cost:  [3.5 .. 4.499)  [4.5005 .. 5.4071)  [5.4083 .. inf) 
+[cmForDesign@109]Cost:  [3.5033 .. 4.5272)  [4.5272 .. 5.4542)  [5.4545 .. inf) 
+[codeReviews@125]Cost:  [10 .. 13.076)  [13.077 .. 16.472)  [16.495 .. inf) 
+[configurationManagement@73]Cost:  [20.009 .. 23.356)  [23.364 .. 26.517)  [26.525 .. inf) 
+[designChangeControl@112]Cost:  [3.5063 .. 4.4747)  [4.475 .. 5.4506)  [5.4527 .. inf) 
+[designReqReview@95]Cost:  [3.5009 .. 4.5137)  [4.5206 .. 5.5115)  [5.5127 .. inf) 
+[designReviews@101]Cost:  [7.0012 .. 8.992)  [8.9938 .. 11.0542)  [11.0554 .. inf) 
+[documentDesign@98]Cost:  [7.0024 .. 9.0256)  [9.0418 .. 10.8982)  [10.9024 .. inf) 
+[effectiveReqReviews@62]Cost:  [10 .. 13.534)  [13.54 .. 16.686)  [16.697 .. inf) 
+[feasibleDesignToCode@127]Cost:  [10.011 .. 13.123)  [13.128 .. 16.569)  [16.577 .. inf) 
+[goodCoding@138]Cost:  [14.0048 .. 18.0824)  [18.0872 .. 22.0868)  [22.1012 .. inf) 
+[goodDesign@122]Cost:  [3.5015 .. 4.4621)  [4.463 .. 5.5355)  [5.5358 .. inf) 
+[goodImplemenation@142]Cost:  [14.0036 .. 17.936)  [17.9456 .. 22.076)  [22.0916 .. inf) 
+[goodIntegration@147]Cost:  [14.006 .. 17.8808)  [17.8904 .. 21.7748)  [21.7856 .. inf) 
+[goodProject@150]Cost:  [14.0072 .. 17.9024)  [17.912 .. 22.0412)  [22.0484 .. inf) 
+[goodTesting@136]Cost:  [14.054 .. 18.0308)  [18.044 .. 22.166)  [22.2008 .. inf) 
+[iv&v@76]Cost:  [70.006 .. 89.662)  [89.71 .. 110.362)  [110.476 .. inf) 
+[meetSpecs@115]Cost:  [3.5003 .. 4.4876)  [4.4924 .. 5.4908)  [5.4908 .. inf) 
+[problemReport@70]Cost:  [3.5054 .. 4.4948)  [4.4969 .. 5.5415)  [5.5451 .. inf) 
+[systemIntegration@145]Cost:  [14.0108 .. 17.7632)  [17.7644 .. 21.896)  [21.9056 .. inf) 
+[testPlans@131]Cost:  [14.0024 .. 18.1616)  [18.164 .. 22.2128)  [22.2152 .. inf) 
+[unitTest@134]Cost:  [14.0012 .. 17.822)  [17.8256 .. 21.9404)  [21.9524 .. inf) 
+
+  what if : no change? 
+           hihi :   29% ~~~~~~~
+           lohi :   30% ~~~~~~~~
+           hilo :   20% ~~~~~
+           lolo :   22% ~~~~~~
+
+% Can any of [[achievableDesign@118]Cost>=0, [authorization@57]Cost>=0, [baselineDesign@106]Cost>=0, [cmForDesign@109]Cost>=0, [codeReviews@125]Cost>=0, [configurationManagement@73]Cost>=0, [designChangeControl@112]Cost>=0, [designReqReview@95]Cost>=0, [designReviews@101]Cost>=0, [documentDesign@98]Cost>=0, [effectiveReqReviews@62]Cost>=0, [feasibleDesignToCode@127]Cost>=0, [goodCoding@138]Cost>=0, [goodDesign@122]Cost>=0, [goodImplemenation@142]Cost>=0, [goodIntegration@147]Cost>=0, [goodProject@150]Cost>=0, [goodTesting@136]Cost>=0, [iv&v@76]Cost>=0, [meetSpecs@115]Cost>=0, [problemReport@70]Cost>=0, [systemIntegration@145]Cost>=0, [testPlans@131]Cost>=0, [unitTest@134]Cost>=0]
+% improve this score over [1.1]? Hmmm...
+
+          score : 1.37102 
+        what if : [[iv&v@76]Cost=1, [goodIntegration@147]Cost=1]? 
+           hihi :    3% ~
+           lohi :   52% ~~~~~~~~~~~~~
+           hilo :    0% 
+           lolo :   45% ~~~~~~~~~~~

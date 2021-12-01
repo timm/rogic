@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>template</title>
+<link rel="stylesheet" href="printer_mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#template">Template</a></li>
+	<li><a href="#header_*/">Header */</a></li>
+	<ul>
+
+		<li><a href="#loads">Loads</a></li>
+		<li><a href="#operators">Operators</a></li>
+		<li><a href="#flags">Flags</a></li>
+		<li><a href="#hooks">Hooks</a></li>
+		<li><a href="#hacks">Hacks</a></li>
+	</ul>
+
+	<li><a href="#body">Body</a></li>
+	<ul>
+
+		<li><a href="#utils">Utils</a></li>
+	</ul>
+
+	<li><a href="#footer_*/">Footer */</a></li>
+	<ul>
+
+		<li><a href="#startups">Start-ups</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+This document is also available in  the following formats:
+         <a href="template.pdf">pdf</a>; a
+        <a href="template_4printer.html">printer-friendly</a> format; a
+        <a href="template.html">display-friendly</a> format;
+        <a href="template.txt">plain text</a>; or
+         text with <a href="template.man">bold escape characters</a>.
+/*<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="template">Template</a></h1>
+<p>Standard Prolog file structure */</p>
+<p>/*</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="header_*/">Header */</a></h1>
+<p>/*</p>
+<p>
+</p>
+<h2><a name="loads">Loads</a></h2>
+<p>Load some code using ``ensure_loaded''. e.g.: */</p>
+<pre>
+ :- ensure_loaded([xx]).</pre>
+<p>/*</p>
+<p>(Warning: there is some quirk in the Prolog loader
+ when doing <code>goal_expansion</code>s. If you are using <code>ecg</code>s
+ or <code>defs</code>, then DON'T <code>ensure_loaded</code> those files;
+rather, load them the old-fashioned way: */</p>
+<pre>
+ :- [ecg]. */</pre>
+<p>
+</p>
+<h2><a name="operators">Operators</a></h2>
+<p>Change the Prolog parser using <code>op/3</code>x. e.g.: */</p>
+<pre>
+ :- op(700,xfx,and).</pre>
+<p>/*</p>
+<p>
+</p>
+<h2><a name="flags">Flags</a></h2>
+<p>Index predicates (with <code>index/1</code>)
+or make some dynamic (with <code>dynamic/1</code>)
+or discontiguous (with <code>discontiguous/1</code>)
+or .... e.g.: */</p>
+<pre>
+ :- index(myemp(1,1,0,1,00)).
+ :- discontiguous defs/2.
+ :- mulitfile defs/2.
+ :- dynamic defs/2.</pre>
+<p>/*</p>
+<p>
+</p>
+<h2><a name="hooks">Hooks</a></h2>
+<p>Change the Prolog parser using <code>term_expansion/2</code> and
+<code>goal_expansion/2</code>. e.g. */</p>
+<pre>
+ term_expansion(X and Y,Z) :- xpands(X and Y, Z).</pre>
+<pre>
+ goal_expansion(L with M and N,Z) :- tupleCompile(L with M and N,Z).</pre>
+<p>/*</p>
+<p>
+</p>
+<h2><a name="hacks">Hacks</a></h2>
+<p>We won't talk about these. I didn't not write these.
+You did not see them. */</p>
+<pre>
+ goal_expansion(true(X,X),true).</pre>
+<p>/*</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="body">Body</a></h1>
+<p>Insert your applciation code here.</p>
+<p>
+</p>
+<h2><a name="utils">Utils</a></h2>
+<p>Finally, add any general utilities last.  e.g. */</p>
+<pre>
+ barph(X) :- format('W&gt; ~w\n',X), fail. /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="footer_*/">Footer */</a></h1>
+<p>/*</p>
+<p>
+</p>
+<h2><a name="startups">Start-ups</a></h2>
+<p>After all the above is loaded, how do we get this stuff started. */</p>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

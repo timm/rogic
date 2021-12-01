@@ -1,0 +1,350 @@
+
+=head1 Viewing Distributions
+
+ :- ensure_loaded([dist0,dist1]).
+
+
+
+=head2 Uses
+
+ :- ensure_loaded([demos, strings,random]).
+
+
+
+=head1 C<dist(+List,-Pairs)>: Simple collection of histogram data 
+
+
+=head2 Helper
+
+The list of C<key=frequency>
+pairs is sorted in decreasing C<key> order.
+
+ dist(L0,L) :-  dist(L0,_,_,L,_).
+
+This variant also returns the largest frequency seen
+in any bucket.
+
+ dist(L0,L,Most)    :- dist(L0,_,_,L,Most).
+
+This variant also returns the keys with the C<Min/Max>frequencies.
+
+ dist(L0,Min,Max,L) :- dist(L0,Min,Max,L,_).
+
+
+=head2 Workers
+
+Preparing to the do the work. Sort the incoming symbols (keeping
+repeated symbols).
+
+ dist(L0,Min,Max,L,Most) :-
+    msort(L0,[Min|L1]), 
+    dist([Min|L1],[],Min,Max,L,0,Most).
+
+Termination.
+
+ dist([],X,Max,Max,X,Most,Most).
+
+If the same two symbols are found next
+to each other, increment the frequency count. 
+
+ dist([H|T],[H=N0|Rest],_,Max,Out,Most0,Most) :- !,
+    N is N0 + 1,
+    Most1 is max(Most0,N),
+    dist(T,[H=N|Rest],H,Max,Out,Most1,Most).
+
+Otherwise, start a new pair and set its frequency to I<1>.
+
+ dist([H|T],In,Min,Max,Out,Most0,Most) :-
+    Most1 is max(Most0,1),
+    dist(T,[H=1|In],Min,Max,Out,Most1,Most).
+
+
+=head1 C<bars(+Num1,+Num2,+Num3,+Pairs)>: print a bar chart
+
+/*Displays te frequency pairs from C<dist/2> as  a bar chart. Has
+the following arguments:
+
+=over 8
+
+=item Num1
+
+is the width of the first I<item> column
+displaying the name of each bar;
+
+=item Num2
+
+is the width of the second 
+I<frequency> column showing how many items
+fall into that bar;
+
+=item Num3
+
+is the width of the last column showing
+the population size.
+
+=item Pairs
+
+Symbol/frequency pairs (can be generated from
+C<dist/2>.
+
+
+=back 
+
+=head2 Helper */
+
+In this helper, the I<item> column is 5 wide (C<Num1>),
+the I<frequency> column is 5 wide (C<Num2>),
+and the I<scale factor> is 3 (C<Num3>).
+
+ bars(List) :-
+    Num1=5,
+    Num2=5,
+    Num3=3,
+    bars(Num1, Num2, Num3, List). /*
+
+=head2 Worker
+
+We use C<sformat> to build a string  that
+stores the widths and scale factor
+for our columns. Note the use of C<>> and C<S>
+which are special format commands defined in C<strings.pl> */
+
+ bars(Num1,Num2,Num3,List) :-
+    sformat(S,' ~~~w>  ~~~w> ~~~wS\n',[Num1,Num2,Num3]),
+    dist(List,Dist),
+    nl,
+    format(S,[item,frequency,0]),
+    forall(member(What=N,Dist), format(S,[What,N,N])).
+
+=head1 Demos
+
+=head2 Known Demos
+
+Here's our list of known demos:
+
+ distDemos :- Demos=[egdist,      egbarsNormal, egbarsBeta,
+	             egbarsGamma1,egbarsGamma2, egbarsGamma3
+                    ],
+              forall(member(Demo,Demos),demo(Demo)).
+
+=head2 Demo: simple frequency counts
+
+ egdist :- 
+    List = [a,b,r,a,c,a,d,a,b,r,a],
+    dist(List,Dist),
+    format('The distribution of symbols\n~w is\n~w.\n',
+          [List,Dist]).
+
+
+ %% egdist.spy (output from ':- demos(egdist).')
+The distribution of symbols
+[a, b, r, a, c, a, d, a, b, r, a] is
+[r=2, d=1, c=1, b=2, a=5].
+ %% runtime = 0 sec(s)
+
+=head2 Bar Chart demo Support Code
+
+Need a little tool to generate distributions.
+The tool accepts some distribution function C<F> and
+samples it C<Repeats> number of times (rounding each
+result to the nearest C<Rounding> value0 we'll use I<1>).
+The results are then displayed using C<bars/4>.
+
+ egbarDemos(Repeats,F) :-
+    format(' ---| ~w * ~w |-------',[Repeats,F]),
+    Rounding=1,
+    findall(X,(between(1,Repeats,_),
+	       X is round(F/Rounding)*Rounding),
+	    L),
+    bars(5,5,100,L).
+
+=head2 Demo of a normal distribution
+
+ egbarsNormal :-
+	egbarDemos(10000,normal(20,2)).
+
+
+ %% egbarsNormal.spy (output from ':- demos(egbarsNormal).')
+ ---| 10000 * normal(20, 2) |-------
+  item  frequency 
+    27      5 
+    26     27 
+    25     95 ~
+    24    256 ~~~
+    23    711 ~~~~~~~
+    22   1140 ~~~~~~~~~~~
+    21   1798 ~~~~~~~~~~~~~~~~~~
+    20   1908 ~~~~~~~~~~~~~~~~~~~
+    19   1778 ~~~~~~~~~~~~~~~~~~
+    18   1230 ~~~~~~~~~~~~
+    17    664 ~~~~~~~
+    16    266 ~~~
+    15     81 ~
+    14     25 
+    13     12 
+    12      4 
+ %% runtime = 0.380547 sec(s)
+
+=head2 Demo of a beta distribution
+
+ egbarsBeta :-
+	egbarDemos(10000,rand(10,20,0.2)).
+
+
+ %% egbarsBeta.spy (output from ':- demos(egbarsBeta).')
+ ---| 10000 * rand(10, 20, 0.2) |-------
+  item  frequency 
+    19      6 
+    18     42 
+    17    127 ~
+    16    248 ~~
+    15    491 ~~~~~
+    14    866 ~~~~~~~~~
+    13   1375 ~~~~~~~~~~~~~~
+    12   2001 ~~~~~~~~~~~~~~~~~~~~
+    11   2998 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    10   1846 ~~~~~~~~~~~~~~~~~~
+ %% runtime = 0.120173 sec(s)
+
+=head2 Demo of a gamma distribution
+
+ egbarsGamma1 :-
+	egbarDemos(10000,gamma(10,15)).
+
+
+ %% egbarsGamma1.spy (output from ':- demos(egbarsGamma1).')
+ ---| 10000 * gamma(10, 15) |-------
+  item  frequency 
+    23      1 
+    22      1 
+    21      2 
+    20      6 
+    19     21 
+    18     37 
+    17     65 ~
+    16    149 ~
+    15    247 ~~
+    14    426 ~~~~
+    13    717 ~~~~~~~
+    12    983 ~~~~~~~~~~
+    11   1325 ~~~~~~~~~~~~~
+    10   1506 ~~~~~~~~~~~~~~~
+     9   1605 ~~~~~~~~~~~~~~~~
+     8   1314 ~~~~~~~~~~~~~
+     7    950 ~~~~~~~~~~
+     6    418 ~~~~
+     5    187 ~~
+     4     35 
+     3      5 
+ %% runtime = 0.891282 sec(s)
+
+=head2 Demo of a skewed gamma distribution
+
+ egbarsGamma2 :- 
+    egbarDemos(10000,gamma(10,5)).
+
+
+ %% egbarsGamma2.spy (output from ':- demos(egbarsGamma2).')
+ ---| 10000 * gamma(10, 5) |-------
+  item  frequency 
+    38      1 
+    34      1 
+    33      1 
+    32      2 
+    30      3 
+    29      4 
+    28      7 
+    27      7 
+    26     15 
+    25     19 
+    24     32 
+    23     30 
+    22     50 ~
+    21     68 ~
+    20     89 ~
+    19    134 ~
+    18    189 ~~
+    17    243 ~~
+    16    288 ~~~
+    15    353 ~~~~
+    14    446 ~~~~
+    13    575 ~~~~~~
+    12    704 ~~~~~~~
+    11    744 ~~~~~~~
+    10    864 ~~~~~~~~~
+     9    963 ~~~~~~~~~~
+     8    980 ~~~~~~~~~~
+     7    931 ~~~~~~~~~
+     6    801 ~~~~~~~~
+     5    686 ~~~~~~~
+     4    451 ~~~~~
+     3    225 ~~
+     2     87 ~
+     1      7 
+ %% runtime = 0.330475 sec(s)
+
+=head2 Demo of a very skewed gamma distribution
+
+ egbarsGamma3 :-
+	egbarDemos(10000,gamma(10,2)).
+
+
+ %% egbarsGamma3.spy (output from ':- demos(egbarsGamma3).')
+ ---| 10000 * gamma(10, 2) |-------
+  item  frequency 
+    62      1 
+    57      1 
+    55      1 
+    53      1 
+    51      2 
+    49      2 
+    48      1 
+    47      1 
+    46      3 
+    45      3 
+    44      2 
+    43      4 
+    42      5 
+    41      1 
+    40      6 
+    39      5 
+    38      3 
+    37     13 
+    36     15 
+    35     14 
+    34      8 
+    33     18 
+    32     24 
+    31     20 
+    30     35 
+    29     35 
+    28     40 
+    27     55 ~
+    26     41 
+    25     80 ~
+    24     85 ~
+    23     87 ~
+    22    100 ~
+    21    134 ~
+    20    148 ~
+    19    164 ~~
+    18    167 ~~
+    17    200 ~~
+    16    275 ~~~
+    15    332 ~~~
+    14    349 ~~~
+    13    360 ~~~~
+    12    416 ~~~~
+    11    510 ~~~~~
+    10    545 ~~~~~
+     9    596 ~~~~~~
+     8    621 ~~~~~~
+     7    660 ~~~~~~~
+     6    689 ~~~~~~~
+     5    780 ~~~~~~~~
+     4    737 ~~~~~~~
+     3    656 ~~~~~~~
+     2    561 ~~~~~~
+     1    338 ~~~
+     0     50 ~
+ %% runtime = 0.170245 sec(s)

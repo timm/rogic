@@ -1,0 +1,24 @@
+:- [usual].
+
+*model is "failures.
+#1: 0-[]'.
+
+%vars
+* bool : a,b,c,d.
+
+%rules
+*b + a.
+*c + b.
+*d + c.
+
+%obs
+*rx   = [[], [a]]
+,
+[d  = [1, -1]
+].
+
+
+*end.
+
+
+

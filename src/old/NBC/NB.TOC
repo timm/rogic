@@ -1,0 +1,31 @@
+\begingroup \small 
+\contentsline {section}{\numberline {1} Introductions }{1}
+\contentsline {section}{\numberline {2} Initializations }{1}
+\contentsline {subsection}{\numberline {2.1} Operators }{1}
+\contentsline {subsection}{\numberline {2.2} Flags }{1}
+\contentsline {subsection}{\numberline {2.3} Hooks }{2}
+\contentsline {subsection}{\numberline {2.4} Hacks }{2}
+\contentsline {section}{\numberline {3} Library code }{2}
+\contentsline {subsection}{\numberline {3.1} Does a goals have 1 matching clause? }{2}
+\contentsline {subsection}{\numberline {3.2} Configuration Control }{2}
+\contentsline {subsection}{\numberline {3.3} Demo support code }{2}
+\contentsline {subsection}{\numberline {3.4} Dump a Whole File to the Screen}{2}
+\contentsline {subsection}{\numberline {3.5} License }{2}
+\contentsline {subsection}{\numberline {3.6} Miscalleanous }{2}
+\contentsline {subsection}{\numberline {3.7} Wrapper }{3}
+\contentsline {subsection}{\numberline {3.8} Accessors }{3}
+\contentsline {subsubsection}{\numberline {3.8.1} Usage }{3}
+\contentsline {subsubsection}{\numberline {3.8.2} Field details }{3}
+\contentsline {subsubsection}{\numberline {3.8.3} Core engine }{3}
+\contentsline {subsubsection}{\numberline {3.8.4} dd2/2 }{3}
+\contentsline {subsubsection}{\numberline {3.8.5} Demos }{4}
+\contentsline {subsubsection}{\numberline {3.8.6} Generating an instance }{4}
+\contentsline {subsection}{\numberline {3.9} Statistics }{4}
+\contentsline {section}{\numberline {4} The NB system }{4}
+\contentsline {subsection}{\numberline {4.1} Loading }{4}
+\contentsline {section}{\numberline {5} Start up actions}{4}
+\contentsline {section}{\numberline {A}License}{4}
+\contentsline {subsection}{\numberline {A.1}nowarranty.txt}{5}
+\contentsline {subsection}{\numberline {A.2}warranty.txt}{5}
+\contentsline {subsection}{\numberline {A.3}conditions.txt}{5}
+\endgroup 

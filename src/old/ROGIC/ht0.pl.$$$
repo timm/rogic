@@ -1,0 +1,87 @@
+run(Th) :- th(Th), 
+	   runtime(ht0).
+
+th(Th) :-
+	sformat(File,'models/~a.pl',[Th]), 
+	load_files([File],[silent(true)]),
+	(option(model,M) -> t(model(M)); true),
+	t(source(File)),
+
+ht0 :-
+	wmeSetup,
+	flag(run,_,1), flag(exp,_,1),  	
+	forall((setupOne(Id,Goals)
+	       ),
+	       (option(thrashes,Thrashes),
+	        -empty(Best0),
+	        thrash(Thrashes,Goals,Best0,Best),
+	        t(best(exp=Id,cover=Best))
+	       )).
+
+setupOne(Exp,Goals) :-
+	io(Ins, Goals),
+	wmeEmpty,
+	inc(exp,Exp),
+	t(nl), t(io(exp=Exp,ins=Ins,goals=Goals)),
+	forall(member(A=B,Ins),   
+	       (hash_term(A,H1),assert(in(H1,A,B)))).
+
+thrash(0,_,Best,Best) :- !.
+thrash(N0,Goals,Best0,Best) :-
+	-empty(Empty),
+	-pokes(Goals,Some),
+	retractall(val(_,_,_)),
+	option(fiddles,Fiddles),
+	fiddle(Fiddles,Some,Empty,Best0,Best1),
+	N is N0 - 1,
+	thrash(N,Goals,Best1,Best).
+	
+fiddle(0, _,      _,       Best, Best).
+fiddle(N0,DoFirst,DoSecond,Best0,Best) :-
+	inc(run,_),
+	forgetSome(DoFirst,DoSecond),
+	-empty(D0),  %D = Done
+	-empty(F0),  %F = Failed
+	fiddle1(DoFirst,  D0,D1, F0,F1),
+	fiddle1(DoSecond, D1,D,  F1,F ),
+	once(( -empty(F),    % if all can be proved, stop!
+               Best=D,
+	       recordBest
+             ; -empty(D),  
+	       option(forgets,100),   % if nothing can be proved, give up.
+	       Best=Best0,
+	       recordBest
+             ; adjust(N0,N,Best0,D,Best2),
+               fiddle(N,F,D,Best2,Best)
+             )).
+
+fiddle1(Goals,D,D,F,F) :- 
+	-empty(Goals),!.
+fiddle1(Goals0,D0,D,F0,F) :-
+	-pull(A=B,Goals0,Goals),
+	fiddle2(A,B,  D0,D1,F0,F1),
+	fiddle1(Goals,D1,D, F1,F ).
+
+fiddle2(A,B,D0,D,F, F) :- kb(A,B,[]), !, -poke(A=B,D0,D).
+fiddle2(A,B,D, D,F0,F) :- -poke(A=B,F0,F).
+
+adjust(N0,N,D0,D1,Best) :-
+	N is N0 - 1,
+	-bigger(D0,D1) -> Best=D0; Best=D1, recordBest.	    	
+
+recordBest :- 
+	retractall(best(_)),
+	forall(val(H,X,Y),assert(best(val(H,X,Y)))).
+
+forgetSome(G1,G2) :-
+	option(forgets,F),
+	forgetSome1(F),
+	forall(-member(A=B,G1), ensure(A,B)),
+	forall(-member(A=B,G2), ensure(A,B)).
+
+forgetSome1(100) :- !,retractall(val(_,_,_)).
+forgetSome1(T) :- 
+	bagof(val(H,X,Y),retract(val(H,X,Y)),All),!,
+	forall(member(val(H,X,Y),All),
+	       (random(100)+1>T->assert(val(H,X,Y));true)).
+forgetSome1(_).

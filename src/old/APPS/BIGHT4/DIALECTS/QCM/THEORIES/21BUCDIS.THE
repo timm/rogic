@@ -1,0 +1,10 @@
+name =  '015. buckets (disabler)'.
+
+objects(e) = [switch,bucket].
+objects(m) = [tank,spoutFlow].
+
+bucket ++ tank.
+if switch then not tank ++ spoutFlow.
+
+
+ 

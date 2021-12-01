@@ -1,0 +1,261 @@
+\section{Style notes}
+
+\subsection{Prolog Source Code Idioms}
+
+\subsubsection{Preparing Include Files}
+
+Divide your Prolog
+code up into lots of little files. If it can't fit into one
+column, it is too big. In practice, this means  no file is more than
+55 characters wide and 80 lines long.
+
+Predicates can't have long argument lists. Practically speaking, this
+often implies that you need DCGs to handle carrying round updatable
+state.
+
+Note that the included files will be processed by \LaTeX
+in a verbatim mode. The good news is that this
+ implies that \LaTeX commands can be added
+into the Prolog source code. Such commands can perform useful
+tasks such as (e.g.) linking from one figure to another figure.
+The bad news is that some source code constructs will be
+inappropriately rendered by Prolog. For example !\t! denotes
+ a tab character in a string. In \Text2Log,  it gets read as a \LaTeX
+ macro with inappropriate side-effects.
+
+
+
+\subsubsection{Including Source Code}
+
+Source code should be included into the {\LaTeX} source using the
+!\code{app/file}{Caption}! command. This will generate a {\LaTeX}
+reference !fig:file! which can be accessed in the usual way using
+!\fig{app/file}!. Included source code gets rendered in a box which
+includes the name of the file.
+
+\subsubsection{Marking Lines in Source Code}
+
+
+Within a source code file,
+a line can be marked with
+!\MARK{X}! where !X! can be
+referenced in the \LaTeX source
+using any of the following macros.
+\bi
+\item
+!\Line{X}!
+renders as  (e.g.) ``line  23''.
+\item
+!\Where{X}!
+renders as  (e.g.) ``line  23 in Figure 5''.
+\ei
+If these references are at start of sentence, they need a leading
+capital letter. So, two more macros are defined:
+\bi
+\item
+!\LINE{X}!
+renders as  (e.g.) ``Line  23''.
+\item
+!\WHERE{X}!
+renders as  (e.g.) ``Line  23 in Figure 5''.
+\ei
+
+\subsubsection{Referring to Included Files}
+
+Anytime a Prolog program loads a file, it should be followed by a
+{\LaTeX} figure reference. For example:
+\newcommand{\bslash}{$\backslash$}
+
+\bl
+:- [abc]. % see {\bslash}fig\{xyz/abc.pl\}
+\el
+
+This way, if you forget to include !abc.pl! , you'll get one of those
+``?'' warnings that {\LaTeX} generates (so you'll know if you've
+missed anything).
+
+\subsubsection{Including Output From Demonstration Code}
+
+A Prolog idiom in \Tex4Log
+is that some source code comes in sets of threes:
+\be
+\item !X.pl!
+source code.
+\item
+  !Xeg.pl! demonstration code that exercises
+!X.pl!.
+\item
+!Xeg.spy! contains the output generated when !Xeg.pl! was
+executed.
+\ee
+
+The macro !\peektell{X}! will include !Xeg.pl! and
+!Xeg.spy!, if those files exist.
+
+The macro !\showtell{X}! extends !\peektell{X}!.
+This macro includes !X.pl! and
+!Xeg.pl! and
+!Xeg.spy!, if those files exist.
+
+
+
+\subsection{\LaTeX~Idioms}
+
+\TeX4LoG includes some useful and succinct \LaTeX macros. This
+section describes those macros.
+
+The silliest macro is  !\Tex4Log!
+which renders as \Tex4Log.
+
+Also:
+\bi
+\item
+Itemized lists
+ can be succinctly started and stopped using\newline !\bi\item...\ei!.
+ \item
+ Enumerated lists
+ can be succinctly started and stopped using \newline
+   !\be\item...\ee!.
+    \item
+  Definition lists can be succinctly started and stopped using \newline
+!\bd\item...\ed!.
+\ei
+
+A simple code listing environment with small font size is available
+via !\begin{LISTING}...\end{LISTING}! or  !\bl...\el!.
+
+In-line verbatim text can be typeset  using pairs of exclamation
+marks; e.g. \verb+!text!+ is set as !text!.
+If you need an exclamation mark in your text, use the !\exclaim!
+macro which expands to ``\exclaim''.
+
+Cited numeric references are sorted and
+ranges are shortened to dashes; e.g.
+!\cite{men01c,men01b,men01a}! could be rendered
+as [1-3].
+
+Long URLs can be typeset using !\url{...}!. The !\url!
+macro renders URLs in verbatim font and long strings
+may be broken at the ``!/!'' character
+(if that improves their rendering).
+
+If figures are labelled with !\label{fig:abc}!,
+then they can be referenced using (e.g.) !\fig{abc}!.
+This is typeset as (e.g.) Figure~11.
+
+If equations are labelled with !\label{eq:def}!,
+then they can be referenced  using (e.g.) !\eq{def}!.
+This is typeset as (e.g.) Equation~11.
+
+If sections are labelled with !\label{sec:ghi}!,
+then they can be referenced  using (e.g.) !\tion{ghi}!.
+This is typeset as (e.g.) \S~2.
+
+\subsection{Prolog Idioms}
+
+You application will comprise one main file that loads everything
+else. Usually this list is loaded silently:
+
+\bl
+:- load_files(
+       [myapp/file1 % see {\bslash}fig\{myapp/file1.pl\}
+       ,myapp/file2 % see {\bslash}fig\{myapp/file2.pl\}
+       ],
+       [silent(true) % no stray text on screen
+       ,if(changed)  % load files only once
+       ]).
+\el
+
+The load order can vary by often includes: \bd \item[operators] which
+tells the Prolog parser how to handle the psuedo-English constructs
+in your code. \item[hooks] that define your !term_expansion! and
+!goal_expansion! rules. \item[hacks] that define some patches to our
+Prolog system \ \ed
+
+\bi \item {\em Many library files} that set things up; \item {\em
+Some core files} that combine the libraries to perform
+ some interesting task;
+ \item
+ {\em Some  example files} that
+show off the core code. \ei For every core file !core.pl!, there
+should be a !coreeg.pl! example file containing   a !coreeg!
+predicate that does the showing off. !coreeg.pl! should have  the
+following structure:
+
+\bl
+:- [lib1 % see {\bslash}fig\{lib1.pl\}
+   ,lib2 % see {\bslash}fig\{lib2.pl\}
+   ].
+...
+ccode :- doSomething.
+:- demos(coreeg). % call to the core code that traps output
+\el
+
+A file with this structure will generate a file !coreeg.out! as a
+side effect of loading !coreeg.pl!. In order to include the core,
+example, and output files, the macro !\showtell{core}! is useful. The
+call !\showtell{core}! generates three figures: one for !coreeg.pl!,
+one for !coreeg.out! and one for !core.pl!.
+
+It is good practice to reference the core, example, and output
+files in the main file; e.g.
+
+\bl
+:-  [abc]. % see {\bslash}fig\{abc.pl\},  {\bslash}fig\{abceg.pl\} &  {\bslash}fig\{abceg.out\}
+\el
+
+
+
+Never use a backslash such as !\X! so: \bi \item Use !not(X)! instead
+of !\+ X! \item Use !nl! instead of  !\n! . \ei
+
+Never use !{X}! since {\LaTeX} can't print that. So: \bi \item Define
+!goal_expansion/2! to repair over-zealous DCG expansions (see
+\fig{hacks.pl}). \item Use !code(X)! to denote code that should be
+not be DCG-expanded. Then add the following item to !hooks.pl!
+
+\begin{LISTING}
+goal_expansion(call(A,B,B),A).
+\end{LISTING}
+
+\ei
+\subsection{Other Requirements}
+
+\subsubsection{Peekers}
+
+A {\em peeker} is a set of predicate sthat  ``looks before it
+leaps''. The idea is that before doing anything on !X!, the code
+peeks at !X! and then uses what it sees to determine what actions to
+perform. Peekers, as used in this code, are filters that convert !X!
+to !Y!. Their general form is three predicates: !p,p0,p1!:
+
+\begin{LISTING}
+p(X,Y) :- once(p0(X,Z)), p1(Z,Y).
+
+p0(X,          barph(X) ) :- var(X). % usual top peeker
+p0(X,  barph(number(X)) ) :- number(X). % e.g.
+p0((X,Y),         (X,Y) ). ...
+p0(X,       standard(X) ). % some final default action
+
+p1(barph(X),  _)   :- print(bad(X)), fail.
+p1(standard(X),Y)  :- Y is X % e.g.
+p1((X0,Y0), (X,Y)) :- p(X0,X), p(Y0,Y). ...
+\end{LISTING}
+
+The !p0! predicate classifies the incoming structure into one of $N$
+terms. One !p1! predicate is written for each such term. If !p1!
+recurses, then the recursive call is back to !p!.
+
+Peekers have several  useful features: \bi \item Fewer/no cuts in the
+code. \item Stepping through the !spy! outputs over for a peeker is
+usually easier since only one choice for !p1! is ever shown and the
+!p0! processing is often simple enough that the programmer can just
+skip it. \item Often there are less !p1! predicates than !p0!
+predicates since !p0! might map different incoming terms to the same
+functor (e.g., in the above, while there are two situations where we
+want to !barph!, we only needed to write !barph! once. \item If !p0!
+is constrained to key just on features available when the source code
+is loaded for the first time, then the peeker can be optimized as
+follows. At load time, pre-compute and cache all the !p0! results on
+the loaded code. Then, at runtime, replace all the !p0! with
+!p0(X,X)! and all that lookup computation disappears. \ei

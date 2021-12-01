@@ -1,0 +1,64 @@
+
+C4.5 [release 8] rule generator	Sun Jun 25 17:02:12 2000
+-------------------------------
+
+    Options:
+	File stem <XDF>
+	Rulesets evaluated on unseen cases
+
+Read 341 cases (6 attributes) from XDF
+
+------------------
+Processing tree 0
+
+Final rules from tree 0:
+
+Rule 4:
+    	switch3 = off
+    	light3 = dark
+	->  class bad  [83.2%]
+
+Rule 1:
+    	light3 = light
+	->  class good  [79.4%]
+
+Rule 2:
+    	switch3 = on
+	->  class good  [47.4%]
+
+Default class: bad
+
+
+Evaluation on training data (341 items):
+
+Rule  Size  Error  Used  Wrong	          Advantage
+----  ----  -----  ----  -----	          ---------
+   4     2  16.8%   248     37 (14.9%)	     0 (0|0) 	bad
+   1     1  20.6%     6      0 (0.0%)	     6 (6|0) 	good
+   2     1  52.6%    87     42 (48.3%)	     3 (45|42) 	good
+
+Tested 341, errors 79 (23.2%)   <<
+
+
+	  (a)  (b)	<-classified as
+	 ---- ----
+	   51   37	(a): class good
+	   42  211	(b): class bad
+
+
+Evaluation on test data (37 items):
+
+Rule  Size  Error  Used  Wrong	          Advantage
+----  ----  -----  ----  -----	          ---------
+   4     2  16.8%    26      5 (19.2%)	     0 (0|0) 	bad
+   1     1  20.6%     2      0 (0.0%)	     2 (2|0) 	good
+   2     1  52.6%     9      6 (66.7%)	    -3 (3|6) 	good
+
+Tested 37, errors 11 (29.7%)   <<
+
+
+	  (a)  (b)	<-classified as
+	 ---- ----
+	    5    5	(a): class good
+	    6   21	(b): class bad
+

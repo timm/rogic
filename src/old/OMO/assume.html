@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>assume.pl Assumption management</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#handling_assumptions">Handling assumptions</a></li>
+	<li><a href="#data_dictionary_for_cocomo">Data dictionary for COCOMO</a></li>
+	<ul>
+
+		<li><a href="#types">Types</a></li>
+		<li><a href="#variables">Variables</a></li>
+	</ul>
+
+	<li><a href="#an_example_whatif_range_for_cocomo">An example what-if range for COCOMO</a></li>
+	<li><a href="#setup_code">Set-up code</a></li>
+	<ul>
+
+		<li><a href="#uses">Uses</a></li>
+		<li><a href="#operators">Operators</a></li>
+		<li><a href="#flags">Flags</a></li>
+		<li><a href="#hooks">Hooks</a></li>
+	</ul>
+
+	<li><a href="#assumption_control">Assumption control</a></li>
+	<ul>
+
+		<li><a href="#known_type">Known Type</a></li>
+		<li><a href="#known_var">Known Var</a></li>
+		<li><a href="#good(type,old,new:_consistency_check"><code>good(Type,Old,New</code>: consistency check</a></li>
+		<li><a href="#assume(id,value):_declare_that_id_has_a_value"><code>assume(Id,Value)</code>: declare that <code>Id</code> has a <code>Value</code></a></li>
+		<li><a href="#reset_the_memos"><code>reset</code> the memos</a></li>
+		<li><a href="#guess(var,value):_draw_value_from_var's_whatif_range"><code>Guess(Var,Value)</code>: draw <code>Value</code> from <code>Var</code>'s what-if range</a></li>
+		<li><a href="#guessable"><code>Guessable</code></a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="handling_assumptions">Handling assumptions</a></h1>
+<pre>
+ :- ensure_loaded([assume0,assume1]). /*</pre>
+<p>We seperate out <em>type rules</em> from <em>what-if ranges</em>:</p>
+<dl>
+<dt><strong><a name="item_type_rules">Type rules</a></strong><br />
+</dt>
+<dd>
+Type rules define legal ranges for a variable of  a certain
+type. They can also check that a bound variable for a certain
+type is legal.
+</dd>
+<dd>
+<p>For example, the OMO type rules are shown in <a href="#data_dictionary_for_cocomo">Data dictionary for COCOMO</a>.</p>
+</dd>
+<p></p>
+<dt><strong><a name="item_what%2dif_ranges">What-if ranges</a></strong><br />
+</dt>
+<dd>
+What-if ranges represent domain knowledge that a variable is to be restructed
+to a certain range.
+</dd>
+<dd>
+<p>For example, the OMO type rules are shown in <a href="#an_example_whatif_range_for_cocomo">An example what-if range for COCOMO</a>.</p>
+</dd>
+<p></p></dl>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="data_dictionary_for_cocomo">Data dictionary for COCOMO</a></h1>
+<p>
+</p>
+<h2><a name="types">Types</a></h2>
+<pre>
+ sym      !X :- rysm(X).
+ cocomoP  !X :- X in [2000,1983,ga].
+ vlvh     !X :- X in [n,l,h,vl,vh].
+ lvh      !X :- X in [n,l,h,vh].
+ vlxh     !X :- X in [n,l,h,vl,vh,xh].
+ lxh      !X :- X in [n,l,h,vh,xh].
+ nxh      !X :- X in [n,h,vh,xh].</pre>
+<pre>
+ language !X :- X in ['ada 83', 'ada 95', 'ai shells', basic,
+                       cobol,c, 'c++', clos, eiffel, forth,
+                       fortran, java, jovial, lisp, pascal,
+                       prolog, rexx, simula, smalltalk].
+ onezero  !X :- X from 0 to   1 by 0.2, number(X).
+ percent  !X :- X from 0 to 100 by   1, integer(X).
+ posint   !X :- X from 0 to 65536,      integer(X).
+ posnum   !X :- X from 0 to inf,        number(X).
+ num10    !X :- X from 0 to  10,        number(X).</pre>
+<p>
+</p>
+<h2><a name="variables">Variables</a></h2>
+<pre>
+ cocomo       of cocomoP.   label        of sym.
+ language     of language.  revl         of percent.
+ newKsloc     of percent.   adaptedKsloc of posint.
+ cm           of percent.   dm           of percent.
+ im           of percent.   aa           of percent.
+ unfm         of onezero.   su           of percent.
+ at           of percent.   atKprod      of posnum.
+ scedPercent  of percent.</pre>
+<pre>
+ prec of vlvh.  flex of vlvh.  arch of vlvh.
+ team of vlvh.  pmat of vlvh.  rely of vlvh.
+ data of lvh.   cplx of vlxh.  ruse of lxh.
+ docu of vlvh.  time of nxh.   stor of nxh.
+ pvol of lvh.   acap of vlvh.  pcap of vlvh.
+ pcon of vlvh.  aexp of vlvh.  pexp of vlvh.
+ ltex of vlvh.  tool of vlvh.  site of vlxh.
+ sced of vlvh.</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="an_example_whatif_range_for_cocomo">An example what-if range for COCOMO</a></h1>
+<p>/*In practice, users offer one <em>what-if</em> file that defines certain restrictions
+to the simulation. */</p>
+<pre>
+ cocomo ?2000.
+ prec   ?X :- X in [vl,vh].</pre>
+<p>So, once these what-of ranges are loaded, then all subsequent
+random simulations can pull randomly from the ranges of every other variable,
+However, for the variables listed above,  simulations are
+certain restrictions.</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="setup_code">Set-up code</a></h1>
+<p>
+</p>
+<h2><a name="uses">Uses</a></h2>
+<pre>
+  :- [io,random,meta].</pre>
+<p>
+</p>
+<h2><a name="operators">Operators</a></h2>
+<pre>
+ :- op(1,xfx,[(!),(?),of]).</pre>
+<p>
+</p>
+<h2><a name="flags">Flags</a></h2>
+<pre>
+  :- index(memo(1,1,0)).
+  :- dynamic(memo/3).</pre>
+<p>
+</p>
+<h2><a name="hooks">Hooks</a></h2>
+<pre>
+  term_expansion(X of Type,X of Type) :- knownType(Type).</pre>
+<pre>
+  term_expansion((Var ?X :- Body), (Var ?X :- Body)) :- knownVar(Var).
+  term_expansion((Var ?X),         (Var ?X)        ) :- knownVar(Var).</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="assumption_control">Assumption control</a></h1>
+<p>
+</p>
+<h2><a name="known_type">Known Type</a></h2>
+<pre>
+  knownType(Type) :-
+    clause(Type!_,_) -&gt; true ; barphln(badType(T))..</pre>
+<p>
+</p>
+<h2><a name="known_var">Known Var</a></h2>
+<pre>
+  knownVar(Var) :- Var of Type, knownType(Type).</pre>
+<p>
+</p>
+<h2><a name="good(type,old,new:_consistency_check"><code>good(Type,Old,New</code>: consistency check</a></h2>
+<p>Currently, we don't have any knowledge of special types. So 
+something is consistent with something else if it matches to it.</p>
+<pre>
+  good(_Type,Out,Out).</pre>
+<p>
+</p>
+<h2><a name="assume(id,value):_declare_that_id_has_a_value"><code>assume(Id,Value)</code>: declare that <code>Id</code> has a <code>Value</code></a></h2>
+<p>Helper- in the case where there is only one value for a type,
+then the type name is the value name.</p>
+<pre>
+  assume(Id,Value) :- assume(Id,Id,Value).</pre>
+<p>Worker- if we have assumed it previously, then fail if the new <code>Value</code>
+contradicts the old <code>Value</code>. Else, generate a random new <code>Value</code> for
+this <code>Type</code> of thing..</p>
+<pre>
+  assume(Id,Value) :-
+     Id of Type,
+     hash_term(Id,Hash), 
+     (memo(Hash,Id,Temp)
+      -&gt; good(Type,Temp,Value)
+      ;  any(!(Type,Value)),
+         bassert(memo(Hash,Id,Value))).</pre>
+<p>
+</p>
+<h2><a name="reset_the_memos"><code>reset</code> the memos</a></h2>
+<p>Wipe all the old memos, pick some new ones from the what-if ranges.</p>
+<pre>
+  reset :-
+        retractall(memo(A,B,C,D)),
+        forall(guessable(X,Y),(guess(X,Y), assume(X,Y))).</pre>
+<p>
+</p>
+<h2><a name="guess(var,value):_draw_value_from_var's_whatif_range"><code>Guess(Var,Value)</code>: draw <code>Value</code> from <code>Var</code>'s what-if range</a></h2>
+<pre>
+  guess(X,Y) :- 
+      guessable(X,Y), any(X?Y), X of T, (T!Y -&gt; true;  burp(badValue(X?Y))).</pre>
+<p>
+</p>
+<h2><a name="guessable"><code>Guessable</code></a></h2>
+<p>Find variables with a defined what-if range</p>
+<pre>
+  guessable(X,Y) :- bagof(X?Y,clause(X?Y),L),member(X?Y,L).</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

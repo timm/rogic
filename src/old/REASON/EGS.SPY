@@ -1,0 +1,50 @@
+% output from ':- demos(egs).'
+
+every
+good
+fruit
+boy
+deserves
+
+
+%-------------------------------
+% output from ':- demos(eg(any1)).'
+deserves
+good
+fruit
+every
+boy
+
+% runtime = 0 sec(s)0.874571 is a random number between 0 and 1.
+
+
+%-------------------------------
+% output from ':- demos(eg(rand0)).'
+0.29282 is a random number between 0 and 1.
+
+% runtime = 0 sec(s)13.5684 is a random number between 10 and 20.
+
+
+%-------------------------------
+% output from ':- demos(eg(rand2)).'
+16.4493 is a random number between 10 and 20.
+
+% runtime = 0 sec(s)[17.4162, 19.8272, 17.8116, 18.187, 18.1083] are random numbers 90% between 10 and 20.
+
+
+%-------------------------------
+% output from ':- demos(eg(rand3)).'
+[19.4036, 19.3132, 19.5498, 19.2856, 19.8539] are random numbers 90% between 10 and 20.
+
+% runtime = 0 sec(s)[6.31063, 10.1294, 7.56477, 7.72514, 11.5972] are random numbers from normal(10,2).
+
+%-------------------------------
+% output from ':- demos(eg(normal2)).'
+[8.96862, 11.385, 9.20231, 9.44827, 11.2966] are random numbers from normal(10,2).
+% runtime = 0 sec(s)[6.3505, 40.2059, 8.62639, 13.9364, 12.1042] are random numbers from gamma(10,2).
+
+%-------------------------------
+% output from ':- demos(eg(gamma2)).'
+[24.0004, 8.8227, 7.76891, 16.8297, 13.5301] are random numbers from gamma(10,2).
+% runtime = 0 sec(s)
+% runtime = 0 sec(s)

@@ -1,0 +1,231 @@
+\documentclass{article}
+
+%%  Latex generated from POD in document /cygdrive/i/tim/src/pl/reason/mypod_tmp.pl
+%%  Using the perl module Pod::LaTeX
+%%  Converted on Sat Aug 30 22:29:52 2003
+
+
+\usepackage{makeidx}
+\makeindex
+
+
+\input{mypodstyle}
+
+\tableofcontents
+
+\clearpage
+\section{Random Predicates\label{Random_Predicates}\index{Random Predicates}}
+
+
+Lets thrash around a little.
+
+\section{Header\label{Header}\index{Header}}
+\subsection{Flags */\label{Flags_}\index{Flags */}}
+\begin{verbatim}
+ :- arithmetic_function(inf/0).
+ :- arithmetic_function(rand/0).
+ :- arithmetic_function(rand/2).
+ :- arithmetic_function(rand/3).
+ :- arithmetic_function(normal/2).
+ :- arithmetic_function(beta/1). 
+ :- arithmetic_function(gamma/2).  /*
+\end{verbatim}
+\section{Any  Random Solution  */\label{Any_Random_Solution_}\index{Any  Random Solution  */}}
+\begin{verbatim}
+ any(X) :- 
+        setof(One,X^any1(X,One),All), 
+        member(_/X,All).
+\end{verbatim}
+\begin{verbatim}
+ any1(X,Score/X) :- 
+        X, 
+        Score is rand. /*
+\end{verbatim}
+\section{Best\label{Best}\index{Best}}
+
+
+Same code as above, but with some assessment criteria thrown in. */
+
+\begin{verbatim}
+ best(X) :- 
+        setof(One,X^best1(X,One),All0), 
+        beam(X,All0,All), 
+        member(_/X,All).
+\end{verbatim}
+\begin{verbatim}
+ best1(X,Score/X) :- 
+        X, 
+        score(X,Score0), 
+        bound(X,Score0), 
+        Score is -1 * Score0. /*
+\end{verbatim}
+
+
+If we have no knowledge of \texttt{X}, give it a random number. */
+
+\begin{verbatim}
+ score(_,N) :- 
+        N is  rand(2147483647). /*
+\end{verbatim}
+
+
+If we have knowledge of minimum values for a score,  test it here. */
+
+\begin{verbatim}
+ bound(_,Score) :- 
+        Score > 0. /*
+\end{verbatim}
+
+
+Sometimes, we may just want to select the top \textit{N} values:
+makes this a beam search. The default
+case is that there is no selection knowledge. */
+
+\begin{verbatim}
+ beam(_,L,L).  /*
+\end{verbatim}
+\section{Rand  */\label{Rand_}\index{Rand  */}}
+\begin{verbatim}
+ rand(X)         :- X is random(inf)/inf.
+ rand(Min,Max,X) :-  X is Min + (Max-Min)*rand. /*
+\end{verbatim}
+\subsection{Beta */\label{Beta_}\index{Beta */}}
+\begin{verbatim}
+ rand(Min,Max,B,X) :-
+    X is Min + (Max-Min)*beta(B).
+\end{verbatim}
+\begin{verbatim}
+ beta(B,X) :- beta1(B,X),!.
+ beta(B,X) :- beta1(0.5,X),print(user,badBeta(B)).
+\end{verbatim}
+\begin{verbatim}
+ beta1(0,0).
+ beta1(0.1,X)  :- X is 1- rand^(1/9).
+ beta1(0.20,X) :- X is 1- rand^0.25.
+ beta1(0.25,X) :- X is 1- rand^0.33.
+ beta1(0.33,X) :- X is 1- rand^0.5.
+ beta1(0.4,X)  :- X is 1- rand^0.67.
+ beta1(0.50,X) :- X is rand.
+ beta1(0.60,X) :- X is rand^0.67.
+ beta1(0.67,X) :- X is rand^0.5.
+ beta1(0.75,X) :- X is rand^0.33.
+ beta1(0.80,X) :- X is rand^0.25.
+ beta1(0.9,X)  :- X is rand^(1/9).
+ beta1(1,1). /*
+\end{verbatim}
+\subsection{Normal  */\label{Normal_}\index{Normal  */}}
+\begin{verbatim}
+ normal(M,S,N) :- box_muller(M,S,N).
+\end{verbatim}
+\begin{verbatim}
+ box_muller(M,S,N) :-
+    wloop(W0,X),
+    W is sqrt((-2.0 * log(W0))/W0),
+    Y1 is X * W,
+    N is M + Y1*S.
+\end{verbatim}
+\begin{verbatim}
+ wloop(W,X) :-
+    X1 is 2.0 * rand - 1,
+    X2 is 2.0 * rand - 1,
+    W0 is X1*X1 + X2*X2,
+    (W0  >= 1.0 -> wloop(W,X) ; W0=W, X = X1). /*
+\end{verbatim}
+\subsection{Gamma\label{Gamma}\index{Gamma}}
+
+
+(Only works for integer Alphas.)
+
+
+
+A standard random \textit{gamma} distribution has 
+\textit{mean=alpha/beta}.
+The \textit{alpha} value is the ``spread'' of the 
+distribution and controls the
+clustering of  the distribution
+around the mean. As
+\textit{alpha} increases,
+the \textit{gamma} distribution evens out to become 
+more evenly-distributed about the mean. That is, for large
+\textit{alpha} (i.e. above 20), \textit{gamma} can be modeled as a noraml
+function.
+The standard \textit{alpha,beta} terminology can be confusing
+to some audiences. Hence, I define a
+(slightly) more-intuitive \textit{gamma}
+distribution where:
+
+
+
+\textit{myGamma(mean,alpha) = standardGamma(alpha,alpha/mean)} */
+
+\begin{verbatim}
+ gamma(Mean,Alpha,Out) :-
+    Beta is Mean/Alpha,
+    (Alpha > 20
+    ->  Mean is Alpha * Beta,
+        Sd is sqrt(Alpha*Beta*Beta),
+        Out is normal(Mean,Sd)
+    ;   gamma(Alpha,Beta,0,Out)).
+\end{verbatim}
+\begin{verbatim}
+ gamma(0,_,X,X) :- !.
+ gamma(Alpha,Beta, In, Gamma) :-
+    Temp is In + ( -1 * Beta * log(1-rand)),
+    Alpha1 is Alpha - 1,
+    gamma(Alpha1,Beta,Temp,Gamma). /*
+\end{verbatim}
+\subsection{Random Strings */\label{Random_Strings_}\index{Random Strings */}}
+\begin{verbatim}
+ rstring(_,X)  :- nonvar(X),!.
+ rstring(A,X)  :- gensym(A,X). /*
+\end{verbatim}
+\subsection{Random Symbols */\label{Random_Symbols_}\index{Random Symbols */}}
+\begin{verbatim}
+ rsym(X) :- rsym(g,X).
+\end{verbatim}
+\begin{verbatim}
+ rsym(_,X)  :- nonvar(X),!, atom(X).
+ rsym(A,X)  :- gensym(A,X). /*
+\end{verbatim}
+\subsection{Random Members of a List */\label{Random_Members_of_a_List_}\index{Random Members of a List */}}
+\begin{verbatim}
+ rin(X,L) :- number(X),!, member(Y,L), X =:= Y. 
+ rin(X,L) :- nonvar(X),!, member(X,L). 
+ rin(X,L) :- any(member(X,L)).  /*
+\end{verbatim}
+\subsection{Random Numeric Taken From Some Range\label{Random_Numeric_Taken_From_Some_Range}\index{Random Numeric Taken From Some Range}}
+
+
+The default case is that we step from some \texttt{Min}
+to \texttt{Max} number in incremets of one. */
+
+\begin{verbatim}
+ rin(Min,Max,X) :- rin(Min,Max,1,X). /*
+\end{verbatim}
+
+
+The usual case is that we step from some \texttt{Min}
+to \texttt{Max} number in incremets of \texttt{I}. */
+
+\begin{verbatim}
+ rin(Min,Max,_,X) :- nonvar(X),!, number(X),Min =< X, X =< Max.
+ rin(Min,Max,I,X) :- any(rin1(Min,Max,I,X)).
+\end{verbatim}
+\begin{verbatim}
+ rin1(Min,Max,I,X) :-
+        Steps is integer((Max-Min)/I),
+        between(0,Steps,Step), 
+        Num is Min + Step*I,
+        X is min(Num,Max).  /*
+\end{verbatim}
+\section{Footer\label{Footer}\index{Footer}}
+\subsection{Start-ups */\label{Start-ups_}\index{Start-ups */}}
+\begin{verbatim}
+ :- current_prolog_flag(max_integer,X), 
+    X1 is X - 1, 
+    retractall(inf(_)),
+    assert(inf(X1)).
+\end{verbatim}
+\printindex
+
+\end{document}

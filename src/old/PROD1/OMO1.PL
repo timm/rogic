@@ -1,0 +1,248 @@
+%%%%Main System
+%%% Main driver %<
+estimate :-
+	cocomo(Coc),
+	estimate(Pm,Staff,Months),
+	format('COCOMO.~p says ~p months (total);',[Coc,Pm]),
+	format('~p staff over ~p months\n', [Staff,Months]).
+
+estimate(Pm,Staff,Months) :-
+	tdev(Tdev),
+	pm(Pm0),
+	Pm is Pm0,
+	Staff is ceiling(Pm/Tdev),
+	Months is ceiling(Tdev),
+	!.
+%>
+%%% Equations
+%% Sizing equations %<
+size((1 + (R/100)) *(N + E)) :- 
+	revl(R), newKsloc(N), equivalentKsloc(E).
+
+equivalentKsloc(Ak*Aam*(1-(At/100))) :- 
+	adaptedKsloc(Ak), at(At), aam(Aam).
+
+aam(Am) :- aaf(Af), compare(C,Af,50), aam1(C,Af,Am).
+
+aam1(=,Af, X) :- aam1(<,Af,X).
+aam1(>,Af, (Aa+Af+(Su*U))/100) :- aa(Aa),su(Su),unfm(U).
+aam1(<,Af,((Aa+Af*(1+(0.02*Su*U)))/100)) :-
+	aa(Aa), su(Su), unfm(U).
+
+aaf(0.4*Dm+0.3*Cm+0.3*Im) :- dm(Dm), cm(Cm), im(Im).
+%>
+%% Schedule Equations %<
+tdev((C*(P^F))*SP/100) :-
+	c(C), pmNs(P), f(F), scedPercent(SP).
+
+f( D + 0.2*(E-B))  :-
+	d(D),e(E), b(B).
+%>
+%% Effort Equations %<
+%hmmm... sced value never used
+pm(Pm0*Em17+Pa) :-
+	pmNs(Pm0), w(sced,Em17), pmAuto(Pa).
+
+pmNs(A*S*(S^E)*Em1 *Em2 *Em3 *Em4 *Em5 *Em6 *Em7*Em8*Em9*
+            Em10*Em11*Em12*Em13*Em14*Em15*Em16) :-
+	a(A), size(S), e(E), w(rely,Em1), w(data,Em2),
+	w(cplx,Em3), w(ruse,Em4), w(docu,Em5), w(time,Em6),
+	w(stor,Em7), w(pvol,Em8), w(acap,Em9), w(pcap,Em10),
+	w(pcon,Em11),w(aexp,Em12),w(pexp,Em13),
+	w(ltex,Em14),w(tool,Em15),w(site,Em16).
+
+e(B + 0.01*(Sf1+Sf2+Sf3+Sf4+Sf5)) :-
+	b(B), 
+	w(prec,Sf1), w(flex,Sf2),w(arch,Sf3),
+	w(team,Sf4), w(pmat,Sf5).
+
+pmAuto((Ak*(At/100))/Ap) :-
+	adaptedKsloc(Ak), at(At), atKprod(Ap).
+%>
+
+%%% Tunings 
+%% Constants %<
+a(2.5)  :- cocomo(1983).
+a(2.94) :- cocomo(2000).
+a(2.94) :- cocomo(ga).
+
+b(0.91) :- cocomo(2000).
+b(1.01) :- cocomo(1983).
+b(1.01) :- cocomo(ga).
+
+c(3.0)  :- cocomo(1983).
+c(3.67) :- cocomo(2000).
+c(3.67) :- cocomo(ga).
+
+d(0.28) :- cocomo(2000).
+d(0.33) :- cocomo(1983).
+d(0.33) :- cocomo(ga).
+%>
+%% Post-architecture scale factors
+/* The COCOMO 2000 scale factors learnt
+via bayesian tuning. */ %<
+postArch(2000,scaleFactors) =
+           [ xl, vl,   l,   n,   h,  vh,  xh]+
+    [[prec,  _,6.20,4.96,3.72,2.48,1.24,   _]
+    ,[flex,  _,5.07,4.05,3.04,2.03,1.01,   _]
+    ,[arch,  _,7.07,5.65,4.24,2.83,1.41,   _]
+    ,[team,  _,5.48,4.38,3.29,2.19,1.01,   _]
+    ,[pmat,  _,7.80,6.24,4.68,3.12,1.56,   _]
+    ].
+%>
+/* The original scale factors. */ %<
+postArch(1983,scaleFactors) =
+           [ xl,  vl,   l,   n,   h,  vh, xh]+
+    [[prec,   _,4.05,3.24,2.43,1.62,0.81,  _]
+    ,[flex,   _,6.07,4.86,3.64,2.43,1.21,  _]
+    ,[arch,   _,4.22,3.38,2.53,1.69,0.84,  _]
+    ,[team,   _,4.94,3.95,2.97,1.98,0.99,  _]
+    ,[pmat,   _,4.54,3.64,2.73,1.82,0.91,  _]
+    ].
+%>
+/* Some scale factors learnt via some
+genetic algorithms. */ %<
+postArch(ga,scaleFactors) =
+            [ xl,  vl,   l,   n,   h,  vh,  xh]+
+    [[prec,   _,4.05,3.24,2.43,1.62,0.81,    _]
+    ,[flex,    _,6.07,4.86,3.64,2.43,1.21,   _]
+    ,[arch,    _,4.22,3.38,2.53,1.69,0.84,   _]
+    ,[team,    _,4.94,3.95,2.97,1.98,0.99,   _]
+    ,[pmat,    _,4.54,3.64,2.73,1.82,0.91,   _]
+    ].
+%>
+%% Post-architecture effort multipliers:
+/* The COCOMO 2000 effort multipliers learnt
+via bayesian tuning. */ %<
+postArch(2000,effortMultiplers) =
+           [xl,   vl,   l,   n,  h,  vh,  xh]+
+    [[rely,  _,0.82,0.92,1.00,1.10,1.26,   _]
+    ,[data,  _,_   ,0.90,1.00,1.14,1.28,   _]
+    ,[cplx,  _,0.73,0.87,1.00,1.17,1.34,1.74]
+    ,[ruse,  _,_   ,0.95,1.00,1.07,1.15,1.24]
+    ,[docu,  _,0.81,0.91,1.00,1.11,1.23,   _]
+    ,[time,  _,   _,   _,1.00,1.11,1.29,1.63]
+    ,[stor,  _,   _,   _,1.00,1.05,1.17,1.46]
+    ,[pvol,  _,   _,0.87,1.00,1.15,1.30,   _]
+    ,[acap,  _,1.42,1.19,1.00,0.85,0.71 ,  _]
+    ,[pcap,  _,1.34,1.15,1.00,0.88,0.76,   _]
+    ,[pcon,  _,1.29,1.12,1.00,0.90,0.81,   _]
+    ,[aexp,  _,1.22,1.10,1.00,0.88,0.81,   _]
+    ,[pexp,  _,1.19,1.09,1.00,0.91,0.85,   _]
+    ,[ltex,  _,1.20,1.09,1.00,0.91,0.84,   _]
+    ,[tool,  _,1.17,1.09,1.00,0.90,0.78,   _]
+    ,[site,  _,1.22,1.09,1.00,0.93,0.86,0.80]
+    ,[sced,  _,1.43,1.14,1.00,1.00,1.00,   _]
+    ].
+%>
+/* The original effort multipliers. */ %<
+postArch(1983,effortMultiplers) =
+           [ xl,  vl,   l,   n,   h,  vh,  xh]+
+    [[rely,   _,0.75,0.88,1.00,1.15,1.40,   _]
+    ,[data,   _,   _,0.94,1.00,1.08,1.16,   _]
+    ,[cplx,   _,0.75,0.88,1.00,1.15,1.30,1.65]
+    ,[ruse,   _,   _,0.89,1.00,1.16,1.34,1.56]
+    ,[docu,   _,0.85,0.93,1.00,1.08,1.17,   _]
+    ,[time,   _,   _,   _,1.00,1.11,1.30,1.66]
+    ,[stor,   _,   _,   _,1.00,1.06,1.21,1.56]
+    ,[pvol,   _,   _,0.87,1.00,1.15,1.30,   _]
+    ,[acap,   _,1.50,1.22,1.00,0.83,0.67,   _]
+    ,[pcap,   _,1.37,1.16,1.00,0.87,0.74,   _]
+    ,[pcon,   _,1.26,1.11,1.00,0.91,0.83,   _]
+    ,[aexp,   _,1.23,1.10,1.00,0.88,0.80,   _]
+    ,[pexp,   _,1.26,1.12,1.00,0.88,0.80,   _]
+    ,[ltex,   _,1.24,1.11,1.00,0.90,0.82,   _]
+    ,[tool,   _,1.20,1.10,1.00,0.88,0.75,   _]
+    ,[site,   _,1.24,1.10,1.00,0.92,0.85,0.79]
+    ,[sced,   _,1.23,1.08,1.00,1.04,1.10,   _]
+    ].
+%>
+/* Some effort multipliers learnt via some
+genetic algorithms. */ %<
+postArch(ga,effortMultiplers) =
+            [ xl,  vl,   l,   n,   h,  vh,  xh]+
+    [[rely,    _,0.79,0.78,1.00,1.16,1.41,   _]
+    ,[data,    _,   _,0.96,1.00,1.31,1.20,   _]
+    ,[cplx,    _,0.90,1.06,1.00,0.99,0.99,0.87]
+    ,[ruse,    _,   _,0.89,1.00,1.16,1.34,1.56]
+    ,[docu,    _,0.85,0.93,1.00,1.08,1.17,   _]
+    ,[time,    _,   _,   _,1.00,1.01,1.24,2.13]
+    ,[stor,    _,   _,   _,1.00,1.36,1.37,1.42]
+    ,[pvol,    _,   _,1.25,1.00,1.13,1.15,   _]
+    ,[acap,    _,1.19,1.26,1.00,1.00,0.73,   _]
+    ,[pcap,    _,1.71,1.73,1.00,0.75,0.74,   _]
+    ,[pcon,    _,1.26,1.11,1.00,0.91,0.83,   _]
+    ,[aexp,    _,1.41,1.02,1.00,0.64,0.86,   _]
+    ,[pexp,    _,1.26,1.12,1.00,0.88,0.80,   _]
+    ,[ltex,    _,1.24,1.11,1.00,0.90,0.82,   _]
+    ,[tool,    _,1.13,0.91,1.00,1.09,2.86,   _]
+    ,[site,    _,1.24,1.10,1.00,0.92,0.85,0.79]
+    ,[sced,    _,1.22,1.29,1.00,0.72,0.29,   _]
+    ].
+%>
+%%% Data dictionary
+%% General %<
+languageP(X) :- upf2sloc(X,_).
+
+sym(X) :- rsym(X).
+
+onezeroP(X) :- rin(0,1,0.2,X), number(X).
+
+percentP(X) :- rin(0,100,1,X),integer(X).
+
+posint(X)   :- rin(0,65536,X),integer(X).
+posnum(X)   :- rin(0,inf,X),number(X).
+
+num10(X) :- rin(0,10,X), number(X).
+
+cocomoP(2000).
+cocomoP(1983).
+cocomoP(ga).
+
+vlvh(n). vlvh(l). vlvh(h). vlvh(vl). vlvh(vh).
+
+lvh(n). lvh(l). lvh(h). lvh(vh).
+
+vlxh(n).  vlxh(l).  vlxh(h).
+vlxh(vl). vlxh(vh). vlxh(xh). 
+
+lxh(n). lxh(l). lxh(h). lxh(vh). lxh(xh). 
+
+nxh(n). nxh(h). nxh(vh). nxh(xh).
+%>
+%% "project"
+%<
+(cocomo(Coc); label(L); language(Lan)
+;revl(R); newKsloc(K)
+;adaptedKsloc(A) ;cm(C); dm(D); im(I) ;aa(Aa) ;unfm(U)
+;su(Su) ;at(At) ;atKprod(Atp) ;scedPercent(Sc)
+) :-
+	project(Coc,L,Lan,R,K,A,C,D,I,Aa,U,Su,At,Atp,Sc), 
+
+	cocomoP(Coc),
+	sym(L), languageP(Lan), percentP(R), percentP(K),
+	posint(A), percentP(C), percentP(I), percentP(Aa),
+	onezeroP(U), percentP(Su) ,percentP(At),
+	posnum(Atp) ,posint(Sc),!.
+%>
+%% "scores"
+%<
+(s(prec,Prec) ;s(flex,Flex) ;s(arch,Arch)
+;s(team,Team) ;s(pmat,Pmat) ;s(rely,Rely)
+;s(data,Data) ;s(cplx,Cplx) ;s(ruse,Ruse)
+;s(docu,Docu) ;s(time,Time) ;s(stor,Stor)
+;s(pvol,Pvol) ;s(acap,Acap) ;s(pcap,Pcap)
+;s(pcon,Pcon) ;s(aexp,Aexp) ;s(pexp,Pexp)
+;s(ltex,Ltex) ;s(tool,Tool) ;s(site,Site) ;s(sced,Sced)
+):-
+	scores(Prec,Flex,Arch,Team,Pmat,Rely,Data,Cplx,
+	        Ruse,Docu,Time,Stor,Pvol,Acap,Pcap,Pcon,
+		Aexp,Pexp,Ltex,Tool,Site,Sced),
+		
+	vlvh(Prec), vlvh(Flex), vlvh(Arch), vlvh(Team),
+	vlvh(Pmat), vlvh(Rely),  lvh(Data), vlxh(Cplx),
+	 lxh(Ruse), vlvh(Docu),  nxh(Time),  nxh(Stor),
+	 lvh(Pvol), vlvh(Acap), vlvh(Pcap), vlvh(Pcon),
+	vlvh(Aexp), vlvh(Pexp), vlvh(Ltex), vlvh(Tool),
+	vlxh(Site),!.
+%>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>maths.pl Maths</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#standard_maths_predicates">Standard maths predicates</a></li>
+	<ul>
+
+		<li><a href="#flags">Flags</a></li>
+		<li><a href="#startup_actions">Start-up actions</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="standard_maths_predicates">Standard maths predicates</a></h1>
+<pre>
+ :- load_files([maths0        
+               ,maths2  
+               ],[silent(yes),if(changed)]).</pre>
+<p>
+</p>
+<h2><a name="flags">Flags</a></h2>
+<p>Declare the <code>inf/0</code> function.</p>
+<pre>
+ :- arithmetic_function(inf/0).</pre>
+<p>
+</p>
+<h2><a name="startup_actions">Start-up actions</a></h2>
+<p>Assert the <code>inf/1</code> fact.</p>
+<pre>
+ :- current_prolog_flag(max_integer,X), 
+    X1 is X - 1, 
+    retractall(inf(_)),
+    assert(inf(X1)).</pre>
+<p>Since we've also made <code>inf/0</code> a maths function,
+we can now write things like</p>
+<pre>
+ X is 2/inf.</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

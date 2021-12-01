@@ -1,0 +1,25 @@
+:- [usual].
+
+*model is 'first steady
+#1: 1-[c=0]'.
+
+%vars
+* uds  : a,b,c,k,f.
+
+%rules
+*a + k.
+*c + a.
+*c + b.
+*b + f.
+
+%obs
+*rx   = [[f], [k]]
+,
+[c    = [0,0]
+].
+
+
+*end.
+
+
+

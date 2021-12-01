@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{graphicx,times,alltt}
+\begin{document}
+\centerline{\includegraphics[width=6in]{kb.eps}}
+
+{\footnotesize
+Each edge has cost
+0 and chances 1 unless otherwise
+marked. Marks: \$= cost; ?= chances;}
+
+{\footnotesize
+\begin{alltt}
+data(-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,1,1,1,1,1,1,1,1,1,1
+    ,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+    ,1.0915,1,17.846,1,5.4965,1,29.803,1,78.112,1,0,1,0
+    ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+    ,0,1,3.7622,1,12.7972,1,9.283,1,4.9655,1,4.9034,1
+    ,4.2182,1,4.2935,1,0,0,0,0,4.3097,1,0,0,0,0,0,0,0
+    ,0,0,0,5.6543,1,13.118,1,14.942,1,0,0,0,0,0,0,0,0
+    ,19.4048,1,21.5468,1,21.0644,1,0,0,0,0,0,0,25.0856
+    ,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23.834,1,21.8156
+    ,1,18.6344,1,0,0,0,0,0,0,17.1632,1,sum,lohi).
+\end{alltt}}
+\centerline{ \resizebox{3in}{!}{         % scale
+    \rotatebox{270}{            % rotate
+        \includegraphics{dat.eps}
+    }
+}}
+
+\centerline{ \resizebox{3in}{!}{         % scale
+    \rotatebox{270}{            % rotate
+        \includegraphics{proj.eps}
+    }
+}}
+
+\end{document}

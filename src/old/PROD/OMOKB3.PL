@@ -1,0 +1,47 @@
+%%%% Knowledge base
+%%% Sample project ``eg1''
+%<
+cocomo       = ga.
+label        =  'eg1'.
+language     =  prolog.
+revl         =  10.
+newKsloc     = 100.
+adaptedKsloc =   0.
+cm           =   0.   % new code
+dm           =   0.   % new code
+im           =   0.   % new code
+aa           =   2.   % basic module search + docu \cite[p24]{boehm00b}
+unfm         =   0.4. % somewhat familiar
+su           =  30.   % nom=al value \cite[p23]{boehm00b}
+at           =   0.
+atKprod      =   2.4.
+scedPercent  = 100.
+prec         = [vl,l].
+flex         = [l?,n,h,vh].
+arch         = [vl,l, n?].
+team         = [l, n?]. 
+pmat         = [vl,l,n, h?].
+rely         = vh.      
+data         = n .
+cplx         = [vh,xh]? .   
+ruse         = [l,n,h?].
+docu         = [l,n,h?].
+time         = [n,h,vh].
+stor         = [n?,h,vh].  
+pvol         = l.       
+acap         = [l,n?].
+pcap         = n.	
+pcon         = [l,n?].     
+aexp         = [l,n].
+pexp         = [n].
+ltex         = [l,n,h?].   
+tool         = [l,n].     
+site         = n.       
+sced         = [vl,l,n?].
+%>
+%{\bf Important!}: all project descriptions
+%have to end with the ``\call{ready.}'' assertion.
+%<
+ready.
+%>
+

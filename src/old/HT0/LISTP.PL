@@ -1,0 +1,1 @@
+portray([X|Y]) :- length([X|Y],N), write(list(N)).

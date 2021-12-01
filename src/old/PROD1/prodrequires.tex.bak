@@ -1,0 +1,96 @@
+\section{Installation}
+{\PROD} comes as one flat directory with lots of included files. Email me
+at \url{tim@menzies.us} for that zip file. Just unzip it into a fresh directory.
+
+{\PROD} requires a working {\LaTeX}, Prolog and Perl installation.
+Most UNIX installations have all three. But if you need to get your
+own system then, for Windows, the  software shown in \fig{software} might be useful.
+
+\begin{figure*}
+\begin{center}
+\begin{tabular}{|p{6in}|}\hline
+\footnotesize
+PERL:
+        \bi
+            \item[--$\checkmark$] Perl can be downloaded from many sources. For example, it comes as part
+                of the {\em CYGWIN} distribution from \url{http://xfree86.cygwin.com}.
+        \ei
+\\\hline
+
+PROLOG:
+        \bi
+            \item[--$\checkmark$]  Interpreters: SWI-Prolog \url{http://www.swi-prolog.org}.
+            \item[--$\checkmark$]  Editors:
+                \bi
+                    \item[--] Some of my students speak highly of the {\em Prolog IDE} editor
+                            \url{http://www.bildung.hessen.de/abereich/inform/skii/material/swing/indexe.htm}.
+                    \item[--] I prefer {\em EMACS}, a Windows version of which can be found at
+                            \url{http://www.gnu.org/software/emacs/windows}
+                    \item[--$\$$] An excellent alternative to {\em EMACS} is {\em TEXTPAD}:
+                                \url{http://www.textpad.com/download/}.
+                            It has ignorable nag screens which can be removed for \$27 (ish).
+                    \item[--] A simpler editor, that is free, and  has a smaller footprint, is {\em PFE}.
+                          Its a very useful editor and it can be installed without super users.
+                          \url{http://www.lancs.ac.uk/people/cpaap/pfe/}.
+                \ei
+        \ei
+\\\hline
+{\LaTeX}:
+    \bi
+        \item[--] Postscript processing
+            \bi
+                \item[--$\checkmark$]  {\em GHOSTSCRIPT} and {\em GSVIEW} are the core postscript processing utilities:
+                        \url{http://www.cs.wisc.edu/~ghost}.
+            \ei
+        \item[--] A {\LaTeX} compiler:
+            \bi
+                \item[--$\checkmark$]  {\em MIKTEX} is a good Windows-based {\LaTeX} installation: \url{http://www.miktex.org}
+            \ei
+        \item[--] Editing {\LaTeX}:
+            \bi
+                \item[--$\checkmark\$$] Under Windows,  {\em WINEDT}  is
+                        the recommended  {\LaTeX} editor: \url{http://www.winedt.com}. It has some ignorable
+                            nag screens which can be removed for \$30 (ish).
+            \ei
+         \item[--] Viewing the output. {\LaTeX} generates DVI files, postscript files, and Acrobat files.
+            \bi
+                \item[--$\checkmark$]  DVI files  can be viewed using the {\em YAP} viewer that comes with {\em MIKTEX}.
+                \item[--$\checkmark$]  Postscript files can be viewed using the {\em GSVIEW} program from
+                        \url{http://www.cs.wisc.edu/~ghost}.
+                \item[--$\checkmark$]  The Acrobat reader can be downloaded from
+                        \url{http://www.adobe.com/products/acrobat/readstep2.html}.
+            \ei
+        \item[--] Plotting scientific data:
+            \bi
+                \item[--] The {\em GNUplot} utility from  \url{http://www.gnuplot.vt.edu/}
+                    can generate postscript plots of scientific data.
+            \ei
+        \item[--] Drawing packages:
+            \bi
+                \item[--$\$$] {\em MAYURA DRAW} is a  vector drawing utility for creating SVG and EPS illustrations:
+                        \url{http://www.mayura.com/}. It can be used for free for 30 days (ish) then a registration
+                            must be bought for \$30 (ish).
+            \ei
+        \item[--] Auto-layout of directed and undirected graphs:
+            \bi
+                \item[--] {\em GRAPHVIZ}: Graph layout and visualization:
+                    \url{www.research.att.com/sw/tools/graphviz}.
+            \ei
+        \item[--] Spell checking {\LaTeX}:
+            \bi
+                \item[--]
+                    The  {\em ISPELL} checker is a good UNIX-based spell checker.
+                    Most UNIX installations integrate it with {\em EMACS}.
+                \item[--]
+                    {\em WINDEDT} has a good editor.
+            \ei
+       \ei
+
+\\\hline
+\end{tabular}
+\end{center}
+\caption[Windows software for {\PROD}]{Support code for {\PROD}, under Windows.
+For a minimal installation, only get the items marked with $\checkmark$. This software is freeware,
+except  the items marked with
+$\$$.}\label{fig:software}
+\end{figure*}

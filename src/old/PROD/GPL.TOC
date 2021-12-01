@@ -1,0 +1,11 @@
+\begingroup \small 
+\contentsline {section}{\numberline {1} Configuration}{1}
+\contentsline {section}{\numberline {2} Installation }{1}
+\contentsline {section}{\numberline {3}Pre-load actions }{1}
+\contentsline {section}{\numberline {4} Show license }{1}
+\contentsline {section}{\numberline {5} Start-up actions }{2}
+\contentsline {section}{\numberline {6} Bugs }{2}
+\contentsline {section}{\numberline {A}License}{2}
+\contentsline {subsection}{\numberline {A.1}nowarranty.txt}{2}
+\contentsline {subsection}{\numberline {A.2}warranty.txt}{2}
+\contentsline {subsection}{\numberline {A.3}conditions.txt}{2}

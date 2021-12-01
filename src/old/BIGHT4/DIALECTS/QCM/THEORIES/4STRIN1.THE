@@ -1,0 +1,9 @@
+name         =  '4string and bb should be inexplicable'.
+objects(e)   =  [aa,ff].
+objects(m)   =  [bb,cc,dd].
+
+aa ++ cc.
+cc -- dd.
+ff ++ dd.
+dd ++ bb.
+cc ++ bb.

@@ -1,0 +1,5 @@
+GO="pl -g true -f go.pl"
+if [ $# -eq 1 ]
+then $GO -m $1
+else $GO
+fi

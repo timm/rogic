@@ -1,0 +1,186 @@
+Return-Path: <martin.s.feather@jpl.nasa.gov>
+Delivered-To: menzies.com%tim@menzies.com
+Received: (cpmta 21239 invoked from network); 23 May 2001 13:18:14 -0700
+Received: from eis-msg-012.jpl.nasa.gov (137.78.160.40)
+  by smtp.c000.snv.cp.net (209.228.32.61) with SMTP; 23 May 2001 13:18:14 -0700
+X-Received: 23 May 2001 20:18:14 GMT
+Received: from mfeather-pc (leopold.jpl.nasa.gov [137.78.4.113])
+	by eis-msg-012.jpl.nasa.gov (8.9.3/8.9.3) with ESMTP id NAA11229
+	for <tim@menzies.com>; Wed, 23 May 2001 13:18:12 -0700 (PDT)
+Message-Id: <4.2.0.58.20010523131653.00b8ef00@pop.jpl.nasa.gov>
+X-Sender: mfeather@pop.jpl.nasa.gov
+X-Mailer: QUALCOMM Windows Eudora Pro Version 4.2.0.58 
+Date: Wed, 23 May 2001 13:18:10 -0700
+To: Tim Menzies <tim@menzies.com>
+From: "Martin S. Feather" <martin.s.feather@jpl.nasa.gov>
+Subject: RESEND of DDP->Prolog example Re: A small step towards Prolog 
+Mime-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="=====================_690688227==_"
+Status: U
+X-UIDL: OwwbB9HkID1S-QE
+
+--=====================_690688227==_
+Content-Type: text/plain; charset="us-ascii"; format=flowed
+
+Tim,
+         I dug up the message from a month-and-a-half ago with the small 
+example.
+Presumably if we debug this and get it working, then I can dump on you the 
+BIG example...
+Martin
+
+
+Tim,
+         In response to what was discussed this week, please find attached 
+a .txt file in something close to the format you last asked for.
+
+There are a couple of places I'm not sure I followed your instructions 
+correctly:
+1) You had indicated that for the Weight field:
+         0 except for leaves for everyone except pacts (which are 1)
+     but the example you provided had a "_" symbol in the +r(r5,_,... line,
+     and a 0 in the pact +p(p1,0,0.5,... line
+2) You had indicated that for the Cost field:
+         set to 1 if a pact set to 0 otherwise
+    but since I now have put in some different cost figures for different 
+PACTs,
+    I put in whatever actual cost figure the PACT has (whihc in my example 
+are 1,10 and 100 for the three different PACTs).
+
+Finally, in answer to your question:
+
+the penultimate item of an impact, e.g., for
++impact(f(13),r(11),0.1,v1).
+the penultimate item is 0.1,
+means that IF the failure mode f(13) occurs, then it will cause the loss
+of that proportion (0.1) of requirement r(11).
+
+and the penultimate item of an effect, e.g., for
++effect(f(13),p(16),0.11,v1).
+the penultimate item is 0.11,
+means that IF the failure mode f(13) is mitigated by the application of 
+that pact p(16), then
+that PACT will filter out that proportion (0.11) of the instances of that 
+failure mode
+(e.g., a perfect PACT would have an effect value of 1, meaning it filters 
+out ALL instances;
+a useless PACT would have an effect value of 0, meaning it does nothing to 
+help filter
+out instances of that FailureMode).
+
+Hope that all makes sense,
+do let me know of further needed changes!
+Martin
+
+
+
+At 02:55 PM 2/14/2000 -0500, Tim Menzies wrote:
+>been playing with this and, with a few small changes, we have an
+>interchange format.
+>check over the following and if its ok with you, can you send me a small
+>system to
+>play with?
+>
+>
+>+source(v1,u0,2000,2,2,13,17,46).
+>+aka(u0,"Baseline",v1).
+>+aka(r5,"R",v1).
+>+aka(r6,"R1",v1).
+>+aka(r7,"R2",v1).
+>+aka(f8,"F1",v1).
+>+aka(f9,"F2",v1).
+>+aka(p1,"a pact",v1).
+>
+>% r5's cost should be zip since it is computed
+>% and i am moving the id inside the bracket
+>
+>% so the fields for "r" and "f" and "p" are:
+>% Id,Weight,Liklihood,Cost,Source
+>%     |     |       |
+>%     |     |       |--- set to 1 if a pact
+>%     |     |            set to 0 otherwise
+>%     |     |
+>%     |     |------------- set to 0.5 for pacts
+>%     |                    (i.e. when i do the simulations, half the time
+>%     |                          the accessed pact wont be used)
+>%     |
+>%     |--------------------- 0 except for leaves for everyone except
+>pacts (which are 1)
+>
+>+r(r5,_,1,0,v1) :- r(r6),r(r7).
+>+r(r6,1,1,0,v1).
+>+r(r7,2,1,0,v1).
+>+f(r8,0,1,0,v1).
+>+f(r9,0,1,0,v1).
+>
+>+p(p1,0,0.5,1,v1).
+>
+>+impact(f(f8),r(r6),0.1,v1). % <-- remind me here, what is our convention?
+>                            %   N or 1-N?
+>+impact(f(f9),r(r6),0.2,v1).
+>+impact(f(f8),r(r7),0.3,v1).
+>+impact(f(f9),r(r7),0.4,v1).
+>+impact(p(p1),f(f9),0.8,v1).
+>
+>% and finally, faults are independent so we add them and
+>% pacts are cumulative so we multiply them
+>
+>
+>
+>
+>_____________________________________________________________________
+>Tim@Menzies.com; http://www.tim.menzies.com    | PH  +1-304-367-8447
+>NASA, 100 University Dr,Fairmont WV, 26554,USA  | FAX +1-304-367-8211
+>
+>Animals, which move, have limbs and muscles. The earth does not have
+>limbs and muscles; therefore it does not move. -- Scipio Chiaramonti
+
+--=====================_690688227==_
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: attachment; filename="test1-for-timmddp.txt"
+
++source(v1,u0,when(2001,4,6,17,45,32)).
++aka(u0,"Baseline",v1).
++aka(r9,"TopLevelRequirement 1",v1).
++aka(r11,"Subsidiary Requirment 1.1",v1).
++aka(r12,"SubsisiaryRequirement 2.1",v1).
++aka(r10,"TopLevelRequirement 2",v1).
++aka(f13,"FailureMode 1",v1).
++aka(f14,"FailureMode 2",v1).
++aka(f15,"FailureMode 3",v1).
++aka(p16,"PACT 1",v1).
++aka(p17,"PACT 2",v1).
++aka(p18,"PACT 3",v1).
++r(r10,1,1,0,v1).
++r(r12,1,1,0,v1).
++r(r11,1,1,0,v1).
++r(r9,0,1,0,v1) :- r(11),r(12).
++f(f15,0,1,0,v1).
++f(f14,0,1,0,v1).
++f(f13,0,1,0,v1).
++p(p18,0,0.5,100,v1).
++p(p17,0,0.5,10,v1).
++p(p16,0,0.5,1,v1).
++impact(f(13),r(11),0.1,v1).
++impact(f(14),r(11),0.2,v1).
++impact(f(15),r(11),0.3,v1).
++impact(f(13),r(12),0.4,v1).
++impact(f(14),r(12),0.5,v1).
++impact(f(15),r(12),0.6,v1).
++impact(f(13),r(10),0.7,v1).
++impact(f(14),r(10),0.8,v1).
++impact(f(15),r(10),0.9,v1).
++effect(f(13),p(16),0.11,v1).
++effect(f(14),p(16),0.22,v1).
++effect(f(15),p(16),0.33,v1).
++effect(f(13),p(17),0.44,v1).
++effect(f(14),p(17),0.55,v1).
++effect(f(15),p(17),0.66,v1).
++effect(f(13),p(18),0.77,v1).
++effect(f(14),p(18),0.88,v1).
++effect(f(15),p(18),0.99,v1).
+
+
+--=====================_690688227==_--
+

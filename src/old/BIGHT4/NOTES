@@ -1,0 +1,10 @@
+		[]	[once]	[once,anyworld]
+% explicable	40.4	40.5	40.4
+abduction time	200.45	168	218.69
+data  		10	12	11
+prep 		4	4	4
+forwardSweep 	39	46	44
+backwardsSweep 	43	36	38
+worldsSweep 	3	1	1
+validate 	1	1	1
+worlds                  0.83

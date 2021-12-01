@@ -1,0 +1,3 @@
+%optimizing :- fail.
+optimizing.
+

@@ -1,0 +1,228 @@
+%=head1 Continuous Distributions
+
+%=head2 Rand
+
+ rand(X) :- 
+    X is random(inf+1)/inf.
+
+%Generate a number C<X> between  
+%some C<Min> and
+%C<Max> value.
+
+ rand(Min,Max,X) :- 
+    X is Min + (Max-Min)*rand.
+
+%=head2 Beta 
+
+%Generate a number C<X> 
+%whose mean is C<B%>
+%between C<Min> and
+%C<Max>.
+
+%Technically, this is an application
+%of a C<beta> function.
+%Here, I use a very simplistic method that
+%only works for certain values of 
+%C<B>; i.e. C<B=0.1,0.2,0.3,...,0.9,1>,
+
+ rand(Min,Max,B,X) :-
+    X is Min + (Max-Min)*beta(B).
+
+ beta(B,X) :- beta1(B,X),!.
+ beta(B,X) :- B1 is 1 - B, beta1(B1,Y),X is 1 - Y.
+
+ beta1(0.50,X) :- X is rand.
+ beta1(0.60,X) :- X is rand^0.67.
+ beta1(0.67,X) :- X is rand^0.5.
+ beta1(0.75,X) :- X is rand^0.33.
+ beta1(0.80,X) :- X is rand^0.25.
+ beta1(0.9,X)  :- X is rand^(1/9).
+ beta1(1,1).
+
+%=head2 Normal
+
+%Generate a random number from a normal distribution
+%with mean C<M> and standard deviation C<S>.
+%This number is generated using the 
+%Box-Muller method
+%(no, I don't understand it either-
+%some mathematical tricky with polar
+%co-ordinates).
+
+ normal(M,S,N) :- 
+    box_muller(M,S,N).
+
+ box_muller(M,S,N) :-
+    wloop(W0,X),
+    W is sqrt((-2.0 * log(W0))/W0),
+    Y1 is X * W,
+    N is M + Y1*S.
+
+ wloop(W,X) :-
+    X1 is 2.0 * rand - 1,
+    X2 is 2.0 * rand - 1,
+    W0 is X1*X1 + X2*X2,
+    (W0  >= 1.0 -> wloop(W,X) ; W0=W, X = X1).
+
+%=head2  Gamma 
+
+%Generate random numbers 
+%from zero to infinity.
+
+/* 
+A standard random C<gamma> 
+distribution has the mean
+
+ mean=alpha/beta
+
+The standard C<alpha,beta> 
+terminology can be confusing
+to some audiences. Hence, I define what
+I think is a 
+more-intuitive C<gamma>
+distribution where:
+
+ myGamma(mean,alpha) = gamma(alpha,alpha/mean)
+
+There is one other thing I do that is non-standard.
+The 
+C<alpha> value is the I<spread> of the 
+distribution and controls the
+clustering of  the distribution
+around the mean. As
+C<alpha> increases,
+the C<gamma> distribution 
+flattens out to become 
+more evenly-distributed about the mean. 
+That is, for large
+C<alpha> (i.e. C<alpha>&ge&20), 
+C<gamma> can be modeled as a noraml
+function.
+*/
+
+ gamma(Mean,Alpha,Out) :-
+    Beta is Mean/Alpha,
+    (Alpha > 20
+    ->  Mean is Alpha * Beta,
+        Sd is sqrt(Alpha*Beta*Beta),
+        Out is normal(Mean,Sd)
+    ;   gamma(Alpha,Beta,0,Out)).
+
+ gamma(0,_,X,X) :- !.
+ gamma(Alpha,Beta, In, Gamma) :-
+    Temp is In + ( -1 * Beta * log(1-rand)),
+    Alpha1 is Alpha - 1,
+    gamma(Alpha1,Beta,Temp,Gamma). /*
+
+=head1 Random types
+
+Nondeterministic programs sometimes need to grab a
+value for something. A C<random type> is a Prolog
+trick for implementing that grab:
+
+=over 8
+
+=item *
+
+If called with an unbound
+variable, the variable is bound to some value within a pre-defined
+range.
+
+=item *
+
+If called with a bound variable, then the predicate fails unless
+the bound variable falls within a pre-defined range.
+
+=back
+
+Note that these random types can be used in two ways:
+
+=over 8
+
+=item *
+
+If a value is I<unknown>, then an appropriate value can be guessed.
+
+=item *
+
+If a value has been I<supplied> by some other source, then
+that value can be assessed.
+
+=back
+
+
+=head2 Rsym (random symbols)
+
+Random symbols are real simple: */
+
+ rsym(X)  :- nonvar(X),!.
+ rsym(X)  :- gensym(g,X). /*
+
+Sometimes, random symbols start with
+some seed symbol. */
+
+ rsym(_,X)  :- nonvar(X),!.
+ rsym(A,X)  :- gensym(A,X). /*
+
+=head2 C<X in List)> (random members from a list) */
+
+ X in L :- number(X),!, member(Y,L), X =:= Y.
+ X in L :- nonvar(X),!, member(X,L).
+ X in L :- any(member(X,L)). /*
+
+=head2 any/1
+
+Here's a utility that we'll see a lot in the near future. Finds
+all solutions to a goal and returns them in a random order. */
+
+ any(X) :- anySome(X).
+
+%AnySome demands that there is at least one solution.
+
+ anySome(X) :-
+   setof(N/X, (X,N is random(inf)), L),!,
+   member(_/X,L).
+ anySome(X) :- barph(noSolutionsFor(X)).
+
+%AnyOne just don't care.
+
+ anyOne(X) :-
+   setof(N/X, (X,N is random(inf)), L),
+   member(_/X,L).
+
+
+/*
+
+=head2 C<X from Range> (random numbers from a range)
+
+If the range is small (say, less
+than 50 items), it is practical to define C<rin/4> such
+that, on backtracking, it returns all values in the range. */
+
+ smallRange(X) :- X =< 50. /*
+
+If the range is large (say, more than 50 items),
+we'll sample the range use C<rand/2> to extract numbers
+within the range C<Min> to C<Max>. Note that in this
+second case, it is possible that we'll generate repeated
+numbers in the range C<Min> to C<Max>. */
+
+ X from Min to Max :-
+	nonvar(X),!,number(X),Min =< X, X =< Max.
+ X from Min to Max by Segments :-
+	Steps is integer((Max-Min)/Segments),
+        (smallRange(Steps)
+        ->  any((between(0,Steps,Y)
+	         ,X1 is Min + Y*Segments))
+        ;   between(0,Steps,_),
+	    X0 is rand(Min,Max),
+            X1  is round(X0/Segments)*Segments),
+	 X is min(X1,Max). /*
+
+=head2 Rin/3 (random integers from a range) 
+
+Here's the above code repeated for the case of
+integer steps between max and min: */
+
+ X from Min to Max :- X from Min to Max by 1. 
+

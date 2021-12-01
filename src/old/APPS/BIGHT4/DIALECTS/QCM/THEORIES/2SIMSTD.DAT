@@ -1,0 +1,7 @@
+
+
+%---------------------------------------
+% [data] related facts
+
+% data/3
+data('000. simple steady', [[aa], [bb]], [cc-[10, 10]]). 

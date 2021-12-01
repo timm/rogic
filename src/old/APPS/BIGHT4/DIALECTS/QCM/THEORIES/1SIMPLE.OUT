@@ -1,0 +1,28 @@
+
+:- style_check(-discontiguous).
+:- discontiguous fSweepNumbers/5, result/10,ticks/1,about/4. 
+
+%about(d,nands,nOrs,fanout).
+about('000. absolute simplest', 0, 7, 0.285714).
+
+%#1
+
+%fSweepNumbers(a, ac, ab, pinStar, pa, pac, worlds).
+fSweepNumbers(0, 0, 0, 42.8571, 0, 0, 1).
+
+%% result(expName,comparisonNumber,slowOrFast,exp1,exp2,
+result('000. absolute simplest', 1, slow, [], [aa], 
+ %causes > changes/steadies,
+ 1>1/0, 
+ % clumping?/ inStarPercentClumpAble,nClumps
+ clumpOff/0, 0, 
+ %nProofs/averageProofSize/sd - [minSize,maxSize] - all,
+ 1/2.0/0.0-[2,2]-[2], 
+ %nWorlds, nBestWorlds, bestPercentCovered, time_seconds).
+ 1, 1, 100.0, 0.0).
+
+%mean explicable : 100.0 %
+%abduction time  : 0.00 secs
+%total run time  : 0.00 secs
+
+ticks([total-0/100, validate-0/0, worldsSweep-0/0, backwardsSweep-0/0, forwardSweep-0/0, prep-0/0, data-0/0]).

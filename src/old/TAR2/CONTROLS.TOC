@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Algorithm}{2}
+\contentsline {section}{\numberline {2}Promising ranges}{3}
+\contentsline {section}{\numberline {3}Baseline}{3}
+\contentsline {section}{\numberline {4}Flying with JANE}{4}
+\contentsline {section}{\numberline {5}A}{4}
+\contentsline {section}{\numberline {6}B}{5}
+\contentsline {section}{\numberline {7}C}{5}
+\contentsline {section}{\numberline {8}D}{6}
+\contentsline {section}{\numberline {9}E}{6}
+\contentsline {section}{\numberline {10}F}{6}
+\contentsline {section}{\numberline {11}G}{6}

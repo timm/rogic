@@ -1,0 +1,5 @@
+% output from ':- demos(eglookup).'
+
+[age(30),weight(40)]= avg
+
+% runtime = 0 sec(s)

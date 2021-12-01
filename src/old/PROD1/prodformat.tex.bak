@@ -1,0 +1,49 @@
+\section{{\PROD}-compatiable source code}
+A {\PROD}-compatiable files \subsection{ Structure of this document
+}
+ My Prolog code descriptions have the following format:
+\be
+\item Motivation: why is this system being built?
+\item Samples: with this system, what kind of things can a user do?
+(may include
+sample inputs/outputs).
+\item High-level walk through: before the code is revealed in all its glory,
+    an abstract description of its unique features and architecture is
+    of much benefit.
+\item Examples (longer samples): Detailed inputs/outputs; graphs of
+experimental results; discussion; future work section.
+\item Code: All the Prolog
+\item
+An appendix with acknowledgements, references, and licensing details.
+\ee
+The code section is in three parts:
+\be
+\item
+Shell
+\item
+Shell tart-up code (must be loaded into Prolog)
+\item Knowledge base
+\ee
+The shell divides up as follows:
+\be
+\item Initializations:
+\bi
+\item
+Operator definitions (must be first).
+\item
+Flags (these can usually go just before the start-up
+actions but, for safety's sake, we place them at the
+front).
+\item
+hooks (into the Prolog reader)
+\item
+hacks (shameful things we'd rather hide).
+\ei
+\item
+Library code which, ideally,
+should be good for more than just this application.
+\item
+The actual system code.
+\ee
+Note that for exposition purposes, it is often  to load the library, then load
+and explain the system code, then expalin the library.

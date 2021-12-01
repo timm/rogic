@@ -1,0 +1,20 @@
+name = '102. reduced fishery over time'.
+objects(m) = [h, r, b, m, v, u, n, g, w, s].
+objects(tm) = [z1, z2].
+h -- r.
+z1 ++ r.
+r +~+ z1.
+z1 ++ h.
+h ++ m.
+m -~- z1.
+b ++ m.
+m ++ v.
+v ++ n.
+z2 ++ u.
+u -- n.
+n ++ g.
+g ++ w.
+w +~+ z2.
+z2 ++ s.
+z2 ++ b.
+s -~- z2.

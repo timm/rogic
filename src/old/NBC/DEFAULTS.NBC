@@ -1,0 +1,10 @@
+program   = "NBC".
+version   = "0.1".
+copyright = "2002".
+copywho   = "Tim Menzies".
+motto     = "Learning is not compulsory... neither is survival.
+     -- W. Edwards Deming (1900 - 1993)".
+verbose   = 1.
+relation  = relation.
+classSymbol=class.
+nways      =10.

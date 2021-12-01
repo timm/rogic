@@ -1,0 +1,44 @@
+% input: record(person(name, age=0, jobs=[]))
+% output...
+ 
+recordDefinition(person(name, age=0, jobs=[])).
+:-dynamic person/4.
+:-multifile person/4.
+:-discontiguous person/4.
+:-discontiguous person0/3.
+:-index(person(1, 1, 1, 1)).
+person0(defaults, A, person(B, C, 0, [])).
+person0(A, B) :-
+	person0(A, B, B).
+person0([], A, A).
+person0([A|B], C, D) :-
+	person0(A, C, E),
+	person0(B, E, D).
+person0(id(A, B), person(A, C, D, E), person(B, C, D, E)).
+person0(name(A, B), person(C, A, D, E), person(C, B, D, E)).
+person0(age(A, B), person(C, D, A, E), person(C, D, B, E)).
+person0(jobs(A, B), person(C, D, E, A), person(C, D, E, B)).
+person0(asList([id=A, name=B, age=C, jobs=D]), person(A, B, C, D), person(A, B, C, D)).
+person0(id(A), B, C) :-
+	person0(id(A, A), B, C).
+person0(name(A), B, C) :-
+	person0(name(A, A), B, C).
+bridge(person(A, B, C, D), E, person(F, G, H, I)) :-
+	person0(E, person(A, B, C, D), person(F, G, H, I)).
+blank(person, A, person(A, B, C, D)).
+a(person, person(A, B, C, D)) :-
+	person(A, B, C, D).
+a(person, A, person(A, B, C, D)) :-
+	person(A, B, C, D).
+update(person(A, B, C, D)) :-
+	(   retract(person(A, E, F, G))
+	->  assert(person(A, B, C, D))
+	;   assert(person(A, B, C, D))
+	).
+
+---------
+emp#2) tim works at [scrubbing, cleaning]
+
+---------
+emp#2) fasterTim works at [scrubbing, cleaning]
+% time= 0 secs

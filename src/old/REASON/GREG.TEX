@@ -1,0 +1,27 @@
+\documentclass{article}
+
+%%  Latex generated from POD in document /cygdrive/i/tim/src/pl/reason/mypod_tmp.pl
+%%  Using the perl module Pod::LaTeX
+%%  Converted on Mon Aug 25 14:24:30 2003
+
+
+\usepackage{makeidx}
+\makeindex
+
+
+\input{mypodstyle}
+
+\tableofcontents
+
+\clearpage
+\section{Greg's stuff */\label{Greg_s_stuff_}\index{Greg's stuff */}}
+\begin{verbatim}
+ sumDCG([H|T],Out) :- sumDCG(H,Out,T,[]).
+\end{verbatim}
+\begin{verbatim}
+ sumDCG(Out,Out) --> [].
+ sumDCG(Temp,Out) -->  [H], {New is Temp + H}, sumDCG(New,Out).
+\end{verbatim}
+\printindex
+
+\end{document}

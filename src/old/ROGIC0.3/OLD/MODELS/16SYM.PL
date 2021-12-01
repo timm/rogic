@@ -1,0 +1,35 @@
+:- [usual].
+
+*model is 'Smythe ''87
+#1: 3-[nna= -1, acth= -1, cortico= -1]
+#2: 3-[nna=1, cortico=1, acth=1]
+#3: 3-[acth= -1, cortico= -1, nna=1]
+#4: 3-[acth=1, nna=1, cortico=1]
+#5: 1-[nna=1]
+#6: 2-[acth= -1, cortico= -1]'.
+
+%vars
+* bool : nna,acth,coldSwim,cortico,temp,dex.
+
+%rules
+*nna + coldSwim.
+*nna - temp.
+
+*acth + nna.
+*cortico + acth.
+*temp + cortico.
+*acth - temp.
+*temp + dex.
+
+%obs
+*rx     = [     [],   [dex],  [coldSwim],  [dex,coldSwim]]
+,
+[nna    = [  0.122,  0.105,       0.210,       0.246]
+,cortico= [129,     11.3,      1232.0,        32.8]
+,acth   = [ 89,      0.0,       240.0,         0.0]
+].
+
+*end.
+
+
+

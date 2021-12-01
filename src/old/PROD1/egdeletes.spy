@@ -1,0 +1,7 @@
+% output from ':- demos(egdeletes).'
+
+If we take [b, c] from
+[a, b, r, a, c, a, d, a, b, r, a] we get
+[a, r, a, a, d, a, r, a].
+
+% runtime = 0 sec(s)

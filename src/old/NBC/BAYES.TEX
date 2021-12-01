@@ -1,0 +1,111 @@
+
+\begin{figure}[!b]
+\begin{footnotesize}\[
+Rel=~\left\{~\begin{tabular}{c|c|c|c}
+\multicolumn{3}{c|}{attributes}&class\\\hline
+ make &           size&    hifi &type\\\hline
+ Mitsubishi  &    small    &  yes  &    coup\\
+ Mitsubishi  &    medium   &  no   &    suv\\
+ Toyota      &    small    &  yes   &   coup\\
+ Toyota      &    large    &  no    &   coup\\
+ Toyota      &    large    &  no    &   suv\\
+ Benz        &    small    &  yes   &   coup\\
+ Benz        &    large    &  no    &   suv\\
+ BMW         &    small    &  yes   &   coup\\
+ BMW         &    medium   &  yes   &   coup\\
+ Ford        &    small    &  yes   &   coup\\
+ Ford        &    large    &  no    &   suv\\
+ Honda       &    small    &  no     &  coup\\
+ \end{tabular}
+ \right.
+ \]
+ \end{footnotesize}
+ \caption{A log of car types.}\label{fig:cars}
+\end{figure}\begin{figure*}
+\begin{footnotesize}\[
+F~=~\left\{~\begin{tabular}{rlr@{~:~}l|lr@{~:~}l|lr@{~:~}l|r@{~:~}l}
+ \multicolumn{1}{l}{}&\multicolumn{9}{c|}{attributes}& \multicolumn{2}{c}{class}\\\cline{2-12}
+\multicolumn{1}{c}{}&    \multicolumn{1}{c}{MAKE}&      coup& suv &
+SIZE  &coup&suv   &HIFI & coup&suv
+ & coup&suv\\\cline{2-12}
+&Mitsubishi& 1& 1   & Small  &  6&$0^a$   &   yes &6&$0^b$   &    8& 4\\
+&Toyota    & 2& 1   & Medium &  1&1          &   no &2&4&\multicolumn{2}{l}{}\\
+&Benz      & 1& 1   & Large   & 1&3&\multicolumn{3}{l|}{}&\multicolumn{2}{l}{}\\
+&BMW       & 2&0$^c$&\multicolumn{3}{l|}{}&\multicolumn{3}{l|}{}&\multicolumn{2}{l}{}\\
+&Ford      & 1& 1&\multicolumn{3}{l|}{}&\multicolumn{3}{l|}{}&\multicolumn{2}{l}{}\\
+&Honda     & 1&0$^d$&\multicolumn{3}{l|}{}&\multicolumn{3}{l|}{}&\multicolumn{2}{l}{}\\
+\end{tabular}
+\right. \]
+\end{footnotesize}
+\caption{Frequency counts from \protect\fig{cars}.}\label{fig:raw}
+\end{figure*}
+\begin{figure*}
+\begin{footnotesize}\[
+R~=~\left\{~\begin{tabular}{rlr@{~:~}l|lr@{~:~}l|lr@{~:~}l|r@{~:~}l}
+ \multicolumn{1}{l}{}&\multicolumn{9}{c|}{attributes}& \multicolumn{2}{c}{class}\\\cline{2-12}
+\multicolumn{1}{c}{}&    MAKE&       coup& suv     & SIZE &coup&suv
+&HIFI & coup&suv    & coup&suv\\\cline{2-12}
+&Mitsubishi& $\frac{2}{9}$& $\frac{2}{5}$   & Small  &  $\frac{7}{9}$&$\frac{1}{5}^\dag$&yes &$\frac{7}{9}$&$\frac{1}{5}^\dag$  &  $\frac{9}{13}$& $\frac{5}{13}$\\
+&Toyota    & $\frac{2}{9}$& $\frac{2}{5}$   & Medium &  $\frac{2}{9}$&$\frac{2}{5}$     &  no &$\frac{7}{9}$&$\frac{5}{5}$&\multicolumn{2}{l}{}\\
+&Benz      & $\frac{2}{9}$& $\frac{1}{4}$   & Large   & $\frac{2}{9}$&$\frac{4}{5}$&\multicolumn{3}{l|}{}&\multicolumn{2}{l}{}\\
+&BMW       & $\frac{3}{9}$&$\frac{1}{5}^\dag$&\multicolumn{3}{l|}{}&\multicolumn{3}{l|}{}&\multicolumn{2}{l}{}\\
+&Ford      & $\frac{2}{9}$& $\frac{2}{5}$&\multicolumn{3}{l|}{}&\multicolumn{3}{l|}{}&\multicolumn{2}{l}{}\\
+&Honda     &
+$\frac{2}{9}$&$\frac{1}{5}^\dag$&\multicolumn{3}{l|}{}&\multicolumn{3}{l|}{}&\multicolumn{2}{l}{}\\
+\end{tabular}
+\right. \]
+\end{footnotesize}
+\caption{Class frequency ratios counts from \protect\fig{raw} (all
+counts initialized to one).}\label{fig:counts}
+\end{figure*}
+\section{Preamble: Naive Bayes Classifiers}
+ A {\em Naive Bayes classifier} extracts statistics
+ from a table of data, and uses those stats to generate
+ probabilities that new examples fall into different class.
+
+For example, suppose we have a relation in \fig{cars} showing some
+mapping between attributes and a special class attribute called
+$type$. One thing we might try to do with this information is to
+guess the type of some new example based on this prior information of
+the examples seen to date. For example, what is the $type$ of the
+following new example:
+
+\[
+IF\;make=ford\;\wedge\;size=medium\;THEN\;type=?\]
+
+
+To accomplish this task, the frequency $F$ with which attribute
+values appear within certain classes is first computed in \fig{raw}.
+Next, these frequencies of some range $r$ in class $C_i$ from
+attribute $A_j$ is  turned into the {\em class frequency ratios}
+$R(A_i=v|C_i)$. Some product of these ratios will become the
+probability that an new example falls into a class.
+
+Since any zero entry in a product makes the whole product zero, the
+$F$ entries labelled $\{abcd\}$ in \fig{raw} are a problem. We solve
+this problem using the  standard kludge: replace zero entries with a
+very small number by initializing all counts 1 instead of 0. Assuming
+this kludge, then, the frequency counts from \fig{raw} are shown in
+\fig{counts}.
+
+Each of the  entries in \fig{counts} is a measurement conditional on
+some class. For example, the $\frac{2}{9}$ for {\tt suv}'s
+$Make=Ford$ is denoted $R(Make=Ford|suv)=\frac{2}{9}$. Now the
+likelihood of our example falling into each class is the product of
+these conditional frequency for that class. In the Naive Bayesian
+framework, unknown values $F(Make=?|Class_i)$ are just ignored. So,
+the likelihood $L$ of our example being an SUV
+\begin{eqnarray}\nonumber
+likelihood(SUV) & =& \frac{2}{5}*\frac{2}{5}*\frac{5}{13}=
+0.0615385\\\nonumber likelihood(coupe)&=&
+\frac{2}{9}*\frac{2}{9}*\frac{9}{13}= 0.034188
+\end{eqnarray}
+Each liklihood is converted into a probability by normalizing them
+with respect to the sum of all the likelihoods; i.e.
+\begin{eqnarray}\nonumber
+Prob(SUV) &= &\frac{0.0615385}{(0.0615385 + 0.034188)} = 64\%
+\\\nonumber Prob(coup)&= &\frac{0.034188}{(0.0615385 + 0.034188)}  =
+36\%
+\end{eqnarray}
+That is, if $Make=ford$ and  $Size=medium$, then it is most likely
+that we are looking at an $SUV$.

@@ -1,0 +1,120 @@
+\documentclass[twocolumn,global]{tex4log/svjour}
+
+\journalname{Submitted to WVU knowledge engineering} % banner on page 1
+\date{WP ref: tim/src/pl/timlog/tex4log.tex \today} % wp info
+\usepackage{times} % best for viewing widely on acrobat
+%\topmargin -1.5cm % move page up and down
+
+\newcommand{\ME}{NB} % place name of software here
+
+\usepackage{tex4log/tex4log} %
+\usepackage{tex4log/timtex} %
+
+\begin{document}
+\title{\Tex4Log: Simple Prolog Documentation in \LaTeX }
+\author{Tim Menzies\inst{1}, Claude A. Clause\inst{2}}
+
+\institute{Lane Department of Computer Science,
+       University of West Virginia,
+       PO Box 6109, Morgantown,
+       WV, 26506-6109, USA;\\
+       \url{http://menzies.us};
+       \email{tim@menzies.us} \and
+ Prolog Programming International
+%\email{clause@prolog.net}
+} \maketitle
+%\copyrightspace
+% If you want to print drafts of the paper with a draft
+% notice in the copyright space, comment out the \copyrightspace
+% line above and include the \submitspace line below instead.
+%
+%\submitspace{Draft of paper submitted to ASE 2000.
+%\\WP:b/00/ase/whatif(\today).}
+
+\thispagestyle{empty}  % suppresses page number on first page
+\pagestyle{plain} % places numbers on all pages
+% pagestyle{empty} % removes numbers from all pages
+%\setcounter{tocdepth}{4} \tableeofcontents % TOC control
+% \listoffigures % LOF control
+
+\small
+
+\begin{abstract}
+Simple macros written in \LaTeX allow for a simple documentation
+scheme for Prolog.
+\end{abstract}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=2in]{tex4log/ugly.eps}
+\end{center}
+\caption{~}\label{fig:ugly}
+\end{figure}
+\section{Introduction}
+
+Gauguin once said that ``The ugly may be beautiful,  the pretty
+never.''. Here, we strive to turn the ugly facts (and rules) of
+Prolog into beautiful and attractive typeset prose.
+
+We are not the first to attempt this goal (e.g., see \fig{ugly}).
+ Standard \LaTeX macros for pretty-printing Prolog source
+code (e.g. \url{lgrind.sty}) focus on just making the source code
+look pretty. \Tex4Log~ is a system for generating descriptions of
+Prolog source code; i.e. not just source code all the source code
+{\em and} explanatory text.
+
+Services offered by \Tex4Log are: \bi \item A framework for
+organizing Prolog applications into lots of easily explainable units.
+\item Via \LaTeX, the ability to generate postscripts and acrobat
+files from Prolog source `code`. \item Very simple inclusion of
+Prolog source code files. \item A simple protocol for including
+outputs from Prolog programs into a document. \item Line numbers on
+source code. \item The ability to add ``marks'' to source code and
+refer to these marks symbolically. \item Cross references between
+source code. \item Auto-inclusion of the GNU Public License into your
+system. \item Various useful little \LaTeX tricks. \ei
+
+The above is implemented via the {\em least} number of extensions to
+standard \LaTeX. The dream is that such a minimal implementation will
+be easy to extend and maintain. We'll see{\exclaim}
+
+\section{Installation}
+Find an existing \Tex4Log~ installation and copy the entire directory
+tree into a new directory, say \url{dir}. Create a new sub-directory,
+say \url{dir/myapp}. The main file of your new application will be
+stored in \url{dir/myapp.pl}, will be documented in
+\url{dir/myapp.tex} and the source code will be stored in in
+\url{dir/myapp/}.
+
+
+
+\input{tex4log/style}
+
+
+\bibliographystyle{abbrv}
+{\footnotesize \bibliography{../../refs}}
+
+\appendix
+
+\section{License}\label{sec:license}
+\code{license/license.pl}
+
+This software is distributed under the  GNU General Public License.
+\fig{license/license.pl} shows routines to display that license.
+
+\subsection{nowarranty.txt}\label{sec:nowar}
+{\scriptsize \ME~ \input{license/nowarranty.txt}
+
+}
+
+\subsection{warranty.txt}\label{sec:war}
+{\scriptsize\input{license/warranty.txt}
+
+}
+
+\subsection{conditions.txt}\label{sec:cond}
+{\scriptsize\input{license/conditions.txt}
+
+}
+\end{document}

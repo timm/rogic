@@ -1,0 +1,82 @@
+\documentclass{article}
+
+%%  Latex generated from POD in document /cygdrive/i/tim/src/pl/reason/mypod_tmp.pl
+%%  Using the perl module Pod::LaTeX
+%%  Converted on Mon Aug 25 04:19:19 2003
+
+
+\usepackage{makeidx}
+\makeindex
+
+
+\input{mypodstyle}
+
+\tableofcontents
+
+\clearpage
+\section{Working Memory Management\label{Working_Memory_Management}\index{Working Memory Management}}
+
+
+Assertions are hashed on some index.
+
+
+
+Assertions are grouped into \textit{N1} numeric levels
+and \texttt{zap} can reset all working memory
+elements from level \texttt{N2} and above.
+
+\section{Header\label{Header}\index{Header}}
+\subsection{Flags */\label{Flags_}\index{Flags */}}
+\begin{verbatim}
+ :- dynamic(wme/3). /*
+\end{verbatim}
+\section{Body  */\label{Body_}\index{Body  */}}
+\begin{verbatim}
+  make(W) :- 
+    wme(W,I,_), hash_term(I,H), assert(hashed(H,W)). /*
+\end{verbatim}
+\subsection{Finding WMEs */\label{Finding_WMEs_}\index{Finding WMEs */}}
+\begin{verbatim}
+ wmes(L) :- wmes(-1,L).
+ wmes(N,All) :- 
+    setof(L=wme(W,I,L), N^(wme(W,I,L),L>=N), Temp)
+    -> maplist(arg(2),Temp,All)
+    ;  All=[]. /*
+\end{verbatim}
+\subsection{Reset */\label{Reset_}\index{Reset */}}
+\begin{verbatim}
+ reset :-  
+    forall((wme(W,_,_),functor(W,F,A)), dynamic(F/A)). /*
+\end{verbatim}
+\subsection{Zap\label{Zap}\index{Zap}}
+
+
+Zap from level \texttt{N} and above. */
+
+\begin{verbatim}
+ zap :- zap(-1).
+ zap(N) :-
+    wmes(N,All),
+    forall(member(wme(W,_,_),All), retractall(hashed(_,W))). /*
+\end{verbatim}
+\subsection{Report\label{Report}\index{Report}}
+
+
+Report upwards  from level \texttt{N}. */
+
+\begin{verbatim}
+ report :- report(-1).
+ report(N) :-
+    wmes(N,All),
+    member(wme(W,_,_),All),
+    functor(W,F,A),
+    format('% ~w\n',F/A),
+    W,
+    numbervars(W,0,_),
+    format('~p.\n',W),
+    fail.
+ report(_).
+\end{verbatim}
+\printindex
+
+\end{document}

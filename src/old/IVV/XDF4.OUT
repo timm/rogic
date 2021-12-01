@@ -1,0 +1,292 @@
+-------------------------------------------------------------------
+                Welcome to TARZAN (Version 2.2)
+        Copyright (c) 2001 Tim Menzies (tim@menzies.com)
+              Copy policy: GPL-2 (see www.gnu.org)
+
+...while on high, our hero watches for the right chance to strike!
+-------------------------------------------------------------------
+
+skew=20
+Read 90000 cases (17 attributes) from XDF4.data
+
+ Worth=1.000000
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[No Treatment]
+
+         c20to31:~                               [   779 -  1%] 
+         c14to19:~~~~~~~~~~~~~~~~~~              [ 13014 - 14%] 
+         c12to13:~~~~~~~~~~~~~~~~                [ 11367 - 13%] 
+         c10to11:~~~~~~~~~~~~~~~~~~~~~           [ 14890 - 17%] 
+           c8to9:~~~~~~~~~~~~~~~~~~~~~~          [ 15575 - 17%] 
+           c6to7:~~~~~~~~~~~~~~~~~~~             [ 13744 - 15%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [ 20631 - 23%] 
+
+	Confidence1 Distribution:
+
+ -125:~~~~                            [     1 -  1%] 
+ -123:~~~~                            [     1 -  1%] 
+ -120:~~~~                            [     1 -  1%] 
+ -78:~~~~                            [     1 -  1%] 
+   0:~~~~~~~~                        [     2 -  3%] 
+  58:~~~~                            [     1 -  1%] 
+  60:~~~~~~~~~~~~                    [     3 -  4%] 
+  61:~~~~                            [     1 -  1%] 
+  62:~~~~                            [     1 -  1%] 
+  63:~~~~~~~~~~~~~~~~~               [     4 -  6%] 
+  64:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [     7 - 10%] 
+  66:~~~~~~~~~~~~                    [     3 -  4%] 
+  67:~~~~~~~~~~~~                    [     3 -  4%] 
+  68:~~~~~~~~~~~~~~~~~               [     4 -  6%] 
+  69:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [     7 - 10%] 
+  70:~~~~~~~~~~~~~~~~~~~~~           [     5 -  7%] 
+  71:~~~~~~~~~~~~~~~~~~~~~           [     5 -  7%] 
+  72:~~~~~~~~                        [     2 -  3%] 
+  73:~~~~~~~~                        [     2 -  3%] 
+  74:~~~~~~~~~~~~                    [     3 -  4%] 
+  75:~~~~                            [     1 -  1%] 
+  76:~~~~                            [     1 -  1%] 
+  77:~~~~~~~~                        [     2 -  3%] 
+  78:~~~~~~~~~~~~                    [     3 -  4%] 
+  79:~~~~                            [     1 -  1%] 
+  80:~~~~                            [     1 -  1%] 
+  82:~~~~                            [     1 -  1%] 
+  85:~~~~                            [     1 -  1%] 
+  88:~~~~                            [     1 -  1%] 
+  92:~~~~                            [     1 -  1%] 
+ 626:~~~~                            [     1 -  1%] 
+
+  !!! Attribute not promising: ['from(programming)/to(deployment)'] [defectDensity] 
+
+Treatments learned on XDF4.data:
+worth=2.557809	['from(design)/to(design)'=[52.369999..77.930000)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.589244	['from(design)/to(design)'=[41.869999..52.369999)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.590833	['from(programming)/to(integration)'=[25.889999..32.580002)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.592566	['from(requirements)/to(integration)'=[1.700000..2.190000)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.592926	['from(design)/to(deployment)'=[1.060000..1.370000)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.593261	['from(requirements)/to(deployment)'=[0.540000..0.700000)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.593796	['from(design)/to(integration)'=[3.100000..3.980000)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.594116	['from(programming)/to(programming)'=[119.250000..148.309998)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.596420	['from(requirements)/to(design)'=[3.150000..4.040000)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.596696	['from(programming)/to(programming)'=[148.309998..203.970001)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.597276	['from(design)/to(programming)'=[7.130000..9.090000)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.598953	[reworkSaved=[0.000000..0.130000)] [reworkByPhase=coyle99] 
+worth=2.598963	['from(requirements)/to(programming)'=[2.510000..3.230000)] [reworkSaved=[0.000000..0.130000)] 
+worth=2.608994	[ivv=integration] [reworkSaved=[0.000000..0.130000)] 
+
+Treatment tested on XDF4.test (10000 cases * 17 attributes)
+
+ Worth=1.000000
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[No Treatment]
+
+         c20to31:~                               [    87 -  1%] 
+         c14to19:~~~~~~~~~~~~~~~~~~              [  1446 - 14%] 
+         c12to13:~~~~~~~~~~~~~~~~                [  1262 - 13%] 
+         c10to11:~~~~~~~~~~~~~~~~~~~~~           [  1655 - 17%] 
+           c8to9:~~~~~~~~~~~~~~~~~~~~~~          [  1731 - 17%] 
+           c6to7:~~~~~~~~~~~~~~~~~~~             [  1527 - 15%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [  2292 - 23%] 
+
+ Worth=2.606336
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(design)/to(design)'=[52.369999..77.930000)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     1 -  1%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   117 - 99%] 
+
+ Worth=2.597057
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(design)/to(design)'=[41.869999..52.369999)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     4 -  2%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   253 - 98%] 
+
+ Worth=2.597747
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(programming)/to(integration)'=[25.889999..32.580002)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     4 -  2%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   262 - 98%] 
+
+ Worth=2.607732
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(requirements)/to(integration)'=[1.700000..2.190000)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     2 -  1%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   268 - 99%] 
+
+ Worth=2.602090
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(design)/to(deployment)'=[1.060000..1.370000)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     3 -  1%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   253 - 99%] 
+
+ Worth=2.601722
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(requirements)/to(deployment)'=[0.540000..0.700000)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     3 -  1%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   247 - 99%] 
+
+ Worth=2.602777
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(design)/to(integration)'=[3.100000..3.980000)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     3 -  1%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   265 - 99%] 
+
+ Worth=2.600576
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(programming)/to(programming)'=[119.250000..148.309998)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     3 -  1%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   230 - 99%] 
+
+ Worth=2.602090
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(requirements)/to(design)'=[3.150000..4.040000)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     3 -  1%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   253 - 99%] 
+
+ Worth=2.595369
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(programming)/to(programming)'=[148.309998..203.970001)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     3 -  2%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   175 - 98%] 
+
+ Worth=2.602209
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(design)/to(programming)'=[7.130000..9.090000)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     3 -  1%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   255 - 99%] 
+
+ Worth=2.603163
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	reworkSaved=[0.000000..0.130000)
+	reworkByPhase=coyle99]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     8 -  1%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   726 - 99%] 
+
+ Worth=2.593718
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	'from(requirements)/to(programming)'=[2.510000..3.230000)
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     5 -  2%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   271 - 98%] 
+
+ Worth=2.611699
+ Granularity=5 Promising=72.000000 Useful=2.500000 nChanges=2
+ Treatment:[
+	ivv=integration
+	reworkSaved=[0.000000..0.130000)]
+
+         c20to31:                                [     0 -  0%] 
+         c14to19:                                [     0 -  0%] 
+         c12to13:                                [     0 -  0%] 
+         c10to11:                                [     0 -  0%] 
+           c8to9:                                [     0 -  0%] 
+           c6to7:                                [     2 -  0%] 
+           c0to5:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   455 - 100%] 
+
+
+---- 02/17/02 15:30:50 ---
+  Setup: 82 sec
+Compute: 16 sec
+  Apply: 3 sec
+  Total: 101 sec
+--------------------------------------

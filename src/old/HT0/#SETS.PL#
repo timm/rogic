@@ -1,0 +1,14 @@
+ new(Old,Item,New) :- insert(Old,Item,/=,New).
+
+% ordered set insertion a term of the form X=Y
+% sort ordered by X.
+% the symbol "Com" controls what happens when a 
+% literal
+% is inserted twice. Com= "=" means repeats allowed.
+% Com= anything else means repeats are blocked
+
+
+
+
+
+

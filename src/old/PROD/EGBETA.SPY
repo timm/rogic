@@ -1,0 +1,6 @@
+% output from ':- demos(egbeta).'
+
+[11.2313, 14.5453, 11.2714, 13.4645, 10.2245]
+ are random numbers 20% between 10 and 20.
+
+% runtime = 0 sec(s)

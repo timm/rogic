@@ -1,0 +1,8026 @@
+% qcm
+
+
+%---------------------------------------
+% [names] related facts
+
+% o/3
+o(159, yoh, event). 
+o(156, change(yoh), eventChange). 
+o(153, twoDg, event). 
+o(150, change(twoDg), eventChange). 
+o(147, tolbut30, event). 
+o(144, change(tolbut30), eventChange). 
+o(141, tolbut20, event). 
+o(138, change(tolbut20), eventChange). 
+o(135, tolbut10, event). 
+o(132, change(tolbut10), eventChange). 
+o(129, swimstr, event). 
+o(126, change(swimstr), eventChange). 
+o(123, stress, event). 
+o(120, change(stress), eventChange). 
+o(117, ptu, event). 
+o(114, change(ptu), eventChange). 
+o(111, parg, event). 
+o(108, change(parg), eventChange). 
+o(105, msg, event). 
+o(102, change(msg), eventChange). 
+o(99, insulinBolis, event). 
+o(96, change(insulinBolis), eventChange). 
+o(93, insulin30, event). 
+o(90, change(insulin30), eventChange). 
+o(87, insulin10, event). 
+o(84, change(insulin10), eventChange). 
+o(81, hypox, event). 
+o(78, change(hypox), eventChange). 
+o(75, hghInj, event). 
+o(72, change(hghInj), eventChange). 
+o(69, guan, event). 
+o(66, change(guan), eventChange). 
+o(63, gentle, event). 
+o(60, change(gentle), eventChange). 
+o(57, etherstr, event). 
+o(54, change(etherstr), eventChange). 
+o(51, diaz, event). 
+o(48, change(diaz), eventChange). 
+o(45, dex, event). 
+o(42, change(dex), eventChange). 
+o(39, chroniCtolbut, event). 
+o(36, change(chroniCtolbut), eventChange). 
+o(33, chroniCinsulin, event). 
+o(30, change(chroniCinsulin), eventChange). 
+o(27, chroniCglucose, event). 
+o(24, change(chroniCglucose), eventChange). 
+o(21, chroniCdiaz, event). 
+o(18, change(chroniCdiaz), eventChange). 
+o(15, chroniCdex, event). 
+o(12, change(chroniCdex), eventChange). 
+o(9, adrx, event). 
+o(6, change(adrx), eventChange). 
+o(3, acutEdex, event). 
+o(0, change(acutEdex), eventChange). 
+o(370, vagus, measure). 
+o(366, toTissue, measure). 
+o(362, toKidneys, measure). 
+o(358, temp3, measure). 
+o(354, temp2, measure). 
+o(350, temp1, measure). 
+o(346, t4, measure). 
+o(342, srif, measure). 
+o(338, sns, measure). 
+o(334, serotoninTOfiveHIAA, measure). 
+o(330, serotoninProduction, measure). 
+o(326, serotonin, measure). 
+o(322, sateity, measure). 
+o(318, prlRelease, measure). 
+o(314, prl, measure). 
+o(310, pPrl, measure). 
+o(306, pns, measure). 
+o(302, pHgh, measure). 
+o(298, neProduction, measure). 
+o(294, neControl, measure). 
+o(290, ne2Epin, measure). 
+o(286, ne2dhpg, measure). 
+o(282, ne, measure). 
+o(278, insulin, measure). 
+o(274, hva, measure). 
+o(270, hgh, measure). 
+o(266, glucose, measure). 
+o(262, glucocorticoid, measure). 
+o(258, glucagonProd, measure). 
+o(254, glucagonDis, measure). 
+o(250, glucagon, measure). 
+o(246, ghrh, measure). 
+o(242, ghProduction, measure). 
+o(238, fromPancreas, measure). 
+o(234, fromLiver, measure). 
+o(230, fromGut, measure). 
+o(226, fiveHIAA, measure). 
+o(222, dhpg, measure). 
+o(218, daProduction, measure). 
+o(214, da2Hva, measure). 
+o(210, da, measure). 
+o(206, crf, measure). 
+o(202, cortisolProduction, measure). 
+o(198, cortisol, measure). 
+o(194, corticoidProduction, measure). 
+o(190, catecholeProd, measure). 
+o(186, catecholeDisp, measure). 
+o(182, catechole, measure). 
+o(178, brainGlucoseUptake, measure). 
+o(174, brainGlucose, measure). 
+o(170, aluminium, measure). 
+o(166, acthProduction, measure). 
+o(162, acth, measure). 
+o(572, and2, and). 
+o(567, and1, and). 
+o(580, and3, and). 
+o(587, and4, and). 
+o(600, and6, and). 
+o(595, and5, and). 
+o(608, and7, and). 
+o(621, and9, and). 
+o(616, and8, and). 
+o(635, and11, and). 
+o(630, and10, and). 
+o(643, and12, and). 
+o(650, and13, and). 
+o(657, and14, and). 
+o(664, and15, and). 
+o(673, and16, and). 
+o(678, and17, and). 
+o(683, and18, and). 
+o(688, and19, and). 
+o(693, and20, and). 
+o(698, and21, and). 
+o(703, and22, and). 
+o(708, and23, and). 
+o(713, and24, and). 
+o(718, and25, and). 
+o(723, and26, and). 
+o(728, and27, and). 
+o(733, and28, and). 
+o(738, and29, and). 
+o(743, and30, and). 
+o(748, and31, and). 
+o(753, and32, and). 
+o(758, and33, and). 
+o(763, and34, and). 
+o(768, and35, and). 
+o(773, and36, and). 
+o(778, and37, and). 
+o(783, and38, and). 
+o(788, and39, and). 
+o(793, and40, and). 
+o(798, and41, and). 
+o(803, and42, and). 
+o(808, and43, and). 
+o(813, and44, and). 
+o(818, and45, and). 
+o(823, and46, and). 
+o(828, and47, and). 
+o(833, and48, and). 
+o(838, and49, and). 
+o(843, and50, and). 
+o(848, and51, and). 
+o(853, and52, and). 
+o(858, and53, and). 
+o(863, and54, and). 
+o(868, and55, and). 
+o(873, and56, and). 
+o(878, and57, and). 
+o(883, and58, and). 
+o(888, and59, and). 
+o(893, and60, and). 
+o(898, and61, and). 
+o(903, and62, and). 
+o(908, and63, and). 
+o(913, and64, and). 
+o(918, and65, and). 
+o(923, and66, and). 
+o(928, and67, and). 
+o(933, and68, and). 
+o(938, and69, and). 
+o(943, and70, and). 
+o(948, and71, and). 
+o(953, and72, and). 
+o(958, and73, and). 
+o(963, and74, and). 
+o(968, and75, and). 
+o(973, and76, and). 
+o(978, and77, and). 
+o(983, and78, and). 
+o(988, and79, and). 
+o(993, and80, and). 
+o(998, and81, and). 
+o(1003, and82, and). 
+o(1008, and83, and). 
+o(1013, and84, and). 
+o(1018, and85, and). 
+o(1023, and86, and). 
+o(1028, and87, and). 
+o(1033, and88, and). 
+o(1038, and89, and). 
+o(1043, and90, and). 
+o(1048, and91, and). 
+o(1053, and92, and). 
+o(1058, and93, and). 
+o(1063, and94, and). 
+o(1068, and95, and). 
+o(1073, and96, and). 
+o(1078, and97, and). 
+o(1083, and98, and). 
+o(1088, and99, and). 
+o(1093, and100, and). 
+o(1098, and101, and). 
+o(1103, and102, and). 
+o(1108, and103, and). 
+o(1113, and104, and). 
+o(1118, and105, and). 
+o(1123, and106, and). 
+o(1128, and107, and). 
+o(1133, and108, and). 
+o(1138, and109, and). 
+o(1143, and110, and). 
+o(1148, and111, and). 
+o(1153, and112, and). 
+o(1158, and113, and). 
+o(1163, and114, and). 
+o(1168, and115, and). 
+o(1173, and116, and). 
+o(1178, and117, and). 
+o(1183, and118, and). 
+o(1188, and119, and). 
+o(1193, and120, and). 
+o(1198, and121, and). 
+o(1203, and122, and). 
+o(1208, and123, and). 
+o(1213, and124, and). 
+o(1218, and125, and). 
+o(1223, and126, and). 
+o(1228, and127, and). 
+o(1233, and128, and). 
+o(1238, and129, and). 
+o(1243, and130, and). 
+o(1248, and131, and). 
+o(1253, and132, and). 
+o(1258, and133, and). 
+o(1263, and134, and). 
+o(1268, and135, and). 
+o(1273, and136, and). 
+o(1278, and137, and). 
+o(1283, and138, and). 
+o(1288, and139, and). 
+o(1293, and140, and). 
+o(1298, and141, and). 
+o(1303, and142, and). 
+o(1308, and143, and). 
+o(1313, and144, and). 
+o(1318, and145, and). 
+o(1323, and146, and). 
+o(1328, and147, and). 
+o(1333, and148, and). 
+o(1338, and149, and). 
+o(1343, and150, and). 
+o(1348, and151, and). 
+o(1353, and152, and). 
+o(1358, and153, and). 
+o(1363, and154, and). 
+o(1368, and155, and). 
+o(1373, and156, and). 
+o(1378, and157, and). 
+o(1383, and158, and). 
+o(1388, and159, and). 
+o(1393, and160, and). 
+o(1398, and161, and). 
+o(1403, and162, and). 
+o(1408, and163, and). 
+o(1413, and164, and). 
+o(1418, and165, and). 
+o(1423, and166, and). 
+o(1428, and167, and). 
+o(1433, and168, and). 
+o(1438, and169, and). 
+o(1443, and170, and). 
+o(1448, and171, and). 
+o(1453, and172, and). 
+o(1458, and173, and). 
+o(1463, and174, and). 
+o(1468, and175, and). 
+o(1473, and176, and). 
+o(1478, and177, and). 
+o(1483, and178, and). 
+o(1488, and179, and). 
+o(1493, and180, and). 
+o(1498, and181, and). 
+o(1503, and182, and). 
+o(1508, and183, and). 
+o(1513, and184, and). 
+o(1518, and185, and). 
+o(1523, and186, and). 
+o(1528, and187, and). 
+o(1533, and188, and). 
+o(1538, and189, and). 
+o(1543, and190, and). 
+o(1548, and191, and). 
+o(1553, and192, and). 
+o(1558, and193, and). 
+o(1563, and194, and). 
+o(1568, and195, and). 
+o(1573, and196, and). 
+o(1578, and197, and). 
+o(1583, and198, and). 
+o(1588, and199, and). 
+o(1593, and200, and). 
+o(1598, and201, and). 
+o(1603, and202, and). 
+o(1608, and203, and). 
+o(1613, and204, and). 
+o(1618, and205, and). 
+o(1623, and206, and). 
+o(1628, and207, and). 
+o(1633, and208, and). 
+o(1638, and209, and). 
+o(1643, and210, and). 
+o(1648, and211, and). 
+o(1653, and212, and). 
+o(1658, and213, and). 
+o(1663, and214, and). 
+o(1668, and215, and). 
+o(1673, and216, and). 
+o(1678, and217, and). 
+o(1683, and218, and). 
+o(1688, and219, and). 
+o(1693, and220, and). 
+o(1698, and221, and). 
+o(1703, and222, and). 
+o(1708, and223, and). 
+o(1713, and224, and). 
+o(1718, and225, and). 
+o(1723, and226, and). 
+o(1728, and227, and). 
+o(1733, and228, and). 
+o(1738, and229, and). 
+o(1743, and230, and). 
+o(1748, and231, and). 
+o(1753, and232, and). 
+o(1758, and233, and). 
+o(1763, and234, and). 
+o(1768, and235, and). 
+o(1773, and236, and). 
+o(1778, and237, and). 
+o(1783, and238, and). 
+o(1788, and239, and). 
+o(1793, and240, and). 
+o(1798, and241, and). 
+o(1803, and242, and). 
+o(1808, and243, and). 
+o(1813, and244, and). 
+o(1818, and245, and). 
+o(1823, and246, and). 
+o(1828, and247, and). 
+o(1833, and248, and). 
+o(1838, and249, and). 
+o(1843, and250, and). 
+o(1848, and251, and). 
+o(1853, and252, and). 
+o(1858, and253, and). 
+o(1863, and254, and). 
+o(1868, and255, and). 
+o(1873, and256, and). 
+o(1878, and257, and). 
+o(1883, and258, and). 
+o(1888, and259, and). 
+o(1893, and260, and). 
+o(1898, and261, and). 
+o(1903, and262, and). 
+o(1908, and263, and). 
+o(1913, and264, and). 
+o(1918, and265, and). 
+o(1923, and266, and). 
+o(1928, and267, and). 
+o(1933, and268, and). 
+o(1938, and269, and). 
+o(1943, and270, and). 
+o(1948, and271, and). 
+o(1953, and272, and). 
+o(1958, and273, and). 
+o(1963, and274, and). 
+o(1968, and275, and). 
+o(1973, and276, and). 
+o(1978, and277, and). 
+o(1983, and278, and). 
+o(1988, and279, and). 
+o(1993, and280, and). 
+o(1998, and281, and). 
+o(2003, and282, and). 
+o(2008, and283, and). 
+o(2013, and284, and). 
+o(2018, and285, and). 
+o(2023, and286, and). 
+o(2028, and287, and). 
+o(2033, and288, and). 
+o(2038, and289, and). 
+
+
+%---------------------------------------
+% [theory] related facts
+
+% d/1
+d('28. Smythe 89'). 
+
+% i/2
+i(371, 372). 
+i(367, 368). 
+i(363, 364). 
+i(359, 360). 
+i(355, 356). 
+i(351, 352). 
+i(347, 348). 
+i(343, 344). 
+i(339, 340). 
+i(335, 336). 
+i(331, 332). 
+i(327, 328). 
+i(323, 324). 
+i(319, 320). 
+i(315, 316). 
+i(311, 312). 
+i(307, 308). 
+i(303, 304). 
+i(299, 300). 
+i(295, 296). 
+i(291, 292). 
+i(287, 288). 
+i(283, 284). 
+i(279, 280). 
+i(275, 276). 
+i(271, 272). 
+i(267, 268). 
+i(263, 264). 
+i(259, 260). 
+i(255, 256). 
+i(251, 252). 
+i(247, 248). 
+i(243, 244). 
+i(239, 240). 
+i(235, 236). 
+i(231, 232). 
+i(227, 228). 
+i(223, 224). 
+i(219, 220). 
+i(215, 216). 
+i(211, 212). 
+i(207, 208). 
+i(203, 204). 
+i(199, 200). 
+i(195, 196). 
+i(191, 192). 
+i(187, 188). 
+i(183, 184). 
+i(179, 180). 
+i(175, 176). 
+i(171, 172). 
+i(167, 168). 
+i(163, 164). 
+i(371, 373). 
+i(367, 369). 
+i(363, 365). 
+i(359, 361). 
+i(355, 357). 
+i(351, 353). 
+i(347, 349). 
+i(343, 345). 
+i(339, 341). 
+i(335, 337). 
+i(331, 333). 
+i(327, 329). 
+i(323, 325). 
+i(319, 321). 
+i(315, 317). 
+i(311, 313). 
+i(307, 309). 
+i(303, 305). 
+i(299, 301). 
+i(295, 297). 
+i(291, 293). 
+i(287, 289). 
+i(283, 285). 
+i(279, 281). 
+i(275, 277). 
+i(271, 273). 
+i(267, 269). 
+i(263, 265). 
+i(259, 261). 
+i(255, 257). 
+i(251, 253). 
+i(247, 249). 
+i(243, 245). 
+i(239, 241). 
+i(235, 237). 
+i(231, 233). 
+i(227, 229). 
+i(223, 225). 
+i(219, 221). 
+i(215, 217). 
+i(211, 213). 
+i(207, 209). 
+i(203, 205). 
+i(199, 201). 
+i(195, 197). 
+i(191, 193). 
+i(187, 189). 
+i(183, 185). 
+i(179, 181). 
+i(175, 177). 
+i(171, 173). 
+i(167, 169). 
+i(163, 165). 
+i(372, 371). 
+i(368, 367). 
+i(364, 363). 
+i(360, 359). 
+i(356, 355). 
+i(352, 351). 
+i(348, 347). 
+i(344, 343). 
+i(340, 339). 
+i(336, 335). 
+i(332, 331). 
+i(328, 327). 
+i(324, 323). 
+i(320, 319). 
+i(316, 315). 
+i(312, 311). 
+i(308, 307). 
+i(304, 303). 
+i(300, 299). 
+i(296, 295). 
+i(292, 291). 
+i(288, 287). 
+i(284, 283). 
+i(280, 279). 
+i(276, 275). 
+i(272, 271). 
+i(268, 267). 
+i(264, 263). 
+i(260, 259). 
+i(256, 255). 
+i(252, 251). 
+i(248, 247). 
+i(244, 243). 
+i(240, 239). 
+i(236, 235). 
+i(232, 231). 
+i(228, 227). 
+i(224, 223). 
+i(220, 219). 
+i(216, 215). 
+i(212, 211). 
+i(208, 207). 
+i(204, 203). 
+i(200, 199). 
+i(196, 195). 
+i(192, 191). 
+i(188, 187). 
+i(184, 183). 
+i(180, 179). 
+i(176, 175). 
+i(172, 171). 
+i(168, 167). 
+i(164, 163). 
+i(372, 373). 
+i(368, 369). 
+i(364, 365). 
+i(360, 361). 
+i(356, 357). 
+i(352, 353). 
+i(348, 349). 
+i(344, 345). 
+i(340, 341). 
+i(336, 337). 
+i(332, 333). 
+i(328, 329). 
+i(324, 325). 
+i(320, 321). 
+i(316, 317). 
+i(312, 313). 
+i(308, 309). 
+i(304, 305). 
+i(300, 301). 
+i(296, 297). 
+i(292, 293). 
+i(288, 289). 
+i(284, 285). 
+i(280, 281). 
+i(276, 277). 
+i(272, 273). 
+i(268, 269). 
+i(264, 265). 
+i(260, 261). 
+i(256, 257). 
+i(252, 253). 
+i(248, 249). 
+i(244, 245). 
+i(240, 241). 
+i(236, 237). 
+i(232, 233). 
+i(228, 229). 
+i(224, 225). 
+i(220, 221). 
+i(216, 217). 
+i(212, 213). 
+i(208, 209). 
+i(204, 205). 
+i(200, 201). 
+i(196, 197). 
+i(192, 193). 
+i(188, 189). 
+i(184, 185). 
+i(180, 181). 
+i(176, 177). 
+i(172, 173). 
+i(168, 169). 
+i(164, 165). 
+i(373, 371). 
+i(369, 367). 
+i(365, 363). 
+i(361, 359). 
+i(357, 355). 
+i(353, 351). 
+i(349, 347). 
+i(345, 343). 
+i(341, 339). 
+i(337, 335). 
+i(333, 331). 
+i(329, 327). 
+i(325, 323). 
+i(321, 319). 
+i(317, 315). 
+i(313, 311). 
+i(309, 307). 
+i(305, 303). 
+i(301, 299). 
+i(297, 295). 
+i(293, 291). 
+i(289, 287). 
+i(285, 283). 
+i(281, 279). 
+i(277, 275). 
+i(273, 271). 
+i(269, 267). 
+i(265, 263). 
+i(261, 259). 
+i(257, 255). 
+i(253, 251). 
+i(249, 247). 
+i(245, 243). 
+i(241, 239). 
+i(237, 235). 
+i(233, 231). 
+i(229, 227). 
+i(225, 223). 
+i(221, 219). 
+i(217, 215). 
+i(213, 211). 
+i(209, 207). 
+i(205, 203). 
+i(201, 199). 
+i(197, 195). 
+i(193, 191). 
+i(189, 187). 
+i(185, 183). 
+i(181, 179). 
+i(177, 175). 
+i(173, 171). 
+i(169, 167). 
+i(165, 163). 
+i(373, 372). 
+i(369, 368). 
+i(365, 364). 
+i(361, 360). 
+i(357, 356). 
+i(353, 352). 
+i(349, 348). 
+i(345, 344). 
+i(341, 340). 
+i(337, 336). 
+i(333, 332). 
+i(329, 328). 
+i(325, 324). 
+i(321, 320). 
+i(317, 316). 
+i(313, 312). 
+i(309, 308). 
+i(305, 304). 
+i(301, 300). 
+i(297, 296). 
+i(293, 292). 
+i(289, 288). 
+i(285, 284). 
+i(281, 280). 
+i(277, 276). 
+i(273, 272). 
+i(269, 268). 
+i(265, 264). 
+i(261, 260). 
+i(257, 256). 
+i(253, 252). 
+i(249, 248). 
+i(245, 244). 
+i(241, 240). 
+i(237, 236). 
+i(233, 232). 
+i(229, 228). 
+i(225, 224). 
+i(221, 220). 
+i(217, 216). 
+i(213, 212). 
+i(209, 208). 
+i(205, 204). 
+i(201, 200). 
+i(197, 196). 
+i(193, 192). 
+i(189, 188). 
+i(185, 184). 
+i(181, 180). 
+i(177, 176). 
+i(173, 172). 
+i(169, 168). 
+i(165, 164). 
+i(160, 161). 
+i(154, 155). 
+i(148, 149). 
+i(142, 143). 
+i(136, 137). 
+i(130, 131). 
+i(124, 125). 
+i(118, 119). 
+i(112, 113). 
+i(106, 107). 
+i(100, 101). 
+i(94, 95). 
+i(88, 89). 
+i(82, 83). 
+i(76, 77). 
+i(70, 71). 
+i(64, 65). 
+i(58, 59). 
+i(52, 53). 
+i(46, 47). 
+i(40, 41). 
+i(34, 35). 
+i(28, 29). 
+i(22, 23). 
+i(16, 17). 
+i(10, 11). 
+i(4, 5). 
+i(161, 160). 
+i(155, 154). 
+i(149, 148). 
+i(143, 142). 
+i(137, 136). 
+i(131, 130). 
+i(125, 124). 
+i(119, 118). 
+i(113, 112). 
+i(107, 106). 
+i(101, 100). 
+i(95, 94). 
+i(89, 88). 
+i(83, 82). 
+i(77, 76). 
+i(71, 70). 
+i(65, 64). 
+i(59, 58). 
+i(53, 52). 
+i(47, 46). 
+i(41, 40). 
+i(35, 34). 
+i(29, 28). 
+i(23, 22). 
+i(17, 16). 
+i(11, 10). 
+i(5, 4). 
+i(157, 158). 
+i(151, 152). 
+i(145, 146). 
+i(139, 140). 
+i(133, 134). 
+i(127, 128). 
+i(121, 122). 
+i(115, 116). 
+i(109, 110). 
+i(103, 104). 
+i(97, 98). 
+i(91, 92). 
+i(85, 86). 
+i(79, 80). 
+i(73, 74). 
+i(67, 68). 
+i(61, 62). 
+i(55, 56). 
+i(49, 50). 
+i(43, 44). 
+i(37, 38). 
+i(31, 32). 
+i(25, 26). 
+i(19, 20). 
+i(13, 14). 
+i(7, 8). 
+i(1, 2). 
+i(158, 157). 
+i(152, 151). 
+i(146, 145). 
+i(140, 139). 
+i(134, 133). 
+i(128, 127). 
+i(122, 121). 
+i(116, 115). 
+i(110, 109). 
+i(104, 103). 
+i(98, 97). 
+i(92, 91). 
+i(86, 85). 
+i(80, 79). 
+i(74, 73). 
+i(68, 67). 
+i(62, 61). 
+i(56, 55). 
+i(50, 49). 
+i(44, 43). 
+i(38, 37). 
+i(32, 31). 
+i(26, 25). 
+i(20, 19). 
+i(14, 13). 
+i(8, 7). 
+i(2, 1). 
+i(161, 157). 
+i(157, 161). 
+i(155, 151). 
+i(151, 155). 
+i(149, 145). 
+i(145, 149). 
+i(143, 139). 
+i(139, 143). 
+i(137, 133). 
+i(133, 137). 
+i(131, 127). 
+i(127, 131). 
+i(125, 121). 
+i(121, 125). 
+i(119, 115). 
+i(115, 119). 
+i(113, 109). 
+i(109, 113). 
+i(107, 103). 
+i(103, 107). 
+i(101, 97). 
+i(97, 101). 
+i(95, 91). 
+i(91, 95). 
+i(89, 85). 
+i(85, 89). 
+i(83, 79). 
+i(79, 83). 
+i(77, 73). 
+i(73, 77). 
+i(71, 67). 
+i(67, 71). 
+i(65, 61). 
+i(61, 65). 
+i(59, 55). 
+i(55, 59). 
+i(53, 49). 
+i(49, 53). 
+i(47, 43). 
+i(43, 47). 
+i(41, 37). 
+i(37, 41). 
+i(35, 31). 
+i(31, 35). 
+i(29, 25). 
+i(25, 29). 
+i(23, 19). 
+i(19, 23). 
+i(17, 13). 
+i(13, 17). 
+i(11, 7). 
+i(7, 11). 
+i(5, 1). 
+i(1, 5). 
+i(160, 158). 
+i(158, 160). 
+i(154, 152). 
+i(152, 154). 
+i(148, 146). 
+i(146, 148). 
+i(142, 140). 
+i(140, 142). 
+i(136, 134). 
+i(134, 136). 
+i(130, 128). 
+i(128, 130). 
+i(124, 122). 
+i(122, 124). 
+i(118, 116). 
+i(116, 118). 
+i(112, 110). 
+i(110, 112). 
+i(106, 104). 
+i(104, 106). 
+i(100, 98). 
+i(98, 100). 
+i(94, 92). 
+i(92, 94). 
+i(88, 86). 
+i(86, 88). 
+i(82, 80). 
+i(80, 82). 
+i(76, 74). 
+i(74, 76). 
+i(70, 68). 
+i(68, 70). 
+i(64, 62). 
+i(62, 64). 
+i(58, 56). 
+i(56, 58). 
+i(52, 50). 
+i(50, 52). 
+i(46, 44). 
+i(44, 46). 
+i(40, 38). 
+i(38, 40). 
+i(34, 32). 
+i(32, 34). 
+i(28, 26). 
+i(26, 28). 
+i(22, 20). 
+i(20, 22). 
+i(16, 14). 
+i(14, 16). 
+i(10, 8). 
+i(8, 10). 
+i(4, 2). 
+i(2, 4). 
+
+% source/2
+source(1, name='28. Smythe 89'). 
+source(2, objects(e)=[acutEdex, adrx, chroniCdex, chroniCdiaz, chroniCglucose, chroniCinsulin, chroniCtolbut, dex, diaz, etherstr, gentle, guan, hghInj, hypox, insulin10, insulin30, insulinBolis, msg, parg, ptu, stress, swimstr, tolbut10, tolbut20, tolbut30, twoDg, yoh]). 
+source(3, objects(m)=[acth, acthProduction, aluminium, brainGlucose, brainGlucoseUptake, catechole, catecholeDisp, catecholeProd, corticoidProduction, cortisol, cortisolProduction, crf, da, da2Hva, daProduction, dhpg, fiveHIAA, fromGut, fromLiver, fromPancreas, ghProduction, ghrh, glucagon, glucagonDis, glucagonProd, glucocorticoid, glucose, hgh, hva, insulin, ne, ne2dhpg, ne2Epin, neControl, neProduction, pHgh, pns, pPrl, prl, prlRelease, sateity, serotonin, serotoninProduction, serotoninTOfiveHIAA, sns, srif, t4, temp1, temp2, temp3, toKidneys, toTissue, vagus]). 
+source(4, crf++acthProduction). 
+source(5, acthProduction+-+acth). 
+source(6, hypox--acthProduction). 
+source(7, acth++cortisolProduction). 
+source(8, if guan then not sns++cortisolProduction). 
+source(9, if adrx then not cortisolProduction+-+cortisol). 
+source(10, corticoidProduction+--cortisol). 
+source(11, glucocorticoid--acthProduction). 
+source(12, corticoidProduction+-+glucocorticoid). 
+source(13, dex++glucocorticoid). 
+source(14, acutEdex++glucocorticoid). 
+source(15, chroniCdex++glucocorticoid). 
+source(16, if adrx then not catecholeProd+-+catechole). 
+source(17, catecholeDisp+--catechole). 
+source(18, if guan then not sns++catecholeProd). 
+source(19, daProduction+-+da). 
+source(20, da2Hva+--da). 
+source(21, prl++da). 
+source(22, aluminium--daProduction). 
+source(23, if msg then not da2Hva+-+hva). 
+source(24, parg--da2Hva). 
+source(25, glucagonProd+-+glucagon). 
+source(26, glucagonDis+--glucagon). 
+source(27, if guan then not sns++glucagonProd). 
+source(28, glucose--glucagonProd). 
+source(29, insulin--glucagonProd). 
+source(30, chroniCglucose++glucose). 
+source(31, fromGut+-+glucose). 
+source(32, fromLiver+-+glucose). 
+source(33, brainGlucoseUptake+--glucose). 
+source(34, glucose++brainGlucoseUptake). 
+source(35, toTissue+--glucose). 
+source(36, brainGlucoseUptake+-+brainGlucose). 
+source(37, temp1++toTissue). 
+source(38, glucose++temp1). 
+source(39, insulin++temp1). 
+source(40, temp2++fromLiver). 
+source(41, insulin--temp2). 
+source(42, glucocorticoid++temp2). 
+source(43, pns--temp2). 
+source(44, catechole++temp2). 
+source(45, if guan then not sns--temp2). 
+source(46, glucagon++temp2). 
+source(47, twoDg--brainGlucoseUptake). 
+source(48, fromPancreas+-+insulin). 
+source(49, toKidneys+--insulin). 
+source(50, insulin++toKidneys). 
+source(51, if guan then sns--temp3). 
+source(52, catechole--temp3). 
+source(53, glucagon++temp3). 
+source(54, glucose++temp3). 
+source(55, pns++temp3). 
+source(56, temp3++fromPancreas). 
+source(57, insulinBolis++insulin). 
+source(58, insulin10++insulin). 
+source(59, insulin30++insulin). 
+source(60, chroniCinsulin++insulin). 
+source(61, tolbut10++fromPancreas). 
+source(62, tolbut20++fromPancreas). 
+source(63, tolbut30++fromPancreas). 
+source(64, chroniCtolbut++fromPancreas). 
+source(65, neProduction+--da). 
+source(66, if msg then not neProduction+-+ne). 
+source(67, ne2dhpg+--ne). 
+source(68, ne2Epin+--ne). 
+source(69, if msg then not ne2dhpg+-+dhpg). 
+source(70, dhpg++crf). 
+source(71, dhpg++sns). 
+source(72, stress++neControl). 
+source(73, glucocorticoid--neControl). 
+source(74, brainGlucose--neControl). 
+source(75, neControl++neProduction). 
+source(76, neControl++ne2dhpg). 
+source(77, ne++ne2dhpg). 
+source(78, aluminium--ne2dhpg). 
+source(79, ne+-+ne2Epin). 
+source(80, hgh++neProduction). 
+source(81, insulin--neProduction). 
+source(82, swimstr++stress). 
+source(83, etherstr++stress). 
+source(84, yoh++neProduction). 
+source(85, parg--ne2dhpg). 
+source(86, gentle++stress). 
+source(87, diaz--neControl). 
+source(88, chroniCdiaz--neControl). 
+source(89, pns++vagus). 
+source(90, insulin++pns). 
+source(91, fiveHIAA++pns). 
+source(92, sns--pns). 
+source(93, da--prlRelease). 
+source(94, da--pPrl). 
+source(95, prlRelease+--pPrl). 
+source(96, if hypox then not prlRelease+-+prl). 
+source(97, fiveHIAA++sateity). 
+source(98, brainGlucose--sateity). 
+source(99, if msg then not serotoninProduction+-+serotonin). 
+source(100, serotoninTOfiveHIAA+--serotonin). 
+source(101, serotoninTOfiveHIAA+-+fiveHIAA). 
+source(102, hgh--serotoninProduction). 
+source(103, t4--serotoninProduction). 
+source(104, t4++serotoninTOfiveHIAA). 
+source(105, serotonin++serotoninTOfiveHIAA). 
+source(106, brainGlucose++serotoninProduction). 
+source(107, insulin++serotoninProduction). 
+source(108, pns++serotoninProduction). 
+source(109, pns++serotoninTOfiveHIAA). 
+source(110, parg--serotoninTOfiveHIAA). 
+source(111, msg--serotoninProduction). 
+source(112, pns--sns). 
+source(113, ghProduction+--pHgh). 
+source(114, if hypox then ghProduction+-+hgh). 
+source(115, hghInj++hgh). 
+source(116, fiveHIAA++ghrh). 
+source(117, ghrh--pHgh). 
+source(118, ghrh++ghProduction). 
+source(119, glucose++ghProduction). 
+source(120, glucose++pHgh). 
+source(121, srif--pHgh). 
+source(122, srif--ghProduction). 
+source(123, crf++srif). 
+
+% e/5
+e(374, 207, 167, 1, 4). 
+e(375, 209, 169, 1, 4). 
+e(376, 167, 163, 1, 5). 
+e(377, 79, 169, 1, 6). 
+e(378, 80, 167, 1, 6). 
+e(379, 163, 203, 1, 7). 
+e(380, 165, 205, 1, 7). 
+e(381, 195, 201, 1, 10). 
+e(382, 263, 169, 1, 11). 
+e(383, 265, 167, 1, 11). 
+e(384, 195, 263, 1, 12). 
+e(385, 43, 263, 1, 13). 
+e(386, 44, 265, 1, 13). 
+e(387, 1, 263, 1, 14). 
+e(388, 2, 265, 1, 14). 
+e(389, 13, 263, 1, 15). 
+e(390, 14, 265, 1, 15). 
+e(391, 187, 185, 1, 17). 
+e(392, 219, 211, 1, 19). 
+e(393, 215, 213, 1, 20). 
+e(394, 315, 211, 1, 21). 
+e(395, 317, 213, 1, 21). 
+e(396, 171, 221, 1, 22). 
+e(397, 173, 219, 1, 22). 
+e(398, 109, 217, 1, 24). 
+e(399, 110, 215, 1, 24). 
+e(400, 259, 251, 1, 25). 
+e(401, 255, 253, 1, 26). 
+e(402, 267, 261, 1, 28). 
+e(403, 269, 259, 1, 28). 
+e(404, 279, 261, 1, 29). 
+e(405, 281, 259, 1, 29). 
+e(406, 25, 267, 1, 30). 
+e(407, 26, 269, 1, 30). 
+e(408, 231, 267, 1, 31). 
+e(409, 235, 267, 1, 32). 
+e(410, 179, 269, 1, 33). 
+e(411, 267, 179, 1, 34). 
+e(412, 269, 181, 1, 34). 
+e(413, 367, 269, 1, 35). 
+e(414, 179, 175, 1, 36). 
+e(415, 351, 367, 1, 37). 
+e(416, 353, 369, 1, 37). 
+e(417, 267, 351, 1, 38). 
+e(418, 269, 353, 1, 38). 
+e(419, 279, 351, 1, 39). 
+e(420, 281, 353, 1, 39). 
+e(421, 355, 235, 1, 40). 
+e(422, 357, 237, 1, 40). 
+e(423, 279, 357, 1, 41). 
+e(424, 281, 355, 1, 41). 
+e(425, 263, 355, 1, 42). 
+e(426, 265, 357, 1, 42). 
+e(427, 307, 357, 1, 43). 
+e(428, 309, 355, 1, 43). 
+e(429, 183, 355, 1, 44). 
+e(430, 185, 357, 1, 44). 
+e(431, 251, 355, 1, 46). 
+e(432, 253, 357, 1, 46). 
+e(433, 151, 181, 1, 47). 
+e(434, 152, 179, 1, 47). 
+e(435, 239, 279, 1, 48). 
+e(436, 363, 281, 1, 49). 
+e(437, 279, 363, 1, 50). 
+e(438, 281, 365, 1, 50). 
+e(439, 183, 361, 1, 52). 
+e(440, 185, 359, 1, 52). 
+e(441, 251, 359, 1, 53). 
+e(442, 253, 361, 1, 53). 
+e(443, 267, 359, 1, 54). 
+e(444, 269, 361, 1, 54). 
+e(445, 307, 359, 1, 55). 
+e(446, 309, 361, 1, 55). 
+e(447, 359, 239, 1, 56). 
+e(448, 361, 241, 1, 56). 
+e(449, 97, 279, 1, 57). 
+e(450, 98, 281, 1, 57). 
+e(451, 85, 279, 1, 58). 
+e(452, 86, 281, 1, 58). 
+e(453, 91, 279, 1, 59). 
+e(454, 92, 281, 1, 59). 
+e(455, 31, 279, 1, 60). 
+e(456, 32, 281, 1, 60). 
+e(457, 133, 239, 1, 61). 
+e(458, 134, 241, 1, 61). 
+e(459, 139, 239, 1, 62). 
+e(460, 140, 241, 1, 62). 
+e(461, 145, 239, 1, 63). 
+e(462, 146, 241, 1, 63). 
+e(463, 37, 239, 1, 64). 
+e(464, 38, 241, 1, 64). 
+e(465, 299, 213, 1, 65). 
+e(466, 287, 285, 1, 67). 
+e(467, 291, 285, 1, 68). 
+e(468, 223, 207, 1, 70). 
+e(469, 225, 209, 1, 70). 
+e(470, 223, 339, 1, 71). 
+e(471, 225, 341, 1, 71). 
+e(472, 121, 295, 1, 72). 
+e(473, 122, 297, 1, 72). 
+e(474, 263, 297, 1, 73). 
+e(475, 265, 295, 1, 73). 
+e(476, 175, 297, 1, 74). 
+e(477, 177, 295, 1, 74). 
+e(478, 295, 299, 1, 75). 
+e(479, 297, 301, 1, 75). 
+e(480, 295, 287, 1, 76). 
+e(481, 297, 289, 1, 76). 
+e(482, 283, 287, 1, 77). 
+e(483, 285, 289, 1, 77). 
+e(484, 171, 289, 1, 78). 
+e(485, 173, 287, 1, 78). 
+e(486, 283, 291, 1, 79). 
+e(487, 271, 299, 1, 80). 
+e(488, 273, 301, 1, 80). 
+e(489, 279, 301, 1, 81). 
+e(490, 281, 299, 1, 81). 
+e(491, 127, 121, 1, 82). 
+e(492, 128, 122, 1, 82). 
+e(493, 55, 121, 1, 83). 
+e(494, 56, 122, 1, 83). 
+e(495, 157, 299, 1, 84). 
+e(496, 158, 301, 1, 84). 
+e(497, 109, 289, 1, 85). 
+e(498, 110, 287, 1, 85). 
+e(499, 61, 121, 1, 86). 
+e(500, 62, 122, 1, 86). 
+e(501, 49, 297, 1, 87). 
+e(502, 50, 295, 1, 87). 
+e(503, 19, 297, 1, 88). 
+e(504, 20, 295, 1, 88). 
+e(505, 307, 371, 1, 89). 
+e(506, 309, 373, 1, 89). 
+e(507, 279, 307, 1, 90). 
+e(508, 281, 309, 1, 90). 
+e(509, 227, 307, 1, 91). 
+e(510, 229, 309, 1, 91). 
+e(511, 339, 309, 1, 92). 
+e(512, 341, 307, 1, 92). 
+e(513, 211, 321, 1, 93). 
+e(514, 213, 319, 1, 93). 
+e(515, 211, 313, 1, 94). 
+e(516, 213, 311, 1, 94). 
+e(517, 319, 313, 1, 95). 
+e(518, 227, 323, 1, 97). 
+e(519, 229, 325, 1, 97). 
+e(520, 175, 325, 1, 98). 
+e(521, 177, 323, 1, 98). 
+e(522, 335, 329, 1, 100). 
+e(523, 335, 227, 1, 101). 
+e(524, 271, 333, 1, 102). 
+e(525, 273, 331, 1, 102). 
+e(526, 347, 333, 1, 103). 
+e(527, 349, 331, 1, 103). 
+e(528, 347, 335, 1, 104). 
+e(529, 349, 337, 1, 104). 
+e(530, 327, 335, 1, 105). 
+e(531, 329, 337, 1, 105). 
+e(532, 175, 331, 1, 106). 
+e(533, 177, 333, 1, 106). 
+e(534, 279, 331, 1, 107). 
+e(535, 281, 333, 1, 107). 
+e(536, 307, 331, 1, 108). 
+e(537, 309, 333, 1, 108). 
+e(538, 307, 335, 1, 109). 
+e(539, 309, 337, 1, 109). 
+e(540, 109, 337, 1, 110). 
+e(541, 110, 335, 1, 110). 
+e(542, 103, 333, 1, 111). 
+e(543, 104, 331, 1, 111). 
+e(544, 307, 341, 1, 112). 
+e(545, 309, 339, 1, 112). 
+e(546, 243, 305, 1, 113). 
+e(547, 73, 271, 1, 115). 
+e(548, 74, 273, 1, 115). 
+e(549, 227, 247, 1, 116). 
+e(550, 229, 249, 1, 116). 
+e(551, 247, 305, 1, 117). 
+e(552, 249, 303, 1, 117). 
+e(553, 247, 243, 1, 118). 
+e(554, 249, 245, 1, 118). 
+e(555, 267, 243, 1, 119). 
+e(556, 269, 245, 1, 119). 
+e(557, 267, 303, 1, 120). 
+e(558, 269, 305, 1, 120). 
+e(559, 343, 305, 1, 121). 
+e(560, 345, 303, 1, 121). 
+e(561, 343, 245, 1, 122). 
+e(562, 345, 243, 1, 122). 
+e(563, 207, 343, 1, 123). 
+e(564, 209, 345, 1, 123). 
+e(577, 67, 205, 1, disabler(8)). 
+e(578, 68, 203, 1, disabler(8)). 
+e(574, 341, 573, 0, and(disabler(8))). 
+e(575, 573, 205, 1, and(disabler(8))). 
+e(576, 71, 573, 0, and(disabler(8))). 
+e(569, 339, 568, 0, and(disabler(8))). 
+e(570, 568, 203, 1, and(disabler(8))). 
+e(571, 71, 568, 0, and(disabler(8))). 
+e(585, 8, 199, 1, disabler(9)). 
+e(582, 203, 581, 0, and(disabler(9))). 
+e(583, 581, 199, 1, and(disabler(9))). 
+e(584, 11, 581, 0, and(disabler(9))). 
+e(592, 8, 183, 1, disabler(16)). 
+e(589, 191, 588, 0, and(disabler(16))). 
+e(590, 588, 183, 1, and(disabler(16))). 
+e(591, 11, 588, 0, and(disabler(16))). 
+e(605, 67, 193, 1, disabler(18)). 
+e(606, 68, 191, 1, disabler(18)). 
+e(602, 341, 601, 0, and(disabler(18))). 
+e(603, 601, 193, 1, and(disabler(18))). 
+e(604, 71, 601, 0, and(disabler(18))). 
+e(597, 339, 596, 0, and(disabler(18))). 
+e(598, 596, 191, 1, and(disabler(18))). 
+e(599, 71, 596, 0, and(disabler(18))). 
+e(613, 104, 275, 1, disabler(23)). 
+e(610, 215, 609, 0, and(disabler(23))). 
+e(611, 609, 275, 1, and(disabler(23))). 
+e(612, 107, 609, 0, and(disabler(23))). 
+e(626, 67, 261, 1, disabler(27)). 
+e(627, 68, 259, 1, disabler(27)). 
+e(623, 341, 622, 0, and(disabler(27))). 
+e(624, 622, 261, 1, and(disabler(27))). 
+e(625, 71, 622, 0, and(disabler(27))). 
+e(618, 339, 617, 0, and(disabler(27))). 
+e(619, 617, 259, 1, and(disabler(27))). 
+e(620, 71, 617, 0, and(disabler(27))). 
+e(640, 67, 355, 1, disabler(45)). 
+e(641, 68, 357, 1, disabler(45)). 
+e(637, 341, 636, 0, and(disabler(45))). 
+e(638, 636, 355, 1, and(disabler(45))). 
+e(639, 71, 636, 0, and(disabler(45))). 
+e(632, 339, 631, 0, and(disabler(45))). 
+e(633, 631, 357, 1, and(disabler(45))). 
+e(634, 71, 631, 0, and(disabler(45))). 
+e(648, 104, 283, 1, disabler(66)). 
+e(645, 299, 644, 0, and(disabler(66))). 
+e(646, 644, 283, 1, and(disabler(66))). 
+e(647, 107, 644, 0, and(disabler(66))). 
+e(655, 104, 223, 1, disabler(69)). 
+e(652, 287, 651, 0, and(disabler(69))). 
+e(653, 651, 223, 1, and(disabler(69))). 
+e(654, 107, 651, 0, and(disabler(69))). 
+e(662, 80, 315, 1, disabler(96)). 
+e(659, 319, 658, 0, and(disabler(96))). 
+e(660, 658, 315, 1, and(disabler(96))). 
+e(661, 83, 658, 0, and(disabler(96))). 
+e(669, 104, 327, 1, disabler(99)). 
+e(666, 331, 665, 0, and(disabler(99))). 
+e(667, 665, 327, 1, and(disabler(99))). 
+e(668, 107, 665, 0, and(disabler(99))). 
+e(670, 185, 674, 0, steadies). 
+e(671, 253, 674, 0, steadies). 
+e(672, 674, 360, 1, steadies). 
+e(675, 185, 679, 0, steadies). 
+e(676, 269, 679, 0, steadies). 
+e(677, 679, 360, 1, steadies). 
+e(680, 185, 684, 0, steadies). 
+e(681, 309, 684, 0, steadies). 
+e(682, 684, 360, 1, steadies). 
+e(685, 251, 689, 0, steadies). 
+e(686, 183, 689, 0, steadies). 
+e(687, 689, 360, 1, steadies). 
+e(690, 251, 694, 0, steadies). 
+e(691, 269, 694, 0, steadies). 
+e(692, 694, 360, 1, steadies). 
+e(695, 251, 699, 0, steadies). 
+e(696, 309, 699, 0, steadies). 
+e(697, 699, 360, 1, steadies). 
+e(700, 267, 704, 0, steadies). 
+e(701, 183, 704, 0, steadies). 
+e(702, 704, 360, 1, steadies). 
+e(705, 267, 709, 0, steadies). 
+e(706, 253, 709, 0, steadies). 
+e(707, 709, 360, 1, steadies). 
+e(710, 267, 714, 0, steadies). 
+e(711, 309, 714, 0, steadies). 
+e(712, 714, 360, 1, steadies). 
+e(715, 307, 719, 0, steadies). 
+e(716, 183, 719, 0, steadies). 
+e(717, 719, 360, 1, steadies). 
+e(720, 307, 724, 0, steadies). 
+e(721, 253, 724, 0, steadies). 
+e(722, 724, 360, 1, steadies). 
+e(725, 307, 729, 0, steadies). 
+e(726, 269, 729, 0, steadies). 
+e(727, 729, 360, 1, steadies). 
+e(730, 281, 734, 0, steadies). 
+e(731, 265, 734, 0, steadies). 
+e(732, 734, 356, 1, steadies). 
+e(735, 281, 739, 0, steadies). 
+e(736, 307, 739, 0, steadies). 
+e(737, 739, 356, 1, steadies). 
+e(740, 281, 744, 0, steadies). 
+e(741, 185, 744, 0, steadies). 
+e(742, 744, 356, 1, steadies). 
+e(745, 281, 749, 0, steadies). 
+e(746, 253, 749, 0, steadies). 
+e(747, 749, 356, 1, steadies). 
+e(750, 281, 754, 0, steadies). 
+e(751, 68, 754, 0, steadies). 
+e(752, 754, 356, 1, steadies). 
+e(755, 281, 759, 0, steadies). 
+e(756, 631, 759, 0, steadies). 
+e(757, 759, 356, 1, steadies). 
+e(760, 263, 764, 0, steadies). 
+e(761, 279, 764, 0, steadies). 
+e(762, 764, 356, 1, steadies). 
+e(765, 263, 769, 0, steadies). 
+e(766, 307, 769, 0, steadies). 
+e(767, 769, 356, 1, steadies). 
+e(770, 263, 774, 0, steadies). 
+e(771, 185, 774, 0, steadies). 
+e(772, 774, 356, 1, steadies). 
+e(775, 263, 779, 0, steadies). 
+e(776, 253, 779, 0, steadies). 
+e(777, 779, 356, 1, steadies). 
+e(780, 263, 784, 0, steadies). 
+e(781, 68, 784, 0, steadies). 
+e(782, 784, 356, 1, steadies). 
+e(785, 263, 789, 0, steadies). 
+e(786, 631, 789, 0, steadies). 
+e(787, 789, 356, 1, steadies). 
+e(790, 309, 794, 0, steadies). 
+e(791, 279, 794, 0, steadies). 
+e(792, 794, 356, 1, steadies). 
+e(795, 309, 799, 0, steadies). 
+e(796, 265, 799, 0, steadies). 
+e(797, 799, 356, 1, steadies). 
+e(800, 309, 804, 0, steadies). 
+e(801, 185, 804, 0, steadies). 
+e(802, 804, 356, 1, steadies). 
+e(805, 309, 809, 0, steadies). 
+e(806, 253, 809, 0, steadies). 
+e(807, 809, 356, 1, steadies). 
+e(810, 309, 814, 0, steadies). 
+e(811, 68, 814, 0, steadies). 
+e(812, 814, 356, 1, steadies). 
+e(815, 309, 819, 0, steadies). 
+e(816, 631, 819, 0, steadies). 
+e(817, 819, 356, 1, steadies). 
+e(820, 183, 824, 0, steadies). 
+e(821, 279, 824, 0, steadies). 
+e(822, 824, 356, 1, steadies). 
+e(825, 183, 829, 0, steadies). 
+e(826, 265, 829, 0, steadies). 
+e(827, 829, 356, 1, steadies). 
+e(830, 183, 834, 0, steadies). 
+e(831, 307, 834, 0, steadies). 
+e(832, 834, 356, 1, steadies). 
+e(835, 183, 839, 0, steadies). 
+e(836, 253, 839, 0, steadies). 
+e(837, 839, 356, 1, steadies). 
+e(840, 183, 844, 0, steadies). 
+e(841, 68, 844, 0, steadies). 
+e(842, 844, 356, 1, steadies). 
+e(845, 183, 849, 0, steadies). 
+e(846, 631, 849, 0, steadies). 
+e(847, 849, 356, 1, steadies). 
+e(850, 251, 854, 0, steadies). 
+e(851, 279, 854, 0, steadies). 
+e(852, 854, 356, 1, steadies). 
+e(855, 251, 859, 0, steadies). 
+e(856, 265, 859, 0, steadies). 
+e(857, 859, 356, 1, steadies). 
+e(860, 251, 864, 0, steadies). 
+e(861, 307, 864, 0, steadies). 
+e(862, 864, 356, 1, steadies). 
+e(865, 251, 869, 0, steadies). 
+e(866, 185, 869, 0, steadies). 
+e(867, 869, 356, 1, steadies). 
+e(870, 251, 874, 0, steadies). 
+e(871, 68, 874, 0, steadies). 
+e(872, 874, 356, 1, steadies). 
+e(875, 251, 879, 0, steadies). 
+e(876, 631, 879, 0, steadies). 
+e(877, 879, 356, 1, steadies). 
+e(880, 67, 884, 0, steadies). 
+e(881, 279, 884, 0, steadies). 
+e(882, 884, 356, 1, steadies). 
+e(885, 67, 889, 0, steadies). 
+e(886, 265, 889, 0, steadies). 
+e(887, 889, 356, 1, steadies). 
+e(890, 67, 894, 0, steadies). 
+e(891, 307, 894, 0, steadies). 
+e(892, 894, 356, 1, steadies). 
+e(895, 67, 899, 0, steadies). 
+e(896, 185, 899, 0, steadies). 
+e(897, 899, 356, 1, steadies). 
+e(900, 67, 904, 0, steadies). 
+e(901, 253, 904, 0, steadies). 
+e(902, 904, 356, 1, steadies). 
+e(905, 67, 909, 0, steadies). 
+e(906, 631, 909, 0, steadies). 
+e(907, 909, 356, 1, steadies). 
+e(910, 636, 914, 0, steadies). 
+e(911, 279, 914, 0, steadies). 
+e(912, 914, 356, 1, steadies). 
+e(915, 636, 919, 0, steadies). 
+e(916, 265, 919, 0, steadies). 
+e(917, 919, 356, 1, steadies). 
+e(920, 636, 924, 0, steadies). 
+e(921, 307, 924, 0, steadies). 
+e(922, 924, 356, 1, steadies). 
+e(925, 636, 929, 0, steadies). 
+e(926, 185, 929, 0, steadies). 
+e(927, 929, 356, 1, steadies). 
+e(930, 636, 934, 0, steadies). 
+e(931, 253, 934, 0, steadies). 
+e(932, 934, 356, 1, steadies). 
+e(935, 636, 939, 0, steadies). 
+e(936, 68, 939, 0, steadies). 
+e(937, 939, 356, 1, steadies). 
+e(940, 636, 944, 0, steadies). 
+e(941, 631, 944, 0, steadies). 
+e(942, 944, 356, 1, steadies). 
+e(945, 267, 949, 0, steadies). 
+e(946, 281, 949, 0, steadies). 
+e(947, 949, 352, 1, steadies). 
+e(950, 279, 954, 0, steadies). 
+e(951, 269, 954, 0, steadies). 
+e(952, 954, 352, 1, steadies). 
+e(955, 223, 959, 0, steadies). 
+e(956, 307, 959, 0, steadies). 
+e(957, 959, 340, 1, steadies). 
+e(960, 309, 964, 0, steadies). 
+e(961, 225, 964, 0, steadies). 
+e(962, 964, 340, 1, steadies). 
+e(965, 347, 969, 0, steadies). 
+e(966, 329, 969, 0, steadies). 
+e(967, 969, 336, 1, steadies). 
+e(970, 347, 974, 0, steadies). 
+e(971, 309, 974, 0, steadies). 
+e(972, 974, 336, 1, steadies). 
+e(975, 347, 979, 0, steadies). 
+e(976, 109, 979, 0, steadies). 
+e(977, 979, 336, 1, steadies). 
+e(980, 327, 984, 0, steadies). 
+e(981, 349, 984, 0, steadies). 
+e(982, 984, 336, 1, steadies). 
+e(985, 327, 989, 0, steadies). 
+e(986, 309, 989, 0, steadies). 
+e(987, 989, 336, 1, steadies). 
+e(990, 327, 994, 0, steadies). 
+e(991, 109, 994, 0, steadies). 
+e(992, 994, 336, 1, steadies). 
+e(995, 307, 999, 0, steadies). 
+e(996, 349, 999, 0, steadies). 
+e(997, 999, 336, 1, steadies). 
+e(1000, 307, 1004, 0, steadies). 
+e(1001, 329, 1004, 0, steadies). 
+e(1002, 1004, 336, 1, steadies). 
+e(1005, 307, 1009, 0, steadies). 
+e(1006, 109, 1009, 0, steadies). 
+e(1007, 1009, 336, 1, steadies). 
+e(1010, 110, 1014, 0, steadies). 
+e(1011, 349, 1014, 0, steadies). 
+e(1012, 1014, 336, 1, steadies). 
+e(1015, 110, 1019, 0, steadies). 
+e(1016, 329, 1019, 0, steadies). 
+e(1017, 1019, 336, 1, steadies). 
+e(1020, 110, 1024, 0, steadies). 
+e(1021, 309, 1024, 0, steadies). 
+e(1022, 1024, 336, 1, steadies). 
+e(1025, 273, 1029, 0, steadies). 
+e(1026, 347, 1029, 0, steadies). 
+e(1027, 1029, 332, 1, steadies). 
+e(1030, 273, 1034, 0, steadies). 
+e(1031, 177, 1034, 0, steadies). 
+e(1032, 1034, 332, 1, steadies). 
+e(1035, 273, 1039, 0, steadies). 
+e(1036, 281, 1039, 0, steadies). 
+e(1037, 1039, 332, 1, steadies). 
+e(1040, 273, 1044, 0, steadies). 
+e(1041, 309, 1044, 0, steadies). 
+e(1042, 1044, 332, 1, steadies). 
+e(1045, 273, 1049, 0, steadies). 
+e(1046, 103, 1049, 0, steadies). 
+e(1047, 1049, 332, 1, steadies). 
+e(1050, 349, 1054, 0, steadies). 
+e(1051, 271, 1054, 0, steadies). 
+e(1052, 1054, 332, 1, steadies). 
+e(1055, 349, 1059, 0, steadies). 
+e(1056, 177, 1059, 0, steadies). 
+e(1057, 1059, 332, 1, steadies). 
+e(1060, 349, 1064, 0, steadies). 
+e(1061, 281, 1064, 0, steadies). 
+e(1062, 1064, 332, 1, steadies). 
+e(1065, 349, 1069, 0, steadies). 
+e(1066, 309, 1069, 0, steadies). 
+e(1067, 1069, 332, 1, steadies). 
+e(1070, 349, 1074, 0, steadies). 
+e(1071, 103, 1074, 0, steadies). 
+e(1072, 1074, 332, 1, steadies). 
+e(1075, 175, 1079, 0, steadies). 
+e(1076, 271, 1079, 0, steadies). 
+e(1077, 1079, 332, 1, steadies). 
+e(1080, 175, 1084, 0, steadies). 
+e(1081, 347, 1084, 0, steadies). 
+e(1082, 1084, 332, 1, steadies). 
+e(1085, 175, 1089, 0, steadies). 
+e(1086, 281, 1089, 0, steadies). 
+e(1087, 1089, 332, 1, steadies). 
+e(1090, 175, 1094, 0, steadies). 
+e(1091, 309, 1094, 0, steadies). 
+e(1092, 1094, 332, 1, steadies). 
+e(1095, 175, 1099, 0, steadies). 
+e(1096, 103, 1099, 0, steadies). 
+e(1097, 1099, 332, 1, steadies). 
+e(1100, 279, 1104, 0, steadies). 
+e(1101, 271, 1104, 0, steadies). 
+e(1102, 1104, 332, 1, steadies). 
+e(1105, 279, 1109, 0, steadies). 
+e(1106, 347, 1109, 0, steadies). 
+e(1107, 1109, 332, 1, steadies). 
+e(1110, 279, 1114, 0, steadies). 
+e(1111, 177, 1114, 0, steadies). 
+e(1112, 1114, 332, 1, steadies). 
+e(1115, 279, 1119, 0, steadies). 
+e(1116, 309, 1119, 0, steadies). 
+e(1117, 1119, 332, 1, steadies). 
+e(1120, 279, 1124, 0, steadies). 
+e(1121, 103, 1124, 0, steadies). 
+e(1122, 1124, 332, 1, steadies). 
+e(1125, 307, 1129, 0, steadies). 
+e(1126, 271, 1129, 0, steadies). 
+e(1127, 1129, 332, 1, steadies). 
+e(1130, 307, 1134, 0, steadies). 
+e(1131, 347, 1134, 0, steadies). 
+e(1132, 1134, 332, 1, steadies). 
+e(1135, 307, 1139, 0, steadies). 
+e(1136, 177, 1139, 0, steadies). 
+e(1137, 1139, 332, 1, steadies). 
+e(1140, 307, 1144, 0, steadies). 
+e(1141, 281, 1144, 0, steadies). 
+e(1142, 1144, 332, 1, steadies). 
+e(1145, 307, 1149, 0, steadies). 
+e(1146, 103, 1149, 0, steadies). 
+e(1147, 1149, 332, 1, steadies). 
+e(1150, 104, 1154, 0, steadies). 
+e(1151, 271, 1154, 0, steadies). 
+e(1152, 1154, 332, 1, steadies). 
+e(1155, 104, 1159, 0, steadies). 
+e(1156, 347, 1159, 0, steadies). 
+e(1157, 1159, 332, 1, steadies). 
+e(1160, 104, 1164, 0, steadies). 
+e(1161, 177, 1164, 0, steadies). 
+e(1162, 1164, 332, 1, steadies). 
+e(1165, 104, 1169, 0, steadies). 
+e(1166, 281, 1169, 0, steadies). 
+e(1167, 1169, 332, 1, steadies). 
+e(1170, 104, 1174, 0, steadies). 
+e(1171, 309, 1174, 0, steadies). 
+e(1172, 1174, 332, 1, steadies). 
+e(1175, 104, 1179, 0, steadies). 
+e(1176, 335, 1179, 0, steadies). 
+e(1177, 1179, 328, 1, steadies). 
+e(1180, 665, 1184, 0, steadies). 
+e(1181, 335, 1184, 0, steadies). 
+e(1182, 1184, 328, 1, steadies). 
+e(1185, 227, 1189, 0, steadies). 
+e(1186, 175, 1189, 0, steadies). 
+e(1187, 1189, 324, 1, steadies). 
+e(1190, 177, 1194, 0, steadies). 
+e(1191, 229, 1194, 0, steadies). 
+e(1192, 1194, 324, 1, steadies). 
+e(1195, 213, 1199, 0, steadies). 
+e(1196, 319, 1199, 0, steadies). 
+e(1197, 1199, 312, 1, steadies). 
+e(1200, 279, 1204, 0, steadies). 
+e(1201, 229, 1204, 0, steadies). 
+e(1202, 1204, 308, 1, steadies). 
+e(1205, 279, 1209, 0, steadies). 
+e(1206, 339, 1209, 0, steadies). 
+e(1207, 1209, 308, 1, steadies). 
+e(1210, 227, 1214, 0, steadies). 
+e(1211, 281, 1214, 0, steadies). 
+e(1212, 1214, 308, 1, steadies). 
+e(1215, 227, 1219, 0, steadies). 
+e(1216, 339, 1219, 0, steadies). 
+e(1217, 1219, 308, 1, steadies). 
+e(1220, 341, 1224, 0, steadies). 
+e(1221, 281, 1224, 0, steadies). 
+e(1222, 1224, 308, 1, steadies). 
+e(1225, 341, 1229, 0, steadies). 
+e(1226, 229, 1229, 0, steadies). 
+e(1227, 1229, 308, 1, steadies). 
+e(1230, 249, 1234, 0, steadies). 
+e(1231, 243, 1234, 0, steadies). 
+e(1232, 1234, 304, 1, steadies). 
+e(1235, 249, 1239, 0, steadies). 
+e(1236, 269, 1239, 0, steadies). 
+e(1237, 1239, 304, 1, steadies). 
+e(1240, 249, 1244, 0, steadies). 
+e(1241, 343, 1244, 0, steadies). 
+e(1242, 1244, 304, 1, steadies). 
+e(1245, 267, 1249, 0, steadies). 
+e(1246, 243, 1249, 0, steadies). 
+e(1247, 1249, 304, 1, steadies). 
+e(1250, 267, 1254, 0, steadies). 
+e(1251, 247, 1254, 0, steadies). 
+e(1252, 1254, 304, 1, steadies). 
+e(1255, 267, 1259, 0, steadies). 
+e(1256, 343, 1259, 0, steadies). 
+e(1257, 1259, 304, 1, steadies). 
+e(1260, 345, 1264, 0, steadies). 
+e(1261, 243, 1264, 0, steadies). 
+e(1262, 1264, 304, 1, steadies). 
+e(1265, 345, 1269, 0, steadies). 
+e(1266, 247, 1269, 0, steadies). 
+e(1267, 1269, 304, 1, steadies). 
+e(1270, 345, 1274, 0, steadies). 
+e(1271, 269, 1274, 0, steadies). 
+e(1272, 1274, 304, 1, steadies). 
+e(1275, 295, 1279, 0, steadies). 
+e(1276, 273, 1279, 0, steadies). 
+e(1277, 1279, 300, 1, steadies). 
+e(1280, 295, 1284, 0, steadies). 
+e(1281, 279, 1284, 0, steadies). 
+e(1282, 1284, 300, 1, steadies). 
+e(1285, 295, 1289, 0, steadies). 
+e(1286, 158, 1289, 0, steadies). 
+e(1287, 1289, 300, 1, steadies). 
+e(1290, 271, 1294, 0, steadies). 
+e(1291, 297, 1294, 0, steadies). 
+e(1292, 1294, 300, 1, steadies). 
+e(1295, 271, 1299, 0, steadies). 
+e(1296, 279, 1299, 0, steadies). 
+e(1297, 1299, 300, 1, steadies). 
+e(1300, 271, 1304, 0, steadies). 
+e(1301, 158, 1304, 0, steadies). 
+e(1302, 1304, 300, 1, steadies). 
+e(1305, 281, 1309, 0, steadies). 
+e(1306, 297, 1309, 0, steadies). 
+e(1307, 1309, 300, 1, steadies). 
+e(1310, 281, 1314, 0, steadies). 
+e(1311, 273, 1314, 0, steadies). 
+e(1312, 1314, 300, 1, steadies). 
+e(1315, 281, 1319, 0, steadies). 
+e(1316, 158, 1319, 0, steadies). 
+e(1317, 1319, 300, 1, steadies). 
+e(1320, 157, 1324, 0, steadies). 
+e(1321, 297, 1324, 0, steadies). 
+e(1322, 1324, 300, 1, steadies). 
+e(1325, 157, 1329, 0, steadies). 
+e(1326, 273, 1329, 0, steadies). 
+e(1327, 1329, 300, 1, steadies). 
+e(1330, 157, 1334, 0, steadies). 
+e(1331, 279, 1334, 0, steadies). 
+e(1332, 1334, 300, 1, steadies). 
+e(1335, 121, 1339, 0, steadies). 
+e(1336, 263, 1339, 0, steadies). 
+e(1337, 1339, 296, 1, steadies). 
+e(1340, 121, 1344, 0, steadies). 
+e(1341, 175, 1344, 0, steadies). 
+e(1342, 1344, 296, 1, steadies). 
+e(1345, 121, 1349, 0, steadies). 
+e(1346, 49, 1349, 0, steadies). 
+e(1347, 1349, 296, 1, steadies). 
+e(1350, 121, 1354, 0, steadies). 
+e(1351, 19, 1354, 0, steadies). 
+e(1352, 1354, 296, 1, steadies). 
+e(1355, 265, 1359, 0, steadies). 
+e(1356, 122, 1359, 0, steadies). 
+e(1357, 1359, 296, 1, steadies). 
+e(1360, 265, 1364, 0, steadies). 
+e(1361, 175, 1364, 0, steadies). 
+e(1362, 1364, 296, 1, steadies). 
+e(1365, 265, 1369, 0, steadies). 
+e(1366, 49, 1369, 0, steadies). 
+e(1367, 1369, 296, 1, steadies). 
+e(1370, 265, 1374, 0, steadies). 
+e(1371, 19, 1374, 0, steadies). 
+e(1372, 1374, 296, 1, steadies). 
+e(1375, 177, 1379, 0, steadies). 
+e(1376, 122, 1379, 0, steadies). 
+e(1377, 1379, 296, 1, steadies). 
+e(1380, 177, 1384, 0, steadies). 
+e(1381, 263, 1384, 0, steadies). 
+e(1382, 1384, 296, 1, steadies). 
+e(1385, 177, 1389, 0, steadies). 
+e(1386, 49, 1389, 0, steadies). 
+e(1387, 1389, 296, 1, steadies). 
+e(1390, 177, 1394, 0, steadies). 
+e(1391, 19, 1394, 0, steadies). 
+e(1392, 1394, 296, 1, steadies). 
+e(1395, 50, 1399, 0, steadies). 
+e(1396, 122, 1399, 0, steadies). 
+e(1397, 1399, 296, 1, steadies). 
+e(1400, 50, 1404, 0, steadies). 
+e(1401, 263, 1404, 0, steadies). 
+e(1402, 1404, 296, 1, steadies). 
+e(1405, 50, 1409, 0, steadies). 
+e(1406, 175, 1409, 0, steadies). 
+e(1407, 1409, 296, 1, steadies). 
+e(1410, 50, 1414, 0, steadies). 
+e(1411, 19, 1414, 0, steadies). 
+e(1412, 1414, 296, 1, steadies). 
+e(1415, 20, 1419, 0, steadies). 
+e(1416, 122, 1419, 0, steadies). 
+e(1417, 1419, 296, 1, steadies). 
+e(1420, 20, 1424, 0, steadies). 
+e(1421, 263, 1424, 0, steadies). 
+e(1422, 1424, 296, 1, steadies). 
+e(1425, 20, 1429, 0, steadies). 
+e(1426, 175, 1429, 0, steadies). 
+e(1427, 1429, 296, 1, steadies). 
+e(1430, 20, 1434, 0, steadies). 
+e(1431, 49, 1434, 0, steadies). 
+e(1432, 1434, 296, 1, steadies). 
+e(1435, 295, 1439, 0, steadies). 
+e(1436, 285, 1439, 0, steadies). 
+e(1437, 1439, 288, 1, steadies). 
+e(1440, 295, 1444, 0, steadies). 
+e(1441, 171, 1444, 0, steadies). 
+e(1442, 1444, 288, 1, steadies). 
+e(1445, 295, 1449, 0, steadies). 
+e(1446, 109, 1449, 0, steadies). 
+e(1447, 1449, 288, 1, steadies). 
+e(1450, 283, 1454, 0, steadies). 
+e(1451, 297, 1454, 0, steadies). 
+e(1452, 1454, 288, 1, steadies). 
+e(1455, 283, 1459, 0, steadies). 
+e(1456, 171, 1459, 0, steadies). 
+e(1457, 1459, 288, 1, steadies). 
+e(1460, 283, 1464, 0, steadies). 
+e(1461, 109, 1464, 0, steadies). 
+e(1462, 1464, 288, 1, steadies). 
+e(1465, 173, 1469, 0, steadies). 
+e(1466, 297, 1469, 0, steadies). 
+e(1467, 1469, 288, 1, steadies). 
+e(1470, 173, 1474, 0, steadies). 
+e(1471, 285, 1474, 0, steadies). 
+e(1472, 1474, 288, 1, steadies). 
+e(1475, 173, 1479, 0, steadies). 
+e(1476, 109, 1479, 0, steadies). 
+e(1477, 1479, 288, 1, steadies). 
+e(1480, 110, 1484, 0, steadies). 
+e(1481, 297, 1484, 0, steadies). 
+e(1482, 1484, 288, 1, steadies). 
+e(1485, 110, 1489, 0, steadies). 
+e(1486, 285, 1489, 0, steadies). 
+e(1487, 1489, 288, 1, steadies). 
+e(1490, 110, 1494, 0, steadies). 
+e(1491, 171, 1494, 0, steadies). 
+e(1492, 1494, 288, 1, steadies). 
+e(1495, 104, 1499, 0, steadies). 
+e(1496, 287, 1499, 0, steadies). 
+e(1497, 1499, 284, 1, steadies). 
+e(1500, 104, 1504, 0, steadies). 
+e(1501, 291, 1504, 0, steadies). 
+e(1502, 1504, 284, 1, steadies). 
+e(1505, 644, 1509, 0, steadies). 
+e(1506, 287, 1509, 0, steadies). 
+e(1507, 1509, 284, 1, steadies). 
+e(1510, 644, 1514, 0, steadies). 
+e(1511, 291, 1514, 0, steadies). 
+e(1512, 1514, 284, 1, steadies). 
+e(1515, 239, 1519, 0, steadies). 
+e(1516, 363, 1519, 0, steadies). 
+e(1517, 1519, 280, 1, steadies). 
+e(1520, 239, 1524, 0, steadies). 
+e(1521, 98, 1524, 0, steadies). 
+e(1522, 1524, 280, 1, steadies). 
+e(1525, 239, 1529, 0, steadies). 
+e(1526, 86, 1529, 0, steadies). 
+e(1527, 1529, 280, 1, steadies). 
+e(1530, 239, 1534, 0, steadies). 
+e(1531, 92, 1534, 0, steadies). 
+e(1532, 1534, 280, 1, steadies). 
+e(1535, 239, 1539, 0, steadies). 
+e(1536, 32, 1539, 0, steadies). 
+e(1537, 1539, 280, 1, steadies). 
+e(1540, 97, 1544, 0, steadies). 
+e(1541, 363, 1544, 0, steadies). 
+e(1542, 1544, 280, 1, steadies). 
+e(1545, 97, 1549, 0, steadies). 
+e(1546, 86, 1549, 0, steadies). 
+e(1547, 1549, 280, 1, steadies). 
+e(1550, 97, 1554, 0, steadies). 
+e(1551, 92, 1554, 0, steadies). 
+e(1552, 1554, 280, 1, steadies). 
+e(1555, 97, 1559, 0, steadies). 
+e(1556, 32, 1559, 0, steadies). 
+e(1557, 1559, 280, 1, steadies). 
+e(1560, 85, 1564, 0, steadies). 
+e(1561, 363, 1564, 0, steadies). 
+e(1562, 1564, 280, 1, steadies). 
+e(1565, 85, 1569, 0, steadies). 
+e(1566, 98, 1569, 0, steadies). 
+e(1567, 1569, 280, 1, steadies). 
+e(1570, 85, 1574, 0, steadies). 
+e(1571, 92, 1574, 0, steadies). 
+e(1572, 1574, 280, 1, steadies). 
+e(1575, 85, 1579, 0, steadies). 
+e(1576, 32, 1579, 0, steadies). 
+e(1577, 1579, 280, 1, steadies). 
+e(1580, 91, 1584, 0, steadies). 
+e(1581, 363, 1584, 0, steadies). 
+e(1582, 1584, 280, 1, steadies). 
+e(1585, 91, 1589, 0, steadies). 
+e(1586, 98, 1589, 0, steadies). 
+e(1587, 1589, 280, 1, steadies). 
+e(1590, 91, 1594, 0, steadies). 
+e(1591, 86, 1594, 0, steadies). 
+e(1592, 1594, 280, 1, steadies). 
+e(1595, 91, 1599, 0, steadies). 
+e(1596, 32, 1599, 0, steadies). 
+e(1597, 1599, 280, 1, steadies). 
+e(1600, 31, 1604, 0, steadies). 
+e(1601, 363, 1604, 0, steadies). 
+e(1602, 1604, 280, 1, steadies). 
+e(1605, 31, 1609, 0, steadies). 
+e(1606, 98, 1609, 0, steadies). 
+e(1607, 1609, 280, 1, steadies). 
+e(1610, 31, 1614, 0, steadies). 
+e(1611, 86, 1614, 0, steadies). 
+e(1612, 1614, 280, 1, steadies). 
+e(1615, 31, 1619, 0, steadies). 
+e(1616, 92, 1619, 0, steadies). 
+e(1617, 1619, 280, 1, steadies). 
+e(1620, 25, 1624, 0, steadies). 
+e(1621, 179, 1624, 0, steadies). 
+e(1622, 1624, 268, 1, steadies). 
+e(1625, 25, 1629, 0, steadies). 
+e(1626, 367, 1629, 0, steadies). 
+e(1627, 1629, 268, 1, steadies). 
+e(1630, 231, 1634, 0, steadies). 
+e(1631, 26, 1634, 0, steadies). 
+e(1632, 1634, 268, 1, steadies). 
+e(1635, 231, 1639, 0, steadies). 
+e(1636, 179, 1639, 0, steadies). 
+e(1637, 1639, 268, 1, steadies). 
+e(1640, 231, 1644, 0, steadies). 
+e(1641, 367, 1644, 0, steadies). 
+e(1642, 1644, 268, 1, steadies). 
+e(1645, 235, 1649, 0, steadies). 
+e(1646, 26, 1649, 0, steadies). 
+e(1647, 1649, 268, 1, steadies). 
+e(1650, 235, 1654, 0, steadies). 
+e(1651, 179, 1654, 0, steadies). 
+e(1652, 1654, 268, 1, steadies). 
+e(1655, 235, 1659, 0, steadies). 
+e(1656, 367, 1659, 0, steadies). 
+e(1657, 1659, 268, 1, steadies). 
+e(1660, 195, 1664, 0, steadies). 
+e(1661, 44, 1664, 0, steadies). 
+e(1662, 1664, 264, 1, steadies). 
+e(1665, 195, 1669, 0, steadies). 
+e(1666, 2, 1669, 0, steadies). 
+e(1667, 1669, 264, 1, steadies). 
+e(1670, 195, 1674, 0, steadies). 
+e(1671, 14, 1674, 0, steadies). 
+e(1672, 1674, 264, 1, steadies). 
+e(1675, 43, 1679, 0, steadies). 
+e(1676, 2, 1679, 0, steadies). 
+e(1677, 1679, 264, 1, steadies). 
+e(1680, 43, 1684, 0, steadies). 
+e(1681, 14, 1684, 0, steadies). 
+e(1682, 1684, 264, 1, steadies). 
+e(1685, 1, 1689, 0, steadies). 
+e(1686, 44, 1689, 0, steadies). 
+e(1687, 1689, 264, 1, steadies). 
+e(1690, 1, 1694, 0, steadies). 
+e(1691, 14, 1694, 0, steadies). 
+e(1692, 1694, 264, 1, steadies). 
+e(1695, 13, 1699, 0, steadies). 
+e(1696, 44, 1699, 0, steadies). 
+e(1697, 1699, 264, 1, steadies). 
+e(1700, 13, 1704, 0, steadies). 
+e(1701, 2, 1704, 0, steadies). 
+e(1702, 1704, 264, 1, steadies). 
+e(1705, 269, 1709, 0, steadies). 
+e(1706, 279, 1709, 0, steadies). 
+e(1707, 1709, 260, 1, steadies). 
+e(1710, 269, 1714, 0, steadies). 
+e(1711, 67, 1714, 0, steadies). 
+e(1712, 1714, 260, 1, steadies). 
+e(1715, 269, 1719, 0, steadies). 
+e(1716, 622, 1719, 0, steadies). 
+e(1717, 1719, 260, 1, steadies). 
+e(1720, 281, 1724, 0, steadies). 
+e(1721, 267, 1724, 0, steadies). 
+e(1722, 1724, 260, 1, steadies). 
+e(1725, 281, 1729, 0, steadies). 
+e(1726, 67, 1729, 0, steadies). 
+e(1727, 1729, 260, 1, steadies). 
+e(1730, 281, 1734, 0, steadies). 
+e(1731, 622, 1734, 0, steadies). 
+e(1732, 1734, 260, 1, steadies). 
+e(1735, 68, 1739, 0, steadies). 
+e(1736, 267, 1739, 0, steadies). 
+e(1737, 1739, 260, 1, steadies). 
+e(1740, 68, 1744, 0, steadies). 
+e(1741, 279, 1744, 0, steadies). 
+e(1742, 1744, 260, 1, steadies). 
+e(1745, 68, 1749, 0, steadies). 
+e(1746, 622, 1749, 0, steadies). 
+e(1747, 1749, 260, 1, steadies). 
+e(1750, 617, 1754, 0, steadies). 
+e(1751, 267, 1754, 0, steadies). 
+e(1752, 1754, 260, 1, steadies). 
+e(1755, 617, 1759, 0, steadies). 
+e(1756, 279, 1759, 0, steadies). 
+e(1757, 1759, 260, 1, steadies). 
+e(1760, 617, 1764, 0, steadies). 
+e(1761, 67, 1764, 0, steadies). 
+e(1762, 1764, 260, 1, steadies). 
+e(1765, 617, 1769, 0, steadies). 
+e(1766, 622, 1769, 0, steadies). 
+e(1767, 1769, 260, 1, steadies). 
+e(1770, 259, 1774, 0, steadies). 
+e(1771, 255, 1774, 0, steadies). 
+e(1772, 1774, 252, 1, steadies). 
+e(1775, 247, 1779, 0, steadies). 
+e(1776, 269, 1779, 0, steadies). 
+e(1777, 1779, 244, 1, steadies). 
+e(1780, 247, 1784, 0, steadies). 
+e(1781, 343, 1784, 0, steadies). 
+e(1782, 1784, 244, 1, steadies). 
+e(1785, 267, 1789, 0, steadies). 
+e(1786, 249, 1789, 0, steadies). 
+e(1787, 1789, 244, 1, steadies). 
+e(1790, 267, 1794, 0, steadies). 
+e(1791, 343, 1794, 0, steadies). 
+e(1792, 1794, 244, 1, steadies). 
+e(1795, 345, 1799, 0, steadies). 
+e(1796, 249, 1799, 0, steadies). 
+e(1797, 1799, 244, 1, steadies). 
+e(1800, 345, 1804, 0, steadies). 
+e(1801, 269, 1804, 0, steadies). 
+e(1802, 1804, 244, 1, steadies). 
+e(1805, 359, 1809, 0, steadies). 
+e(1806, 134, 1809, 0, steadies). 
+e(1807, 1809, 240, 1, steadies). 
+e(1810, 359, 1814, 0, steadies). 
+e(1811, 140, 1814, 0, steadies). 
+e(1812, 1814, 240, 1, steadies). 
+e(1815, 359, 1819, 0, steadies). 
+e(1816, 146, 1819, 0, steadies). 
+e(1817, 1819, 240, 1, steadies). 
+e(1820, 359, 1824, 0, steadies). 
+e(1821, 38, 1824, 0, steadies). 
+e(1822, 1824, 240, 1, steadies). 
+e(1825, 133, 1829, 0, steadies). 
+e(1826, 361, 1829, 0, steadies). 
+e(1827, 1829, 240, 1, steadies). 
+e(1830, 133, 1834, 0, steadies). 
+e(1831, 140, 1834, 0, steadies). 
+e(1832, 1834, 240, 1, steadies). 
+e(1835, 133, 1839, 0, steadies). 
+e(1836, 146, 1839, 0, steadies). 
+e(1837, 1839, 240, 1, steadies). 
+e(1840, 133, 1844, 0, steadies). 
+e(1841, 38, 1844, 0, steadies). 
+e(1842, 1844, 240, 1, steadies). 
+e(1845, 139, 1849, 0, steadies). 
+e(1846, 361, 1849, 0, steadies). 
+e(1847, 1849, 240, 1, steadies). 
+e(1850, 139, 1854, 0, steadies). 
+e(1851, 134, 1854, 0, steadies). 
+e(1852, 1854, 240, 1, steadies). 
+e(1855, 139, 1859, 0, steadies). 
+e(1856, 146, 1859, 0, steadies). 
+e(1857, 1859, 240, 1, steadies). 
+e(1860, 139, 1864, 0, steadies). 
+e(1861, 38, 1864, 0, steadies). 
+e(1862, 1864, 240, 1, steadies). 
+e(1865, 145, 1869, 0, steadies). 
+e(1866, 361, 1869, 0, steadies). 
+e(1867, 1869, 240, 1, steadies). 
+e(1870, 145, 1874, 0, steadies). 
+e(1871, 134, 1874, 0, steadies). 
+e(1872, 1874, 240, 1, steadies). 
+e(1875, 145, 1879, 0, steadies). 
+e(1876, 140, 1879, 0, steadies). 
+e(1877, 1879, 240, 1, steadies). 
+e(1880, 145, 1884, 0, steadies). 
+e(1881, 38, 1884, 0, steadies). 
+e(1882, 1884, 240, 1, steadies). 
+e(1885, 37, 1889, 0, steadies). 
+e(1886, 361, 1889, 0, steadies). 
+e(1887, 1889, 240, 1, steadies). 
+e(1890, 37, 1894, 0, steadies). 
+e(1891, 134, 1894, 0, steadies). 
+e(1892, 1894, 240, 1, steadies). 
+e(1895, 37, 1899, 0, steadies). 
+e(1896, 140, 1899, 0, steadies). 
+e(1897, 1899, 240, 1, steadies). 
+e(1900, 37, 1904, 0, steadies). 
+e(1901, 146, 1904, 0, steadies). 
+e(1902, 1904, 240, 1, steadies). 
+e(1905, 219, 1909, 0, steadies). 
+e(1906, 215, 1909, 0, steadies). 
+e(1907, 1909, 212, 1, steadies). 
+e(1910, 219, 1914, 0, steadies). 
+e(1911, 317, 1914, 0, steadies). 
+e(1912, 1914, 212, 1, steadies). 
+e(1915, 219, 1919, 0, steadies). 
+e(1916, 299, 1919, 0, steadies). 
+e(1917, 1919, 212, 1, steadies). 
+e(1920, 315, 1924, 0, steadies). 
+e(1921, 215, 1924, 0, steadies). 
+e(1922, 1924, 212, 1, steadies). 
+e(1925, 315, 1929, 0, steadies). 
+e(1926, 299, 1929, 0, steadies). 
+e(1927, 1929, 212, 1, steadies). 
+e(1930, 163, 1934, 0, steadies). 
+e(1931, 67, 1934, 0, steadies). 
+e(1932, 1934, 204, 1, steadies). 
+e(1935, 163, 1939, 0, steadies). 
+e(1936, 573, 1939, 0, steadies). 
+e(1937, 1939, 204, 1, steadies). 
+e(1940, 68, 1944, 0, steadies). 
+e(1941, 165, 1944, 0, steadies). 
+e(1942, 1944, 204, 1, steadies). 
+e(1945, 68, 1949, 0, steadies). 
+e(1946, 573, 1949, 0, steadies). 
+e(1947, 1949, 204, 1, steadies). 
+e(1950, 568, 1954, 0, steadies). 
+e(1951, 165, 1954, 0, steadies). 
+e(1952, 1954, 204, 1, steadies). 
+e(1955, 568, 1959, 0, steadies). 
+e(1956, 67, 1959, 0, steadies). 
+e(1957, 1959, 204, 1, steadies). 
+e(1960, 568, 1964, 0, steadies). 
+e(1961, 573, 1964, 0, steadies). 
+e(1962, 1964, 204, 1, steadies). 
+e(1965, 8, 1969, 0, steadies). 
+e(1966, 195, 1969, 0, steadies). 
+e(1967, 1969, 200, 1, steadies). 
+e(1970, 581, 1974, 0, steadies). 
+e(1971, 195, 1974, 0, steadies). 
+e(1972, 1974, 200, 1, steadies). 
+e(1975, 68, 1979, 0, steadies). 
+e(1976, 601, 1979, 0, steadies). 
+e(1977, 1979, 192, 1, steadies). 
+e(1980, 596, 1984, 0, steadies). 
+e(1981, 67, 1984, 0, steadies). 
+e(1982, 1984, 192, 1, steadies). 
+e(1985, 596, 1989, 0, steadies). 
+e(1986, 601, 1989, 0, steadies). 
+e(1987, 1989, 192, 1, steadies). 
+e(1990, 8, 1994, 0, steadies). 
+e(1991, 187, 1994, 0, steadies). 
+e(1992, 1994, 184, 1, steadies). 
+e(1995, 588, 1999, 0, steadies). 
+e(1996, 187, 1999, 0, steadies). 
+e(1997, 1999, 184, 1, steadies). 
+e(2000, 267, 2004, 0, steadies). 
+e(2001, 151, 2004, 0, steadies). 
+e(2002, 2004, 180, 1, steadies). 
+e(2005, 152, 2009, 0, steadies). 
+e(2006, 269, 2009, 0, steadies). 
+e(2007, 2009, 180, 1, steadies). 
+e(2010, 207, 2014, 0, steadies). 
+e(2011, 79, 2014, 0, steadies). 
+e(2012, 2014, 168, 1, steadies). 
+e(2015, 207, 2019, 0, steadies). 
+e(2016, 263, 2019, 0, steadies). 
+e(2017, 2019, 168, 1, steadies). 
+e(2020, 80, 2024, 0, steadies). 
+e(2021, 209, 2024, 0, steadies). 
+e(2022, 2024, 168, 1, steadies). 
+e(2025, 80, 2029, 0, steadies). 
+e(2026, 263, 2029, 0, steadies). 
+e(2027, 2029, 168, 1, steadies). 
+e(2030, 265, 2034, 0, steadies). 
+e(2031, 209, 2034, 0, steadies). 
+e(2032, 2034, 168, 1, steadies). 
+e(2035, 265, 2039, 0, steadies). 
+e(2036, 79, 2039, 0, steadies). 
+e(2037, 2039, 168, 1, steadies). 
+
+% v/3
+v(161, 161, or). 
+v(160, 160, or). 
+v(158, 158, or). 
+v(157, 157, or). 
+v(155, 155, or). 
+v(154, 154, or). 
+v(152, 152, or). 
+v(151, 151, or). 
+v(149, 149, or). 
+v(148, 148, or). 
+v(146, 146, or). 
+v(145, 145, or). 
+v(143, 143, or). 
+v(142, 142, or). 
+v(140, 140, or). 
+v(139, 139, or). 
+v(137, 137, or). 
+v(136, 136, or). 
+v(134, 134, or). 
+v(133, 133, or). 
+v(131, 131, or). 
+v(130, 130, or). 
+v(128, 128, or). 
+v(127, 127, or). 
+v(125, 125, or). 
+v(124, 124, or). 
+v(122, 122, or). 
+v(121, 121, or). 
+v(119, 119, or). 
+v(118, 118, or). 
+v(116, 116, or). 
+v(115, 115, or). 
+v(113, 113, or). 
+v(112, 112, or). 
+v(110, 110, or). 
+v(109, 109, or). 
+v(107, 107, or). 
+v(106, 106, or). 
+v(104, 104, or). 
+v(103, 103, or). 
+v(101, 101, or). 
+v(100, 100, or). 
+v(98, 98, or). 
+v(97, 97, or). 
+v(95, 95, or). 
+v(94, 94, or). 
+v(92, 92, or). 
+v(91, 91, or). 
+v(89, 89, or). 
+v(88, 88, or). 
+v(86, 86, or). 
+v(85, 85, or). 
+v(83, 83, or). 
+v(82, 82, or). 
+v(80, 80, or). 
+v(79, 79, or). 
+v(77, 77, or). 
+v(76, 76, or). 
+v(74, 74, or). 
+v(73, 73, or). 
+v(71, 71, or). 
+v(70, 70, or). 
+v(68, 68, or). 
+v(67, 67, or). 
+v(65, 65, or). 
+v(64, 64, or). 
+v(62, 62, or). 
+v(61, 61, or). 
+v(59, 59, or). 
+v(58, 58, or). 
+v(56, 56, or). 
+v(55, 55, or). 
+v(53, 53, or). 
+v(52, 52, or). 
+v(50, 50, or). 
+v(49, 49, or). 
+v(47, 47, or). 
+v(46, 46, or). 
+v(44, 44, or). 
+v(43, 43, or). 
+v(41, 41, or). 
+v(40, 40, or). 
+v(38, 38, or). 
+v(37, 37, or). 
+v(35, 35, or). 
+v(34, 34, or). 
+v(32, 32, or). 
+v(31, 31, or). 
+v(29, 29, or). 
+v(28, 28, or). 
+v(26, 26, or). 
+v(25, 25, or). 
+v(23, 23, or). 
+v(22, 22, or). 
+v(20, 20, or). 
+v(19, 19, or). 
+v(17, 17, or). 
+v(16, 16, or). 
+v(14, 14, or). 
+v(13, 13, or). 
+v(11, 11, or). 
+v(10, 10, or). 
+v(8, 8, or). 
+v(7, 7, or). 
+v(5, 5, or). 
+v(4, 4, or). 
+v(2, 2, or). 
+v(1, 1, or). 
+v(373, 373, or). 
+v(372, 372, or). 
+v(371, 371, or). 
+v(369, 369, or). 
+v(368, 368, or). 
+v(367, 367, or). 
+v(365, 365, or). 
+v(364, 364, or). 
+v(363, 363, or). 
+v(361, 361, or). 
+v(360, 360, or). 
+v(359, 359, or). 
+v(357, 357, or). 
+v(356, 356, or). 
+v(355, 355, or). 
+v(353, 353, or). 
+v(352, 352, or). 
+v(351, 351, or). 
+v(349, 349, or). 
+v(348, 348, or). 
+v(347, 347, or). 
+v(345, 345, or). 
+v(344, 344, or). 
+v(343, 343, or). 
+v(341, 341, or). 
+v(340, 340, or). 
+v(339, 339, or). 
+v(337, 337, or). 
+v(336, 336, or). 
+v(335, 335, or). 
+v(333, 333, or). 
+v(332, 332, or). 
+v(331, 331, or). 
+v(329, 329, or). 
+v(328, 328, or). 
+v(327, 327, or). 
+v(325, 325, or). 
+v(324, 324, or). 
+v(323, 323, or). 
+v(321, 321, or). 
+v(320, 320, or). 
+v(319, 319, or). 
+v(317, 317, or). 
+v(316, 316, or). 
+v(315, 315, or). 
+v(313, 313, or). 
+v(312, 312, or). 
+v(311, 311, or). 
+v(309, 309, or). 
+v(308, 308, or). 
+v(307, 307, or). 
+v(305, 305, or). 
+v(304, 304, or). 
+v(303, 303, or). 
+v(301, 301, or). 
+v(300, 300, or). 
+v(299, 299, or). 
+v(297, 297, or). 
+v(296, 296, or). 
+v(295, 295, or). 
+v(293, 293, or). 
+v(292, 292, or). 
+v(291, 291, or). 
+v(289, 289, or). 
+v(288, 288, or). 
+v(287, 287, or). 
+v(285, 285, or). 
+v(284, 284, or). 
+v(283, 283, or). 
+v(281, 281, or). 
+v(280, 280, or). 
+v(279, 279, or). 
+v(277, 277, or). 
+v(276, 276, or). 
+v(275, 275, or). 
+v(273, 273, or). 
+v(272, 272, or). 
+v(271, 271, or). 
+v(269, 269, or). 
+v(268, 268, or). 
+v(267, 267, or). 
+v(265, 265, or). 
+v(264, 264, or). 
+v(263, 263, or). 
+v(261, 261, or). 
+v(260, 260, or). 
+v(259, 259, or). 
+v(257, 257, or). 
+v(256, 256, or). 
+v(255, 255, or). 
+v(253, 253, or). 
+v(252, 252, or). 
+v(251, 251, or). 
+v(249, 249, or). 
+v(248, 248, or). 
+v(247, 247, or). 
+v(245, 245, or). 
+v(244, 244, or). 
+v(243, 243, or). 
+v(241, 241, or). 
+v(240, 240, or). 
+v(239, 239, or). 
+v(237, 237, or). 
+v(236, 236, or). 
+v(235, 235, or). 
+v(233, 233, or). 
+v(232, 232, or). 
+v(231, 231, or). 
+v(229, 229, or). 
+v(228, 228, or). 
+v(227, 227, or). 
+v(225, 225, or). 
+v(224, 224, or). 
+v(223, 223, or). 
+v(221, 221, or). 
+v(220, 220, or). 
+v(219, 219, or). 
+v(217, 217, or). 
+v(216, 216, or). 
+v(215, 215, or). 
+v(213, 213, or). 
+v(212, 212, or). 
+v(211, 211, or). 
+v(209, 209, or). 
+v(208, 208, or). 
+v(207, 207, or). 
+v(205, 205, or). 
+v(204, 204, or). 
+v(203, 203, or). 
+v(201, 201, or). 
+v(200, 200, or). 
+v(199, 199, or). 
+v(197, 197, or). 
+v(196, 196, or). 
+v(195, 195, or). 
+v(193, 193, or). 
+v(192, 192, or). 
+v(191, 191, or). 
+v(189, 189, or). 
+v(188, 188, or). 
+v(187, 187, or). 
+v(185, 185, or). 
+v(184, 184, or). 
+v(183, 183, or). 
+v(181, 181, or). 
+v(180, 180, or). 
+v(179, 179, or). 
+v(177, 177, or). 
+v(176, 176, or). 
+v(175, 175, or). 
+v(173, 173, or). 
+v(172, 172, or). 
+v(171, 171, or). 
+v(169, 169, or). 
+v(168, 168, or). 
+v(167, 167, or). 
+v(165, 165, or). 
+v(164, 164, or). 
+v(163, 163, or). 
+v(573, 573, and). 
+v(568, 568, and). 
+v(581, 581, and). 
+v(588, 588, and). 
+v(601, 601, and). 
+v(596, 596, and). 
+v(609, 609, and). 
+v(622, 622, and). 
+v(617, 617, and). 
+v(636, 636, and). 
+v(631, 631, and). 
+v(644, 644, and). 
+v(651, 651, and). 
+v(658, 658, and). 
+v(665, 665, and). 
+v(674, 674, and). 
+v(679, 679, and). 
+v(684, 684, and). 
+v(689, 689, and). 
+v(694, 694, and). 
+v(699, 699, and). 
+v(704, 704, and). 
+v(709, 709, and). 
+v(714, 714, and). 
+v(719, 719, and). 
+v(724, 724, and). 
+v(729, 729, and). 
+v(734, 734, and). 
+v(739, 739, and). 
+v(744, 744, and). 
+v(749, 749, and). 
+v(754, 754, and). 
+v(759, 759, and). 
+v(764, 764, and). 
+v(769, 769, and). 
+v(774, 774, and). 
+v(779, 779, and). 
+v(784, 784, and). 
+v(789, 789, and). 
+v(794, 794, and). 
+v(799, 799, and). 
+v(804, 804, and). 
+v(809, 809, and). 
+v(814, 814, and). 
+v(819, 819, and). 
+v(824, 824, and). 
+v(829, 829, and). 
+v(834, 834, and). 
+v(839, 839, and). 
+v(844, 844, and). 
+v(849, 849, and). 
+v(854, 854, and). 
+v(859, 859, and). 
+v(864, 864, and). 
+v(869, 869, and). 
+v(874, 874, and). 
+v(879, 879, and). 
+v(884, 884, and). 
+v(889, 889, and). 
+v(894, 894, and). 
+v(899, 899, and). 
+v(904, 904, and). 
+v(909, 909, and). 
+v(914, 914, and). 
+v(919, 919, and). 
+v(924, 924, and). 
+v(929, 929, and). 
+v(934, 934, and). 
+v(939, 939, and). 
+v(944, 944, and). 
+v(949, 949, and). 
+v(954, 954, and). 
+v(959, 959, and). 
+v(964, 964, and). 
+v(969, 969, and). 
+v(974, 974, and). 
+v(979, 979, and). 
+v(984, 984, and). 
+v(989, 989, and). 
+v(994, 994, and). 
+v(999, 999, and). 
+v(1004, 1004, and). 
+v(1009, 1009, and). 
+v(1014, 1014, and). 
+v(1019, 1019, and). 
+v(1024, 1024, and). 
+v(1029, 1029, and). 
+v(1034, 1034, and). 
+v(1039, 1039, and). 
+v(1044, 1044, and). 
+v(1049, 1049, and). 
+v(1054, 1054, and). 
+v(1059, 1059, and). 
+v(1064, 1064, and). 
+v(1069, 1069, and). 
+v(1074, 1074, and). 
+v(1079, 1079, and). 
+v(1084, 1084, and). 
+v(1089, 1089, and). 
+v(1094, 1094, and). 
+v(1099, 1099, and). 
+v(1104, 1104, and). 
+v(1109, 1109, and). 
+v(1114, 1114, and). 
+v(1119, 1119, and). 
+v(1124, 1124, and). 
+v(1129, 1129, and). 
+v(1134, 1134, and). 
+v(1139, 1139, and). 
+v(1144, 1144, and). 
+v(1149, 1149, and). 
+v(1154, 1154, and). 
+v(1159, 1159, and). 
+v(1164, 1164, and). 
+v(1169, 1169, and). 
+v(1174, 1174, and). 
+v(1179, 1179, and). 
+v(1184, 1184, and). 
+v(1189, 1189, and). 
+v(1194, 1194, and). 
+v(1199, 1199, and). 
+v(1204, 1204, and). 
+v(1209, 1209, and). 
+v(1214, 1214, and). 
+v(1219, 1219, and). 
+v(1224, 1224, and). 
+v(1229, 1229, and). 
+v(1234, 1234, and). 
+v(1239, 1239, and). 
+v(1244, 1244, and). 
+v(1249, 1249, and). 
+v(1254, 1254, and). 
+v(1259, 1259, and). 
+v(1264, 1264, and). 
+v(1269, 1269, and). 
+v(1274, 1274, and). 
+v(1279, 1279, and). 
+v(1284, 1284, and). 
+v(1289, 1289, and). 
+v(1294, 1294, and). 
+v(1299, 1299, and). 
+v(1304, 1304, and). 
+v(1309, 1309, and). 
+v(1314, 1314, and). 
+v(1319, 1319, and). 
+v(1324, 1324, and). 
+v(1329, 1329, and). 
+v(1334, 1334, and). 
+v(1339, 1339, and). 
+v(1344, 1344, and). 
+v(1349, 1349, and). 
+v(1354, 1354, and). 
+v(1359, 1359, and). 
+v(1364, 1364, and). 
+v(1369, 1369, and). 
+v(1374, 1374, and). 
+v(1379, 1379, and). 
+v(1384, 1384, and). 
+v(1389, 1389, and). 
+v(1394, 1394, and). 
+v(1399, 1399, and). 
+v(1404, 1404, and). 
+v(1409, 1409, and). 
+v(1414, 1414, and). 
+v(1419, 1419, and). 
+v(1424, 1424, and). 
+v(1429, 1429, and). 
+v(1434, 1434, and). 
+v(1439, 1439, and). 
+v(1444, 1444, and). 
+v(1449, 1449, and). 
+v(1454, 1454, and). 
+v(1459, 1459, and). 
+v(1464, 1464, and). 
+v(1469, 1469, and). 
+v(1474, 1474, and). 
+v(1479, 1479, and). 
+v(1484, 1484, and). 
+v(1489, 1489, and). 
+v(1494, 1494, and). 
+v(1499, 1499, and). 
+v(1504, 1504, and). 
+v(1509, 1509, and). 
+v(1514, 1514, and). 
+v(1519, 1519, and). 
+v(1524, 1524, and). 
+v(1529, 1529, and). 
+v(1534, 1534, and). 
+v(1539, 1539, and). 
+v(1544, 1544, and). 
+v(1549, 1549, and). 
+v(1554, 1554, and). 
+v(1559, 1559, and). 
+v(1564, 1564, and). 
+v(1569, 1569, and). 
+v(1574, 1574, and). 
+v(1579, 1579, and). 
+v(1584, 1584, and). 
+v(1589, 1589, and). 
+v(1594, 1594, and). 
+v(1599, 1599, and). 
+v(1604, 1604, and). 
+v(1609, 1609, and). 
+v(1614, 1614, and). 
+v(1619, 1619, and). 
+v(1624, 1624, and). 
+v(1629, 1629, and). 
+v(1634, 1634, and). 
+v(1639, 1639, and). 
+v(1644, 1644, and). 
+v(1649, 1649, and). 
+v(1654, 1654, and). 
+v(1659, 1659, and). 
+v(1664, 1664, and). 
+v(1669, 1669, and). 
+v(1674, 1674, and). 
+v(1679, 1679, and). 
+v(1684, 1684, and). 
+v(1689, 1689, and). 
+v(1694, 1694, and). 
+v(1699, 1699, and). 
+v(1704, 1704, and). 
+v(1709, 1709, and). 
+v(1714, 1714, and). 
+v(1719, 1719, and). 
+v(1724, 1724, and). 
+v(1729, 1729, and). 
+v(1734, 1734, and). 
+v(1739, 1739, and). 
+v(1744, 1744, and). 
+v(1749, 1749, and). 
+v(1754, 1754, and). 
+v(1759, 1759, and). 
+v(1764, 1764, and). 
+v(1769, 1769, and). 
+v(1774, 1774, and). 
+v(1779, 1779, and). 
+v(1784, 1784, and). 
+v(1789, 1789, and). 
+v(1794, 1794, and). 
+v(1799, 1799, and). 
+v(1804, 1804, and). 
+v(1809, 1809, and). 
+v(1814, 1814, and). 
+v(1819, 1819, and). 
+v(1824, 1824, and). 
+v(1829, 1829, and). 
+v(1834, 1834, and). 
+v(1839, 1839, and). 
+v(1844, 1844, and). 
+v(1849, 1849, and). 
+v(1854, 1854, and). 
+v(1859, 1859, and). 
+v(1864, 1864, and). 
+v(1869, 1869, and). 
+v(1874, 1874, and). 
+v(1879, 1879, and). 
+v(1884, 1884, and). 
+v(1889, 1889, and). 
+v(1894, 1894, and). 
+v(1899, 1899, and). 
+v(1904, 1904, and). 
+v(1909, 1909, and). 
+v(1914, 1914, and). 
+v(1919, 1919, and). 
+v(1924, 1924, and). 
+v(1929, 1929, and). 
+v(1934, 1934, and). 
+v(1939, 1939, and). 
+v(1944, 1944, and). 
+v(1949, 1949, and). 
+v(1954, 1954, and). 
+v(1959, 1959, and). 
+v(1964, 1964, and). 
+v(1969, 1969, and). 
+v(1974, 1974, and). 
+v(1979, 1979, and). 
+v(1984, 1984, and). 
+v(1989, 1989, and). 
+v(1994, 1994, and). 
+v(1999, 1999, and). 
+v(2004, 2004, and). 
+v(2009, 2009, and). 
+v(2014, 2014, and). 
+v(2019, 2019, and). 
+v(2024, 2024, and). 
+v(2029, 2029, and). 
+v(2034, 2034, and). 
+v(2039, 2039, and). 
+
+% l/3
+l(161, yoh, absent). 
+l(160, yoh, present). 
+l(158, change(yoh), left). 
+l(157, change(yoh), arrived). 
+l(155, twoDg, absent). 
+l(154, twoDg, present). 
+l(152, change(twoDg), left). 
+l(151, change(twoDg), arrived). 
+l(149, tolbut30, absent). 
+l(148, tolbut30, present). 
+l(146, change(tolbut30), left). 
+l(145, change(tolbut30), arrived). 
+l(143, tolbut20, absent). 
+l(142, tolbut20, present). 
+l(140, change(tolbut20), left). 
+l(139, change(tolbut20), arrived). 
+l(137, tolbut10, absent). 
+l(136, tolbut10, present). 
+l(134, change(tolbut10), left). 
+l(133, change(tolbut10), arrived). 
+l(131, swimstr, absent). 
+l(130, swimstr, present). 
+l(128, change(swimstr), left). 
+l(127, change(swimstr), arrived). 
+l(125, stress, absent). 
+l(124, stress, present). 
+l(122, change(stress), left). 
+l(121, change(stress), arrived). 
+l(119, ptu, absent). 
+l(118, ptu, present). 
+l(116, change(ptu), left). 
+l(115, change(ptu), arrived). 
+l(113, parg, absent). 
+l(112, parg, present). 
+l(110, change(parg), left). 
+l(109, change(parg), arrived). 
+l(107, msg, absent). 
+l(106, msg, present). 
+l(104, change(msg), left). 
+l(103, change(msg), arrived). 
+l(101, insulinBolis, absent). 
+l(100, insulinBolis, present). 
+l(98, change(insulinBolis), left). 
+l(97, change(insulinBolis), arrived). 
+l(95, insulin30, absent). 
+l(94, insulin30, present). 
+l(92, change(insulin30), left). 
+l(91, change(insulin30), arrived). 
+l(89, insulin10, absent). 
+l(88, insulin10, present). 
+l(86, change(insulin10), left). 
+l(85, change(insulin10), arrived). 
+l(83, hypox, absent). 
+l(82, hypox, present). 
+l(80, change(hypox), left). 
+l(79, change(hypox), arrived). 
+l(77, hghInj, absent). 
+l(76, hghInj, present). 
+l(74, change(hghInj), left). 
+l(73, change(hghInj), arrived). 
+l(71, guan, absent). 
+l(70, guan, present). 
+l(68, change(guan), left). 
+l(67, change(guan), arrived). 
+l(65, gentle, absent). 
+l(64, gentle, present). 
+l(62, change(gentle), left). 
+l(61, change(gentle), arrived). 
+l(59, etherstr, absent). 
+l(58, etherstr, present). 
+l(56, change(etherstr), left). 
+l(55, change(etherstr), arrived). 
+l(53, diaz, absent). 
+l(52, diaz, present). 
+l(50, change(diaz), left). 
+l(49, change(diaz), arrived). 
+l(47, dex, absent). 
+l(46, dex, present). 
+l(44, change(dex), left). 
+l(43, change(dex), arrived). 
+l(41, chroniCtolbut, absent). 
+l(40, chroniCtolbut, present). 
+l(38, change(chroniCtolbut), left). 
+l(37, change(chroniCtolbut), arrived). 
+l(35, chroniCinsulin, absent). 
+l(34, chroniCinsulin, present). 
+l(32, change(chroniCinsulin), left). 
+l(31, change(chroniCinsulin), arrived). 
+l(29, chroniCglucose, absent). 
+l(28, chroniCglucose, present). 
+l(26, change(chroniCglucose), left). 
+l(25, change(chroniCglucose), arrived). 
+l(23, chroniCdiaz, absent). 
+l(22, chroniCdiaz, present). 
+l(20, change(chroniCdiaz), left). 
+l(19, change(chroniCdiaz), arrived). 
+l(17, chroniCdex, absent). 
+l(16, chroniCdex, present). 
+l(14, change(chroniCdex), left). 
+l(13, change(chroniCdex), arrived). 
+l(11, adrx, absent). 
+l(10, adrx, present). 
+l(8, change(adrx), left). 
+l(7, change(adrx), arrived). 
+l(5, acutEdex, absent). 
+l(4, acutEdex, present). 
+l(2, change(acutEdex), left). 
+l(1, change(acutEdex), arrived). 
+l(373, vagus, down). 
+l(372, vagus, std). 
+l(371, vagus, up). 
+l(369, toTissue, down). 
+l(368, toTissue, std). 
+l(367, toTissue, up). 
+l(365, toKidneys, down). 
+l(364, toKidneys, std). 
+l(363, toKidneys, up). 
+l(361, temp3, down). 
+l(360, temp3, std). 
+l(359, temp3, up). 
+l(357, temp2, down). 
+l(356, temp2, std). 
+l(355, temp2, up). 
+l(353, temp1, down). 
+l(352, temp1, std). 
+l(351, temp1, up). 
+l(349, t4, down). 
+l(348, t4, std). 
+l(347, t4, up). 
+l(345, srif, down). 
+l(344, srif, std). 
+l(343, srif, up). 
+l(341, sns, down). 
+l(340, sns, std). 
+l(339, sns, up). 
+l(337, serotoninTOfiveHIAA, down). 
+l(336, serotoninTOfiveHIAA, std). 
+l(335, serotoninTOfiveHIAA, up). 
+l(333, serotoninProduction, down). 
+l(332, serotoninProduction, std). 
+l(331, serotoninProduction, up). 
+l(329, serotonin, down). 
+l(328, serotonin, std). 
+l(327, serotonin, up). 
+l(325, sateity, down). 
+l(324, sateity, std). 
+l(323, sateity, up). 
+l(321, prlRelease, down). 
+l(320, prlRelease, std). 
+l(319, prlRelease, up). 
+l(317, prl, down). 
+l(316, prl, std). 
+l(315, prl, up). 
+l(313, pPrl, down). 
+l(312, pPrl, std). 
+l(311, pPrl, up). 
+l(309, pns, down). 
+l(308, pns, std). 
+l(307, pns, up). 
+l(305, pHgh, down). 
+l(304, pHgh, std). 
+l(303, pHgh, up). 
+l(301, neProduction, down). 
+l(300, neProduction, std). 
+l(299, neProduction, up). 
+l(297, neControl, down). 
+l(296, neControl, std). 
+l(295, neControl, up). 
+l(293, ne2Epin, down). 
+l(292, ne2Epin, std). 
+l(291, ne2Epin, up). 
+l(289, ne2dhpg, down). 
+l(288, ne2dhpg, std). 
+l(287, ne2dhpg, up). 
+l(285, ne, down). 
+l(284, ne, std). 
+l(283, ne, up). 
+l(281, insulin, down). 
+l(280, insulin, std). 
+l(279, insulin, up). 
+l(277, hva, down). 
+l(276, hva, std). 
+l(275, hva, up). 
+l(273, hgh, down). 
+l(272, hgh, std). 
+l(271, hgh, up). 
+l(269, glucose, down). 
+l(268, glucose, std). 
+l(267, glucose, up). 
+l(265, glucocorticoid, down). 
+l(264, glucocorticoid, std). 
+l(263, glucocorticoid, up). 
+l(261, glucagonProd, down). 
+l(260, glucagonProd, std). 
+l(259, glucagonProd, up). 
+l(257, glucagonDis, down). 
+l(256, glucagonDis, std). 
+l(255, glucagonDis, up). 
+l(253, glucagon, down). 
+l(252, glucagon, std). 
+l(251, glucagon, up). 
+l(249, ghrh, down). 
+l(248, ghrh, std). 
+l(247, ghrh, up). 
+l(245, ghProduction, down). 
+l(244, ghProduction, std). 
+l(243, ghProduction, up). 
+l(241, fromPancreas, down). 
+l(240, fromPancreas, std). 
+l(239, fromPancreas, up). 
+l(237, fromLiver, down). 
+l(236, fromLiver, std). 
+l(235, fromLiver, up). 
+l(233, fromGut, down). 
+l(232, fromGut, std). 
+l(231, fromGut, up). 
+l(229, fiveHIAA, down). 
+l(228, fiveHIAA, std). 
+l(227, fiveHIAA, up). 
+l(225, dhpg, down). 
+l(224, dhpg, std). 
+l(223, dhpg, up). 
+l(221, daProduction, down). 
+l(220, daProduction, std). 
+l(219, daProduction, up). 
+l(217, da2Hva, down). 
+l(216, da2Hva, std). 
+l(215, da2Hva, up). 
+l(213, da, down). 
+l(212, da, std). 
+l(211, da, up). 
+l(209, crf, down). 
+l(208, crf, std). 
+l(207, crf, up). 
+l(205, cortisolProduction, down). 
+l(204, cortisolProduction, std). 
+l(203, cortisolProduction, up). 
+l(201, cortisol, down). 
+l(200, cortisol, std). 
+l(199, cortisol, up). 
+l(197, corticoidProduction, down). 
+l(196, corticoidProduction, std). 
+l(195, corticoidProduction, up). 
+l(193, catecholeProd, down). 
+l(192, catecholeProd, std). 
+l(191, catecholeProd, up). 
+l(189, catecholeDisp, down). 
+l(188, catecholeDisp, std). 
+l(187, catecholeDisp, up). 
+l(185, catechole, down). 
+l(184, catechole, std). 
+l(183, catechole, up). 
+l(181, brainGlucoseUptake, down). 
+l(180, brainGlucoseUptake, std). 
+l(179, brainGlucoseUptake, up). 
+l(177, brainGlucose, down). 
+l(176, brainGlucose, std). 
+l(175, brainGlucose, up). 
+l(173, aluminium, down). 
+l(172, aluminium, std). 
+l(171, aluminium, up). 
+l(169, acthProduction, down). 
+l(168, acthProduction, std). 
+l(167, acthProduction, up). 
+l(165, acth, down). 
+l(164, acth, std). 
+l(163, acth, up). 
+l(573, and2, t). 
+l(568, and1, t). 
+l(581, and3, t). 
+l(588, and4, t). 
+l(601, and6, t). 
+l(596, and5, t). 
+l(609, and7, t). 
+l(622, and9, t). 
+l(617, and8, t). 
+l(636, and11, t). 
+l(631, and10, t). 
+l(644, and12, t). 
+l(651, and13, t). 
+l(658, and14, t). 
+l(665, and15, t). 
+l(674, and16, t). 
+l(679, and17, t). 
+l(684, and18, t). 
+l(689, and19, t). 
+l(694, and20, t). 
+l(699, and21, t). 
+l(704, and22, t). 
+l(709, and23, t). 
+l(714, and24, t). 
+l(719, and25, t). 
+l(724, and26, t). 
+l(729, and27, t). 
+l(734, and28, t). 
+l(739, and29, t). 
+l(744, and30, t). 
+l(749, and31, t). 
+l(754, and32, t). 
+l(759, and33, t). 
+l(764, and34, t). 
+l(769, and35, t). 
+l(774, and36, t). 
+l(779, and37, t). 
+l(784, and38, t). 
+l(789, and39, t). 
+l(794, and40, t). 
+l(799, and41, t). 
+l(804, and42, t). 
+l(809, and43, t). 
+l(814, and44, t). 
+l(819, and45, t). 
+l(824, and46, t). 
+l(829, and47, t). 
+l(834, and48, t). 
+l(839, and49, t). 
+l(844, and50, t). 
+l(849, and51, t). 
+l(854, and52, t). 
+l(859, and53, t). 
+l(864, and54, t). 
+l(869, and55, t). 
+l(874, and56, t). 
+l(879, and57, t). 
+l(884, and58, t). 
+l(889, and59, t). 
+l(894, and60, t). 
+l(899, and61, t). 
+l(904, and62, t). 
+l(909, and63, t). 
+l(914, and64, t). 
+l(919, and65, t). 
+l(924, and66, t). 
+l(929, and67, t). 
+l(934, and68, t). 
+l(939, and69, t). 
+l(944, and70, t). 
+l(949, and71, t). 
+l(954, and72, t). 
+l(959, and73, t). 
+l(964, and74, t). 
+l(969, and75, t). 
+l(974, and76, t). 
+l(979, and77, t). 
+l(984, and78, t). 
+l(989, and79, t). 
+l(994, and80, t). 
+l(999, and81, t). 
+l(1004, and82, t). 
+l(1009, and83, t). 
+l(1014, and84, t). 
+l(1019, and85, t). 
+l(1024, and86, t). 
+l(1029, and87, t). 
+l(1034, and88, t). 
+l(1039, and89, t). 
+l(1044, and90, t). 
+l(1049, and91, t). 
+l(1054, and92, t). 
+l(1059, and93, t). 
+l(1064, and94, t). 
+l(1069, and95, t). 
+l(1074, and96, t). 
+l(1079, and97, t). 
+l(1084, and98, t). 
+l(1089, and99, t). 
+l(1094, and100, t). 
+l(1099, and101, t). 
+l(1104, and102, t). 
+l(1109, and103, t). 
+l(1114, and104, t). 
+l(1119, and105, t). 
+l(1124, and106, t). 
+l(1129, and107, t). 
+l(1134, and108, t). 
+l(1139, and109, t). 
+l(1144, and110, t). 
+l(1149, and111, t). 
+l(1154, and112, t). 
+l(1159, and113, t). 
+l(1164, and114, t). 
+l(1169, and115, t). 
+l(1174, and116, t). 
+l(1179, and117, t). 
+l(1184, and118, t). 
+l(1189, and119, t). 
+l(1194, and120, t). 
+l(1199, and121, t). 
+l(1204, and122, t). 
+l(1209, and123, t). 
+l(1214, and124, t). 
+l(1219, and125, t). 
+l(1224, and126, t). 
+l(1229, and127, t). 
+l(1234, and128, t). 
+l(1239, and129, t). 
+l(1244, and130, t). 
+l(1249, and131, t). 
+l(1254, and132, t). 
+l(1259, and133, t). 
+l(1264, and134, t). 
+l(1269, and135, t). 
+l(1274, and136, t). 
+l(1279, and137, t). 
+l(1284, and138, t). 
+l(1289, and139, t). 
+l(1294, and140, t). 
+l(1299, and141, t). 
+l(1304, and142, t). 
+l(1309, and143, t). 
+l(1314, and144, t). 
+l(1319, and145, t). 
+l(1324, and146, t). 
+l(1329, and147, t). 
+l(1334, and148, t). 
+l(1339, and149, t). 
+l(1344, and150, t). 
+l(1349, and151, t). 
+l(1354, and152, t). 
+l(1359, and153, t). 
+l(1364, and154, t). 
+l(1369, and155, t). 
+l(1374, and156, t). 
+l(1379, and157, t). 
+l(1384, and158, t). 
+l(1389, and159, t). 
+l(1394, and160, t). 
+l(1399, and161, t). 
+l(1404, and162, t). 
+l(1409, and163, t). 
+l(1414, and164, t). 
+l(1419, and165, t). 
+l(1424, and166, t). 
+l(1429, and167, t). 
+l(1434, and168, t). 
+l(1439, and169, t). 
+l(1444, and170, t). 
+l(1449, and171, t). 
+l(1454, and172, t). 
+l(1459, and173, t). 
+l(1464, and174, t). 
+l(1469, and175, t). 
+l(1474, and176, t). 
+l(1479, and177, t). 
+l(1484, and178, t). 
+l(1489, and179, t). 
+l(1494, and180, t). 
+l(1499, and181, t). 
+l(1504, and182, t). 
+l(1509, and183, t). 
+l(1514, and184, t). 
+l(1519, and185, t). 
+l(1524, and186, t). 
+l(1529, and187, t). 
+l(1534, and188, t). 
+l(1539, and189, t). 
+l(1544, and190, t). 
+l(1549, and191, t). 
+l(1554, and192, t). 
+l(1559, and193, t). 
+l(1564, and194, t). 
+l(1569, and195, t). 
+l(1574, and196, t). 
+l(1579, and197, t). 
+l(1584, and198, t). 
+l(1589, and199, t). 
+l(1594, and200, t). 
+l(1599, and201, t). 
+l(1604, and202, t). 
+l(1609, and203, t). 
+l(1614, and204, t). 
+l(1619, and205, t). 
+l(1624, and206, t). 
+l(1629, and207, t). 
+l(1634, and208, t). 
+l(1639, and209, t). 
+l(1644, and210, t). 
+l(1649, and211, t). 
+l(1654, and212, t). 
+l(1659, and213, t). 
+l(1664, and214, t). 
+l(1669, and215, t). 
+l(1674, and216, t). 
+l(1679, and217, t). 
+l(1684, and218, t). 
+l(1689, and219, t). 
+l(1694, and220, t). 
+l(1699, and221, t). 
+l(1704, and222, t). 
+l(1709, and223, t). 
+l(1714, and224, t). 
+l(1719, and225, t). 
+l(1724, and226, t). 
+l(1729, and227, t). 
+l(1734, and228, t). 
+l(1739, and229, t). 
+l(1744, and230, t). 
+l(1749, and231, t). 
+l(1754, and232, t). 
+l(1759, and233, t). 
+l(1764, and234, t). 
+l(1769, and235, t). 
+l(1774, and236, t). 
+l(1779, and237, t). 
+l(1784, and238, t). 
+l(1789, and239, t). 
+l(1794, and240, t). 
+l(1799, and241, t). 
+l(1804, and242, t). 
+l(1809, and243, t). 
+l(1814, and244, t). 
+l(1819, and245, t). 
+l(1824, and246, t). 
+l(1829, and247, t). 
+l(1834, and248, t). 
+l(1839, and249, t). 
+l(1844, and250, t). 
+l(1849, and251, t). 
+l(1854, and252, t). 
+l(1859, and253, t). 
+l(1864, and254, t). 
+l(1869, and255, t). 
+l(1874, and256, t). 
+l(1879, and257, t). 
+l(1884, and258, t). 
+l(1889, and259, t). 
+l(1894, and260, t). 
+l(1899, and261, t). 
+l(1904, and262, t). 
+l(1909, and263, t). 
+l(1914, and264, t). 
+l(1919, and265, t). 
+l(1924, and266, t). 
+l(1929, and267, t). 
+l(1934, and268, t). 
+l(1939, and269, t). 
+l(1944, and270, t). 
+l(1949, and271, t). 
+l(1954, and272, t). 
+l(1959, and273, t). 
+l(1964, and274, t). 
+l(1969, and275, t). 
+l(1974, and276, t). 
+l(1979, and277, t). 
+l(1984, and278, t). 
+l(1989, and279, t). 
+l(1994, and280, t). 
+l(1999, and281, t). 
+l(2004, and282, t). 
+l(2009, and283, t). 
+l(2014, and284, t). 
+l(2019, and285, t). 
+l(2024, and286, t). 
+l(2029, and287, t). 
+l(2034, and288, t). 
+l(2039, and289, t). 
+
+
+%---------------------------------------
+% [theoryDetail] related facts
+
+% coi/2
+coi(event, 159). 
+coi(eventChange, 156). 
+coi(event, 153). 
+coi(eventChange, 150). 
+coi(event, 147). 
+coi(eventChange, 144). 
+coi(event, 141). 
+coi(eventChange, 138). 
+coi(event, 135). 
+coi(eventChange, 132). 
+coi(event, 129). 
+coi(eventChange, 126). 
+coi(event, 123). 
+coi(eventChange, 120). 
+coi(event, 117). 
+coi(eventChange, 114). 
+coi(event, 111). 
+coi(eventChange, 108). 
+coi(event, 105). 
+coi(eventChange, 102). 
+coi(event, 99). 
+coi(eventChange, 96). 
+coi(event, 93). 
+coi(eventChange, 90). 
+coi(event, 87). 
+coi(eventChange, 84). 
+coi(event, 81). 
+coi(eventChange, 78). 
+coi(event, 75). 
+coi(eventChange, 72). 
+coi(event, 69). 
+coi(eventChange, 66). 
+coi(event, 63). 
+coi(eventChange, 60). 
+coi(event, 57). 
+coi(eventChange, 54). 
+coi(event, 51). 
+coi(eventChange, 48). 
+coi(event, 45). 
+coi(eventChange, 42). 
+coi(event, 39). 
+coi(eventChange, 36). 
+coi(event, 33). 
+coi(eventChange, 30). 
+coi(event, 27). 
+coi(eventChange, 24). 
+coi(event, 21). 
+coi(eventChange, 18). 
+coi(event, 15). 
+coi(eventChange, 12). 
+coi(event, 9). 
+coi(eventChange, 6). 
+coi(event, 3). 
+coi(eventChange, 0). 
+coi(measure, 370). 
+coi(measure, 366). 
+coi(measure, 362). 
+coi(measure, 358). 
+coi(measure, 354). 
+coi(measure, 350). 
+coi(measure, 346). 
+coi(measure, 342). 
+coi(measure, 338). 
+coi(measure, 334). 
+coi(measure, 330). 
+coi(measure, 326). 
+coi(measure, 322). 
+coi(measure, 318). 
+coi(measure, 314). 
+coi(measure, 310). 
+coi(measure, 306). 
+coi(measure, 302). 
+coi(measure, 298). 
+coi(measure, 294). 
+coi(measure, 290). 
+coi(measure, 286). 
+coi(measure, 282). 
+coi(measure, 278). 
+coi(measure, 274). 
+coi(measure, 270). 
+coi(measure, 266). 
+coi(measure, 262). 
+coi(measure, 258). 
+coi(measure, 254). 
+coi(measure, 250). 
+coi(measure, 246). 
+coi(measure, 242). 
+coi(measure, 238). 
+coi(measure, 234). 
+coi(measure, 230). 
+coi(measure, 226). 
+coi(measure, 222). 
+coi(measure, 218). 
+coi(measure, 214). 
+coi(measure, 210). 
+coi(measure, 206). 
+coi(measure, 202). 
+coi(measure, 198). 
+coi(measure, 194). 
+coi(measure, 190). 
+coi(measure, 186). 
+coi(measure, 182). 
+coi(measure, 178). 
+coi(measure, 174). 
+coi(measure, 170). 
+coi(measure, 166). 
+coi(measure, 162). 
+coi(and, 572). 
+coi(and, 567). 
+coi(and, 580). 
+coi(and, 587). 
+coi(and, 600). 
+coi(and, 595). 
+coi(and, 608). 
+coi(and, 621). 
+coi(and, 616). 
+coi(and, 635). 
+coi(and, 630). 
+coi(and, 643). 
+coi(and, 650). 
+coi(and, 657). 
+coi(and, 664). 
+coi(and, 673). 
+coi(and, 678). 
+coi(and, 683). 
+coi(and, 688). 
+coi(and, 693). 
+coi(and, 698). 
+coi(and, 703). 
+coi(and, 708). 
+coi(and, 713). 
+coi(and, 718). 
+coi(and, 723). 
+coi(and, 728). 
+coi(and, 733). 
+coi(and, 738). 
+coi(and, 743). 
+coi(and, 748). 
+coi(and, 753). 
+coi(and, 758). 
+coi(and, 763). 
+coi(and, 768). 
+coi(and, 773). 
+coi(and, 778). 
+coi(and, 783). 
+coi(and, 788). 
+coi(and, 793). 
+coi(and, 798). 
+coi(and, 803). 
+coi(and, 808). 
+coi(and, 813). 
+coi(and, 818). 
+coi(and, 823). 
+coi(and, 828). 
+coi(and, 833). 
+coi(and, 838). 
+coi(and, 843). 
+coi(and, 848). 
+coi(and, 853). 
+coi(and, 858). 
+coi(and, 863). 
+coi(and, 868). 
+coi(and, 873). 
+coi(and, 878). 
+coi(and, 883). 
+coi(and, 888). 
+coi(and, 893). 
+coi(and, 898). 
+coi(and, 903). 
+coi(and, 908). 
+coi(and, 913). 
+coi(and, 918). 
+coi(and, 923). 
+coi(and, 928). 
+coi(and, 933). 
+coi(and, 938). 
+coi(and, 943). 
+coi(and, 948). 
+coi(and, 953). 
+coi(and, 958). 
+coi(and, 963). 
+coi(and, 968). 
+coi(and, 973). 
+coi(and, 978). 
+coi(and, 983). 
+coi(and, 988). 
+coi(and, 993). 
+coi(and, 998). 
+coi(and, 1003). 
+coi(and, 1008). 
+coi(and, 1013). 
+coi(and, 1018). 
+coi(and, 1023). 
+coi(and, 1028). 
+coi(and, 1033). 
+coi(and, 1038). 
+coi(and, 1043). 
+coi(and, 1048). 
+coi(and, 1053). 
+coi(and, 1058). 
+coi(and, 1063). 
+coi(and, 1068). 
+coi(and, 1073). 
+coi(and, 1078). 
+coi(and, 1083). 
+coi(and, 1088). 
+coi(and, 1093). 
+coi(and, 1098). 
+coi(and, 1103). 
+coi(and, 1108). 
+coi(and, 1113). 
+coi(and, 1118). 
+coi(and, 1123). 
+coi(and, 1128). 
+coi(and, 1133). 
+coi(and, 1138). 
+coi(and, 1143). 
+coi(and, 1148). 
+coi(and, 1153). 
+coi(and, 1158). 
+coi(and, 1163). 
+coi(and, 1168). 
+coi(and, 1173). 
+coi(and, 1178). 
+coi(and, 1183). 
+coi(and, 1188). 
+coi(and, 1193). 
+coi(and, 1198). 
+coi(and, 1203). 
+coi(and, 1208). 
+coi(and, 1213). 
+coi(and, 1218). 
+coi(and, 1223). 
+coi(and, 1228). 
+coi(and, 1233). 
+coi(and, 1238). 
+coi(and, 1243). 
+coi(and, 1248). 
+coi(and, 1253). 
+coi(and, 1258). 
+coi(and, 1263). 
+coi(and, 1268). 
+coi(and, 1273). 
+coi(and, 1278). 
+coi(and, 1283). 
+coi(and, 1288). 
+coi(and, 1293). 
+coi(and, 1298). 
+coi(and, 1303). 
+coi(and, 1308). 
+coi(and, 1313). 
+coi(and, 1318). 
+coi(and, 1323). 
+coi(and, 1328). 
+coi(and, 1333). 
+coi(and, 1338). 
+coi(and, 1343). 
+coi(and, 1348). 
+coi(and, 1353). 
+coi(and, 1358). 
+coi(and, 1363). 
+coi(and, 1368). 
+coi(and, 1373). 
+coi(and, 1378). 
+coi(and, 1383). 
+coi(and, 1388). 
+coi(and, 1393). 
+coi(and, 1398). 
+coi(and, 1403). 
+coi(and, 1408). 
+coi(and, 1413). 
+coi(and, 1418). 
+coi(and, 1423). 
+coi(and, 1428). 
+coi(and, 1433). 
+coi(and, 1438). 
+coi(and, 1443). 
+coi(and, 1448). 
+coi(and, 1453). 
+coi(and, 1458). 
+coi(and, 1463). 
+coi(and, 1468). 
+coi(and, 1473). 
+coi(and, 1478). 
+coi(and, 1483). 
+coi(and, 1488). 
+coi(and, 1493). 
+coi(and, 1498). 
+coi(and, 1503). 
+coi(and, 1508). 
+coi(and, 1513). 
+coi(and, 1518). 
+coi(and, 1523). 
+coi(and, 1528). 
+coi(and, 1533). 
+coi(and, 1538). 
+coi(and, 1543). 
+coi(and, 1548). 
+coi(and, 1553). 
+coi(and, 1558). 
+coi(and, 1563). 
+coi(and, 1568). 
+coi(and, 1573). 
+coi(and, 1578). 
+coi(and, 1583). 
+coi(and, 1588). 
+coi(and, 1593). 
+coi(and, 1598). 
+coi(and, 1603). 
+coi(and, 1608). 
+coi(and, 1613). 
+coi(and, 1618). 
+coi(and, 1623). 
+coi(and, 1628). 
+coi(and, 1633). 
+coi(and, 1638). 
+coi(and, 1643). 
+coi(and, 1648). 
+coi(and, 1653). 
+coi(and, 1658). 
+coi(and, 1663). 
+coi(and, 1668). 
+coi(and, 1673). 
+coi(and, 1678). 
+coi(and, 1683). 
+coi(and, 1688). 
+coi(and, 1693). 
+coi(and, 1698). 
+coi(and, 1703). 
+coi(and, 1708). 
+coi(and, 1713). 
+coi(and, 1718). 
+coi(and, 1723). 
+coi(and, 1728). 
+coi(and, 1733). 
+coi(and, 1738). 
+coi(and, 1743). 
+coi(and, 1748). 
+coi(and, 1753). 
+coi(and, 1758). 
+coi(and, 1763). 
+coi(and, 1768). 
+coi(and, 1773). 
+coi(and, 1778). 
+coi(and, 1783). 
+coi(and, 1788). 
+coi(and, 1793). 
+coi(and, 1798). 
+coi(and, 1803). 
+coi(and, 1808). 
+coi(and, 1813). 
+coi(and, 1818). 
+coi(and, 1823). 
+coi(and, 1828). 
+coi(and, 1833). 
+coi(and, 1838). 
+coi(and, 1843). 
+coi(and, 1848). 
+coi(and, 1853). 
+coi(and, 1858). 
+coi(and, 1863). 
+coi(and, 1868). 
+coi(and, 1873). 
+coi(and, 1878). 
+coi(and, 1883). 
+coi(and, 1888). 
+coi(and, 1893). 
+coi(and, 1898). 
+coi(and, 1903). 
+coi(and, 1908). 
+coi(and, 1913). 
+coi(and, 1918). 
+coi(and, 1923). 
+coi(and, 1928). 
+coi(and, 1933). 
+coi(and, 1938). 
+coi(and, 1943). 
+coi(and, 1948). 
+coi(and, 1953). 
+coi(and, 1958). 
+coi(and, 1963). 
+coi(and, 1968). 
+coi(and, 1973). 
+coi(and, 1978). 
+coi(and, 1983). 
+coi(and, 1988). 
+coi(and, 1993). 
+coi(and, 1998). 
+coi(and, 2003). 
+coi(and, 2008). 
+coi(and, 2013). 
+coi(and, 2018). 
+coi(and, 2023). 
+coi(and, 2028). 
+coi(and, 2033). 
+coi(and, 2038). 
+
+% ei/2
+ei(207, 374). 
+ei(209, 375). 
+ei(167, 376). 
+ei(79, 377). 
+ei(80, 378). 
+ei(163, 379). 
+ei(165, 380). 
+ei(195, 381). 
+ei(263, 382). 
+ei(265, 383). 
+ei(195, 384). 
+ei(43, 385). 
+ei(44, 386). 
+ei(1, 387). 
+ei(2, 388). 
+ei(13, 389). 
+ei(14, 390). 
+ei(187, 391). 
+ei(219, 392). 
+ei(215, 393). 
+ei(315, 394). 
+ei(317, 395). 
+ei(171, 396). 
+ei(173, 397). 
+ei(109, 398). 
+ei(110, 399). 
+ei(259, 400). 
+ei(255, 401). 
+ei(267, 402). 
+ei(269, 403). 
+ei(279, 404). 
+ei(281, 405). 
+ei(25, 406). 
+ei(26, 407). 
+ei(231, 408). 
+ei(235, 409). 
+ei(179, 410). 
+ei(267, 411). 
+ei(269, 412). 
+ei(367, 413). 
+ei(179, 414). 
+ei(351, 415). 
+ei(353, 416). 
+ei(267, 417). 
+ei(269, 418). 
+ei(279, 419). 
+ei(281, 420). 
+ei(355, 421). 
+ei(357, 422). 
+ei(279, 423). 
+ei(281, 424). 
+ei(263, 425). 
+ei(265, 426). 
+ei(307, 427). 
+ei(309, 428). 
+ei(183, 429). 
+ei(185, 430). 
+ei(251, 431). 
+ei(253, 432). 
+ei(151, 433). 
+ei(152, 434). 
+ei(239, 435). 
+ei(363, 436). 
+ei(279, 437). 
+ei(281, 438). 
+ei(183, 439). 
+ei(185, 440). 
+ei(251, 441). 
+ei(253, 442). 
+ei(267, 443). 
+ei(269, 444). 
+ei(307, 445). 
+ei(309, 446). 
+ei(359, 447). 
+ei(361, 448). 
+ei(97, 449). 
+ei(98, 450). 
+ei(85, 451). 
+ei(86, 452). 
+ei(91, 453). 
+ei(92, 454). 
+ei(31, 455). 
+ei(32, 456). 
+ei(133, 457). 
+ei(134, 458). 
+ei(139, 459). 
+ei(140, 460). 
+ei(145, 461). 
+ei(146, 462). 
+ei(37, 463). 
+ei(38, 464). 
+ei(299, 465). 
+ei(287, 466). 
+ei(291, 467). 
+ei(223, 468). 
+ei(225, 469). 
+ei(223, 470). 
+ei(225, 471). 
+ei(121, 472). 
+ei(122, 473). 
+ei(263, 474). 
+ei(265, 475). 
+ei(175, 476). 
+ei(177, 477). 
+ei(295, 478). 
+ei(297, 479). 
+ei(295, 480). 
+ei(297, 481). 
+ei(283, 482). 
+ei(285, 483). 
+ei(171, 484). 
+ei(173, 485). 
+ei(283, 486). 
+ei(271, 487). 
+ei(273, 488). 
+ei(279, 489). 
+ei(281, 490). 
+ei(127, 491). 
+ei(128, 492). 
+ei(55, 493). 
+ei(56, 494). 
+ei(157, 495). 
+ei(158, 496). 
+ei(109, 497). 
+ei(110, 498). 
+ei(61, 499). 
+ei(62, 500). 
+ei(49, 501). 
+ei(50, 502). 
+ei(19, 503). 
+ei(20, 504). 
+ei(307, 505). 
+ei(309, 506). 
+ei(279, 507). 
+ei(281, 508). 
+ei(227, 509). 
+ei(229, 510). 
+ei(339, 511). 
+ei(341, 512). 
+ei(211, 513). 
+ei(213, 514). 
+ei(211, 515). 
+ei(213, 516). 
+ei(319, 517). 
+ei(227, 518). 
+ei(229, 519). 
+ei(175, 520). 
+ei(177, 521). 
+ei(335, 522). 
+ei(335, 523). 
+ei(271, 524). 
+ei(273, 525). 
+ei(347, 526). 
+ei(349, 527). 
+ei(347, 528). 
+ei(349, 529). 
+ei(327, 530). 
+ei(329, 531). 
+ei(175, 532). 
+ei(177, 533). 
+ei(279, 534). 
+ei(281, 535). 
+ei(307, 536). 
+ei(309, 537). 
+ei(307, 538). 
+ei(309, 539). 
+ei(109, 540). 
+ei(110, 541). 
+ei(103, 542). 
+ei(104, 543). 
+ei(307, 544). 
+ei(309, 545). 
+ei(243, 546). 
+ei(73, 547). 
+ei(74, 548). 
+ei(227, 549). 
+ei(229, 550). 
+ei(247, 551). 
+ei(249, 552). 
+ei(247, 553). 
+ei(249, 554). 
+ei(267, 555). 
+ei(269, 556). 
+ei(267, 557). 
+ei(269, 558). 
+ei(343, 559). 
+ei(345, 560). 
+ei(343, 561). 
+ei(345, 562). 
+ei(207, 563). 
+ei(209, 564). 
+ei(67, 577). 
+ei(68, 578). 
+ei(341, 574). 
+ei(573, 575). 
+ei(71, 576). 
+ei(339, 569). 
+ei(568, 570). 
+ei(71, 571). 
+ei(8, 585). 
+ei(203, 582). 
+ei(581, 583). 
+ei(11, 584). 
+ei(8, 592). 
+ei(191, 589). 
+ei(588, 590). 
+ei(11, 591). 
+ei(67, 605). 
+ei(68, 606). 
+ei(341, 602). 
+ei(601, 603). 
+ei(71, 604). 
+ei(339, 597). 
+ei(596, 598). 
+ei(71, 599). 
+ei(104, 613). 
+ei(215, 610). 
+ei(609, 611). 
+ei(107, 612). 
+ei(67, 626). 
+ei(68, 627). 
+ei(341, 623). 
+ei(622, 624). 
+ei(71, 625). 
+ei(339, 618). 
+ei(617, 619). 
+ei(71, 620). 
+ei(67, 640). 
+ei(68, 641). 
+ei(341, 637). 
+ei(636, 638). 
+ei(71, 639). 
+ei(339, 632). 
+ei(631, 633). 
+ei(71, 634). 
+ei(104, 648). 
+ei(299, 645). 
+ei(644, 646). 
+ei(107, 647). 
+ei(104, 655). 
+ei(287, 652). 
+ei(651, 653). 
+ei(107, 654). 
+ei(80, 662). 
+ei(319, 659). 
+ei(658, 660). 
+ei(83, 661). 
+ei(104, 669). 
+ei(331, 666). 
+ei(665, 667). 
+ei(107, 668). 
+ei(185, 670). 
+ei(253, 671). 
+ei(674, 672). 
+ei(185, 675). 
+ei(269, 676). 
+ei(679, 677). 
+ei(185, 680). 
+ei(309, 681). 
+ei(684, 682). 
+ei(251, 685). 
+ei(183, 686). 
+ei(689, 687). 
+ei(251, 690). 
+ei(269, 691). 
+ei(694, 692). 
+ei(251, 695). 
+ei(309, 696). 
+ei(699, 697). 
+ei(267, 700). 
+ei(183, 701). 
+ei(704, 702). 
+ei(267, 705). 
+ei(253, 706). 
+ei(709, 707). 
+ei(267, 710). 
+ei(309, 711). 
+ei(714, 712). 
+ei(307, 715). 
+ei(183, 716). 
+ei(719, 717). 
+ei(307, 720). 
+ei(253, 721). 
+ei(724, 722). 
+ei(307, 725). 
+ei(269, 726). 
+ei(729, 727). 
+ei(281, 730). 
+ei(265, 731). 
+ei(734, 732). 
+ei(281, 735). 
+ei(307, 736). 
+ei(739, 737). 
+ei(281, 740). 
+ei(185, 741). 
+ei(744, 742). 
+ei(281, 745). 
+ei(253, 746). 
+ei(749, 747). 
+ei(281, 750). 
+ei(68, 751). 
+ei(754, 752). 
+ei(281, 755). 
+ei(631, 756). 
+ei(759, 757). 
+ei(263, 760). 
+ei(279, 761). 
+ei(764, 762). 
+ei(263, 765). 
+ei(307, 766). 
+ei(769, 767). 
+ei(263, 770). 
+ei(185, 771). 
+ei(774, 772). 
+ei(263, 775). 
+ei(253, 776). 
+ei(779, 777). 
+ei(263, 780). 
+ei(68, 781). 
+ei(784, 782). 
+ei(263, 785). 
+ei(631, 786). 
+ei(789, 787). 
+ei(309, 790). 
+ei(279, 791). 
+ei(794, 792). 
+ei(309, 795). 
+ei(265, 796). 
+ei(799, 797). 
+ei(309, 800). 
+ei(185, 801). 
+ei(804, 802). 
+ei(309, 805). 
+ei(253, 806). 
+ei(809, 807). 
+ei(309, 810). 
+ei(68, 811). 
+ei(814, 812). 
+ei(309, 815). 
+ei(631, 816). 
+ei(819, 817). 
+ei(183, 820). 
+ei(279, 821). 
+ei(824, 822). 
+ei(183, 825). 
+ei(265, 826). 
+ei(829, 827). 
+ei(183, 830). 
+ei(307, 831). 
+ei(834, 832). 
+ei(183, 835). 
+ei(253, 836). 
+ei(839, 837). 
+ei(183, 840). 
+ei(68, 841). 
+ei(844, 842). 
+ei(183, 845). 
+ei(631, 846). 
+ei(849, 847). 
+ei(251, 850). 
+ei(279, 851). 
+ei(854, 852). 
+ei(251, 855). 
+ei(265, 856). 
+ei(859, 857). 
+ei(251, 860). 
+ei(307, 861). 
+ei(864, 862). 
+ei(251, 865). 
+ei(185, 866). 
+ei(869, 867). 
+ei(251, 870). 
+ei(68, 871). 
+ei(874, 872). 
+ei(251, 875). 
+ei(631, 876). 
+ei(879, 877). 
+ei(67, 880). 
+ei(279, 881). 
+ei(884, 882). 
+ei(67, 885). 
+ei(265, 886). 
+ei(889, 887). 
+ei(67, 890). 
+ei(307, 891). 
+ei(894, 892). 
+ei(67, 895). 
+ei(185, 896). 
+ei(899, 897). 
+ei(67, 900). 
+ei(253, 901). 
+ei(904, 902). 
+ei(67, 905). 
+ei(631, 906). 
+ei(909, 907). 
+ei(636, 910). 
+ei(279, 911). 
+ei(914, 912). 
+ei(636, 915). 
+ei(265, 916). 
+ei(919, 917). 
+ei(636, 920). 
+ei(307, 921). 
+ei(924, 922). 
+ei(636, 925). 
+ei(185, 926). 
+ei(929, 927). 
+ei(636, 930). 
+ei(253, 931). 
+ei(934, 932). 
+ei(636, 935). 
+ei(68, 936). 
+ei(939, 937). 
+ei(636, 940). 
+ei(631, 941). 
+ei(944, 942). 
+ei(267, 945). 
+ei(281, 946). 
+ei(949, 947). 
+ei(279, 950). 
+ei(269, 951). 
+ei(954, 952). 
+ei(223, 955). 
+ei(307, 956). 
+ei(959, 957). 
+ei(309, 960). 
+ei(225, 961). 
+ei(964, 962). 
+ei(347, 965). 
+ei(329, 966). 
+ei(969, 967). 
+ei(347, 970). 
+ei(309, 971). 
+ei(974, 972). 
+ei(347, 975). 
+ei(109, 976). 
+ei(979, 977). 
+ei(327, 980). 
+ei(349, 981). 
+ei(984, 982). 
+ei(327, 985). 
+ei(309, 986). 
+ei(989, 987). 
+ei(327, 990). 
+ei(109, 991). 
+ei(994, 992). 
+ei(307, 995). 
+ei(349, 996). 
+ei(999, 997). 
+ei(307, 1000). 
+ei(329, 1001). 
+ei(1004, 1002). 
+ei(307, 1005). 
+ei(109, 1006). 
+ei(1009, 1007). 
+ei(110, 1010). 
+ei(349, 1011). 
+ei(1014, 1012). 
+ei(110, 1015). 
+ei(329, 1016). 
+ei(1019, 1017). 
+ei(110, 1020). 
+ei(309, 1021). 
+ei(1024, 1022). 
+ei(273, 1025). 
+ei(347, 1026). 
+ei(1029, 1027). 
+ei(273, 1030). 
+ei(177, 1031). 
+ei(1034, 1032). 
+ei(273, 1035). 
+ei(281, 1036). 
+ei(1039, 1037). 
+ei(273, 1040). 
+ei(309, 1041). 
+ei(1044, 1042). 
+ei(273, 1045). 
+ei(103, 1046). 
+ei(1049, 1047). 
+ei(349, 1050). 
+ei(271, 1051). 
+ei(1054, 1052). 
+ei(349, 1055). 
+ei(177, 1056). 
+ei(1059, 1057). 
+ei(349, 1060). 
+ei(281, 1061). 
+ei(1064, 1062). 
+ei(349, 1065). 
+ei(309, 1066). 
+ei(1069, 1067). 
+ei(349, 1070). 
+ei(103, 1071). 
+ei(1074, 1072). 
+ei(175, 1075). 
+ei(271, 1076). 
+ei(1079, 1077). 
+ei(175, 1080). 
+ei(347, 1081). 
+ei(1084, 1082). 
+ei(175, 1085). 
+ei(281, 1086). 
+ei(1089, 1087). 
+ei(175, 1090). 
+ei(309, 1091). 
+ei(1094, 1092). 
+ei(175, 1095). 
+ei(103, 1096). 
+ei(1099, 1097). 
+ei(279, 1100). 
+ei(271, 1101). 
+ei(1104, 1102). 
+ei(279, 1105). 
+ei(347, 1106). 
+ei(1109, 1107). 
+ei(279, 1110). 
+ei(177, 1111). 
+ei(1114, 1112). 
+ei(279, 1115). 
+ei(309, 1116). 
+ei(1119, 1117). 
+ei(279, 1120). 
+ei(103, 1121). 
+ei(1124, 1122). 
+ei(307, 1125). 
+ei(271, 1126). 
+ei(1129, 1127). 
+ei(307, 1130). 
+ei(347, 1131). 
+ei(1134, 1132). 
+ei(307, 1135). 
+ei(177, 1136). 
+ei(1139, 1137). 
+ei(307, 1140). 
+ei(281, 1141). 
+ei(1144, 1142). 
+ei(307, 1145). 
+ei(103, 1146). 
+ei(1149, 1147). 
+ei(104, 1150). 
+ei(271, 1151). 
+ei(1154, 1152). 
+ei(104, 1155). 
+ei(347, 1156). 
+ei(1159, 1157). 
+ei(104, 1160). 
+ei(177, 1161). 
+ei(1164, 1162). 
+ei(104, 1165). 
+ei(281, 1166). 
+ei(1169, 1167). 
+ei(104, 1170). 
+ei(309, 1171). 
+ei(1174, 1172). 
+ei(104, 1175). 
+ei(335, 1176). 
+ei(1179, 1177). 
+ei(665, 1180). 
+ei(335, 1181). 
+ei(1184, 1182). 
+ei(227, 1185). 
+ei(175, 1186). 
+ei(1189, 1187). 
+ei(177, 1190). 
+ei(229, 1191). 
+ei(1194, 1192). 
+ei(213, 1195). 
+ei(319, 1196). 
+ei(1199, 1197). 
+ei(279, 1200). 
+ei(229, 1201). 
+ei(1204, 1202). 
+ei(279, 1205). 
+ei(339, 1206). 
+ei(1209, 1207). 
+ei(227, 1210). 
+ei(281, 1211). 
+ei(1214, 1212). 
+ei(227, 1215). 
+ei(339, 1216). 
+ei(1219, 1217). 
+ei(341, 1220). 
+ei(281, 1221). 
+ei(1224, 1222). 
+ei(341, 1225). 
+ei(229, 1226). 
+ei(1229, 1227). 
+ei(249, 1230). 
+ei(243, 1231). 
+ei(1234, 1232). 
+ei(249, 1235). 
+ei(269, 1236). 
+ei(1239, 1237). 
+ei(249, 1240). 
+ei(343, 1241). 
+ei(1244, 1242). 
+ei(267, 1245). 
+ei(243, 1246). 
+ei(1249, 1247). 
+ei(267, 1250). 
+ei(247, 1251). 
+ei(1254, 1252). 
+ei(267, 1255). 
+ei(343, 1256). 
+ei(1259, 1257). 
+ei(345, 1260). 
+ei(243, 1261). 
+ei(1264, 1262). 
+ei(345, 1265). 
+ei(247, 1266). 
+ei(1269, 1267). 
+ei(345, 1270). 
+ei(269, 1271). 
+ei(1274, 1272). 
+ei(295, 1275). 
+ei(273, 1276). 
+ei(1279, 1277). 
+ei(295, 1280). 
+ei(279, 1281). 
+ei(1284, 1282). 
+ei(295, 1285). 
+ei(158, 1286). 
+ei(1289, 1287). 
+ei(271, 1290). 
+ei(297, 1291). 
+ei(1294, 1292). 
+ei(271, 1295). 
+ei(279, 1296). 
+ei(1299, 1297). 
+ei(271, 1300). 
+ei(158, 1301). 
+ei(1304, 1302). 
+ei(281, 1305). 
+ei(297, 1306). 
+ei(1309, 1307). 
+ei(281, 1310). 
+ei(273, 1311). 
+ei(1314, 1312). 
+ei(281, 1315). 
+ei(158, 1316). 
+ei(1319, 1317). 
+ei(157, 1320). 
+ei(297, 1321). 
+ei(1324, 1322). 
+ei(157, 1325). 
+ei(273, 1326). 
+ei(1329, 1327). 
+ei(157, 1330). 
+ei(279, 1331). 
+ei(1334, 1332). 
+ei(121, 1335). 
+ei(263, 1336). 
+ei(1339, 1337). 
+ei(121, 1340). 
+ei(175, 1341). 
+ei(1344, 1342). 
+ei(121, 1345). 
+ei(49, 1346). 
+ei(1349, 1347). 
+ei(121, 1350). 
+ei(19, 1351). 
+ei(1354, 1352). 
+ei(265, 1355). 
+ei(122, 1356). 
+ei(1359, 1357). 
+ei(265, 1360). 
+ei(175, 1361). 
+ei(1364, 1362). 
+ei(265, 1365). 
+ei(49, 1366). 
+ei(1369, 1367). 
+ei(265, 1370). 
+ei(19, 1371). 
+ei(1374, 1372). 
+ei(177, 1375). 
+ei(122, 1376). 
+ei(1379, 1377). 
+ei(177, 1380). 
+ei(263, 1381). 
+ei(1384, 1382). 
+ei(177, 1385). 
+ei(49, 1386). 
+ei(1389, 1387). 
+ei(177, 1390). 
+ei(19, 1391). 
+ei(1394, 1392). 
+ei(50, 1395). 
+ei(122, 1396). 
+ei(1399, 1397). 
+ei(50, 1400). 
+ei(263, 1401). 
+ei(1404, 1402). 
+ei(50, 1405). 
+ei(175, 1406). 
+ei(1409, 1407). 
+ei(50, 1410). 
+ei(19, 1411). 
+ei(1414, 1412). 
+ei(20, 1415). 
+ei(122, 1416). 
+ei(1419, 1417). 
+ei(20, 1420). 
+ei(263, 1421). 
+ei(1424, 1422). 
+ei(20, 1425). 
+ei(175, 1426). 
+ei(1429, 1427). 
+ei(20, 1430). 
+ei(49, 1431). 
+ei(1434, 1432). 
+ei(295, 1435). 
+ei(285, 1436). 
+ei(1439, 1437). 
+ei(295, 1440). 
+ei(171, 1441). 
+ei(1444, 1442). 
+ei(295, 1445). 
+ei(109, 1446). 
+ei(1449, 1447). 
+ei(283, 1450). 
+ei(297, 1451). 
+ei(1454, 1452). 
+ei(283, 1455). 
+ei(171, 1456). 
+ei(1459, 1457). 
+ei(283, 1460). 
+ei(109, 1461). 
+ei(1464, 1462). 
+ei(173, 1465). 
+ei(297, 1466). 
+ei(1469, 1467). 
+ei(173, 1470). 
+ei(285, 1471). 
+ei(1474, 1472). 
+ei(173, 1475). 
+ei(109, 1476). 
+ei(1479, 1477). 
+ei(110, 1480). 
+ei(297, 1481). 
+ei(1484, 1482). 
+ei(110, 1485). 
+ei(285, 1486). 
+ei(1489, 1487). 
+ei(110, 1490). 
+ei(171, 1491). 
+ei(1494, 1492). 
+ei(104, 1495). 
+ei(287, 1496). 
+ei(1499, 1497). 
+ei(104, 1500). 
+ei(291, 1501). 
+ei(1504, 1502). 
+ei(644, 1505). 
+ei(287, 1506). 
+ei(1509, 1507). 
+ei(644, 1510). 
+ei(291, 1511). 
+ei(1514, 1512). 
+ei(239, 1515). 
+ei(363, 1516). 
+ei(1519, 1517). 
+ei(239, 1520). 
+ei(98, 1521). 
+ei(1524, 1522). 
+ei(239, 1525). 
+ei(86, 1526). 
+ei(1529, 1527). 
+ei(239, 1530). 
+ei(92, 1531). 
+ei(1534, 1532). 
+ei(239, 1535). 
+ei(32, 1536). 
+ei(1539, 1537). 
+ei(97, 1540). 
+ei(363, 1541). 
+ei(1544, 1542). 
+ei(97, 1545). 
+ei(86, 1546). 
+ei(1549, 1547). 
+ei(97, 1550). 
+ei(92, 1551). 
+ei(1554, 1552). 
+ei(97, 1555). 
+ei(32, 1556). 
+ei(1559, 1557). 
+ei(85, 1560). 
+ei(363, 1561). 
+ei(1564, 1562). 
+ei(85, 1565). 
+ei(98, 1566). 
+ei(1569, 1567). 
+ei(85, 1570). 
+ei(92, 1571). 
+ei(1574, 1572). 
+ei(85, 1575). 
+ei(32, 1576). 
+ei(1579, 1577). 
+ei(91, 1580). 
+ei(363, 1581). 
+ei(1584, 1582). 
+ei(91, 1585). 
+ei(98, 1586). 
+ei(1589, 1587). 
+ei(91, 1590). 
+ei(86, 1591). 
+ei(1594, 1592). 
+ei(91, 1595). 
+ei(32, 1596). 
+ei(1599, 1597). 
+ei(31, 1600). 
+ei(363, 1601). 
+ei(1604, 1602). 
+ei(31, 1605). 
+ei(98, 1606). 
+ei(1609, 1607). 
+ei(31, 1610). 
+ei(86, 1611). 
+ei(1614, 1612). 
+ei(31, 1615). 
+ei(92, 1616). 
+ei(1619, 1617). 
+ei(25, 1620). 
+ei(179, 1621). 
+ei(1624, 1622). 
+ei(25, 1625). 
+ei(367, 1626). 
+ei(1629, 1627). 
+ei(231, 1630). 
+ei(26, 1631). 
+ei(1634, 1632). 
+ei(231, 1635). 
+ei(179, 1636). 
+ei(1639, 1637). 
+ei(231, 1640). 
+ei(367, 1641). 
+ei(1644, 1642). 
+ei(235, 1645). 
+ei(26, 1646). 
+ei(1649, 1647). 
+ei(235, 1650). 
+ei(179, 1651). 
+ei(1654, 1652). 
+ei(235, 1655). 
+ei(367, 1656). 
+ei(1659, 1657). 
+ei(195, 1660). 
+ei(44, 1661). 
+ei(1664, 1662). 
+ei(195, 1665). 
+ei(2, 1666). 
+ei(1669, 1667). 
+ei(195, 1670). 
+ei(14, 1671). 
+ei(1674, 1672). 
+ei(43, 1675). 
+ei(2, 1676). 
+ei(1679, 1677). 
+ei(43, 1680). 
+ei(14, 1681). 
+ei(1684, 1682). 
+ei(1, 1685). 
+ei(44, 1686). 
+ei(1689, 1687). 
+ei(1, 1690). 
+ei(14, 1691). 
+ei(1694, 1692). 
+ei(13, 1695). 
+ei(44, 1696). 
+ei(1699, 1697). 
+ei(13, 1700). 
+ei(2, 1701). 
+ei(1704, 1702). 
+ei(269, 1705). 
+ei(279, 1706). 
+ei(1709, 1707). 
+ei(269, 1710). 
+ei(67, 1711). 
+ei(1714, 1712). 
+ei(269, 1715). 
+ei(622, 1716). 
+ei(1719, 1717). 
+ei(281, 1720). 
+ei(267, 1721). 
+ei(1724, 1722). 
+ei(281, 1725). 
+ei(67, 1726). 
+ei(1729, 1727). 
+ei(281, 1730). 
+ei(622, 1731). 
+ei(1734, 1732). 
+ei(68, 1735). 
+ei(267, 1736). 
+ei(1739, 1737). 
+ei(68, 1740). 
+ei(279, 1741). 
+ei(1744, 1742). 
+ei(68, 1745). 
+ei(622, 1746). 
+ei(1749, 1747). 
+ei(617, 1750). 
+ei(267, 1751). 
+ei(1754, 1752). 
+ei(617, 1755). 
+ei(279, 1756). 
+ei(1759, 1757). 
+ei(617, 1760). 
+ei(67, 1761). 
+ei(1764, 1762). 
+ei(617, 1765). 
+ei(622, 1766). 
+ei(1769, 1767). 
+ei(259, 1770). 
+ei(255, 1771). 
+ei(1774, 1772). 
+ei(247, 1775). 
+ei(269, 1776). 
+ei(1779, 1777). 
+ei(247, 1780). 
+ei(343, 1781). 
+ei(1784, 1782). 
+ei(267, 1785). 
+ei(249, 1786). 
+ei(1789, 1787). 
+ei(267, 1790). 
+ei(343, 1791). 
+ei(1794, 1792). 
+ei(345, 1795). 
+ei(249, 1796). 
+ei(1799, 1797). 
+ei(345, 1800). 
+ei(269, 1801). 
+ei(1804, 1802). 
+ei(359, 1805). 
+ei(134, 1806). 
+ei(1809, 1807). 
+ei(359, 1810). 
+ei(140, 1811). 
+ei(1814, 1812). 
+ei(359, 1815). 
+ei(146, 1816). 
+ei(1819, 1817). 
+ei(359, 1820). 
+ei(38, 1821). 
+ei(1824, 1822). 
+ei(133, 1825). 
+ei(361, 1826). 
+ei(1829, 1827). 
+ei(133, 1830). 
+ei(140, 1831). 
+ei(1834, 1832). 
+ei(133, 1835). 
+ei(146, 1836). 
+ei(1839, 1837). 
+ei(133, 1840). 
+ei(38, 1841). 
+ei(1844, 1842). 
+ei(139, 1845). 
+ei(361, 1846). 
+ei(1849, 1847). 
+ei(139, 1850). 
+ei(134, 1851). 
+ei(1854, 1852). 
+ei(139, 1855). 
+ei(146, 1856). 
+ei(1859, 1857). 
+ei(139, 1860). 
+ei(38, 1861). 
+ei(1864, 1862). 
+ei(145, 1865). 
+ei(361, 1866). 
+ei(1869, 1867). 
+ei(145, 1870). 
+ei(134, 1871). 
+ei(1874, 1872). 
+ei(145, 1875). 
+ei(140, 1876). 
+ei(1879, 1877). 
+ei(145, 1880). 
+ei(38, 1881). 
+ei(1884, 1882). 
+ei(37, 1885). 
+ei(361, 1886). 
+ei(1889, 1887). 
+ei(37, 1890). 
+ei(134, 1891). 
+ei(1894, 1892). 
+ei(37, 1895). 
+ei(140, 1896). 
+ei(1899, 1897). 
+ei(37, 1900). 
+ei(146, 1901). 
+ei(1904, 1902). 
+ei(219, 1905). 
+ei(215, 1906). 
+ei(1909, 1907). 
+ei(219, 1910). 
+ei(317, 1911). 
+ei(1914, 1912). 
+ei(219, 1915). 
+ei(299, 1916). 
+ei(1919, 1917). 
+ei(315, 1920). 
+ei(215, 1921). 
+ei(1924, 1922). 
+ei(315, 1925). 
+ei(299, 1926). 
+ei(1929, 1927). 
+ei(163, 1930). 
+ei(67, 1931). 
+ei(1934, 1932). 
+ei(163, 1935). 
+ei(573, 1936). 
+ei(1939, 1937). 
+ei(68, 1940). 
+ei(165, 1941). 
+ei(1944, 1942). 
+ei(68, 1945). 
+ei(573, 1946). 
+ei(1949, 1947). 
+ei(568, 1950). 
+ei(165, 1951). 
+ei(1954, 1952). 
+ei(568, 1955). 
+ei(67, 1956). 
+ei(1959, 1957). 
+ei(568, 1960). 
+ei(573, 1961). 
+ei(1964, 1962). 
+ei(8, 1965). 
+ei(195, 1966). 
+ei(1969, 1967). 
+ei(581, 1970). 
+ei(195, 1971). 
+ei(1974, 1972). 
+ei(68, 1975). 
+ei(601, 1976). 
+ei(1979, 1977). 
+ei(596, 1980). 
+ei(67, 1981). 
+ei(1984, 1982). 
+ei(596, 1985). 
+ei(601, 1986). 
+ei(1989, 1987). 
+ei(8, 1990). 
+ei(187, 1991). 
+ei(1994, 1992). 
+ei(588, 1995). 
+ei(187, 1996). 
+ei(1999, 1997). 
+ei(267, 2000). 
+ei(151, 2001). 
+ei(2004, 2002). 
+ei(152, 2005). 
+ei(269, 2006). 
+ei(2009, 2007). 
+ei(207, 2010). 
+ei(79, 2011). 
+ei(2014, 2012). 
+ei(207, 2015). 
+ei(263, 2016). 
+ei(2019, 2017). 
+ei(80, 2020). 
+ei(209, 2021). 
+ei(2024, 2022). 
+ei(80, 2025). 
+ei(263, 2026). 
+ei(2029, 2027). 
+ei(265, 2030). 
+ei(209, 2031). 
+ei(2034, 2032). 
+ei(265, 2035). 
+ei(79, 2036). 
+ei(2039, 2037). 
+
+% ebi/2
+ebi(167, 374). 
+ebi(169, 375). 
+ebi(163, 376). 
+ebi(169, 377). 
+ebi(167, 378). 
+ebi(203, 379). 
+ebi(205, 380). 
+ebi(201, 381). 
+ebi(169, 382). 
+ebi(167, 383). 
+ebi(263, 384). 
+ebi(263, 385). 
+ebi(265, 386). 
+ebi(263, 387). 
+ebi(265, 388). 
+ebi(263, 389). 
+ebi(265, 390). 
+ebi(185, 391). 
+ebi(211, 392). 
+ebi(213, 393). 
+ebi(211, 394). 
+ebi(213, 395). 
+ebi(221, 396). 
+ebi(219, 397). 
+ebi(217, 398). 
+ebi(215, 399). 
+ebi(251, 400). 
+ebi(253, 401). 
+ebi(261, 402). 
+ebi(259, 403). 
+ebi(261, 404). 
+ebi(259, 405). 
+ebi(267, 406). 
+ebi(269, 407). 
+ebi(267, 408). 
+ebi(267, 409). 
+ebi(269, 410). 
+ebi(179, 411). 
+ebi(181, 412). 
+ebi(269, 413). 
+ebi(175, 414). 
+ebi(367, 415). 
+ebi(369, 416). 
+ebi(351, 417). 
+ebi(353, 418). 
+ebi(351, 419). 
+ebi(353, 420). 
+ebi(235, 421). 
+ebi(237, 422). 
+ebi(357, 423). 
+ebi(355, 424). 
+ebi(355, 425). 
+ebi(357, 426). 
+ebi(357, 427). 
+ebi(355, 428). 
+ebi(355, 429). 
+ebi(357, 430). 
+ebi(355, 431). 
+ebi(357, 432). 
+ebi(181, 433). 
+ebi(179, 434). 
+ebi(279, 435). 
+ebi(281, 436). 
+ebi(363, 437). 
+ebi(365, 438). 
+ebi(361, 439). 
+ebi(359, 440). 
+ebi(359, 441). 
+ebi(361, 442). 
+ebi(359, 443). 
+ebi(361, 444). 
+ebi(359, 445). 
+ebi(361, 446). 
+ebi(239, 447). 
+ebi(241, 448). 
+ebi(279, 449). 
+ebi(281, 450). 
+ebi(279, 451). 
+ebi(281, 452). 
+ebi(279, 453). 
+ebi(281, 454). 
+ebi(279, 455). 
+ebi(281, 456). 
+ebi(239, 457). 
+ebi(241, 458). 
+ebi(239, 459). 
+ebi(241, 460). 
+ebi(239, 461). 
+ebi(241, 462). 
+ebi(239, 463). 
+ebi(241, 464). 
+ebi(213, 465). 
+ebi(285, 466). 
+ebi(285, 467). 
+ebi(207, 468). 
+ebi(209, 469). 
+ebi(339, 470). 
+ebi(341, 471). 
+ebi(295, 472). 
+ebi(297, 473). 
+ebi(297, 474). 
+ebi(295, 475). 
+ebi(297, 476). 
+ebi(295, 477). 
+ebi(299, 478). 
+ebi(301, 479). 
+ebi(287, 480). 
+ebi(289, 481). 
+ebi(287, 482). 
+ebi(289, 483). 
+ebi(289, 484). 
+ebi(287, 485). 
+ebi(291, 486). 
+ebi(299, 487). 
+ebi(301, 488). 
+ebi(301, 489). 
+ebi(299, 490). 
+ebi(121, 491). 
+ebi(122, 492). 
+ebi(121, 493). 
+ebi(122, 494). 
+ebi(299, 495). 
+ebi(301, 496). 
+ebi(289, 497). 
+ebi(287, 498). 
+ebi(121, 499). 
+ebi(122, 500). 
+ebi(297, 501). 
+ebi(295, 502). 
+ebi(297, 503). 
+ebi(295, 504). 
+ebi(371, 505). 
+ebi(373, 506). 
+ebi(307, 507). 
+ebi(309, 508). 
+ebi(307, 509). 
+ebi(309, 510). 
+ebi(309, 511). 
+ebi(307, 512). 
+ebi(321, 513). 
+ebi(319, 514). 
+ebi(313, 515). 
+ebi(311, 516). 
+ebi(313, 517). 
+ebi(323, 518). 
+ebi(325, 519). 
+ebi(325, 520). 
+ebi(323, 521). 
+ebi(329, 522). 
+ebi(227, 523). 
+ebi(333, 524). 
+ebi(331, 525). 
+ebi(333, 526). 
+ebi(331, 527). 
+ebi(335, 528). 
+ebi(337, 529). 
+ebi(335, 530). 
+ebi(337, 531). 
+ebi(331, 532). 
+ebi(333, 533). 
+ebi(331, 534). 
+ebi(333, 535). 
+ebi(331, 536). 
+ebi(333, 537). 
+ebi(335, 538). 
+ebi(337, 539). 
+ebi(337, 540). 
+ebi(335, 541). 
+ebi(333, 542). 
+ebi(331, 543). 
+ebi(341, 544). 
+ebi(339, 545). 
+ebi(305, 546). 
+ebi(271, 547). 
+ebi(273, 548). 
+ebi(247, 549). 
+ebi(249, 550). 
+ebi(305, 551). 
+ebi(303, 552). 
+ebi(243, 553). 
+ebi(245, 554). 
+ebi(243, 555). 
+ebi(245, 556). 
+ebi(303, 557). 
+ebi(305, 558). 
+ebi(305, 559). 
+ebi(303, 560). 
+ebi(245, 561). 
+ebi(243, 562). 
+ebi(343, 563). 
+ebi(345, 564). 
+ebi(205, 577). 
+ebi(203, 578). 
+ebi(573, 574). 
+ebi(205, 575). 
+ebi(573, 576). 
+ebi(568, 569). 
+ebi(203, 570). 
+ebi(568, 571). 
+ebi(199, 585). 
+ebi(581, 582). 
+ebi(199, 583). 
+ebi(581, 584). 
+ebi(183, 592). 
+ebi(588, 589). 
+ebi(183, 590). 
+ebi(588, 591). 
+ebi(193, 605). 
+ebi(191, 606). 
+ebi(601, 602). 
+ebi(193, 603). 
+ebi(601, 604). 
+ebi(596, 597). 
+ebi(191, 598). 
+ebi(596, 599). 
+ebi(275, 613). 
+ebi(609, 610). 
+ebi(275, 611). 
+ebi(609, 612). 
+ebi(261, 626). 
+ebi(259, 627). 
+ebi(622, 623). 
+ebi(261, 624). 
+ebi(622, 625). 
+ebi(617, 618). 
+ebi(259, 619). 
+ebi(617, 620). 
+ebi(355, 640). 
+ebi(357, 641). 
+ebi(636, 637). 
+ebi(355, 638). 
+ebi(636, 639). 
+ebi(631, 632). 
+ebi(357, 633). 
+ebi(631, 634). 
+ebi(283, 648). 
+ebi(644, 645). 
+ebi(283, 646). 
+ebi(644, 647). 
+ebi(223, 655). 
+ebi(651, 652). 
+ebi(223, 653). 
+ebi(651, 654). 
+ebi(315, 662). 
+ebi(658, 659). 
+ebi(315, 660). 
+ebi(658, 661). 
+ebi(327, 669). 
+ebi(665, 666). 
+ebi(327, 667). 
+ebi(665, 668). 
+ebi(674, 670). 
+ebi(674, 671). 
+ebi(360, 672). 
+ebi(679, 675). 
+ebi(679, 676). 
+ebi(360, 677). 
+ebi(684, 680). 
+ebi(684, 681). 
+ebi(360, 682). 
+ebi(689, 685). 
+ebi(689, 686). 
+ebi(360, 687). 
+ebi(694, 690). 
+ebi(694, 691). 
+ebi(360, 692). 
+ebi(699, 695). 
+ebi(699, 696). 
+ebi(360, 697). 
+ebi(704, 700). 
+ebi(704, 701). 
+ebi(360, 702). 
+ebi(709, 705). 
+ebi(709, 706). 
+ebi(360, 707). 
+ebi(714, 710). 
+ebi(714, 711). 
+ebi(360, 712). 
+ebi(719, 715). 
+ebi(719, 716). 
+ebi(360, 717). 
+ebi(724, 720). 
+ebi(724, 721). 
+ebi(360, 722). 
+ebi(729, 725). 
+ebi(729, 726). 
+ebi(360, 727). 
+ebi(734, 730). 
+ebi(734, 731). 
+ebi(356, 732). 
+ebi(739, 735). 
+ebi(739, 736). 
+ebi(356, 737). 
+ebi(744, 740). 
+ebi(744, 741). 
+ebi(356, 742). 
+ebi(749, 745). 
+ebi(749, 746). 
+ebi(356, 747). 
+ebi(754, 750). 
+ebi(754, 751). 
+ebi(356, 752). 
+ebi(759, 755). 
+ebi(759, 756). 
+ebi(356, 757). 
+ebi(764, 760). 
+ebi(764, 761). 
+ebi(356, 762). 
+ebi(769, 765). 
+ebi(769, 766). 
+ebi(356, 767). 
+ebi(774, 770). 
+ebi(774, 771). 
+ebi(356, 772). 
+ebi(779, 775). 
+ebi(779, 776). 
+ebi(356, 777). 
+ebi(784, 780). 
+ebi(784, 781). 
+ebi(356, 782). 
+ebi(789, 785). 
+ebi(789, 786). 
+ebi(356, 787). 
+ebi(794, 790). 
+ebi(794, 791). 
+ebi(356, 792). 
+ebi(799, 795). 
+ebi(799, 796). 
+ebi(356, 797). 
+ebi(804, 800). 
+ebi(804, 801). 
+ebi(356, 802). 
+ebi(809, 805). 
+ebi(809, 806). 
+ebi(356, 807). 
+ebi(814, 810). 
+ebi(814, 811). 
+ebi(356, 812). 
+ebi(819, 815). 
+ebi(819, 816). 
+ebi(356, 817). 
+ebi(824, 820). 
+ebi(824, 821). 
+ebi(356, 822). 
+ebi(829, 825). 
+ebi(829, 826). 
+ebi(356, 827). 
+ebi(834, 830). 
+ebi(834, 831). 
+ebi(356, 832). 
+ebi(839, 835). 
+ebi(839, 836). 
+ebi(356, 837). 
+ebi(844, 840). 
+ebi(844, 841). 
+ebi(356, 842). 
+ebi(849, 845). 
+ebi(849, 846). 
+ebi(356, 847). 
+ebi(854, 850). 
+ebi(854, 851). 
+ebi(356, 852). 
+ebi(859, 855). 
+ebi(859, 856). 
+ebi(356, 857). 
+ebi(864, 860). 
+ebi(864, 861). 
+ebi(356, 862). 
+ebi(869, 865). 
+ebi(869, 866). 
+ebi(356, 867). 
+ebi(874, 870). 
+ebi(874, 871). 
+ebi(356, 872). 
+ebi(879, 875). 
+ebi(879, 876). 
+ebi(356, 877). 
+ebi(884, 880). 
+ebi(884, 881). 
+ebi(356, 882). 
+ebi(889, 885). 
+ebi(889, 886). 
+ebi(356, 887). 
+ebi(894, 890). 
+ebi(894, 891). 
+ebi(356, 892). 
+ebi(899, 895). 
+ebi(899, 896). 
+ebi(356, 897). 
+ebi(904, 900). 
+ebi(904, 901). 
+ebi(356, 902). 
+ebi(909, 905). 
+ebi(909, 906). 
+ebi(356, 907). 
+ebi(914, 910). 
+ebi(914, 911). 
+ebi(356, 912). 
+ebi(919, 915). 
+ebi(919, 916). 
+ebi(356, 917). 
+ebi(924, 920). 
+ebi(924, 921). 
+ebi(356, 922). 
+ebi(929, 925). 
+ebi(929, 926). 
+ebi(356, 927). 
+ebi(934, 930). 
+ebi(934, 931). 
+ebi(356, 932). 
+ebi(939, 935). 
+ebi(939, 936). 
+ebi(356, 937). 
+ebi(944, 940). 
+ebi(944, 941). 
+ebi(356, 942). 
+ebi(949, 945). 
+ebi(949, 946). 
+ebi(352, 947). 
+ebi(954, 950). 
+ebi(954, 951). 
+ebi(352, 952). 
+ebi(959, 955). 
+ebi(959, 956). 
+ebi(340, 957). 
+ebi(964, 960). 
+ebi(964, 961). 
+ebi(340, 962). 
+ebi(969, 965). 
+ebi(969, 966). 
+ebi(336, 967). 
+ebi(974, 970). 
+ebi(974, 971). 
+ebi(336, 972). 
+ebi(979, 975). 
+ebi(979, 976). 
+ebi(336, 977). 
+ebi(984, 980). 
+ebi(984, 981). 
+ebi(336, 982). 
+ebi(989, 985). 
+ebi(989, 986). 
+ebi(336, 987). 
+ebi(994, 990). 
+ebi(994, 991). 
+ebi(336, 992). 
+ebi(999, 995). 
+ebi(999, 996). 
+ebi(336, 997). 
+ebi(1004, 1000). 
+ebi(1004, 1001). 
+ebi(336, 1002). 
+ebi(1009, 1005). 
+ebi(1009, 1006). 
+ebi(336, 1007). 
+ebi(1014, 1010). 
+ebi(1014, 1011). 
+ebi(336, 1012). 
+ebi(1019, 1015). 
+ebi(1019, 1016). 
+ebi(336, 1017). 
+ebi(1024, 1020). 
+ebi(1024, 1021). 
+ebi(336, 1022). 
+ebi(1029, 1025). 
+ebi(1029, 1026). 
+ebi(332, 1027). 
+ebi(1034, 1030). 
+ebi(1034, 1031). 
+ebi(332, 1032). 
+ebi(1039, 1035). 
+ebi(1039, 1036). 
+ebi(332, 1037). 
+ebi(1044, 1040). 
+ebi(1044, 1041). 
+ebi(332, 1042). 
+ebi(1049, 1045). 
+ebi(1049, 1046). 
+ebi(332, 1047). 
+ebi(1054, 1050). 
+ebi(1054, 1051). 
+ebi(332, 1052). 
+ebi(1059, 1055). 
+ebi(1059, 1056). 
+ebi(332, 1057). 
+ebi(1064, 1060). 
+ebi(1064, 1061). 
+ebi(332, 1062). 
+ebi(1069, 1065). 
+ebi(1069, 1066). 
+ebi(332, 1067). 
+ebi(1074, 1070). 
+ebi(1074, 1071). 
+ebi(332, 1072). 
+ebi(1079, 1075). 
+ebi(1079, 1076). 
+ebi(332, 1077). 
+ebi(1084, 1080). 
+ebi(1084, 1081). 
+ebi(332, 1082). 
+ebi(1089, 1085). 
+ebi(1089, 1086). 
+ebi(332, 1087). 
+ebi(1094, 1090). 
+ebi(1094, 1091). 
+ebi(332, 1092). 
+ebi(1099, 1095). 
+ebi(1099, 1096). 
+ebi(332, 1097). 
+ebi(1104, 1100). 
+ebi(1104, 1101). 
+ebi(332, 1102). 
+ebi(1109, 1105). 
+ebi(1109, 1106). 
+ebi(332, 1107). 
+ebi(1114, 1110). 
+ebi(1114, 1111). 
+ebi(332, 1112). 
+ebi(1119, 1115). 
+ebi(1119, 1116). 
+ebi(332, 1117). 
+ebi(1124, 1120). 
+ebi(1124, 1121). 
+ebi(332, 1122). 
+ebi(1129, 1125). 
+ebi(1129, 1126). 
+ebi(332, 1127). 
+ebi(1134, 1130). 
+ebi(1134, 1131). 
+ebi(332, 1132). 
+ebi(1139, 1135). 
+ebi(1139, 1136). 
+ebi(332, 1137). 
+ebi(1144, 1140). 
+ebi(1144, 1141). 
+ebi(332, 1142). 
+ebi(1149, 1145). 
+ebi(1149, 1146). 
+ebi(332, 1147). 
+ebi(1154, 1150). 
+ebi(1154, 1151). 
+ebi(332, 1152). 
+ebi(1159, 1155). 
+ebi(1159, 1156). 
+ebi(332, 1157). 
+ebi(1164, 1160). 
+ebi(1164, 1161). 
+ebi(332, 1162). 
+ebi(1169, 1165). 
+ebi(1169, 1166). 
+ebi(332, 1167). 
+ebi(1174, 1170). 
+ebi(1174, 1171). 
+ebi(332, 1172). 
+ebi(1179, 1175). 
+ebi(1179, 1176). 
+ebi(328, 1177). 
+ebi(1184, 1180). 
+ebi(1184, 1181). 
+ebi(328, 1182). 
+ebi(1189, 1185). 
+ebi(1189, 1186). 
+ebi(324, 1187). 
+ebi(1194, 1190). 
+ebi(1194, 1191). 
+ebi(324, 1192). 
+ebi(1199, 1195). 
+ebi(1199, 1196). 
+ebi(312, 1197). 
+ebi(1204, 1200). 
+ebi(1204, 1201). 
+ebi(308, 1202). 
+ebi(1209, 1205). 
+ebi(1209, 1206). 
+ebi(308, 1207). 
+ebi(1214, 1210). 
+ebi(1214, 1211). 
+ebi(308, 1212). 
+ebi(1219, 1215). 
+ebi(1219, 1216). 
+ebi(308, 1217). 
+ebi(1224, 1220). 
+ebi(1224, 1221). 
+ebi(308, 1222). 
+ebi(1229, 1225). 
+ebi(1229, 1226). 
+ebi(308, 1227). 
+ebi(1234, 1230). 
+ebi(1234, 1231). 
+ebi(304, 1232). 
+ebi(1239, 1235). 
+ebi(1239, 1236). 
+ebi(304, 1237). 
+ebi(1244, 1240). 
+ebi(1244, 1241). 
+ebi(304, 1242). 
+ebi(1249, 1245). 
+ebi(1249, 1246). 
+ebi(304, 1247). 
+ebi(1254, 1250). 
+ebi(1254, 1251). 
+ebi(304, 1252). 
+ebi(1259, 1255). 
+ebi(1259, 1256). 
+ebi(304, 1257). 
+ebi(1264, 1260). 
+ebi(1264, 1261). 
+ebi(304, 1262). 
+ebi(1269, 1265). 
+ebi(1269, 1266). 
+ebi(304, 1267). 
+ebi(1274, 1270). 
+ebi(1274, 1271). 
+ebi(304, 1272). 
+ebi(1279, 1275). 
+ebi(1279, 1276). 
+ebi(300, 1277). 
+ebi(1284, 1280). 
+ebi(1284, 1281). 
+ebi(300, 1282). 
+ebi(1289, 1285). 
+ebi(1289, 1286). 
+ebi(300, 1287). 
+ebi(1294, 1290). 
+ebi(1294, 1291). 
+ebi(300, 1292). 
+ebi(1299, 1295). 
+ebi(1299, 1296). 
+ebi(300, 1297). 
+ebi(1304, 1300). 
+ebi(1304, 1301). 
+ebi(300, 1302). 
+ebi(1309, 1305). 
+ebi(1309, 1306). 
+ebi(300, 1307). 
+ebi(1314, 1310). 
+ebi(1314, 1311). 
+ebi(300, 1312). 
+ebi(1319, 1315). 
+ebi(1319, 1316). 
+ebi(300, 1317). 
+ebi(1324, 1320). 
+ebi(1324, 1321). 
+ebi(300, 1322). 
+ebi(1329, 1325). 
+ebi(1329, 1326). 
+ebi(300, 1327). 
+ebi(1334, 1330). 
+ebi(1334, 1331). 
+ebi(300, 1332). 
+ebi(1339, 1335). 
+ebi(1339, 1336). 
+ebi(296, 1337). 
+ebi(1344, 1340). 
+ebi(1344, 1341). 
+ebi(296, 1342). 
+ebi(1349, 1345). 
+ebi(1349, 1346). 
+ebi(296, 1347). 
+ebi(1354, 1350). 
+ebi(1354, 1351). 
+ebi(296, 1352). 
+ebi(1359, 1355). 
+ebi(1359, 1356). 
+ebi(296, 1357). 
+ebi(1364, 1360). 
+ebi(1364, 1361). 
+ebi(296, 1362). 
+ebi(1369, 1365). 
+ebi(1369, 1366). 
+ebi(296, 1367). 
+ebi(1374, 1370). 
+ebi(1374, 1371). 
+ebi(296, 1372). 
+ebi(1379, 1375). 
+ebi(1379, 1376). 
+ebi(296, 1377). 
+ebi(1384, 1380). 
+ebi(1384, 1381). 
+ebi(296, 1382). 
+ebi(1389, 1385). 
+ebi(1389, 1386). 
+ebi(296, 1387). 
+ebi(1394, 1390). 
+ebi(1394, 1391). 
+ebi(296, 1392). 
+ebi(1399, 1395). 
+ebi(1399, 1396). 
+ebi(296, 1397). 
+ebi(1404, 1400). 
+ebi(1404, 1401). 
+ebi(296, 1402). 
+ebi(1409, 1405). 
+ebi(1409, 1406). 
+ebi(296, 1407). 
+ebi(1414, 1410). 
+ebi(1414, 1411). 
+ebi(296, 1412). 
+ebi(1419, 1415). 
+ebi(1419, 1416). 
+ebi(296, 1417). 
+ebi(1424, 1420). 
+ebi(1424, 1421). 
+ebi(296, 1422). 
+ebi(1429, 1425). 
+ebi(1429, 1426). 
+ebi(296, 1427). 
+ebi(1434, 1430). 
+ebi(1434, 1431). 
+ebi(296, 1432). 
+ebi(1439, 1435). 
+ebi(1439, 1436). 
+ebi(288, 1437). 
+ebi(1444, 1440). 
+ebi(1444, 1441). 
+ebi(288, 1442). 
+ebi(1449, 1445). 
+ebi(1449, 1446). 
+ebi(288, 1447). 
+ebi(1454, 1450). 
+ebi(1454, 1451). 
+ebi(288, 1452). 
+ebi(1459, 1455). 
+ebi(1459, 1456). 
+ebi(288, 1457). 
+ebi(1464, 1460). 
+ebi(1464, 1461). 
+ebi(288, 1462). 
+ebi(1469, 1465). 
+ebi(1469, 1466). 
+ebi(288, 1467). 
+ebi(1474, 1470). 
+ebi(1474, 1471). 
+ebi(288, 1472). 
+ebi(1479, 1475). 
+ebi(1479, 1476). 
+ebi(288, 1477). 
+ebi(1484, 1480). 
+ebi(1484, 1481). 
+ebi(288, 1482). 
+ebi(1489, 1485). 
+ebi(1489, 1486). 
+ebi(288, 1487). 
+ebi(1494, 1490). 
+ebi(1494, 1491). 
+ebi(288, 1492). 
+ebi(1499, 1495). 
+ebi(1499, 1496). 
+ebi(284, 1497). 
+ebi(1504, 1500). 
+ebi(1504, 1501). 
+ebi(284, 1502). 
+ebi(1509, 1505). 
+ebi(1509, 1506). 
+ebi(284, 1507). 
+ebi(1514, 1510). 
+ebi(1514, 1511). 
+ebi(284, 1512). 
+ebi(1519, 1515). 
+ebi(1519, 1516). 
+ebi(280, 1517). 
+ebi(1524, 1520). 
+ebi(1524, 1521). 
+ebi(280, 1522). 
+ebi(1529, 1525). 
+ebi(1529, 1526). 
+ebi(280, 1527). 
+ebi(1534, 1530). 
+ebi(1534, 1531). 
+ebi(280, 1532). 
+ebi(1539, 1535). 
+ebi(1539, 1536). 
+ebi(280, 1537). 
+ebi(1544, 1540). 
+ebi(1544, 1541). 
+ebi(280, 1542). 
+ebi(1549, 1545). 
+ebi(1549, 1546). 
+ebi(280, 1547). 
+ebi(1554, 1550). 
+ebi(1554, 1551). 
+ebi(280, 1552). 
+ebi(1559, 1555). 
+ebi(1559, 1556). 
+ebi(280, 1557). 
+ebi(1564, 1560). 
+ebi(1564, 1561). 
+ebi(280, 1562). 
+ebi(1569, 1565). 
+ebi(1569, 1566). 
+ebi(280, 1567). 
+ebi(1574, 1570). 
+ebi(1574, 1571). 
+ebi(280, 1572). 
+ebi(1579, 1575). 
+ebi(1579, 1576). 
+ebi(280, 1577). 
+ebi(1584, 1580). 
+ebi(1584, 1581). 
+ebi(280, 1582). 
+ebi(1589, 1585). 
+ebi(1589, 1586). 
+ebi(280, 1587). 
+ebi(1594, 1590). 
+ebi(1594, 1591). 
+ebi(280, 1592). 
+ebi(1599, 1595). 
+ebi(1599, 1596). 
+ebi(280, 1597). 
+ebi(1604, 1600). 
+ebi(1604, 1601). 
+ebi(280, 1602). 
+ebi(1609, 1605). 
+ebi(1609, 1606). 
+ebi(280, 1607). 
+ebi(1614, 1610). 
+ebi(1614, 1611). 
+ebi(280, 1612). 
+ebi(1619, 1615). 
+ebi(1619, 1616). 
+ebi(280, 1617). 
+ebi(1624, 1620). 
+ebi(1624, 1621). 
+ebi(268, 1622). 
+ebi(1629, 1625). 
+ebi(1629, 1626). 
+ebi(268, 1627). 
+ebi(1634, 1630). 
+ebi(1634, 1631). 
+ebi(268, 1632). 
+ebi(1639, 1635). 
+ebi(1639, 1636). 
+ebi(268, 1637). 
+ebi(1644, 1640). 
+ebi(1644, 1641). 
+ebi(268, 1642). 
+ebi(1649, 1645). 
+ebi(1649, 1646). 
+ebi(268, 1647). 
+ebi(1654, 1650). 
+ebi(1654, 1651). 
+ebi(268, 1652). 
+ebi(1659, 1655). 
+ebi(1659, 1656). 
+ebi(268, 1657). 
+ebi(1664, 1660). 
+ebi(1664, 1661). 
+ebi(264, 1662). 
+ebi(1669, 1665). 
+ebi(1669, 1666). 
+ebi(264, 1667). 
+ebi(1674, 1670). 
+ebi(1674, 1671). 
+ebi(264, 1672). 
+ebi(1679, 1675). 
+ebi(1679, 1676). 
+ebi(264, 1677). 
+ebi(1684, 1680). 
+ebi(1684, 1681). 
+ebi(264, 1682). 
+ebi(1689, 1685). 
+ebi(1689, 1686). 
+ebi(264, 1687). 
+ebi(1694, 1690). 
+ebi(1694, 1691). 
+ebi(264, 1692). 
+ebi(1699, 1695). 
+ebi(1699, 1696). 
+ebi(264, 1697). 
+ebi(1704, 1700). 
+ebi(1704, 1701). 
+ebi(264, 1702). 
+ebi(1709, 1705). 
+ebi(1709, 1706). 
+ebi(260, 1707). 
+ebi(1714, 1710). 
+ebi(1714, 1711). 
+ebi(260, 1712). 
+ebi(1719, 1715). 
+ebi(1719, 1716). 
+ebi(260, 1717). 
+ebi(1724, 1720). 
+ebi(1724, 1721). 
+ebi(260, 1722). 
+ebi(1729, 1725). 
+ebi(1729, 1726). 
+ebi(260, 1727). 
+ebi(1734, 1730). 
+ebi(1734, 1731). 
+ebi(260, 1732). 
+ebi(1739, 1735). 
+ebi(1739, 1736). 
+ebi(260, 1737). 
+ebi(1744, 1740). 
+ebi(1744, 1741). 
+ebi(260, 1742). 
+ebi(1749, 1745). 
+ebi(1749, 1746). 
+ebi(260, 1747). 
+ebi(1754, 1750). 
+ebi(1754, 1751). 
+ebi(260, 1752). 
+ebi(1759, 1755). 
+ebi(1759, 1756). 
+ebi(260, 1757). 
+ebi(1764, 1760). 
+ebi(1764, 1761). 
+ebi(260, 1762). 
+ebi(1769, 1765). 
+ebi(1769, 1766). 
+ebi(260, 1767). 
+ebi(1774, 1770). 
+ebi(1774, 1771). 
+ebi(252, 1772). 
+ebi(1779, 1775). 
+ebi(1779, 1776). 
+ebi(244, 1777). 
+ebi(1784, 1780). 
+ebi(1784, 1781). 
+ebi(244, 1782). 
+ebi(1789, 1785). 
+ebi(1789, 1786). 
+ebi(244, 1787). 
+ebi(1794, 1790). 
+ebi(1794, 1791). 
+ebi(244, 1792). 
+ebi(1799, 1795). 
+ebi(1799, 1796). 
+ebi(244, 1797). 
+ebi(1804, 1800). 
+ebi(1804, 1801). 
+ebi(244, 1802). 
+ebi(1809, 1805). 
+ebi(1809, 1806). 
+ebi(240, 1807). 
+ebi(1814, 1810). 
+ebi(1814, 1811). 
+ebi(240, 1812). 
+ebi(1819, 1815). 
+ebi(1819, 1816). 
+ebi(240, 1817). 
+ebi(1824, 1820). 
+ebi(1824, 1821). 
+ebi(240, 1822). 
+ebi(1829, 1825). 
+ebi(1829, 1826). 
+ebi(240, 1827). 
+ebi(1834, 1830). 
+ebi(1834, 1831). 
+ebi(240, 1832). 
+ebi(1839, 1835). 
+ebi(1839, 1836). 
+ebi(240, 1837). 
+ebi(1844, 1840). 
+ebi(1844, 1841). 
+ebi(240, 1842). 
+ebi(1849, 1845). 
+ebi(1849, 1846). 
+ebi(240, 1847). 
+ebi(1854, 1850). 
+ebi(1854, 1851). 
+ebi(240, 1852). 
+ebi(1859, 1855). 
+ebi(1859, 1856). 
+ebi(240, 1857). 
+ebi(1864, 1860). 
+ebi(1864, 1861). 
+ebi(240, 1862). 
+ebi(1869, 1865). 
+ebi(1869, 1866). 
+ebi(240, 1867). 
+ebi(1874, 1870). 
+ebi(1874, 1871). 
+ebi(240, 1872). 
+ebi(1879, 1875). 
+ebi(1879, 1876). 
+ebi(240, 1877). 
+ebi(1884, 1880). 
+ebi(1884, 1881). 
+ebi(240, 1882). 
+ebi(1889, 1885). 
+ebi(1889, 1886). 
+ebi(240, 1887). 
+ebi(1894, 1890). 
+ebi(1894, 1891). 
+ebi(240, 1892). 
+ebi(1899, 1895). 
+ebi(1899, 1896). 
+ebi(240, 1897). 
+ebi(1904, 1900). 
+ebi(1904, 1901). 
+ebi(240, 1902). 
+ebi(1909, 1905). 
+ebi(1909, 1906). 
+ebi(212, 1907). 
+ebi(1914, 1910). 
+ebi(1914, 1911). 
+ebi(212, 1912). 
+ebi(1919, 1915). 
+ebi(1919, 1916). 
+ebi(212, 1917). 
+ebi(1924, 1920). 
+ebi(1924, 1921). 
+ebi(212, 1922). 
+ebi(1929, 1925). 
+ebi(1929, 1926). 
+ebi(212, 1927). 
+ebi(1934, 1930). 
+ebi(1934, 1931). 
+ebi(204, 1932). 
+ebi(1939, 1935). 
+ebi(1939, 1936). 
+ebi(204, 1937). 
+ebi(1944, 1940). 
+ebi(1944, 1941). 
+ebi(204, 1942). 
+ebi(1949, 1945). 
+ebi(1949, 1946). 
+ebi(204, 1947). 
+ebi(1954, 1950). 
+ebi(1954, 1951). 
+ebi(204, 1952). 
+ebi(1959, 1955). 
+ebi(1959, 1956). 
+ebi(204, 1957). 
+ebi(1964, 1960). 
+ebi(1964, 1961). 
+ebi(204, 1962). 
+ebi(1969, 1965). 
+ebi(1969, 1966). 
+ebi(200, 1967). 
+ebi(1974, 1970). 
+ebi(1974, 1971). 
+ebi(200, 1972). 
+ebi(1979, 1975). 
+ebi(1979, 1976). 
+ebi(192, 1977). 
+ebi(1984, 1980). 
+ebi(1984, 1981). 
+ebi(192, 1982). 
+ebi(1989, 1985). 
+ebi(1989, 1986). 
+ebi(192, 1987). 
+ebi(1994, 1990). 
+ebi(1994, 1991). 
+ebi(184, 1992). 
+ebi(1999, 1995). 
+ebi(1999, 1996). 
+ebi(184, 1997). 
+ebi(2004, 2000). 
+ebi(2004, 2001). 
+ebi(180, 2002). 
+ebi(2009, 2005). 
+ebi(2009, 2006). 
+ebi(180, 2007). 
+ebi(2014, 2010). 
+ebi(2014, 2011). 
+ebi(168, 2012). 
+ebi(2019, 2015). 
+ebi(2019, 2016). 
+ebi(168, 2017). 
+ebi(2024, 2020). 
+ebi(2024, 2021). 
+ebi(168, 2022). 
+ebi(2029, 2025). 
+ebi(2029, 2026). 
+ebi(168, 2027). 
+ebi(2034, 2030). 
+ebi(2034, 2031). 
+ebi(168, 2032). 
+ebi(2039, 2035). 
+ebi(2039, 2036). 
+ebi(168, 2037). 
+
+% kids/2
+kids(158, [301, 1289, 1304, 1319]). 
+kids(157, [299, 1324, 1329, 1334]). 
+kids(152, [179, 2009]). 
+kids(151, [181, 2004]). 
+kids(146, [241, 1819, 1839, 1859, 1904]). 
+kids(145, [239, 1869, 1874, 1879, 1884]). 
+kids(140, [241, 1814, 1834, 1879, 1899]). 
+kids(139, [239, 1849, 1854, 1859, 1864]). 
+kids(134, [241, 1809, 1854, 1874, 1894]). 
+kids(133, [239, 1829, 1834, 1839, 1844]). 
+kids(128, [122]). 
+kids(127, [121]). 
+kids(122, [297, 1359, 1379, 1399, 1419]). 
+kids(121, [295, 1339, 1344, 1349, 1354]). 
+kids(110, [215, 287, 335, 1014, 1019, 1024, 1484, 1489, 1494]). 
+kids(109, [217, 289, 337, 979, 994, 1009, 1449, 1464, 1479]). 
+kids(107, [609, 644, 651, 665]). 
+kids(104, [223, 275, 283, 327, 331, 1154, 1159, 1164, 1169, 1174, 1179, 1499, 1504]). 
+kids(103, [333, 1049, 1074, 1099, 1124, 1149]). 
+kids(98, [281, 1524, 1569, 1589, 1609]). 
+kids(97, [279, 1544, 1549, 1554, 1559]). 
+kids(92, [281, 1534, 1554, 1574, 1619]). 
+kids(91, [279, 1584, 1589, 1594, 1599]). 
+kids(86, [281, 1529, 1549, 1594, 1614]). 
+kids(85, [279, 1564, 1569, 1574, 1579]). 
+kids(83, [658]). 
+kids(80, [167, 315, 2024, 2029]). 
+kids(79, [169, 2014, 2039]). 
+kids(74, [273]). 
+kids(73, [271]). 
+kids(71, [568, 573, 596, 601, 617, 622, 631, 636]). 
+kids(68, [191, 203, 259, 357, 754, 784, 814, 844, 874, 939, 1739, 1744, 1749, 1944, 1949, 1979]). 
+kids(67, [193, 205, 261, 355, 884, 889, 894, 899, 904, 909, 1714, 1729, 1764, 1934, 1959, 1984]). 
+kids(62, [122]). 
+kids(61, [121]). 
+kids(56, [122]). 
+kids(55, [121]). 
+kids(50, [295, 1399, 1404, 1409, 1414]). 
+kids(49, [297, 1349, 1369, 1389, 1434]). 
+kids(44, [265, 1664, 1689, 1699]). 
+kids(43, [263, 1679, 1684]). 
+kids(38, [241, 1824, 1844, 1864, 1884]). 
+kids(37, [239, 1889, 1894, 1899, 1904]). 
+kids(32, [281, 1539, 1559, 1579, 1599]). 
+kids(31, [279, 1604, 1609, 1614, 1619]). 
+kids(26, [269, 1634, 1649]). 
+kids(25, [267, 1624, 1629]). 
+kids(20, [295, 1419, 1424, 1429, 1434]). 
+kids(19, [297, 1354, 1374, 1394, 1414]). 
+kids(14, [265, 1674, 1684, 1694]). 
+kids(13, [263, 1699, 1704]). 
+kids(11, [581, 588]). 
+kids(8, [183, 199, 1969, 1994]). 
+kids(2, [265, 1669, 1679, 1704]). 
+kids(1, [263, 1689, 1694]). 
+kids(367, [269, 1629, 1644, 1659]). 
+kids(363, [281, 1519, 1544, 1564, 1584, 1604]). 
+kids(361, [241, 1829, 1849, 1869, 1889]). 
+kids(359, [239, 1809, 1814, 1819, 1824]). 
+kids(357, [237]). 
+kids(355, [235]). 
+kids(353, [369]). 
+kids(351, [367]). 
+kids(349, [331, 337, 984, 999, 1014, 1054, 1059, 1064, 1069, 1074]). 
+kids(347, [333, 335, 969, 974, 979, 1029, 1084, 1109, 1134, 1159]). 
+kids(345, [243, 303, 1264, 1269, 1274, 1799, 1804]). 
+kids(343, [245, 305, 1244, 1259, 1784, 1794]). 
+kids(341, [307, 573, 601, 622, 636, 1224, 1229]). 
+kids(339, [309, 568, 596, 617, 631, 1209, 1219]). 
+kids(335, [227, 329, 1179, 1184]). 
+kids(331, [665]). 
+kids(329, [337, 969, 1004, 1019]). 
+kids(327, [335, 984, 989, 994]). 
+kids(319, [313, 658, 1199]). 
+kids(317, [213, 1914]). 
+kids(315, [211, 1924, 1929]). 
+kids(309, [333, 337, 339, 355, 361, 373, 684, 699, 714, 794, 799, 804, 809, 814, 819, 964, 974, 989, 1024, 1044, 1069, 1094, 1119, 1174]). 
+kids(307, [331, 335, 341, 357, 359, 371, 719, 724, 729, 739, 769, 834, 864, 894, 924, 959, 999, 1004, 1009, 1129, 1134, 1139, 1144, 1149]). 
+kids(299, [213, 644, 1919, 1929]). 
+kids(297, [289, 301, 1294, 1309, 1324, 1454, 1469, 1484]). 
+kids(295, [287, 299, 1279, 1284, 1289, 1439, 1444, 1449]). 
+kids(291, [285, 1504, 1514]). 
+kids(287, [285, 651, 1499, 1509]). 
+kids(285, [289, 1439, 1474, 1489]). 
+kids(283, [287, 291, 1454, 1459, 1464]). 
+kids(281, [259, 299, 309, 333, 353, 355, 365, 734, 739, 744, 749, 754, 759, 949, 1039, 1064, 1089, 1144, 1169, 1214, 1224, 1309, 1314, 1319, 1724, 1729, 1734]). 
+kids(279, [261, 301, 307, 331, 351, 357, 363, 764, 794, 824, 854, 884, 914, 954, 1104, 1109, 1114, 1119, 1124, 1204, 1209, 1284, 1299, 1334, 1709, 1744, 1759]). 
+kids(273, [301, 331, 1029, 1034, 1039, 1044, 1049, 1279, 1314, 1329]). 
+kids(271, [299, 333, 1054, 1079, 1104, 1129, 1154, 1294, 1299, 1304]). 
+kids(269, [181, 245, 259, 305, 353, 361, 679, 694, 729, 954, 1239, 1274, 1709, 1714, 1719, 1779, 1804, 2009]). 
+kids(267, [179, 243, 261, 303, 351, 359, 704, 709, 714, 949, 1249, 1254, 1259, 1724, 1739, 1754, 1789, 1794, 2004]). 
+kids(265, [167, 295, 357, 734, 799, 829, 859, 889, 919, 1359, 1364, 1369, 1374, 2034, 2039]). 
+kids(263, [169, 297, 355, 764, 769, 774, 779, 784, 789, 1339, 1384, 1404, 1424, 2019, 2029]). 
+kids(259, [251, 1774]). 
+kids(255, [253, 1774]). 
+kids(253, [357, 361, 674, 709, 724, 749, 779, 809, 839, 904, 934]). 
+kids(251, [355, 359, 689, 694, 699, 854, 859, 864, 869, 874, 879]). 
+kids(249, [245, 303, 1234, 1239, 1244, 1789, 1799]). 
+kids(247, [243, 305, 1254, 1269, 1779, 1784]). 
+kids(243, [305, 1234, 1249, 1264]). 
+kids(239, [279, 1519, 1524, 1529, 1534, 1539]). 
+kids(235, [267, 1649, 1654, 1659]). 
+kids(231, [267, 1634, 1639, 1644]). 
+kids(229, [249, 309, 325, 1194, 1204, 1229]). 
+kids(227, [247, 307, 323, 1189, 1214, 1219]). 
+kids(225, [209, 341, 964]). 
+kids(223, [207, 339, 959]). 
+kids(219, [211, 1909, 1914, 1919]). 
+kids(215, [213, 609, 1909, 1924]). 
+kids(213, [311, 319, 1199]). 
+kids(211, [313, 321]). 
+kids(209, [169, 345, 2024, 2034]). 
+kids(207, [167, 343, 2014, 2019]). 
+kids(203, [581]). 
+kids(195, [201, 263, 1664, 1669, 1674, 1969, 1974]). 
+kids(191, [588]). 
+kids(187, [185, 1994, 1999]). 
+kids(185, [357, 359, 674, 679, 684, 744, 774, 804, 869, 899, 929]). 
+kids(183, [355, 361, 689, 704, 719, 824, 829, 834, 839, 844, 849]). 
+kids(179, [175, 269, 1624, 1639, 1654]). 
+kids(177, [295, 323, 333, 1034, 1059, 1114, 1139, 1164, 1194, 1379, 1384, 1389, 1394]). 
+kids(175, [297, 325, 331, 1079, 1084, 1089, 1094, 1099, 1189, 1344, 1364, 1409, 1429]). 
+kids(173, [219, 287, 1469, 1474, 1479]). 
+kids(171, [221, 289, 1444, 1459, 1494]). 
+kids(167, [163]). 
+kids(165, [205, 1944, 1954]). 
+kids(163, [203, 1934, 1939]). 
+kids(573, [205, 1939, 1949, 1964]). 
+kids(568, [203, 1954, 1959, 1964]). 
+kids(581, [199, 1974]). 
+kids(588, [183, 1999]). 
+kids(601, [193, 1979, 1989]). 
+kids(596, [191, 1984, 1989]). 
+kids(609, [275]). 
+kids(622, [261, 1719, 1734, 1749, 1769]). 
+kids(617, [259, 1754, 1759, 1764, 1769]). 
+kids(636, [355, 914, 919, 924, 929, 934, 939, 944]). 
+kids(631, [357, 759, 789, 819, 849, 879, 909, 944]). 
+kids(644, [283, 1509, 1514]). 
+kids(651, [223]). 
+kids(658, [315]). 
+kids(665, [327, 1184]). 
+kids(674, [360]). 
+kids(679, [360]). 
+kids(684, [360]). 
+kids(689, [360]). 
+kids(694, [360]). 
+kids(699, [360]). 
+kids(704, [360]). 
+kids(709, [360]). 
+kids(714, [360]). 
+kids(719, [360]). 
+kids(724, [360]). 
+kids(729, [360]). 
+kids(734, [356]). 
+kids(739, [356]). 
+kids(744, [356]). 
+kids(749, [356]). 
+kids(754, [356]). 
+kids(759, [356]). 
+kids(764, [356]). 
+kids(769, [356]). 
+kids(774, [356]). 
+kids(779, [356]). 
+kids(784, [356]). 
+kids(789, [356]). 
+kids(794, [356]). 
+kids(799, [356]). 
+kids(804, [356]). 
+kids(809, [356]). 
+kids(814, [356]). 
+kids(819, [356]). 
+kids(824, [356]). 
+kids(829, [356]). 
+kids(834, [356]). 
+kids(839, [356]). 
+kids(844, [356]). 
+kids(849, [356]). 
+kids(854, [356]). 
+kids(859, [356]). 
+kids(864, [356]). 
+kids(869, [356]). 
+kids(874, [356]). 
+kids(879, [356]). 
+kids(884, [356]). 
+kids(889, [356]). 
+kids(894, [356]). 
+kids(899, [356]). 
+kids(904, [356]). 
+kids(909, [356]). 
+kids(914, [356]). 
+kids(919, [356]). 
+kids(924, [356]). 
+kids(929, [356]). 
+kids(934, [356]). 
+kids(939, [356]). 
+kids(944, [356]). 
+kids(949, [352]). 
+kids(954, [352]). 
+kids(959, [340]). 
+kids(964, [340]). 
+kids(969, [336]). 
+kids(974, [336]). 
+kids(979, [336]). 
+kids(984, [336]). 
+kids(989, [336]). 
+kids(994, [336]). 
+kids(999, [336]). 
+kids(1004, [336]). 
+kids(1009, [336]). 
+kids(1014, [336]). 
+kids(1019, [336]). 
+kids(1024, [336]). 
+kids(1029, [332]). 
+kids(1034, [332]). 
+kids(1039, [332]). 
+kids(1044, [332]). 
+kids(1049, [332]). 
+kids(1054, [332]). 
+kids(1059, [332]). 
+kids(1064, [332]). 
+kids(1069, [332]). 
+kids(1074, [332]). 
+kids(1079, [332]). 
+kids(1084, [332]). 
+kids(1089, [332]). 
+kids(1094, [332]). 
+kids(1099, [332]). 
+kids(1104, [332]). 
+kids(1109, [332]). 
+kids(1114, [332]). 
+kids(1119, [332]). 
+kids(1124, [332]). 
+kids(1129, [332]). 
+kids(1134, [332]). 
+kids(1139, [332]). 
+kids(1144, [332]). 
+kids(1149, [332]). 
+kids(1154, [332]). 
+kids(1159, [332]). 
+kids(1164, [332]). 
+kids(1169, [332]). 
+kids(1174, [332]). 
+kids(1179, [328]). 
+kids(1184, [328]). 
+kids(1189, [324]). 
+kids(1194, [324]). 
+kids(1199, [312]). 
+kids(1204, [308]). 
+kids(1209, [308]). 
+kids(1214, [308]). 
+kids(1219, [308]). 
+kids(1224, [308]). 
+kids(1229, [308]). 
+kids(1234, [304]). 
+kids(1239, [304]). 
+kids(1244, [304]). 
+kids(1249, [304]). 
+kids(1254, [304]). 
+kids(1259, [304]). 
+kids(1264, [304]). 
+kids(1269, [304]). 
+kids(1274, [304]). 
+kids(1279, [300]). 
+kids(1284, [300]). 
+kids(1289, [300]). 
+kids(1294, [300]). 
+kids(1299, [300]). 
+kids(1304, [300]). 
+kids(1309, [300]). 
+kids(1314, [300]). 
+kids(1319, [300]). 
+kids(1324, [300]). 
+kids(1329, [300]). 
+kids(1334, [300]). 
+kids(1339, [296]). 
+kids(1344, [296]). 
+kids(1349, [296]). 
+kids(1354, [296]). 
+kids(1359, [296]). 
+kids(1364, [296]). 
+kids(1369, [296]). 
+kids(1374, [296]). 
+kids(1379, [296]). 
+kids(1384, [296]). 
+kids(1389, [296]). 
+kids(1394, [296]). 
+kids(1399, [296]). 
+kids(1404, [296]). 
+kids(1409, [296]). 
+kids(1414, [296]). 
+kids(1419, [296]). 
+kids(1424, [296]). 
+kids(1429, [296]). 
+kids(1434, [296]). 
+kids(1439, [288]). 
+kids(1444, [288]). 
+kids(1449, [288]). 
+kids(1454, [288]). 
+kids(1459, [288]). 
+kids(1464, [288]). 
+kids(1469, [288]). 
+kids(1474, [288]). 
+kids(1479, [288]). 
+kids(1484, [288]). 
+kids(1489, [288]). 
+kids(1494, [288]). 
+kids(1499, [284]). 
+kids(1504, [284]). 
+kids(1509, [284]). 
+kids(1514, [284]). 
+kids(1519, [280]). 
+kids(1524, [280]). 
+kids(1529, [280]). 
+kids(1534, [280]). 
+kids(1539, [280]). 
+kids(1544, [280]). 
+kids(1549, [280]). 
+kids(1554, [280]). 
+kids(1559, [280]). 
+kids(1564, [280]). 
+kids(1569, [280]). 
+kids(1574, [280]). 
+kids(1579, [280]). 
+kids(1584, [280]). 
+kids(1589, [280]). 
+kids(1594, [280]). 
+kids(1599, [280]). 
+kids(1604, [280]). 
+kids(1609, [280]). 
+kids(1614, [280]). 
+kids(1619, [280]). 
+kids(1624, [268]). 
+kids(1629, [268]). 
+kids(1634, [268]). 
+kids(1639, [268]). 
+kids(1644, [268]). 
+kids(1649, [268]). 
+kids(1654, [268]). 
+kids(1659, [268]). 
+kids(1664, [264]). 
+kids(1669, [264]). 
+kids(1674, [264]). 
+kids(1679, [264]). 
+kids(1684, [264]). 
+kids(1689, [264]). 
+kids(1694, [264]). 
+kids(1699, [264]). 
+kids(1704, [264]). 
+kids(1709, [260]). 
+kids(1714, [260]). 
+kids(1719, [260]). 
+kids(1724, [260]). 
+kids(1729, [260]). 
+kids(1734, [260]). 
+kids(1739, [260]). 
+kids(1744, [260]). 
+kids(1749, [260]). 
+kids(1754, [260]). 
+kids(1759, [260]). 
+kids(1764, [260]). 
+kids(1769, [260]). 
+kids(1774, [252]). 
+kids(1779, [244]). 
+kids(1784, [244]). 
+kids(1789, [244]). 
+kids(1794, [244]). 
+kids(1799, [244]). 
+kids(1804, [244]). 
+kids(1809, [240]). 
+kids(1814, [240]). 
+kids(1819, [240]). 
+kids(1824, [240]). 
+kids(1829, [240]). 
+kids(1834, [240]). 
+kids(1839, [240]). 
+kids(1844, [240]). 
+kids(1849, [240]). 
+kids(1854, [240]). 
+kids(1859, [240]). 
+kids(1864, [240]). 
+kids(1869, [240]). 
+kids(1874, [240]). 
+kids(1879, [240]). 
+kids(1884, [240]). 
+kids(1889, [240]). 
+kids(1894, [240]). 
+kids(1899, [240]). 
+kids(1904, [240]). 
+kids(1909, [212]). 
+kids(1914, [212]). 
+kids(1919, [212]). 
+kids(1924, [212]). 
+kids(1929, [212]). 
+kids(1934, [204]). 
+kids(1939, [204]). 
+kids(1944, [204]). 
+kids(1949, [204]). 
+kids(1954, [204]). 
+kids(1959, [204]). 
+kids(1964, [204]). 
+kids(1969, [200]). 
+kids(1974, [200]). 
+kids(1979, [192]). 
+kids(1984, [192]). 
+kids(1989, [192]). 
+kids(1994, [184]). 
+kids(1999, [184]). 
+kids(2004, [180]). 
+kids(2009, [180]). 
+kids(2014, [168]). 
+kids(2019, [168]). 
+kids(2024, [168]). 
+kids(2029, [168]). 
+kids(2034, [168]). 
+kids(2039, [168]). 
+
+% lvi/2
+lvi(161, 161). 
+lvi(160, 160). 
+lvi(158, 158). 
+lvi(157, 157). 
+lvi(155, 155). 
+lvi(154, 154). 
+lvi(152, 152). 
+lvi(151, 151). 
+lvi(149, 149). 
+lvi(148, 148). 
+lvi(146, 146). 
+lvi(145, 145). 
+lvi(143, 143). 
+lvi(142, 142). 
+lvi(140, 140). 
+lvi(139, 139). 
+lvi(137, 137). 
+lvi(136, 136). 
+lvi(134, 134). 
+lvi(133, 133). 
+lvi(131, 131). 
+lvi(130, 130). 
+lvi(128, 128). 
+lvi(127, 127). 
+lvi(125, 125). 
+lvi(124, 124). 
+lvi(122, 122). 
+lvi(121, 121). 
+lvi(119, 119). 
+lvi(118, 118). 
+lvi(116, 116). 
+lvi(115, 115). 
+lvi(113, 113). 
+lvi(112, 112). 
+lvi(110, 110). 
+lvi(109, 109). 
+lvi(107, 107). 
+lvi(106, 106). 
+lvi(104, 104). 
+lvi(103, 103). 
+lvi(101, 101). 
+lvi(100, 100). 
+lvi(98, 98). 
+lvi(97, 97). 
+lvi(95, 95). 
+lvi(94, 94). 
+lvi(92, 92). 
+lvi(91, 91). 
+lvi(89, 89). 
+lvi(88, 88). 
+lvi(86, 86). 
+lvi(85, 85). 
+lvi(83, 83). 
+lvi(82, 82). 
+lvi(80, 80). 
+lvi(79, 79). 
+lvi(77, 77). 
+lvi(76, 76). 
+lvi(74, 74). 
+lvi(73, 73). 
+lvi(71, 71). 
+lvi(70, 70). 
+lvi(68, 68). 
+lvi(67, 67). 
+lvi(65, 65). 
+lvi(64, 64). 
+lvi(62, 62). 
+lvi(61, 61). 
+lvi(59, 59). 
+lvi(58, 58). 
+lvi(56, 56). 
+lvi(55, 55). 
+lvi(53, 53). 
+lvi(52, 52). 
+lvi(50, 50). 
+lvi(49, 49). 
+lvi(47, 47). 
+lvi(46, 46). 
+lvi(44, 44). 
+lvi(43, 43). 
+lvi(41, 41). 
+lvi(40, 40). 
+lvi(38, 38). 
+lvi(37, 37). 
+lvi(35, 35). 
+lvi(34, 34). 
+lvi(32, 32). 
+lvi(31, 31). 
+lvi(29, 29). 
+lvi(28, 28). 
+lvi(26, 26). 
+lvi(25, 25). 
+lvi(23, 23). 
+lvi(22, 22). 
+lvi(20, 20). 
+lvi(19, 19). 
+lvi(17, 17). 
+lvi(16, 16). 
+lvi(14, 14). 
+lvi(13, 13). 
+lvi(11, 11). 
+lvi(10, 10). 
+lvi(8, 8). 
+lvi(7, 7). 
+lvi(5, 5). 
+lvi(4, 4). 
+lvi(2, 2). 
+lvi(1, 1). 
+lvi(373, 373). 
+lvi(372, 372). 
+lvi(371, 371). 
+lvi(369, 369). 
+lvi(368, 368). 
+lvi(367, 367). 
+lvi(365, 365). 
+lvi(364, 364). 
+lvi(363, 363). 
+lvi(361, 361). 
+lvi(360, 360). 
+lvi(359, 359). 
+lvi(357, 357). 
+lvi(356, 356). 
+lvi(355, 355). 
+lvi(353, 353). 
+lvi(352, 352). 
+lvi(351, 351). 
+lvi(349, 349). 
+lvi(348, 348). 
+lvi(347, 347). 
+lvi(345, 345). 
+lvi(344, 344). 
+lvi(343, 343). 
+lvi(341, 341). 
+lvi(340, 340). 
+lvi(339, 339). 
+lvi(337, 337). 
+lvi(336, 336). 
+lvi(335, 335). 
+lvi(333, 333). 
+lvi(332, 332). 
+lvi(331, 331). 
+lvi(329, 329). 
+lvi(328, 328). 
+lvi(327, 327). 
+lvi(325, 325). 
+lvi(324, 324). 
+lvi(323, 323). 
+lvi(321, 321). 
+lvi(320, 320). 
+lvi(319, 319). 
+lvi(317, 317). 
+lvi(316, 316). 
+lvi(315, 315). 
+lvi(313, 313). 
+lvi(312, 312). 
+lvi(311, 311). 
+lvi(309, 309). 
+lvi(308, 308). 
+lvi(307, 307). 
+lvi(305, 305). 
+lvi(304, 304). 
+lvi(303, 303). 
+lvi(301, 301). 
+lvi(300, 300). 
+lvi(299, 299). 
+lvi(297, 297). 
+lvi(296, 296). 
+lvi(295, 295). 
+lvi(293, 293). 
+lvi(292, 292). 
+lvi(291, 291). 
+lvi(289, 289). 
+lvi(288, 288). 
+lvi(287, 287). 
+lvi(285, 285). 
+lvi(284, 284). 
+lvi(283, 283). 
+lvi(281, 281). 
+lvi(280, 280). 
+lvi(279, 279). 
+lvi(277, 277). 
+lvi(276, 276). 
+lvi(275, 275). 
+lvi(273, 273). 
+lvi(272, 272). 
+lvi(271, 271). 
+lvi(269, 269). 
+lvi(268, 268). 
+lvi(267, 267). 
+lvi(265, 265). 
+lvi(264, 264). 
+lvi(263, 263). 
+lvi(261, 261). 
+lvi(260, 260). 
+lvi(259, 259). 
+lvi(257, 257). 
+lvi(256, 256). 
+lvi(255, 255). 
+lvi(253, 253). 
+lvi(252, 252). 
+lvi(251, 251). 
+lvi(249, 249). 
+lvi(248, 248). 
+lvi(247, 247). 
+lvi(245, 245). 
+lvi(244, 244). 
+lvi(243, 243). 
+lvi(241, 241). 
+lvi(240, 240). 
+lvi(239, 239). 
+lvi(237, 237). 
+lvi(236, 236). 
+lvi(235, 235). 
+lvi(233, 233). 
+lvi(232, 232). 
+lvi(231, 231). 
+lvi(229, 229). 
+lvi(228, 228). 
+lvi(227, 227). 
+lvi(225, 225). 
+lvi(224, 224). 
+lvi(223, 223). 
+lvi(221, 221). 
+lvi(220, 220). 
+lvi(219, 219). 
+lvi(217, 217). 
+lvi(216, 216). 
+lvi(215, 215). 
+lvi(213, 213). 
+lvi(212, 212). 
+lvi(211, 211). 
+lvi(209, 209). 
+lvi(208, 208). 
+lvi(207, 207). 
+lvi(205, 205). 
+lvi(204, 204). 
+lvi(203, 203). 
+lvi(201, 201). 
+lvi(200, 200). 
+lvi(199, 199). 
+lvi(197, 197). 
+lvi(196, 196). 
+lvi(195, 195). 
+lvi(193, 193). 
+lvi(192, 192). 
+lvi(191, 191). 
+lvi(189, 189). 
+lvi(188, 188). 
+lvi(187, 187). 
+lvi(185, 185). 
+lvi(184, 184). 
+lvi(183, 183). 
+lvi(181, 181). 
+lvi(180, 180). 
+lvi(179, 179). 
+lvi(177, 177). 
+lvi(176, 176). 
+lvi(175, 175). 
+lvi(173, 173). 
+lvi(172, 172). 
+lvi(171, 171). 
+lvi(169, 169). 
+lvi(168, 168). 
+lvi(167, 167). 
+lvi(165, 165). 
+lvi(164, 164). 
+lvi(163, 163). 
+lvi(573, 573). 
+lvi(568, 568). 
+lvi(581, 581). 
+lvi(588, 588). 
+lvi(601, 601). 
+lvi(596, 596). 
+lvi(609, 609). 
+lvi(622, 622). 
+lvi(617, 617). 
+lvi(636, 636). 
+lvi(631, 631). 
+lvi(644, 644). 
+lvi(651, 651). 
+lvi(658, 658). 
+lvi(665, 665). 
+lvi(674, 674). 
+lvi(679, 679). 
+lvi(684, 684). 
+lvi(689, 689). 
+lvi(694, 694). 
+lvi(699, 699). 
+lvi(704, 704). 
+lvi(709, 709). 
+lvi(714, 714). 
+lvi(719, 719). 
+lvi(724, 724). 
+lvi(729, 729). 
+lvi(734, 734). 
+lvi(739, 739). 
+lvi(744, 744). 
+lvi(749, 749). 
+lvi(754, 754). 
+lvi(759, 759). 
+lvi(764, 764). 
+lvi(769, 769). 
+lvi(774, 774). 
+lvi(779, 779). 
+lvi(784, 784). 
+lvi(789, 789). 
+lvi(794, 794). 
+lvi(799, 799). 
+lvi(804, 804). 
+lvi(809, 809). 
+lvi(814, 814). 
+lvi(819, 819). 
+lvi(824, 824). 
+lvi(829, 829). 
+lvi(834, 834). 
+lvi(839, 839). 
+lvi(844, 844). 
+lvi(849, 849). 
+lvi(854, 854). 
+lvi(859, 859). 
+lvi(864, 864). 
+lvi(869, 869). 
+lvi(874, 874). 
+lvi(879, 879). 
+lvi(884, 884). 
+lvi(889, 889). 
+lvi(894, 894). 
+lvi(899, 899). 
+lvi(904, 904). 
+lvi(909, 909). 
+lvi(914, 914). 
+lvi(919, 919). 
+lvi(924, 924). 
+lvi(929, 929). 
+lvi(934, 934). 
+lvi(939, 939). 
+lvi(944, 944). 
+lvi(949, 949). 
+lvi(954, 954). 
+lvi(959, 959). 
+lvi(964, 964). 
+lvi(969, 969). 
+lvi(974, 974). 
+lvi(979, 979). 
+lvi(984, 984). 
+lvi(989, 989). 
+lvi(994, 994). 
+lvi(999, 999). 
+lvi(1004, 1004). 
+lvi(1009, 1009). 
+lvi(1014, 1014). 
+lvi(1019, 1019). 
+lvi(1024, 1024). 
+lvi(1029, 1029). 
+lvi(1034, 1034). 
+lvi(1039, 1039). 
+lvi(1044, 1044). 
+lvi(1049, 1049). 
+lvi(1054, 1054). 
+lvi(1059, 1059). 
+lvi(1064, 1064). 
+lvi(1069, 1069). 
+lvi(1074, 1074). 
+lvi(1079, 1079). 
+lvi(1084, 1084). 
+lvi(1089, 1089). 
+lvi(1094, 1094). 
+lvi(1099, 1099). 
+lvi(1104, 1104). 
+lvi(1109, 1109). 
+lvi(1114, 1114). 
+lvi(1119, 1119). 
+lvi(1124, 1124). 
+lvi(1129, 1129). 
+lvi(1134, 1134). 
+lvi(1139, 1139). 
+lvi(1144, 1144). 
+lvi(1149, 1149). 
+lvi(1154, 1154). 
+lvi(1159, 1159). 
+lvi(1164, 1164). 
+lvi(1169, 1169). 
+lvi(1174, 1174). 
+lvi(1179, 1179). 
+lvi(1184, 1184). 
+lvi(1189, 1189). 
+lvi(1194, 1194). 
+lvi(1199, 1199). 
+lvi(1204, 1204). 
+lvi(1209, 1209). 
+lvi(1214, 1214). 
+lvi(1219, 1219). 
+lvi(1224, 1224). 
+lvi(1229, 1229). 
+lvi(1234, 1234). 
+lvi(1239, 1239). 
+lvi(1244, 1244). 
+lvi(1249, 1249). 
+lvi(1254, 1254). 
+lvi(1259, 1259). 
+lvi(1264, 1264). 
+lvi(1269, 1269). 
+lvi(1274, 1274). 
+lvi(1279, 1279). 
+lvi(1284, 1284). 
+lvi(1289, 1289). 
+lvi(1294, 1294). 
+lvi(1299, 1299). 
+lvi(1304, 1304). 
+lvi(1309, 1309). 
+lvi(1314, 1314). 
+lvi(1319, 1319). 
+lvi(1324, 1324). 
+lvi(1329, 1329). 
+lvi(1334, 1334). 
+lvi(1339, 1339). 
+lvi(1344, 1344). 
+lvi(1349, 1349). 
+lvi(1354, 1354). 
+lvi(1359, 1359). 
+lvi(1364, 1364). 
+lvi(1369, 1369). 
+lvi(1374, 1374). 
+lvi(1379, 1379). 
+lvi(1384, 1384). 
+lvi(1389, 1389). 
+lvi(1394, 1394). 
+lvi(1399, 1399). 
+lvi(1404, 1404). 
+lvi(1409, 1409). 
+lvi(1414, 1414). 
+lvi(1419, 1419). 
+lvi(1424, 1424). 
+lvi(1429, 1429). 
+lvi(1434, 1434). 
+lvi(1439, 1439). 
+lvi(1444, 1444). 
+lvi(1449, 1449). 
+lvi(1454, 1454). 
+lvi(1459, 1459). 
+lvi(1464, 1464). 
+lvi(1469, 1469). 
+lvi(1474, 1474). 
+lvi(1479, 1479). 
+lvi(1484, 1484). 
+lvi(1489, 1489). 
+lvi(1494, 1494). 
+lvi(1499, 1499). 
+lvi(1504, 1504). 
+lvi(1509, 1509). 
+lvi(1514, 1514). 
+lvi(1519, 1519). 
+lvi(1524, 1524). 
+lvi(1529, 1529). 
+lvi(1534, 1534). 
+lvi(1539, 1539). 
+lvi(1544, 1544). 
+lvi(1549, 1549). 
+lvi(1554, 1554). 
+lvi(1559, 1559). 
+lvi(1564, 1564). 
+lvi(1569, 1569). 
+lvi(1574, 1574). 
+lvi(1579, 1579). 
+lvi(1584, 1584). 
+lvi(1589, 1589). 
+lvi(1594, 1594). 
+lvi(1599, 1599). 
+lvi(1604, 1604). 
+lvi(1609, 1609). 
+lvi(1614, 1614). 
+lvi(1619, 1619). 
+lvi(1624, 1624). 
+lvi(1629, 1629). 
+lvi(1634, 1634). 
+lvi(1639, 1639). 
+lvi(1644, 1644). 
+lvi(1649, 1649). 
+lvi(1654, 1654). 
+lvi(1659, 1659). 
+lvi(1664, 1664). 
+lvi(1669, 1669). 
+lvi(1674, 1674). 
+lvi(1679, 1679). 
+lvi(1684, 1684). 
+lvi(1689, 1689). 
+lvi(1694, 1694). 
+lvi(1699, 1699). 
+lvi(1704, 1704). 
+lvi(1709, 1709). 
+lvi(1714, 1714). 
+lvi(1719, 1719). 
+lvi(1724, 1724). 
+lvi(1729, 1729). 
+lvi(1734, 1734). 
+lvi(1739, 1739). 
+lvi(1744, 1744). 
+lvi(1749, 1749). 
+lvi(1754, 1754). 
+lvi(1759, 1759). 
+lvi(1764, 1764). 
+lvi(1769, 1769). 
+lvi(1774, 1774). 
+lvi(1779, 1779). 
+lvi(1784, 1784). 
+lvi(1789, 1789). 
+lvi(1794, 1794). 
+lvi(1799, 1799). 
+lvi(1804, 1804). 
+lvi(1809, 1809). 
+lvi(1814, 1814). 
+lvi(1819, 1819). 
+lvi(1824, 1824). 
+lvi(1829, 1829). 
+lvi(1834, 1834). 
+lvi(1839, 1839). 
+lvi(1844, 1844). 
+lvi(1849, 1849). 
+lvi(1854, 1854). 
+lvi(1859, 1859). 
+lvi(1864, 1864). 
+lvi(1869, 1869). 
+lvi(1874, 1874). 
+lvi(1879, 1879). 
+lvi(1884, 1884). 
+lvi(1889, 1889). 
+lvi(1894, 1894). 
+lvi(1899, 1899). 
+lvi(1904, 1904). 
+lvi(1909, 1909). 
+lvi(1914, 1914). 
+lvi(1919, 1919). 
+lvi(1924, 1924). 
+lvi(1929, 1929). 
+lvi(1934, 1934). 
+lvi(1939, 1939). 
+lvi(1944, 1944). 
+lvi(1949, 1949). 
+lvi(1954, 1954). 
+lvi(1959, 1959). 
+lvi(1964, 1964). 
+lvi(1969, 1969). 
+lvi(1974, 1974). 
+lvi(1979, 1979). 
+lvi(1984, 1984). 
+lvi(1989, 1989). 
+lvi(1994, 1994). 
+lvi(1999, 1999). 
+lvi(2004, 2004). 
+lvi(2009, 2009). 
+lvi(2014, 2014). 
+lvi(2019, 2019). 
+lvi(2024, 2024). 
+lvi(2029, 2029). 
+lvi(2034, 2034). 
+lvi(2039, 2039). 
+
+% oli/2
+oli(159, 161). 
+oli(159, 160). 
+oli(156, 158). 
+oli(156, 157). 
+oli(153, 155). 
+oli(153, 154). 
+oli(150, 152). 
+oli(150, 151). 
+oli(147, 149). 
+oli(147, 148). 
+oli(144, 146). 
+oli(144, 145). 
+oli(141, 143). 
+oli(141, 142). 
+oli(138, 140). 
+oli(138, 139). 
+oli(135, 137). 
+oli(135, 136). 
+oli(132, 134). 
+oli(132, 133). 
+oli(129, 131). 
+oli(129, 130). 
+oli(126, 128). 
+oli(126, 127). 
+oli(123, 125). 
+oli(123, 124). 
+oli(120, 122). 
+oli(120, 121). 
+oli(117, 119). 
+oli(117, 118). 
+oli(114, 116). 
+oli(114, 115). 
+oli(111, 113). 
+oli(111, 112). 
+oli(108, 110). 
+oli(108, 109). 
+oli(105, 107). 
+oli(105, 106). 
+oli(102, 104). 
+oli(102, 103). 
+oli(99, 101). 
+oli(99, 100). 
+oli(96, 98). 
+oli(96, 97). 
+oli(93, 95). 
+oli(93, 94). 
+oli(90, 92). 
+oli(90, 91). 
+oli(87, 89). 
+oli(87, 88). 
+oli(84, 86). 
+oli(84, 85). 
+oli(81, 83). 
+oli(81, 82). 
+oli(78, 80). 
+oli(78, 79). 
+oli(75, 77). 
+oli(75, 76). 
+oli(72, 74). 
+oli(72, 73). 
+oli(69, 71). 
+oli(69, 70). 
+oli(66, 68). 
+oli(66, 67). 
+oli(63, 65). 
+oli(63, 64). 
+oli(60, 62). 
+oli(60, 61). 
+oli(57, 59). 
+oli(57, 58). 
+oli(54, 56). 
+oli(54, 55). 
+oli(51, 53). 
+oli(51, 52). 
+oli(48, 50). 
+oli(48, 49). 
+oli(45, 47). 
+oli(45, 46). 
+oli(42, 44). 
+oli(42, 43). 
+oli(39, 41). 
+oli(39, 40). 
+oli(36, 38). 
+oli(36, 37). 
+oli(33, 35). 
+oli(33, 34). 
+oli(30, 32). 
+oli(30, 31). 
+oli(27, 29). 
+oli(27, 28). 
+oli(24, 26). 
+oli(24, 25). 
+oli(21, 23). 
+oli(21, 22). 
+oli(18, 20). 
+oli(18, 19). 
+oli(15, 17). 
+oli(15, 16). 
+oli(12, 14). 
+oli(12, 13). 
+oli(9, 11). 
+oli(9, 10). 
+oli(6, 8). 
+oli(6, 7). 
+oli(3, 5). 
+oli(3, 4). 
+oli(0, 2). 
+oli(0, 1). 
+oli(370, 373). 
+oli(370, 372). 
+oli(370, 371). 
+oli(366, 369). 
+oli(366, 368). 
+oli(366, 367). 
+oli(362, 365). 
+oli(362, 364). 
+oli(362, 363). 
+oli(358, 361). 
+oli(358, 360). 
+oli(358, 359). 
+oli(354, 357). 
+oli(354, 356). 
+oli(354, 355). 
+oli(350, 353). 
+oli(350, 352). 
+oli(350, 351). 
+oli(346, 349). 
+oli(346, 348). 
+oli(346, 347). 
+oli(342, 345). 
+oli(342, 344). 
+oli(342, 343). 
+oli(338, 341). 
+oli(338, 340). 
+oli(338, 339). 
+oli(334, 337). 
+oli(334, 336). 
+oli(334, 335). 
+oli(330, 333). 
+oli(330, 332). 
+oli(330, 331). 
+oli(326, 329). 
+oli(326, 328). 
+oli(326, 327). 
+oli(322, 325). 
+oli(322, 324). 
+oli(322, 323). 
+oli(318, 321). 
+oli(318, 320). 
+oli(318, 319). 
+oli(314, 317). 
+oli(314, 316). 
+oli(314, 315). 
+oli(310, 313). 
+oli(310, 312). 
+oli(310, 311). 
+oli(306, 309). 
+oli(306, 308). 
+oli(306, 307). 
+oli(302, 305). 
+oli(302, 304). 
+oli(302, 303). 
+oli(298, 301). 
+oli(298, 300). 
+oli(298, 299). 
+oli(294, 297). 
+oli(294, 296). 
+oli(294, 295). 
+oli(290, 293). 
+oli(290, 292). 
+oli(290, 291). 
+oli(286, 289). 
+oli(286, 288). 
+oli(286, 287). 
+oli(282, 285). 
+oli(282, 284). 
+oli(282, 283). 
+oli(278, 281). 
+oli(278, 280). 
+oli(278, 279). 
+oli(274, 277). 
+oli(274, 276). 
+oli(274, 275). 
+oli(270, 273). 
+oli(270, 272). 
+oli(270, 271). 
+oli(266, 269). 
+oli(266, 268). 
+oli(266, 267). 
+oli(262, 265). 
+oli(262, 264). 
+oli(262, 263). 
+oli(258, 261). 
+oli(258, 260). 
+oli(258, 259). 
+oli(254, 257). 
+oli(254, 256). 
+oli(254, 255). 
+oli(250, 253). 
+oli(250, 252). 
+oli(250, 251). 
+oli(246, 249). 
+oli(246, 248). 
+oli(246, 247). 
+oli(242, 245). 
+oli(242, 244). 
+oli(242, 243). 
+oli(238, 241). 
+oli(238, 240). 
+oli(238, 239). 
+oli(234, 237). 
+oli(234, 236). 
+oli(234, 235). 
+oli(230, 233). 
+oli(230, 232). 
+oli(230, 231). 
+oli(226, 229). 
+oli(226, 228). 
+oli(226, 227). 
+oli(222, 225). 
+oli(222, 224). 
+oli(222, 223). 
+oli(218, 221). 
+oli(218, 220). 
+oli(218, 219). 
+oli(214, 217). 
+oli(214, 216). 
+oli(214, 215). 
+oli(210, 213). 
+oli(210, 212). 
+oli(210, 211). 
+oli(206, 209). 
+oli(206, 208). 
+oli(206, 207). 
+oli(202, 205). 
+oli(202, 204). 
+oli(202, 203). 
+oli(198, 201). 
+oli(198, 200). 
+oli(198, 199). 
+oli(194, 197). 
+oli(194, 196). 
+oli(194, 195). 
+oli(190, 193). 
+oli(190, 192). 
+oli(190, 191). 
+oli(186, 189). 
+oli(186, 188). 
+oli(186, 187). 
+oli(182, 185). 
+oli(182, 184). 
+oli(182, 183). 
+oli(178, 181). 
+oli(178, 180). 
+oli(178, 179). 
+oli(174, 177). 
+oli(174, 176). 
+oli(174, 175). 
+oli(170, 173). 
+oli(170, 172). 
+oli(170, 171). 
+oli(166, 169). 
+oli(166, 168). 
+oli(166, 167). 
+oli(162, 165). 
+oli(162, 164). 
+oli(162, 163). 
+oli(572, 573). 
+oli(567, 568). 
+oli(580, 581). 
+oli(587, 588). 
+oli(600, 601). 
+oli(595, 596). 
+oli(608, 609). 
+oli(621, 622). 
+oli(616, 617). 
+oli(635, 636). 
+oli(630, 631). 
+oli(643, 644). 
+oli(650, 651). 
+oli(657, 658). 
+oli(664, 665). 
+oli(673, 674). 
+oli(678, 679). 
+oli(683, 684). 
+oli(688, 689). 
+oli(693, 694). 
+oli(698, 699). 
+oli(703, 704). 
+oli(708, 709). 
+oli(713, 714). 
+oli(718, 719). 
+oli(723, 724). 
+oli(728, 729). 
+oli(733, 734). 
+oli(738, 739). 
+oli(743, 744). 
+oli(748, 749). 
+oli(753, 754). 
+oli(758, 759). 
+oli(763, 764). 
+oli(768, 769). 
+oli(773, 774). 
+oli(778, 779). 
+oli(783, 784). 
+oli(788, 789). 
+oli(793, 794). 
+oli(798, 799). 
+oli(803, 804). 
+oli(808, 809). 
+oli(813, 814). 
+oli(818, 819). 
+oli(823, 824). 
+oli(828, 829). 
+oli(833, 834). 
+oli(838, 839). 
+oli(843, 844). 
+oli(848, 849). 
+oli(853, 854). 
+oli(858, 859). 
+oli(863, 864). 
+oli(868, 869). 
+oli(873, 874). 
+oli(878, 879). 
+oli(883, 884). 
+oli(888, 889). 
+oli(893, 894). 
+oli(898, 899). 
+oli(903, 904). 
+oli(908, 909). 
+oli(913, 914). 
+oli(918, 919). 
+oli(923, 924). 
+oli(928, 929). 
+oli(933, 934). 
+oli(938, 939). 
+oli(943, 944). 
+oli(948, 949). 
+oli(953, 954). 
+oli(958, 959). 
+oli(963, 964). 
+oli(968, 969). 
+oli(973, 974). 
+oli(978, 979). 
+oli(983, 984). 
+oli(988, 989). 
+oli(993, 994). 
+oli(998, 999). 
+oli(1003, 1004). 
+oli(1008, 1009). 
+oli(1013, 1014). 
+oli(1018, 1019). 
+oli(1023, 1024). 
+oli(1028, 1029). 
+oli(1033, 1034). 
+oli(1038, 1039). 
+oli(1043, 1044). 
+oli(1048, 1049). 
+oli(1053, 1054). 
+oli(1058, 1059). 
+oli(1063, 1064). 
+oli(1068, 1069). 
+oli(1073, 1074). 
+oli(1078, 1079). 
+oli(1083, 1084). 
+oli(1088, 1089). 
+oli(1093, 1094). 
+oli(1098, 1099). 
+oli(1103, 1104). 
+oli(1108, 1109). 
+oli(1113, 1114). 
+oli(1118, 1119). 
+oli(1123, 1124). 
+oli(1128, 1129). 
+oli(1133, 1134). 
+oli(1138, 1139). 
+oli(1143, 1144). 
+oli(1148, 1149). 
+oli(1153, 1154). 
+oli(1158, 1159). 
+oli(1163, 1164). 
+oli(1168, 1169). 
+oli(1173, 1174). 
+oli(1178, 1179). 
+oli(1183, 1184). 
+oli(1188, 1189). 
+oli(1193, 1194). 
+oli(1198, 1199). 
+oli(1203, 1204). 
+oli(1208, 1209). 
+oli(1213, 1214). 
+oli(1218, 1219). 
+oli(1223, 1224). 
+oli(1228, 1229). 
+oli(1233, 1234). 
+oli(1238, 1239). 
+oli(1243, 1244). 
+oli(1248, 1249). 
+oli(1253, 1254). 
+oli(1258, 1259). 
+oli(1263, 1264). 
+oli(1268, 1269). 
+oli(1273, 1274). 
+oli(1278, 1279). 
+oli(1283, 1284). 
+oli(1288, 1289). 
+oli(1293, 1294). 
+oli(1298, 1299). 
+oli(1303, 1304). 
+oli(1308, 1309). 
+oli(1313, 1314). 
+oli(1318, 1319). 
+oli(1323, 1324). 
+oli(1328, 1329). 
+oli(1333, 1334). 
+oli(1338, 1339). 
+oli(1343, 1344). 
+oli(1348, 1349). 
+oli(1353, 1354). 
+oli(1358, 1359). 
+oli(1363, 1364). 
+oli(1368, 1369). 
+oli(1373, 1374). 
+oli(1378, 1379). 
+oli(1383, 1384). 
+oli(1388, 1389). 
+oli(1393, 1394). 
+oli(1398, 1399). 
+oli(1403, 1404). 
+oli(1408, 1409). 
+oli(1413, 1414). 
+oli(1418, 1419). 
+oli(1423, 1424). 
+oli(1428, 1429). 
+oli(1433, 1434). 
+oli(1438, 1439). 
+oli(1443, 1444). 
+oli(1448, 1449). 
+oli(1453, 1454). 
+oli(1458, 1459). 
+oli(1463, 1464). 
+oli(1468, 1469). 
+oli(1473, 1474). 
+oli(1478, 1479). 
+oli(1483, 1484). 
+oli(1488, 1489). 
+oli(1493, 1494). 
+oli(1498, 1499). 
+oli(1503, 1504). 
+oli(1508, 1509). 
+oli(1513, 1514). 
+oli(1518, 1519). 
+oli(1523, 1524). 
+oli(1528, 1529). 
+oli(1533, 1534). 
+oli(1538, 1539). 
+oli(1543, 1544). 
+oli(1548, 1549). 
+oli(1553, 1554). 
+oli(1558, 1559). 
+oli(1563, 1564). 
+oli(1568, 1569). 
+oli(1573, 1574). 
+oli(1578, 1579). 
+oli(1583, 1584). 
+oli(1588, 1589). 
+oli(1593, 1594). 
+oli(1598, 1599). 
+oli(1603, 1604). 
+oli(1608, 1609). 
+oli(1613, 1614). 
+oli(1618, 1619). 
+oli(1623, 1624). 
+oli(1628, 1629). 
+oli(1633, 1634). 
+oli(1638, 1639). 
+oli(1643, 1644). 
+oli(1648, 1649). 
+oli(1653, 1654). 
+oli(1658, 1659). 
+oli(1663, 1664). 
+oli(1668, 1669). 
+oli(1673, 1674). 
+oli(1678, 1679). 
+oli(1683, 1684). 
+oli(1688, 1689). 
+oli(1693, 1694). 
+oli(1698, 1699). 
+oli(1703, 1704). 
+oli(1708, 1709). 
+oli(1713, 1714). 
+oli(1718, 1719). 
+oli(1723, 1724). 
+oli(1728, 1729). 
+oli(1733, 1734). 
+oli(1738, 1739). 
+oli(1743, 1744). 
+oli(1748, 1749). 
+oli(1753, 1754). 
+oli(1758, 1759). 
+oli(1763, 1764). 
+oli(1768, 1769). 
+oli(1773, 1774). 
+oli(1778, 1779). 
+oli(1783, 1784). 
+oli(1788, 1789). 
+oli(1793, 1794). 
+oli(1798, 1799). 
+oli(1803, 1804). 
+oli(1808, 1809). 
+oli(1813, 1814). 
+oli(1818, 1819). 
+oli(1823, 1824). 
+oli(1828, 1829). 
+oli(1833, 1834). 
+oli(1838, 1839). 
+oli(1843, 1844). 
+oli(1848, 1849). 
+oli(1853, 1854). 
+oli(1858, 1859). 
+oli(1863, 1864). 
+oli(1868, 1869). 
+oli(1873, 1874). 
+oli(1878, 1879). 
+oli(1883, 1884). 
+oli(1888, 1889). 
+oli(1893, 1894). 
+oli(1898, 1899). 
+oli(1903, 1904). 
+oli(1908, 1909). 
+oli(1913, 1914). 
+oli(1918, 1919). 
+oli(1923, 1924). 
+oli(1928, 1929). 
+oli(1933, 1934). 
+oli(1938, 1939). 
+oli(1943, 1944). 
+oli(1948, 1949). 
+oli(1953, 1954). 
+oli(1958, 1959). 
+oli(1963, 1964). 
+oli(1968, 1969). 
+oli(1973, 1974). 
+oli(1978, 1979). 
+oli(1983, 1984). 
+oli(1988, 1989). 
+oli(1993, 1994). 
+oli(1998, 1999). 
+oli(2003, 2004). 
+oli(2008, 2009). 
+oli(2013, 2014). 
+oli(2018, 2019). 
+oli(2023, 2024). 
+oli(2028, 2029). 
+oli(2033, 2034). 
+oli(2038, 2039). 
+
+% parents/2
+parents(122, [56, 62, 128]). 
+parents(121, [55, 61, 127]). 
+parents(373, [309]). 
+parents(371, [307]). 
+parents(369, [353]). 
+parents(367, [351]). 
+parents(365, [281]). 
+parents(363, [279]). 
+parents(361, [183, 253, 269, 309]). 
+parents(360, [674, 679, 684, 689, 694, 699, 704, 709, 714, 719, 724, 729]). 
+parents(359, [185, 251, 267, 307]). 
+parents(357, [68, 185, 253, 265, 279, 307, 631]). 
+parents(356, [734, 739, 744, 749, 754, 759, 764, 769, 774, 779, 784, 789, 794, 799, 804, 809, 814, 819, 824, 829, 834, 839, 844, 849, 854, 859, 864, 869, 874, 879, 884, 889, 894, 899, 904, 909, 914, 919, 924, 929, 934, 939, 944]). 
+parents(355, [67, 183, 251, 263, 281, 309, 636]). 
+parents(353, [269, 281]). 
+parents(352, [949, 954]). 
+parents(351, [267, 279]). 
+parents(345, [209]). 
+parents(343, [207]). 
+parents(341, [225, 307]). 
+parents(340, [959, 964]). 
+parents(339, [223, 309]). 
+parents(337, [109, 309, 329, 349]). 
+parents(336, [969, 974, 979, 984, 989, 994, 999, 1004, 1009, 1014, 1019, 1024]). 
+parents(335, [110, 307, 327, 347]). 
+parents(333, [103, 177, 271, 281, 309, 347]). 
+parents(332, [1029, 1034, 1039, 1044, 1049, 1054, 1059, 1064, 1069, 1074, 1079, 1084, 1089, 1094, 1099, 1104, 1109, 1114, 1119, 1124, 1129, 1134, 1139, 1144, 1149, 1154, 1159, 1164, 1169, 1174]). 
+parents(331, [104, 175, 273, 279, 307, 349]). 
+parents(329, [335]). 
+parents(328, [1179, 1184]). 
+parents(327, [104, 665]). 
+parents(325, [175, 229]). 
+parents(324, [1189, 1194]). 
+parents(323, [177, 227]). 
+parents(321, [211]). 
+parents(319, [213]). 
+parents(315, [80, 658]). 
+parents(313, [211, 319]). 
+parents(312, [1199]). 
+parents(311, [213]). 
+parents(309, [229, 281, 339]). 
+parents(308, [1204, 1209, 1214, 1219, 1224, 1229]). 
+parents(307, [227, 279, 341]). 
+parents(305, [243, 247, 269, 343]). 
+parents(304, [1234, 1239, 1244, 1249, 1254, 1259, 1264, 1269, 1274]). 
+parents(303, [249, 267, 345]). 
+parents(301, [158, 273, 279, 297]). 
+parents(300, [1279, 1284, 1289, 1294, 1299, 1304, 1309, 1314, 1319, 1324, 1329, 1334]). 
+parents(299, [157, 271, 281, 295]). 
+parents(297, [19, 49, 122, 175, 263]). 
+parents(296, [1339, 1344, 1349, 1354, 1359, 1364, 1369, 1374, 1379, 1384, 1389, 1394, 1399, 1404, 1409, 1414, 1419, 1424, 1429, 1434]). 
+parents(295, [20, 50, 121, 177, 265]). 
+parents(291, [283]). 
+parents(289, [109, 171, 285, 297]). 
+parents(288, [1439, 1444, 1449, 1454, 1459, 1464, 1469, 1474, 1479, 1484, 1489, 1494]). 
+parents(287, [110, 173, 283, 295]). 
+parents(285, [287, 291]). 
+parents(284, [1499, 1504, 1509, 1514]). 
+parents(283, [104, 644]). 
+parents(281, [32, 86, 92, 98, 363]). 
+parents(280, [1519, 1524, 1529, 1534, 1539, 1544, 1549, 1554, 1559, 1564, 1569, 1574, 1579, 1584, 1589, 1594, 1599, 1604, 1609, 1614, 1619]). 
+parents(279, [31, 85, 91, 97, 239]). 
+parents(275, [104, 609]). 
+parents(273, [74]). 
+parents(271, [73]). 
+parents(269, [26, 179, 367]). 
+parents(268, [1624, 1629, 1634, 1639, 1644, 1649, 1654, 1659]). 
+parents(267, [25, 231, 235]). 
+parents(265, [2, 14, 44]). 
+parents(264, [1664, 1669, 1674, 1679, 1684, 1689, 1694, 1699, 1704]). 
+parents(263, [1, 13, 43, 195]). 
+parents(261, [67, 267, 279, 622]). 
+parents(260, [1709, 1714, 1719, 1724, 1729, 1734, 1739, 1744, 1749, 1754, 1759, 1764, 1769]). 
+parents(259, [68, 269, 281, 617]). 
+parents(253, [255]). 
+parents(252, [1774]). 
+parents(251, [259]). 
+parents(249, [229]). 
+parents(247, [227]). 
+parents(245, [249, 269, 343]). 
+parents(244, [1779, 1784, 1789, 1794, 1799, 1804]). 
+parents(243, [247, 267, 345]). 
+parents(241, [38, 134, 140, 146, 361]). 
+parents(240, [1809, 1814, 1819, 1824, 1829, 1834, 1839, 1844, 1849, 1854, 1859, 1864, 1869, 1874, 1879, 1884, 1889, 1894, 1899, 1904]). 
+parents(239, [37, 133, 139, 145, 359]). 
+parents(237, [357]). 
+parents(235, [355]). 
+parents(227, [335]). 
+parents(223, [104, 651]). 
+parents(221, [171]). 
+parents(219, [173]). 
+parents(217, [109]). 
+parents(215, [110]). 
+parents(213, [215, 299, 317]). 
+parents(212, [1909, 1914, 1919, 1924, 1929]). 
+parents(211, [219, 315]). 
+parents(209, [225]). 
+parents(207, [223]). 
+parents(205, [67, 165, 573]). 
+parents(204, [1934, 1939, 1944, 1949, 1954, 1959, 1964]). 
+parents(203, [68, 163, 568]). 
+parents(201, [195]). 
+parents(200, [1969, 1974]). 
+parents(199, [8, 581]). 
+parents(193, [67, 601]). 
+parents(192, [1979, 1984, 1989]). 
+parents(191, [68, 596]). 
+parents(185, [187]). 
+parents(184, [1994, 1999]). 
+parents(183, [8, 588]). 
+parents(181, [151, 269]). 
+parents(180, [2004, 2009]). 
+parents(179, [152, 267]). 
+parents(175, [179]). 
+parents(169, [79, 209, 263]). 
+parents(168, [2014, 2019, 2024, 2029, 2034, 2039]). 
+parents(167, [80, 207, 265]). 
+parents(163, [167]). 
+parents(573, [71, 341]). 
+parents(568, [71, 339]). 
+parents(581, [11, 203]). 
+parents(588, [11, 191]). 
+parents(601, [71, 341]). 
+parents(596, [71, 339]). 
+parents(609, [107, 215]). 
+parents(622, [71, 341]). 
+parents(617, [71, 339]). 
+parents(636, [71, 341]). 
+parents(631, [71, 339]). 
+parents(644, [107, 299]). 
+parents(651, [107, 287]). 
+parents(658, [83, 319]). 
+parents(665, [107, 331]). 
+parents(674, [185, 253]). 
+parents(679, [185, 269]). 
+parents(684, [185, 309]). 
+parents(689, [183, 251]). 
+parents(694, [251, 269]). 
+parents(699, [251, 309]). 
+parents(704, [183, 267]). 
+parents(709, [253, 267]). 
+parents(714, [267, 309]). 
+parents(719, [183, 307]). 
+parents(724, [253, 307]). 
+parents(729, [269, 307]). 
+parents(734, [265, 281]). 
+parents(739, [281, 307]). 
+parents(744, [185, 281]). 
+parents(749, [253, 281]). 
+parents(754, [68, 281]). 
+parents(759, [281, 631]). 
+parents(764, [263, 279]). 
+parents(769, [263, 307]). 
+parents(774, [185, 263]). 
+parents(779, [253, 263]). 
+parents(784, [68, 263]). 
+parents(789, [263, 631]). 
+parents(794, [279, 309]). 
+parents(799, [265, 309]). 
+parents(804, [185, 309]). 
+parents(809, [253, 309]). 
+parents(814, [68, 309]). 
+parents(819, [309, 631]). 
+parents(824, [183, 279]). 
+parents(829, [183, 265]). 
+parents(834, [183, 307]). 
+parents(839, [183, 253]). 
+parents(844, [68, 183]). 
+parents(849, [183, 631]). 
+parents(854, [251, 279]). 
+parents(859, [251, 265]). 
+parents(864, [251, 307]). 
+parents(869, [185, 251]). 
+parents(874, [68, 251]). 
+parents(879, [251, 631]). 
+parents(884, [67, 279]). 
+parents(889, [67, 265]). 
+parents(894, [67, 307]). 
+parents(899, [67, 185]). 
+parents(904, [67, 253]). 
+parents(909, [67, 631]). 
+parents(914, [279, 636]). 
+parents(919, [265, 636]). 
+parents(924, [307, 636]). 
+parents(929, [185, 636]). 
+parents(934, [253, 636]). 
+parents(939, [68, 636]). 
+parents(944, [631, 636]). 
+parents(949, [267, 281]). 
+parents(954, [269, 279]). 
+parents(959, [223, 307]). 
+parents(964, [225, 309]). 
+parents(969, [329, 347]). 
+parents(974, [309, 347]). 
+parents(979, [109, 347]). 
+parents(984, [327, 349]). 
+parents(989, [309, 327]). 
+parents(994, [109, 327]). 
+parents(999, [307, 349]). 
+parents(1004, [307, 329]). 
+parents(1009, [109, 307]). 
+parents(1014, [110, 349]). 
+parents(1019, [110, 329]). 
+parents(1024, [110, 309]). 
+parents(1029, [273, 347]). 
+parents(1034, [177, 273]). 
+parents(1039, [273, 281]). 
+parents(1044, [273, 309]). 
+parents(1049, [103, 273]). 
+parents(1054, [271, 349]). 
+parents(1059, [177, 349]). 
+parents(1064, [281, 349]). 
+parents(1069, [309, 349]). 
+parents(1074, [103, 349]). 
+parents(1079, [175, 271]). 
+parents(1084, [175, 347]). 
+parents(1089, [175, 281]). 
+parents(1094, [175, 309]). 
+parents(1099, [103, 175]). 
+parents(1104, [271, 279]). 
+parents(1109, [279, 347]). 
+parents(1114, [177, 279]). 
+parents(1119, [279, 309]). 
+parents(1124, [103, 279]). 
+parents(1129, [271, 307]). 
+parents(1134, [307, 347]). 
+parents(1139, [177, 307]). 
+parents(1144, [281, 307]). 
+parents(1149, [103, 307]). 
+parents(1154, [104, 271]). 
+parents(1159, [104, 347]). 
+parents(1164, [104, 177]). 
+parents(1169, [104, 281]). 
+parents(1174, [104, 309]). 
+parents(1179, [104, 335]). 
+parents(1184, [335, 665]). 
+parents(1189, [175, 227]). 
+parents(1194, [177, 229]). 
+parents(1199, [213, 319]). 
+parents(1204, [229, 279]). 
+parents(1209, [279, 339]). 
+parents(1214, [227, 281]). 
+parents(1219, [227, 339]). 
+parents(1224, [281, 341]). 
+parents(1229, [229, 341]). 
+parents(1234, [243, 249]). 
+parents(1239, [249, 269]). 
+parents(1244, [249, 343]). 
+parents(1249, [243, 267]). 
+parents(1254, [247, 267]). 
+parents(1259, [267, 343]). 
+parents(1264, [243, 345]). 
+parents(1269, [247, 345]). 
+parents(1274, [269, 345]). 
+parents(1279, [273, 295]). 
+parents(1284, [279, 295]). 
+parents(1289, [158, 295]). 
+parents(1294, [271, 297]). 
+parents(1299, [271, 279]). 
+parents(1304, [158, 271]). 
+parents(1309, [281, 297]). 
+parents(1314, [273, 281]). 
+parents(1319, [158, 281]). 
+parents(1324, [157, 297]). 
+parents(1329, [157, 273]). 
+parents(1334, [157, 279]). 
+parents(1339, [121, 263]). 
+parents(1344, [121, 175]). 
+parents(1349, [49, 121]). 
+parents(1354, [19, 121]). 
+parents(1359, [122, 265]). 
+parents(1364, [175, 265]). 
+parents(1369, [49, 265]). 
+parents(1374, [19, 265]). 
+parents(1379, [122, 177]). 
+parents(1384, [177, 263]). 
+parents(1389, [49, 177]). 
+parents(1394, [19, 177]). 
+parents(1399, [50, 122]). 
+parents(1404, [50, 263]). 
+parents(1409, [50, 175]). 
+parents(1414, [19, 50]). 
+parents(1419, [20, 122]). 
+parents(1424, [20, 263]). 
+parents(1429, [20, 175]). 
+parents(1434, [20, 49]). 
+parents(1439, [285, 295]). 
+parents(1444, [171, 295]). 
+parents(1449, [109, 295]). 
+parents(1454, [283, 297]). 
+parents(1459, [171, 283]). 
+parents(1464, [109, 283]). 
+parents(1469, [173, 297]). 
+parents(1474, [173, 285]). 
+parents(1479, [109, 173]). 
+parents(1484, [110, 297]). 
+parents(1489, [110, 285]). 
+parents(1494, [110, 171]). 
+parents(1499, [104, 287]). 
+parents(1504, [104, 291]). 
+parents(1509, [287, 644]). 
+parents(1514, [291, 644]). 
+parents(1519, [239, 363]). 
+parents(1524, [98, 239]). 
+parents(1529, [86, 239]). 
+parents(1534, [92, 239]). 
+parents(1539, [32, 239]). 
+parents(1544, [97, 363]). 
+parents(1549, [86, 97]). 
+parents(1554, [92, 97]). 
+parents(1559, [32, 97]). 
+parents(1564, [85, 363]). 
+parents(1569, [85, 98]). 
+parents(1574, [85, 92]). 
+parents(1579, [32, 85]). 
+parents(1584, [91, 363]). 
+parents(1589, [91, 98]). 
+parents(1594, [86, 91]). 
+parents(1599, [32, 91]). 
+parents(1604, [31, 363]). 
+parents(1609, [31, 98]). 
+parents(1614, [31, 86]). 
+parents(1619, [31, 92]). 
+parents(1624, [25, 179]). 
+parents(1629, [25, 367]). 
+parents(1634, [26, 231]). 
+parents(1639, [179, 231]). 
+parents(1644, [231, 367]). 
+parents(1649, [26, 235]). 
+parents(1654, [179, 235]). 
+parents(1659, [235, 367]). 
+parents(1664, [44, 195]). 
+parents(1669, [2, 195]). 
+parents(1674, [14, 195]). 
+parents(1679, [2, 43]). 
+parents(1684, [14, 43]). 
+parents(1689, [1, 44]). 
+parents(1694, [1, 14]). 
+parents(1699, [13, 44]). 
+parents(1704, [2, 13]). 
+parents(1709, [269, 279]). 
+parents(1714, [67, 269]). 
+parents(1719, [269, 622]). 
+parents(1724, [267, 281]). 
+parents(1729, [67, 281]). 
+parents(1734, [281, 622]). 
+parents(1739, [68, 267]). 
+parents(1744, [68, 279]). 
+parents(1749, [68, 622]). 
+parents(1754, [267, 617]). 
+parents(1759, [279, 617]). 
+parents(1764, [67, 617]). 
+parents(1769, [617, 622]). 
+parents(1774, [255, 259]). 
+parents(1779, [247, 269]). 
+parents(1784, [247, 343]). 
+parents(1789, [249, 267]). 
+parents(1794, [267, 343]). 
+parents(1799, [249, 345]). 
+parents(1804, [269, 345]). 
+parents(1809, [134, 359]). 
+parents(1814, [140, 359]). 
+parents(1819, [146, 359]). 
+parents(1824, [38, 359]). 
+parents(1829, [133, 361]). 
+parents(1834, [133, 140]). 
+parents(1839, [133, 146]). 
+parents(1844, [38, 133]). 
+parents(1849, [139, 361]). 
+parents(1854, [134, 139]). 
+parents(1859, [139, 146]). 
+parents(1864, [38, 139]). 
+parents(1869, [145, 361]). 
+parents(1874, [134, 145]). 
+parents(1879, [140, 145]). 
+parents(1884, [38, 145]). 
+parents(1889, [37, 361]). 
+parents(1894, [37, 134]). 
+parents(1899, [37, 140]). 
+parents(1904, [37, 146]). 
+parents(1909, [215, 219]). 
+parents(1914, [219, 317]). 
+parents(1919, [219, 299]). 
+parents(1924, [215, 315]). 
+parents(1929, [299, 315]). 
+parents(1934, [67, 163]). 
+parents(1939, [163, 573]). 
+parents(1944, [68, 165]). 
+parents(1949, [68, 573]). 
+parents(1954, [165, 568]). 
+parents(1959, [67, 568]). 
+parents(1964, [568, 573]). 
+parents(1969, [8, 195]). 
+parents(1974, [195, 581]). 
+parents(1979, [68, 601]). 
+parents(1984, [67, 596]). 
+parents(1989, [596, 601]). 
+parents(1994, [8, 187]). 
+parents(1999, [187, 588]). 
+parents(2004, [151, 267]). 
+parents(2009, [152, 269]). 
+parents(2014, [79, 207]). 
+parents(2019, [207, 263]). 
+parents(2024, [80, 209]). 
+parents(2029, [80, 263]). 
+parents(2034, [209, 265]). 
+parents(2039, [79, 265]). 
+
+% noGoods/2
+noGoods(161, [157, 160]). 
+noGoods(160, [158, 161]). 
+noGoods(158, [157, 160]). 
+noGoods(157, [158, 161]). 
+noGoods(155, [151, 154]). 
+noGoods(154, [152, 155]). 
+noGoods(152, [151, 154]). 
+noGoods(151, [152, 155]). 
+noGoods(149, [145, 148]). 
+noGoods(148, [146, 149]). 
+noGoods(146, [145, 148]). 
+noGoods(145, [146, 149]). 
+noGoods(143, [139, 142]). 
+noGoods(142, [140, 143]). 
+noGoods(140, [139, 142]). 
+noGoods(139, [140, 143]). 
+noGoods(137, [133, 136]). 
+noGoods(136, [134, 137]). 
+noGoods(134, [133, 136]). 
+noGoods(133, [134, 137]). 
+noGoods(131, [127, 130]). 
+noGoods(130, [128, 131]). 
+noGoods(128, [127, 130]). 
+noGoods(127, [128, 131]). 
+noGoods(125, [121, 124]). 
+noGoods(124, [122, 125]). 
+noGoods(122, [121, 124]). 
+noGoods(121, [122, 125]). 
+noGoods(119, [115, 118]). 
+noGoods(118, [116, 119]). 
+noGoods(116, [115, 118]). 
+noGoods(115, [116, 119]). 
+noGoods(113, [109, 112]). 
+noGoods(112, [110, 113]). 
+noGoods(110, [109, 112]). 
+noGoods(109, [110, 113]). 
+noGoods(107, [103, 106]). 
+noGoods(106, [104, 107]). 
+noGoods(104, [103, 106]). 
+noGoods(103, [104, 107]). 
+noGoods(101, [97, 100]). 
+noGoods(100, [98, 101]). 
+noGoods(98, [97, 100]). 
+noGoods(97, [98, 101]). 
+noGoods(95, [91, 94]). 
+noGoods(94, [92, 95]). 
+noGoods(92, [91, 94]). 
+noGoods(91, [92, 95]). 
+noGoods(89, [85, 88]). 
+noGoods(88, [86, 89]). 
+noGoods(86, [85, 88]). 
+noGoods(85, [86, 89]). 
+noGoods(83, [79, 82]). 
+noGoods(82, [80, 83]). 
+noGoods(80, [79, 82]). 
+noGoods(79, [80, 83]). 
+noGoods(77, [73, 76]). 
+noGoods(76, [74, 77]). 
+noGoods(74, [73, 76]). 
+noGoods(73, [74, 77]). 
+noGoods(71, [67, 70]). 
+noGoods(70, [68, 71]). 
+noGoods(68, [67, 70]). 
+noGoods(67, [68, 71]). 
+noGoods(65, [61, 64]). 
+noGoods(64, [62, 65]). 
+noGoods(62, [61, 64]). 
+noGoods(61, [62, 65]). 
+noGoods(59, [55, 58]). 
+noGoods(58, [56, 59]). 
+noGoods(56, [55, 58]). 
+noGoods(55, [56, 59]). 
+noGoods(53, [49, 52]). 
+noGoods(52, [50, 53]). 
+noGoods(50, [49, 52]). 
+noGoods(49, [50, 53]). 
+noGoods(47, [43, 46]). 
+noGoods(46, [44, 47]). 
+noGoods(44, [43, 46]). 
+noGoods(43, [44, 47]). 
+noGoods(41, [37, 40]). 
+noGoods(40, [38, 41]). 
+noGoods(38, [37, 40]). 
+noGoods(37, [38, 41]). 
+noGoods(35, [31, 34]). 
+noGoods(34, [32, 35]). 
+noGoods(32, [31, 34]). 
+noGoods(31, [32, 35]). 
+noGoods(29, [25, 28]). 
+noGoods(28, [26, 29]). 
+noGoods(26, [25, 28]). 
+noGoods(25, [26, 29]). 
+noGoods(23, [19, 22]). 
+noGoods(22, [20, 23]). 
+noGoods(20, [19, 22]). 
+noGoods(19, [20, 23]). 
+noGoods(17, [13, 16]). 
+noGoods(16, [14, 17]). 
+noGoods(14, [13, 16]). 
+noGoods(13, [14, 17]). 
+noGoods(11, [7, 10]). 
+noGoods(10, [8, 11]). 
+noGoods(8, [7, 10]). 
+noGoods(7, [8, 11]). 
+noGoods(5, [1, 4]). 
+noGoods(4, [2, 5]). 
+noGoods(2, [1, 4]). 
+noGoods(1, [2, 5]). 
+noGoods(373, [371, 372]). 
+noGoods(372, [371, 373]). 
+noGoods(371, [372, 373]). 
+noGoods(369, [367, 368]). 
+noGoods(368, [367, 369]). 
+noGoods(367, [368, 369]). 
+noGoods(365, [363, 364]). 
+noGoods(364, [363, 365]). 
+noGoods(363, [364, 365]). 
+noGoods(361, [359, 360]). 
+noGoods(360, [359, 361]). 
+noGoods(359, [360, 361]). 
+noGoods(357, [355, 356]). 
+noGoods(356, [355, 357]). 
+noGoods(355, [356, 357]). 
+noGoods(353, [351, 352]). 
+noGoods(352, [351, 353]). 
+noGoods(351, [352, 353]). 
+noGoods(349, [347, 348]). 
+noGoods(348, [347, 349]). 
+noGoods(347, [348, 349]). 
+noGoods(345, [343, 344]). 
+noGoods(344, [343, 345]). 
+noGoods(343, [344, 345]). 
+noGoods(341, [339, 340]). 
+noGoods(340, [339, 341]). 
+noGoods(339, [340, 341]). 
+noGoods(337, [335, 336]). 
+noGoods(336, [335, 337]). 
+noGoods(335, [336, 337]). 
+noGoods(333, [331, 332]). 
+noGoods(332, [331, 333]). 
+noGoods(331, [332, 333]). 
+noGoods(329, [327, 328]). 
+noGoods(328, [327, 329]). 
+noGoods(327, [328, 329]). 
+noGoods(325, [323, 324]). 
+noGoods(324, [323, 325]). 
+noGoods(323, [324, 325]). 
+noGoods(321, [319, 320]). 
+noGoods(320, [319, 321]). 
+noGoods(319, [320, 321]). 
+noGoods(317, [315, 316]). 
+noGoods(316, [315, 317]). 
+noGoods(315, [316, 317]). 
+noGoods(313, [311, 312]). 
+noGoods(312, [311, 313]). 
+noGoods(311, [312, 313]). 
+noGoods(309, [307, 308]). 
+noGoods(308, [307, 309]). 
+noGoods(307, [308, 309]). 
+noGoods(305, [303, 304]). 
+noGoods(304, [303, 305]). 
+noGoods(303, [304, 305]). 
+noGoods(301, [299, 300]). 
+noGoods(300, [299, 301]). 
+noGoods(299, [300, 301]). 
+noGoods(297, [295, 296]). 
+noGoods(296, [295, 297]). 
+noGoods(295, [296, 297]). 
+noGoods(293, [291, 292]). 
+noGoods(292, [291, 293]). 
+noGoods(291, [292, 293]). 
+noGoods(289, [287, 288]). 
+noGoods(288, [287, 289]). 
+noGoods(287, [288, 289]). 
+noGoods(285, [283, 284]). 
+noGoods(284, [283, 285]). 
+noGoods(283, [284, 285]). 
+noGoods(281, [279, 280]). 
+noGoods(280, [279, 281]). 
+noGoods(279, [280, 281]). 
+noGoods(277, [275, 276]). 
+noGoods(276, [275, 277]). 
+noGoods(275, [276, 277]). 
+noGoods(273, [271, 272]). 
+noGoods(272, [271, 273]). 
+noGoods(271, [272, 273]). 
+noGoods(269, [267, 268]). 
+noGoods(268, [267, 269]). 
+noGoods(267, [268, 269]). 
+noGoods(265, [263, 264]). 
+noGoods(264, [263, 265]). 
+noGoods(263, [264, 265]). 
+noGoods(261, [259, 260]). 
+noGoods(260, [259, 261]). 
+noGoods(259, [260, 261]). 
+noGoods(257, [255, 256]). 
+noGoods(256, [255, 257]). 
+noGoods(255, [256, 257]). 
+noGoods(253, [251, 252]). 
+noGoods(252, [251, 253]). 
+noGoods(251, [252, 253]). 
+noGoods(249, [247, 248]). 
+noGoods(248, [247, 249]). 
+noGoods(247, [248, 249]). 
+noGoods(245, [243, 244]). 
+noGoods(244, [243, 245]). 
+noGoods(243, [244, 245]). 
+noGoods(241, [239, 240]). 
+noGoods(240, [239, 241]). 
+noGoods(239, [240, 241]). 
+noGoods(237, [235, 236]). 
+noGoods(236, [235, 237]). 
+noGoods(235, [236, 237]). 
+noGoods(233, [231, 232]). 
+noGoods(232, [231, 233]). 
+noGoods(231, [232, 233]). 
+noGoods(229, [227, 228]). 
+noGoods(228, [227, 229]). 
+noGoods(227, [228, 229]). 
+noGoods(225, [223, 224]). 
+noGoods(224, [223, 225]). 
+noGoods(223, [224, 225]). 
+noGoods(221, [219, 220]). 
+noGoods(220, [219, 221]). 
+noGoods(219, [220, 221]). 
+noGoods(217, [215, 216]). 
+noGoods(216, [215, 217]). 
+noGoods(215, [216, 217]). 
+noGoods(213, [211, 212]). 
+noGoods(212, [211, 213]). 
+noGoods(211, [212, 213]). 
+noGoods(209, [207, 208]). 
+noGoods(208, [207, 209]). 
+noGoods(207, [208, 209]). 
+noGoods(205, [203, 204]). 
+noGoods(204, [203, 205]). 
+noGoods(203, [204, 205]). 
+noGoods(201, [199, 200]). 
+noGoods(200, [199, 201]). 
+noGoods(199, [200, 201]). 
+noGoods(197, [195, 196]). 
+noGoods(196, [195, 197]). 
+noGoods(195, [196, 197]). 
+noGoods(193, [191, 192]). 
+noGoods(192, [191, 193]). 
+noGoods(191, [192, 193]). 
+noGoods(189, [187, 188]). 
+noGoods(188, [187, 189]). 
+noGoods(187, [188, 189]). 
+noGoods(185, [183, 184]). 
+noGoods(184, [183, 185]). 
+noGoods(183, [184, 185]). 
+noGoods(181, [179, 180]). 
+noGoods(180, [179, 181]). 
+noGoods(179, [180, 181]). 
+noGoods(177, [175, 176]). 
+noGoods(176, [175, 177]). 
+noGoods(175, [176, 177]). 
+noGoods(173, [171, 172]). 
+noGoods(172, [171, 173]). 
+noGoods(171, [172, 173]). 
+noGoods(169, [167, 168]). 
+noGoods(168, [167, 169]). 
+noGoods(167, [168, 169]). 
+noGoods(165, [163, 164]). 
+noGoods(164, [163, 165]). 
+noGoods(163, [164, 165]). 

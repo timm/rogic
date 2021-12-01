@@ -1,0 +1,153 @@
+name = '28. Smythe 89'.
+
+objects(e)=[acutEdex,adrx,chroniCdex
+		,chroniCdiaz,chroniCglucose,chroniCinsulin
+		,chroniCtolbut,dex,diaz
+		,etherstr,gentle,guan
+		,hghInj,hypox,insulin10
+		,insulin30,insulinBolis,msg
+		,parg,ptu,stress
+		,swimstr,tolbut10,tolbut20
+		,tolbut30,twoDg,yoh].
+
+objects(m)=[acth,acthProduction,aluminium,brainGlucose
+		,brainGlucoseUptake,catechole,catecholeDisp
+		,catecholeProd,corticoidProduction,cortisol
+		,cortisolProduction,crf,da
+		,da2Hva,daProduction,dhpg
+		,fiveHIAA,fromGut,fromLiver
+		,fromPancreas,ghProduction,ghrh
+		,glucagon,glucagonDis,glucagonProd
+		,glucocorticoid,glucose,hgh
+		,hva,insulin,ne
+		,ne2dhpg,ne2Epin,neControl
+		,neProduction,pHgh,pns
+		,pPrl,prl,prlRelease
+		,sateity,serotonin,serotoninProduction
+		,serotoninTOfiveHIAA,sns,srif
+		,t4,temp1,temp2
+		,temp3,toKidneys,toTissue
+		,vagus].
+ 
+
+crf  ++  acthProduction.
+acthProduction  +-+  acth.
+hypox  --  acthProduction.
+acth  ++  cortisolProduction.
+if guan then not  sns  ++  cortisolProduction.
+if adrx then not  cortisolProduction  +-+  cortisol.
+corticoidProduction  +--  cortisol.
+glucocorticoid  --  acthProduction.
+corticoidProduction  +-+  glucocorticoid.
+dex  ++  glucocorticoid.
+acutEdex  ++  glucocorticoid.
+chroniCdex  ++  glucocorticoid.
+if adrx then not  catecholeProd  +-+  catechole.
+catecholeDisp  +--  catechole.
+if guan then not  sns  ++  catecholeProd.
+daProduction  +-+  da.
+da2Hva  +--  da.
+prl  ++  da.
+aluminium  --  daProduction.
+if msg then not  da2Hva  +-+  hva.
+parg  --  da2Hva.
+glucagonProd  +-+  glucagon.
+glucagonDis  +--  glucagon.
+if guan then not  sns  ++  glucagonProd.
+glucose  --  glucagonProd.
+insulin  --  glucagonProd.
+chroniCglucose  ++  glucose.
+fromGut  +-+  glucose.
+fromLiver  +-+  glucose.
+brainGlucoseUptake  +--  glucose.
+glucose  ++  brainGlucoseUptake.
+toTissue  +--  glucose.
+brainGlucoseUptake  +-+  brainGlucose.
+temp1  ++  toTissue.
+glucose  ++  temp1.
+insulin  ++  temp1.
+temp2  ++  fromLiver.
+insulin  --  temp2.
+glucocorticoid  ++  temp2.
+pns  --  temp2.
+catechole  ++  temp2.
+if guan then not  sns  --  temp2.
+glucagon  ++  temp2.
+twoDg  --  brainGlucoseUptake.
+fromPancreas  +-+  insulin.
+toKidneys  +--  insulin.
+insulin  ++  toKidneys.
+if guan then  sns  --  temp3.
+catechole  --  temp3.
+glucagon  ++  temp3.
+glucose  ++  temp3.
+pns  ++  temp3.
+temp3  ++  fromPancreas.
+insulinBolis  ++  insulin.
+insulin10  ++  insulin.
+insulin30  ++  insulin.
+chroniCinsulin  ++  insulin.
+tolbut10  ++  fromPancreas.
+tolbut20  ++  fromPancreas.
+tolbut30  ++  fromPancreas.
+chroniCtolbut  ++  fromPancreas.
+neProduction  +--  da.
+if msg then not  neProduction  +-+  ne.
+ne2dhpg  +--  ne.
+ne2Epin  +--  ne.
+if msg then not  ne2dhpg  +-+  dhpg.
+dhpg  ++  crf.
+dhpg  ++  sns.
+stress  ++  neControl.
+glucocorticoid  --  neControl.
+brainGlucose  --  neControl.
+neControl  ++  neProduction.
+neControl  ++  ne2dhpg.
+ne  ++  ne2dhpg.
+aluminium  --  ne2dhpg.
+ne  +-+  ne2Epin.
+hgh  ++  neProduction.
+insulin  --  neProduction.
+swimstr  ++  stress.
+etherstr  ++  stress.
+yoh  ++  neProduction.
+parg  --  ne2dhpg.
+gentle  ++  stress.
+diaz  --  neControl.
+chroniCdiaz  --  neControl.
+pns  ++  vagus.
+insulin  ++  pns.
+fiveHIAA  ++  pns.
+sns  --  pns.
+da  --  prlRelease.
+da  --  pPrl.
+prlRelease  +--  pPrl.
+if hypox then not  prlRelease  +-+  prl.
+fiveHIAA  ++  sateity.
+brainGlucose  --  sateity.
+if msg then not  serotoninProduction  +-+  serotonin.
+serotoninTOfiveHIAA  +--  serotonin.
+serotoninTOfiveHIAA  +-+  fiveHIAA.
+hgh  --  serotoninProduction.
+t4  --  serotoninProduction.
+t4  ++  serotoninTOfiveHIAA.
+serotonin  ++  serotoninTOfiveHIAA.
+brainGlucose  ++  serotoninProduction.
+insulin  ++  serotoninProduction.
+pns  ++  serotoninProduction.
+pns  ++  serotoninTOfiveHIAA.
+parg  --  serotoninTOfiveHIAA.
+msg  --  serotoninProduction.
+pns  --  sns.
+ghProduction  +--  pHgh.
+if hypox then  ghProduction  +-+  hgh.
+hghInj  ++  hgh.
+fiveHIAA  ++  ghrh.
+ghrh  --  pHgh.
+ghrh  ++  ghProduction.
+glucose  ++  ghProduction.
+glucose  ++  pHgh.
+srif  --  pHgh.
+srif  --  ghProduction.
+crf  ++  srif.
+

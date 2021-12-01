@@ -1,0 +1,58 @@
+% Fishery model
+name = '101. fishery over time'.
+
+% Invariant measures
+% A - area
+% C - fish carrying capacity
+% f - maximum fish catch
+% a - maximum fish growth rate
+% p - fish price
+% q - boat price
+% d - boat lifetime
+% o - boat maintenance cost
+% i - investment fraction
+
+% Measures
+% k - maximum fish carrying capacity (A * C)
+% h - fish density (z1 / k)
+% r - fish growth rate (a * z1 * (1 - h))
+% b - catch potential (f * z2)
+% m - fish catch (b * h)
+% z1 - change in fish population (r - m) hence total fish
+% v - catch proceeds (p * m)
+% u - boat maintenance (o * z2)
+% n - net income (v - u)
+% g - boat investment capital (i * n)
+% w - boat purchases (round(g/q))
+% s - boat decomission (round(z2/d))
+% z2 - change in boat numbers (w - s) hence total boats
+
+objects(m) = [aa, cc, f, a, p, q, d, o, i, k, h, r, b, m, z1, v, u, n, g, w, s, z2].
+
+aa ++ k.
+cc ++ k.
+k -- h.
+h -- r.
+a ++ r.
+z1 ++ r.
+r ++ z1.
+z1 ++ h.
+h ++ m.
+m -- z1.
+f ++ b.
+b ++ m.
+m ++ v.
+p ++ v.
+v ++ n.
+o ++ u.
+z2 ++ u.
+u -- n.
+n ++ g.
+i ++ g.
+g ++ w.
+q -- w.
+w ++ z2.
+z2 ++ s.
+z2 ++ b.
+d -- s.
+s -- z2.

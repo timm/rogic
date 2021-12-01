@@ -1,0 +1,90 @@
+\begin{thebibliography}{10}
+
+\bibitem{chulani99}
+S.~Chulani, B.~Boehm, and B.~Steece.
+\newblock Bayesian analysis of empirical software engineering cost models.
+\newblock {\em IEEE Transaction on Software Engineerining}, 25(4), July/August
+  1999.
+
+\bibitem{kemerer87}
+C.~Kemerer.
+\newblock An empirical validation of software cost estimation models.
+\newblock {\em Communications of the ACM}, 30(5):416--429, May 1987.
+
+\bibitem{prod2}
+T.~Menzies.
+\newblock {\PROD}: A \underline{PRO}log \underline{D}ocumentation, and
+  \underline{D}elivery tool, 2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03prod2.pdf}.
+
+\bibitem{prod0}
+T.~Menzies.
+\newblock {\PROD}: the soruce code, 2003.
+\newblock Available from \url{http://tim.menzies.com/prodfiles.zip}.
+
+\bibitem{prod1}
+T.~Menzies.
+\newblock An example of the {\PROD} prolog delivery and documentation system,
+  2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03prod1.pdf}.
+
+\bibitem{prod5}
+T.~Menzies.
+\newblock A family database: documentation of a very simple prolog family
+  database using {\PROD}., 2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03family.pdf}.
+
+\bibitem{prod8}
+T.~Menzies.
+\newblock Including gpl-2 in {\PROD}, 2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03gpl.pdf}.
+
+\bibitem{prod10lurch}
+T.~Menzies.
+\newblock Monte carlo simulations in prolog: a {\PROD} tool, 2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03lurch.pdf}.
+
+\bibitem{prod4}
+T.~Menzies.
+\newblock Motivations: the why and who of {\PROD}, 2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03prodabout.pdf}.
+
+\bibitem{prod6}
+T.~Menzies.
+\newblock {\PROD}'s commonly used predicates, 2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03lib.pdf}.
+
+\bibitem{prod7}
+T.~Menzies.
+\newblock {\PROD}'s handler for config files and command line options, 2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03cfg.pdf}.
+
+\bibitem{prod9}
+T.~Menzies.
+\newblock Software cost estimation: a {\PROD} tool, 2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03omo.pdf}.
+
+\bibitem{prod3}
+T.~Menzies.
+\newblock Title: a bare-bones minimal example of {\PROD}., 2003.
+\newblock Available from \url{http://tim.menzies.com/pdf/03prod3.pdf}.
+
+\bibitem{mukho92}
+T.~Mukhopadhyay, S.~Vicinanza, and M.~Prietula.
+\newblock Examining the feasibility of a case-based reasoning tool for software
+  effort estimation.
+\newblock {\em MIS Quarterly}, pages 155--171, June 1992.
+
+\bibitem{boehm00b}
+B.~W.Boehm, E.~Horowitz, R.~Madachy, D.~Reifer, B.~K. Clark, B.~Steece, A.~W.
+  Brown, S.~Chulani, and C.~Abts.
+\newblock {\em Software Cost Estimation with Cocomo II}.
+\newblock Prentice Hall, 2000.
+
+\bibitem{swiprolog}
+J.~Wielemaker.
+\newblock {\em SWI-Prolog}.
+\newblock Available from
+  \url{http://swi.psy.uva.nl/projects/xpce/SWI-Prolog.html}.
+
+\end{thebibliography}

@@ -1,0 +1,41 @@
+:- [dd].
+
+% Martin: source of source moved to last thing
+% Martin:  date "wrapped" in a "when" term
++source(v1,when(2000,2,2,17,26,22),u0).
+
++aka(u0,"Baseline",v1).
++aka(r5,"R",v1).
++aka(r6,"R1",v1).
++aka(r7,"R2",v1).
++aka(f8,"F1",v1).
++aka(f9,"F2",v1).
++aka(p22,"PA",v1).
++aka(p23,"PB",v1).
+
+%+r(r5,3,_,_,v1) :- r(6),r(7).
+
+% Martin:  +r6(1,_,_,v1) became +r(r6,1,_,_,v1).
++r(r6,1,_,_,v1).
++r(r7,2,_,_,v1).
+
+% Martin:  +f8(_,1,_,v1). became +f(f8,_,1,_,v1).
+% oh, and this is tacky, but in my prolog integer 1 does
+% not equal 1.0. so all the strengths=1 have to be strengths=1.9
++f(f8,_,1.0,_,v1).
++f(f9,_,1.0,_,v1).
+
+% Martin:  +p22(_,_,1,v1) became +p(p22,_,_,1,v1).
++p(p22,_,_,1,v1).
++p(p23,_,_,1,v1).
+
++impact(f8,r6,0.1,v1).
++impact(f9,r6,0.2,v1).
++impact(f8,r7,0.3,v1).
++impact(f9,r7,0.4,v1).
+
++effect(f8,p22,0.6,v1).
++effect(f9,p22,0.7,v1).
++effect(f9,p23,0.5,v1).
++effect(f8,p23,0.4,v1).
+

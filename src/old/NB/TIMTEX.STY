@@ -1,0 +1,35 @@
+
+\usepackage{tex4log/syntax}
+\usepackage{tex4log/cite}
+\usepackage{alltt,url,graphicx,amssymb}
+
+
+\newenvironment{LISTING}{\scriptsize\begin{alltt}}{\end{alltt}\normalsize}
+
+
+\newenvironment{smallitem}{
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \begin{itemize}
+    \setlength{\leftmargin}{.2in}
+    \setlength{\parsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\itemsep}{0pt}}{\end{itemize}}
+
+ 
+ 
+ 
+\newcommand{\exclaim}{{!}}
+\shortverb{!} 
+\newcommand{\bi}{\begin{smallitem}}
+\newcommand{\ei}{\end{smallitem}}
+\newcommand{\bl}{\begin{LISTING}}
+\newcommand{\el}{\end{LISTING}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\fig}[1]{Figure~\ref{fig:#1}}
+\newcommand{\eq}[1]{Equation~\ref{eq:#1}}
+\newcommand{\tion}[1]{\S\ref{sec:#1}}

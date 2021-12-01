@@ -1,0 +1,607 @@
+
+o A :-
+	o(A, B, C, D, E).
+
+A o B :-
+	o(A, C, D, E, B).
+
+o(A, B/C, D) :-
+	o(A, B, E, B/C, D).
+
+o(true, A, true, B, B).
+o(as A, B, A, A, A).
+o(A of B=C, D, C, E, F) :-
+	in(A, B, C),
+	o(assert(A of B=C), D, C, E, F).
+o(val of A=0, B, C, D, E) :-
+	o(proveSteady(A), B, C, D, E).
+o(A of B=C, D, C, E, F) :-
+	aoIndex(A, B, G),
+	o(G, D, C, E, F).
+o(not A, B, C, D, D) :-
+	\+o(A, B, C, D, E).
+o(A ask B, C, D, E, F) :-
+	o(A=G, C, D, E, F),
+	B o G.
+o(A keep B, C, D, E, F) :-
+	o(A was G now H, C, D, E, F),
+	o(B, G, H).
+o(new(A), A, B, C, D) :-
+	o(isa(A, C)o init(A), A, B, C, D).
+o(new, A, B, C, D) :-
+	o(isa(A, E), A, F, C, G),
+	o(new(A), A, B, G, D).
+o(map(A, B), C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	maplist(B, G, D).
+o(sort(A), B, C, D, E) :-
+	o(A was F now C, B, C, D, E),
+	sort(F, C).
+o(in(A, B), C, D, E, F) :-
+	o(A=G, C, D, E, F),
+	member(B, G).
+o(+A, B, C, D, E) :-
+	o(A was F now C, B, C, D, E),
+	C is F+1.
+o(-A, B, C, D, E) :-
+	o(A was F now C, B, C, D, E),
+	C is F-1.
+o(A+B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G+B.
+o(A-B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G-B.
+o(A*B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G*B.
+o(A/B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G/B.
+o(A^B, C, D, E, F) :-
+	o(A was G now D, C, D, E, F),
+	D is G^B.
+o(A<<B, C, D, E, F) :-
+	o(A was G now[B|G], C, D, E, F).
+o(A>>B, C, D, E, F) :-
+	o(A was[B|G]now G, C, D, E, F).
+o(A so B, C, B, D, E) :-
+	o(A, C, B, D, E).
+o(o A, B, C, D, E) :-
+	o(A, B, C, D, E).
+o(A o B, C, D, E, F) :-
+	o(A, C, G, E, H),
+	o(B, C, D, H, F).
+o(print(A), B, C, D, E) :-
+	o(A=F, B, C, D, E),
+	print(A=F).
+o(write(A), B, C, D, E) :-
+	o(A=F, B, C, D, E),
+	write(A=F).
+o(println(A), B, C, D, E) :-
+	o(A=F, B, C, D, E),
+	print(A=F),
+	nl.
+o(writeln(A), B, C, D, E) :-
+	o(A=F, B, C, D, E),
+	write(A=F),
+	nl.
+o(print, A, B, C, C) :-
+	print(C).
+o(write, A, B, C, C) :-
+	write(C).
+o(println, A, B, C, C) :-
+	print(C),
+	nl.
+o(writeln, A, B, C, C) :-
+	write(C),
+	nl.
+o(A rand B, C, D, E, F) :-
+	(   maybe
+	->  o(A, C, G, E, H),
+	    o(B, C, D, H, F)
+	;   o(B, C, I, E, H),
+	    o(A, C, D, H, F)
+	).
+o(A ror B, C, D, E, F) :-
+	(   maybe
+	->  (   o(A, C, D, E, F)
+	    ;   o(B, C, D, E, F)
+	    )
+	;   o(B, C, D, E, F)
+	;   o(A, C, D, E, F)
+	).
+o(A=B, C, B, C/D, C/D) :-
+	o0(C, A, E),
+	arg(E, D, B).
+o(A is B, C, D, C/E, C/E) :-
+	D is B,
+	o0(C, A, F),
+	setarg(F, E, D).
+o(A:=B, C, B, C/D, C/D) :-
+	o0(C, A, E),
+	setarg(E, D, B).
+o(A was B now C, D, C, D/E, D/E) :-
+	o0(D, A, F),
+	arg(F, E, B),
+	setarg(F, E, C).
+o(A was B do C now D, E, D, E/F, E/G) :-
+	o0(E, A, H),
+	arg(H, G, B),
+	o(C, E, I, F, G),
+	setarg(H, G, D).
+o(self(A/B, A/C), A, D, A/B, A/C).
+o(show, A, B, A/C, A/C) :-
+	showo(A/C).
+o(init(goal), goal, A, goal/B, C) :-
+	o(weight:=0 o true, goal/B, C).
+o(dd(goal, [weight:=0, id, aov, proved, route]), goal, A, goal/B, C) :-
+	true(goal/B, C).
+o(isa(goal, goal/goal(A, B, C, D, E)), goal, F, goal/G, H) :-
+	true(goal/G, H).
+o(yeah(A), goal, B, goal/C, D) :-
+	o(proved:=t, goal/C, E),
+	o(route:=A, E, F),
+	o(incw, F, D).
+o(boo, goal, A, goal/B, C) :-
+	o(proved:=f, goal/B, D),
+	o(route:=[], D, E),
+	o(decw, E, C).
+o(inc(A), goal, B, goal/C, D) :-
+	is(A, 1+myrand(10^4)/10^6, goal/C, D).
+o(incw, goal, A, goal/B, C) :-
+	o(inc(D), goal/B, E),
+	o(weight+D, E, C).
+o(decw, goal, A, goal/B, C) :-
+	o(inc(D), goal/B, E),
+	o(weight-D, E, C).
+o(init(ht0), ht0, A, ht0/B, C) :-
+	o(maxProvedPercent:= -1 o runs:=10 o nGoals:=0 o nProved:=0 o doDot:=f o doDribble:=t o doReport:=t o true, ht0/B, C).
+o(dd(ht0, [scenario, maxProvedPercent:= -1, ins, goals, runs:=10, runtime, i, nGoals:=0, nProved:=0, wme, doDot:=f, doDribble:=t, doReport:=t]), ht0, A, ht0/B, C) :-
+	true(ht0/B, C).
+o(isa(ht0, ht0/ht0(A, B, C, D, E, F, G, H, I, J, K, L, M)), ht0, N, ht0/O, P) :-
+	true(ht0/O, P).
+o(ht0, ht0, A, ht0/B, C) :-
+	D is cputime,
+	E=ht0/B,
+	o(runs=F, E, G),
+	o(scenario(H, I, J), G, K),
+	o(scenario:=H, K, L),
+	o(ins:=I, L, M),
+	o(zaps(I), M, N),
+	o(ht0(F, J), N, O),
+	o(runtime is cputime-D, O, P),
+	o(report(H), P, C).
+o(report(A), ht0, B, ht0/C, D) :-
+	o(doReport=t, ht0/C, E), !,
+	o(maxProvedPercent=F, E, G),
+	write(p(F)),
+	nl,
+	H=G,
+	o(dot(A), H, D).
+o(report(A), ht0, B, ht0/C, D) :-
+	true(ht0/C, D).
+o(dribble(A), ht0, B, ht0/C, D) :-
+	o(doDribble=t, ht0/C, E), !,
+	say(A),
+	D=E.
+o(dribble(A), ht0, B, ht0/C, D) :-
+	true(ht0/C, D).
+o(dot(A), ht0, B, ht0/C, D) :-
+	o(doDot=t, ht0/C, E), !,
+	draw(A),
+	get(F),
+	D=E.
+o(dot(A), ht0, B, ht0/C, D) :-
+	true(ht0/C, D).
+o(zaps(A), ht0, B, ht0/C, D) :-
+	retractall(in(E, F, G)),
+	H=ht0/C,
+	o(zap(A, I), H, D).
+o(zap(A, B), ht0, C, D, E) :-
+	zap(A, B, ht0, D, E).
+o(ht0(A, B), ht0, C, ht0/D, E) :-
+	o(i:=A, ht0/D, F),
+	o(prep(B, G), F, H),
+	o(goals:=G, H, I),
+	o(run, I, J),
+	o(maxProvedPercent=C, J, E).
+o(scenario(A, B, C), ht0, D, ht0/E, F) :-
+	o(scenarios(G), ht0/E, H),
+	getScenario(G, A, B, I),
+	C=I,
+	F=H.
+o(prep(A, B), ht0, C, D, E) :-
+	prep(A, B, ht0, D, E).
+o(run, ht0, A, ht0/B, C) :-
+	(   o(nGoals=0, ht0/B, C)
+	;   o(i=0, ht0/B, C)
+	;   o(maxProvedPercent=100, ht0/B, C)
+	), !.
+o(run, ht0, A, ht0/B, C) :-
+	o(reset, ht0/B, D),
+	o(proves, D, E),
+	o(notes, E, F),
+	o(-i, F, G),
+	o(run, G, C).
+o(reset, ht0, A, ht0/B, C) :-
+	say('.'),
+	D=ht0/B,
+	retractall(a(E, F, G, H, I)),
+	J=D,
+	o(nProved:=0, J, C).
+o(notes, ht0, A, ht0/B, C) :-
+	o(nProved=D, ht0/B, E),
+	o(nGoals=F, E, G),
+	is(H, D*100/F, G, I),
+	o(maxProvedPercent=J, I, K),
+	compare(L, H, J),
+	M=K,
+	o(dribble(L), M, N),
+	o(update(L, H), N, C).
+o(update(=, A), ht0, B, ht0/C, D) :-
+	true(ht0/C, D).
+o(update(<, A), ht0, B, ht0/C, D) :-
+	true(ht0/C, D).
+o(update(>, A), ht0, B, ht0/C, D) :-
+	o(maxProvedPercent is A, ht0/C, E),
+	retractall(best(F)),
+	forall(a(G, H, I, J, K), assert(best(a(G, H, I, J, K)))),
+	D=E.
+o(proves, ht0, A, ht0/B, C) :-
+	o(sort(goals)so D, ht0/B, E),
+	o(i=F, E, G),
+	o new(wme)o i:=F o as H,
+	I=G,
+	o(wme:=H, I, J),
+	o(prove(D, K), J, L),
+	o(goals:=K, L, C).
+o(prove(A, B), ht0, C, ht0/D, E) :-
+	numberGoals(A, 1, F),
+	G=ht0/D,
+	o(prove1(F, B), G, E).
+o(prove1(A, B), ht0, C, D, E) :-
+	prove1(A, B, ht0, D, E).
+o(init(wme), wme, A, wme/B, C) :-
+	o(time:=1 o depth:=0 o route:=[1=[]]o true, wme/B, C).
+o(dd(wme, [time:=1, id, depth:=0, goal, i, route:=[1=[]]]), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(isa(wme, wme/wme(A, B, C, D, E, F)), wme, G, wme/H, I) :-
+	true(wme/H, I).
+o(reset(A), wme, B, wme/C, D) :-
+	o(goal:=A, wme/C, E),
+	o(depth:=0, E, F),
+	o(time:=1, F, G),
+	o(route:=[1=[]], G, D).
+o(prove(A, B), wme, C, wme/D, E) :-
+	o(reset(A), wme/D, F),
+	o(id:=B, F, G),
+	o(A, G, E).
+o(proveSteady(A), wme, B, wme/C, D) :-
+	aoIndex(val, A, E),
+	clause(o(E, wme, 1, F, G), o(hop(H, I), J, K)),
+	clause(o(E, wme, -1, L, M), o(hop(N, O), P, Q)),
+	R=wme/C,
+	o(assert(val of A=0), R, S),
+	o(I o O, S, D).
+o(assert(A), wme, B, wme/C, D) :-
+	o(hop(A, true), wme/C, D).
+o(hop(A, B), wme, C, wme/D, E) :-
+	o(time=F, wme/D, G),
+	o(id=H, G, I),
+	o(now(J), I, K),
+	o(assume(A, F, H, L), K, M),
+	(   L<H,
+	    N=M
+	->  o(push(A), N, E)
+	;   \+member(A, J),
+	    O=M,
+	    o(push(A), O, P),
+	    o(B, P, E)
+	).
+o(push(A), wme, B, wme/C, D) :-
+	o(route was[E=F|G]now[E=[A|F]|G], wme/C, D).
+o(showr, wme, A, wme/B, C) :-
+	o(now(D), wme/B, E),
+	forall(member(F, D), format(' ~p,', [F])),
+	nl,
+	C=E.
+o(now(A), wme, B, wme/C, D) :-
+	o(time=E o route was F now[E=A|G], wme/C, H),
+	less1(F, E=A, G),
+	D=H.
+o(assume(A of B=C, D, E, F), wme, G, wme/H, I) :-
+	a(A, B, D, F, J), !,
+	J=C,
+	I=wme/H.
+o(assume(A of B=C, D, E, E), wme, F, wme/G, H) :-
+	assert(a(A, B, D, E, C)),
+	H=wme/G.
+o(assume(A of B=C, D, E, F), wme, G, wme/H, I) :-
+	retract(a(A, B, D, E, C)),
+	J=wme/H,
+	fail(J, I).
+o(direct(1, 1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(direct(-1, -1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(creator(1, 1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(destroyer(1, -1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(invcreator(-1, 1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(invdestroyer(-1, -1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(inverse(1, -1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(inverse(-1, 1), wme, A, wme/B, C) :-
+	true(wme/B, C).
+o(16219743, wme, A, wme/B, C) :-
+	o(hop(val of acthProduction=A, direct(A, D)o val of crf=D), wme/B, C).
+o(16724567, wme, A, wme/B, C) :-
+	o(hop(val of acth=A, creator(A, D)o val of acthProduction=D), wme/B, C).
+o(16219743, wme, A, wme/B, C) :-
+	o(hop(val of acthProduction=A, inverse(A, D)o val of hypox=D), wme/B, C).
+o(15261783, wme, A, wme/B, C) :-
+	o(hop(val of cortisolProduction=A, direct(A, D)o val of acth=D), wme/B, C).
+o(15261783, wme, A, wme/B, C) :-
+	o(hop(val of cortisolProduction=A,  (now)of guan= -1 rand (direct(A, D)o val of sns=D)), wme/B, C).
+o(15261783, wme, A, wme/B, C) :-
+	o(hop(val of cortisolProduction=A, inverse(A, D)o val of guan=D), wme/B, C).
+o(1500859, wme, A, wme/B, C) :-
+	o(hop(val of cortisol=A,  (now)of adrx= -1 rand (creator(A, D)o val of cortisolProduction=D)), wme/B, C).
+o(1500859, wme, A, wme/B, C) :-
+	o(hop(val of cortisol=A, inverse(A, D)o val of adrx=D), wme/B, C).
+o(1500859, wme, A, wme/B, C) :-
+	o(hop(val of cortisol=A, destroyer(A, D)o val of corticoidProduction=D), wme/B, C).
+o(16219743, wme, A, wme/B, C) :-
+	o(hop(val of acthProduction=A, inverse(A, D)o val of glucocorticoid=D), wme/B, C).
+o(696007, wme, A, wme/B, C) :-
+	o(hop(val of glucocorticoid=A, creator(A, D)o val of corticoidProduction=D), wme/B, C).
+o(696007, wme, A, wme/B, C) :-
+	o(hop(val of glucocorticoid=A, direct(A, D)o val of dex=D), wme/B, C).
+o(696007, wme, A, wme/B, C) :-
+	o(hop(val of glucocorticoid=A, direct(A, D)o val of acutEdex=D), wme/B, C).
+o(696007, wme, A, wme/B, C) :-
+	o(hop(val of glucocorticoid=A, direct(A, D)o val of chroniCdex=D), wme/B, C).
+o(19711, wme, A, wme/B, C) :-
+	o(hop(val of catechole=A,  (now)of adrx= -1 rand (creator(A, D)o val of catecholeProd=D)), wme/B, C).
+o(19711, wme, A, wme/B, C) :-
+	o(hop(val of catechole=A, inverse(A, D)o val of adrx=D), wme/B, C).
+o(19711, wme, A, wme/B, C) :-
+	o(hop(val of catechole=A, destroyer(A, D)o val of catecholeDisp=D), wme/B, C).
+o(16683307, wme, A, wme/B, C) :-
+	o(hop(val of catecholeProd=A,  (now)of guan= -1 rand (direct(A, D)o val of sns=D)), wme/B, C).
+o(16683307, wme, A, wme/B, C) :-
+	o(hop(val of catecholeProd=A, inverse(A, D)o val of guan=D), wme/B, C).
+o(16715031, wme, A, wme/B, C) :-
+	o(hop(val of da=A, creator(A, D)o val of daProduction=D), wme/B, C).
+o(16715031, wme, A, wme/B, C) :-
+	o(hop(val of da=A, destroyer(A, D)o val of da2Hva=D), wme/B, C).
+o(16715031, wme, A, wme/B, C) :-
+	o(hop(val of da=A, direct(A, D)o val of prl=D), wme/B, C).
+o(16493251, wme, A, wme/B, C) :-
+	o(hop(val of daProduction=A, inverse(A, D)o val of aluminium=D), wme/B, C).
+o(16715367, wme, A, wme/B, C) :-
+	o(hop(val of hva=A,  (now)of msg= -1 rand (creator(A, D)o val of da2Hva=D)), wme/B, C).
+o(16715367, wme, A, wme/B, C) :-
+	o(hop(val of hva=A, inverse(A, D)o val of msg=D), wme/B, C).
+o(16722539, wme, A, wme/B, C) :-
+	o(hop(val of da2Hva=A, inverse(A, D)o val of parg=D), wme/B, C).
+o(389883, wme, A, wme/B, C) :-
+	o(hop(val of glucagon=A, creator(A, D)o val of glucagonProd=D), wme/B, C).
+o(389883, wme, A, wme/B, C) :-
+	o(hop(val of glucagon=A, destroyer(A, D)o val of glucagonDis=D), wme/B, C).
+o(16230255, wme, A, wme/B, C) :-
+	o(hop(val of glucagonProd=A,  (now)of guan= -1 rand (direct(A, D)o val of sns=D)), wme/B, C).
+o(16230255, wme, A, wme/B, C) :-
+	o(hop(val of glucagonProd=A, inverse(A, D)o val of guan=D), wme/B, C).
+o(16230255, wme, A, wme/B, C) :-
+	o(hop(val of glucagonProd=A, inverse(A, D)o val of glucose=D), wme/B, C).
+o(16230255, wme, A, wme/B, C) :-
+	o(hop(val of glucagonProd=A, inverse(A, D)o val of insulin=D), wme/B, C).
+o(908795, wme, A, wme/B, C) :-
+	o(hop(val of glucose=A, direct(A, D)o val of chroniCglucose=D), wme/B, C).
+o(908795, wme, A, wme/B, C) :-
+	o(hop(val of glucose=A, creator(A, D)o val of fromGut=D), wme/B, C).
+o(908795, wme, A, wme/B, C) :-
+	o(hop(val of glucose=A, creator(A, D)o val of fromLiver=D), wme/B, C).
+o(908795, wme, A, wme/B, C) :-
+	o(hop(val of glucose=A, destroyer(A, D)o val of brainGlucoseUptake=D), wme/B, C).
+o(742795, wme, A, wme/B, C) :-
+	o(hop(val of brainGlucoseUptake=A, direct(A, D)o val of glucose=D), wme/B, C).
+o(908795, wme, A, wme/B, C) :-
+	o(hop(val of glucose=A, destroyer(A, D)o val of toTissue=D), wme/B, C).
+o(15754815, wme, A, wme/B, C) :-
+	o(hop(val of brainGlucose=A, creator(A, D)o val of brainGlucoseUptake=D), wme/B, C).
+o(16533443, wme, A, wme/B, C) :-
+	o(hop(val of toTissue=A, direct(A, D)o val of temp1=D), wme/B, C).
+o(15865799, wme, A, wme/B, C) :-
+	o(hop(val of temp1=A, direct(A, D)o val of glucose=D), wme/B, C).
+o(15865799, wme, A, wme/B, C) :-
+	o(hop(val of temp1=A, direct(A, D)o val of insulin=D), wme/B, C).
+o(14888579, wme, A, wme/B, C) :-
+	o(hop(val of fromLiver=A, direct(A, D)o val of temp2=D), wme/B, C).
+o(15865807, wme, A, wme/B, C) :-
+	o(hop(val of temp2=A, inverse(A, D)o val of insulin=D), wme/B, C).
+o(15865807, wme, A, wme/B, C) :-
+	o(hop(val of temp2=A, direct(A, D)o val of glucocorticoid=D), wme/B, C).
+o(15865807, wme, A, wme/B, C) :-
+	o(hop(val of temp2=A, inverse(A, D)o val of pns=D), wme/B, C).
+o(15865807, wme, A, wme/B, C) :-
+	o(hop(val of temp2=A, direct(A, D)o val of catechole=D), wme/B, C).
+o(15865807, wme, A, wme/B, C) :-
+	o(hop(val of temp2=A,  (now)of guan= -1 rand (inverse(A, D)o val of sns=D)), wme/B, C).
+o(15865807, wme, A, wme/B, C) :-
+	o(hop(val of temp2=A, direct(A, D)o val of guan=D), wme/B, C).
+o(15865807, wme, A, wme/B, C) :-
+	o(hop(val of temp2=A, direct(A, D)o val of glucagon=D), wme/B, C).
+o(742795, wme, A, wme/B, C) :-
+	o(hop(val of brainGlucoseUptake=A, inverse(A, D)o val of twoDg=D), wme/B, C).
+o(103455, wme, A, wme/B, C) :-
+	o(hop(val of insulin=A, creator(A, D)o val of fromPancreas=D), wme/B, C).
+o(103455, wme, A, wme/B, C) :-
+	o(hop(val of insulin=A, destroyer(A, D)o val of toKidneys=D), wme/B, C).
+o(16469299, wme, A, wme/B, C) :-
+	o(hop(val of toKidneys=A, direct(A, D)o val of insulin=D), wme/B, C).
+o(15865783, wme, A, wme/B, C) :-
+	o(hop(val of temp3=A,  (now)of guan=1 rand (inverse(A, D)o val of sns=D)), wme/B, C).
+o(15865783, wme, A, wme/B, C) :-
+	o(hop(val of temp3=A, inverse(A, D)o val of guan=D), wme/B, C).
+o(15865783, wme, A, wme/B, C) :-
+	o(hop(val of temp3=A, inverse(A, D)o val of catechole=D), wme/B, C).
+o(15865783, wme, A, wme/B, C) :-
+	o(hop(val of temp3=A, direct(A, D)o val of glucagon=D), wme/B, C).
+o(15865783, wme, A, wme/B, C) :-
+	o(hop(val of temp3=A, direct(A, D)o val of glucose=D), wme/B, C).
+o(15865783, wme, A, wme/B, C) :-
+	o(hop(val of temp3=A, direct(A, D)o val of pns=D), wme/B, C).
+o(15096919, wme, A, wme/B, C) :-
+	o(hop(val of fromPancreas=A, direct(A, D)o val of temp3=D), wme/B, C).
+o(103455, wme, A, wme/B, C) :-
+	o(hop(val of insulin=A, direct(A, D)o val of insulinBolis=D), wme/B, C).
+o(103455, wme, A, wme/B, C) :-
+	o(hop(val of insulin=A, direct(A, D)o val of insulin10=D), wme/B, C).
+o(103455, wme, A, wme/B, C) :-
+	o(hop(val of insulin=A, direct(A, D)o val of insulin30=D), wme/B, C).
+o(103455, wme, A, wme/B, C) :-
+	o(hop(val of insulin=A, direct(A, D)o val of chroniCinsulin=D), wme/B, C).
+o(15096919, wme, A, wme/B, C) :-
+	o(hop(val of fromPancreas=A, direct(A, D)o val of tolbut10=D), wme/B, C).
+o(15096919, wme, A, wme/B, C) :-
+	o(hop(val of fromPancreas=A, direct(A, D)o val of tolbut20=D), wme/B, C).
+o(15096919, wme, A, wme/B, C) :-
+	o(hop(val of fromPancreas=A, direct(A, D)o val of tolbut30=D), wme/B, C).
+o(15096919, wme, A, wme/B, C) :-
+	o(hop(val of fromPancreas=A, direct(A, D)o val of chroniCtolbut=D), wme/B, C).
+o(16715031, wme, A, wme/B, C) :-
+	o(hop(val of da=A, destroyer(A, D)o val of neProduction=D), wme/B, C).
+o(16720407, wme, A, wme/B, C) :-
+	o(hop(val of ne=A,  (now)of msg= -1 rand (creator(A, D)o val of neProduction=D)), wme/B, C).
+o(16720407, wme, A, wme/B, C) :-
+	o(hop(val of ne=A, inverse(A, D)o val of msg=D), wme/B, C).
+o(16720407, wme, A, wme/B, C) :-
+	o(hop(val of ne=A, destroyer(A, D)o val of ne2dhpg=D), wme/B, C).
+o(16720407, wme, A, wme/B, C) :-
+	o(hop(val of ne=A, destroyer(A, D)o val of ne2Epin=D), wme/B, C).
+o(332435, wme, A, wme/B, C) :-
+	o(hop(val of dhpg=A,  (now)of msg= -1 rand (creator(A, D)o val of ne2dhpg=D)), wme/B, C).
+o(332435, wme, A, wme/B, C) :-
+	o(hop(val of dhpg=A, inverse(A, D)o val of msg=D), wme/B, C).
+o(16724375, wme, A, wme/B, C) :-
+	o(hop(val of crf=A, direct(A, D)o val of dhpg=D), wme/B, C).
+o(16023, wme, A, wme/B, C) :-
+	o(hop(val of sns=A, direct(A, D)o val of dhpg=D), wme/B, C).
+o(15791283, wme, A, wme/B, C) :-
+	o(hop(val of neControl=A, direct(A, D)o val of stress=D), wme/B, C).
+o(15791283, wme, A, wme/B, C) :-
+	o(hop(val of neControl=A, inverse(A, D)o val of glucocorticoid=D), wme/B, C).
+o(15791283, wme, A, wme/B, C) :-
+	o(hop(val of neControl=A, inverse(A, D)o val of brainGlucose=D), wme/B, C).
+o(13827847, wme, A, wme/B, C) :-
+	o(hop(val of neProduction=A, direct(A, D)o val of neControl=D), wme/B, C).
+o(15753991, wme, A, wme/B, C) :-
+	o(hop(val of ne2dhpg=A, direct(A, D)o val of neControl=D), wme/B, C).
+o(15753991, wme, A, wme/B, C) :-
+	o(hop(val of ne2dhpg=A, direct(A, D)o val of ne=D), wme/B, C).
+o(15753991, wme, A, wme/B, C) :-
+	o(hop(val of ne2dhpg=A, inverse(A, D)o val of aluminium=D), wme/B, C).
+o(668191, wme, A, wme/B, C) :-
+	o(hop(val of ne2Epin=A, creator(A, D)o val of ne=D), wme/B, C).
+o(13827847, wme, A, wme/B, C) :-
+	o(hop(val of neProduction=A, direct(A, D)o val of hgh=D), wme/B, C).
+o(13827847, wme, A, wme/B, C) :-
+	o(hop(val of neProduction=A, inverse(A, D)o val of insulin=D), wme/B, C).
+o(16725799, wme, A, wme/B, C) :-
+	o(hop(val of stress=A, direct(A, D)o val of swimstr=D), wme/B, C).
+o(16725799, wme, A, wme/B, C) :-
+	o(hop(val of stress=A, direct(A, D)o val of etherstr=D), wme/B, C).
+o(13827847, wme, A, wme/B, C) :-
+	o(hop(val of neProduction=A, direct(A, D)o val of yoh=D), wme/B, C).
+o(15753991, wme, A, wme/B, C) :-
+	o(hop(val of ne2dhpg=A, inverse(A, D)o val of parg=D), wme/B, C).
+o(16725799, wme, A, wme/B, C) :-
+	o(hop(val of stress=A, direct(A, D)o val of gentle=D), wme/B, C).
+o(15791283, wme, A, wme/B, C) :-
+	o(hop(val of neControl=A, inverse(A, D)o val of diaz=D), wme/B, C).
+o(15791283, wme, A, wme/B, C) :-
+	o(hop(val of neControl=A, inverse(A, D)o val of chroniCdiaz=D), wme/B, C).
+o(16722767, wme, A, wme/B, C) :-
+	o(hop(val of vagus=A, direct(A, D)o val of pns=D), wme/B, C).
+o(16776983, wme, A, wme/B, C) :-
+	o(hop(val of pns=A, direct(A, D)o val of insulin=D), wme/B, C).
+o(16776983, wme, A, wme/B, C) :-
+	o(hop(val of pns=A, direct(A, D)o val of fiveHIAA=D), wme/B, C).
+o(16776983, wme, A, wme/B, C) :-
+	o(hop(val of pns=A, inverse(A, D)o val of sns=D), wme/B, C).
+o(16272819, wme, A, wme/B, C) :-
+	o(hop(val of prlRelease=A, inverse(A, D)o val of da=D), wme/B, C).
+o(16518611, wme, A, wme/B, C) :-
+	o(hop(val of pPrl=A, inverse(A, D)o val of da=D), wme/B, C).
+o(16518611, wme, A, wme/B, C) :-
+	o(hop(val of pPrl=A, destroyer(A, D)o val of prlRelease=D), wme/B, C).
+o(16745239, wme, A, wme/B, C) :-
+	o(hop(val of prl=A,  (now)of hypox= -1 rand (creator(A, D)o val of prlRelease=D)), wme/B, C).
+o(16745239, wme, A, wme/B, C) :-
+	o(hop(val of prl=A, inverse(A, D)o val of hypox=D), wme/B, C).
+o(159159, wme, A, wme/B, C) :-
+	o(hop(val of sateity=A, direct(A, D)o val of fiveHIAA=D), wme/B, C).
+o(159159, wme, A, wme/B, C) :-
+	o(hop(val of sateity=A, inverse(A, D)o val of brainGlucose=D), wme/B, C).
+o(1690759, wme, A, wme/B, C) :-
+	o(hop(val of serotonin=A,  (now)of msg= -1 rand (creator(A, D)o val of serotoninProduction=D)), wme/B, C).
+o(1690759, wme, A, wme/B, C) :-
+	o(hop(val of serotonin=A, inverse(A, D)o val of msg=D), wme/B, C).
+o(1690759, wme, A, wme/B, C) :-
+	o(hop(val of serotonin=A, destroyer(A, D)o val of serotoninTOfiveHIAA=D), wme/B, C).
+o(1342027, wme, A, wme/B, C) :-
+	o(hop(val of fiveHIAA=A, creator(A, D)o val of serotoninTOfiveHIAA=D), wme/B, C).
+o(15774127, wme, A, wme/B, C) :-
+	o(hop(val of serotoninProduction=A, inverse(A, D)o val of hgh=D), wme/B, C).
+o(15774127, wme, A, wme/B, C) :-
+	o(hop(val of serotoninProduction=A, inverse(A, D)o val of t4=D), wme/B, C).
+o(3447155, wme, A, wme/B, C) :-
+	o(hop(val of serotoninTOfiveHIAA=A, direct(A, D)o val of t4=D), wme/B, C).
+o(3447155, wme, A, wme/B, C) :-
+	o(hop(val of serotoninTOfiveHIAA=A, direct(A, D)o val of serotonin=D), wme/B, C).
+o(15774127, wme, A, wme/B, C) :-
+	o(hop(val of serotoninProduction=A, direct(A, D)o val of brainGlucose=D), wme/B, C).
+o(15774127, wme, A, wme/B, C) :-
+	o(hop(val of serotoninProduction=A, direct(A, D)o val of insulin=D), wme/B, C).
+o(15774127, wme, A, wme/B, C) :-
+	o(hop(val of serotoninProduction=A, direct(A, D)o val of pns=D), wme/B, C).
+o(3447155, wme, A, wme/B, C) :-
+	o(hop(val of serotoninTOfiveHIAA=A, direct(A, D)o val of pns=D), wme/B, C).
+o(3447155, wme, A, wme/B, C) :-
+	o(hop(val of serotoninTOfiveHIAA=A, inverse(A, D)o val of parg=D), wme/B, C).
+o(15774127, wme, A, wme/B, C) :-
+	o(hop(val of serotoninProduction=A, inverse(A, D)o val of msg=D), wme/B, C).
+o(16023, wme, A, wme/B, C) :-
+	o(hop(val of sns=A, inverse(A, D)o val of pns=D), wme/B, C).
+o(16610323, wme, A, wme/B, C) :-
+	o(hop(val of pHgh=A, destroyer(A, D)o val of ghProduction=D), wme/B, C).
+o(16715191, wme, A, wme/B, C) :-
+	o(hop(val of hgh=A,  (now)of hypox=1 rand (creator(A, D)o val of ghProduction=D)), wme/B, C).
+o(16715191, wme, A, wme/B, C) :-
+	o(hop(val of hgh=A, direct(A, D)o val of hypox=D), wme/B, C).
+o(16715191, wme, A, wme/B, C) :-
+	o(hop(val of hgh=A, direct(A, D)o val of hghInj=D), wme/B, C).
+o(16715703, wme, A, wme/B, C) :-
+	o(hop(val of ghrh=A, direct(A, D)o val of fiveHIAA=D), wme/B, C).
+o(16610323, wme, A, wme/B, C) :-
+	o(hop(val of pHgh=A, inverse(A, D)o val of ghrh=D), wme/B, C).
+o(16586651, wme, A, wme/B, C) :-
+	o(hop(val of ghProduction=A, direct(A, D)o val of ghrh=D), wme/B, C).
+o(16586651, wme, A, wme/B, C) :-
+	o(hop(val of ghProduction=A, direct(A, D)o val of glucose=D), wme/B, C).
+o(16610323, wme, A, wme/B, C) :-
+	o(hop(val of pHgh=A, direct(A, D)o val of glucose=D), wme/B, C).
+o(16610323, wme, A, wme/B, C) :-
+	o(hop(val of pHgh=A, inverse(A, D)o val of srif=D), wme/B, C).
+o(16586651, wme, A, wme/B, C) :-
+	o(hop(val of ghProduction=A, inverse(A, D)o val of srif=D), wme/B, C).
+o(274075, wme, A, wme/B, C) :-
+	o(hop(val of srif=A, direct(A, D)o val of crf=D), wme/B, C).
+o(scenarios([[rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/10, hgh/10, hva/10, acth/ (-), dhpg/10, glucose/10, insulin/10, cortisol/10, fiveHIAA/10, glucagon/10, serotonin/10], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/5, ne/10, hgh/ (-), hva/10, acth/10, dhpg/10, glucose/ (-), insulin/ (-), cortisol/ (-), fiveHIAA/10, glucagon/ (-), serotonin/15], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/5, hgh/ (-), hva/10, acth/ (-), dhpg/12, glucose/ (-), insulin/ (-), cortisol/90, fiveHIAA/5, glucagon/ (-), serotonin/20], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/ (-), ne/7, hgh/ (-), hva/ (-), acth/20, dhpg/30, glucose/5, insulin/5, cortisol/50, fiveHIAA/ (-), glucagon/ (-), serotonin/ (-)], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/20, ne/20, hgh/ (-), hva/2, acth/ (-), dhpg/2, glucose/ (-), insulin/ (-), cortisol/ (-), fiveHIAA/2, glucagon/ (-), serotonin/20], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/10, hgh/ (-), hva/10, acth/ (-), dhpg/10, glucose/ (-), insulin/ (-), cortisol/ (-), fiveHIAA/20, glucagon/ (-), serotonin/10], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/1, yoh/ -1], da/10, ne/8, hgh/ (-), hva/20, acth/ (-), dhpg/20, glucose/20, insulin/15, cortisol/50, fiveHIAA/10, glucagon/15, serotonin/12], [rx/[acutEdex/1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/ (-), ne/10, hgh/ (-), hva/ (-), acth/ (-), dhpg/15, glucose/ (-), insulin/ (-), cortisol/10, fiveHIAA/ (-), glucagon/ (-), serotonin/ (-)], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/ (-), ne/15, hgh/ (-), hva/ (-), acth/10, dhpg/10, glucose/ (-), insulin/ (-), cortisol/8, fiveHIAA/10, glucagon/ (-), serotonin/10], [rx/[acutEdex/ -1, chroniCdex/1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/ (-), ne/15, hgh/ (-), hva/ (-), acth/8, dhpg/10, glucose/ (-), insulin/ (-), cortisol/5, fiveHIAA/ (-), glucagon/ (-), serotonin/ (-)], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/10, hgh/ (-), hva/12, acth/1, dhpg/20, glucose/ (-), insulin/ (-), cortisol/100, fiveHIAA/9, glucagon/ (-), serotonin/12], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/15, ne/8, hgh/ (-), hva/12, acth/20, dhpg/23, glucose/ (-), insulin/ (-), cortisol/100, fiveHIAA/10, glucagon/ (-), serotonin/12], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/1], da/ (-), ne/3, hgh/ (-), hva/ (-), acth/20, dhpg/30, glucose/ (-), insulin/ (-), cortisol/20, fiveHIAA/9, glucagon/ (-), serotonin/11], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/9, ne/9, hgh/ (-), hva/11, acth/20, dhpg/11, glucose/5, insulin/50, cortisol/50, fiveHIAA/10, glucagon/10, serotonin/10], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/1, twoDg/ -1, yoh/ -1], da/10, ne/10, hgh/ (-), hva/10, acth/ (-), dhpg/10, glucose/5, insulin/20, cortisol/40, fiveHIAA/10, glucagon/10, serotonin/10], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/ (-), ne/11, hgh/50, hva/ (-), acth/ (-), dhpg/9, glucose/5, insulin/ (-), cortisol/8, fiveHIAA/20, glucagon/10, serotonin/10], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/ (-), ne/10, hgh/5, hva/ (-), acth/ (-), dhpg/20, glucose/3, insulin/ (-), cortisol/9, fiveHIAA/ (-), glucagon/50, serotonin/ (-)], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/1, parg/1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/20, ne/20, hgh/ (-), hva/2, acth/ (-), dhpg/2, glucose/ (-), insulin/ (-), cortisol/ (-), fiveHIAA/2, glucagon/ (-), serotonin/20], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/10, hgh/ (-), hva/10, acth/ (-), dhpg/10, glucose/7, insulin/10, cortisol/10, fiveHIAA/15, glucagon/10, serotonin/10], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/7, ne/10, hgh/ (-), hva/10, acth/ (-), dhpg/10, glucose/12, insulin/10, cortisol/10, fiveHIAA/7, glucagon/10, serotonin/10], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/9, hgh/ (-), hva/10, acth/ (-), dhpg/11, glucose/5, insulin/20, cortisol/25, fiveHIAA/10, glucagon/ (-), serotonin/10], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/1], da/ (-), ne/5, hgh/ (-), hva/ (-), acth/ (-), dhpg/15, glucose/ (-), insulin/ (-), cortisol/30, fiveHIAA/9, glucagon/ (-), serotonin/11], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/1, yoh/ -1], da/ (-), ne/7, hgh/ (-), hva/ (-), acth/30, dhpg/21, glucose/9, insulin/10, cortisol/50, fiveHIAA/ (-), glucagon/ (-), serotonin/ (-)], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/1, swimstr/1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/9, hgh/ (-), hva/18, acth/ (-), dhpg/15, glucose/ (-), insulin/ (-), cortisol/90, fiveHIAA/18, glucagon/ (-), serotonin/12], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/10, hgh/ (-), hva/20, acth/20, dhpg/23, glucose/ (-), insulin/ (-), cortisol/90, fiveHIAA/18, glucagon/ (-), serotonin/12], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/10, hgh/ (-), hva/10, acth/20, dhpg/10, glucose/ (-), insulin/ (-), cortisol/45, fiveHIAA/5, glucagon/ (-), serotonin/20], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/1, hypox/1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/10, hgh/ (-), hva/10, acth/10, dhpg/10, glucose/ (-), insulin/ (-), cortisol/ (-), fiveHIAA/10, glucagon/ (-), serotonin/10], [rx/[acutEdex/1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/ (-), ne/10, hgh/ (-), hva/ (-), acth/ (-), dhpg/20, glucose/ (-), insulin/ (-), cortisol/50, fiveHIAA/ (-), glucagon/ (-), serotonin/ (-)], [rx/[acutEdex/ -1, chroniCdex/1, chroniCdiaz/ -1, chroniCglucose/ -1, chroniCinsulin/ -1, chroniCtolbut/ -1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/ (-), ne/10, hgh/ (-), hva/ (-), acth/45, dhpg/21, glucose/ (-), insulin/ (-), cortisol/6, fiveHIAA/ (-), glucagon/ (-), serotonin/ (-)], [rx/[acutEdex/ -1, chroniCdex/ -1, chroniCdiaz/ -1, chroniCglucose/1, chroniCinsulin/ -1, chroniCtolbut/1, diaz/ -1, etherstr/ -1, gentle/ -1, guan/ -1, hghInj/ -1, hypox/ -1, insulin10/ -1, insulin30/ -1, msg/ -1, parg/ -1, ptu/ -1, swimstr/ -1, tolbut10/ -1, tolbut20/ -1, twoDg/ -1, yoh/ -1], da/10, ne/10, hgh/ (-), hva/10, acth/1, dhpg/10, glucose/8, insulin/10, cortisol/10, fiveHIAA/15, glucagon/10, serotonin/10]]), ht0, A, ht0/B, C) :-
+	true(ht0/B, C).

@@ -1,0 +1,16 @@
+Changes to HT4 source code
+--------------------------
+
+Additions to the definition of "t" in io.pl have been made.
+
+Commented out section of "editRule" and most of "compileObservations1" due to
+conflicts with newer SWI-Prolog compiler.  The former not needed as it deals
+with ablers, the latter not required as a different observation compiler is
+used.  Code is in shdilect.pl.
+
+Also fSweepNumbers in shmain.pl changed to remove ">" symbols and replace with
+"," to solve the above problem again.
+
+Addition of clause to shdemos.pl ":- discontiguous demo/1."
+
+Currently not making modifications to Tim's code beyond above.

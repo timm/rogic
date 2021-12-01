@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>prolog.pod Prolog programs</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#prolog_program_files">Prolog Program Files</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="prolog_program_files">Prolog Program Files</a></h1>
+<p>Here's my standard structure for writing Prolog programs.</p>
+<p>If an application sets global flags, changes
+operator, definitions, runs start-up code, etc etc,
+then it can conflict with your code.</p>
+<p>So, to let us mix and match Prolog code, we seperate start-up
+actions from set-up actions from the bulk of the code.
+Then, if you want,
+you can load only <em>part</em> of the other code and customize the
+start-up actions.</p>
+<p>So, unless they are very simple,
+each of my applications <code>App</code> comes in at  four files:
+<code>App.pl</code>, <code>App0.pl</code> (start-up code), <code>App1.pl</code> (the bulk
+of the system), and <code>App2.pl</code> (start-up actions).</p>
+<p><code>App.pl</code> is the default load program for the application.
+Loads the other files in the order
+<code>App0.pl</code>, <code>App1.pl</code>, then <code>App2.pl</code>.</p>
+<p>(Exception: sometimes there is no need for, say, start-ups.
+In which case one or more of the above is ignored.)</p>
+<p><code>App1.pl</code> contains
+the bulk of the system. Should contain no load-time directives.</p>
+<p><code>App2.pl</code> contains
+start-up actions that happen as a side-effect of loading the
+code.</p>
+<p><code>App0.pl</code> contains the set-up code that proceeds all the above.
+There are several types of interesting set-up actions.</p>
+<dl>
+<dt><strong><a name="item_uses">Uses</a></strong><br />
+</dt>
+<dd>
+Load code from other applications.
+</dd>
+<p></p>
+<dt><strong><a name="item_ops">Ops</a></strong><br />
+</dt>
+<dd>
+Operator definitions; e.g. */
+</dd>
+<dd>
+<pre>
+ :- op(999,xfx,if).
+ :- op(998,xfy,and). /*</pre>
+</dd>
+<p></p>
+<dt><strong><a name="item_flags">Flags</a></strong><br />
+</dt>
+<dd>
+Define (e.g.) meta-knowledge of terms such as which one's are
+dynamic, which are discontiguous, where to index, etc, etc. E.g. */
+</dd>
+<dd>
+<pre>
+ :- dynamic emp/5.
+ :- discontiguous emp/5.
+ :- index(emp(1,1,0,0,0)). /*</pre>
+</dd>
+<p></p>
+<dt><strong><a name="item_hooks">Hooks</a></strong><br />
+</dt>
+<dd>
+Hooks into the Prolog reader; e.g. */
+</dd>
+<dd>
+<pre>
+  term_expansion((X if Y), (X :- Y)).
+  goal_expansion(X and Y,(X,Y)). /*</pre>
+</dd>
+<p></p>
+<dt><strong><a name="item_hacks">Hacks</a></strong><br />
+</dt>
+<dd>
+Things we don't tell junior Prolog programmers. Hell, why am I even
+telling you? For example, we might want to fix over-zealous DCG
+expansions: */
+</dd>
+<dd>
+<pre>
+  goal_expansion(true(X,X),true).</pre>
+</dd>
+<p></p></dl>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

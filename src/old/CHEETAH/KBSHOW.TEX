@@ -1,0 +1,180 @@
+\documentclass{article}
+\usepackage{graphicx,times,alltt}
+\begin{document}
+
+\tableofcontents
+\pagebreak
+\section{JANE}
+\subsection{Domain Rules}
+{\footnotesize
+\begin{alltt}
+jim says cost=100.
+'iv\&v' if 'planAndScheduleIV&Vactivities'.
+
+jim says cost=0.
+stableRequirements if authorization @0.1
+                      rand effectiveReqReviews @0.9
+                      rand problemReport @0.9
+                      rand configurationManagement@0.3
+                      rand 'iv&v'@0.1
+                      rand documentedRequirements @0.3
+                      rand designReqReview @0.9.
+
+jim says cost=0.
+completeRequirements if effectiveReqReviews @0.9
+                         rand 'iv&v'@0.1
+                         rand documentedRequirements @0.9
+                         rand problemReport  @ 0.3
+                         rand designReqReview @0.9.
+
+goodRequirements if stableRequirements
+                    rand completeRequirements.
+
+jim says cost = 5.
+designReqReview if designMeetsRequirementsReview.
+
+...
+\end{alltt}}
+
+\subsection{Combination Rules}
+\begin{center}
+{\footnotesize
+\begin{tabular}{|rp{0.4in}|p{0.75in}|p{1.05in}|}\hline
+     \multicolumn{2}{|c|}{operator} &  $X_{cost}$ &  $X_{chances}$ \\\hline
+
+$X=$&$or(Y)$
+     $ror(Y)$     & $first(Y).cost$   &    $first(Y).chances$\\\hline
+
+&&&\\
+$X=$&$and(Y)$
+   $rand(Y)$   &
+\(\sum_{i=1}^{|Y|}cost(Y_i)\)
+&
+\(\prod_{i=1}^{|Y|}chances(Y_i)\) \\\hline
+
+$X=$&$rors(Y)$
+$ors(Y)$
+$rany(Y)$
+$any(Y)$       & $Z \subseteq Y$\newline
+\(\sum_{i=1}^{|Z|}cost(Z_i)\)
+& $Z \subseteq Y$\newline
+\(\sum_{i=1}^{|Z|}chances(Z_i)\)\\\hline
+
+$X=$&$no(Y)$&$\sum(allY.cost)$ & $1-\sum(allY.chances)$ \\\hline
+\end{tabular}}
+\end{center}
+
+\pagebreak
+\section{Inside the KB}
+
+\centerline{\includegraphics[width=6in]{kb.eps}}
+
+{\footnotesize
+Each edge has cost
+0 and chances 1 unless otherwise
+marked. Marks: \$= cost; ?= chances;}
+
+\pagebreak
+\section{CHEETAH}
+
+\subsection{One run}
+{\footnotesize
+\begin{alltt}
+data(-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,1,1,1,1,1,1,1,1,1,1
+    ,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+    ,1.0915,1,17.846,1,5.4965,1,29.803,1,78.112,1,0,1,0
+    ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+    ,0,1,3.7622,1,12.7972,1,9.283,1,4.9655,1,4.9034,1
+    ,4.2182,1,4.2935,1,0,0,0,0,4.3097,1,0,0,0,0,0,0,0
+    ,0,0,0,5.6543,1,13.118,1,14.942,1,0,0,0,0,0,0,0,0
+    ,19.4048,1,21.5468,1,21.0644,1,0,0,0,0,0,0,25.0856
+    ,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23.834,1,21.8156
+    ,1,18.6344,1,0,0,0,0,0,0,17.1632,1,sum,lohi).
+..
+\end{alltt}}
+
+
+\subsection{1000 runs}
+\begin{center}
+\includegraphics[angle=270,width=2.5in]{dat.eps}~\includegraphics[angle=270,width=2.5in]{proj.eps}
+\end{center}
+
+\begin{center}
+{\footnotesize
+\begin{tabular}{|c|c|c|c|c|}\hline
+name&cost&log(Chances)&N\\
+hihi& $>$ 392.034 &  $>$ -86.3225 & 285\\\hline
+lohi& $<$ 392.034 &   $>$  -86.3225 & 200\\
+hilo& $>$  392.034 &  $<$  -86.3225 & 297\\
+lolo& $<$  392.034 & $<$   -86.3225 & 217\\\hline
+\end{tabular}}
+\end{center}
+
+{\footnotesize \begin{alltt}
+          score :    1
+        what if : no change?
+           hihi :   29% ~~~~~~~
+           lohi :   30% ~~~~~~~~
+           hilo :   20% ~~~~~
+           lolo :   22% ~~~~~~
+\end{alltt}}
+
+\pagebreak
+\section{TARZAN}
+
+\subsection{Business Decisions, Changes=2}
+
+{\footnotesize \begin{alltt}
+
+          score : 1.20755
+        what if : [peerReviewOfRequirements=2, conductCodeWalkthrough=1]?
+           hihi :   20% ~~~~~
+           lohi :   22% ~~~~~~
+           hilo :   29% ~~~~~~~
+           lolo :   29% ~~~~~~~
+
+          score : 1.18714
+        what if : [conductFormalReviews=2, conductCodeWalkthrough=1]?
+           hihi :   24% ~~~~~~
+           lohi :   21% ~~~~~
+           hilo :   24% ~~~~~~
+           lolo :   30% ~~~~~~~~
+
+          score : 1.16573
+        what if : [peerReviewOfRequirements=2, conductFormalReviews=2]?
+           hihi :   21% ~~~~~
+           lohi :   25% ~~~~~~
+           hilo :   26% ~~~~~~~
+           lolo :   28% ~~~~~~~
+\end{alltt}}
+
+\subsection{Cost Decisions, Changes=1}
+
+
+{\footnotesize \begin{alltt}
+          score : 1.29559
+        what if : [[iv&v@76]Cost=1]?
+           hihi :    3% ~
+           lohi :   55% ~~~~~~~~~~~~~~
+           hilo :    3% ~
+           lolo :   40% ~~~~~~~~~~
+
+          score : 1.10975
+        what if : [[goodIntegration@147]Cost=1]?
+           hihi :   23% ~~~~~~
+           lohi :   30% ~~~~~~~~
+           hilo :   20% ~~~~~
+           lolo :   27% ~~~~~~~
+\end{alltt}}
+\subsection{Cost Decisions, Changes=2}
+{\footnotesize \begin{alltt}
+          score : 1.37102
+        what if : [[iv&v@76]Cost=1, [goodIntegration@147]Cost=1]?
+           hihi :    3% ~
+           lohi :   52% ~~~~~~~~~~~~~
+           hilo :    0%
+           lolo :   45% ~~~~~~~~~~~
+           \end{alltt}}
+\end{document}
+
+\subsection{Changes=2}

@@ -1,0 +1,38 @@
+% Reduced Fishery model
+name = '102. reduced fishery over time'.
+
+% Measures (including refs to parts of full model not included)
+% h - fish density (z1 / k)
+%     k - max fish carrying capacity (area (A) * fish carrying capacity (C))
+% r - fish growth rate (maximum fish growth rate (a) * z1 * (1 - h))
+% b - catch potential (maximum fish catch (f) * z2)
+% m - fish catch (b * h)
+% z1 - change in fish population (r - m) hence total fish
+% v - catch proceeds (fish price (p) * m)
+% u - boat maintenance (boat maintenance cost (o) * z2)
+% n - net income (v - u)
+% g - boat investment capital (investment fraction (i) * n)
+% w - boat purchases (round(g/ boat price (q)))
+% s - boat decomission (round(z2/ boat lifetime (d)))
+% z2 - change in boat numbers (w - s) hence total boats
+
+objects(m)  = [h, r, b, m, v, u, n, g, w, s].
+objects(tm) = [z1, z2].
+
+h -- r.
+z1 ++ r.
+r +~+ z1.
+z1 ++ h.
+h ++ m.
+m -~- z1.
+b ++ m.
+m ++ v.
+v ++ n.
+z2 ++ u.
+u -- n.
+n ++ g.
+g ++ w.
+w +~+ z2.
+z2 ++ s.
+z2 ++ b.
+s -~- z2.

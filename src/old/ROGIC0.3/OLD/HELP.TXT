@@ -1,0 +1,3 @@
+?- ht0(X).   : run model X
+?- halt.     : quit
+?- man.      : show manual page

@@ -1,0 +1,377 @@
+% qcm
+
+
+%---------------------------------------
+% [names] related facts
+
+% o/3
+o(9, dex, event). 
+o(6, change(dex), eventChange). 
+o(3, coldSwim, event). 
+o(0, change(coldSwim), eventChange). 
+o(24, temp, measure). 
+o(20, cortico, measure). 
+o(16, acth, measure). 
+o(12, nna, measure). 
+o(45, and1, and). 
+o(50, and2, and). 
+o(55, and3, and). 
+o(60, and4, and). 
+o(65, and5, and). 
+o(70, and6, and). 
+
+
+%---------------------------------------
+% [theory] related facts
+
+% d/1
+d('16. Smythe 87'). 
+
+% i/2
+i(25, 26). 
+i(21, 22). 
+i(17, 18). 
+i(13, 14). 
+i(25, 27). 
+i(21, 23). 
+i(17, 19). 
+i(13, 15). 
+i(26, 25). 
+i(22, 21). 
+i(18, 17). 
+i(14, 13). 
+i(26, 27). 
+i(22, 23). 
+i(18, 19). 
+i(14, 15). 
+i(27, 25). 
+i(23, 21). 
+i(19, 17). 
+i(15, 13). 
+i(27, 26). 
+i(23, 22). 
+i(19, 18). 
+i(15, 14). 
+i(10, 11). 
+i(4, 5). 
+i(11, 10). 
+i(5, 4). 
+i(7, 8). 
+i(1, 2). 
+i(8, 7). 
+i(2, 1). 
+i(11, 7). 
+i(7, 11). 
+i(5, 1). 
+i(1, 5). 
+i(10, 8). 
+i(8, 10). 
+i(4, 2). 
+i(2, 4). 
+
+% source/2
+source(1, name='16. Smythe 87'). 
+source(2, objects(e)=[coldSwim, dex]). 
+source(3, objects(m)=[nna, acth, cortico, temp]). 
+source(4, coldSwim++nna). 
+source(5, nna++acth). 
+source(6, acth++cortico). 
+source(7, cortico++temp). 
+source(8, temp--acth). 
+source(9, temp--nna). 
+source(10, dex++temp). 
+
+% e/5
+e(28, 1, 13, 1, 4). 
+e(29, 2, 15, 1, 4). 
+e(30, 13, 17, 1, 5). 
+e(31, 15, 19, 1, 5). 
+e(32, 17, 21, 1, 6). 
+e(33, 19, 23, 1, 6). 
+e(34, 21, 25, 1, 7). 
+e(35, 23, 27, 1, 7). 
+e(36, 25, 19, 1, 8). 
+e(37, 27, 17, 1, 8). 
+e(38, 25, 15, 1, 9). 
+e(39, 27, 13, 1, 9). 
+e(40, 7, 25, 1, 10). 
+e(41, 8, 27, 1, 10). 
+e(42, 21, 46, 0, steadies). 
+e(43, 8, 46, 0, steadies). 
+e(44, 46, 26, 1, steadies). 
+e(47, 7, 51, 0, steadies). 
+e(48, 23, 51, 0, steadies). 
+e(49, 51, 26, 1, steadies). 
+e(52, 13, 56, 0, steadies). 
+e(53, 25, 56, 0, steadies). 
+e(54, 56, 18, 1, steadies). 
+e(57, 27, 61, 0, steadies). 
+e(58, 15, 61, 0, steadies). 
+e(59, 61, 18, 1, steadies). 
+e(62, 1, 66, 0, steadies). 
+e(63, 25, 66, 0, steadies). 
+e(64, 66, 14, 1, steadies). 
+e(67, 27, 71, 0, steadies). 
+e(68, 2, 71, 0, steadies). 
+e(69, 71, 14, 1, steadies). 
+
+% v/3
+v(11, 11, or). 
+v(10, 10, or). 
+v(8, 8, or). 
+v(7, 7, or). 
+v(5, 5, or). 
+v(4, 4, or). 
+v(2, 2, or). 
+v(1, 1, or). 
+v(27, 27, or). 
+v(26, 26, or). 
+v(25, 25, or). 
+v(23, 23, or). 
+v(22, 22, or). 
+v(21, 21, or). 
+v(19, 19, or). 
+v(18, 18, or). 
+v(17, 17, or). 
+v(15, 15, or). 
+v(14, 14, or). 
+v(13, 13, or). 
+v(46, 46, and). 
+v(51, 51, and). 
+v(56, 56, and). 
+v(61, 61, and). 
+v(66, 66, and). 
+v(71, 71, and). 
+
+% l/3
+l(11, dex, absent). 
+l(10, dex, present). 
+l(8, change(dex), left). 
+l(7, change(dex), arrived). 
+l(5, coldSwim, absent). 
+l(4, coldSwim, present). 
+l(2, change(coldSwim), left). 
+l(1, change(coldSwim), arrived). 
+l(27, temp, down). 
+l(26, temp, std). 
+l(25, temp, up). 
+l(23, cortico, down). 
+l(22, cortico, std). 
+l(21, cortico, up). 
+l(19, acth, down). 
+l(18, acth, std). 
+l(17, acth, up). 
+l(15, nna, down). 
+l(14, nna, std). 
+l(13, nna, up). 
+l(46, and1, t). 
+l(51, and2, t). 
+l(56, and3, t). 
+l(61, and4, t). 
+l(66, and5, t). 
+l(71, and6, t). 
+
+
+%---------------------------------------
+% [theoryDetail] related facts
+
+% coi/2
+coi(event, 9). 
+coi(eventChange, 6). 
+coi(event, 3). 
+coi(eventChange, 0). 
+coi(measure, 24). 
+coi(measure, 20). 
+coi(measure, 16). 
+coi(measure, 12). 
+coi(and, 45). 
+coi(and, 50). 
+coi(and, 55). 
+coi(and, 60). 
+coi(and, 65). 
+coi(and, 70). 
+
+% ei/2
+ei(1, 28). 
+ei(2, 29). 
+ei(13, 30). 
+ei(15, 31). 
+ei(17, 32). 
+ei(19, 33). 
+ei(21, 34). 
+ei(23, 35). 
+ei(25, 36). 
+ei(27, 37). 
+ei(25, 38). 
+ei(27, 39). 
+ei(7, 40). 
+ei(8, 41). 
+ei(21, 42). 
+ei(8, 43). 
+ei(46, 44). 
+ei(7, 47). 
+ei(23, 48). 
+ei(51, 49). 
+ei(13, 52). 
+ei(25, 53). 
+ei(56, 54). 
+ei(27, 57). 
+ei(15, 58). 
+ei(61, 59). 
+ei(1, 62). 
+ei(25, 63). 
+ei(66, 64). 
+ei(27, 67). 
+ei(2, 68). 
+ei(71, 69). 
+
+% ebi/2
+ebi(13, 28). 
+ebi(15, 29). 
+ebi(17, 30). 
+ebi(19, 31). 
+ebi(21, 32). 
+ebi(23, 33). 
+ebi(25, 34). 
+ebi(27, 35). 
+ebi(19, 36). 
+ebi(17, 37). 
+ebi(15, 38). 
+ebi(13, 39). 
+ebi(25, 40). 
+ebi(27, 41). 
+ebi(46, 42). 
+ebi(46, 43). 
+ebi(26, 44). 
+ebi(51, 47). 
+ebi(51, 48). 
+ebi(26, 49). 
+ebi(56, 52). 
+ebi(56, 53). 
+ebi(18, 54). 
+ebi(61, 57). 
+ebi(61, 58). 
+ebi(18, 59). 
+ebi(66, 62). 
+ebi(66, 63). 
+ebi(14, 64). 
+ebi(71, 67). 
+ebi(71, 68). 
+ebi(14, 69). 
+
+% kids/2
+kids(8, [27, 46]). 
+kids(7, [25, 51]). 
+kids(2, [15, 71]). 
+kids(1, [13, 66]). 
+kids(27, [13, 17, 61, 71]). 
+kids(25, [15, 19, 56, 66]). 
+kids(23, [27, 51]). 
+kids(21, [25, 46]). 
+kids(19, [23]). 
+kids(17, [21]). 
+kids(15, [19, 61]). 
+kids(13, [17, 56]). 
+kids(46, [26]). 
+kids(51, [26]). 
+kids(56, [18]). 
+kids(61, [18]). 
+kids(66, [14]). 
+kids(71, [14]). 
+
+% lvi/2
+lvi(11, 11). 
+lvi(10, 10). 
+lvi(8, 8). 
+lvi(7, 7). 
+lvi(5, 5). 
+lvi(4, 4). 
+lvi(2, 2). 
+lvi(1, 1). 
+lvi(27, 27). 
+lvi(26, 26). 
+lvi(25, 25). 
+lvi(23, 23). 
+lvi(22, 22). 
+lvi(21, 21). 
+lvi(19, 19). 
+lvi(18, 18). 
+lvi(17, 17). 
+lvi(15, 15). 
+lvi(14, 14). 
+lvi(13, 13). 
+lvi(46, 46). 
+lvi(51, 51). 
+lvi(56, 56). 
+lvi(61, 61). 
+lvi(66, 66). 
+lvi(71, 71). 
+
+% oli/2
+oli(9, 11). 
+oli(9, 10). 
+oli(6, 8). 
+oli(6, 7). 
+oli(3, 5). 
+oli(3, 4). 
+oli(0, 2). 
+oli(0, 1). 
+oli(24, 27). 
+oli(24, 26). 
+oli(24, 25). 
+oli(20, 23). 
+oli(20, 22). 
+oli(20, 21). 
+oli(16, 19). 
+oli(16, 18). 
+oli(16, 17). 
+oli(12, 15). 
+oli(12, 14). 
+oli(12, 13). 
+oli(45, 46). 
+oli(50, 51). 
+oli(55, 56). 
+oli(60, 61). 
+oli(65, 66). 
+oli(70, 71). 
+
+% parents/2
+parents(27, [8, 23]). 
+parents(26, [46, 51]). 
+parents(25, [7, 21]). 
+parents(23, [19]). 
+parents(21, [17]). 
+parents(19, [15, 25]). 
+parents(18, [56, 61]). 
+parents(17, [13, 27]). 
+parents(15, [2, 25]). 
+parents(14, [66, 71]). 
+parents(13, [1, 27]). 
+parents(46, [8, 21]). 
+parents(51, [7, 23]). 
+parents(56, [13, 25]). 
+parents(61, [15, 27]). 
+parents(66, [1, 25]). 
+parents(71, [2, 27]). 
+
+% noGoods/2
+noGoods(11, [7, 10]). 
+noGoods(10, [8, 11]). 
+noGoods(8, [7, 10]). 
+noGoods(7, [8, 11]). 
+noGoods(5, [1, 4]). 
+noGoods(4, [2, 5]). 
+noGoods(2, [1, 4]). 
+noGoods(1, [2, 5]). 
+noGoods(27, [25, 26]). 
+noGoods(26, [25, 27]). 
+noGoods(25, [26, 27]). 
+noGoods(23, [21, 22]). 
+noGoods(22, [21, 23]). 
+noGoods(21, [22, 23]). 
+noGoods(19, [17, 18]). 
+noGoods(18, [17, 19]). 
+noGoods(17, [18, 19]). 
+noGoods(15, [13, 14]). 
+noGoods(14, [13, 15]). 
+noGoods(13, [14, 15]). 

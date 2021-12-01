@@ -1,0 +1,33 @@
+        /*** font sizes listed at top for quick changes ***/
+        h1{   font-size: 20px; }
+        h2{   font-size: 16px; }
+        body{ font-size: 12px; }
+
+        /**************************************************/
+
+        body{ font-family: Verdana,Arial,Helvetica; 
+          color : black;  
+          background: white ;   
+          margin-right: 10;
+       }
+       h1 {  font-family: Verdana,Arial,Helvetica; 
+          font-weight: bold; 
+          text-decoration: none;
+          color: black;
+          padding: .2em .1em .2em .2em; 
+          background: bisque;
+       }
+       h2 {  font-family: Arial,Helvetica; 
+          font-weight: bold; 
+          text-decoration: none;
+          color: #3366cc;
+          padding: .2em .1em .1em .5em; 
+       }
+       pre { font-weight: bold;
+          padding: .3em 3em .3em .3em; 
+          border: .05em solid #000000;   
+          margin-left: 50;    
+          background: yellow;
+          margin-left: 5em;
+          margin-right: 5em;
+       }

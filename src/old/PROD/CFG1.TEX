@@ -1,0 +1,38 @@
+\section{ Main drivers}
+\subsection{ Setting options}
+Blast all previous knowledge of this option
+and set a new value:
+\begin{Verbatim}
+set(X=Y) :-
+	retractall(option(X,_)),
+	assert(option(X,Y)).
+\end{Verbatim}
+\subsection{ Accessing options}
+Run down a list of accessors.
+\begin{Verbatim}
+[] := []    :- !.
+[H0|T0] := [H|T] :- !, H0 := H, T0 := T.
+\end{Verbatim}
+Primitive accessor.
+\begin{Verbatim}
+X := Y      :-  option(X,Z),!, Y=Z.
+\end{Verbatim}
+Complain if option not known.
+\begin{Verbatim}
+X := _      :- !, barph(missingOption(X)).
+\end{Verbatim}
+Boolean options- check for a ``1'' value.
+\begin{Verbatim}
+?X          :- atomic(X), X := 1.
+\end{Verbatim}
+Process the command line options.
+\begin{Verbatim}
+commandLine :-
+	current_prolog_flag(argv, Argv),
+	append(_, [--|Args], Argv), !,
+	concat_atom(Args, ' ', SingleArg),
+	term_to_atom(Term, SingleArg),
+	c2l(Term,List),
+	forall(member(One,List), set(One)).
+commandLine.
+\end{Verbatim}

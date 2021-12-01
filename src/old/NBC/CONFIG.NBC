@@ -1,0 +1,4 @@
+verbose=0.
+relation= 'kc2'.
+nways = 10.
+classSymbol=defects.

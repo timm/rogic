@@ -1,0 +1,33 @@
+digraph G {
+   randsep=0.3; rankdir=LR;
+subgraph cluster1 {
+label="key";
+"requirements" [shape="triangle"];
+"faults" [shape="box"];
+"pacts" [shape="ellipse"];}
+subgraph cluster2 {
+"f(3)" -> "r(1)" [label="0.1"];
+"f(3)" [label="sickness",shape="box"];
+"r(1)" [label="happiness",shape="triangle"];
+"f(4)" -> "r(1)" [label="0.2"];
+"f(4)" [label="marketCrash",shape="box"];
+"r(1)" [label="happiness",shape="triangle"];
+"f(3)" -> "r(2)" [label="0.3"];
+"f(3)" [label="sickness",shape="box"];
+"r(2)" [label="wealth",shape="triangle"];
+"f(4)" -> "r(2)" [label="0.4"];
+"f(4)" [label="marketCrash",shape="box"];
+"r(2)" [label="wealth",shape="triangle"];
+"p(5)" -> "f(3)" [label="0.8"];
+"p(5)" [label="vitamins",shape="ellipse"];
+"f(3)" [label="sickness",shape="box"];
+"p(5)" -> "f(4)" [label="0.1"];
+"p(5)" [label="vitamins",shape="ellipse"];
+"f(4)" [label="marketCrash",shape="box"];
+"p(6)" -> "f(3)" [label="0.3"];
+"p(6)" [label="diversement",shape="ellipse"];
+"f(3)" [label="sickness",shape="box"];
+"p(6)" -> "f(4)" [label="0.5"];
+"p(6)" [label="diversement",shape="ellipse"];
+"f(4)" [label="marketCrash",shape="box"];
+}}

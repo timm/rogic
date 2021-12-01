@@ -1,0 +1,30 @@
+:- +[records].
+
+record(e(from,to,cost)).
+
+record(person(name,email)).
+record(personPersons(pid,psId)).
+record(persons(name)).
+record(assertion(number,author)).
+record(assertionEdge(eid,aid)).
+
+e0(okIf([eAuthor(_),eFromV(_), eToV(_)]),X,X).
+
+e0(eAuthor(Name)) :-
+	e0(id(_,Eid)),
+	{author(Eid,Aid), 
+	 person(Aid,Name,_)}.
+
+e0(intraTimeEdge,e(Self,From,To,Cost),e(Self,From,To,Cost)) :-
+	join(v,From,time(T)),
+	join(v,To,time(T)).
+
+e0(eFromV(Vertex)) --> e0(from(Id)),   {a(v,Id,Vertex)}.
+e0(eToV(V))   --> e0(to(V)),     {a(v,V,_)}.
+e0(Out)       --> e0(from(Vid)), {a(v,Vid,V),v0(at(Out),V)}.
+e0(Out)       --> e0(to(V)),     {a(v,Vid,V),v0(at(Out),V)}.
+
+
+
+
+			  

@@ -1,0 +1,44 @@
+\section{{\PROD}-compatible source code}
+A {\PROD}-compatible Prolog system comprises up to five files:
+
+\be
+\item A main load file called, say, `myfile.pl`.
+This main load file loads up to three other files.
+\item `myfile0.pl`: a small set of pre-load actions.
+\item `myfile1.pl`: the bulk of the code.
+\item `myfile2.pl`: start-up actions to be performed after
+the the code is loaded.
+\ee
+
+\subsection{Sample pre-load actions in {\tt myfile0.pl}}
+
+\bi
+\item{\em Loads of other Prolog systems}: In the case where you
+are loading other {\PROD}-compatible  files, then  you'll have to
+carefully inspect the pre-load and start-up actions
+of the systems you are loading. In the best case, you can
+just load the main files of the other {\PROD}s. However,
+sometimes you have to skip loading those pre-load and start-up
+files, but weave their actions in with your own
+pre-loads and start-ups.
+\item
+{\em Operator definitions}.
+\item
+{\em Flags}.
+\item
+{\em Hooks into the Prolog reader}: such as `goal_expansion/2` and
+`term_expansion/2`.
+\item
+{\em Hacks}: the shameful things we'd rather hide but sometimes we can't avoid.
+\ei
+
+\subsection{Start-up actions in {\tt myfile2.pl}}
+
+\bi
+\item
+{\em Knowledge base loads}:  Sometimes your code implements some
+domain-specific language (DSL). Its good Prolog practice to
+place the DSL assertions into a knowledge base file and the DSL
+implementation code in another.
+\item {\em Miscellaneous loads}.
+\ei

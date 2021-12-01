@@ -1,0 +1,6 @@
+for i in $*
+do
+sed 's/
+$//' $i > $i.tmp
+mv $i.tmp $i
+done

@@ -1,0 +1,156 @@
+
+ 
+domain= 'arrt v5.12'. 
+jim= [month=april,day=6,year=2001,elm='kiperjd@muohio.edu']. 
+known= [goodRequirements, 
+	stableRequirements, 
+	completeRequirements, 
+	authorization, 
+	effectiveReqReviews, 
+	problemReport  , 
+	configurationManagement, 
+	'iv&v',
+	authorizationToProceed,
+	peerReviewOfRequirements, 
+	conductFormalInspectionOfRequirements, 
+	softwareAssuranceReviewOfRequirements,
+	problemReportAndCorrectiveActionSystem,
+	implementFormalConfigurationManagement,
+	conductFormalReviews,
+	'planAndScheduleIV&Vactivities',
+	documentedRequirements,
+	designMeetsRequirementsReview,
+	designReqReview,
+	goodDesign,
+	meetSpecs,
+	achievableDesign,
+	documentDesign,
+	'documentPreliminary&DetailedDesigns',
+	conductFormalDesignInspections,
+	conductFormalDesignReviews,
+	peerReviewsOnDesign,
+	designReviews,
+	createBaselineForDesign,
+	baselineDesign,
+	placeDesignUnderCM,
+	cmForDesign,
+	formalChangeControlForDesign,
+	designChangeControl,
+	feasibleDesignToCode, 
+	goodTesting,
+	testPlansDocumented,
+	testPlans,
+	unitTestConducted,
+	unitTest,
+	goodCoding,
+	goodImplemenation,
+	codeReviews,
+	conductCodeWalkthrough,
+	conductCodeReview,
+	goodIntegration,
+	systemIntegration,
+	conductSystemIntegration,
+	goodProject
+	].
+
+jim says cost=1. 
+authorization	if authorizationToProceed.
+
+
+
+jim says cost=10 to 20. 
+effectiveReqReviews if
+        peerReviewOfRequirements rany 		
+	conductFormalInspectionOfRequirements rany
+	softwareAssuranceReviewOfRequirements rany
+        conductFormalReviews.
+
+
+jim says cost=5. 
+problemReport  if problemReportAndCorrectiveActionSystem.
+
+jim says cost=20 to +30. 
+configurationManagement	if implementFormalConfigurationManagement.
+
+jim says cost=40. 
+ 'iv&v'	if 'planAndScheduleIV&Vactivities'.
+
+
+jim says cost=0.
+stableRequirements if authorization @0.1 
+     rand effectiveReqReviews @0.9 
+     rand 
+problemReport @0.9 rand configurationManagement@0.3 rand 'iv&v'@0.1 
+rand documentedRequirements @0.3 rand designReqReview @0.9.
+
+
+jim says cost=0.
+completeRequirements  if effectiveReqReviews @0.9  rand 'iv&v'@0.1 rand 
+documentedRequirements @0.9 rand
+problemReport  @ 0.3 rand designReqReview @0.9.
+
+goodRequirements	if stableRequirements rand completeRequirements.
+
+jim says cost = 5.
+designReqReview	if designMeetsRequirementsReview.
+
+jim says cost = 10.
+documentDesign	if 'documentPreliminary&DetailedDesigns'.
+
+jim says cost = 10.
+designReviews 	if peerReviewsOnDesign rany 
+conductFormalDesignInspections rany
+conductFormalDesignReviews.
+
+jim says cost = 5.
+baselineDesign 	if createBaselineForDesign.
+
+jim says cost = 5.
+cmForDesign 	if placeDesignUnderCM.
+
+jim says cost = 5.
+designChangeControl 	if formalChangeControlForDesign.
+
+
+meetSpecs 	if documentDesign@0.3 rand designReqReview rand 
+designReviews @0.3  .
+
+achievableDesign if
+documentDesign@0.3 rand designReqReview rand 
+designReviews @0.3 rand baselineDesign @ 0.1 rand
+cmForDesign @ 0.1 rand designChangeControl @ 0.1.
+
+goodDesign	if meetSpecs rand achievableDesign.
+
+jim says cost = 10 to 20.
+codeReviews	if conductCodeWalkthrough rany conductCodeReview.
+
+feasibleDesignToCode  if documentDesign @ 0.3 rand designReqReview @ 0.3 rand 
+designReviews @ 0.1 rand codeReviews @ 0.3 .
+
+jim says cost = 20.
+testPlans	if testPlansDocumented.
+
+jim says cost = 20.
+unitTest	if unitTestConducted.
+
+goodTesting	if codeReviews @ 0.3 rand testPlans @ 0.3 rand unitTest @ 0.9.
+
+goodCoding	if effectiveReqReviews @ 0.1 rand documentDesign@ 0.1 rand 
+designReqReview @ 0.1 rand designReviews @ 0.1 rand 
+codeReviews @ 0.9 rand testPlans @ 0.1 rand unitTest @ 0.3.
+
+goodImplemenation	if feasibleDesignToCode rand goodTesting rand goodCoding.
+
+jim says cost = 20. 
+systemIntegration	if conductSystemIntegration.
+
+goodIntegration  if systemIntegration @ 0.9 rand codeReviews @ 0.1 rand 
+goodTesting @ 0.1.
+		
+goodProject 	if goodRequirements rand goodDesign rand goodImplemenation rand 
+goodIntegration.
+
+run :- prove(goodProject).
+showTim :- tell('tim.out'), run,run,run,run,told.
+

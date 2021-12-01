@@ -1,0 +1,34 @@
+:-op(1200,xfx,(?-)).
+
+happy ?- tranquillity(hi)
+         ; rich , healthy.
+healthy ?- diet(light).
+satiated ?- diet(fatty).
+tranquillity(hi) ?-
+	satiated;conscience(clear).
+
+term_expansion((A ?- B),Edges) :-
+	xpands(A,B).
+
+nodes(X,L) :-
+	setof(node(One),node(X,One),L).
+
+node([H|T],Z) :- !,member(X,[H|T]), node(X,Z).
+node((X ?- Y),Z) :- !,node([X,Y],Z).
+node((X,Y),Z) :- !,node([X,Y],Z]).
+node((X;Y),Z) :- !,node([X,Y],Z]).
+node((X;Y),Z) :- !,node([X,Y],Z]).
+node(X,X).
+
+and(and(_)).
+or(X) :- \+ and(X).
+nogood(diet(light),diet(fatty)).
+
+e(rich,and(1)).
+e(healthy,and(1)).
+e(tranquility(hi), happy).
+e(and(1),happy).
+e(diet(light), healthy).
+e(diet(fatty),satiated).
+e(conscience(clear),tranqulity(hi)).
+e(satiated,tranquity(hi)).

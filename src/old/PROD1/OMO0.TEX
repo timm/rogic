@@ -1,0 +1,12 @@
+\section{Pre-load actions}
+\subsection{Hooks}
+ Fast assertions of named variables. 
+\begin{Verbatim}
+term_expansion((X;Y :- Z),Out) :-
+	multis(((X;Y) :- Z),Out).
+\end{Verbatim}
+Instantiate named fields
+\begin{Verbatim}
+term_expansion(Functor is Fields,Out) :-
+	fields(Fields,Functor,Out).
+\end{Verbatim}

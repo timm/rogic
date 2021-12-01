@@ -1,0 +1,103 @@
+\section{ Pre-load actions  }
+\subsection{ Operators }
+Define an operator to handle numberic ranges
+\call{Min to Max}.
+\begin{Verbatim}
+:- op(1,xfx, to).
+\end{Verbatim}
+and another one for DCGs.
+\begin{Verbatim}
+:- op(999,fx,><).
+\end{Verbatim}
+Here's one to handle failure-driven loops.
+\begin{Verbatim}
+:- op(1199,fx,all).
+\end{Verbatim}
+And here's one for defining tables.
+\begin{Verbatim}
+:- op(999,xfx,has).
+\end{Verbatim}
+\subsection{ Flags}
+Index on the hash table access caches.
+\begin{Verbatim}
+:- discontiguous ht_cache/3.
+:- index(ht_cache(1,1,0)).
+
+:- discontiguous ht0/2.
+\end{Verbatim}
+Define an \call{inf}inity function. 
+\begin{Verbatim}
+:- arithmetic_function(inf/0).
+\end{Verbatim}
+Define a \call{rand}om function.
+\begin{Verbatim}
+:- arithmetic_function(rand/0).
+\end{Verbatim}
+Define a \call{rand(Min,Max)} function.
+\begin{Verbatim}
+:- arithmetic_function(rand/2).
+\end{Verbatim}
+Define a \call{rand(Min,Max,Mean)} function.
+\begin{Verbatim}
+:- arithmetic_function(rand/3).
+\end{Verbatim}
+Define a \call{normal} function.
+\begin{Verbatim}
+:- arithmetic_function(normal/2).
+\end{Verbatim}
+Define a \call{beta} function.
+\begin{Verbatim}
+:- arithmetic_function(beta/1).
+\end{Verbatim}
+Define a \call{gamma} function.
+\begin{Verbatim}
+:- arithmetic_function(gamma/2).
+\end{Verbatim}
+Add a ``left-justify'' command to \call{format}.
+\begin{Verbatim}
+:- format_predicate('>',padChars(_,_)).
+\end{Verbatim}
+Add a ``right-justify'' command to \call{format}.
+\begin{Verbatim}
+:- format_predicate('<',charsPad(_,_)).
+\end{Verbatim}
+Add a ``print squiggles'' command to \call{format}.
+\begin{Verbatim}
+:- format_predicate('S',squiggle(_,_)).
+\end{Verbatim}
+Define a predicate for the lookup tables.
+\begin{Verbatim}
+:- discontiguous lookUp1/4.
+:- multifile lookUp1/4.
+:- index(lookUp1(1,1,1,0)).
+\end{Verbatim}
+\subsection{ Hooks}
+A hook for lookup tables.
+\begin{Verbatim}
+term_expansion(Table has ColsRows , Out) :- 
+    nonvar(ColsRows),
+    ColsRows = (Cols+Rows),
+    lookUpTable(Table=Cols+Rows,Out). 
+\end{Verbatim}
+Generate hook for all manner of expansions.
+\begin{Verbatim}
+term_expansion((:- make=Out,X),Out) :- X.
+\end{Verbatim}
+\subsection{ Hacks}
+Some repairs to over-enthusiastic
+DCG expansions to Prolog built-ins.
+\begin{Verbatim}
+goal_expansion(>=(A,B,C,C),        >=(A,B)).
+goal_expansion(>(A,B,C,C),         >(A,B)).
+goal_expansion(=(A,B,C,C),         =(A,B)).
+goal_expansion(\=(A,B,C,C),        \=(A,B)).
+goal_expansion(<(A,B,C,C),         <(A,B)).
+goal_expansion(<=(A,B,C,C),        <=(A,B)).
+goal_expansion(is(A,B,C,C),        is(A,B)).
+goal_expansion(print(A,B,B),       print(A)).
+goal_expansion(print(A,B,C,C),     print(A,B)).
+goal_expansion(format(A,B,C,C),    format(A,B)).
+goal_expansion(length(A,B,C,C),    length(A,B)).
+goal_expansion(maplist(A,B,C,D,D), maplist(A,B,C)).
+goal_expansion(><(A,B,B),          A).
+\end{Verbatim}

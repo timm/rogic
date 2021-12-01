@@ -1,0 +1,2 @@
+[a-[b, c, d, e, k], b-[c, d, e, k], c-[e], d-[c, d, e], e-[], k-[c, e]]
+% time= 0 secs

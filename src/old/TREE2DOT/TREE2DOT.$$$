@@ -1,0 +1,59 @@
+set -x
+pl="c:/program files/pl/bin/plwin.exe" 
+clean() {
+for i in  c:/temp/tree2dot.learnt c:/temp/tree2dot.pl c:/temp/tree2dot_run.pl
+do
+	if [ -f $i ]
+	then rm $i
+	fi
+done
+}
+all() {
+   	gawk 'BEGIN{flag=0}
+		NR> 3 && $0~/decision tree:/       {flag=1
+	        	                next}
+		$0~/tree saved/        {exit}
+		flag==1                {print $0}' $1
+}
+
+simplify() {
+	 gawk 'BEGIN{flag=0}
+		NR > 3 && $0~/simplified decision tree:/ {flag=1
+	        	                next}
+		$0~/tree saved/        {exit}
+		flag==1                {print $0}' $1
+}
+
+makelc() {
+cat $1 \
+| tr A-Z a-z \
+| sed 's/<=/=</g' > c:/temp/tree2dot.learnt
+}
+
+
+makepl() {
+if   grep "Simplified Decision Tree:" $1 >> /dev/null
+then simplify c:/temp/tree2dot.learnt
+else all      c:/temp/tree2dot.learnt
+fi \
+| gawk -F"|" -f  tree2pl.awk -v who="`basename  $1`"  \
+| sed 's/<=/=</' > c:/temp/tree2dot.pl
+}
+
+makerun() {
+(echo "dotFile('c:/temp/tree2dot.dot')."
+ echo ":- ['tree2dot.pl','c:/temp/tree2dot.pl'],go,halt."
+) > c:/temp/tree2dot_run.pl
+}
+
+runrun() {
+echo "$pl" -f c:/temp/tree2dot_run.pl 
+"$pl" -f c:/temp/tree2dot_run.pl 
+}
+
+clean
+makelc $1
+makepl $1
+makerun 
+runrun
+

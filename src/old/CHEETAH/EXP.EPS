@@ -1,0 +1,1381 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: exp.eps
+%%Creator: gnuplot 3.7 patchlevel 1
+%%CreationDate: Sun Feb  4 20:20:53 2001
+%%DocumentFonts: (atend)
+%%BoundingBox: 50 50 230 176
+%%Orientation: Portrait
+%%EndComments
+/gnudict 256 dict def
+gnudict begin
+/Color false def
+/Solid false def
+/gnulinewidth 5.000 def
+/userlinewidth gnulinewidth def
+/vshift -46 def
+/dl {10 mul} def
+/hpt_ 31.5 def
+/vpt_ 31.5 def
+/hpt hpt_ def
+/vpt vpt_ def
+/M {moveto} bind def
+/L {lineto} bind def
+/R {rmoveto} bind def
+/V {rlineto} bind def
+/vpt2 vpt 2 mul def
+/hpt2 hpt 2 mul def
+/Lshow { currentpoint stroke M
+  0 vshift R show } def
+/Rshow { currentpoint stroke M
+  dup stringwidth pop neg vshift R show } def
+/Cshow { currentpoint stroke M
+  dup stringwidth pop -2 div vshift R show } def
+/UP { dup vpt_ mul /vpt exch def hpt_ mul /hpt exch def
+  /hpt2 hpt 2 mul def /vpt2 vpt 2 mul def } def
+/DL { Color {setrgbcolor Solid {pop []} if 0 setdash }
+ {pop pop pop Solid {pop []} if 0 setdash} ifelse } def
+/BL { stroke userlinewidth 2 mul setlinewidth } def
+/AL { stroke userlinewidth 2 div setlinewidth } def
+/UL { dup gnulinewidth mul /userlinewidth exch def
+      10 mul /udl exch def } def
+/PL { stroke userlinewidth setlinewidth } def
+/LTb { BL [] 0 0 0 DL } def
+/LTa { AL [1 udl mul 2 udl mul] 0 setdash 0 0 0 setrgbcolor } def
+/LT0 { PL [] 1 0 0 DL } def
+/LT1 { PL [4 dl 2 dl] 0 1 0 DL } def
+/LT2 { PL [2 dl 3 dl] 0 0 1 DL } def
+/LT3 { PL [1 dl 1.5 dl] 1 0 1 DL } def
+/LT4 { PL [5 dl 2 dl 1 dl 2 dl] 0 1 1 DL } def
+/LT5 { PL [4 dl 3 dl 1 dl 3 dl] 1 1 0 DL } def
+/LT6 { PL [2 dl 2 dl 2 dl 4 dl] 0 0 0 DL } def
+/LT7 { PL [2 dl 2 dl 2 dl 2 dl 2 dl 4 dl] 1 0.3 0 DL } def
+/LT8 { PL [2 dl 2 dl 2 dl 2 dl 2 dl 2 dl 2 dl 4 dl] 0.5 0.5 0.5 DL } def
+/Pnt { stroke [] 0 setdash
+   gsave 1 setlinecap M 0 0 V stroke grestore } def
+/Dia { stroke [] 0 setdash 2 copy vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V closepath stroke
+  Pnt } def
+/Pls { stroke [] 0 setdash vpt sub M 0 vpt2 V
+  currentpoint stroke M
+  hpt neg vpt neg R hpt2 0 V stroke
+  } def
+/Box { stroke [] 0 setdash 2 copy exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V closepath stroke
+  Pnt } def
+/Crs { stroke [] 0 setdash exch hpt sub exch vpt add M
+  hpt2 vpt2 neg V currentpoint stroke M
+  hpt2 neg 0 R hpt2 vpt2 V stroke } def
+/TriU { stroke [] 0 setdash 2 copy vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V closepath stroke
+  Pnt  } def
+/Star { 2 copy Pls Crs } def
+/BoxF { stroke [] 0 setdash exch hpt sub exch vpt add M
+  0 vpt2 neg V  hpt2 0 V  0 vpt2 V
+  hpt2 neg 0 V  closepath fill } def
+/TriUF { stroke [] 0 setdash vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V closepath fill } def
+/TriD { stroke [] 0 setdash 2 copy vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V closepath stroke
+  Pnt  } def
+/TriDF { stroke [] 0 setdash vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V closepath fill} def
+/DiaF { stroke [] 0 setdash vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V closepath fill } def
+/Pent { stroke [] 0 setdash 2 copy gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  closepath stroke grestore Pnt } def
+/PentF { stroke [] 0 setdash gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  closepath fill grestore } def
+/Circle { stroke [] 0 setdash 2 copy
+  hpt 0 360 arc stroke Pnt } def
+/CircleF { stroke [] 0 setdash hpt 0 360 arc fill } def
+/C0 { BL [] 0 setdash 2 copy moveto vpt 90 450  arc } bind def
+/C1 { BL [] 0 setdash 2 copy        moveto
+       2 copy  vpt 0 90 arc closepath fill
+               vpt 0 360 arc closepath } bind def
+/C2 { BL [] 0 setdash 2 copy moveto
+       2 copy  vpt 90 180 arc closepath fill
+               vpt 0 360 arc closepath } bind def
+/C3 { BL [] 0 setdash 2 copy moveto
+       2 copy  vpt 0 180 arc closepath fill
+               vpt 0 360 arc closepath } bind def
+/C4 { BL [] 0 setdash 2 copy moveto
+       2 copy  vpt 180 270 arc closepath fill
+               vpt 0 360 arc closepath } bind def
+/C5 { BL [] 0 setdash 2 copy moveto
+       2 copy  vpt 0 90 arc
+       2 copy moveto
+       2 copy  vpt 180 270 arc closepath fill
+               vpt 0 360 arc } bind def
+/C6 { BL [] 0 setdash 2 copy moveto
+      2 copy  vpt 90 270 arc closepath fill
+              vpt 0 360 arc closepath } bind def
+/C7 { BL [] 0 setdash 2 copy moveto
+      2 copy  vpt 0 270 arc closepath fill
+              vpt 0 360 arc closepath } bind def
+/C8 { BL [] 0 setdash 2 copy moveto
+      2 copy vpt 270 360 arc closepath fill
+              vpt 0 360 arc closepath } bind def
+/C9 { BL [] 0 setdash 2 copy moveto
+      2 copy  vpt 270 450 arc closepath fill
+              vpt 0 360 arc closepath } bind def
+/C10 { BL [] 0 setdash 2 copy 2 copy moveto vpt 270 360 arc closepath fill
+       2 copy moveto
+       2 copy vpt 90 180 arc closepath fill
+               vpt 0 360 arc closepath } bind def
+/C11 { BL [] 0 setdash 2 copy moveto
+       2 copy  vpt 0 180 arc closepath fill
+       2 copy moveto
+       2 copy  vpt 270 360 arc closepath fill
+               vpt 0 360 arc closepath } bind def
+/C12 { BL [] 0 setdash 2 copy moveto
+       2 copy  vpt 180 360 arc closepath fill
+               vpt 0 360 arc closepath } bind def
+/C13 { BL [] 0 setdash  2 copy moveto
+       2 copy  vpt 0 90 arc closepath fill
+       2 copy moveto
+       2 copy  vpt 180 360 arc closepath fill
+               vpt 0 360 arc closepath } bind def
+/C14 { BL [] 0 setdash 2 copy moveto
+       2 copy  vpt 90 360 arc closepath fill
+               vpt 0 360 arc } bind def
+/C15 { BL [] 0 setdash 2 copy vpt 0 360 arc closepath fill
+               vpt 0 360 arc closepath } bind def
+/Rec   { newpath 4 2 roll moveto 1 index 0 rlineto 0 exch rlineto
+       neg 0 rlineto closepath } bind def
+/Square { dup Rec } bind def
+/Bsquare { vpt sub exch vpt sub exch vpt2 Square } bind def
+/S0 { BL [] 0 setdash 2 copy moveto 0 vpt rlineto BL Bsquare } bind def
+/S1 { BL [] 0 setdash 2 copy vpt Square fill Bsquare } bind def
+/S2 { BL [] 0 setdash 2 copy exch vpt sub exch vpt Square fill Bsquare } bind def
+/S3 { BL [] 0 setdash 2 copy exch vpt sub exch vpt2 vpt Rec fill Bsquare } bind def
+/S4 { BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt Square fill Bsquare } bind def
+/S5 { BL [] 0 setdash 2 copy 2 copy vpt Square fill
+       exch vpt sub exch vpt sub vpt Square fill Bsquare } bind def
+/S6 { BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt vpt2 Rec fill Bsquare } bind def
+/S7 { BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt vpt2 Rec fill
+       2 copy vpt Square fill
+       Bsquare } bind def
+/S8 { BL [] 0 setdash 2 copy vpt sub vpt Square fill Bsquare } bind def
+/S9 { BL [] 0 setdash 2 copy vpt sub vpt vpt2 Rec fill Bsquare } bind def
+/S10 { BL [] 0 setdash 2 copy vpt sub vpt Square fill 2 copy exch vpt sub exch vpt Square fill
+       Bsquare } bind def
+/S11 { BL [] 0 setdash 2 copy vpt sub vpt Square fill 2 copy exch vpt sub exch vpt2 vpt Rec fill
+       Bsquare } bind def
+/S12 { BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt2 vpt Rec fill Bsquare } bind def
+/S13 { BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt2 vpt Rec fill
+       2 copy vpt Square fill Bsquare } bind def
+/S14 { BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt2 vpt Rec fill
+       2 copy exch vpt sub exch vpt Square fill Bsquare } bind def
+/S15 { BL [] 0 setdash 2 copy Bsquare fill Bsquare } bind def
+/D0 { gsave translate 45 rotate 0 0 S0 stroke grestore } bind def
+/D1 { gsave translate 45 rotate 0 0 S1 stroke grestore } bind def
+/D2 { gsave translate 45 rotate 0 0 S2 stroke grestore } bind def
+/D3 { gsave translate 45 rotate 0 0 S3 stroke grestore } bind def
+/D4 { gsave translate 45 rotate 0 0 S4 stroke grestore } bind def
+/D5 { gsave translate 45 rotate 0 0 S5 stroke grestore } bind def
+/D6 { gsave translate 45 rotate 0 0 S6 stroke grestore } bind def
+/D7 { gsave translate 45 rotate 0 0 S7 stroke grestore } bind def
+/D8 { gsave translate 45 rotate 0 0 S8 stroke grestore } bind def
+/D9 { gsave translate 45 rotate 0 0 S9 stroke grestore } bind def
+/D10 { gsave translate 45 rotate 0 0 S10 stroke grestore } bind def
+/D11 { gsave translate 45 rotate 0 0 S11 stroke grestore } bind def
+/D12 { gsave translate 45 rotate 0 0 S12 stroke grestore } bind def
+/D13 { gsave translate 45 rotate 0 0 S13 stroke grestore } bind def
+/D14 { gsave translate 45 rotate 0 0 S14 stroke grestore } bind def
+/D15 { gsave translate 45 rotate 0 0 S15 stroke grestore } bind def
+/DiaE { stroke [] 0 setdash vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V closepath stroke } def
+/BoxE { stroke [] 0 setdash exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V closepath stroke } def
+/TriUE { stroke [] 0 setdash vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V closepath stroke } def
+/TriDE { stroke [] 0 setdash vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V closepath stroke } def
+/PentE { stroke [] 0 setdash gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  closepath stroke grestore } def
+/CircE { stroke [] 0 setdash 
+  hpt 0 360 arc stroke } def
+/Opaque { gsave closepath 1 setgray fill grestore 0 setgray closepath } def
+/DiaW { stroke [] 0 setdash vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V Opaque stroke } def
+/BoxW { stroke [] 0 setdash exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V Opaque stroke } def
+/TriUW { stroke [] 0 setdash vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V Opaque stroke } def
+/TriDW { stroke [] 0 setdash vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V Opaque stroke } def
+/PentW { stroke [] 0 setdash gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  Opaque stroke grestore } def
+/CircW { stroke [] 0 setdash 
+  hpt 0 360 arc Opaque stroke } def
+/BoxFill { gsave Rec 1 setgray fill grestore } def
+end
+%%EndProlog
+gnudict begin
+gsave
+50 50 translate
+0.050 0.050 scale
+0 setgray
+newpath
+(Times-Roman) findfont 140 scalefont setfont
+1.000 UL
+LTb
+630 420 M
+63 0 V
+2669 0 R
+-63 0 V
+546 420 M
+(0) Rshow
+630 588 M
+63 0 V
+2669 0 R
+-63 0 V
+546 588 M
+(0.1) Rshow
+630 756 M
+63 0 V
+2669 0 R
+-63 0 V
+546 756 M
+(0.2) Rshow
+630 924 M
+63 0 V
+2669 0 R
+-63 0 V
+546 924 M
+(0.3) Rshow
+630 1092 M
+63 0 V
+2669 0 R
+-63 0 V
+-2753 0 R
+(0.4) Rshow
+630 1260 M
+63 0 V
+2669 0 R
+-63 0 V
+-2753 0 R
+(0.5) Rshow
+630 1428 M
+63 0 V
+2669 0 R
+-63 0 V
+-2753 0 R
+(0.6) Rshow
+630 1596 M
+63 0 V
+2669 0 R
+-63 0 V
+-2753 0 R
+(0.7) Rshow
+630 1764 M
+63 0 V
+2669 0 R
+-63 0 V
+-2753 0 R
+(0.8) Rshow
+630 1932 M
+63 0 V
+2669 0 R
+-63 0 V
+-2753 0 R
+(0.9) Rshow
+630 2100 M
+63 0 V
+2669 0 R
+-63 0 V
+-2753 0 R
+(1) Rshow
+840 420 M
+0 63 V
+0 1617 R
+0 -63 V
+840 280 M
+(2) Cshow
+1260 420 M
+0 63 V
+0 1617 R
+0 -63 V
+0 -1757 R
+(4) Cshow
+1681 420 M
+0 63 V
+0 1617 R
+0 -63 V
+0 -1757 R
+(6) Cshow
+2101 420 M
+0 63 V
+0 1617 R
+0 -63 V
+0 -1757 R
+(8) Cshow
+2521 420 M
+0 63 V
+0 1617 R
+0 -63 V
+0 -1757 R
+(10) Cshow
+2942 420 M
+0 63 V
+0 1617 R
+0 -63 V
+0 -1757 R
+(12) Cshow
+3362 420 M
+0 63 V
+0 1617 R
+0 -63 V
+0 -1757 R
+(14) Cshow
+1.000 UL
+LTb
+630 420 M
+2732 0 V
+0 1680 V
+-2732 0 V
+630 420 L
+140 1260 M
+currentpoint gsave translate 90 rotate 0 0 M
+(chances) Cshow
+grestore
+1996 70 M
+(cost \($\)) Cshow
+1996 2310 M
+(Before) Cshow
+1.000 UP
+1.000 UL
+LT5
+1610 1824 Circle
+1518 2100 Circle
+1396 2100 Circle
+1515 2100 Circle
+1095 1806 Circle
+1787 1217 Circle
+1373 2100 Circle
+1211 2100 Circle
+1598 1567 Circle
+1708 2100 Circle
+1485 1097 Circle
+1225 1149 Circle
+1827 2100 Circle
+1219 2100 Circle
+2324 1228 Circle
+2260 2100 Circle
+1757 1229 Circle
+1755 1577 Circle
+1223 1489 Circle
+1962 2100 Circle
+1095 1744 Circle
+1871 2100 Circle
+1250 691 Circle
+1314 1690 Circle
+1634 1404 Circle
+1481 1670 Circle
+1370 882 Circle
+1240 1522 Circle
+1654 1646 Circle
+1268 1218 Circle
+1545 1678 Circle
+1289 2100 Circle
+2192 1466 Circle
+1627 1869 Circle
+1208 2100 Circle
+1061 2100 Circle
+1644 2100 Circle
+1188 1027 Circle
+1640 1422 Circle
+1371 2100 Circle
+1070 633 Circle
+1814 1067 Circle
+2139 860 Circle
+1539 1651 Circle
+1620 2100 Circle
+2738 2100 Circle
+1629 2100 Circle
+2030 1465 Circle
+1072 1854 Circle
+1264 2100 Circle
+1252 1525 Circle
+1435 1173 Circle
+1524 1472 Circle
+2142 1617 Circle
+1559 2039 Circle
+1446 1873 Circle
+1586 1888 Circle
+1625 2100 Circle
+1509 721 Circle
+1587 2100 Circle
+1873 2100 Circle
+1444 2100 Circle
+1532 2100 Circle
+2079 1915 Circle
+1644 798 Circle
+1631 2100 Circle
+1389 1536 Circle
+1488 1376 Circle
+1167 2100 Circle
+2055 1899 Circle
+1612 2100 Circle
+1136 566 Circle
+1404 1919 Circle
+1481 2100 Circle
+1386 1180 Circle
+1397 1706 Circle
+1868 2100 Circle
+1056 2100 Circle
+1453 1732 Circle
+1497 935 Circle
+1604 2100 Circle
+1795 2100 Circle
+1296 1770 Circle
+2287 2100 Circle
+1654 2067 Circle
+1225 2100 Circle
+1940 1617 Circle
+1798 761 Circle
+1187 559 Circle
+1542 2100 Circle
+1679 2100 Circle
+1179 1506 Circle
+1225 2100 Circle
+1891 2100 Circle
+1177 1177 Circle
+2616 2100 Circle
+3271 2100 Circle
+1391 2100 Circle
+2164 1926 Circle
+1613 1794 Circle
+1219 981 Circle
+1541 2100 Circle
+1374 2100 Circle
+1920 1135 Circle
+1959 2025 Circle
+1606 1708 Circle
+1280 2100 Circle
+1847 1880 Circle
+1380 2100 Circle
+1491 2046 Circle
+1391 1908 Circle
+1555 1194 Circle
+1083 2001 Circle
+2236 1762 Circle
+2352 2100 Circle
+1885 1750 Circle
+1212 2100 Circle
+1121 2035 Circle
+2612 2040 Circle
+2403 2100 Circle
+1103 1336 Circle
+1192 2086 Circle
+1419 2100 Circle
+1342 2100 Circle
+2021 2100 Circle
+1594 2100 Circle
+1422 2100 Circle
+2287 2100 Circle
+1245 2100 Circle
+1120 2100 Circle
+1597 2100 Circle
+1455 2100 Circle
+2082 1757 Circle
+2016 2100 Circle
+1131 1756 Circle
+1457 2100 Circle
+1588 2100 Circle
+1407 2100 Circle
+1548 1390 Circle
+1576 2100 Circle
+1413 1962 Circle
+1334 1612 Circle
+1636 2100 Circle
+2194 2100 Circle
+1865 1941 Circle
+1070 2100 Circle
+1496 1558 Circle
+1536 1036 Circle
+1997 1951 Circle
+1650 1441 Circle
+1649 620 Circle
+1079 1335 Circle
+1284 1895 Circle
+1223 623 Circle
+1156 1940 Circle
+2011 1566 Circle
+1848 2100 Circle
+1488 2072 Circle
+1166 1638 Circle
+1400 2100 Circle
+1122 2018 Circle
+1075 1236 Circle
+2070 2100 Circle
+1522 2100 Circle
+1453 1330 Circle
+1708 1536 Circle
+1207 1210 Circle
+1625 848 Circle
+1194 2100 Circle
+1473 1728 Circle
+1083 1292 Circle
+1551 1353 Circle
+1493 1869 Circle
+1107 1145 Circle
+1516 2001 Circle
+1219 2100 Circle
+1747 2100 Circle
+1360 859 Circle
+2106 1873 Circle
+2652 2100 Circle
+2362 1414 Circle
+1885 2100 Circle
+1565 896 Circle
+2644 1790 Circle
+1405 2100 Circle
+1400 1659 Circle
+1136 799 Circle
+1165 1790 Circle
+1480 2031 Circle
+1422 2100 Circle
+1911 2100 Circle
+1212 2100 Circle
+1223 2100 Circle
+1311 1261 Circle
+1351 1796 Circle
+1064 1642 Circle
+1308 1669 Circle
+1232 2100 Circle
+1893 2100 Circle
+1589 2100 Circle
+1268 2100 Circle
+2094 1700 Circle
+1388 2067 Circle
+1564 1009 Circle
+1442 1254 Circle
+2461 2100 Circle
+2985 2100 Circle
+1549 1216 Circle
+2846 2100 Circle
+2176 2100 Circle
+1234 2100 Circle
+1305 2057 Circle
+1569 1657 Circle
+1281 2100 Circle
+2786 2100 Circle
+1068 2100 Circle
+1477 1885 Circle
+1475 2100 Circle
+2236 2100 Circle
+1449 1838 Circle
+1051 1803 Circle
+1567 1715 Circle
+1408 2100 Circle
+1598 1651 Circle
+1642 1836 Circle
+1453 1000 Circle
+1282 2100 Circle
+1462 1201 Circle
+3170 2100 Circle
+1800 2100 Circle
+1673 1980 Circle
+1211 1459 Circle
+1421 1994 Circle
+1667 1547 Circle
+1995 1158 Circle
+1064 1109 Circle
+1881 2060 Circle
+1319 900 Circle
+1891 1450 Circle
+1232 2100 Circle
+1424 1733 Circle
+1935 1167 Circle
+1210 992 Circle
+1549 1991 Circle
+1250 2100 Circle
+1481 1210 Circle
+1171 905 Circle
+1875 2100 Circle
+1171 2100 Circle
+1365 1110 Circle
+2158 1125 Circle
+1616 1365 Circle
+1949 1368 Circle
+1567 697 Circle
+1576 2100 Circle
+1595 2100 Circle
+1388 2100 Circle
+1138 867 Circle
+1139 904 Circle
+1159 2100 Circle
+2365 2100 Circle
+2716 2100 Circle
+1664 1622 Circle
+1541 2100 Circle
+1656 1945 Circle
+1585 1723 Circle
+1391 920 Circle
+1155 1122 Circle
+1322 1115 Circle
+1848 1580 Circle
+1952 2100 Circle
+1479 1924 Circle
+1748 1782 Circle
+1121 680 Circle
+1644 1372 Circle
+1334 1437 Circle
+1785 2100 Circle
+1251 489 Circle
+1218 2100 Circle
+1462 577 Circle
+1089 2100 Circle
+1877 1766 Circle
+1573 2100 Circle
+1165 2045 Circle
+1137 2100 Circle
+1965 2100 Circle
+1839 1570 Circle
+1436 2100 Circle
+1442 2100 Circle
+1111 1841 Circle
+1302 2100 Circle
+1929 2100 Circle
+1572 2100 Circle
+2171 2100 Circle
+1670 1951 Circle
+1658 635 Circle
+1050 1525 Circle
+1635 2100 Circle
+1448 525 Circle
+1416 781 Circle
+1111 1321 Circle
+1418 2100 Circle
+1345 1835 Circle
+1437 1509 Circle
+1831 1526 Circle
+1670 2100 Circle
+1227 2048 Circle
+1851 628 Circle
+1641 1908 Circle
+2306 2100 Circle
+1703 1966 Circle
+2190 2100 Circle
+2687 2100 Circle
+1661 1266 Circle
+1654 2100 Circle
+1411 1118 Circle
+1269 2100 Circle
+1092 1136 Circle
+2796 1246 Circle
+1161 777 Circle
+1091 1988 Circle
+1665 1753 Circle
+1490 1792 Circle
+1613 2100 Circle
+1191 2100 Circle
+1459 1864 Circle
+1232 2100 Circle
+1099 1596 Circle
+1342 2086 Circle
+1619 1990 Circle
+1421 2027 Circle
+1246 2100 Circle
+1514 1639 Circle
+1312 1069 Circle
+1179 2100 Circle
+1594 1847 Circle
+1340 2098 Circle
+1579 1893 Circle
+1622 1861 Circle
+1204 1883 Circle
+2013 1375 Circle
+1269 2100 Circle
+1440 2100 Circle
+1547 2100 Circle
+1311 1352 Circle
+1417 2100 Circle
+2504 966 Circle
+1215 1903 Circle
+1099 2100 Circle
+1319 2012 Circle
+1356 2100 Circle
+2361 2100 Circle
+1176 1124 Circle
+1269 1605 Circle
+2228 2100 Circle
+1120 1414 Circle
+1292 2100 Circle
+1387 936 Circle
+2055 2100 Circle
+1195 659 Circle
+2364 2100 Circle
+2041 1661 Circle
+1562 1375 Circle
+1666 1490 Circle
+1386 1737 Circle
+1373 846 Circle
+2166 1057 Circle
+1196 1378 Circle
+1196 2100 Circle
+1679 1498 Circle
+1386 1661 Circle
+1373 2100 Circle
+1233 2100 Circle
+1554 2100 Circle
+1488 2100 Circle
+1851 1899 Circle
+1370 1441 Circle
+1214 2100 Circle
+1092 1334 Circle
+1390 928 Circle
+1376 1690 Circle
+1876 2100 Circle
+2597 1689 Circle
+2294 1648 Circle
+1165 817 Circle
+1615 1943 Circle
+1155 2100 Circle
+1631 2057 Circle
+2153 1763 Circle
+1356 1654 Circle
+1280 1564 Circle
+1146 1625 Circle
+2195 1320 Circle
+1557 2100 Circle
+1333 2008 Circle
+2272 1834 Circle
+2298 2100 Circle
+1626 1887 Circle
+1286 1447 Circle
+1373 2100 Circle
+1816 1622 Circle
+1970 1809 Circle
+1537 1744 Circle
+1573 2100 Circle
+2124 2100 Circle
+1672 879 Circle
+2974 2100 Circle
+2707 2100 Circle
+1629 2100 Circle
+1398 2100 Circle
+1583 2100 Circle
+2112 1370 Circle
+1218 1875 Circle
+1318 2042 Circle
+1319 854 Circle
+1519 1706 Circle
+1117 2100 Circle
+1244 1830 Circle
+2050 2100 Circle
+1550 1163 Circle
+1603 2100 Circle
+1147 780 Circle
+1504 1779 Circle
+1630 1789 Circle
+1408 1856 Circle
+1526 2100 Circle
+1739 2100 Circle
+1241 1613 Circle
+1665 2100 Circle
+1276 944 Circle
+1862 1088 Circle
+1345 2100 Circle
+1532 1448 Circle
+1519 1530 Circle
+1179 927 Circle
+1897 2100 Circle
+1374 1968 Circle
+2095 2100 Circle
+1333 1986 Circle
+1634 1401 Circle
+1515 2007 Circle
+1124 1564 Circle
+1803 2035 Circle
+1280 2100 Circle
+1617 1975 Circle
+1231 1799 Circle
+1595 1492 Circle
+1390 1070 Circle
+1932 2100 Circle
+2321 1696 Circle
+1054 2100 Circle
+1192 2100 Circle
+1469 2100 Circle
+1378 2100 Circle
+1294 1787 Circle
+2147 937 Circle
+2250 716 Circle
+1384 2100 Circle
+1420 1948 Circle
+1185 1386 Circle
+1195 977 Circle
+1372 1016 Circle
+1589 1347 Circle
+1461 1265 Circle
+1224 896 Circle
+1099 1052 Circle
+1281 764 Circle
+1446 1946 Circle
+1899 1408 Circle
+1255 2100 Circle
+1753 2100 Circle
+1482 1447 Circle
+1417 1681 Circle
+1437 1725 Circle
+2209 1253 Circle
+1113 694 Circle
+1837 936 Circle
+1093 990 Circle
+1570 1338 Circle
+1125 1295 Circle
+1405 2072 Circle
+1401 2100 Circle
+1355 1796 Circle
+1332 663 Circle
+1388 2100 Circle
+1084 1940 Circle
+1672 1977 Circle
+1899 2100 Circle
+2162 1069 Circle
+1983 2100 Circle
+1952 2100 Circle
+2339 1942 Circle
+2111 2100 Circle
+1474 2100 Circle
+2182 2100 Circle
+1151 2100 Circle
+1067 1458 Circle
+1484 1366 Circle
+1970 1486 Circle
+1251 1086 Circle
+1127 879 Circle
+2978 2100 Circle
+3060 2034 Circle
+1165 2100 Circle
+1601 1540 Circle
+1299 2100 Circle
+1409 2100 Circle
+1279 903 Circle
+1624 2100 Circle
+2146 1965 Circle
+1497 1197 Circle
+1356 1315 Circle
+1383 1010 Circle
+1956 2100 Circle
+2020 1198 Circle
+1102 690 Circle
+1610 2100 Circle
+1819 727 Circle
+1886 2100 Circle
+1211 1591 Circle
+1221 1726 Circle
+1325 2100 Circle
+1521 1854 Circle
+1908 1223 Circle
+1547 1053 Circle
+1598 1545 Circle
+1598 1985 Circle
+1104 1433 Circle
+1543 2100 Circle
+1421 2100 Circle
+2085 1116 Circle
+2218 645 Circle
+2160 1734 Circle
+1373 2100 Circle
+1183 2100 Circle
+1484 2100 Circle
+1475 1854 Circle
+1790 2100 Circle
+2337 1470 Circle
+1197 1373 Circle
+1167 1600 Circle
+1962 2100 Circle
+2720 2100 Circle
+1680 2100 Circle
+1524 2100 Circle
+2125 2100 Circle
+1263 1688 Circle
+1687 1500 Circle
+1467 1552 Circle
+2441 1057 Circle
+1741 2100 Circle
+1528 2100 Circle
+1158 2100 Circle
+1349 1712 Circle
+1541 1764 Circle
+1127 761 Circle
+1519 2100 Circle
+1348 1289 Circle
+1176 532 Circle
+1595 2100 Circle
+1664 865 Circle
+1504 2100 Circle
+1058 2100 Circle
+1113 1513 Circle
+1377 427 Circle
+1352 1486 Circle
+1791 1082 Circle
+2038 2037 Circle
+2275 1348 Circle
+2185 2100 Circle
+1966 1200 Circle
+1158 2100 Circle
+1803 1185 Circle
+2128 898 Circle
+1103 992 Circle
+2052 2100 Circle
+1664 2100 Circle
+1338 2100 Circle
+1571 1684 Circle
+1538 2100 Circle
+1130 2100 Circle
+1081 2100 Circle
+1561 2064 Circle
+2099 2100 Circle
+1208 2100 Circle
+2912 2100 Circle
+2664 2100 Circle
+1183 1201 Circle
+1212 1863 Circle
+1528 2100 Circle
+1617 1189 Circle
+1639 1105 Circle
+1068 1543 Circle
+2068 1224 Circle
+1236 2100 Circle
+1134 1826 Circle
+1915 956 Circle
+1112 1430 Circle
+1428 1653 Circle
+2382 1615 Circle
+1485 1695 Circle
+1108 2012 Circle
+1488 1690 Circle
+1943 965 Circle
+1438 1789 Circle
+1181 2100 Circle
+1315 1462 Circle
+1164 2100 Circle
+1679 795 Circle
+1497 647 Circle
+1861 2100 Circle
+1961 900 Circle
+1135 896 Circle
+1791 2100 Circle
+1893 1709 Circle
+2702 2100 Circle
+1654 1534 Circle
+1531 1123 Circle
+1121 2100 Circle
+1191 1711 Circle
+1229 2100 Circle
+1402 1345 Circle
+2222 1842 Circle
+1400 1951 Circle
+1934 1153 Circle
+2007 2100 Circle
+1744 1335 Circle
+1208 2100 Circle
+1172 2100 Circle
+1208 1756 Circle
+1176 1239 Circle
+1376 1380 Circle
+2984 2100 Circle
+1920 2100 Circle
+1845 2100 Circle
+1358 1433 Circle
+1954 2100 Circle
+2392 2100 Circle
+1154 2015 Circle
+1677 1671 Circle
+1194 2100 Circle
+2430 2100 Circle
+1713 1879 Circle
+1420 1419 Circle
+2106 1038 Circle
+1591 749 Circle
+1588 2100 Circle
+1558 1394 Circle
+2205 2100 Circle
+1173 1339 Circle
+1215 2100 Circle
+1346 2100 Circle
+1130 1190 Circle
+1636 2100 Circle
+2030 1683 Circle
+1298 1174 Circle
+1237 2100 Circle
+1503 1466 Circle
+1590 654 Circle
+1489 2100 Circle
+2125 2100 Circle
+1230 553 Circle
+1422 1706 Circle
+1252 2092 Circle
+2072 2100 Circle
+1535 2100 Circle
+1891 2100 Circle
+2258 2100 Circle
+1947 2100 Circle
+1202 2100 Circle
+1565 751 Circle
+3040 2100 Circle
+1564 2100 Circle
+1292 2100 Circle
+1266 2100 Circle
+1443 2100 Circle
+1407 1475 Circle
+1473 1140 Circle
+1723 2100 Circle
+1514 910 Circle
+1271 1990 Circle
+1260 1382 Circle
+1409 996 Circle
+1322 1512 Circle
+1066 2100 Circle
+2362 2100 Circle
+1605 964 Circle
+1415 1890 Circle
+1232 1674 Circle
+1359 1897 Circle
+1753 2100 Circle
+1187 2100 Circle
+1853 2100 Circle
+1741 1673 Circle
+1071 1692 Circle
+1569 2100 Circle
+1456 1913 Circle
+2561 2100 Circle
+1235 2100 Circle
+1632 1687 Circle
+2113 2100 Circle
+2297 2100 Circle
+1340 1794 Circle
+1251 2015 Circle
+1319 863 Circle
+1585 1105 Circle
+1071 2100 Circle
+1203 1802 Circle
+1316 1080 Circle
+1497 1997 Circle
+1160 1761 Circle
+2083 1265 Circle
+2334 1140 Circle
+1183 1398 Circle
+1680 1322 Circle
+1246 2100 Circle
+1783 2047 Circle
+1465 2100 Circle
+1245 2100 Circle
+1313 2100 Circle
+1167 771 Circle
+1668 2100 Circle
+1083 790 Circle
+1505 1803 Circle
+1647 2100 Circle
+1553 1755 Circle
+1424 1012 Circle
+1384 1810 Circle
+1971 2100 Circle
+1076 1532 Circle
+1623 2097 Circle
+1256 2014 Circle
+1591 2100 Circle
+1055 659 Circle
+1056 1782 Circle
+1205 1233 Circle
+1059 1247 Circle
+1314 1820 Circle
+1582 2100 Circle
+1073 1511 Circle
+1437 2100 Circle
+2362 2100 Circle
+1547 481 Circle
+1532 1977 Circle
+1294 1615 Circle
+2013 2072 Circle
+1157 2100 Circle
+1626 486 Circle
+1478 1363 Circle
+2278 1900 Circle
+3131 2100 Circle
+1057 820 Circle
+1435 1576 Circle
+1067 849 Circle
+2646 2100 Circle
+1224 504 Circle
+2125 2100 Circle
+1615 923 Circle
+1117 1861 Circle
+1518 1156 Circle
+1220 2100 Circle
+2862 1003 Circle
+1327 2013 Circle
+2269 2100 Circle
+1257 1779 Circle
+2296 2100 Circle
+1822 1199 Circle
+1560 1892 Circle
+2032 2100 Circle
+1261 1952 Circle
+1605 1425 Circle
+1192 2100 Circle
+1555 1673 Circle
+1346 2019 Circle
+1297 2100 Circle
+2101 1163 Circle
+1591 1983 Circle
+1889 1774 Circle
+1685 2100 Circle
+1619 1654 Circle
+1357 1286 Circle
+1644 1846 Circle
+1259 1336 Circle
+2071 1923 Circle
+1427 1175 Circle
+1290 2100 Circle
+1320 1163 Circle
+1181 1526 Circle
+2285 1242 Circle
+1557 1176 Circle
+1620 1532 Circle
+1621 2100 Circle
+1658 691 Circle
+1473 2100 Circle
+1565 2081 Circle
+1662 1287 Circle
+1903 1022 Circle
+1266 1187 Circle
+1503 1652 Circle
+1465 2100 Circle
+1282 1690 Circle
+1930 2100 Circle
+1632 1107 Circle
+1376 1716 Circle
+2124 1502 Circle
+1268 1017 Circle
+1504 2100 Circle
+2814 1208 Circle
+1152 1966 Circle
+1331 733 Circle
+2775 1868 Circle
+1475 1129 Circle
+1400 1245 Circle
+1510 2100 Circle
+1589 1209 Circle
+2757 2100 Circle
+1311 680 Circle
+2446 2100 Circle
+1088 1185 Circle
+1480 2100 Circle
+1559 2100 Circle
+1161 2100 Circle
+1338 1605 Circle
+2409 2100 Circle
+1169 2017 Circle
+2244 1526 Circle
+1510 2100 Circle
+1053 1349 Circle
+1665 1551 Circle
+1353 1054 Circle
+1638 2100 Circle
+1389 571 Circle
+1456 1334 Circle
+1489 2100 Circle
+1184 1504 Circle
+1429 2100 Circle
+1331 2100 Circle
+1591 1733 Circle
+1495 1556 Circle
+1069 2020 Circle
+1294 1378 Circle
+1265 1333 Circle
+1191 2100 Circle
+1377 1023 Circle
+2392 1583 Circle
+1663 2100 Circle
+1068 1317 Circle
+2185 1984 Circle
+1709 2100 Circle
+1191 1526 Circle
+1129 1327 Circle
+3173 2100 Circle
+1317 2100 Circle
+1819 2100 Circle
+2397 2100 Circle
+2581 1845 Circle
+1431 1396 Circle
+1149 2012 Circle
+1384 916 Circle
+2846 2042 Circle
+1093 2100 Circle
+1351 1216 Circle
+2264 2100 Circle
+1855 2100 Circle
+1487 997 Circle
+1076 1601 Circle
+1540 2100 Circle
+1465 1417 Circle
+1489 1537 Circle
+1219 2055 Circle
+2417 2100 Circle
+1936 2100 Circle
+1797 2100 Circle
+1249 1980 Circle
+2087 1276 Circle
+1610 1923 Circle
+1864 2100 Circle
+1640 2100 Circle
+2008 1612 Circle
+1193 2100 Circle
+1216 811 Circle
+1457 2100 Circle
+1242 604 Circle
+1594 2100 Circle
+1299 1031 Circle
+1061 1591 Circle
+1674 1192 Circle
+1677 1792 Circle
+1228 1503 Circle
+1051 697 Circle
+1280 775 Circle
+1237 2100 Circle
+1233 1569 Circle
+1129 2070 Circle
+1261 1976 Circle
+1065 2100 Circle
+1664 893 Circle
+1425 2100 Circle
+1427 825 Circle
+1179 2100 Circle
+1416 1865 Circle
+1208 897 Circle
+1534 2100 Circle
+1628 1643 Circle
+2035 2100 Circle
+1095 1957 Circle
+2077 1367 Circle
+1630 2100 Circle
+1631 1600 Circle
+1076 1908 Circle
+1686 733 Circle
+2905 1800 Circle
+1824 1928 Circle
+1584 2100 Circle
+1226 2100 Circle
+1111 1460 Circle
+1502 2100 Circle
+2101 2039 Circle
+1470 1046 Circle
+1131 814 Circle
+1549 2100 Circle
+2730 2100 Circle
+1283 2100 Circle
+1197 816 Circle
+1328 2100 Circle
+1289 2100 Circle
+1231 2100 Circle
+1114 1462 Circle
+1679 1384 Circle
+1427 1458 Circle
+1575 849 Circle
+1661 2100 Circle
+1593 1163 Circle
+1376 2100 Circle
+1464 2000 Circle
+1731 2100 Circle
+1558 2100 Circle
+1611 2100 Circle
+1603 2100 Circle
+1538 2100 Circle
+1432 2100 Circle
+1320 2100 Circle
+1061 2043 Circle
+1567 2100 Circle
+1360 1902 Circle
+1405 2100 Circle
+1671 1758 Circle
+1850 1405 Circle
+1274 2097 Circle
+1338 1793 Circle
+1408 1892 Circle
+1628 2100 Circle
+1616 2100 Circle
+1556 1006 Circle
+1504 2100 Circle
+1241 2100 Circle
+1529 1627 Circle
+1628 1591 Circle
+1056 2100 Circle
+1495 1627 Circle
+2545 2100 Circle
+2315 709 Circle
+1311 2100 Circle
+1703 2100 Circle
+2199 2100 Circle
+2738 2100 Circle
+1638 2100 Circle
+1472 1410 Circle
+1610 1473 Circle
+2247 1857 Circle
+1202 2100 Circle
+1275 833 Circle
+1551 702 Circle
+1244 2100 Circle
+1174 2100 Circle
+1102 1537 Circle
+1393 2100 Circle
+1834 1712 Circle
+2194 2100 Circle
+1334 2030 Circle
+1173 2100 Circle
+1463 1315 Circle
+1306 2100 Circle
+1986 1780 Circle
+1793 1855 Circle
+1535 2100 Circle
+1607 2035 Circle
+1078 1550 Circle
+1667 2100 Circle
+1278 693 Circle
+1844 2011 Circle
+2103 2100 Circle
+1358 1601 Circle
+1302 982 Circle
+1474 1707 Circle
+1512 2100 Circle
+1193 2100 Circle
+1272 2100 Circle
+1512 1433 Circle
+1509 1190 Circle
+stroke
+grestore
+end
+showpage
+%%Trailer
+%%DocumentFonts: Times-Roman

@@ -1,0 +1,685 @@
+\documentclass[twocolumn,global]{sys/svjour}
+
+\journalname{Submitted to WVU knowledge engineering} % banner on page 1
+\date{WP ref: tim/src/pl/nb/nb.tex \today} % wp info
+\usepackage{times} % best for viewing widely on acrobat
+%\topmargin -1.5cm % move page up and down
+
+\newcommand{\ME}{NB} % place name of software here
+
+\usepackage{sys/timlog} %
+\usepackage{sys/timtex} %
+
+\begin{document}
+\title{Some Prolog Macros for Rule-Based Programming: Why? How?}
+\author{Tim Menzies\inst{1}, Santa Clause\inst{2}}
+
+\institute{ Lane Department of Computer Science,
+       University of West Virginia,
+       PO Box 6109, Morgantown,
+       WV, 26506-6109, USA;\\ \url{http://tim.menzies.com}; \email{
+       tim@menzies.com} \and
+ Child Gift International,
+\email{santa@northpole.earth} } \maketitle
+%\copyrightspace
+% If you want to print drafts of the paper with a draft
+% notice in the copyright space, comment out the \copyrightspace
+% line above and include the \submitspace line below instead.
+%
+%\submitspace{Draft of paper submitted to ASE 2000.
+%\\WP:b/00/ase/whatif(\today).}
+
+\thispagestyle{empty}  % suppresses page number on first page
+\pagestyle{plain} % places numbers on all pages
+% pagestyle{empty} % removes numbers from all pages
+%\setcounter{tocdepth}{4} \tableeofcontents % TOC control
+% \listoffigures % LOF control
+
+\begin{abstract}
+The history, benefits, and drawbacks to pure rule-based programming
+is discussed. A simple extension to pure rule-based programming is
+described. The extensions are very quick to code and can be   easily
+customized to support a range of knowledge engineering applications.
+\end{abstract}
+
+\section{Introduction}
+At a workshop on rule-based programming (hereafter, RBP), it may be
+heresy to say that there is more to knowledge than just rules.
+However, after many years of commercial and research work on RBP, we
+assert that this is so.
+
+This article reviews some of the history of RBP and the need to
+extend certain aspects of RBP. These extensions are simple to
+implement- so simple in fact that the entire source code for those
+extensions can be presented in this article.
+
+\section{A Dummies Guide to RBP}
+
+\subsection{Origins \& Early Successes}
+
+This article focuses on rule-based knowledge engineering. Hence, by
+``RBP'', we really mean ``how rules were used in classical knowledge
+engineering''.
+
+Much of the early 1980s hype surrounding commercial applications of
+artificial intelligence came from early successes  with
+ rule-based {\em production
+systems}. Such systems were rule-based systems that queried and
+updated objects in a {\em working memory} using a MATCH-SELECT-ACT
+cycle: \bi \item MATCH: find the rules with conditions satisfied by
+the current contents of working memory; \item SELECT: pick one rule
+from the MATCHed set using a {\em conflict resolution strategy};
+\item ACT: perform the action of the picked rule.\ei There are many
+advantages to pure RBP. For example,  the uniformity of the RPG
+paradigm makes it amenable to: \bi \item formal analysis of their
+reliability, e.g.~\cite{chen95}; \item powerful learning schemes and
+languages, e.g.~\cite{laird86}; \item the rapid creation of
+high-productivity programming environments,
+e.g.~\cite{lukose99,vandebrug86,marcus89}; \item the rapid training
+of business users so that they  can create their own rule bases,
+e.g.~\cite{mebfd92,men87a}; \item powerful
+ maintenance environments, e.g.~\cite{preston93,compton92}. \ei
+
+Further, RBP is  an insightful theoretical tool for cognitive
+psychology.  Pure RBP can replicate certain expert and erroneous
+behavior of experts. For example, one way to explain the difference
+between expert and novice performance is that novices fill their
+working (human) memory with an excess of active goals. This leaves no
+room for any intermediaries of any particular calculation. On the
+other hand, experts have  compiled their experience into
+high-priority rules that select the next best action.  Hence, the
+working memory of an expert has less active goals which means
+experts are free to use their memory to run
+computations~\cite{simon80}.
+
+Not only is RBP useful for cognitive theory, it is a useful tool for
+pragmatic software engineers.
+ RBP enables a novel  iterative  and exploratory software  development methodology.
+Iterative and exploratory software development is very useful when
+prototyping software. Such prototyping is not required for
+well-defined tasks. Such well-defined tasks can be implemented via a
+  ``waterfall'' development process; i.e.
+
+ \[waterfall\;=\;analysis \rightarrow
+design \rightarrow code \rightarrow test\]
+
+%XXX JESS
+For less-defined tasks, waterfall development can stagnate in the
+analysis stage since not enough is known about the domain. An
+alternative approach is to use
+ RBP to
+generate an executable version of the current conceptualization of a
+system.  Since each rule is a separate chunk of knowledge, it is easy
+to quickly add more rules. On execution, the interaction of these
+rules can lead to surprising results that prompt clarifications and
+extensions of domain knowledge. This approach has been called various
+things including ``knowledge elicitation via irritation'' or the RUDE
+model; i.e.
+
+\[RUDE\;=\;\underline{R}un \rightarrow \underline{U}nderstand
+\rightarrow \underline{D}ebug \rightarrow \underline{E}dit\]
+
+
+
+RBP methods resulted in the ``AI spring'' of the 1980s. Many
+well-documented, mature, and optimized RBP systems were developed
+such as ART \footnote{From Inference Corporation}, CLIPS\footnote{The
+``C'' Language Integrated Production System, developed by
+NASA~\cite{nasa91}}, and OPS5~\cite{brownston92} (just to name a
+few). Numerous significant  RBP systems were developed including the
+commercially successful XCON computer configuration
+system~\cite{mcderm93}.
+
+
+\subsection{Problems with Rules}
+
+
+
+ The blossoming of RBP in the AI spring was not followed by an
+RBP  summer. An assumption underlying the RUDE approach was  the {\em
+RUDE assumption}; i.e:
+
+\begin{quote}
+{\em Rules are independent chunks of knowledge which can be easily
+added or changed or removed.} \end{quote}
+
+This proved not to be the case.  For example, once XCON grew to
+10,000 rules, the developers of XCON had a RUDE\footnote{Pun.
+Function: noun. Etymology: perhaps from Italian "puntiglio" which
+means fine point or quibble. Definition: the usually humorous use of
+a word in such a way as to suggest two or more of its meanings or the
+meaning of another word similar in sound.} awakening: maintaining
+XCON's rules had become fiendishly complicated. To some extent, this
+was due to the density of knowledge within XCON: \bi \item The
+expertise within XCON's rules reflected DEC's state-of-the-art
+knowledge in configuring computers. \item Such a rich library of
+knowledge will be intricate to maintain, no matter how it is
+expressed. \ei However, another factor that complicated XCON's
+maintenance was that its rules violated the RUDE assumption.
+Real-world rule bases often contained groups of rules with
+significant interactions. For example: \bi \item A careful reverse
+engineering of XCON showed that the system executed though several
+{\em operator spaces} where methods for improving the design of a
+computer were carefully collected, rejected, elaborated, or assessed,
+before the appropriate best {\em operator} was finally
+selected~\cite{bachant84}. \item \fig{smallitems.pl} shows three
+rules that check for certain special cases of bagging groceries.
+These rules are not independent. Rule {\em b11} tries to sneak small
+items into grocery bags that aren't full and which don't contain
+bottles. If {\em b11} fails, then rule {\em b12} just places small
+items into any grocery bag at all. Rule {\em b13} creates a new bag
+when neither of the other two rules can find a bag for small items.
+Note the tacit reliance of {\em b12} on {\em b11} handling a certain
+special case (bags with bottles). Note also the tacit reliance of
+{\em b13} on the other two rules: creating empty grocery bags is a
+nonsense action {\em unless} some other agent tries to {\em first}
+fill those bags. \ei
+
+
+\code{smallitems.pl}{Three rules in the PIKE language (a STARLOG
+variant). These rules access the object defined in
+\protect\fig{grocery.pl}, \protect\fig{order.pl}, and
+\protect\fig{bag.pl}. Example adapted from Winston's BAGGER
+application~\cite{winston84}.}
+
+ \code{grocery.pl}{A PIKE definition of  the GROCERY
+object.}
+
+\code{order.pl}{A PIKE definition of  the ORDER object.}
+\code{bag.pl}{A PIKE definition of  the BAG object.}
+
+The use of such coordinating rules violates the RUDE assumption since
+every addition to the rule base has to be assessed with respect to
+its effect on the rest of the rules.
+
+Another problem with pure RBP is that the paradigm can confuse, not
+clarify, certain types of procedural knowledge. Consider for example,
+the process of finding the total volume of items in a grocery bag.
+One {\em generator rule} is required for transferring pairs of
+grocery items from that set to a temporary space of ``candidate
+sums''. Another {\em intermediary rule} matches and deletes each
+pair, then asserts the sum of their sum as another member of the
+``candidate sums''. A final {\em report rule} waits till the
+generator and intermediary rule stop firing, then accesses the
+surviving ``candidate sum'' as the total volume of the grocery bag. A
+more succinct representation of this procedural summation knowledge
+that does not use rules is shown in the list summation procedure in
+\fig{bag.pl} between \Line{bag.pl:volstart} and \Line{bag.pl:volend}.
+
+
+Many other researchers argued that rules were not the appropriate
+primitive construct of knowledge engineering. Despite careful
+attempts to generalize the early RBP knowledge engineering work
+(e.g.~\cite{stefik82}), the construction of knowledge-based systems
+remained a somewhat hit-and-miss process. By the end of the 1980s, it
+was recognized that  design concepts such as RBP were
+incomplete~\cite{bucsmi89}. For example, Bobrow's reverse engineering
+of real-world knowledge-based systems~\cite{bobrow85} found that
+numerous paradigms were being employed including rule-based,
+logic-based, functional, object-oriented, and ``access-based''
+(which, these days, we might call implicit invocation \cite{shaw96}).
+The 1990s was characterized by an extensive search for {\em
+higher-level reusable patterns of inference } such as: \bi \item
+Propose-and-revise (e.g. as done by~\cite{sch94}). \item Recursive
+descent of ``problem spaces'' (e.g. as done \newline
+by~\cite{yost93}). \ei
+
+\subsection{Beyond RBP}
+
+The above problems, and our own commercial knowledge engineering
+(e.g.~\cite{men87a,mebfd92}), lead us to extent RBP. As done in many
+other shells (e.g. ART, CLIPS), the need to use both procedural and
+declarative rule knowledge made us combine RBP with a simple
+object-oriented approach. Rule conditions and actions could use verbs
+defined in the object-language. For example, rule {\em b12} on
+\Line{smallitems.pl:notfull} of \fig{smallitems.pl} checks that a bag
+is {\em notFull}, where {\em notFull} is a procedure defined at the
+end of {\em bag} on \Line{bag.pl:notfull} of \fig{bag.pl}.
+
+Also, for a while, we tried coding up knowledge engineering languages
+based on the supposedly reusable {\em higher-level reusable patterns
+of inference}. However, there was a problem. Our repeated experience
+was that while small communities of experts might reuse an inference
+pattern, that pattern was not widely endorsed elsewhere. That is,
+while designing a rule-base around a certain inference pattern was
+useful, each new application needed a new inference pattern (an
+effect reported elsewhere~\cite{linster92}). More generally, while
+many higher-level inference patterns have been identified (e.g.
+propose-and-revise, heuristic classification, recursive descent of
+``problem spaces'), the reusability of these patterns is questionable
+since there never was widespread and stable agreement of the internal
+structure of these patterns~\cite{me97j,me00w}.
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=3in]{iceberg.eps}
+\end{center}
+\caption{The ``iceberg model'' of knowledge
+engineering.}\label{fig:iceberg}
+\end{figure}
+
+Even though inference patterns may not be reusable between domains,
+they may be useful within a particular domain. Our default
+architecture for a new knowledge based system was the {\em iceberg
+model} of \fig{iceberg}. In that architecture, knowledge engineers
+work ``under the waterline'' to build infrastructure to support the
+``in view'' knowledge bases created by advanced business users. Our
+role as knowledge engineers was to: \bi \item Identify cliches in the
+expert's approach to different problems. Such cliches may include the
+supposedly reusable inference pattern. \item Craft support code for
+each such cliches. \ei Where possible, the support code was heavily
+parameterized so that it could be extensively customized. These
+customization parameters then became the ``tip of the iceberg'' that
+was visible to our business users. These users then used these
+upper-most drivers in their rules and objects. Our cliches included
+low-level idioms such as summing all items in a list as well as
+domain-specific high-level inference patterns.
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=3in]{growth.eps}
+\end{center}
+\caption{Patterns of rule growth. KE= knowledge
+engineers}\label{fig:growth}
+\end{figure}
+
+\fig{growth} shows a typical pattern of authoring rules using this
+iceberg approach. Note that the knowledge engineers write some rules
+in the initial stages while, by the end of the development, the users
+have written most of the rules. This pattern of rule authoring arises
+from the following development methodology: \bd \item[{\em Language
+development:}] Initially, the knowledge engineers struggle to
+understand the domain and identify the relevant cliches.  After a
+week or two, some of these cliches are found and implemented as
+support code. \item[{\em Transition:}] The knowledge engineer then
+builds a few sample rules to demonstrate the usage of the support
+code. These sample rules are then used to train the business users.
+\item[{\em Development:}] Business users go on to write most of the
+knowledge base.\item[{\em Language elaboration:}] The knowledge
+engineer watches their progress to identify common inference cliches
+that are awkward or clumsy or error prone to encode. The knowledge
+engineers then (i)~augment the support code and (ii)~show the
+business users how to simplify their rules using the augmented
+support code. As a result, the business users learn how to encode and
+update their own rule base using a knowledge language that has been
+heavily customized to their domain. \item[{\em Maintenance:}]
+Maintenance in this approach is relatively  simple since
+ business users can
+update their own knowledge even when the knowledge engineer is
+unavailable. \ed
+
+\section{STARLOG}
+
+The iceberg model is only possible when the practitioner can quickly
+craft a new set of inference cliches. The rest of this paper
+discusses STARLOG, a customization tool kit for knowledge
+engineering.
+
+The STARLOG system is a
+ set of {\em load-time macros} that convert sentences
+in some domain-specific terminology into a simple clause-based logic.
+Since these macros are called at load time  then, in many cases, the
+overheads of interpretation is incurred once at load time and never
+at runtime.
+
+ \code{ops.pl}{}
+
+STARLOG is a Prolog-based framework for building different languages
+for knowledge engineering. Prolog was chosen as the underlying
+implementation language due to its ease of customization. For
+example, \fig{ops.pl} changes the Prolog interpreter such that
+certain user-friendly structures can be created in a pseudo-English
+style; e.g. the rules shown in \fig{smallitems.pl}.
+
+\code{aboutme.pl}
+
+ \code{starlog.pl}{The idiom {\tt @[File1, File2,..]} is shorthand for
+ ``don't load these
+ files more that once unless they have not changed on disc and, if loading,
+ don't print  verbose load messages''.}
+
+This paper presents 367 lines of Prolog that implements a simple, but
+useful rule/object interpreter/optimizer. The main load file of
+STARLOG is shown in \fig{starlog.pl}. Of this code, 127 lines are
+support utilities; 153 implement an optimized simple object language
+and 87 lines implement a forward chaining rule-based system. Such a
+small set of utilities can easily be customized for new domains. One
+such customization is the PIKE language\footnote{For Star Trek
+aficionados, we offer the following notes. STARLOG variants should be
+named, in order, after the  captains of the Rodenberry-class star
+ships: i.e.  PIKE KIRK, SPOCK, PICARD, SISKO, JANEWAY, DA'AN and
+ARCHER.
+ The names
+ STOCKER, DECKER, KAHN and ZO'OR are reserved
+ for throw-away crazy prototypes,
+ for obvious reasons.} used for the rules and objects shown in
+\fig{smallitems.pl}, \fig{grocery.pl}, \fig{order.pl} and
+\fig{bag.pl}.
+
+\code{hooks.pl}{}
+
+PIKE supports three main constructs shown in \fig{hooks.pl}: objects,
+methods, and rules. These constructs are discussed below, after
+introducing a sample PIKE application.
+
+
+\section{A Sample Application}
+
+This paper contains full source code for a PIKE rule/object system
+that extends Patrick Winston's BAGGER problem~\cite{winston84}.
+BAGGER is Winston's allegory for XCON: XCON configures computers by
+checking the right components are combined together while BAGGER
+checks that the right grocery orders are combined together in grocery
+bags. Our extension includes rules, objects and methods for
+groceries, bags, and orders.
+
+\code{ruleseg.pl}{}
+
+ PIKE's BAGGER is loaded in \fig{ruleseg.pl}.
+The system contains five rule groups: \bd \item[{\tt Global:}] This
+is the initial group. It creates a sample order; see
+\fig{ruleseg.pl}. The current group is then changed to...
+ \item[{\tt Check\_order:}]
+ Checks if any items are missing from the order; see
+ \fig{checkrules.pl}.
+ The current group is then changed to...
+
+
+
+\item[{\tt Bag\_large\_items:}]
+ Handles the bagging of the bulky items; see
+ \fig{largeitems.pl}.
+ The current group is then changed to...
+
+
+
+\item[{\tt Bag\_medium\_items:}]
+ Handles the bagging of the mid-sized items; see
+ \fig{mediumitems.pl}.
+ The current group is then changed to...
+
+\item[{\tt Bag\_small\_items:}]
+ Tries to sneak the small items into the bags created above; see
+ \fig{smallitems.pl}.
+
+
+\ed
+
+
+
+\code{checkrules.pl}{} \code{mediumitems.pl}{}
+
+
+
+\fig{ruleseg.out} shows what happens when the whole system is loaded
+and executed. Given the ORDER {\small
+\begin{alltt}
+[bread, glop, pizza, granola,
+ iceCream, potatoChips]
+\end{alltt}
+} PIKE's BAGGER generates two bags:
+
+{\small
+\begin{alltt}
+bagDB(1, [glop, potatoChips, iceCream, bread]). bagDB(0, [granola,
+pizza, pepsi]).
+\end{alltt}
+}
+
+\code{ruleseg.out}{}
+%\code{ruleseg.out}{}
+
+
+%\input{timtex}
+
+%\input{todo}
+
+\section{Inside STARLOG and PIKE}
+
+This section discusses some of the inner details of our
+implementation. Due to space restrictions, this discussion will be
+quite terse. A longer version of this article is under preparation
+which explains the system in more detail.
+
+\subsection{Objects}
+
+Knowledge base authors (hereafter, authors) can define objects using
+the idiom \mbox{{\tt Helper=Spec}} where {\tt Spec} describes the
+structure of a working memory object.
+\code{speceg.out}{\outputfrom{spec}}
+\code{speceg.pl}{\generates{spec}} Each PIKE object contains  a set
+of named fields, some of which are marked by a {\tt +} if they are
+index fields. GROCERY items have no indexes (see
+\Line{grocery.pl:definition} of \fig{grocery.pl}) but ORDERs (see
+\Line{order.pl:definition} of \fig{order.pl}) and BAGs (see
+\Line{bag.pl:definition} of \fig{bag.pl}) have one indexed field
+each. {\tt Helper} is the name of a predicate that can access parts
+of an object. For example, \fig{speceg.out} shows the internal Prolog
+representation of \fig{bag.pl}. The {\tt grocery/5} predicates
+starting at \Line{speceg.out:g5} allow the access and update of
+fields within a GROCERY object.
+
+
+ The \mbox{{\tt Helper=Spec}} idiom is handled by the {\tt
+ spec/2}
+ predicate defined in \fig{spec.pl}. Currently, PIKE's objects support encapsulation
+ and polymorphism, but not inheritance.
+
+\code{spec.pl}{\corefile{spec}}
+
+
+\subsection{Methods}
+
+The idiom  \mbox{{\tt Helper*Head --> Body}} is PIKE's method syntax.
+These methods are an {\em extension } of the standard Prolog definite
+clause grammar and so are called   {\em ECG}s. ECGs can contain named
+references to fields. Within ECGs, the idiom {\tt `X} accesses the
+current value of field {\tt X} and the idiom {\tt
+!X} updates field {\tt X}.  %XXX explain the wrapper
+For example: \bi \item \LINE{grocery.pl:functor} of \fig{grocery.pl}
+has the code \mbox{{\tt functor(`type,T,_)}}. STARLOG's load-time
+macros expand this into the access of the third field of {\tt
+groceryDB/5}  (i.e. the {\tt type} field) shown in
+\LINE{speceg.out:access} of \fig{speceg.out}. \item
+\LINE{bag.pl:update} of \fig{bag.pl} has the code {\tt !id=Id}. This
+idiom forces an update of the first field of a {\tt bagDB/2} fact to
+a value computed from the {\tt flag/3} predicate\footnote{SWI
+Prolog's {\tt flag/3} predicate maintains and updates numeric
+counters.}; i.e.: \ei
+
+{\scriptsize
+\begin{alltt}
+bag(newBag(Id,Contents),_,bagDB(Id,Contents)):-
+    flag(ids,Id,Id+1)
+\end{alltt}
+}
+
+\noindent The  \mbox{{\tt Helper*Head --> Body}} idiom is handled by
+{\tt ecg/2} defined in \fig{ecg.pl}.
+
+\code{ecg.pl}
+
+ \code{largeitems.pl}{}
+
+
+
+\subsection{Forward Chaining Rules}
+
+The idiom  {\tt Label if Condition then Action} is PIKE's way of
+defining forward chaining rules. Rules have {\em priorities} and {\em
+groups} which can be specified within the {\em Label} The default
+group and priority is {\em global} and 10, respectively. For example,
+\Where{largeitems.pl}{label} shows a rule being entered into the {\em
+bag\_large\_items} rule group.
+
+ \code{rules.pl}{}
+
+
+
+Internally, the rule {\small
+\begin{alltt}
+Id in Group at Priority if Condition then Action
+\end{alltt}
+} is converted into two Prolog predicates
+
+{\small
+\begin{alltt}
+lhs(Group,Priority,Id,Memory) :- Condition
+\end{alltt}
+} and {\small
+\begin{alltt}
+rhs1(Group,Id,Memory) :- Action
+\end{alltt}
+} (see \Where{rules.pl}{lhs} and \Where{rules.pl}{rhs}). This
+separation permits the extensive customization of the forward chainer
+since rule conditions can be tested without triggering the rule
+action.
+
+\code{fchain.pl}{}
+
+The variables {\tt Group,Priority,Id,Memory} are used by PIKE's {\em
+conflict resolution strategies}. Recall that conflict resolution is
+the process of selecting one rule from the space of rules of
+satisfied conditions. PIKE employs the following conflict resolution
+strategies: \bd \item[{\em Rule groups:}] PIKE maintains a pointer to
+the current group in the {\tt group/1} fact (see
+\Where{fchain.pl}{group}). Only rules within the current group are
+tested. \item[{\em Priority ordering:}] Prior to forward chaining,
+PIKE gathers together a list of all the unique group names and rule
+priorities within each group (see \Where{fchain.pl}{gather}). At
+runtime, rules are explored within a group in priority ordering
+starting with priority one and continuing to lower priorities (see
+ \Where{fchain.pl}{todo1} and   \Where{fchain.pl}{todo2}).
+\item[{\em Refraction:}] PIKE never fires the same rule action twice
+on the same set of variable bindings. The {\tt Memory} argument of
+{\tt lhs/4} and {\tt rhs1/3} contains all the variables passed from
+the {\tt Condition} to the {\tt Action}. These shared variables are
+found via {\tt sharedVars/3} shown in \fig{sharedvars.pl} which is
+called at \Where{rules.pl}{shared}. \item[{\em Recency:}] When PIKE
+asserts anything, it is asserted
+ above all older assertions (e.g. see \Where{speceg.out}{sets} and \Where{speceg.out}{makes}).
+ Hence, rules will fire more on newer
+ assertions than older assertions. \ed
+
+\code{sharedvars.pl}
+
+\subsection{The {\tt With} Statement}
+
+Another important idiom within PIKE is \[\mbox{{\tt Class=Id with
+Method1 with Method2 with ...}}\] PIKE expands these to multiple
+method calls invoked over the same object. Important variants of this
+idiom are: \bi \item \mbox{{\tt change Class=Id with Method1 with
+...}}\newline The {\em Methods} are prefixed  by a match to the
+object   and are followed by an update to the object. \item
+\mbox{{\tt make Class  with Method1 with ...}}\newline The {\tt
+Methods} are run on a new object of the specified {\tt Class} and are
+followed by an assertion of the resulting object. \item \mbox{{\tt
+zap Class=Id  with Method1 with ...}}\newline The {\tt Methods} are
+prefixed  by a match to the object   and are followed by deletion of
+the object. The {\tt Method}s are called prior to deletion. \item
+\mbox{{\tt zap Class=Id}}\newline The {\tt Methods} are prefixed  by
+a match to the object   and are followed by deletion of the object.
+\ei The prefix and following code is added between
+\Where{ecg.pl}{wrap0} and \Where{ecg.pl}{wrap1}
+
+\code{tidy.pl}{Remove redundant trues.}
+
+\subsection{Optimizations}
+
+PIKE also includes two optimization methods: unfolding and a
+unification of  the match/select process: \bd \item[{\em Unfolding:}]
+If a clause sub-goal matches to a single other clause, then the
+sub-goal is replaced by the body of the other clause; see
+\Where{spec.pl}{x1}. Sometimes, this unfolding unwraps to just a {\tt
+true} sub-goal; see \Where{spec.pl}{x2}. Such {\tt true} sub-goals
+are redundant and are purged via the code of \fig{tidy.pl}.
+\item[{\em Unified match/select:}]  The order in which PIKE's rules
+are to be tested can be determined via the rule priority number. If
+rules are tested within each group in this order, then the {\em
+first} rule with a satisfied condition would be the highest priority
+satisfied rule. By exploring rules in this order, PIKE avoids a
+computationally expensive MATCH process.; see
+ \Where{fchain.pl}{todo1} and   \Where{fchain.pl}{todo2}.
+\ed
+
+
+
+
+
+
+
+\subsection{The Rest of STARLOG}
+
+The rest of STARLOG is contained in the following files: \bi \item
+\fig{flags.pl} is the first file loaded, it sets certain global
+flags. \item \fig{wrapper.pl} shows a predicate used on
+\Line{ecg.pl:wrapper} of \fig{ecg.pl}. \item \fig{verbs.pl} defines
+some of the verbs used in rules. \item \fig{egs.pl} is a file which,
+if loaded, will exercise most of STARLOG's PIKE. \item \fig{hacks.pl}
+contains certain Prolog hacks such as repair of over-zealous DCG
+expansion. \item \fig{singleton.pl} tests if only one clause matches
+a sub-goal. \item \fig{show.pl} is a tool for printing lists of
+clauses. \item \fig{demos.pl} is a tool for running a goal and
+trapping its output to a file. \item \fig{misc.pl} contains
+miscellaneous code.
+
+\ei
+
+\code{flags.pl}{} \code{wrapper.pl}{} \code{verbs.pl}{}
+\code{egs.pl}{} \code{hacks.pl}
+
+\code{singleton.pl}
+
+\code{show.pl}{A simple pretty print.}
+
+
+
+\code{demos.pl}{Run a goal, trap its output to file and, also, show
+it on the screen.}
+
+\code{misc.pl}
+
+
+
+\section{Conclusion}
+
+Pure rule-based programming had many proponents in the early days of
+knowledge engineering. These proponents became fewer in number as
+more and more developers were forced to extend pure rule-based
+programming.
+
+We have argued here that such extensions are necessary and simple.
+The Prolog code shown here is very brief and implements a object/rule
+interpreter/optimizer. Such a small system is easily customized and
+supports our preferred toolkit for knowledge engineering: the
+encoding of domain-specific knowledge cliches.
+
+\bibliographystyle{abbrv}
+{\footnotesize \bibliography{../../refs}}
+
+\appendix
+
+\section{License}\label{sec:license}
+\code{sys/license.pl}
+
+This software is distributed under the  GNU General Public License.
+\fig{license.pl} shows routines to display that license.
+
+\subsection{nowarranty.txt}\label{sec:nowar}
+{\scriptsize \ME~ \input{sys/nowarranty.txt}
+
+}
+
+\subsection{warranty.txt}\label{sec:war}
+{\scriptsize\input{sys/warranty.txt}
+
+}
+
+\subsection{conditions.txt}\label{sec:cond}
+{\scriptsize\input{sys/conditions.txt}
+
+}
+
+\end{document}

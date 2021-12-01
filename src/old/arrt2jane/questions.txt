@@ -1,0 +1,5 @@
+when you sent me this structure:
++r(r9,0,1,0,v1) :- r(11),r(12).
+
+is the intent for r9 to be achieved if r11 and
+r12 is achieved, or is this an "or"?

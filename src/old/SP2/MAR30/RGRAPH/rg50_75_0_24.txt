@@ -1,0 +1,11 @@
+"Fri Mar 30 11:01:49 2001"
+
+Try #0:   110.00 ms 100.00 % goals 53.00 % graph
+          109 = 3   + 5   + 34  + 67
+
+Average run time      = 110.00 ms  
+Average goals covered = 100.00 %   
+Average graph covered = 53.00 %   
+Average coaxing       = 109 times
+     H   = H1  + H2  + H3  + H4
+     109 = 3   + 5   + 34  + 67

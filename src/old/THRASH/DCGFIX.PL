@@ -1,0 +1,9 @@
+goal_expansion(=<(X,Y,Z,Z),<=(X,Y)).
+goal_expansion(<(X,Y,Z,Z),<(X,Y)).
+goal_expansion(>(X,Y,Z,Z),>(X,Y)).
+goal_expansion(>=(X,Y,Z,Z),>=(X,Y)).
+goal_expansion(is(X,Y,Z,Z),is(X,Y)).
+goal_expansion(print(X,Z,Z),print(X)).
+goal_expansion(fail(Z,Z),fail).
+goal_expansion(member(X,Y,Z,Z),member(X,Y)).
+goal_expansion(hash_term(X,Y,Z,Z),hash_term(X,Y)).

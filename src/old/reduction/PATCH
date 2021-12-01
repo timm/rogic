@@ -1,0 +1,7 @@
+x=/tmp/$$
+f="dd header kb1 mart1" 
+for i in $f
+do
+sed 's/.$//' $i.pl > $x
+mv $x $i.pl
+done

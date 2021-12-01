@@ -1,0 +1,10 @@
+% output from ':- demos(egformat).'
+
+[  tim]
+[         tim]
+[tim  ]
+[tim         ]
+[~~~~]
+[~~]
+
+% runtime = 0 sec(s)

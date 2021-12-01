@@ -1,0 +1,43 @@
+the paper:
+> 
+> ** shows some samples of tar2 output 
+> 
+> ** uses tar2 to test a hypothesis that a small
+> number of controllers will suffuce
+> 
+> ** uses tar2 for one of the more complex sensitivity
+> analyses that i have ever done with tar2
+> 
+> as second author, you hare certain rights:
+> 
+> ** you can asked to be removed from the author list 
+> 
+> ** you can require that sections X,Y,Z be added,
+> deleted, clarified, restructured, etc
+> 
+> and, with rights, you have responsibilities: 
+> 
+> ** please proof read this and complain if you see
+> any really stupid bits or bits that need more
+> explanation. so if this stuff really makes NO SENSE,
+> they SAY SO (and, hopefully, suggest ways to improve
+> it).
+> 
+> ** section 3 shows the conclusions i could draw from
+> that MASS of data you analysed. the analysis was
+> complicated by the deltaf distribution of the
+> reachability model. as shown in figure 1.6.viii:
+> there exist an unusally large number of outstanding
+> candidates for the treatments. i made many words and
+> charts and diagrams trying to explain this space but
+> the impact from all the different subsets was too
+> confusion. in the end, i gave up and said "tar2 can
+> assist in the answering of directed questions such
+> as is THIS CHANGE as important as THAT CHANGE". so
+> that was the kind of thing i wrote into section 3. 
+> 
+> in any case, can you look at the conclusions i use
+> in section 3 and tell me if those conclusions are
+> stable at larger sample sizes or if those
+> conclusions are refuted by N-way cross val?
+> 

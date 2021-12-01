@@ -1,0 +1,22 @@
+\section{ Show license }
+A cheery hellow.
+\begin{Verbatim}
+hello :- 
+	[program,version,copyright,motto,copywho]:=[N,V,Y,M,C],
+	format('~s version ~s\n Copyright (C) ~s by ~s\n',
+	       [N,V,Y,C]),
+	format(' "~s"\n\n~s ~s ',[M,N,V]),
+	chars('nowarranty.txt'). 
+\end{Verbatim}
+Print the warranty (short).
+\begin{Verbatim}
+warranty :-
+	[program,copyright,copywho]:=[P, Y,C],
+	format('~s by ~s\n Copyright (C) ~s\n\n',[P,C,Y]),
+	chars('warranty.txt'),nl. % see \tion{war}
+\end{Verbatim}
+Print the whole license (see back of this files
+\begin{Verbatim}
+conditions :-
+	chars('conditions.txt'),nl.
+\end{Verbatim}

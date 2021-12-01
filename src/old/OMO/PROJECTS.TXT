@@ -1,0 +1,15 @@
+%
+
+%% Define an access to one variables. %<
+% assignments: add in function points and multiple module estimation (2.3.3)
+% assignments: tune a, tune c, tune both
+
+% assignment: sanity checks between (e.g. unfm and prec and apex);
+%         see also figure 2.8
+% adapted ksloc and cm dm im
+% are all these numbers the right units?
+% add in the maintenance stuff (p28)
+% add in early lifecycle styff sec 2.3.2.2
+% add multi-module estimation
+
+% recommend division of labor across life cycle

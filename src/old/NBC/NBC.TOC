@@ -1,0 +1,37 @@
+\contentsline {chapter}{\numberline {1}To begin}{7}
+\contentsline {section}{\numberline {1.1}Preamble: Naive Bayes Classifiers}{7}
+\contentsline {section}{\numberline {1.2} Introductions }{7}
+\contentsline {section}{\numberline {1.3} Initializations }{8}
+\contentsline {subsection}{\numberline {1.3.1} Operators }{8}
+\contentsline {subsection}{\numberline {1.3.2} Flags }{8}
+\contentsline {subsection}{\numberline {1.3.3} Hooks }{8}
+\contentsline {subsection}{\numberline {1.3.4} Hacks }{8}
+\contentsline {section}{\numberline {1.4} Library code }{8}
+\contentsline {subsection}{\numberline {1.4.1} Does a goal have only 1 matching clause? }{8}
+\contentsline {subsection}{\numberline {1.4.2} Does a goal have only 1 way to succeed? }{8}
+\contentsline {subsection}{\numberline {1.4.3} Configuration Control }{8}
+\contentsline {subsection}{\numberline {1.4.4} Demo support code }{9}
+\contentsline {subsection}{\numberline {1.4.5} Ordered counted key value pairs }{9}
+\contentsline {subsection}{\numberline {1.4.6} Dump a Whole File to the Screen}{9}
+\contentsline {subsection}{\numberline {1.4.7} License }{9}
+\contentsline {subsection}{\numberline {1.4.8} Miscalleanous }{9}
+\contentsline {subsection}{\numberline {1.4.9} Defining methods }{9}
+\contentsline {subsection}{\numberline {1.4.10} Wrapper }{10}
+\contentsline {subsection}{\numberline {1.4.11} Accessors }{10}
+\contentsline {subsubsection}{ Usage }{10}
+\contentsline {subsubsection}{ Field details }{10}
+\contentsline {subsubsection}{ Core engine }{10}
+\contentsline {subsubsection}{ dd2/2 }{11}
+\contentsline {subsubsection}{ Demos }{11}
+\contentsline {subsubsection}{ Generating an instance }{11}
+\contentsline {subsection}{\numberline {1.4.12} Statistics }{12}
+\contentsline {subsubsection}{ Gaussians }{12}
+\contentsline {subsubsection}{ Gaussians }{12}
+\contentsline {section}{\numberline {1.5} Main }{12}
+\contentsline {section}{\numberline {1.6} The NB system }{12}
+\contentsline {subsection}{\numberline {1.6.1} Loading }{12}
+\contentsline {section}{\numberline {1.7} Start up actions}{12}
+\contentsline {section}{\numberline {.1}License}{15}
+\contentsline {subsection}{\numberline {.1.1}nowarranty.txt}{15}
+\contentsline {subsection}{\numberline {.1.2}warranty.txt}{15}
+\contentsline {subsection}{\numberline {.1.3}conditions.txt}{15}

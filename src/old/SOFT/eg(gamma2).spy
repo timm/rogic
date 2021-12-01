@@ -1,0 +1,6 @@
+% output from ':- demos(eg(gamma2)).'
+
+[14.7739, 6.89344, 5.31455, 2.95761, 2.17662, 5.00601, 8.65343, 9.22575, 11.9702, 9.30747]
+are random numbers from gamma(10,2).
+
+% runtime = 0 sec(s)

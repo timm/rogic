@@ -1,0 +1,6 @@
+\section{ Start-up commands }\begin{Verbatim}
+:- current_prolog_flag(max_integer,X), 
+    X1 is X - 1, 
+    retractall(inf(_)),
+    assert(inf(X1)).
+\end{Verbatim}

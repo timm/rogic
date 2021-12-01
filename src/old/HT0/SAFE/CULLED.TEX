@@ -1,0 +1,29 @@
+
+proofForSiblingParent(X,Ps) :-
+	siblingParents(X,Parents),
+	l2d(Parents,Ps).
+	
+siblingParent(X,Y) :- 
+	siblingParents(X,All),
+	member(Y,All).
+siblingParents(X,All) :- 
+	setof(One,siblingParent0(X,One),All).
+switches :- switches(_).
+
+switches(Goals) :-
+	unix(argv(Args0)),
+        append(_,[--|Args],Args0),
+	switches(Args,['-nothing'/_|Goals]).
+	
+switches([],[_/[]|_]).
+switches([H|T],[Old/[]|Goals0]) :-
+	oneLess(Goals0,H/Hs,Goals),!,
+	switches(T,[H/Hs,Old/[]|Goals]).
+switches([H0|T],[What/[H|Rest]|Goals]) :-
+	call(What,H0,H),
+	switches1(T,[What/Rest|Goals]).
+	
+'-nothing'(X,X).
+
+oneLess([X|T],X,T).
+oneLess([H|T],X,[H|Rest]) :- oneLess(T,X,Rest).

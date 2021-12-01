@@ -1,0 +1,9 @@
+ gawk -F, '
+NR>1  {for(i=3;i<NF;i++) {
+        printf("%s, ",$i)}
+   if   ( $2 <=0.85  && $1 > 5 ) {print("Cch")}
+   else {if ( $2 <= 0.85 && $1 <=5 ) {print("cCH")}
+         else {if  ( $2 > 0.85 && $1 >5 ) {print("CCH")}
+               else {print("cch")}}}}' eg.data > eg1.data
+
+gawk '{print $NF}' eg1.data | sort | uniq -c

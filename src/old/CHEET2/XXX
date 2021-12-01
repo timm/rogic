@@ -1,0 +1,49 @@
+logical1(getenv(A, B)).
+logical1(atom_concat(A, B, C)).
+logical1(numbervars(A, B, C, D)).
+logical1((initialization A)).
+logical1(set_prolog_flag(A, B)).
+logical1(exists_directory(A)).
+logical1(free_variables(A, B)).
+logical1(file_search_path(A, B)).
+logical1((multifile A)).
+logical1(write(A)).
+logical1(expand_query(A, B, C, D)).
+logical1(file_base_name(A, B)).
+logical1(absolute_file_name(A, B)).
+logical1((dynamic A)).
+logical1(atomic(A)).
+logical1(expand_answer(A, B)).
+logical1(goal_expansion(A, B)).
+logical1(A==B).
+logical1('$term_complexity'(A, B, C)).
+logical1(forall(A, B)).
+logical1(prolog_to_os_filename(A, B)).
+logical1(verbose_expansion(A)).
+logical1(nl).
+logical1(flag(A, B, C)).
+logical1('$apropos_match'(A, B)).
+logical1(print(A)).
+logical1(predicate_property(A, B)).
+logical1(member(A, B)).
+logical1(load_files(A, B)).
+logical1(arg(A, B, C)).
+logical1(asserta(A)).
+logical1('$assert_load_context_module'(A, B)).
+logical1(current_prolog_flag(A, B)).
+logical1(resource(A, B, C)).
+logical1('$end_compilation'(A, B)).
+logical1(prolog_event_hook(A)).
+logical1(exception(A, B, C)).
+logical1(functor(A, B, C)).
+logical1(library_directory(A)).
+logical1(var(A)).
+logical1(print_toplevel_variables).
+logical1(A=B).
+logical1(term_expansion(A, B)).
+logical1(portray(A)).
+logical1('$start_compilation'(A, B)).
+logical1('$set_source_module'(A, B)).
+logical1(recorda(A, B, C)).
+logical1(tell(A)).
+logical1(prolog_file_type(A, B)).

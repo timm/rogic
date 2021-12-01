@@ -1,0 +1,5 @@
+\section{Known Bugs}
+
+Fonts are a problem. If I use the standard Computer Modern font, the
+preview looks bad on the web. But if I use Times, then sometimes I
+get funny {\bf fi} characters in the font.

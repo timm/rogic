@@ -1,0 +1,30 @@
+\begin{figure}[!t]
+{\footnotesize
+\begin{tabular}{|p{3.2in}|}\hline
+\bd \item[ {\em 1. prod1.pl}]:  ``An example of the {\PROD}\newline
+Prolog delivery and documentation system.'' Available from
+\url{http://tim.menzies.com/pdf/03prod1.pdf}.
+
+\item[{\em 2. prod.pl}]: ``A \underline{PRO}log
+\underline{D}ocumentation, and \underline{D}elivery Tool''. Available
+from \url{http://tim.menzies.com/pdf/03prod.pdf}.
+
+\item[{\em 3. prod0.pl}]: ``TITLE'': a bare-bones minimal example of
+{\PROD}. Available from \url{http://tim.menzies.com/pdf/03prod0.pdf}.
+
+\item[{\em 4. prodabout.pl}]: ``Motivations'': the why and who of
+{\PROD}. Available from
+\url{http://tim.menzies.com/pdf/03prodabout.pdf}.
+
+\item[{\em 5. family.pl}]: ``A family database'': documentation of a
+very simple Prolog family database.
+\url{http://tim.menzies.com/pdf/03family.pdf}.
+
+\item[{\em 6. lib.pl}]: ``Commonly used predicates'':
+\url{http://tim.menzies.com/pdf/03lib.pdf}. \ed
+\\\hline
+\end{tabular}}
+\caption[Find out more about {\PROD}.]{Find out more about
+{\PROD}. Note: the best place to start with {\PROD} is memo
+\#2.}\label{fig:proddocuments}
+\end{figure}

@@ -1,0 +1,37 @@
+\begingroup \small 
+\contentsline {section}{\numberline {1} Warning!!!}{1}
+\contentsline {section}{\numberline {2} What is COCOMO?}{1}
+\contentsline {section}{\numberline {3} Installation }{3}
+\contentsline {section}{\numberline {4}Pre-load actions }{3}
+\contentsline {subsection}{\numberline {4.1}Hooks }{3}
+\contentsline {section}{\numberline {5}Main System }{3}
+\contentsline {subsection}{\numberline {5.1} Main driver }{3}
+\contentsline {subsection}{\numberline {5.2} Equations }{3}
+\contentsline {subsubsection}{\numberline {5.2.1} Sizing equations }{3}
+\contentsline {subsubsection}{\numberline {5.2.2} Schedule Equations }{3}
+\contentsline {subsubsection}{\numberline {5.2.3} Effort Equations }{3}
+\contentsline {subsection}{\numberline {5.3} Tunings }{3}
+\contentsline {subsubsection}{\numberline {5.3.1} Constants }{3}
+\contentsline {subsubsection}{\numberline {5.3.2} Post-architecture scale factors }{4}
+\contentsline {subsubsection}{\numberline {5.3.3} Post-architecture effort multipliers: }{4}
+\contentsline {subsection}{\numberline {5.4} Data dictionary }{4}
+\contentsline {subsubsection}{\numberline {5.4.1} General }{4}
+\contentsline {subsubsection}{\numberline {5.4.2} "project" }{4}
+\contentsline {subsubsection}{\numberline {5.4.3} "scores" }{5}
+\contentsline {section}{\numberline {6} Start-up actions }{5}
+\contentsline {section}{\numberline {7} OMO Support code }{5}
+\contentsline {subsection}{\numberline {7.1} Multis/2 }{5}
+\contentsline {subsection}{\numberline {7.2} Fields/3 }{5}
+\contentsline {subsection}{\numberline {7.3} w/2 }{5}
+\contentsline {subsection}{\numberline {7.4} Random types }{5}
+\contentsline {subsubsection}{\numberline {7.4.1} Random strings }{5}
+\contentsline {subsubsection}{\numberline {7.4.2} Random number within a range }{5}
+\contentsline {subsubsection}{\numberline {7.4.3} Random value of a list }{5}
+\contentsline {section}{\numberline {8} Knowledge base }{5}
+\contentsline {subsection}{\numberline {8.1} Sample project }{5}
+\contentsline {subsection}{\numberline {8.2} LOC per Function points }{6}
+\contentsline {section}{\numberline {9} Bugs }{6}
+\contentsline {section}{\numberline {A}License}{6}
+\contentsline {subsection}{\numberline {A.1}nowarranty.txt}{6}
+\contentsline {subsection}{\numberline {A.2}warranty.txt}{6}
+\contentsline {subsection}{\numberline {A.3}conditions.txt}{6}

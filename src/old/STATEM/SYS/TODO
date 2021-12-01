@@ -1,0 +1,15 @@
+auto add the "Is" to all the x := y statements
+
+there are now 3 little languages:
+	+	the X is Y + [Z] Z langauge
+	+	the method expansion stuff
+	+	er??
+	-	should unify them
+
+optimise the method look up (if only 1 cluase replacement, substitute)
+
+use objects for the switches
+
+add return types to method specs
+
+(add return types to arguments)

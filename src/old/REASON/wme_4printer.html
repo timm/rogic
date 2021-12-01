@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>wme</title>
+<link rel="stylesheet" href="printer_mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#working_memory_management">Working Memory Management</a></li>
+	<li><a href="#header">Header</a></li>
+	<ul>
+
+		<li><a href="#flags_*/">Flags */</a></li>
+	</ul>
+
+	<li><a href="#body_*/">Body  */</a></li>
+	<ul>
+
+		<li><a href="#finding_wmes_*/">Finding WMEs */</a></li>
+		<li><a href="#reset_*/">Reset */</a></li>
+		<li><a href="#zap">Zap</a></li>
+		<li><a href="#report">Report</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+This document is also available in  the following formats:
+         <a href="wme.pdf">pdf</a>; a
+        <a href="wme_4printer.html">printer-friendly</a> format; a
+        <a href="wme.html">display-friendly</a> format;
+        <a href="wme.txt">plain text</a>; or
+         text with <a href="wme.man">bold escape characters</a>.
+/*<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="working_memory_management">Working Memory Management</a></h1>
+<p>Assertions are hashed on some index.</p>
+<p>Assertions are grouped into <em>N1</em> numeric levels
+and <code>zap</code> can reset all working memory
+elements from level <code>N2</code> and above.</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="header">Header</a></h1>
+<p>
+</p>
+<h2><a name="flags_*/">Flags */</a></h2>
+<pre>
+ :- dynamic(wme/3). /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="body_*/">Body  */</a></h1>
+<pre>
+  make(W) :- 
+    wme(W,I,_), hash_term(I,H), assert(hashed(H,W)). /*</pre>
+<p>
+</p>
+<h2><a name="finding_wmes_*/">Finding WMEs */</a></h2>
+<pre>
+ wmes(L) :- wmes(-1,L).
+ wmes(N,All) :- 
+    setof(L=wme(W,I,L), N^(wme(W,I,L),L&gt;=N), Temp)
+    -&gt; maplist(arg(2),Temp,All)
+    ;  All=[]. /*</pre>
+<p>
+</p>
+<h2><a name="reset_*/">Reset */</a></h2>
+<pre>
+ reset :-  
+    forall((wme(W,_,_),functor(W,F,A)), dynamic(F/A)). /*</pre>
+<p>
+</p>
+<h2><a name="zap">Zap</a></h2>
+<p>Zap from level <code>N</code> and above. */</p>
+<pre>
+ zap :- zap(-1).
+ zap(N) :-
+    wmes(N,All),
+    forall(member(wme(W,_,_),All), retractall(hashed(_,W))). /*</pre>
+<p>
+</p>
+<h2><a name="report">Report</a></h2>
+<p>Report upwards  from level <code>N</code>. */</p>
+<pre>
+ report :- report(-1).
+ report(N) :-
+    wmes(N,All),
+    member(wme(W,_,_),All),
+    functor(W,F,A),
+    format('% ~w\n',F/A),
+    W,
+    numbervars(W,0,_),
+    format('~p.\n',W),
+    fail.
+ report(_).</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

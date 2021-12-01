@@ -1,0 +1,12 @@
+myName   = 'TAR'.
+myVersion= '5.01'.
+myYear   =  2002.
+myAuthor = 'Tim Menzies'.
+myMantra = 'Just trying to keep it simple, stupid'.
+steps    = 10.
+nway     = 10.
+cvsStore = datum.
+target   = class.
+identity  = id.
+skip     = [id].
+verbose  = 1.

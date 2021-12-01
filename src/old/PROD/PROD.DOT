@@ -1,0 +1,38 @@
+digraph G {
+    rankdir=TB
+    
+    node [shape=ellipse]
+    subgraph cluster0 {
+        label="training"
+        subgraph cluster00 {
+            label="prolog"
+            family
+        }
+        subgraph cluster01 {
+            label="PROD"
+            prod0
+            prod1
+            prod
+            prodabout
+        }   
+        }
+    subgraph cluster1 {
+        label="core"
+        core -> lib
+        core -> license 
+        core -> options
+        }
+       
+    subgraph cluster2 {
+        label="machine\nlearning"
+        xval -> nbc
+    }
+     subgraph cluster3 {
+        label="software\ncost\nestimation"
+        omo  
+    } 
+    omo -> core
+    ecg -> core
+    histogram -> ecg
+    nbc -> histogram
+}

@@ -1,0 +1,23 @@
+
+
+%     "Experiments with caching."
+% 
+%     "And isn't this one amusing: cache off gives two paths, cache on
+%     declares that we cannot explain ff up."
+% 
+%     "Later: reject caching"
+% 
+%     self standardQCMheader
+%                at:  #name
+%                put: 
+name = '100. cache off error test'.
+
+objects(e) = [aa].
+objects(m) = [cc,ee,ff].
+
+
+aa ++ cc .
+cc ++ ee.
+cc ++ ff .
+ff ++ cc.
+

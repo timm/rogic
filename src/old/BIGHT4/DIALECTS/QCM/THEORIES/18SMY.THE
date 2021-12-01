@@ -1,0 +1,14 @@
+name = '18. explainable Smythe 87'.
+
+objects(m) = [nna,cortico,acth,temp].
+objects(e) = [dex,coldSwim].
+
+coldSwim ++ nna     .
+nna      ++ acth    .
+acth     ++ cortico .
+cortico  ++ temp    .
+temp     -- acth    .
+temp     -- nna     .
+dex      ++ temp    .
+
+nna     ++ cortico .   % adddition

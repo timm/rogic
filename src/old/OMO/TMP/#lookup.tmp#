@@ -1,0 +1,97 @@
+
+
+=head1 Simple table lookup.
+
+
+=head1 Convenient Table Lookups
+
+:- ensure_loaded([lookup0,lookup1]).
+
+
+=head2 Uses
+
+  :- ensure_loaded([demos,maths]).
+
+=head2 Operators
+
+  :- op(999,xfx,has).
+  :- op(1,  xfx, to).
+
+=head2 Flags
+
+Define a predicate for the lookup tables.
+
+ :- discontiguous lookUp1/4.
+ :- multifile lookUp1/4.
+ :- index(lookUp1(1,1,1,0)).
+
+=head2 Hooks
+
+Tell the Prolog reader about our lookup tables.
+
+ term_expansion(Table has ColsRows , Out) :- 
+    nonvar(ColsRows),
+    ColsRows = (Cols+Rows),
+    lookUpTable(Table=Cols+Rows,Out). 
+
+
+/*
+
+=head2 C<lookup(+Table,+Row,+Column,-Value)>: find a value
+
+Cell access can be via an exact match or
+via a range query: */
+
+ lookUp(T,X,Y,Out) :-
+    lookUp1(T,R,C,Out),
+    gt(X,R),
+    gt(Y,C).
+
+ gt(Value,X to Y) :- !, X =< Value, Value =< Y.
+ gt(Value,Value). /*
+
+=head2 C<lookUpTable(+TabularData,-[Fact|Facts])>: define a table
+
+Each Fact has the form C<lookUp1(Table, Row, Column,Value)>. */
+
+ lookUpTable(X,Out) :-
+    bagof(Y,X^list2Relation1(X,Y),Out).
+
+ list2Relation1(Table=Cols+Rows, lookUp1(Table,R,C,X)):-
+    nth1(Pos,Cols,C),
+    member([R|Cells],Rows),
+    nth1(Pos,Cells,X),
+    nonvar(X). /*
+
+=head2 Demonstration code: */
+
+ egLookUpDemo has
+    % age         weight
+    % ----------  -------------------------------
+                  [1 to 19, 20 to 50, 51 to inf]+
+    [[ 0 to 20,        low,      low,       avg]
+    ,[21 to 40,        low,      avg,      high]
+    ,[41 to inf,       avg,     high,      high]
+    ].
+
+ eglookup :- 
+    member(Age,[20,30,41]),
+    member(Weight,[15,20,80]),
+    lookUp(egLookUpDemo,Age,Weight,X),
+    format('[age(~w),weight(~w)]= ~w\n',
+           [Age,Weight,X]).
+
+ eglookups :- demo(eglookup).
+
+
+ %% eglookup.spy (output from ':- demos(eglookup).')
+[age(20),weight(15)]= low
+[age(20),weight(20)]= low
+[age(20),weight(80)]= avg
+[age(30),weight(15)]= low
+[age(30),weight(20)]= avg
+[age(30),weight(80)]= high
+[age(41),weight(15)]= avg
+[age(41),weight(20)]= high
+[age(41),weight(80)]= high
+ %% runtime = 0.0100144 sec(s)

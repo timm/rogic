@@ -1,0 +1,1 @@
+pl -g 'load_files([rogic],[silent(true)]),hello'

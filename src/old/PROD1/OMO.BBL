@@ -1,0 +1,32 @@
+\begin{thebibliography}{1}
+
+\bibitem{chulani99}
+S.~Chulani, B.~Boehm, and B.~Steece.
+\newblock Bayesian analysis of empirical software engineering cost models.
+\newblock {\em IEEE Transaction on Software Engineerining}, 25(4), July/August
+  1999.
+
+\bibitem{kemerer87}
+C.~Kemerer.
+\newblock An empirical validation of software cost estimation models.
+\newblock {\em Communications of the ACM}, 30(5):416--429, May 1987.
+
+\bibitem{mukho92}
+T.~Mukhopadhyay, S.~Vicinanza, and M.~Prietula.
+\newblock Examining the feasibility of a case-based reasoning tool for software
+  effort estimation.
+\newblock {\em MIS Quarterly}, pages 155--171, June 1992.
+
+\bibitem{boehm00b}
+B.~W.Boehm, E.~Horowitz, R.~Madachy, D.~Reifer, B.~K. Clark, B.~Steece, A.~W.
+  Brown, S.~Chulani, and C.~Abts.
+\newblock {\em Software Cost Estimation with Cocomo II}.
+\newblock Prentice Hall, 2000.
+
+\bibitem{swiprolog}
+J.~Wielemaker.
+\newblock {\em SWI-Prolog}.
+\newblock Available from
+  \url{http://swi.psy.uva.nl/projects/xpce/SWI-Prolog.html}.
+
+\end{thebibliography}

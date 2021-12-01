@@ -1,0 +1,27 @@
+#!/usr/bin/perl -w
+
+$f=$ARGV[0];
+open IN,"<$f.pl" or die "can't open $f.pl for input: $!";
+open OUT,">$f.tex" or die "can't open $f.tex for output: $!";
+print "$f.tex";	
+
+while(<IN>) {
+    chomp;
+    s/^\%\\/\\/;
+    s/\/\*//;
+    s/\*\///;
+    s/^\%\%\%\%(.*)\%<\s*$/\\section{$1}\\begin{Verbatim}/;
+    s/^\%\%\%\%(.*)$/\\section{$1}/;
+    s/^\%\%\%(.*)\%<\s*$/\\subsection{$1}\\begin{Verbatim}/;
+    s/^\%\%\%(.*)$/\\subsection{$1}/;
+    s/^\%\%(.*)\%<\s*$/\\subsubsection{$1}\\begin{Verbatim}/;
+    s/^\%\%(.*)$/\\subsubsection{$1}/;
+    s/\%>/\\end{Verbatim}/;
+    s/\%</\\begin{Verbatim}/;
+    print OUT "$_\n";
+}
+
+close OUT;
+close IN;
+print "!\n";
+	

@@ -1,0 +1,117 @@
+\documentclass{article}
+
+%%  Latex generated from POD in document /cygdrive/i/tim/src/pl/reason/mypod_tmp.pl
+%%  Using the perl module Pod::LaTeX
+%%  Converted on Sat Aug 30 22:29:47 2003
+
+
+\usepackage{makeidx}
+\makeindex
+
+
+\input{mypodstyle}
+
+\tableofcontents
+
+\clearpage
+\section{Extended clause grammers\label{Extended_clause_grammers}\index{Extended clause grammers}}
+
+
+Speed up the manipulation of  named fields within DCGs.
+
+\section{Header\label{Header}\index{Header}}
+\subsection{Loads */\label{Loads_}\index{Loads */}}
+\begin{verbatim}
+ :- [defs]. /*
+\end{verbatim}
+\section{Body\label{Body}\index{Body}}
+\subsection{Standard Optimizations */\label{Standard_Optimizations_}\index{Standard Optimizations */}}
+\begin{verbatim}
+ goal_expansion(append(A,B,_),true) :- ground(A),ground(B).
+ goal_expansion(append(A,_,C),true) :- ground(A),ground(C).
+ goal_expansion(append(_,B,C),true) :- ground(B),ground(C). /*
+\end{verbatim}
+\subsection{Reparing DCG expansion\label{Reparing_DCG_expansion}\index{Reparing DCG expansion}}
+
+
+Bunch of tricks to repair over-zealous DCG expansion. */
+
+\begin{verbatim}
+ goal_expansion(true(X,X),      true).
+ goal_expansion(fail(X,X),      fail).
+ goal_expansion(once(X,Y,Y),    once(X)).
+ goal_expansion(print(X,Y,Y),   print(X)).
+ goal_expansion(format(X,Y,Z,Z),format(X,Y)). /*
+\end{verbatim}
+
+
+The above code drops in a lot of \texttt{true}s that we
+really we should cull- but not tonight.
+
+\subsection{Hooks into the defs systems */\label{Hooks_into_the_defs_systems_}\index{Hooks into the defs systems */}}
+\begin{verbatim}
+ goal_expansion( -(F,X,Y),  Z) :- clause(at(-F,    X,Y),Z).
+ goal_expansion( +(F,X,Y),  Z) :- clause(at(+F,    X,Y),Z).
+ goal_expansion( +(F,V,X,Y),Z) :- clause(at(F+V,   X,Y),Z).
+ goal_expansion( =(F,V,X,Y),Z) :- clause(at(F =  V,X,Y),Z).
+ goal_expansion(is(F,V,X,Y),Z) :- clause(at(F is V,X,Y),Z).
+ goal_expansion(>=(F,V,X,Y),Z) :- clause(at(F >= V,X,Y),Z).
+ goal_expansion( >(F,V,X,Y),Z) :- clause(at(F >  V,X,Y),Z).
+ goal_expansion( <(F,V,X,Y),Z) :- clause(at(F <  V,X,Y),Z).
+ goal_expansion(=<(F,V,X,Y),Z) :- clause(at(F =< V,X,Y),Z).
+ goal_expansion(\=(F,V,X,Y),Z) :- clause(at(F \= V,X,Y),Z).
+ goal_expansion(:=(F,V,X,Y),Z) :- clause(at(F:=V,  X,Y),Z). /*
+\end{verbatim}
+\subsection{Optimizing \textit{Solo} Calls\label{Optimizing_Solo_Calls}\index{Optimizing Solo Calls}}
+
+
+For certain clauses,
+if there is only one clause that matches some sub-goal,
+then we can eval it at load time with safety. */
+
+\begin{verbatim}
+ eval_if_solo(at(_,_,_,_,_)).
+ eval_if_solo(at(_,_,_)).
+\end{verbatim}
+\begin{verbatim}
+ solo(X) :- Y='#solo', flag(Y,_,0), \+ solo1(Y,X), flag(Y,1,1).
+ solo1(Sym,X) :- clause(X,_),flag(Sym,N,N+1),N > 1,!.
+\end{verbatim}
+\begin{verbatim}
+ goal_expansion(X,true) :- eval_if_solo(X), solo(X), X.  /*
+\end{verbatim}
+\subsection{Maintaining Context\label{Maintaining_Context}\index{Maintaining Context}}
+
+
+If we know what kind of \texttt{def} we are currently expanding, we
+can check for missing fields. */
+
+\begin{verbatim}
+ goal_expansion(in(T,X,Y),true)     :- in(T,X,Y). /*
+\end{verbatim}
+
+
+This next one is tricky: SWI's DCG expansion does not unify
+the output variable after a \texttt{\{X\}} expansion so our meta-knowledge
+that we are carrying round a certain \texttt{def} is lost. So we
+have to force that particular unification: */
+
+\begin{verbatim}
+ goal_expansion(A=(B=C),true) :- ground(B),def(B,_), A=(B=C). /*
+\end{verbatim}
+
+
+Which means that we can't use '\texttt{X;Y}' or '\texttt{X -$>$ Y ; Z}' in ECGs. 
+So replace these with the usual expansions; i.e.
+
+\begin{verbatim}
+ X :- Y,!,Z.
+ X.
+\end{verbatim}
+\begin{verbatim}
+ X :- Y.
+ X :- Z. */
+\end{verbatim}
+\printindex
+
+\end{document}

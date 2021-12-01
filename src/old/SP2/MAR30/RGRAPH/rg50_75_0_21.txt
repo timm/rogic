@@ -1,0 +1,71 @@
+"Fri Mar 30 11:01:45 2001"
+
+Try #0:   0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #1:   50.00 ms 10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #2:   0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #3:   0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #4:   60.00 ms 10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #5:   0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #6:   0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #7:   0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #8:   50.00 ms 10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #9:   0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #10:  0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #11:  0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #12:  60.00 ms 10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #13:  0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #14:  0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #15:  0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #16:  50.00 ms 10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #17:  0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #18:  0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #19:  0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Try #20:  0.00 ms  10.00 % goals 6.00 % graph
+          36  = 0   + 0   + 4   + 32
+
+Average run time      = 12.86 ms  
+Average goals covered = 10.00 %   
+Average graph covered = 6.00 %   
+Average coaxing       = 36 times
+     H   = H1  + H2  + H3  + H4
+     36  = 0   + 0   + 4   + 32

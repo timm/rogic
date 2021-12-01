@@ -1,0 +1,106 @@
+drive="c"
+me="$drive:/usr/tim/src/pl/tarzan"
+junk="c:/temp"
+pl="c:/program files/pl/bin/plwin.exe" 
+
+usage() {
+	echo "usage: tarzan treeFile optionsFile"
+	exit
+}
+
+for i in $1 $2
+do
+if [ ! -f $i ]
+then    usage
+fi
+done
+
+stem=`echo $1 | sed 's/\..*//'`
+echo $1
+
+if [ -f "$stem.out" ]
+then rm $stem.out
+fi
+
+hello() {
+cat << EOF
+
+Tarzan v1.0
+
+George, George, 
+George of the jungle,
+Strong as he can be.
+(watch out for that tree)
+EOF
+}
+
+if [ ! -d $junk ]
+then mkdir $junk
+fi
+
+all() {
+   	gawk 'BEGIN{flag=0}
+		NR> 3 && $0~/decision tree:/       {flag=1
+	        	                next}
+		$0~/tree saved/        {exit}
+		flag==1                {print $0}' $1
+}
+
+simplify() {
+	 gawk 'BEGIN{flag=0}
+		NR > 3 && $0~/simplified decision tree:/ {flag=1
+	        	                next}
+		$0~/tree saved/        {exit}
+		flag==1                {print $0}' $1
+}
+
+makelc() {
+cat $1 \
+| tr A-Z a-z \
+| sed 's/<=/=</g' > $junk/tarzan_lc.learnt
+}
+
+
+makepl() {
+p="${stem}_pl.pl"
+if   grep "Simplified Decision Tree:" $1 >> /dev/null
+then simplify $junk/tarzan_lc.learnt
+else all      $junk/tarzan_lc.learnt
+fi \
+| gawk -F"|" -f $me/tree2pl.awk -v who="`basename  $1`"  \
+| sed 's/<=/=</' > $p
+}
+
+makerun() {
+ p="${stem}_pl.pl"
+(echo  "treeFile('$p'). rawFile('$1'). "
+ echo "dotFile('$stem.dot'). outFile('$stem.out'). resFile('$stem.res')."
+ echo ":- load_files(['$me/tarzan.pl','$2'],[silent(true)]),go,halt."
+) > $junk/tarzan_run.pl
+ 
+}
+
+runrun() {
+"$pl" -G8M -L8M -f $junk/tarzan_run.pl   > /dev/null 2> /dev/null
+cat $stem.res
+}
+
+
+
+maketest() {
+(p="${stem}_pl.pl"
+ echo  "treeFile('$p'). rawFile('$1'). "
+ echo "dotFile('$stem.dot'). outFile('$stem.out'). resFile('$stem.res')."
+ echo ":- ['$me/tarzan.pl','$2']."
+) > $junk/tarzan_run.pl
+}
+
+makelc  $1
+makepl  $1
+makerun $1 $2
+#maketest $1 $2
+#makesum $1 $2 
+runrun
+
+
+

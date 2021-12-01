@@ -1,0 +1,53 @@
+
+#=head1 Site map
+
+  map() {
+    heading "Theory"
+    go ake.pod "Abductive Software Engineering"
+    footer
+    #
+    heading "Application"
+    go omo.pl "Software Cost Estimation"
+    go omo1.pl "Software Cost Equations"
+    footer
+    #
+    heading "Core Prolog"
+    go prolog.pod  "Prolog programs"
+    go maths.pl    "Maths"
+    go list.pl     "Lists"
+    go io.pl       "Input/Output"
+    go meta.pl     "Meta stuff"
+    go demos.pl    "Demonstrations"	
+    go tree.pl     "Simple Tree Stuff"
+    go random.pl   "Random"
+
+    go dist.pl     "Distributions"	
+    go lookup.pl   "Table lookups"
+    #
+    heading "Abduction"
+    go assume.pl   "Assumption management"
+    footer
+    #
+    heading "Support code"
+    go map "Site definition"
+    go site/mypod mypod
+    footer
+ }
+
+#=head1 Configuration
+
+ CSS=./site
+ FONT="<font size=2 family=\"Arial,Verdana,Helvetica\">"
+ IMG=./img
+ SH=./site
+ SIZE=$CSS/big
+ STRINGS=bundle.dat
+ TMP=./tmp
+ TXT=./
+
+#=head1 Make the site
+
+ . $SH/map.sh
+ main $*
+
+#=include _footer

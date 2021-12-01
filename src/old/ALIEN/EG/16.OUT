@@ -1,0 +1,86 @@
+
+obj(0, age).
+obj(1, convictions).
+obj(2, guilty).
+obj(3, infant).
+obj(4, jail).
+obj(5, legally_responsible).
+obj(6, means).
+obj(7, moron).
+obj(8, motive).
+obj(9, opportunity).
+obj(10, witnesses).
+
+v(12, legally_responsible, =, f, t(1), or).
+v(14, infant, =, t, t(1), or).
+v(18, moron, =, t, t(1), or).
+v(23, age, >, 7, t(1), or).
+v(27, jail, =, t, t(1), or).
+v(29, and, =, t, t(1), and).
+v(32, legally_responsible, =, t, t(1), or).
+v(35, guilty, =, t, t(1), or).
+v(44, and, =, t, t(1), and).
+v(47, motive, =, t, t(1), or).
+v(50, means, =, t, t(1), or).
+v(53, opportunity, =, t, t(1), or).
+v(56, witnesses, =, t, t(1), or).
+v(60, jail, =, f, t(1), or).
+v(62, and, =, t, t(1), and).
+v(77, guilty, =, f, t(1), or).
+v(79, convictions, =, some, t(1), or).
+v(83, convictions, =, none, t(1), or).
+
+e(15, 14, 12, 1).
+e(19, 18, 12, 1).
+e(24, 23, 14, 1).
+e(30, 29, 27, 1).
+e(33, 32, 29, 0).
+e(36, 35, 29, 0).
+e(40, 35, 27, 1).
+e(45, 44, 35, 1).
+e(48, 47, 44, 0).
+e(51, 50, 44, 0).
+e(54, 53, 44, 0).
+e(57, 56, 44, 0).
+e(63, 62, 60, 1).
+e(65, 35, 62, 0).
+e(67, 12, 62, 0).
+e(71, 14, 12, 1).
+e(74, 18, 12, 1).
+e(80, 79, 77, 1).
+e(84, 83, 77, 1).
+e(88, 14, 12, 1).
+e(91, 18, 12, 1).
+
+assertion(13, 1, prosecute).
+assertion(22, 2, prosecute).
+assertion(28, 3, prosecute).
+assertion(39, 4, prosecute).
+assertion(43, 5, prosecute).
+assertion(61, 6, defence).
+assertion(70, 7, defence).
+assertion(78, 8, defence).
+assertion(87, 9, defence).
+
+assertionEdge(16, 15, 13).
+assertionEdge(20, 19, 13).
+assertionEdge(25, 24, 22).
+assertionEdge(31, 30, 29).
+assertionEdge(34, 33, 28).
+assertionEdge(37, 36, 28).
+assertionEdge(41, 40, 39).
+assertionEdge(46, 45, 44).
+assertionEdge(49, 48, 43).
+assertionEdge(52, 51, 43).
+assertionEdge(55, 54, 43).
+assertionEdge(58, 57, 43).
+assertionEdge(64, 63, 62).
+assertionEdge(66, 65, 61).
+assertionEdge(68, 67, 61).
+assertionEdge(72, 71, 70).
+assertionEdge(75, 74, 70).
+assertionEdge(81, 80, 78).
+assertionEdge(85, 84, 78).
+assertionEdge(89, 88, 87).
+assertionEdge(92, 91, 87).
+% time= 0.04 secs

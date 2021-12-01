@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ecg</title>
+<link rel="stylesheet" href="printer_mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#extended_clause_grammers">Extended clause grammers</a></li>
+	<li><a href="#header">Header</a></li>
+	<ul>
+
+		<li><a href="#loads_*/">Loads */</a></li>
+	</ul>
+
+	<li><a href="#body">Body</a></li>
+	<ul>
+
+		<li><a href="#standard_optimizations_*/">Standard Optimizations */</a></li>
+		<li><a href="#reparing_dcg_expansion">Reparing DCG expansion</a></li>
+		<li><a href="#hooks_into_the_defs_systems_*/">Hooks into the defs systems */</a></li>
+		<li><a href="#optimizing_solo_calls">Optimizing <em>Solo</em> Calls</a></li>
+		<li><a href="#maintaining_context">Maintaining Context</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+This document is also available in  the following formats:
+         <a href="ecg.pdf">pdf</a>; a
+        <a href="ecg_4printer.html">printer-friendly</a> format; a
+        <a href="ecg.html">display-friendly</a> format;
+        <a href="ecg.txt">plain text</a>; or
+         text with <a href="ecg.man">bold escape characters</a>.
+/*<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="extended_clause_grammers">Extended clause grammers</a></h1>
+<p>Speed up the manipulation of  named fields within DCGs.</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="header">Header</a></h1>
+<p>
+</p>
+<h2><a name="loads_*/">Loads */</a></h2>
+<pre>
+ :- [defs]. /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="body">Body</a></h1>
+<p>
+</p>
+<h2><a name="standard_optimizations_*/">Standard Optimizations */</a></h2>
+<pre>
+ goal_expansion(append(A,B,_),true) :- ground(A),ground(B).
+ goal_expansion(append(A,_,C),true) :- ground(A),ground(C).
+ goal_expansion(append(_,B,C),true) :- ground(B),ground(C). /*</pre>
+<p>
+</p>
+<h2><a name="reparing_dcg_expansion">Reparing DCG expansion</a></h2>
+<p>Bunch of tricks to repair over-zealous DCG expansion. */</p>
+<pre>
+ goal_expansion(true(X,X),      true).
+ goal_expansion(fail(X,X),      fail).
+ goal_expansion(once(X,Y,Y),    once(X)).
+ goal_expansion(print(X,Y,Y),   print(X)).
+ goal_expansion(format(X,Y,Z,Z),format(X,Y)). /*</pre>
+<p>The above code drops in a lot of <code>true</code>s that we
+really we should cull- but not tonight.</p>
+<p>
+</p>
+<h2><a name="hooks_into_the_defs_systems_*/">Hooks into the defs systems */</a></h2>
+<pre>
+ goal_expansion( -(F,X,Y),  Z) :- clause(at(-F,    X,Y),Z).
+ goal_expansion( +(F,X,Y),  Z) :- clause(at(+F,    X,Y),Z).
+ goal_expansion( +(F,V,X,Y),Z) :- clause(at(F+V,   X,Y),Z).
+ goal_expansion( =(F,V,X,Y),Z) :- clause(at(F =  V,X,Y),Z).
+ goal_expansion(is(F,V,X,Y),Z) :- clause(at(F is V,X,Y),Z).
+ goal_expansion(&gt;=(F,V,X,Y),Z) :- clause(at(F &gt;= V,X,Y),Z).
+ goal_expansion( &gt;(F,V,X,Y),Z) :- clause(at(F &gt;  V,X,Y),Z).
+ goal_expansion( &lt;(F,V,X,Y),Z) :- clause(at(F &lt;  V,X,Y),Z).
+ goal_expansion(=&lt;(F,V,X,Y),Z) :- clause(at(F =&lt; V,X,Y),Z).
+ goal_expansion(\=(F,V,X,Y),Z) :- clause(at(F \= V,X,Y),Z).
+ goal_expansion(:=(F,V,X,Y),Z) :- clause(at(F:=V,  X,Y),Z). /*</pre>
+<p>
+</p>
+<h2><a name="optimizing_solo_calls">Optimizing <em>Solo</em> Calls</a></h2>
+<p>For certain clauses,
+if there is only one clause that matches some sub-goal,
+then we can eval it at load time with safety. */</p>
+<pre>
+ eval_if_solo(at(_,_,_,_,_)).
+ eval_if_solo(at(_,_,_)).</pre>
+<pre>
+ solo(X) :- Y='#solo', flag(Y,_,0), \+ solo1(Y,X), flag(Y,1,1).
+ solo1(Sym,X) :- clause(X,_),flag(Sym,N,N+1),N &gt; 1,!.</pre>
+<pre>
+ goal_expansion(X,true) :- eval_if_solo(X), solo(X), X.  /*</pre>
+<p>
+</p>
+<h2><a name="maintaining_context">Maintaining Context</a></h2>
+<p>If we know what kind of <code>def</code> we are currently expanding, we
+can check for missing fields. */</p>
+<pre>
+ goal_expansion(in(T,X,Y),true)     :- in(T,X,Y). /*</pre>
+<p>This next one is tricky: SWI's DCG expansion does not unify
+the output variable after a <code>{X}</code> expansion so our meta-knowledge
+that we are carrying round a certain <code>def</code> is lost. So we
+have to force that particular unification: */</p>
+<pre>
+ goal_expansion(A=(B=C),true) :- ground(B),def(B,_), A=(B=C). /*</pre>
+<p>Which means that we can't use '<code>X;Y</code>' or '<code>X -&gt; Y ; Z</code>' in ECGs. 
+So replace these with the usual expansions; i.e.</p>
+<pre>
+ X :- Y,!,Z.
+ X.</pre>
+<pre>
+ X :- Y.
+ X :- Z. */</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

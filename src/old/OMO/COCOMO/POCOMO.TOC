@@ -1,0 +1,19 @@
+\begingroup \small 
+\contentsline {section}{\numberline {1}}{1}
+\contentsline {section}{\numberline {2} Initializations }{1}
+\contentsline {subsection}{\numberline {2.1} Operators }{1}
+\contentsline {subsection}{\numberline {2.2} Flags }{1}
+\contentsline {subsection}{\numberline {2.3} Hooks }{1}
+\contentsline {subsection}{\numberline {2.4} Hacks }{1}
+\contentsline {section}{\numberline {3} Library }{1}
+\contentsline {subsection}{\numberline {3.1} Configuration Control }{1}
+\contentsline {subsection}{\numberline {3.2} Demo support code }{1}
+\contentsline {subsection}{\numberline {3.3} Dump a Whole File to the Screen}{2}
+\contentsline {subsection}{\numberline {3.4} License }{2}
+\contentsline {subsubsection}{\numberline {3.4.1} Misc }{2}
+\contentsline {section}{\numberline {4} Start up actions}{2}
+\contentsline {section}{\numberline {A}License}{2}
+\contentsline {subsection}{\numberline {A.1}nowarranty.txt}{2}
+\contentsline {subsection}{\numberline {A.2}warranty.txt}{2}
+\contentsline {subsection}{\numberline {A.3}conditions.txt}{2}
+\endgroup 

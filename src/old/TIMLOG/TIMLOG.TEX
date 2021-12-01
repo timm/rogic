@@ -1,0 +1,132 @@
+\documentclass[twocolumn,global]{timlog/svjour}
+
+\journalname{Submitted to WVU knowledge engineering} % banner on page 1
+\date{WP ref: tim/src/pl/nb/nb.tex \today} % wp info
+\usepackage{times} % best for viewing widely on acrobat
+%\topmargin -1.5cm % move page up and down
+
+\newcommand{\ME}{NB} % place name of software here
+
+\usepackage{timlog/timlog} %
+\usepackage{timlog/timtex} %
+
+\begin{document}
+\title{\TimLoG: Simple Prolog Documentation in \LaTeX }
+\author{Tim Menzies\inst{1}, Clarke Clause\inst{2}}
+
+\institute{Lane Department of Computer Science,
+       University of West Virginia,
+       PO Box 6109, Morgantown,
+       WV, 26506-6109, USA;\\
+       \url{http://tim.menzies.com};
+       \email{tim@menzies.com} \and
+ Prolog Programming International
+%\email{clause@prolog.net}
+} \maketitle
+%\copyrightspace
+% If you want to print drafts of the paper with a draft
+% notice in the copyright space, comment out the \copyrightspace
+% line above and include the \submitspace line below instead.
+%
+%\submitspace{Draft of paper submitted to ASE 2000.
+%\\WP:b/00/ase/whatif(\today).}
+
+\thispagestyle{empty}  % suppresses page number on first page
+\pagestyle{plain} % places numbers on all pages
+% pagestyle{empty} % removes numbers from all pages
+%\setcounter{tocdepth}{4} \tableeofcontents % TOC control
+% \listoffigures % LOF control
+
+\begin{abstract}
+Simple macros written in \LaTeX allow for a simple documentation
+scheme for Prolog.
+\end{abstract}
+
+\section{Introduction}
+``Pretty good'' is good and ugly  is pretty bad. Standard
+\LaTeX macros for pretty-printing Prolog source code (e.g. {\em\newline
+lgrind.sty} focus on just making the source code look pretty. \TimLoG~
+is a system for generating descriptions of Prolog source code;
+i.e. not just source
+code all the source code {\em and} explanatory text.
+
+Services offered by \TimLoG are: \bi \item Via \LaTeX, the ability to
+generate postscripts and acrobat files from Prolog source `code`.
+\item Very simple inclusion of Prolog source code files. \item A
+simple protocol for including outputs from Prolog programs into a
+document. \item Line numbers on source code. \item The ability to add
+``marks'' to source code and refer to these marks symbolically. \item
+Cross references between source code. \item Auto-inclusion of the GNU
+Public License into your system. \item Various useful little \LaTeX
+tricks. \ei
+
+Assuming  \TimLoG framework, then Prolog programmers can adopt
+The above is implemented via the {\em least} number of extensions to standard
+\LaTeX. The dream is that such a minimal implementation will be easy to extend and maintain.
+We'll see!
+
+\section{Installation}
+Find an existing \TimLoG~ installation and copy into a new directory.
+Also copy the  following files into the root of some new directory:
+\bd
+\item[{\tt timlog.tex}:] This file. Contains several examples of how to use
+\TimLoG. Copy this file to (e.g.)  {\tt mine.tex} and then write your own
+system by modifying this file.
+\item[{\tt sys/*}:] Magic files you shouldn't have to modify.
+\ed
+
+
+
+\input{timlog/style}
+
+\section{A Dummies Guide to RBP}
+
+\subsection{Origins \& Early Successes}
+ %\code{grocery.pl}{A PIKE definition of  the GROCERYobject.}
+
+%\code{order.pl}{A PIKE definition of  the ORDER object.}
+
+The use of such coordinating rules violates the RUDE assumption since
+every addition to the rule base has to be assessed with respect to
+its effect on the rest of the rules.
+
+
+\section{Conclusion}
+
+Pure rule-based programming had many proponents in the early days of
+knowledge engineering. These proponents became fewer in number as
+more and more developers were forced to extend pure rule-based
+programming.
+
+We have argued here that such extensions are necessary and simple.
+The Prolog code shown here is very brief and implements a object/rule
+interpreter/optimizer. Such a small system is easily customized and
+supports our preferred toolkit for knowledge engineering: the
+encoding of domain-specific knowledge cliches.
+
+\bibliographystyle{abbrv}
+{\footnotesize \bibliography{../../refs}}
+
+\appendix
+
+\section{License}\label{sec:license}
+\code{license/license.pl}
+
+This software is distributed under the  GNU General Public License.
+\fig{license/license.pl} shows routines to display that license.
+
+\subsection{nowarranty.txt}\label{sec:nowar}
+{\scriptsize \ME~ \input{license/nowarranty.txt}
+
+}
+
+\subsection{warranty.txt}\label{sec:war}
+{\scriptsize\input{license/warranty.txt}
+
+}
+
+\subsection{conditions.txt}\label{sec:cond}
+{\scriptsize\input{license/conditions.txt}
+
+}
+\end{document}

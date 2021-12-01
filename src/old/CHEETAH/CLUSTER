@@ -1,0 +1,21 @@
+gawk -F, 'BEGIN {n1=0.2; n2=1}
+     {chances=int($2/n1)*n1
+       cost=int($1/n2)*n2
+       x[chances]=1
+       y[cost]=1
+       plot[chances,cost]++ }
+END {
+   printf("  ,");
+   for (j in y) {
+      printf(" %s , ",j)
+   }
+   print "";
+   for (i in x) {
+       printf (" %s ,",i)
+       for (j in y) {
+           if ( plot[i,j] > 0  ) {
+                  printf(" %s ,", plot[i,j]) }
+           else  printf(" %s ,",0);
+          }
+       print " "}}
+' $1 > $1.out

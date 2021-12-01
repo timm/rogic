@@ -1,0 +1,5 @@
+% output from ':- demos(eg(rand1)).'
+
+0.408971 is a random number between 0 and 1.
+
+% runtime = 0 sec(s)

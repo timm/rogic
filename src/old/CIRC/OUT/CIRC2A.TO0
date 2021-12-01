@@ -1,0 +1,43 @@
+
+C4.5 [release 8] decision tree generator	Fri Jun 23 14:01:25 2000
+----------------------------------------
+
+    Options:
+	File stem <XDF>
+	Trees evaluated on unseen cases
+
+Read 340 cases (6 attributes) from XDF.data
+
+Decision Tree:
+
+light1 = light: ok (18.0)
+light1 = dark:
+|   switch3 = on: ok (70.0/19.0)
+|   switch3 = off: bad (252.0/110.0)
+
+
+Tree saved
+
+
+Evaluation on training data (340 items):
+
+	 Before Pruning           After Pruning
+	----------------   ---------------------------
+	Size      Errors   Size      Errors   Estimate
+
+	   5  129(37.9%)      5  129(37.9%)    (41.0%)   <<
+
+Evaluation on test data (38 items):
+
+	 Before Pruning           After Pruning
+	----------------   ---------------------------
+	Size      Errors   Size      Errors   Estimate
+
+	   5   12(31.6%)      5   12(31.6%)    (41.0%)   <<
+
+
+	  (a)  (b)	<-classified as
+	 ---- ----
+	   12    7	(a): class ok
+	    5   14	(b): class bad
+

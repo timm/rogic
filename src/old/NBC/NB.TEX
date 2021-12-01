@@ -1,0 +1,455 @@
+\documentclass[twocolumn,global]{svjour}
+\usepackage{tex4log}
+\journalname{Submitted to WVU Knowledge Engineering}
+\date{Wp ref: tim/src/pl/nb/nb \today}
+\newcommand{\ME}{NB}
+\begin{document}
+\title{\ME: A Prolog-based Naive Bayes Classifier}
+\author{Tim Menzies\inst{1}, Santa Clause\inst{2}}
+\institute{\input{institute}}
+\maketitle
+\thispagestyle{empty}\pagestyle{plain}
+ \begin{abstract}
+{\Tex4Log} is a simple
+set of macros written in {\LaTeX} allowing
+for a simple documentation
+scheme for Prolog.
+\end{abstract}
+\setcounter{tocdepth}{4}
+\tableofcontents
+\listoffigures
+\newpage
+
+\section{ Introductions
+}
+ The following package is a SWI-Prolog system~\cite{swiprolog}.
+Prolog is a useful language for rapdily building
+systems~\cite{der96,me89zb,bratko01,ok90,sterling94}.
+This {\Tex4Log}
+description  follows my standard(ish) pattern:
+\bi
+\item
+Shell
+\item Knowledge base
+\item
+An appendix with acknowledgements, references, and licensing details.
+\ei
+The shell divides up as follows:
+\bi
+\item Initializations:
+\bi
+\item
+Operator definitions (must be first).
+\item
+Flags (these can usually go just before the start-up
+actions but, for safety's sake, we place them at the
+front).
+\item
+hooks (into the Prolog reader)
+\item
+hacks (shameful things we'd rather hide).
+\ei
+\item
+The actual system code.
+\item
+Library code which, ideally,
+should be good for more than just this application).
+\item
+Start-up code (must be loaded into Prolog last).
+\ei
+
+\section{ Initializations
+}
+\subsection{ Operators }\begin{Verbatim}
+:- op(1001,xfx, the).
+:- op(1001,xfx, a  ).
+:- op(999 ,fx,  *  ).
+:- op(700,xfx, :=).
+:- op(1 ,fx, (?) ).
+:- op(1 ,fx, (!) ).
+\end{Verbatim}
+\subsection{ Flags }\begin{Verbatim}
+:- multifile     option/2, meta/8, oo/5.
+:- dynamic       option/2, meta/8, oo/5.
+:- discontiguous option/2, meta/8, oo/5.
+\end{Verbatim}
+\subsection{ Hooks }\begin{Verbatim}
+term_expansion((X the Rel),Z) :- dd(Rel,X,Z).
+term_expansion((X a   Rel),Z) :- eg(Rel,X,Z).
+term_expansion(A=B,       []) :- set(A=B).
+\end{Verbatim}
+\subsection{ Hacks
+}
+ Shown here are some dark secrets of the Prolog
+wizards. If you don't yet understand
+the following code,
+then you don't need to know it. Trust us,
+we are knowledge engineers.  \begin{Verbatim}
+goal_expansion(is(A,B,C,C),            is(A,B)).
+goal_expansion(=(A,B,C,C),              =(A,B)).
+goal_expansion(>=(A,B,C,C),            >=(A,B)).
+goal_expansion(>(A,B,C,C),              >(A,B)).
+goal_expansion(<(A,B,C,C),              <(A,B)).
+goal_expansion(<=(A,B,C,C),            <=(A,B)).
+\end{Verbatim}
+\section{ Library code
+}
+\subsection{ Does a goals have 1 matching clause? }\begin{Verbatim}
+singleton(X) :-
+    Sym='$sym',
+    flag(Sym,_,0),
+    \+ doubleton(Sym,X),
+    flag(Sym,1,1).
+
+doubleton(Sym,X) :- clause(X,_),flag(Sym,N,N+1),N > 1.
+
+clause1(X,Y) :- singleton(X), clause(X,Y).
+\end{Verbatim}
+\subsection{ Configuration Control }\begin{Verbatim}
+[] := []    :- !.
+[H0|T0] := [H|T] :- !, H0 := H, T0 := T.
+X := Y      :-  option(X,Z),!, Y=Z.
+X := _      :-  !, barph(missingOption(X)).
+?X          :- atomic(X), X := 1.
+
+set(X=Y) :- retractall(option(X,_)), assert(option(X,Y)).
+
+commandLine :-
+    current_prolog_flag(argv, Argv),
+    append(_, [--|Args], Argv), !,
+    concat_atom(Args, ' ', SingleArg),
+    term_to_atom(Term, SingleArg),
+    c2l(Term,List),
+    forall(member(One,List), set(One)).
+commandLine.
+\end{Verbatim}
+\subsection{ Demo support code
+}
+
+Catches the output from some predicate X
+and saves it a file X.spy. The command:
+
+{\scriptsize
+\begin{verbatim}
+\SRC{X.spy}{Caption}
+\end{verbatim}}
+\noindent
+includes the generated file into the {\LaTeX} document.
+
+The code `demos/1` deletes any old output and runs some goal twice: once
+to trap it to a file and once to show the results on the screen.  \begin{Verbatim}
+demos(G) :-
+    sformat(Out,'~w.spy',G),
+    (exists_file(Out) -> delete_file(Out) ; true),
+    tell(Out),
+    format('% output from '':- demos(~w).''\n\n',G),
+        T1 is cputime,
+    ignore(forall(G,true)),
+    T2 is (cputime - T1),
+    format('\n% runtime = ~w sec(s)\n',[T2]),
+        told,
+    format('% output from '':- demos(~w).''\n',G),
+        ignore(forall(G,true)),
+    format('\n% runtime = ~w sec(s)',[T2]).
+\end{Verbatim}
+\subsection{ Dump a Whole File to the Screen}\begin{Verbatim}
+chars(F) :- see(F), get_byte(X), ignore(chars1(X)), seen.
+
+chars1(-1) :- !.
+chars1(X)  :- put(X), get_byte(Y), chars1(Y).
+\end{Verbatim}
+\subsection{ License }\begin{Verbatim}
+hello :-  % \MARK{hello}
+    [program,version,copyright,motto,copywho]:=[N,V,Y,M,C],
+    format('~s version ~s\n Copyright (C) ~s by ~s\n',
+           [N,V,Y,C]),
+    format(' "~s"\n\n~s ~s ',[M,N,V]),
+    chars('nowarranty.txt'). % see \tion{nowar}
+
+warranty :-
+    [program,copyright,copywho]:=[P, Y,C],
+    format('~s by ~s\n Copyright (C) ~s\n\n',[P,C,Y]),
+    chars('warranty.txt'),nl. % see \tion{war}
+
+conditions :-
+    chars('conditions.txt'),nl. % see \tion{cond}
+\end{Verbatim}
+\subsection{ Miscalleanous
+}
+ Pretty print a list of terms.  \begin{Verbatim}
+portrays(L) :- portrays(L,_,_).
+
+portrays([],_,_).
+portrays([H|T],F0,A0) :-
+    functor(H,F,A),
+    (F0=F,A0=A
+        -> portray_clause(H),
+           portrays(T,F0,A0)
+         ; nl,portray_clause(H),
+           portrays(T,F,A)).
+\end{Verbatim}
+ Other stuff.  \begin{Verbatim}
+c2l((X,Y),[X|Z]) :- !,c2l(Y,Z).
+c2l(X,[X]).
+
+l2c([W,X|Y],(W,Z)) :- l2c([X|Y],Z).
+l2c([X],X).
+
+mostC2l((X,Y),[X|Z]) :- !,mostC2l(Y,Z).
+mostC2l(_,[]).
+
+sneak(X) :- load_files(X,[silent(true),if(changed)]).
+
+spit(N1,N2,X) :- (0 is N1 mod N2 -> spit(X) ; true).
+
+spit(X) :- ?verbose,!,write(user,X),flush_output(user).
+spit(_).
+
+barph(X) :- format('%W> ~p\n',X),fail.
+\end{Verbatim}
+\subsection{ Wrapper }\begin{Verbatim}
+wrapper(X,Out) :-
+    wrap(X,Before,[],After,[],Goal),
+    append(Before,[Goal|After],Temp),
+    l2c(Temp,Out).
+
+wrap(X,B0,B,A0,A,Y) :-
+    once(wrap0(X,Z)),
+    wrap1(Z,B0,B,A0,A,Y).
+
+wrap0(X,        leaf(X) ) :- var(X).
+wrap0(X,        leaf(X) ) :- atomic(X).
+wrap0([],    leaf(true) ).
+wrap0([H|T],      [H|T] ).
+wrap0(?X,            ?X ).
+wrap0(!X,            !X ).
+wrap0(X,        term(X) ).
+
+wrap1(leaf(X),     B, B, A, A, X).
+wrap1([H0|T0],     B0,B, A0,A, [H|T]) :-
+    wrap(H0,   B0,B1,A0,A1,H),
+    wrap(T0,   B1,B, A1,A, T).
+wrap1(term(X),     B0,B, A0,A, Y) :-
+    X =.. L0,
+    wrap(L0,   B0,B,A0,A,L),
+    Y =.. L.
+wrap1(?X, [ooo(X,Y,Y)|B],B,A,A,Y).
+wrap1(!X, B,B,[ooo(X,_,Y)|A],A,Y).
+
+%interpreter
+ooo(X,Y0,Y,T0,T) :- oo(T0,X,Y0,Y,T).
+%optimizer
+goal_expansion(ooo(X,Y,Z,T0,T), oo(T0,X,Y,Z,T)).
+\end{Verbatim}
+\subsection{ Accessors
+}
+\subsubsection{ Usage }\begin{Verbatim}
+o(Com,X) :- o(Com,X,_).
+
+o([],X,X).
+o([H|T],X,Y)  :- o(H,X,Z), o(T,Z,Y).
+o(F >= T,X,X) :- oo(X,F,V,V,X), V >= T.
+o(F < T,X,X)  :- oo(X,F,V,V,X), V <  T.
+o(!F=V,X,Y)   :- !,oo(X,F,_,V,Y).
+o(-F,X,Y)     :- oo(X,F,V0,V,Y), V is V0 - 1.
+o(+F,X,Y)     :- oo(X,F,V0,V,Y), V is V0 + 1.
+o(F+V,X,Y)    :- oo(X,F,L,[V|L],Y).
+o(F is Z,X,Y) :- oo(X,F,_,V,Y), V is Z.
+o(F=V,X,X)    :- oo(X,F,V,V,X).
+
+goal_expansion(o(X,Y),o(X,Y,_)).
+
+goal_expansion(o([H],X,Y), o(H,X,Y)) :-
+goal_expansion(o([H1,H2|T],X,Y),
+           (o(H1,X,Z),o([H2|T],Z,Y))).
+
+goal_expansion(o(X,Y,Z),Body) :-
+    clause1(o(X,Y,Z),Body).
+
+goal_expansion(oo(X,F,V0,V,Y),Body) :-
+    clause1(oo(X,F,V0,V,Y),Body).
+
+% XXX screw up here
+goal_expansion(*(X,Y,Y),W) :- wrapper(X,W).
+\end{Verbatim}
+\subsubsection{ Field details
+}
+ Each field has annotations that indicate:
+\be
+\item If Prolog should index on a particular field.
+\item A fields name and default falue.
+\item Some rule that defines the
+valid range of a field.
+\ee  \begin{Verbatim}
+detail(+X:R=D,1,      X,   R,   D).
+detail(+X:R,  1,      X,   R,   _).
+detail(+X=D,  1,      X,   any, D).
+detail(+X,    1,      X,   any, _).
+detail(X:R=D, 0,      X,   R,   D).
+detail(X:R,   0,      X,   R,   _).
+detail(X=D,   0,      X,   any, D).
+detail(X,     0,      X,   any, _).
+\end{Verbatim}
+These details are stored in a `dd0/8` fact which we
+can manipulate as follows:   \begin{Verbatim}
+oo(meta(A,B,C,D,E,F,G,H),X,Y,Z,Out) :- % \MARK{meta/5}
+    dd0(X,Y,Z,meta(A,B,C,D,E,F,G,H),Out).
+
+dd0(rel0, X,Y,meta(X,B,C,D,E,F,G,H),meta(Y,B,C,D,E,F,G,H)).
+dd0(arity,X,Y,meta(A,X,C,D,E,F,G,H),meta(A,Y,C,D,E,F,G,H)).
+dd0(rel,  X,Y,meta(A,B,X,D,E,F,G,H),meta(A,B,Y,D,E,F,G,H)).
+dd0(index,X,Y,meta(A,B,C,X,E,F,G,H),meta(A,B,C,Y,E,F,G,H)).
+dd0(names,X,Y,meta(A,B,C,D,X,F,G,H),meta(A,B,C,D,Y,F,G,H)).
+dd0(rules,X,Y,meta(A,B,C,D,E,X,G,H),meta(A,B,C,D,E,Y,G,H)).
+dd0(inits,X,Y,meta(A,B,C,D,E,F,X,H),meta(A,B,C,D,E,F,Y,H)).
+dd0(blank,X,Y,meta(A,B,C,D,E,F,G,X),meta(A,B,C,D,E,F,G,Y)).
+\end{Verbatim}
+\subsubsection{ Core engine
+}
+ Code for being able to  access and changed
+named fields within a term.  \begin{Verbatim}
+dd(Rel0,FieldsC,All) :-
+    dd1s(new(Rel0,FieldsC),Meta),
+    bagof(One, Meta^dd2(Meta,One), All).
+
+dd1s(new(Rel0,Fields0),Out) :-
+    atom_concat(Rel0,'_',Rel),
+    c2l(Fields0,Fields1),
+    reverse([+id_|Fields1], [_|Fields]),
+    length(Fields,Arity),
+    functor(Blank,Rel0,Arity),
+    dd1(Fields,
+              meta(Rel0,Arity,Rel,[],[],[],[],Blank),
+           Out).
+
+dd1([],X,X).
+dd1([H|T]) -->
+    {detail(H,I,N,R,D)},
+    o([index+I, names+N,rules+R,inits+D]),
+    dd1(T).
+\end{Verbatim}
+\subsubsection{ dd2/2
+}
+ Reset the counter for this relation to zero.  \begin{Verbatim}
+dd2(X,(:- flag(Rel0,_,0))) :- o(rel0=Rel0,X).
+\end{Verbatim}
+ Create an index on the indexed fields.  \begin{Verbatim}
+dd2(X,(:- index(Index))) :-
+    o([rel0=Rel0,index=Index0],X),
+    Index =.. [Rel0|Index0].
+\end{Verbatim}
+ Note that assertions in this relation may or may not
+exist at a particular time.  \begin{Verbatim}
+dd2(X,(:- dynamic R /A)) :- o([rel0=R,arity=A],X).
+\end{Verbatim}
+ Automatically generate arity five accessors, just like
+the ones written manually at \Line{meta/5}.
+\begin{Verbatim}
+dd2(Meta,Out) :-
+    o([names=Names,rel0=Rel0,rel=Rel,arity=Arity],Meta),
+    nth0(Pos,Names,Name),
+    length(Before,Pos),
+    functor(Term0, Rel0,Arity), Term0 =.. [_|L0],
+    functor(Term,  Rel0,Arity), Term  =.. [_|L1],
+    append(Before,[Old|After],L0),
+    append(Before,[New|After],L1),
+    Out =.. [Rel,Name,Old,New,Term0,Term].
+\end{Verbatim}
+ Define a {\em bridge} predicate that calls the
+arity five accessor that is relevant to a particular term.  \begin{Verbatim}
+dd2(X,(oo(T0,Com,V0,V,T) :- Body)) :-
+    o([rel0=Rel0,rel=Rel,arity=Arity],X),
+    functor(T0,Rel0,Arity),
+    Body =.. [Rel,Com,V0,V,T0,T].
+\end{Verbatim}
+ Finish up the meta-level fact.  \begin{Verbatim}
+dd2(X,Y) :-
+    o([rel0=Rel0,inits=Inits0],X),
+    Inits =.. [Rel0|Inits0],
+    o(!inits=Inits,X,Y).
+\end{Verbatim}
+ Write our terms with names fields very succinctly.  \begin{Verbatim}
+dd2(X,(portray(Term) :- write(Rel/ Arity))) :-
+    o([rel0=Rel,arity=Arity],X),
+    functor(Term,Rel,Arity).
+\end{Verbatim}
+ Singlton accessors with arity 3 can be expanded to accessor 5   \begin{Verbatim}
+dd2(X,(goal_expansion(H,Body)  :- clause1(H,Body))) :-
+    o(rel=Rel,X),
+    H =.. [Rel,_,_,_].
+\end{Verbatim}
+ Singleton accessors with arity 5 can be evaluated,
+    then replaced with `true`.  \begin{Verbatim}
+dd2(X,(goal_expansion(H,true) :- clause1(H,true))) :-
+    o(rel=Rel,X),
+    functor(H,Rel,5).
+\end{Verbatim}
+\subsubsection{ Demos }\begin{Verbatim}
+egdd :- % \see{egdd.spy}
+    expand_term(
+       (+deptNo : num
+        ,name   : [x,y,z]
+        ,+age   : num = 1
+        ,are the eg),
+       X),
+    portrays(X).
+\end{Verbatim}
+ \SRC{egdd.spy}{}
+
+\subsubsection{ Generating an instance
+}
+ see \Line{d}  \begin{Verbatim}
+eg(Rel,FieldsC,Datum) :-
+    mostC2l(FieldsC,FieldsL),
+    flag(Rel,M,M+1),
+    N is M + 1,
+    spit(N,50,+),
+    Datum =.. [Rel,N|FieldsL].
+\end{Verbatim}
+\subsection{ Statistics }\begin{Verbatim}
+stale=0, mean:num=0, sd:num=0,sum:num=0
+,sumSquared:num=0, are the gaussian.
+
+gaussian_(add(X)) -->
+    * !stale=1,
+        * !sum is ?sum+X,
+    * !sumSquared is ?sumSquared + X*X.
+
+stale, bins=[], total: num=0, are the histogram.
+\end{Verbatim}
+\section{ The NB system
+}
+  If an application stands on some library,
+    then there is some hope that the library
+    may be useful elsewhere even if the application
+is not. So, the first rule of Timm: a good application is an empty
+application; i.e. is just a place where
+supposedly reusable components work together for a while.
+
+\subsection{ Loading }\begin{Verbatim}
+namesData :- names,data.
+
+names :- relation:=R, names(R).
+data  :- relation:=R, data(R).
+
+names(X) :- atom_concat(X,'.names',Y), [Y].
+data(X)  :- atom_concat(X,'.data', Y), [Y].
+\end{Verbatim}
+
+
+\section{ Start up actions}\begin{Verbatim}
+:- sneak(
+    ['defaults.nb' % see \tion{defaults}
+        ,'config.nb'   % see \tion{config}
+    ]).
+
+:- commandLine.
+:- ?verbose -> hello ; true.
+:- namesData.
+\end{Verbatim}
+\acknowledgement{\input{thanks}}
+\bibliographystyle{abbrv}{
+\footnotesize \bibliography{refs}
+\appendix
+\input{license}
+\end{document}

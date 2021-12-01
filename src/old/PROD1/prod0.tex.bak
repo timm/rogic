@@ -1,0 +1,180 @@
+\documentclass[twocolumn,10pt,global]{svjour}\usepackage{prod}
+
+%?? what is the audience of this document
+\journalname{{\PROD}= Prolog documentation: example file}
+
+%?? where is this document stored?
+\date{Wp ref: ~menzies/src/pl/prod/prod0.tex \today}
+
+%?? what is the name of this system?
+\newcommand{\ME}{PROD0}
+
+\begin{document}
+
+\title{\ME: An Example of Using \newline the {\PROD} documentation system}
+
+%?? who is the author of this document?
+\author{Tim Menzies\inst{1}, Santa Clause\inst{2}}
+
+%?? where does these authors work?
+
+\institute{ 
+% institute 1
+Lane Department of Computer Science,
+       University of West Virginia,
+       PO Box 6109, Morgantown,
+       WV, 26506-6109, USA;\\
+       \url{http://tim.menzies.us};
+       \url{tim@menzies.us} 
+% institute 2
+\and
+Artic Software Systems\\
+       \url{http://north.pole/~santac};
+       \url{santa@north.pole}
+}
+
+
+\maketitle%\thispagestyle{empty}\pagestyle{plain}
+
+%?? What is your 1 paragraph abstract summary of this document?
+
+\includegraphics[width=2in]{ugly.eps}
+\begin{abstract}
+This document is a minimal example of the using the
+{\PROD} Prolog documentation system. 
+\end{abstract}
+
+
+%?? how detailed do you want the table of contents?
+\setcounter{tocdepth}{2}
+
+\tableofcontents\newpage%\listoffigures
+
+\section{ Introduction }
+ Here is some explanation text of a Prolog program. 
+This document describes a little
+SWI-Prolog~\cite{swiprolog} utility for summing numbers.
+Prolog is a useful language for rapdily building
+systems~\cite{der96,me89zb,bratko01,ok90,sterling94}.
+
+
+\section{ {\tt Sum/2}}
+ `Sum/2` sums a list using tail recursion. 
+
+\subsection{ About Tail Recursion}
+ In tail recursion, the recursive
+call is the last sub-goal in the body. Tail recursive calls can be optimized
+as follows. On the stack of current goals, the head goal can be replaced 
+by the tail recursive call (since they both have the same functor and
+arity). Hence, tail recursive calls don't use the same amount of stack
+memory as non-tail-recursive calls.
+
+The trick to tail recursion is a {\em carry variable} that holds the
+result seen too date.  
+
+\section{ Implementation}
+ First, we need to handle the special case of an empty list. 
+\begin{Verbatim}
+sum([],0).
+\end{Verbatim}
+ In the case of `sum/2`, we initialize this 
+carry variable to the head of the list being summed. 
+\begin{Verbatim}
+sum([H|T],S) :- sum(T,H,S).
+\end{Verbatim}
+ The rest of the implementation just adds the head of the
+current list to the carry variable, then passes the result to
+the recursive call. 
+\begin{Verbatim}
+sum([],S,S).
+sum([H|T],In,Out) :- Temp is H + In, sum(T,Temp,Out).
+\end{Verbatim}
+\section{ Demonstrations}
+ To demo the code, we need to:
+\bi
+\item Write a demo predicate that shows off our code in action.
+ This is accomplished using
+the `egsum/0` predicate shown below. 
+\item Trap the output to a file. This is accomplished using
+the `Demos/1` predicate.
+\item Include that file in this document. This is accomplished using
+the following latex magic:
+\begin{verbatim}
+\SRC{egsum.spy}{`Sum/2` in action}
+\end{verbatim}
+After that include, we can show the output in \fig{egsum.spy}
+and reference that figure using
+\begin{verbatim}
+ \fig{egsum.spy}
+\end{verbatim}
+\ei
+\SRC{egsum.spy}{`Sum/2` in action}
+
+\subsection{ {\tt Egsum/0} }\begin{Verbatim}
+egsum :-
+	Numbers = [[2,5,8,1,3,4]
+	          ,[]
+                  ,[2,10,7]
+                  ,[3]
+                  ],
+	forall(member(Nums,Numbers),
+              (sum(Nums,Sum),
+	       format('The sum of ~w is ~w.\n',[Nums,Sum]))).
+\end{Verbatim}
+\subsection{ {\tt Demos/1}}
+
+`Demos/1` runs a goal `G` and catches the output to the file
+`G.spy`. Also, just so you know what is going on,
+it runs the goal `G` a second time and sends the output to the screen. 
+\begin{Verbatim}
+demos(G) :-
+	sformat(Out,'~w.spy',G),
+	freshFile(Out),
+	tell(Out),
+	format('% output from '':- demos(~w).''\n\n',G),
+        T1 is cputime,
+	ignore(forall(G,true)),
+	T2 is (cputime - T1),
+	format('\n% runtime = ~w sec(s)\n',[T2]),
+        told,
+	format('% output from '':- demos(~w).''\n',G),  
+        ignore(forall(G,true)),
+	format('\n% runtime = ~w sec(s)',[T2]).
+\end{Verbatim}
+
+`Demos/1` needs a helper predicate. `FreshFile/1` makes sure that no one
+else has scribbled, or is currently scribbling, on our output file.
+
+\begin{Verbatim}
+freshFile(X) :- 
+	(current_stream(X,_,S) -> close(S)       ; true),
+	(exists_file(X)        -> delete_file(X) ; true).
+\end{Verbatim}
+\subsection{ Using {\tt Demos/1}.}
+ Next, we need to run the demo code as follows: 
+\begin{LISTING}
+?- demos(egsum).
+\end{LISTING}
+Once that is done, then when this document will include the
+output.
+
+\section{ Conclusion}
+ That's all folks! 
+%?? who helped with this work?
+
+\clearpage
+\acknowledgement{
+This research was conducted at West Virginia University
+under NASA
+contract NCC2-0979. The work was sponsored by the NASA Office of
+Safety and Mission Assurance under the Software Assurance Research
+Program led by the NASA IV\&V Facility.  Reference herein to any
+specific commercial product, process, or service by trade name,
+trademark, manufacturer, or otherwise, does not constitute or imply
+its endorsement by the United States Government.
+}
+
+\bibliographystyle{abbrv}{\footnotesize \bibliography{refs}}
+\appendix
+\input{license}
+\end{document}

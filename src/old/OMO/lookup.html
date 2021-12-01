@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>lookup.pl Table lookups</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#convenient_table_lookups">Convenient Table Lookups</a></li>
+	<ul>
+
+		<li><a href="#uses">Uses</a></li>
+		<li><a href="#operators">Operators</a></li>
+		<li><a href="#flags">Flags</a></li>
+		<li><a href="#hooks">Hooks</a></li>
+		<li><a href="#lookup(+table,+row,+column,value):_find_a_value"><code>lookup(+Table,+Row,+Column,-Value)</code>: find a value</a></li>
+		<li><a href="#deftable(+tabulardata,[fact|facts]):_define_a_table"><code>defTable(+TabularData,-[Fact|Facts])</code>: define a table</a></li>
+		<li><a href="#demonstration_code:_*/">Demonstration code: */</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="convenient_table_lookups">Convenient Table Lookups</a></h1>
+<pre>
+ :- ensure_loaded([lookup0,lookup1]).</pre>
+<p>
+</p>
+<h2><a name="uses">Uses</a></h2>
+<pre>
+  :- ensure_loaded([demos,maths]).</pre>
+<p>
+</p>
+<h2><a name="operators">Operators</a></h2>
+<pre>
+  :- op(999,xfx,holds).
+  :- op(1,  xfx, to).</pre>
+<p>
+</p>
+<h2><a name="flags">Flags</a></h2>
+<p>Define a predicate for the lookup tables.</p>
+<pre>
+ :- discontiguous lookUp1/4.
+ :- multifile lookUp1/4.
+ :- index(lookUp1(1,1,1,0)).</pre>
+<p>
+</p>
+<h2><a name="hooks">Hooks</a></h2>
+<p>Tell the Prolog reader about our lookup tables.</p>
+<pre>
+ term_expansion(Table holds ColsRows , Out) :-
+     xpandTable(Table holds ColsRows,Out).</pre>
+<p>/*</p>
+<p>
+</p>
+<h2><a name="lookup(+table,+row,+column,value):_find_a_value"><code>lookup(+Table,+Row,+Column,-Value)</code>: find a value</a></h2>
+<p>Cell access can be via an exact match or
+via a range query: */</p>
+<pre>
+ lookUp(T,X,Y,Out) :-
+    lookUp1(T,R,C,Out),
+    gt(X,R),
+    gt(Y,C).</pre>
+<pre>
+ gt(Value,X to Y) :- !, X =&lt; Value, Value =&lt; Y.
+ gt(Value,Value). /*</pre>
+<p>
+</p>
+<h2><a name="deftable(+tabulardata,[fact|facts]):_define_a_table"><code>defTable(+TabularData,-[Fact|Facts])</code>: define a table</a></h2>
+<p>Each Fact has the form <code>lookUp1(Table, Row, Column,Value)</code>. */</p>
+<pre>
+  deftable(Table holds ColsRows,Out) :-
+    nonvar(ColsRows),
+    ColsRows = (Cols+Rows),
+    lookUpTable(Table=Cols+Rows,Out).</pre>
+<pre>
+ lookUpTable(X,Out) :-
+    bagof(Y,X^list2Relation1(X,Y),Out).</pre>
+<pre>
+ list2Relation1(Table=Cols+Rows, lookUp1(Table,R,C,X)):-
+    nth1(Pos,Cols,C),
+    member([R|Cells],Rows),
+    nth1(Pos,Cells,X),
+    nonvar(X). /*</pre>
+<p>
+</p>
+<h2><a name="demonstration_code:_*/">Demonstration code: */</a></h2>
+<pre>
+ egLookUpDemo holds
+    % age         weight
+    % ----------  -------------------------------
+                  [1 to 19, 20 to 50, 51 to inf]+
+    [[ 0 to 20,        low,      low,       avg]
+    ,[21 to 40,        low,      avg,      high]
+    ,[41 to inf,       avg,     high,      high]
+    ].</pre>
+<pre>
+ eglookup :- 
+    member(Age,[20,30,41]),
+    member(Weight,[15,20,80]),
+    lookUp(egLookUpDemo,Age,Weight,X),
+    format('[age(~w),weight(~w)]= ~w\n',
+           [Age,Weight,X]).</pre>
+<pre>
+ eglookups :- demo(eglookup).</pre>
+<pre>
+ %% eglookup.spy (output from ':- demos(eglookup).')
+[age(20),weight(15)]= low
+[age(20),weight(20)]= low
+[age(20),weight(80)]= avg
+[age(30),weight(15)]= low
+[age(30),weight(20)]= avg
+[age(30),weight(80)]= high
+[age(41),weight(15)]= avg
+[age(41),weight(20)]= high
+[age(41),weight(80)]= high
+ %% runtime = 0.0100144 sec(s)</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

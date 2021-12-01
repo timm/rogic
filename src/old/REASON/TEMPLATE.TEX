@@ -1,0 +1,137 @@
+\documentclass{article}
+
+%%  Latex generated from POD in document /cygdrive/i/tim/src/pl/reason/mypod_tmp.pl
+%%  Using the perl module Pod::LaTeX
+%%  Converted on Sat Aug 30 22:29:55 2003
+
+
+\usepackage{makeidx}
+\makeindex
+
+
+\input{mypodstyle}
+
+\tableofcontents
+
+\clearpage
+\section{Template\label{Template}\index{Template}}
+
+
+Standard Prolog file structure */
+
+
+
+/*
+
+\section{Header */\label{Header_}\index{Header */}}
+
+
+/*
+
+\subsection{Loads\label{Loads}\index{Loads}}
+
+
+Load some code using "ensure\_loaded". e.g.: */
+
+\begin{verbatim}
+ :- ensure_loaded([xx]).
+\end{verbatim}
+
+
+/*
+
+
+
+(Warning: there is some quirk in the Prolog loader
+ when doing \texttt{goal\_expansion}s. If you are using \texttt{ecg}s
+ or \texttt{defs}, then DON'T \texttt{ensure\_loaded} those files;
+rather, load them the old-fashioned way: */
+
+\begin{verbatim}
+ :- [ecg]. */
+\end{verbatim}
+\subsection{Operators\label{Operators}\index{Operators}}
+
+
+Change the Prolog parser using \texttt{op/3}x. e.g.: */
+
+\begin{verbatim}
+ :- op(700,xfx,and).
+\end{verbatim}
+
+
+/*
+
+\subsection{Flags\label{Flags}\index{Flags}}
+
+
+Index predicates (with \texttt{index/1})
+or make some dynamic (with \texttt{dynamic/1})
+or discontiguous (with \texttt{discontiguous/1})
+or .... e.g.: */
+
+\begin{verbatim}
+ :- index(myemp(1,1,0,1,00)).
+ :- discontiguous defs/2.
+ :- mulitfile defs/2.
+ :- dynamic defs/2.
+\end{verbatim}
+
+
+/*
+
+\subsection{Hooks\label{Hooks}\index{Hooks}}
+
+
+Change the Prolog parser using \texttt{term\_expansion/2} and
+\texttt{goal\_expansion/2}. e.g. */
+
+\begin{verbatim}
+ term_expansion(X and Y,Z) :- xpands(X and Y, Z).
+\end{verbatim}
+\begin{verbatim}
+ goal_expansion(L with M and N,Z) :- tupleCompile(L with M and N,Z).
+\end{verbatim}
+
+
+/*
+
+\subsection{Hacks\label{Hacks}\index{Hacks}}
+
+
+We won't talk about these. I didn't not write these.
+You did not see them. */
+
+\begin{verbatim}
+ goal_expansion(true(X,X),true).
+\end{verbatim}
+
+
+/*
+
+\section{Body\label{Body}\index{Body}}
+
+
+Insert your applciation code here.
+
+\subsection{Utils\label{Utils}\index{Utils}}
+
+
+Finally, add any general utilities last.  e.g. */
+
+\begin{verbatim}
+ barph(X) :- format('W> ~w\n',X), fail. /*
+\end{verbatim}
+\section{Footer */\label{Footer_}\index{Footer */}}
+
+
+/*
+
+\subsection{Start-ups\label{Start-ups}\index{Start-ups}}
+
+
+After all the above is loaded, how do we get this stuff started. */
+
+\printindex
+
+\end{document}

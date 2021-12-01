@@ -1,0 +1,2 @@
+score((,),min).
+score((;),average).

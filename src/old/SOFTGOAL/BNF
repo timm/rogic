@@ -1,0 +1,14 @@
+Graph  ::== goal (Vertex)+ (Edge)* 
+Vertex ::== (and | or) Class Author CreationDate 
+Class  ::== Softgoal | Target | FR
+
+Class  ::== Softgoal | Target | FR
+Impact ::== break | hurt | "?" | "=" | help | make
+break < hurt < help < make
+Label ::== null | Denied |  WeaklyDenied | undecided
+         | WeaklySatisficed | Satisficed | conflict
+Denied            ::== -2        WeaklyDenied ::== -1
+WeaklySatisficed  ::==  1        Satisficed   ::==  2
+Edge   ::== (implicit | explicit)
+            Vertex Impact Vertex
+            [Claim]

@@ -1,0 +1,150 @@
+\documentclass[twocolumn,global]{svjour}
+\usepackage{tex4log}
+\journalname{Submitted to WVU Knowledge Engineering}
+\date{Wp ref: tim/src/pl/cocomo/cocomo \today}
+\newcommand{\ME}{POCOMO}
+\begin{document}
+\title{\ME: A Prolog-based Software Cost Estimation Tool}
+\author{Tim Menzies\inst{1}, Santa Clause\inst{2}}
+\institute{\input{institute}}
+\maketitle
+\thispagestyle{empty}\pagestyle{plain}
+ \begin{abstract}
+COCOMO is a software effort estimation tool.
+POCOMO is COCOMO written in SWI-Prolog~\cite{swiprolog}. and documented using
+{\Tex4Log}.
+\end{abstract} 
+\setcounter{tocdepth}{4}\tableofcontents\listoffigures
+\section{% Introduction}
+ Standard format:
+\bi
+\item
+Shell
+\item Knowledge base
+\item 
+An appendix with acknowledgements, references, and licensing details.
+\ei
+The shell divides up as follows:
+\bi
+\item Initializations:
+\bi
+\item
+Operator definitions (must be first).
+\item
+Flags (these can usually go just before the start-up
+actions but, for safety's sake, we place them at the
+front).
+\item
+hooks (into the Prolog reader)
+\item
+hacks (shameful things we'd rather hide).
+\ei
+\item
+The actual system code.
+\item
+Library code which, ideally,
+should be good for more than just this application).
+\item
+Start-up code (must be loaded into Prolog last).
+\ei 
+\section{ Initializations}
+\subsection{ Operators}
+\subsection{ Flags}
+\subsection{ Hooks}
+\subsection{ Hacks}
+\section{ Library}
+\subsection{ Configuration Control }\begin{Verbatim}
+[] := []    :- !.
+[H0|T0] := [H|T] :- !, H0 := H, T0 := T.
+X := Y      :-  option(X,Z),!, Y=Z.
+X := _      :-  !, barph(missingOption(X)).
+?X          :- atomic(X), X := 1.
+
+set(X=Y) :- retractall(option(X,_)), assert(option(X,Y)).
+
+commandLine :-
+	current_prolog_flag(argv, Argv),
+	append(_, [--|Args], Argv), !,
+	concat_atom(Args, ' ', SingleArg),
+	term_to_atom(Term, SingleArg),
+	c2l(Term,List),
+	forall(member(One,List), set(One)).
+commandLine.
+\end{Verbatim}
+\subsection{ Demo support code}
+
+Catches the output from some predicate X
+and saves it a file X.spy. The command:
+
+{\scriptsize
+\begin{verbatim}
+\SRC{X.spy}{Caption}
+\end{verbatim}}
+\noindent
+includes the generated file into the {\LaTeX} document.
+
+The code `demos/1` deletes any old output and runs some goal twice: once
+to trap it to a file and once to show the results on the screen.  \begin{Verbatim}
+demos(G) :-
+	sformat(Out,'~w.spy',G),
+	(exists_file(Out) -> delete_file(Out) ; true),
+	tell(Out),
+	format('% output from '':- demos(~w).''\n\n',G),
+        T1 is cputime,
+	ignore(forall(G,true)),
+	T2 is (cputime - T1),
+	format('\n% runtime = ~w sec(s)\n',[T2]),
+        told,
+	format('% output from '':- demos(~w).''\n',G),  
+        ignore(forall(G,true)),
+	format('\n% runtime = ~w sec(s)',[T2]).
+\end{Verbatim}
+\subsection{ Dump a Whole File to the Screen}\begin{Verbatim}
+chars(F) :- see(F), get_byte(X), ignore(chars1(X)), seen.
+    
+chars1(-1) :- !.
+chars1(X)  :- put(X), get_byte(Y), chars1(Y).
+\end{Verbatim}
+\subsection{ License }\begin{Verbatim}
+hello :-  % \MARK{hello}
+	[program,version,copyright,motto,copywho]:=[N,V,Y,M,C],
+	format('~s version ~s\n Copyright (C) ~s by ~s\n',
+	       [N,V,Y,C]),
+	format(' "~s"\n\n~s ~s ',[M,N,V]),
+	chars('nowarranty.txt'). % see \tion{nowar}
+   
+warranty :-
+	[program,copyright,copywho]:=[P, Y,C],
+	format('~s by ~s\n Copyright (C) ~s\n\n',[P,C,Y]),
+	chars('warranty.txt'),nl. % see \tion{war}
+
+conditions :-
+	chars('conditions.txt'),nl. % see \tion{cond}
+\end{Verbatim}
+\subsubsection{ Misc }\begin{Verbatim}
+sneak(X) :- load_files(X,[silent(true),if(changed)]).
+
+spit(N1,N2,X) :- (0 is N1 mod N2 -> spit(X) ; true).
+
+spit(X) :- ?verbose,!,write(user,X),flush_output(user).
+spit(_).
+
+barph(X) :- format('%W> ~p\n',X),fail.
+\end{Verbatim}
+\section{ Start up actions}\begin{Verbatim}
+:- sneak(
+	['defaults.nb' % see \tion{defaults}
+        ,'config.nb'   % see \tion{config}
+    ]).
+
+:- commandLine.
+:- ?verbose -> hello ; true.
+:- namesData.
+\end{Verbatim}
+\acknowledgement{\input{thanks}}
+\bibliographystyle{abbrv}{
+\footnotesize \bibliography{refs}
+\appendix
+\input{license}
+\end{document}
+

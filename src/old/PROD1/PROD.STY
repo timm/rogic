@@ -1,0 +1,153 @@
+
+\def\PROD{{\sffamily PROD}}
+
+\usepackage{fancyvrb}  % included in this directory
+\usepackage{syntax}    % included in this directory
+\usepackage{cite}      % included in this directory
+\usepackage{alltt}     % included in this directory
+\usepackage{url}       % included in this directory
+\usepackage{lastpage}  % included in this directory
+\usepackage{graphicx}  % should be part of a standard latex installation
+\usepackage{amssymb}   % should be part of a standard latex installation
+\usepackage{times}   % should be part of a standard latex installation
+
+%%%% set up stuff
+
+\topmargin -1.5cm
+\columnsep 1cm
+
+\newcommand{\thepapers}[1]{\newcommand{\mybibliography}{#1}}
+\newcommand{\thereference}[1]{\journalname{{\footnotesize #1}}}
+\newcommand{\thewp}[1]{\date{Wp ref: \url{#1}, {\today}.}}
+\newcommand{\theprogram}[1]{\newcommand{\ME}{#1}}
+\newcommand{\thetitle}[1]{\title{\ME: #1}}
+\newcommand{\theauthor}[1]{\author{#1}}
+\newcommand{\theinstitute}[1]{\institute{#1}}
+\newcommand{\theabstract}[1]{
+    \maketitle
+    \thispagestyle{empty}
+        \pagestyle{plain}
+    \begin{abstract} #1
+    \end{abstract}
+    \tableofcontents
+    \listoffigures
+}
+\newcommand{\thetocdepth}[1]{\setcounter{tocdepth}{#1}}
+\newcommand{\theacknowledgement}[1]{
+    \newcommand{\theacknowledgementstring}{#1}}
+\newcommand{\theend}{
+    \acknowledgement{\theacknowledgementstring}   
+    \\
+    \bibliographystyle{abbrv}
+    {\footnotesize \bibliography{\mybibliography}}
+    \appendix
+    \input{prodmemos}
+    \input{license}
+    \end{document}
+}
+%%% timm standard latex shortcuts
+\newenvironment{smallitem}{
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \begin{itemize}
+    \setlength{\leftmargin}{.2in}
+    \setlength{\parsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\itemsep}{0pt}}{\end{itemize}}
+
+
+\newcommand{\bi}{\begin{smallitem}}
+\newcommand{\ei}{\end{smallitem}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\fig}[1]{Figure~\ref{fig:#1}}
+\newcommand{\eq}[1]{Equation~\ref{eq:#1}}
+\newcommand{\tion}[1]{\S\ref{sec:#1}}
+
+\newenvironment{LISTING}{\scriptsize\begin{alltt}}{\end{alltt}\normalsize}
+
+%%% fancyrb settings
+
+\newcommand{\fancysetup}{\fvset{  %samepage=true,%
+                 fontsize=\scriptsize,%
+                 commandchars=\\\{\},%
+                 framesep=2mm,%
+                 firstnumber=last,%
+                 labelposition=topline,%
+                 numbersep=3pt,%
+                 tabsize=4,%
+                 fontseries=b,%
+                 stepnumber=1,%
+                 samepage=true,%
+                 numbers=left,%
+                 %framerule=0.01pt,%
+                 %frame=single%              
+                 }%
+}
+\fancysetup
+
+
+
+\newcommand{\n}{{\tt $\smallsetminus$n}}
+\newcommand{\+}{{\tt $\smallsetminus$+}}
+
+\newcommand{\call}[1]{{\footnotesize {\tt \bfseries{#1}}}}
+\newcommand{\see}[1]{\mbox{{\em for output, see \fig{#1}}}}
+\newcommand{\MARK}[1]{\label{line:#1}$\blacktriangleleft\dotfill$~{\em {\protect{\ref{line:#1}}}}}
+\newcommand{\Line}[1]{\mbox{line \ref{line:#1}}}
+\newcommand{\LINE}[1]{\mbox{Line \ref{line:#1}}}
+\newcommand{\Where}[2]{{\mbox{line \ref{line:#1:#2}} in \fig{#1}}}
+\newcommand{\WHERE}[2]{{\mbox{Line \ref{line:#1:#2}} in \fig{#1}}}
+
+\newcommand{\SRC}[2]{%
+     \begin{figure}%
+        \fvset{  samepage=true,%
+                 fontsize=\scriptsize,%
+                 commandchars=\\\{\},%
+                 %framesep=3mm,%
+                 label={\small{\textit{#1}}},%
+                 labelposition=topline,%
+                 numbers=none,%
+                 fontseries=b,%
+                 %numbersep=1pt,%
+                 %stepnumber=500%
+                 %numbers=left,%
+                 frame=single%              
+                 }%
+            \VerbatimInput{#1}
+    \caption[#1]{#2}\label{fig:#1}%
+    \end{figure}%
+}
+
+%%% ?? historical, ? not used?
+%%% Page set up stuff
+
+%\oddsidemargin -1.5cm
+%\evensidemargin -1.5cm
+%\columnsep 0.3in
+%\topmargin -2cm
+%\textheight 26cm \textwidth 19cm
+
+%\setlength{\headrulewidth}{0.0pt}
+%\setlength{\footrulewidth}{0.5pt}
+%\lfoot[\fancyplain{}{page~\protect\thepage~of~\protect\pageref{LastPage}}]%        % even pp, pageno on left
+%        {\fancyplain{}{}}%              % odd pages nothing on left
+%\rfoot[\fancyplain{}{}]%                % even pages nothing on right
+ %      {\fancyplain{}{page~\protect\thepage~of~\protect\pageref{LastPage}}}%       % odd pp, pageno on right
+%\cfoot[\fancyplain{}{\itshape\leftmark}]% section on left
+     %   {\fancyplain{}{\it }}
+%\rhead{}
+%\lhead{}\chead{}
+
+%\newcommand{\corefile}[1]{See  \protect\fig{#1eg.pl} for sample usage.}
+%\newcommand{\generates}[1]{Sample; generates \protect\fig{#1eg.spy}.}
+%\newcommand{\outputfrom}[1]{Output from \protect\fig{#1eg.pl}.}
+%\newcommand{\showtell}[1]{%
+%    \peektell{#1}%
+%     \source{#1.pl}{\protect\corefile{#1}}}
+%\newcommand{\peektell}[1]{%
+%     \IfFileExists{#1eg.pl}{\source{#1eg.pl}{\protect\generates{#1}}}%
+%     \IfFileExists{#1eg.spy}{\source{#1eg.spy}{\protect\outputfrom{#1}}}}

@@ -1,0 +1,16 @@
+cch,cCH, Cch,CCH.
+
+orsCostCombine : sum,max
+r8cost : continuous
+r8chances : continuous
+r9cost : continuous
+r9chances : continuous
+r10cost : continuous
+r10chances : continuous
+r11cost : continuous
+r11chances : continuous
+swimming : continuous
+football : continuous
+running : continuous
+baseball : continuous
+

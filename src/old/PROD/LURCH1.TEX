@@ -1,0 +1,53 @@
+\begin{Verbatim}
+lurchOver(X,Inits,Final) :- wmeNew(Inits,W0), lurch(X,W0,Final).
+
+lurch(X)      :- wmeNew(W0), lurch(X,W0,_).
+lurch(X,W)    :- wmeNew(W0), lurch(X,W0,W). 
+lurch(X,W0,W) :- once(lurch0(X,Y, W0,W1)), lurch1(Y,W1,W).
+\end{Verbatim}
+\begin{Verbatim}
+lurch0(X,        bad(var)) --> {var(X)}. % always first
+lurch0(true,         true) --> [].
+lurch0(call(X),   call(X)) --> [].
+lurch0((X->Y;Z), (X->Y;Z)) --> [].
+lurch0(\+ X,         \+ X) --> [].
+lurch0((X,Y),       (X,Y)) --> [].
+lurch0((X;Y),       (X;Y)) --> [].
+lurch0(once(X),   once(X)) --> [].
+
+lurch0(rand([]),     true) --> [].
+lurch0(ror([]),      true) --> [].
+lurch0(rand(X),   rand(X)) --> [].
+lurch0(ror(X),     ror(X)) --> [].
+
+lurch0(X,         call(X)) --> {knownBuiltIn(X)}.
+lurch0(X,      call(V0=V)) --> {wme(X,Key,V0)}, wmeHas(Key=V).
+lurch0(X,    new(X,Key=V)) --> {wme(X,Key,V)}. 
+lurch0(X,     whatever(X)) --> {whatever(X)}.
+lurch0(X,          sub(X)) --> {\+ \+ clause(X,_)}.
+lurch0(X,     bad(huh(X))) --> [].
+\end{Verbatim}
+\begin{Verbatim}
+lurch1(bad(X))   --> { format('%E> ~p\n', bad(X)),abort}.
+
+lurch1(true)     --> [].
+lurch1(call(X))  --> {X}.
+lurch1((X->Y;Z)) --> lurch(X) -> lurch(Y) ; lurch(Z).
+lurch1(\+ X)     --> \+ lurch(X).
+lurch1((X,Y))    --> lurch(X), lurch(Y).
+lurch1((X;Y))    --> lurch(X); lurch(Y).
+lurch1(once(X))  --> lurch(X),!.
+
+lurch1(sub(X))   --> {clause(X,Y)},lurch(Y).
+
+lurch1(ror(L))   --> {rone(X,_,L)}, lurch(X).
+lurch1(rand(L))  --> {rone(X,Rest,L)},lurch(X), lurch(rand(Rest)).
+
+lurch1(whatever(X)) --> stagger(X).
+lurch1(new(X,KV))   --> wmeAdd(KV), stagger(X).
+
+stagger(X) -->
+	{bagof(X/Y,clause(X,Y), L),
+	 rone(X/Y,_,L)},
+	lurch(Y).
+\end{Verbatim}

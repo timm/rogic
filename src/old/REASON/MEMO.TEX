@@ -1,0 +1,211 @@
+\documentclass{article}
+
+%%  Latex generated from POD in document /cygdrive/i/tim/src/pl/reason/mypod_tmp.pl
+%%  Using the perl module Pod::LaTeX
+%%  Converted on Sat Aug 30 22:29:51 2003
+
+
+\usepackage{makeidx}
+\makeindex
+
+
+\input{mypodstyle}
+
+\tableofcontents
+
+\clearpage
+\section{Memos\label{Memos}\index{Memos}}
+
+
+Memoing with inconsistency checking.
+
+
+
+Each memo is a pair \texttt{Key=Value}.
+If the program generates a completely new \texttt{Value} for
+\texttt{Key}, then it is stored.
+
+
+
+If the program stumbles on another \texttt{Value} for \texttt{Key},
+then this code will reject the new \texttt{Value} if contradicts
+the older known \texttt{Value}.
+
+
+
+At anytime, the program can ask for the current \texttt{value}.
+
+
+
+Internally, the \texttt{Key=Value} pairs are stored as
+\texttt{assumption}s since if the program backtracks over
+memo creation, the \texttt{Value} is thrown away.
+That is, all memos are tentative and can be discarded
+if that proves useful.
+
+\section{Header\label{Header}\index{Header}}
+\subsection{Loads */\label{Loads_}\index{Loads */}}
+\begin{verbatim}
+ :- [ecg] . /*
+\end{verbatim}
+\subsection{Flags */\label{Flags_}\index{Flags */}}
+\begin{verbatim}
+ :- dynamic       assumption/4. 
+ :- dynamic       keyValue/3.
+ :- discontiguous keyValue/3.
+ :- multifile     keyValue/3.  
+ :- index(assumption(1,1,1,0)). /*
+\end{verbatim}
+\section{Body\label{Body}\index{Body}}
+\subsection{Assumptions\label{Assumptions}\index{Assumptions}}
+
+
+Assumptions are stored as \texttt{assumption(Hash,Key,Value,How)} where:
+
+\begin{description}
+
+\item[\texttt{Hash}] \mbox{}
+
+Allows for fast
+access to \texttt{assumption}s with complex terms for \texttt{Key}.
+
+
+\item[\texttt{Key}] \mbox{}
+
+The \textit{name} of the thing assumed.
+
+
+\item[\texttt{Value}] \mbox{}
+
+The \textit{value} of the thing assumed.
+
+
+\item[\texttt{How}] \mbox{}
+
+Some comment  on how we got to this \texttt{assumption}.
+
+\end{description}
+
+
+*/
+
+\begin{verbatim}
+ reset :- retractall(assumption(_,_,_,_)). /*
+\end{verbatim}
+\subsection{\texttt{keyValue}\label{keyValue}\index{keyValue}}
+
+
+In order to allow \texttt{assumption}s on arbitrary terms,
+the \texttt{keyValue(Term,Index,Key,Value)} predicate inputs some \texttt{Term}
+and pulls it apart into its \texttt{Key} and \texttt{Value}. Then
+it hashes on the \texttt{Key} to find the \texttt{Index}. */
+
+\begin{verbatim}
+ keyValue(Term,Hash,Key,Value) :- 
+    once(keyValue(Term,Key,Value)), hash_term(Key,Hash). /*
+\end{verbatim}
+
+
+To customize its behavior, add \texttt{keyValue/3} facts: */
+
+\begin{verbatim}
+ keyValue(Key=Value,Key,Value).
+ keyValue(Term,Term,t). /*
+\end{verbatim}
+\subsection{Assume\label{Assume}\index{Assume}}
+
+
+With all that defined, now we can assume things: */
+
+\begin{verbatim}
+ assume(X,_)   :- keyValue(X,H,In,Out), assumption(H,In,Old,_),!,Out=Old.
+ assume(X,How) :- keyValue(X,H,In,Out), bassert(assumption(H,In,Out,How)). /*
+\end{verbatim}
+\subsection{Memo\label{Memo}\index{Memo}}
+
+
+That's all under-the-hood stuff. The main driver of the memo system is
+\texttt{memo(Goal,Results)}. */
+
+\begin{verbatim}
+ memo(Goal,Memos) :-
+    status(Memos,New), 
+    (New=0 -> true; Goal, ok(Memos,byRule)).
+\end{verbatim}
+\begin{verbatim}
+ def(status,[contradictions,agreements, new]).
+\end{verbatim}
+\begin{verbatim}
+ status(Memos,New) :- status(Memos,New,_,_).
+\end{verbatim}
+\begin{verbatim}
+ status(L,Flag) --> in status, 
+    statusReset, 
+    statusRun(L),
+    the new=Flag.
+\end{verbatim}
+\begin{verbatim}
+ statusReset--> in status, the contradictions:=0, the agreements:=0, the new:=0.
+\end{verbatim}
+\begin{verbatim}
+ statusRun([]) -->[].
+ statusRun([Term|Terms]) -->  in status,
+    {keyValue(Term,Hash,Key,Value)},
+    statusStep(Hash,Key,Value),
+    the contradictions < 1,
+    statusRun(Terms). /*
+\end{verbatim}
+
+
+Three cases:
+
+\begin{enumerate}
+
+\item 1
+
+Old \texttt{Key} is missing: we have a new key to find. */
+
+\begin{verbatim}
+ statusStep(H,K,_) --> in status, {\+ assumption(H,K,_,_)   },  +the new. /*
+\end{verbatim}
+
+\item 1
+
+Old \texttt{Key} is present, new value is bound: check that old=new,  otherwise we 
+should note a contradiction. */
+
+\begin{verbatim}
+ statusStep(H,K,V) --> in status, {ground(V), assumption(H,K,V,_ )},          +the agreements. 
+ statusStep(H,K,V) --> in status, {ground(V), assumption(H,K,V0,_), V0 \= V}, +the contradictions. /*
+\end{verbatim}
+
+\item 1
+
+Old \texttt{Key} is present, new value is unbound: bind new value to old value.*/
+
+\begin{verbatim}
+ statusStep(H,K,V) --> in status, {var(V), assumption(H,K,V,_)}  , +the agreements. /*
+\end{verbatim}
+\end{enumerate}
+\begin{verbatim}
+ */
+\end{verbatim}
+\begin{verbatim}
+ ok([],_).
+ ok([H|T],How) :- assume(H,How),ok(T,How). /*
+\end{verbatim}
+\subsection{Utils\label{Utils}\index{Utils}}
+
+
+Ye olde backtrackable assert. Good for recording information
+about assumptions, then forgetting about them if that don't
+pan out.
+*/
+
+\begin{verbatim}
+ bassert(X) :- assert(X).
+ bassert(X) :- retract(X),fail.
+\end{verbatim}
+\printindex
+
+\end{document}

@@ -1,0 +1,276 @@
+
+\section{How?}
+\subsection{Installing} {\PROD} comes as one flat directory with
+lots of included files. Email me at \url{tim@menzies.us} for that
+zip file. Just unzip it into a fresh directory.
+
+If you just want to run  a {\PROD} application, all you need is a
+Prolog interpreter. A {\PROD} file is a syntactically valid Prolog
+program that can be loaded into a Prolog interpreter without
+modification.
+
+On the other hand, if you want to use {\PROD} to document your code,
+they you'll need a working {\LaTeX}, Prolog and Perl installation.
+Most UNIX installations have all three. But if you need to get your
+own system going under Windows, then the software shown in
+\fig{software} might be useful.
+
+\begin{figure*}
+{\footnotesize
+\begin{center}
+\begin{tabular}{|p{6in}|}\hline
+ PERL:
+        \bi
+            \item[--$\checkmark$] Perl can be downloaded from many sources. For example, it comes as part
+                of the {\em CYGWIN} distribution from \url{http://xfree86.cygwin.com}.
+        \ei
+\\\hline
+
+PROLOG:
+        \bi
+            \item[--$\checkmark$]  Interpreters: SWI-Prolog \url{http://www.swi-prolog.org}.
+            \item[--$\checkmark$]  Editors:
+                \bi
+                    \item[--] Some of my students speak highly of the {\em Prolog IDE} editor
+                            \url{http://www.bildung.hessen.de/abereich/inform/skii/material/swing/indexe.htm}.
+                    \item[--] I prefer {\em EMACS}, a Windows version of which can be found at
+                            \url{http://www.gnu.org/software/emacs/windows}
+                    \item[--$\$$] An excellent alternative to {\em EMACS} is {\em TEXTPAD}:
+                                \url{http://www.textpad.com/download/}.
+                            It has ignorable nag screens which can be removed for \$27 (ish).
+                    \item[--] A simpler editor, that is free, and  has a smaller footprint, is {\em PFE}.
+                          Its a very useful editor and it can be installed without super users.
+                          \url{http://www.lancs.ac.uk/people/cpaap/pfe/}.
+                \ei
+        \ei
+\\\hline
+{\LaTeX}:
+    \bi
+        \item[--] Postscript processing
+            \bi
+                \item[--$\checkmark$]  {\em GHOSTSCRIPT} and {\em GSVIEW} are the core postscript processing utilities:
+                        \url{http://www.cs.wisc.edu/~ghost}.
+            \ei
+        \item[--] A {\LaTeX} compiler:
+            \bi
+                \item[--$\checkmark$]  {\em MIKTEX} is a good Windows-based
+                            {\LaTeX} distribution: \url{http://www.miktex.org}
+                \item[--] {\LaTeX} training material can be found
+                in many places including
+                           \url{http://www.ling.upenn.edu/advice/latex.html}.
+                           For this page you can find the very
+                           excellent:
+                                \bi
+                                    \item Quick start directions:
+                                    \url{http://www.ling.upenn.edu/advice/latex/starting.html}
+                                    \item The Not So Short Introduction to
+                                    {\LaTeX} (highly recommended):
+                                    \url{ftp://ftp.tex.ac.uk/tex-archive/info/lshort/english/lshort.pdf}.
+                                        This document may also be
+                                        found with the standard
+                                        {\PROD} distribution.
+                                    \item Guide to Including Graphics
+                                    \url{http://www.ling.upenn.edu/advice/latex/grfguide.pdf}
+                                \ei
+
+
+                \ei
+        \item[--] Editing {\LaTeX}:
+            \bi
+                \item[--$\checkmark\$$] Under Windows,  {\em WINEDT}  is
+                        the recommended  {\LaTeX} editor: \url{http://www.winedt.com}. It has some ignorable
+                            nag screens which can be removed for \$30 (ish).
+            \ei
+         \item[--] Viewing the output. {\LaTeX} generates DVI files, postscript files, and Acrobat files.
+            \bi
+                \item[--$\checkmark$]  DVI files  can be viewed using the {\em YAP} viewer that comes with {\em MIKTEX}.
+                \item[--$\checkmark$]  Postscript files can be viewed using the {\em GSVIEW} program from
+                        \url{http://www.cs.wisc.edu/~ghost}.
+                \item[--$\checkmark$]  The Acrobat reader can be downloaded from
+                        \url{http://www.adobe.com/products/acrobat/readstep2.html}.
+            \ei
+        \item[--] Plotting scientific data:
+            \bi
+                \item[--] The {\em GNUplot} utility from  \url{http://www.gnuplot.vt.edu/}
+                    can generate postscript plots of scientific data.
+            \ei
+        \item[--] Drawing packages:
+            \bi
+                \item[--$\$$] {\em MAYURA DRAW} is a  vector drawing utility for creating SVG and EPS illustrations:
+                        \url{http://www.mayura.com/}. It can be used for free for 30 days (ish) then a registration
+                            must be bought for \$30 (ish).
+                \item[--] The amazingly useful, and very small, {\em jpeg2ps} converts any
+                JPEG file to an eps:
+                \url{http://www.pdflib.com/jpeg2ps/}. Now, any
+                graphic that can be converted to a JPEG can be
+                EPS-ed and included into a {\LaTeX} document.
+                \item[--] And to convert anything to JPEG, use {\em IRFANVIEW}:
+                    \url{http://www.irfanview.com}
+                \item[--] Finally, if you can't import it any
+                other way, get it on the screen, screen sieze it
+                with {\em SCREENSIZE} (\url{http://www.pcmag.com/article2/0,4149,10206,00.asp}, copy and paste it to {\em
+                IRFANVIEW} then {\em jpeg2ps} it.
+
+            \ei
+        \item[--] Auto-layout of directed and undirected graphs:
+            \bi
+                \item[--] {\em DOT}: The GRAPHVIZ distribution from Bell Labs
+                        contains the {\em DOT} graph layout and
+                        visualization tool:
+                    \url{www.research.att.com/sw/tools/graphviz}.
+                    {\em DOT} can generate EPS files.
+            \ei
+        \item[--] Spell checking {\LaTeX}:
+            \bi
+                \item[--]
+                    The  {\em ISPELL} checker is a good UNIX-based spell checker.
+                    Most UNIX installations integrate it with {\em EMACS}.
+                \item[--]
+                    {\em WINDEDT} has a good editor.
+            \ei
+       \ei
+
+\\\hline
+\end{tabular}
+\end{center}}
+\caption[Windows software for {\PROD}]{Support code for {\PROD},
+under Windows. For a minimal installation, only get the items
+marked with $\checkmark$. This software is freeware, except  the
+items marked with $\$$.}\label{fig:software}
+\end{figure*}
+
+
+
+\subsection{How to load a {\PROD} system}
+
+{\PROD} assumes that files come in a {\PROD}-compatible format.
+
+\subsubsection{{\PROD}-compatible
+applications}\label{sec:prodcompat}
+
+A {\PROD}-compatible Prolog system comprises several files:
+
+\be \item A main load file called, say, {\tt myfile.pl}. This main
+load file loads up to three other files. \item {\tt myfile0.pl}: a
+small set of pre-load actions. \item {\tt myfile1.pl}: the bulk of
+the code. \item {\tt myfile2.pl}: start-up actions to be performed
+after the the code is loaded. \item A documentation file called
+{\tt myfile.pdf} auto-generated from {\tt myfile.pl}.\ee
+
+\subsubsection{Sample pre-load actions in {\tt myfile0.pl}}
+
+\bi \item{\em Loads of other Prolog systems}: In the case where you
+are loading other {\PROD}-compatible  files, then  you'll have to
+carefully inspect the pre-load and start-up actions of the systems
+you are loading. In the best case, you can just load the main files
+of the other {\PROD}s. However, sometimes you have to skip loading
+those pre-load and start-up files, but weave their actions in with
+your own pre-loads and start-ups. \item {\em Operator definitions}.
+\item {\em Flags} such as what predicates are {\tt dynamic}. \item
+{\em Hooks into the Prolog reader}: such as `goal_expansion/2` and
+`term_expansion/2`. \item {\em Hacks}: those shameful things  we
+can't avoid. So we   keep separate from the rest of our beautiful
+code in a separate section. And we don't talk too much about them. So
+lets go to a new section. \ei
+
+\subsubsection{Start-up actions in {\tt myfile2.pl}}
+
+These are application-specific and may include actions like loading
+configuration files, then some domain-specific assertions, then
+calling the main processing predicate of the system.
+
+
+\subsection{How to document a {\PROD} system}
+
+\subsubsection{Starting from scratch}
+
+To start writing  {\PROD} code,   copy the {\tt template.pl}
+(which comes with the standard {\PROD} distribution) and  rename
+it to (e.g.) {\tt yourfile.pl}. Once that is done, then two
+programs are required to convert  your code into a PDF format.
+
+\[
+yourfile.pl \overbrace{\longrightarrow}^{prep} yourfile.tex
+\overbrace{\longrightarrow}^{{\mbox \LaTeX}} yourfilepdf
+\]
+
+The {\tt prep} and {\LaTeX} programs are described below.
+
+\subsubsection{{\tt Prep}: converting {\tt *.pl} to {\tt *.tex}}
+
+The pre-processor {\tt prep} converts the file (e.g.) {\tt
+prep0.pl} to {\tt prep0.tex}. It is convenient to create a file
+{\tt preps} that lists all your files that will need {\tt
+prepping}. For example:
+
+{\scriptsize\begin{verbatim}
+perl prep file1
+prep prep file2
+\end{verbatim}}
+
+When executed, this script looks for (e.g.) a {\tt file.pl} and
+{\tt file2.pl} and generates  the files {\tt file1.tex}, {\tt
+file2.pl}. Note that during that translation,  \bi \item The
+characters {$\backslash$}{\tt *} and {\tt *}{$\backslash$} are
+deleted. Hence, the characters on (e.g.) line 47 and 51 of
+\fig{prod0sample} are deleted.   \item A line starting with {\tt
+\%{$\backslash$}command} is converted to {\tt
+{$\backslash$}command} (e.g. line 24 of \fig{prod0sample}). \ei
+
+The resulting  {\tt *.tex} file can then be converted to PDF using
+some {\LaTeX} system.
+
+\subsubsection{{\LaTeX}: converting {\tt *.tex} to {\tt *.pdf}}
+
+On my UNIX system, the script {\tt mytex}  generates PDF files
+from {\LaTeX} files, then copies it to my web site. The command
+line
+\[
+mytex\; prod0\; 03prod0
+\]
+takes \fig{prod0sample} and generates the file that can be viewed
+at \url{http://tim.menzies.com/pdf/03prod0.pdf}.
+
+Incidently, this file is
+\url{http://tim.menzies.com/pdf/03prod.pdf} and was generated
+using the command line
+\[
+mytex\; prod\; 03prod
+\]
+
+\begin{figure}
+{\scriptsize \begin{verbatim}
+ 1 latex $1 > /dev/null
+ 2 grep "Warning:" $1.log
+ 3 bibtex $1 > /dev/null
+ 4 grep "Warning:" $1.blg
+ 5 latex $1 > /dev/null
+ 6 latex $1 >/dev/null
+ 7 dvips -q $1.dvi -o $1.ps
+ 8 ps2pdf $1.ps $1.pdf
+ 9 rm $1.ps               # save space- zap postscript file
+10 cp $1.pdf $HOME/public_html/pdf/$2.pdf
+11 chmod a+r
+$HOME/public_html/pdf/$2.pdf
+\end{verbatim}}
+\caption[{\tt mytex}: generating pdf files from {\LaTeX}]{{\tt
+mytex}: generating pdf files from {\LaTeX}, then copying the
+result to a web-enable directory so it can be browsed. Assumes
+that the directory {\tt \$HOME/public_html/pdf/} has already been
+generated. The call to {\tt bibtex} on line 3 generates the
+bibliography. The multiple passes through {\LaTeX} on lines 5 and
+6 fix up all the bibliography and figure
+references.}\label{fig:mytex}
+\end{figure}
+
+\subsubsection{Load order and documentation order}
+
+Sometimes, the order in which you load files into Prolog is {\em not}
+the order in which you want to explain an application. For example,
+consider an application containing some low-level support code. The
+support code may have to be loaded {\em first}, before the rest of
+the application can be loaded. However, in terms of motivating and
+explaining the application, you want to explain that support code
+{\em last}.
+
+This situation happens a lot in {\PROD} since a {\PROD}-compatible

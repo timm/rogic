@@ -1,0 +1,170 @@
+
+=head1 Site map
+
+  sitemap() {
+    heading "Basics"
+    go ake.pod "Abductive Software Engineering"
+    go omo1.pl "Software Cost Estimation"
+    footer
+    #
+    heading "Support code"
+    go bash/mypod mypod
+    go site "Site definition"
+    footer
+ }
+
+=head1 Configuration
+
+ CSS=./css
+ FONT="<font size=2 family=\"Arial,Verdana,Helvetica\">"
+ IMG=./img
+ SH=./bash
+ SIZE=css/big
+ STRINGS=bundle.dat
+ TMP=./tmp
+ TXT=./txt
+
+=head1 Make the site
+
+ . $SH/site.sh
+ main $*
+
+
+=head1 About this Document
+
+Copyright (C)
+2003
+by
+Tim Menzies
+<Z<>tim@menzies.usZ<>>
+home page=
+http://menzies.us
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; 
+see http://www.gnu.org/copyleft/gpl.htmlZ<>.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+=head2 Disclaimer
+
+The content from or through this web page are provided 'as is' and the
+author makes no warranties or representations regarding the accuracy
+or completeness of the information.  Your use of this web page and
+information is at your own risk. You assume full responsibility and
+risk of loss resulting from the use of this web page or information.
+If your use of materials from this page results in the need for
+servicing, repair or correction of equipment, you assume any costs
+thereof.  Follow all external links at your own risk and liability.
+
+=begin html
+
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+
+=end html
+

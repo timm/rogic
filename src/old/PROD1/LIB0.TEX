@@ -1,0 +1,62 @@
+\section{ Pre-load actions  }
+\subsection{ Operators }
+Define an operator to handle numberic ranges
+\call{Min to Max}.
+\begin{Verbatim}
+:- op(1,xfx, to).
+\end{Verbatim}
+\subsection{ Flags }
+Define an \call{inf}inity function. 
+\begin{Verbatim}
+:- arithmetic_function(inf/0).
+\end{Verbatim}
+Define a \call{rand}om function.
+\begin{Verbatim}
+:- arithmetic_function(rand/0).
+\end{Verbatim}
+Define a \call{rand(Min,Max)} function.
+\begin{Verbatim}
+:- arithmetic_function(rand/2).
+\end{Verbatim}
+Define a \call{rand(Min,Max,Mean)} function.
+\begin{Verbatim}
+:- arithmetic_function(rand/3).
+\end{Verbatim}
+Define a \call{normal} function.
+\begin{Verbatim}
+:- arithmetic_function(normal/2).
+\end{Verbatim}
+Define a \call{beta} function.
+\begin{Verbatim}
+:- arithmetic_function(beta/1).
+\end{Verbatim}
+Define a \call{gamma} function.
+\begin{Verbatim}
+:- arithmetic_function(gamma/2).
+\end{Verbatim}
+Add a ``left-justify'' command to \call{format}.
+\begin{Verbatim}
+:- format_predicate('>',padChars(_,_)).
+\end{Verbatim}
+Add a ``right-justify'' command to \call{format}.
+\begin{Verbatim}
+:- format_predicate('<',charsPad(_,_)).
+\end{Verbatim}
+Add a ``print squiggles'' command to \call{format}.
+\begin{Verbatim}
+:- format_predicate('S',squiggle(_,_)).
+\end{Verbatim}
+Define a predicate for the lookup tables.
+\begin{Verbatim}
+:- discontiguous lookUp1/4.
+:- multifile lookUp1/4.
+:- index(lookUp1(1,1,1,0)).
+\end{Verbatim}
+\subsection{ Hooks }
+A hook for lookup tables.
+\begin{Verbatim}
+term_expansion(Table = ColsRows , Out) :- 
+    nonvar(ColsRows),
+    ColsRows = (Cols+Rows),
+    lookUpTable(Table=Cols+Rows,Out). 
+\end{Verbatim}

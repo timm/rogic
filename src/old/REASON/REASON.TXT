@@ -1,0 +1,48 @@
+MOOSE
+
+    *MOOSE* is a new M=model O=of S=software E=engineering. The premise of
+    *MOOSE* is that we only build what we can test.
+
+    */
+
+    /*
+
+Header */
+
+    /*
+
+  Loads */
+
+    :- ensure_loaded([lib,randoms]).
+
+    /*
+
+  Operators */
+
+     :- op(1199,fx,@).
+     :- op(999,fx,&). /*
+
+  Flags */
+
+    /*
+
+  Hooks */
+
+    /*
+
+  Hacks */
+
+    /*
+
+Body */
+
+    &X :- one(X).
+
+    /*
+
+Footer */
+
+    /*
+
+  Start-up Commands */
+

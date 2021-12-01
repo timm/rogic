@@ -1,0 +1,11 @@
+\section{Structure of a {\PROD} file}
+
+XXX is alatex and a prolog gile.
+
+
+\begin{figure}
+{\footnotesize \begin{verbatim}
+
+\end{verbatim}}
+\caption{\protect\url{template.pl}}
+\end{figure}

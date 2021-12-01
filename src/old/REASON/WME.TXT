@@ -1,0 +1,56 @@
+Working Memory Management
+
+    Assertions are hashed on some index.
+
+    Assertions are grouped into *N1* numeric levels and "zap" can reset all
+    working memory elements from level "N2" and above.
+
+Header
+
+  Flags */
+
+     :- dynamic(wme/3). /*
+
+Body  */
+
+      make(W) :- 
+        wme(W,I,_), hash_term(I,H), assert(hashed(H,W)). /*
+
+  Finding WMEs */
+
+     wmes(L) :- wmes(-1,L).
+     wmes(N,All) :- 
+        setof(L=wme(W,I,L), N^(wme(W,I,L),L>=N), Temp)
+        -> maplist(arg(2),Temp,All)
+        ;  All=[]. /*
+
+  Reset */
+
+     reset :-  
+        forall((wme(W,_,_),functor(W,F,A)), dynamic(F/A)). /*
+
+  Zap
+
+    Zap from level "N" and above. */
+
+     zap :- zap(-1).
+     zap(N) :-
+        wmes(N,All),
+        forall(member(wme(W,_,_),All), retractall(hashed(_,W))). /*
+
+  Report
+
+    Report upwards from level "N". */
+
+     report :- report(-1).
+     report(N) :-
+        wmes(N,All),
+        member(wme(W,_,_),All),
+        functor(W,F,A),
+        format('% ~w\n',F/A),
+        W,
+        numbervars(W,0,_),
+        format('~p.\n',W),
+        fail.
+     report(_). 
+

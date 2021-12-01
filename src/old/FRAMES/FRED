@@ -1,0 +1,33 @@
+
+a(self(A), A, A).
+a(g, A, B) :-
+	print(2),
+	B=A.
+a(f, A, B) :-
+	print(2),
+	C=A,
+	print(1),
+	B=C.
+a(1, A, b(B, C, D)) :-
+	true,
+	a(blah, 40, 40, b(E, F, G), H),
+	a(c, 2, 2, H, I),
+	a(d, J, 23, I, K),
+	a(c, L, M, K, N),
+	M is L+1,
+	print(2),
+	O=N,
+	print(1),
+	P=O,
+	a(l, P, Q),
+	a(kk, R, [22|R], Q, S),
+	a(kk, [10|T], T, S, U),
+	a(kk, V, V, U, b(B, C, D)),
+	member(fred, V),
+	b(B, C, D),
+	l(bbb, W, X),
+	kk(asdas, Y, Z).
+
+a(c, A, B, b(A, C, D), b(B, C, D)).
+a(d, A, B, b(C, A, D), b(C, B, D)).
+a(kk, A, B, b(C, D, A), b(C, D, B)).

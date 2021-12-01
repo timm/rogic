@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>memo</title>
+<link rel="stylesheet" href="mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#memos">Memos</a></li>
+	<li><a href="#header">Header</a></li>
+	<ul>
+
+		<li><a href="#loads_*/">Loads */</a></li>
+		<li><a href="#flags_*/">Flags */</a></li>
+	</ul>
+
+	<li><a href="#body">Body</a></li>
+	<ul>
+
+		<li><a href="#assumptions">Assumptions</a></li>
+		<li><a href="#keyvalue"><code>keyValue</code></a></li>
+		<li><a href="#assume">Assume</a></li>
+		<li><a href="#memo">Memo</a></li>
+		<li><a href="#utils">Utils</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+This document is also available in  the following formats:
+         <a href="memo.pdf">pdf</a>; a
+        <a href="memo_4printer.html">printer-friendly</a> format; a
+        <a href="memo.html">display-friendly</a> format;
+        <a href="memo.txt">plain text</a>; or
+         text with <a href="memo.man">bold escape characters</a>.
+/*<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="memos">Memos</a></h1>
+<p>Memoing with inconsistency checking.</p>
+<p>Each memo is a pair <code>Key=Value</code>.
+If the program generates a completely new <a href="#item_value"><code>Value</code></a> for
+<a href="#item_key"><code>Key</code></a>, then it is stored.</p>
+<p>If the program stumbles on another <a href="#item_value"><code>Value</code></a> for <a href="#item_key"><code>Key</code></a>,
+then this code will reject the new <a href="#item_value"><code>Value</code></a> if contradicts
+the older known <a href="#item_value"><code>Value</code></a>.</p>
+<p>At anytime, the program can ask for the current <code>value</code>.</p>
+<p>Internally, the <code>Key=Value</code> pairs are stored as
+<code>assumption</code>s since if the program backtracks over
+memo creation, the <a href="#item_value"><code>Value</code></a> is thrown away.
+That is, all memos are tentative and can be discarded
+if that proves useful.</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="header">Header</a></h1>
+<p>
+</p>
+<h2><a name="loads_*/">Loads */</a></h2>
+<pre>
+ :- [ecg] . /*</pre>
+<p>
+</p>
+<h2><a name="flags_*/">Flags */</a></h2>
+<pre>
+ :- dynamic       assumption/4. 
+ :- dynamic       keyValue/3.
+ :- discontiguous keyValue/3.
+ :- multifile     keyValue/3.  
+ :- index(assumption(1,1,1,0)). /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="body">Body</a></h1>
+<p>
+</p>
+<h2><a name="assumptions">Assumptions</a></h2>
+<p>Assumptions are stored as <code>assumption(Hash,Key,Value,How)</code> where:</p>
+<dl>
+<dt><strong><a name="item_hash"><code>Hash</code></a></strong><br />
+</dt>
+<dd>
+Allows for fast
+access to <code>assumption</code>s with complex terms for <a href="#item_key"><code>Key</code></a>.
+</dd>
+<p></p>
+<dt><strong><a name="item_key"><code>Key</code></a></strong><br />
+</dt>
+<dd>
+The <em>name</em> of the thing assumed.
+</dd>
+<p></p>
+<dt><strong><a name="item_value"><code>Value</code></a></strong><br />
+</dt>
+<dd>
+The <em>value</em> of the thing assumed.
+</dd>
+<p></p>
+<dt><strong><a name="item_how"><code>How</code></a></strong><br />
+</dt>
+<dd>
+Some comment  on how we got to this <code>assumption</code>.
+</dd>
+<p></p></dl>
+<p>*/</p>
+<pre>
+ reset :- retractall(assumption(_,_,_,_)). /*</pre>
+<p>
+</p>
+<h2><a name="keyvalue"><code>keyValue</code></a></h2>
+<p>In order to allow <code>assumption</code>s on arbitrary terms,
+the <code>keyValue(Term,Index,Key,Value)</code> predicate inputs some <code>Term</code>
+and pulls it apart into its <a href="#item_key"><code>Key</code></a> and <a href="#item_value"><code>Value</code></a>. Then
+it hashes on the <a href="#item_key"><code>Key</code></a> to find the <code>Index</code>. */</p>
+<pre>
+ keyValue(Term,Hash,Key,Value) :- 
+    once(keyValue(Term,Key,Value)), hash_term(Key,Hash). /*</pre>
+<p>To customize its behavior, add <code>keyValue/3</code> facts: */</p>
+<pre>
+ keyValue(Key=Value,Key,Value).
+ keyValue(Term,Term,t). /*</pre>
+<p>
+</p>
+<h2><a name="assume">Assume</a></h2>
+<p>With all that defined, now we can assume things: */</p>
+<pre>
+ assume(X,_)   :- keyValue(X,H,In,Out), assumption(H,In,Old,_),!,Out=Old.
+ assume(X,How) :- keyValue(X,H,In,Out), bassert(assumption(H,In,Out,How)). /*</pre>
+<p>
+</p>
+<h2><a name="memo">Memo</a></h2>
+<p>That's all under-the-hood stuff. The main driver of the memo system is
+<code>memo(Goal,Results)</code>. */</p>
+<pre>
+ memo(Goal,Memos) :-
+    status(Memos,New), 
+    (New=0 -&gt; true; Goal, ok(Memos,byRule)).</pre>
+<pre>
+ def(status,[contradictions,agreements, new]).</pre>
+<pre>
+ status(Memos,New) :- status(Memos,New,_,_).</pre>
+<pre>
+ status(L,Flag) --&gt; in status, 
+    statusReset, 
+    statusRun(L),
+    the new=Flag.</pre>
+<pre>
+ statusReset--&gt; in status, the contradictions:=0, the agreements:=0, the new:=0.</pre>
+<pre>
+ statusRun([]) --&gt;[].
+ statusRun([Term|Terms]) --&gt;  in status,
+    {keyValue(Term,Hash,Key,Value)},
+    statusStep(Hash,Key,Value),
+    the contradictions &lt; 1,
+    statusRun(Terms). /*</pre>
+<p>Three cases:</p>
+<ol>
+<li></li>
+Old <a href="#item_key"><code>Key</code></a> is missing: we have a new key to find. */
+<pre>
+ statusStep(H,K,_) --&gt; in status, {\+ assumption(H,K,_,_)   },  +the new. /*</pre>
+<p></p>
+<li></li>
+Old <a href="#item_key"><code>Key</code></a> is present, new value is bound: check that old=new,  otherwise we 
+should note a contradiction. */
+<pre>
+ statusStep(H,K,V) --&gt; in status, {ground(V), assumption(H,K,V,_ )},          +the agreements. 
+ statusStep(H,K,V) --&gt; in status, {ground(V), assumption(H,K,V0,_), V0 \= V}, +the contradictions. /*</pre>
+<p></p>
+<li></li>
+Old <a href="#item_key"><code>Key</code></a> is present, new value is unbound: bind new value to old value.*/
+<pre>
+ statusStep(H,K,V) --&gt; in status, {var(V), assumption(H,K,V,_)}  , +the agreements. /*</pre>
+<p></p></ol>
+<pre>
+ */</pre>
+<pre>
+ ok([],_).
+ ok([H|T],How) :- assume(H,How),ok(T,How). /*</pre>
+<p>
+</p>
+<h2><a name="utils">Utils</a></h2>
+<p>Ye olde backtrackable assert. Good for recording information
+about assumptions, then forgetting about them if that don't
+pan out.
+*/</p>
+<pre>
+ bassert(X) :- assert(X).
+ bassert(X) :- retract(X),fail.</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

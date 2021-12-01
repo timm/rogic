@@ -1,0 +1,7 @@
+name = '100. simple explicit time loop'.
+
+objects(m)  = [aa].
+objects(tm) = [bb].
+
+aa ++ bb.
+bb -~- aa.

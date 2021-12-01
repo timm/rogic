@@ -1,0 +1,333 @@
+% qcm
+
+
+%---------------------------------------
+% [names] related facts
+
+% o/3
+o(117, b, event). 
+o(114, change(b), eventChange). 
+o(111, a, event). 
+o(108, change(a), eventChange). 
+o(105, c3, event). 
+o(102, change(c3), eventChange). 
+o(99, c2, event). 
+o(96, change(c2), eventChange). 
+o(93, c1, event). 
+o(90, change(c1), eventChange). 
+o(87, head, event). 
+o(84, change(head), eventChange). 
+o(128, toes, measure). 
+o(124, hips, measure). 
+o(120, shoulders, measure). 
+
+
+%---------------------------------------
+% [theory] related facts
+
+% d/1
+d('26. n ands'). 
+
+% i/2
+i(129, 130). 
+i(125, 126). 
+i(121, 122). 
+i(129, 131). 
+i(125, 127). 
+i(121, 123). 
+i(130, 129). 
+i(126, 125). 
+i(122, 121). 
+i(130, 131). 
+i(126, 127). 
+i(122, 123). 
+i(131, 129). 
+i(127, 125). 
+i(123, 121). 
+i(131, 130). 
+i(127, 126). 
+i(123, 122). 
+i(118, 119). 
+i(112, 113). 
+i(106, 107). 
+i(100, 101). 
+i(94, 95). 
+i(88, 89). 
+i(119, 118). 
+i(113, 112). 
+i(107, 106). 
+i(101, 100). 
+i(95, 94). 
+i(89, 88). 
+i(115, 116). 
+i(109, 110). 
+i(103, 104). 
+i(97, 98). 
+i(91, 92). 
+i(85, 86). 
+i(116, 115). 
+i(110, 109). 
+i(104, 103). 
+i(98, 97). 
+i(92, 91). 
+i(86, 85). 
+i(119, 115). 
+i(115, 119). 
+i(113, 109). 
+i(109, 113). 
+i(107, 103). 
+i(103, 107). 
+i(101, 97). 
+i(97, 101). 
+i(95, 91). 
+i(91, 95). 
+i(89, 85). 
+i(85, 89). 
+i(118, 116). 
+i(116, 118). 
+i(112, 110). 
+i(110, 112). 
+i(106, 104). 
+i(104, 106). 
+i(100, 98). 
+i(98, 100). 
+i(94, 92). 
+i(92, 94). 
+i(88, 86). 
+i(86, 88). 
+
+% source/2
+source(1, name='26. n ands'). 
+source(2, objects(e)=[head, c1, c2, c3, a, b]). 
+source(3, objects(m)=[shoulders, hips, toes]). 
+source(4, if c1 then head++shoulders). 
+source(5, a++shoulders). 
+source(6, if c2 then shoulders++hips). 
+source(7, b++hips). 
+source(8, if c3 then hips++toes). 
+
+% e/5
+e(132, 109, 121, 1, 5). 
+e(133, 110, 123, 1, 5). 
+e(134, 115, 125, 1, 7). 
+e(135, 116, 127, 1, 7). 
+
+% v/3
+v(119, 119, or). 
+v(118, 118, or). 
+v(116, 116, or). 
+v(115, 115, or). 
+v(113, 113, or). 
+v(112, 112, or). 
+v(110, 110, or). 
+v(109, 109, or). 
+v(107, 107, or). 
+v(106, 106, or). 
+v(104, 104, or). 
+v(103, 103, or). 
+v(101, 101, or). 
+v(100, 100, or). 
+v(98, 98, or). 
+v(97, 97, or). 
+v(95, 95, or). 
+v(94, 94, or). 
+v(92, 92, or). 
+v(91, 91, or). 
+v(89, 89, or). 
+v(88, 88, or). 
+v(86, 86, or). 
+v(85, 85, or). 
+v(131, 131, or). 
+v(130, 130, or). 
+v(129, 129, or). 
+v(127, 127, or). 
+v(126, 126, or). 
+v(125, 125, or). 
+v(123, 123, or). 
+v(122, 122, or). 
+v(121, 121, or). 
+
+% l/3
+l(119, b, absent). 
+l(118, b, present). 
+l(116, change(b), left). 
+l(115, change(b), arrived). 
+l(113, a, absent). 
+l(112, a, present). 
+l(110, change(a), left). 
+l(109, change(a), arrived). 
+l(107, c3, absent). 
+l(106, c3, present). 
+l(104, change(c3), left). 
+l(103, change(c3), arrived). 
+l(101, c2, absent). 
+l(100, c2, present). 
+l(98, change(c2), left). 
+l(97, change(c2), arrived). 
+l(95, c1, absent). 
+l(94, c1, present). 
+l(92, change(c1), left). 
+l(91, change(c1), arrived). 
+l(89, head, absent). 
+l(88, head, present). 
+l(86, change(head), left). 
+l(85, change(head), arrived). 
+l(131, toes, down). 
+l(130, toes, std). 
+l(129, toes, up). 
+l(127, hips, down). 
+l(126, hips, std). 
+l(125, hips, up). 
+l(123, shoulders, down). 
+l(122, shoulders, std). 
+l(121, shoulders, up). 
+
+
+%---------------------------------------
+% [theoryDetail] related facts
+
+% coi/2
+coi(event, 117). 
+coi(eventChange, 114). 
+coi(event, 111). 
+coi(eventChange, 108). 
+coi(event, 105). 
+coi(eventChange, 102). 
+coi(event, 99). 
+coi(eventChange, 96). 
+coi(event, 93). 
+coi(eventChange, 90). 
+coi(event, 87). 
+coi(eventChange, 84). 
+coi(measure, 128). 
+coi(measure, 124). 
+coi(measure, 120). 
+
+% ei/2
+ei(109, 132). 
+ei(110, 133). 
+ei(115, 134). 
+ei(116, 135). 
+
+% ebi/2
+ebi(121, 132). 
+ebi(123, 133). 
+ebi(125, 134). 
+ebi(127, 135). 
+
+% kids/2
+kids(116, [127]). 
+kids(115, [125]). 
+kids(110, [123]). 
+kids(109, [121]). 
+
+% lvi/2
+lvi(119, 119). 
+lvi(118, 118). 
+lvi(116, 116). 
+lvi(115, 115). 
+lvi(113, 113). 
+lvi(112, 112). 
+lvi(110, 110). 
+lvi(109, 109). 
+lvi(107, 107). 
+lvi(106, 106). 
+lvi(104, 104). 
+lvi(103, 103). 
+lvi(101, 101). 
+lvi(100, 100). 
+lvi(98, 98). 
+lvi(97, 97). 
+lvi(95, 95). 
+lvi(94, 94). 
+lvi(92, 92). 
+lvi(91, 91). 
+lvi(89, 89). 
+lvi(88, 88). 
+lvi(86, 86). 
+lvi(85, 85). 
+lvi(131, 131). 
+lvi(130, 130). 
+lvi(129, 129). 
+lvi(127, 127). 
+lvi(126, 126). 
+lvi(125, 125). 
+lvi(123, 123). 
+lvi(122, 122). 
+lvi(121, 121). 
+
+% oli/2
+oli(117, 119). 
+oli(117, 118). 
+oli(114, 116). 
+oli(114, 115). 
+oli(111, 113). 
+oli(111, 112). 
+oli(108, 110). 
+oli(108, 109). 
+oli(105, 107). 
+oli(105, 106). 
+oli(102, 104). 
+oli(102, 103). 
+oli(99, 101). 
+oli(99, 100). 
+oli(96, 98). 
+oli(96, 97). 
+oli(93, 95). 
+oli(93, 94). 
+oli(90, 92). 
+oli(90, 91). 
+oli(87, 89). 
+oli(87, 88). 
+oli(84, 86). 
+oli(84, 85). 
+oli(128, 131). 
+oli(128, 130). 
+oli(128, 129). 
+oli(124, 127). 
+oli(124, 126). 
+oli(124, 125). 
+oli(120, 123). 
+oli(120, 122). 
+oli(120, 121). 
+
+% parents/2
+parents(127, [116]). 
+parents(125, [115]). 
+parents(123, [110]). 
+parents(121, [109]). 
+
+% noGoods/2
+noGoods(119, [115, 118]). 
+noGoods(118, [116, 119]). 
+noGoods(116, [115, 118]). 
+noGoods(115, [116, 119]). 
+noGoods(113, [109, 112]). 
+noGoods(112, [110, 113]). 
+noGoods(110, [109, 112]). 
+noGoods(109, [110, 113]). 
+noGoods(107, [103, 106]). 
+noGoods(106, [104, 107]). 
+noGoods(104, [103, 106]). 
+noGoods(103, [104, 107]). 
+noGoods(101, [97, 100]). 
+noGoods(100, [98, 101]). 
+noGoods(98, [97, 100]). 
+noGoods(97, [98, 101]). 
+noGoods(95, [91, 94]). 
+noGoods(94, [92, 95]). 
+noGoods(92, [91, 94]). 
+noGoods(91, [92, 95]). 
+noGoods(89, [85, 88]). 
+noGoods(88, [86, 89]). 
+noGoods(86, [85, 88]). 
+noGoods(85, [86, 89]). 
+noGoods(131, [129, 130]). 
+noGoods(130, [129, 131]). 
+noGoods(129, [130, 131]). 
+noGoods(127, [125, 126]). 
+noGoods(126, [125, 127]). 
+noGoods(125, [126, 127]). 
+noGoods(123, [121, 122]). 
+noGoods(122, [121, 123]). 
+noGoods(121, [122, 123]). 

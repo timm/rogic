@@ -1,0 +1,61 @@
+\documentclass{article}
+
+%%  Latex generated from POD in document /cygdrive/i/tim/src/pl/reason/mypod_tmp.pl
+%%  Using the perl module Pod::LaTeX
+%%  Converted on Sat Aug 30 22:29:42 2003
+
+
+\usepackage{makeidx}
+\makeindex
+
+
+\input{mypodstyle}
+
+\tableofcontents
+
+\clearpage
+\section{Demos\label{Demos}\index{Demos}}
+
+
+\texttt{Demos/1} runs a goal \texttt{G} and catches the output to the file
+\texttt{G.spy}. Also, just so you know what is going on,
+it runs the goal \texttt{G} a second time and sends the output to the screen.  */
+
+\begin{verbatim}
+ demos(G) :-
+    sformat(Out,'~w.spy',G),
+    freshFile(Out),
+    tell(Out),
+    format('% output from '':- demos(~w).''\n\n',G),
+    T1 is cputime,
+    ignore(forall(G,true)),
+    T2 is (cputime - T1),
+    format('\n% runtime = ~w sec(s)\n',[T2]),
+    told,
+    nl,write('\n%-------------------------------\n'),
+    format('% output from '':- demos(~w).''\n',G),  
+    ignore(forall(G,true)),
+    format('\n% runtime = ~w sec(s)',[T2]). /*
+\end{verbatim}
+
+
+\texttt{Demos/1} needs a helper predicate. \texttt{FreshFile/1} 
+that makes sure that no one
+else has scribbled, or is currently scribbling, on our output file. */
+
+\begin{verbatim}
+ freshFile(X) :- 
+    (current_stream(X,_,S) -> close(S)       ; true),
+    (exists_file(X)        -> delete_file(X) ; true). /*
+\end{verbatim}
+
+
+Here's a gizmo to run the above for all known \texttt{eg/1} 
+predicates: */
+
+\begin{verbatim}
+ egs :- forall(clause(eg(X),_),demos(eg(X))).
+\end{verbatim}
+\printindex
+
+\end{document}

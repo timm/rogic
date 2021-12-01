@@ -1,0 +1,931 @@
+/*
+Return-Path: <reggia@cs.umd.edu>
+Delivered-To: menzies.com%tim@menzies.com
+Received: (cpmta 13272 invoked from network); 26 May 2001 15:04:42 -0700
+Received: from avion.cs.umd.edu (128.8.128.76)
+  by smtp.c000.snv.cp.net (209.228.32.59) with SMTP; 26 May 2001 15:04:42 -0700
+X-Received: 26 May 2001 22:04:42 GMT
+Received: (from reggia@localhost)
+	by avion.cs.umd.edu (8.9.3+Sun/8.9.1) id SAA22634
+	for tim@menzies.com; Sat, 26 May 2001 18:00:17 -0400 (EDT)
+Date: Sat, 26 May 2001 18:00:17 -0400 (EDT)
+Message-Id: <200105262200.SAA22634@avion.cs.umd.edu>
+From: reggia@cs.umd.edu
+To: tim@menzies.com
+Subject: Re: sample  frame-based KB
+Status: U
+X-UIDL: OxAoetHkIDsz2QE
+
+
+Tim,
+ 
+  I think the following is what you are referring to: it is
+frame-based and includes a number of ear disorders.  If it is
+not what you need let me know and I will look further.
+
+   Jim Reggia
+
+\-------------------------------------------\
+\ ****** knowledge base on dizziness ****** \
+\-------------------------------------------\
+
+certification:
+ "written by:  james  reggia, 1981"
+ "testing: *incomplete and untested*"
+ "this is an experimental system not for use in practice"%
+
+attachments: definition references management%
+
+quotations:
+  htm1 "thorn et al: harrison's textbook of medicine,"
+  htm2 "      mcgraw-hill, 1977"
+  oh1 "polinsky et al: pharmacologic distinction of different"
+  oh2 "     orthostatic hypotension syndromes, neurology,"
+  oh3 "     31, 1981, 1-7."
+%
+
+\ ****** input attributes ****** \
+
+attributes:
+
+dizziness (val)  [elaboration:
+  type(sgl):
+    definite rotational sensation [synonyms: vertigo],
+    sensation of impending faint [synonyms: syncopal],
+    ill-defined light-headedness [synonyms: giddiness],
+    loss of balance without head sensation
+            [synonyms: imbalance];
+  course(sgl):
+    acute or subacute persistent deficit lasting
+          more than one hour
+      [synonyms: acute and persistent],
+    one or more clear-cut episodes
+      [synonyms: episodic]
+      [elaboration:
+        episode duration(sgl): minutes, hours, days;
+        predominant occurrence [synonyms: occurrence] (sgl):
+           only upon assuming or maintaining a vertical
+               position [synonyms: orthostatic],
+           only upon rapidly changing or assuming a
+               particular head position
+                  [synonyms: positional],
+           only when sneezing or blowing nose,
+           only during paroxysm of coughing,
+           only while urinating,
+           under non-specific or varying conditions
+               [synonyms: non-specific]                ],
+    gradual onset or slow progression without clear-cut
+      episodes [synonyms: chronic]        ].
+
+\ ****** history ****** \
+
+*patient's age [synonyms: age] (int):
+   from 20 to 30, from 30 to 40, from 40 to 50,
+   from 50 to 65, from 65 to 80, from 80 thru 110 .
+
+*current medications(mlt): anticoagulants, aminoglycosides,
+   large amounts of quinine, large amounts of salicylates,
+   phenothiazines, antidepressants, antihypertensive agents,
+   l-dopa, insulin, tolbutamide or other glucose-lowering
+   medications, diuretics, barbiturates or other sedatives.
+
+*past medical history [synonyms: pmh] (mlt):
+   diabetes mellitus, alcoholism,
+   peptic ulcer disease, hypertension, angina,
+   hepatic disease, otitis media,
+   seizure disorder, vertebrobasilar tia's.
+
+*history of previous sympathectomy(val).
+
+*history of recent cataract extraction(val).
+
+*recent history (mlt):
+  post-op, post-partum,
+  prolonged recumbency or immobilization,
+  hematemesis or melena or other blood loss,
+  fracture or other injury to lower extremity.
+
+*impotence(val).
+
+*urinary incontinence or frequency(val).
+
+*family history (mlt):
+  idiopathic hypertrophic subaortic stenosis,
+  neurocutaneous syndrome, migraine,
+  otosclerosis.
+
+general symptoms occurring with the dizziness
+       [synonyms: gensx] (mlt):
+   head pain [elaboration:  predominant location(sgl):
+     occipital, diffuse,
+     intra-oral, periocular, periaural],
+   palpitations, persistent shortness of breath, new onset
+   of cough, chest pain, preceded by sensation
+   of unpleasant odor.
+
+neuro-otological symptoms associated with the dizziness
+       [synonyms: neursx] (mlt):
+  diplopia [elaboration:
+    duration(sgl): transient during dizziness, persistent],
+  loss of or blurred vision [elaboration:
+    duration(sgl): transient during dizziness, persistent],
+  scintillating scotomas,
+  focal symptoms referrable to cns
+    [synonyms: focsx]
+    [definition:
+     "any symptoms clearly representing focal brain damage"
+     "such as hemiparesis, aphasia, hemisensory deficit,"
+     "quadraplegia, etc."]
+    [elaboration:
+      duration(sgl): transient during dizziness, persistent],
+  syncope, hearing loss by history, tinnitus.
+
+\ ****** examination ****** \
+
+temperature(sgl): *normal, elevated.
+
+*hyperemic conjunctiva(val).
+
+ear examination(mlt): inflammation of middle ear,
+   *perforated tympanic membrane,
+   *occluded external canal.
+
+supraclavicular bruit(val)
+   [elaboration: sides(mlt): left, right].
+
+blood pressure examination(mlt):
+   *hypertension,
+   significant orthostatic hypotension
+     [definition:
+      "fall in systolic blood pressure below 80 mm hg"
+      "or by more than 30 mm hg when patient assumes the"
+      "vertical position"],
+   more than 20mm hg difference in brachial
+             blood pressure
+     [elaboration: low side(sgl): left, right].
+
+pulse during dizziness(sgl): marked bradycardia,
+   *unremarkable, marked tachycardia.
+
+heart examination [synonyms: corex] (mlt):
+  systolic murmur
+    [elaboration: predominant location (sgl):
+      base, left sternal border, apex],
+  pathologically irregular rhythm,
+  left ventricular lift,
+  thrill at right second interspace.
+
+unilateral delayed or diminished radial pulse(val)
+   [elaboration: side(sgl): left, right].
+
+*thrombophlebitis evident in a lower extremity(val).
+
+carotid sinus stimulation for ten seconds(sgl): reproduces dizziness,
+   * no significant effect.
+
+hyperventilation for three minutes(sgl): reproduces dizziness,
+   * no significant effect.
+
+*pronounced cataracts(val).
+
+pronounced facial or lower extremity erythema after standing(val).
+
+abnormalities on neurological examination [synonyms: neurex] (mlt):
+  optic atrophy, papilledema,
+  homonymous field cut [elaboration:
+    duration(sgl): transient during dizziness, persistent],
+  nystagmus [elaboration:
+    occurrence(mlt): positional, spontaneous;
+    type(mlt): horizontal, vertical, rotatory;
+    duration(sgl): transient during dizziness, persistent],
+  impaired hearing, peripheral neuropathy, parkinsonism,
+  focal cns findings
+    [definition:
+      "any findings clearly representing focal cns damage"
+      "such as hemiparesis, hemisensory deficit, etc."]
+    [elaboration:
+      onset(sgl): sudden, gradual;
+      duration(sgl): transient during dizziness, persistent].
+
+\ ****** inferred attribute ****** \
+
+etiology of dizziness
+  [synonyms: diagnosis, dx, assessment, differential, etiology] (mlt):
+
+\ ****** causes of orthostatic hypotension ****** \
+
+secondary to orthostatic hypotension
+  [description:
+  blood pressure examination = significant orthostatic hypotension <a>;
+  dizziness
+    [type= syncopal<h>, giddiness <m>, re$t <l>;
+     course = episodic [episode duration = minutes <h>, hours <l>;
+         occurrence = orthostatic <h>, re$t <l>]];
+  neursx = syncope <m>,
+    loss of or blurred vision <m>
+      [duration = transient during dizziness];
+  gensx = palpitations <l>  ]
+
+  [elaboration: type (mlt):
+
+  multiple system atrophy
+    [synonyms: shy-drager syndrome]
+    [references: oh1 oh2 oh3]
+    [description:
+      age = from 20 to 30 <l>;
+      impotence <h>; urinary incontinence or frequency<h>;
+      focsx <l> [duration = persistent];
+      neurex = nystagmus [occurrence = spontaneous;
+                    type = horizontal <h>, vertical <l>;
+                    duration = persistent<a>],
+           parkinsonism<h>,
+           focal cns findings [onset = gradual;
+                         duration = persistent]    ],
+
+  idiopathic orthostatic hypotension
+    [references: oh1 oh2 oh3]
+    [description:
+      impotence <h>;
+      urinary incontinence or frequency <h> ],
+
+  sympathotonic orthostatic hypotension
+    [references: oh1 oh2 oh3]
+    [description:
+      pulse during dizziness = marked tachycardia <a> ],
+
+  autonomic neuropathy
+    [description:
+    age = from 20 to 30 <l>;
+    impotence <h>; urinary incontinence or frequency<h>;
+    past medical history = diabetes mellitus<h>, alcoholism<h>;
+    pulse during dizziness = marked tachycardia<l>;
+    peripheral neuropathy],
+
+  orthostatic hypotension secondary to phenothiazines
+    [description:
+    current medications = phenothiazines<a>;
+    pulse during dizziness = marked tachycardia;
+    parkinsonism<l> ],
+
+  orthostatic hypotension secondary to antidepressants
+    [description:
+    current medications = antidepressants <a>;
+    pulse during dizziness = marked tachycardia;
+    parkinsonism<l> ],
+
+  orthostatic hypotension secondary to l-dopa
+    [description:
+    current medications = l-dopa <a>;
+    pulse during dizziness = marked tachycardia;
+    parkinsonism <h> ],
+
+  orthostatic hypotension secondary to antihypertensive medications
+    [description:
+    current medications = antihypertensive agents <a>;
+    pulse during dizziness = marked tachycardia ],
+
+  orthostatic hypotension secondary to diuretics
+    [description:
+    current medications = diuretics <a>;
+    pulse during dizziness = marked tachycardia <h> ],
+
+  hyperbradykinism <l>
+    [description:
+    pronounced facial or lower extremity erythema after standing <a>;
+    pulse during dizziness = marked tachycardia ],
+
+  orthostatic hypotension secondary to parkinsonism
+    [description:
+      neurex = parkinsonism <h>;
+      age = from 20 to 40 <l>;
+      current medications = l-dopa <h> ],
+
+  orthostatic hypotension secondary to previous
+       sympathectomy
+    [description: history of previous sympathectomy <a>],
+
+  orthostatic hypotension secondary to prolonged recumbency
+    [description:
+      prolonged recumbency or immobilization <a>;
+      pulse during dizziness = marked tachycardia <h> ] ],
+
+\ ****** neurovascular etiologies ****** \
+
+subclavian steel syndrome
+  [description:
+    dizziness
+     [course = acute and persistent,
+        episodic
+         [episode duration = minutes <h>, hours <l>;
+          occurrence = positional <h>, non-specific,
+                         orthostatic <l>            ]];
+    head pain <l>
+     [predominant location = occipital <h>, re$t <l>];
+    neursx = diplopia, loss of or blurred vision,
+        focsx, syncope;
+    neurex = homonymous field cut,
+      nystagmus [type = horizontal, vertical],
+      focal cns findings [onset = sudden]                 ]
+  [elaboration: side(sgl):
+    left subclavian steel syndrome
+     [description:
+      supraclavicular bruit <h> [sides = left];
+      unilateral delayed or diminished radial pulse <h>
+        [side = left];
+      more than 20mm hg difference in brachial blood
+        pressure <h> [low side = left]                      ],
+    right subclavian steel syndrome
+     [description:
+      supraclavicular bruit <h> [sides = right];
+      unilateral delayed or diminished radial pulse <h>
+        [side = right];
+      more than 20mm hg difference in brachial blood
+        pressure <h> [low side = right]                      ]   ],
+
+vertebrobasilar transient ischemic attacks
+  [description:
+    age = from 20 to 40 <l>;
+    pmh = diabetes mellitus <h>, hypertension <h>,
+               vertebrobasilar tia's <h>;
+    dizziness
+     [course = acute and persistent,
+        episodic [episode duration = minutes, hours;
+          occurrence = non-specific <h>, positional <m>,
+                         orthostatic <l>                 ]];
+    head pain <l>
+     [predominant location = occipital <h>, re$t <l>];
+    neursx = diplopia, loss of or blurred vision,
+       focsx, syncope <l>;
+    neurex = homonymous field cut,
+       nystagmus [type = horizontal, vertical],
+       focal cns findings [onset = sudden]                    ],
+
+vertebrobasilar infarction
+  [description:
+    age = from 20 to 40 <l>;
+    pmh = diabetes mellitus <h>, hypertension <h>,
+               vertebrobasilar tia's <h>;
+    dizziness
+     [type = vertigo <h>, imbalance, re$t <l>;
+      course = acute and persistent];
+    head pain <l>
+     [predominant location = occipital <h>, re$t <l>];
+    neursx = diplopia [duration = persistent],
+      loss of or blurred vision [duration = persistent],
+      focsx [duration = persistent],
+      syncope;
+    neurex =
+      homonymous field cut [duration = persistent],
+      nystagmus [type = horizontal, vertical;
+                 duration = persistent],
+      focal cns findings
+        [onset = sudden; duration = persistent]          ],
+
+basilar migraine
+  [references: "lancet, 1, 1961, p. 15"]
+  [description:
+    age= from 20 to 30 <h>, 30 to 50 <l>, 50 thru 110 <n>;
+    dizziness
+     [type= vertigo<h>, re$t<l>;
+      course= episodic [episode duration= minutes<l>, hours<h>, days<l>;
+                occurrence = non-specific],
+             acute and persistent];
+    head pain <a> [predominant location = occipital <h>, diffuse <l>,
+                     periocular <l>, periaural <l>];
+    neursx = tinnitus,
+      diplopia [duration = transient during dizziness],
+      loss of or blurred vision [duration = transient during dizziness],
+      scintillating scotomas,
+      focsx [duration = transient during dizziness],
+      syncope <m>;
+    neurex =
+      homonymous field cut [duration= transient during dizziness],
+      nystagmus [type = horizontal, vertical; occurrence = re$t;
+                 duration = transient during dizziness],
+      focal cns findings
+       [onset = sudden;
+        duration = transient during dizziness];
+    family history = migraine <h>       ],
+
+glossopharyngeal neuralgia <l>
+  [description:
+    age = from 20 to 24 <l>;
+    dizziness
+      [type = syncopal <h>, giddiness <l>;
+       course = episodic [episode duration = minutes;
+                           occurrence = non-specific]];
+    head pain <a>
+      [predominant location = intra-oral, periaural];
+    neursx = loss of or blurred vision
+                [duration = transient during dizziness],
+             syncope;
+    pulse during dizziness = marked bradycardia <h>     ],
+
+vertiginous seizures <l>
+  [description:
+    dizziness
+     [type = vertigo <h>, re$t <l>;
+      course = acute and persistent <l>,
+        episodic <h>
+         [episode duration = minutes <h>, hours <l>;
+          occurrence = non-specific]               ];
+    pmh = seizure disorder <h>;
+    preceded by sensation of unpleasant odor;
+    neursx = loss of or blurred vision <l>,
+      focsx, tinnitus <l>;
+    hyperventilation for three minutes =
+      reproduces dizziness <l>;
+    neurex = papilledema <l>, homonymous field
+      cut, focal cns findings                        ],
+
+acoustic neuroma or other cerebello-pontine
+       angle mass
+  [synonyms: acoustic neuroma]
+  [description:
+    dizziness
+     [type = vertigo <h>, imbalance, re$t <l>;
+      course = chronic <h>, re$t <l>];
+    head pain
+     [predominant location = periaural, occipital,
+               diffuse <l>];
+    neursx = diplopia, loss of or blurred vision <l>,
+      focsx [duration = persistent],
+      hearing loss by history, tinnitus;
+    neurex = nystagmus [duration = persistent],
+      impaired hearing <h>,
+      focal cns findings [duration = persistent];
+    family history = neurocutaneous syndrome <h>     ],
+
+acute cerebellar hematoma
+  [description:
+    age = from 20 to 30 <l>;
+    pmh = hypertension <h>;
+    current medications = anticoagulants <h>;
+    dizziness
+     [type = imbalance <h>, syncopal <l>, re$t;
+      course = acute and persistent];
+    head pain <h>
+      [predominant location = occipital, diffuse,
+           periaural <l>  ];
+    neursx = diplopia [duration = persistent],
+      loss of or blurred vision [duration = persistent],
+      focsx [duration = persistent];
+    blood pressure examination = hypertension <h>;
+    pulse during dizziness = marked bradycardia <l>;
+    neurex = papilledema <l>,
+      homonymous field cut <l> [duration = persistent],
+      nystagmus
+        [type = horizontal, vertical;
+         duration = persistent],
+      focal cns findings
+        [onset = sudden; duration = persistent]           ],
+
+posterior fossa mass lesion
+  [description:
+    dizziness
+     [type = vertigo <h>, imbalance <h>, re$t <l>;
+      course = chronic <h>, re$t <l> ];
+    head pain <h>
+     [predominant location = occipital <h>, diffuse <h>,
+         periaural <l>, periocular <l>];
+    neursx = diplopia, loss of or blurred vision,
+       syncope <l>, focsx [duration = persistent];
+    pulse during dizziness = marked bradycardia <l>;
+    neurex = papilledema <h>, optic atrophy <l>,
+      homonymous field cut <l> [duration = persistent],
+      nystagmus [type = horizontal, vertical;
+                 duration = persistent],
+      focal cns findings
+       [onset = gradual <h>, sudden <l>;
+        duration = persistent           ]              ],
+
+multiple sclerosis <l>
+  [description:
+    age = from 20 to 40 <h>, from 50 thru 110 <l>;
+    dizziness
+     [type = vertigo <h>, syncopal <l>, re$t <m>;
+      course = acute and persistent,
+        episodic
+         [episode duration = hours <l>, days <h>;
+          occurrence = non-specific             ]  ];
+    neursx = diplopia [duration = persistent],
+      loss of or blurred vision [duration = persistent],
+      focsx [duration = persistent], tinnitus <l>;
+    neurex = optic atrophy,
+      homonymous field cut <l> [duration = persistent],
+      nystagmus [type = horizontal, vertical;
+                 duration = persistent       ],
+      focal cns findings
+       [onset = sudden <h>, gradual <l>;
+        duration = persistent           ]            ],
+
+\ ****** otologic etiologies ****** \
+
+meniere's disease
+  [synonyms: endolymphatic hydrops]
+  [description:
+    age = from 20 to 30 <l>;
+    dizziness
+      [type = vertigo;
+       course = acute and persistent,
+         episodic [episode duration = minutes <l>, hours <h>;
+                   occurrence = positional <h>, orthostatic <m>,
+                        non-specific <l>]     ];
+    head pain <l> [predominant location = periaural];
+    neursx = hearing loss by history <h>, tinnitus <h>;
+    pulse during dizziness = marked tachycardia <l>;
+    neurex = nystagmus [type = horizontal, rotatory],
+             impaired hearing <h>                               ],
+
+acute otitis media
+  [description:
+    ear examination = inflammation of middle ear <a>;
+    dizziness
+      [type = vertigo <h>, imbalance <m>, re$t <l>;
+       course = acute and persistent];
+    head pain <h> [predominant location = periaural];
+    neursx = hearing loss by history, tinnitus;
+    temperature = elevated <h>;
+    neurex = impaired hearing                       ],
+
+benign positional vertigo
+  [synonyms: cupulolithiasis, benign paroxysmal positional vertigo]
+  [description:
+    dizziness
+      [type = vertigo <h>, giddiness <l>, imbalance <l>;
+       course = episodic
+         [episode duration = minutes <h>;
+          occurrence = positional <h>, orthostatic <l>,
+            only when sneezing or blowing nose <l>,
+            only during paroxysm of coughing <l>] ];
+    nystagmus
+      [occurrence = positional;
+       type = horizontal, rotatory;
+       duration = transient during dizziness]           ],
+
+dizziness secondary to occluded external auditory canal
+  [description:
+    occluded external canal <a>;
+    dizziness
+      [type = vertigo <h>, syncopal <l>, re$t <m>];
+    neursx = hearing loss by history, tinnitus <l>;
+    neurex = impaired hearing                      ],
+
+labyrinthine fistula
+  [synonyms: perilabyrinthitis]
+  [description:
+    dizziness
+      [type = vertigo <h>, giddiness <l>, imbalance <l>;
+       course = episodic <h>
+         [episode duration = minutes <h>, hours <l>;
+          occurrence = orthostatic, positional, non-specific,
+            only when sneezing or blowing nose,
+            only during paroxysm of coughing  ]    ];
+    pmh = otitis media <h>;
+    neursx = hearing loss by history, tinnitus;
+    ear examination = perforated tympanic membrane <h>;
+    neurex = impaired hearing,
+      nystagmus <h> [type = horizontal, rotatory]            ],
+
+acute vestibulopathy
+  [synonyms:
+    acute labyrinthitis, vestibular neuronitis, benign recurrent vertigo,
+    epidemic vertigo, epidemic labyrinthitis ]
+  [definition:
+    "this is a 'catch-all' category for a variety of abnormal conditions"
+    "with involvement of labyrinthine structures or the peripheral vestibular"
+    "nerves (see attached synonyms)."]
+  [description:
+    dizziness
+      [type = vertigo <h>;
+       course = acute and persistent, episodic
+           [episode duration = minutes <l>, hours <m>, days <h>]];
+    head pain <l> [predominant location = periaural];
+    neursx = diplopia <l> [duration = transient during dizziness],
+              loss of or blurred vision <l>
+                          [duration = transient during dizziness],
+              hearing loss by history <l>, tinnitus;
+    nystagmus <h>
+      [type = horizontal, rotatory;
+       occurrence = spontaneous <h>, positional <l>;
+       duration = transient during dizziness <h>, persistent<l>]  ],
+
+otosclerosis
+  [references:
+   "thomas and cody: neurologic perspectives of otosclerosis"
+   "     mayo clinic proceedings, 56, 1981, 17-21"            ]
+  [description:
+    dizziness
+     [type = vertigo <h>, imbalance, re$t <l>;
+      course = episodic
+        [episode duration = hours <h>, re$t;
+         occurrence = non-specific <h>, positional,
+                      orthostatic <l>],
+        re$t <l>];
+    family history = otosclerosis <h>;
+    head pain <l> [predominant location = periaural];
+    neursx = hearing loss by history <h>, tinnitus <l>;
+    neurex = nystagmus <l>, impaired hearing <h>      ],
+
+secondary to ototoxic substances
+  [description:
+    dizziness
+     [type = vertigo <h>, re$t <l>;
+      course = acute and persistent, chronic,
+        episodic
+         [occurrence = positional <h>, non-specific,
+            orthostatic<l>                           ] ];
+    neursx = hearing loss by history, tinnitus;
+    neurex = nystagmus <l> [type = horizontal, rotatory],
+      impaired hearing <h>                               ]
+  [elaboration: type(mlt):
+    ototoxicity secondary to aminoglycosides
+     [description: current medications = aminoglycosides <a>],
+    ototoxicity secondary to quinine
+     [description:
+       current medications = large amounts of quinine <a>],
+    ototoxicity secondary to salicylates
+     [description:
+       current medications = large amounts of salicylates <a>]  ],
+
+\ ****** cardiac etiologies ****** \
+
+aortic stenosis
+  [references: htm1 htm2]
+  [description:
+    corex =
+     systolic murmur <a>
+      [predominant location = base <h>,
+        left sternal border, apex <l> ],
+     left ventricular lift,
+     thrill at right second interspace;
+    dizziness
+     [type = syncopal <h>, giddiness, re$t <l>];
+    gensx = persistent shortness of breath, chest pain;
+    neursx = syncope,
+     loss of or blurred vision <l>
+       [duration = transient during dizziness];
+    pmh = angina <h>                             ],
+
+idiopathic hypertrophic subaortic stenosis
+  [synonyms: ihss, ash, asymmetric septal hypertrophy]
+  [references: htm1 htm2]
+  [description:
+    corex =
+      systolic murmur <a>
+       [predominant location = left sternal border <h>,
+          base, apex <l>],
+      left ventricular lift;
+    dizziness
+     [type = syncopal <h>, giddiness, re$t <l>];
+    gensx = chest pain,
+      persistent shortness of breath;
+    neursx = syncope,
+      loss of or blurred vision <l>
+        [duration = transient during dizziness];
+    pmh = angina <h>;
+    family history =
+      idiopathic hypertrophic subaortic stenosis <h>],
+
+acute myocardial infarction
+  [synonyms: mi]
+  [references: htm1 htm2]
+  [description:
+    age = from 20 to 40 <l>;
+    dizziness
+     [type = syncopal <h>, giddiness, re$t<l>;
+      course = acute and persistent <h>,
+       episodic <l>
+         [episode duration = minutes, hours;
+          occurrence = non-specific <h>,
+             orthostatic, positional    ]  ];
+    pmh = angina <h>, diabetes mellitus <h>;
+    gensx = chest pain <h>,
+     persistent shortness of breath;
+    neursx = loss of or blurred vision <l>,
+      syncope <l>;
+    corex =
+      systolic murmur
+       [predominant location = apex <h>, re$t <l>];
+    temperature = elevated <l>                    ],
+
+cardiac arrhythmias
+  [references: htm1 htm2]
+  [description:
+    dizziness
+     [type = syncopal <h>, giddiness, re$t <l>;
+      course = acute and persistent,
+       episodic
+        [episode duration = minutes, hours;
+         occurrence = non-specific        ]  ];
+    gensx = palpitations, chest pain <l>,
+      persistent shortness of breath <l>;
+    neursx = syncope,
+      loss of or blurred vision <l>
+        [duration = transient during dizziness]  ]
+  [elaboration: type(sgl):
+    bradyarrhythmia
+     [description:
+       pulse during dizziness = marked bradycardia <a> ],
+    tachyarrhythmia
+     [description:
+       pulse during dizziness = marked tachycardia <a> ]   ],
+
+\ ****** misc etiologies ****** \
+
+cogan's syndrome <l>
+  [synonyms: non-syphilitic interstitial keratitis]
+  [description:
+    dizziness
+      [type = vertigo <h>;
+       course = acute and persistent <h>, chronic <l>,
+          episodic [episode duration = hours <h>, re$t <l>;
+                     occurrence = non-specific <h>]];
+    gensx = head pain, new onset of cough,
+                persistent shortness of breath;
+    neursx = diplopia <l>, hearing loss by history,
+                tinnitus <h>;
+    temperature = elevated <l>;
+    hyperemic conjunctiva <a>;
+    neurex = nystagmus [type = horizontal, rotatory],
+             impaired hearing                       ],
+
+micturition syncope
+  [description:
+    dizziness
+      [type = syncopal <h>, giddiness <m>;
+       course = episodic [episode duration = minutes;
+                          occurrence = only while urinating]];
+    neursx = loss of or blurred vision <l>
+                  [duration = transient during dizziness],
+              syncope <h>;
+    pulse during dizziness = marked tachycardia <h>          ],
+
+carotid sinus hypersensitivity
+  [description:
+    dizziness
+      [type = syncopal <h>, giddiness <m>, re$t <l>;
+       course = episodic
+         [episode duration = minutes;
+          occurrence = positional <h>, non-specific,
+                         orthostatic <l>]];
+    neursx = loss of or blurred vision
+                [duration = transient during dizziness],
+              syncope;
+    carotid sinus stimulation for ten seconds
+           = reproduces dizziness <a>;
+    pulse during dizziness = marked bradycardia <h>      ],
+
+vasovagal hyperactivity
+  [synonyms: vasovagal syncope]
+  [description:
+    dizziness
+      [type = syncopal <h>, giddiness <m>, re$t <l>;
+       course = episodic
+         [episode duration = minutes;
+          occurrence = non-specific <h>, orthostatic,
+                       positional <l>]               ];
+    age = from 80 thru 110 <l>;
+    neursx = loss of or blurred vision
+               [duration = transient during dizziness],
+             syncope;
+    pulse during dizziness = marked bradycardia <h>],
+
+hyperventilation syndrome [synonyms: acute anxiety attacks]
+  [description:
+    age = from 65 thru 110 <l>;
+    dizziness
+      [type = giddiness <h>, syncopal <m>, re$t <l>;
+       course = acute and persistent <l>,
+         episodic [episode duration = minutes <h>, hours <l>;
+                   occurrence = non-specific]              ];
+    gensx = palpitations, persistent shortness of breath;
+    pulse during dizziness = marked tachycardia;
+    hyperventilation for three minutes = reproduces dizziness <a>],
+
+acute pulmonary thromboembolism
+  [synonyms: pe]
+  [references: htm1 htm2]
+  [description:
+    dizziness
+      [type = syncopal <h>, giddiness, re$t <l>;
+       course = acute and persistent];
+    gensx = palpitations, persistent shortness of breath<h>,
+      new onset of cough, chest pain;
+    neursx = syncope <l>,
+      loss of or blurred vision <l>
+        [duration = transient during dizziness];
+    temperature = elevated;
+    pulse during dizziness = marked tachycardia <h>;
+    thrombophlebitis evident in a lower extremity <h>;
+    recent history = post-op <h>, post-partum <h>,
+      prolonged recumbency or immobilization <h>,
+      fracture or other injury to lower extremity <h>   ],
+
+tussive syncope-like episodes [synonyms: laryngeal vertigo]
+  [description:
+    dizziness
+      [type = syncopal <h>, giddiness <l>;
+       course = episodic [episode duration = minutes;
+          occurrence = only during paroxysm of coughing <h>,
+                    only when sneezing or blowing nose <l> ]];
+    new onset of cough;
+    neursx = loss of or blurred vision
+                [duration = transient during dizziness],
+              syncope;
+    pulse during dizziness = marked bradycardia             ],
+
+multiple sensory deficits
+  [description:
+    dizziness
+      [type = imbalance <h>, giddiness, re$t <l>;
+       course = chronic <h>, re$t <l>         ];
+    age = from 20 to 40 <l>, from 65 to 110 <h>;
+    pmh = diabetes mellitus <h>;
+    history of recent cataract extraction <h>;
+    recent history = prolonged recumbency or
+            immobilization <h>;
+    neursx = tinnitus <l>,
+       loss of or blurred vision <l>
+          [duration = persistent];
+    hyperventilation for three minutes =
+            reproduces dizziness <l>;
+    pronounced cataracts <h>;
+    neurex = optic atrophy <l>, impaired hearing <l>,
+      peripheral neuropathy <h>, parkinsonism <l>    ],
+
+hypoglycemia
+  [description:
+    dizziness
+      [type = syncopal <h>, giddiness, re$t <l>;
+       course = acute and persistent,
+         episodic
+          [episode duration = minutes, hours;
+           occurrence = non-specific         ]];
+    current medications = insulin <h>,
+      tolbutamide or other glucose-lowering medications <l>;
+    pmh = alcoholism <h>, hepatic disease <h>;
+    palpitations <l>;
+    neursx = loss of or blurred vision <l>, diplopia <l>,
+      syncope, focsx <l> [duration=transient during dizziness];
+    pulse during dizziness = marked tachycardia;
+    neurex = peripheral neuropathy,
+       focal cns findings <l>
+        [onset = sudden; duration = transient during dizziness],
+       homonymous field cut <l>
+        [duration = transient during dizziness],
+       nystagmus <l>
+         [type = horizontal; duration = transient during dizziness] ],
+*/
+<> 'dizziness secondary to barbiturates or other sedatives'
+   if 'current medication' = 'barbiturates or other sedatives' at always and
+      (dizziness with course in [chronic at high,other at low] rany
+       diplopia at low                                         rany 
+       nystagmus with occurence=spontaneous
+                 with type in [horizontal at high, vertical at medium] 
+                 with duration = _).
+
+/*
+
+actions:
+
+message " "
+"this system is designed to help you make decisions about adults"
+"who present with the chief complaint of new onset of dizziness. "
+"it assumes you are neurologically sophisticated and that a"
+"careful history and examination (neurological, otological,"
+"cardiac, etc.) were obtained.  this knowledge base will provide"
+"you with an assessment of such patients for your consideration."
+"special attachments of interest are 'definition', 'references',"
+"and 'management'." " "
+"this is an experimental system that has not"
+"been approved for use in practice" " "
+"type 'continue.' to begin or 'display instruction.'"
+"if you have not used this system before" .
+pause.
+\mark.
+message " "
+" ok - let's begin by assuming that your adult patient has"
+"presented with the new onset of dizziness.  please answer"
+"the following:" .
+assert dizziness.
+message " "
+"now please provide the following basic information . . ." .
+askfor age.
+askfor current medications.
+askfor pmh.
+askfor gensx.
+askfor neursx.
+askfor blood pressure examination.
+askfor heart examination.
+askfor neurex.
+message " "
+"now that this basic information has been recorded kms will"
+"begin its analysis and perhaps ask you for further information." .
+obtain diagnosis.
+message " "
+"based on the information that you have provided in the context of"
+"the currently active knowledge base kms would recommend that you"
+"direct your attention to the following etiology/etiologies:" .
+display value(diagnosis) %
+*/

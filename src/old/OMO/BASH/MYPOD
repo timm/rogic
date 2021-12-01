@@ -1,0 +1,84 @@
+#=head2 C<mypod>
+
+#I<mypod v0.1 (c) 2003; Tim Menzies tim@menzies.us GPL2.0:
+#convert a pod file to html;
+#download from http://www.csee.wvu.edu/~menzies/pods/mypod>
+
+#C<mypod> ensures that C<podchecker>  is called before 
+#C<pod2html>.
+#C<mypod> extends the standard Pod language with a C<=include> command (and
+#leading comment characters on the included files are deleted- so source
+#code comments can be included and rendered via html.
+#For example, the text
+#of this section was C<=include>d from C<mypod> via C<pod.pod> C<pod.pod>.
+
+#Usage:
+
+#  bash mypod FORMAT FILE STRINGS TITLE
+
+#=over 8
+
+#=item C<TITLE> 
+
+#may be any number of words.
+
+#=item C<FILE> 
+
+#is some file of the form SUFFIX[.EXT]. The output will be sent to
+#SUFFIX.html
+
+#=item C<STRINGS>
+
+#is a bundle of strings that are used in may pods (see L<unbundle.awk>)
+
+#=item C<FORMAT> 
+
+
+#is one of C<plain>, C<small>, C<big>, C<huge> or C<perldoc>.
+#The different formats are
+#useful for different tasks such as
+#generating standard layouts (C<plain>);
+#sending something
+#to the printer (C<small>); reading stuff on the screen (C<big>);
+#or displaying something to a class (C<huge>
+#(and C<perldoc> is added just
+#cause I can- it is the standard Pod layout format from
+#http://www.cpan.orgZ<>).
+
+#=back
+
+#Example:        
+
+# bash mypod small pod Faster Web Pages 
+
+#Example input  file: http://www.csee.wvu.edu/~menzies/pods/pod.pod
+
+#Example output file: http://www.csee.wvu.edu/~menzies/pods/pod.html
+#(you're looking at it!)
+
+ top="[TOP]"
+ css="$1.css"
+ strings=$2
+ file=$3
+ base=`basename $file`
+ prefix=${base%.*}
+ shift; shift
+ title="$*"
+ if [ ! -f $file ]
+ then echo "missing file $file"
+      exit
+ fi
+
+ if [ ! -d tmp ]
+ then mkdir tmp
+ fi
+
+ gawk -f awk/rinclude.awk pass=1 $strings pass=2 $file > tmp/$prefix.tmp
+
+ if    podchecker tmp/$prefix.tmp  
+ then  pod2html  -title "$title" -back  "$top" -css "$css" \
+                 -out $prefix.html tmp/$prefix.tmp
+       chmod a+r $prefix.html 
+ else  echo "mypod bailing out"
+ fi
+ echo "."

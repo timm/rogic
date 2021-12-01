@@ -1,0 +1,133 @@
+/*
+
+=head1 Extended clause grammers (version 2)
+
+Speed up the manipulation of  named fields within DCGs.
+
+=head1 Header
+
+=head2 Loads */
+
+ :- [defs]. /*
+
+=head1 Body 
+
+=head2 Standard Optimizations */
+
+ goal_expansion(append(A,B,_),true) :- ground(A),ground(B).
+ goal_expansion(append(A,_,C),true) :- ground(A),ground(C).
+ goal_expansion(append(_,B,C),true) :- ground(B),ground(C). /*
+
+=head2 Reparing DCG expansion
+
+Bunch of tricks to repair over-zealous DCG expansion. */
+
+ goal_expansion(true(X,X),      true).
+ goal_expansion(fail(X,X),      fail).
+ goal_expansion(once(X,Y,Y),    once(X)).
+ goal_expansion(print(X,Y,Y),   print(X)).
+ goal_expansion(format(X,Y,Z,Z),format(X,Y)). /*
+
+The above code drops in a lot of C<true>s that we
+really we should cull- but not tonight. 
+
+
+=head2 Hooks into the defs systems */
+
+. /*
+
+=head2 Optimizing I<Solo> Calls
+
+For certain clauses,
+if there is only one clause that matches some sub-goal,
+then we can eval it at load time with safety. */ 
+ /*
+
+=head2  Maintaining Context
+
+If we know what kind of C<def> we are currently expanding, we
+can check for missing fields. */
+
+ goal_expansion(in(T,X,Y),true)     :- in(T,X,Y). /*
+
+This next one is tricky: SWI's DCG expansion does not unify
+the output variable after a C<{X}> expansion so our meta-knowledge
+that we are carrying round a certain C<def> is lost. So we
+have to force that particular unification: */
+
+ goal_expansion(A=(B=C),true) :- ground(B),def(B,_), A=(B=C). /*
+
+Which means that we can't use 'C<X;Y>' or 'C<X -E<gt> Y ; Z>' in ECGs. 
+So replace these with the usual expansions; i.e. 
+
+ X :- Y,!,Z.
+ X.
+
+ X :- Y.
+ X :- Z. 
+
+=head1 ECG2 stuff
+
+=head2 Tidy */
+
+ tidy(A,C) :- tidy1(A,B), (B = (Head :- true) -> C=Head ;  C=B).
+
+ tidy1(A,C) :- once(tidy2(A,C)).
+
+ tidy2(A,             A) :- var(A).
+ tidy2(true,        true).
+ tidy2((A,B),(A,TB)) :- var(A), tidy1(B,TB).
+ tidy2((A,B),(TA,B)) :- var(B), tidy1(A,TA).
+ tidy2(((A,B),C), R) :- tidy1((A,B,C), R).
+ tidy2(forall(A0,B0),forall(A,B)) :- tidy1(A0,A),tidy(B0,B).
+ tidy2(once(A0),         once(A)) :- tidy1(A0,A).
+ tidy2((A;B),     R) :- tidy1(A,TA), tidy1(B,TB),(TB=true -> R=TA; R=(TA;TB)).
+ tidy2((A->B),    R) :- tidy1(A,TA),tidy(B,TB),(TA=true-> R=TB; R=(TA->TB)).
+ tidy2(not(A),    R) :- tidy1(A,TA),(TA=true-> R=fail; R=not(TA)).
+ tidy2(\+(A),     R) :- tidy1(A,TA),(TA=true-> R=fail; R=\+(TA)).
+ tidy2((A :- B),  R) :- tidy1(B,TB),(TB=true-> R=A; R=(A:-TB)).
+ tidy2((A,B),     R) :- tidy1(A,TA), tidy1(B,TB),(TB=true -> R=TA; R=(TA,TB)).
+ tidy2(A,A).
+ 
+ eval1(at(_,  C=W0,C=W),C,C=W0,C=W).
+ eval1(at(_,_,C=W0,C=W),C,C=W0,C=W).
+ 
+ add2(T0,T,In,Out) :- T0 =.. L0, append(L0,[In,Out],L), T =.. L.
+
+ x((X --> in Y,Z),Out) :- add2(X0,X,W0,W), x1(Z0,Z,Y,W0,W),tidy((X :- Z),Out).
+
+ x1(In,Out,Cxt,W0,W) :- once(x2(In,Out,Cxt,W0,W)).
+
+ x2(X,X,                           _,W,  W) :- var(X).
+ x2((X0,Y0),       (X,Y),          C,W0, W) :- x1(X0,X,C,W0,W1), x1(Y0,Y,C,W1,W).
+ x2((X0;Y0),  ((X,W=W1;Y,W=W2),    C,W0, W) :- x1(X0,X,C,W0,W1), x1(Y0,Y,C,W0,W2).
+ x2((X0->Y0),       (X->Y),        C,W0, W) :- x1(X0,X,C,W0,W1), x1(Y0,Y,C,W1,W)
+ x2((not X0,        not X,         C,W0, W) :- x1(X0,X,C,W0,_).
+ x2((\+ X0,         \+ X,          C,W0, W) :- x1(X0,X,C,W0,_).
+ x2(once(X0),       once(X),       C,W0, W) :- x1(X0,X,C,W0,_).
+ x2(forall(X0,Y0),  forall(X,Y),   C,W0,W0) :- x1((X0,Y0),(X,Y),C,W0,_).
+ x2(bagof(X,Q0^Y0,Z),  bagof(X,Q^Y,Z),C,W0,W0) :- quantifiers(Q0^Y0,Q,Y1),x1(Y1,Y,C,W0,_).
+ x2(setof(X,Q0^Y0,Z),  setof(X,Q^Y,Z),C,W0,W0) :- quantifiers(Q0^Y0,Q,Y1),x1(Y1,Y,C,W0,_).
+ x2(findall(X,Q0^Y0,Z), findallof(X,Q^Y,Z),C,W0,W0) :- quantifiers(Q0^Y0,Q,Y1),x1(Y1,Y,C,W0,_).
+
+ x2(bagof(X,Y0,Z),  bagof(X,Y,Z),C,W0,W0) :-x1(Y1,Y,C,W0,_).
+ x2(setof(X,Y0,X),  setof(X,Y,Z),  C,W0,W0) :- x1(Y0,Y,C,W0,_).
+ x2(findall(X,Y0,Z),findall(X,Y,Z),C,W0,W0) :- x1(Y0,Y,C,W0,_).
+
+ x2(X0,             X,          C,W0,,W) :- goal_expansion(X0,at(A,C=W0,B),C=W0,B).
+
+ x2({X},            X,          _,W,  W).
+ x2(X,              true,       C,W0, W) :- eval1(X,C,W0,W),solo(X),X.
+ x2(X,              X,          _,W,  W) :- freeze(X).
+ x2(X0,             X,          _,W0, W) :- add2(X0,X,W0,W).
+
+ quantifiers(X^Y^Z,X^Rest,Goal) :- !,quantifiers(Y^Z,Rest,Goal).
+ guantifiers(X^Y,X,Y).
+
+ term_expansion((X --> in Y),  Out) :- term_expansion((X-->in Y,true),Out).
+ term_expansion((X --> in Y,Z),Out) :- x((X --> in Y,Z),Out).
+ 
+ 
+*/
+
+

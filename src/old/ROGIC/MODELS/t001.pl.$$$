@@ -1,0 +1,31 @@
+:- [usual].
+
+*model is 
+'[simple
+ ,best(exp=1, cover=2-[c=1, a=1])
+ ,best(exp=2, cover=0-[])
+ ,best(exp=3, cover=2-[a= -1, c= -1])
+ ]'.
+
+
+%vars
+* bool : a,b,e,c,d.
+
+%rules
+*e + d.
+*d + a.
+*a + b.
+*c + b. 
+%obs
+*rx   = [[], [b], [d]]
+,
+[a    = [0,  1,  -1]
+,c    = [0,  1,  -1]
+,e    = [0,  1,  -1]
+].
+
+
+*end.
+
+
+

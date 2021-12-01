@@ -1,0 +1,7 @@
+\begingroup \small 
+\contentsline {section}{\numberline {1} Installation }{1}
+\contentsline {section}{\numberline {2} Bugs }{1}
+\contentsline {section}{\numberline {A}License}{1}
+\contentsline {subsection}{\numberline {A.1}nowarranty.txt}{1}
+\contentsline {subsection}{\numberline {A.2}warranty.txt}{1}
+\contentsline {subsection}{\numberline {A.3}conditions.txt}{1}

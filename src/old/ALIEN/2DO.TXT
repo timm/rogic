@@ -1,0 +1,48 @@
+*boolean are oneOf=[t, f].
+*authors are[groups=[1], persons=[tim='tim@menzies.com'], members=[1=[tim]]].
+*boolean are[aa, bb].
+*author=1.
+*boolean are[check(1)].
+*1 if aa then bb.
+*lhs(1)if aa and not bb then check(1).
+*md(1)if not bb then not aa.
+
+statement(1, 1 if aa then bb).
+
+**
+missing
+
+if aa and not bb then check(1)
+if not aa then not check(1)
+if bb then not check(1).
+
+**
+single clause rules should not generate
+
+**
+rhs(1) rules same as lhs(2) rules
+
+*boolean are oneOf=[t, f].
+*authors are[groups=[1], persons=[tim='tim@menzies.com'], members=[1=[tim]]].
+*boolean are[aa, bb, cc, dd].
+*author=1.
+*boolean are[check(1)].
+*1 if aa and bb then cc.
+*1 if aa and bb then dd.
+*lhs(1)if (aa and bb)and not cc then check(1).
+*lhs(1)if (aa and bb)and not dd then check(1).
+
+*rhs(1)if cc and dd then not check(1).
+*rhs(1)if not aa then not check(1).
+*rhs(1)if not bb then not check(1).
+
+*md(1)if not cc then not aa.
+*md(1)if not cc then not bb.
+*md(1)if not dd then not aa.
+*md(1)if not dd then not bb.
+
+
+statement(1, 1 if aa and bb then cc and dd).
+
+**
+statements not in together in source file

@@ -1,0 +1,14 @@
+\begingroup \small 
+\contentsline {section}{\numberline {1} Introduction }{1}
+\contentsline {section}{\numberline {2} {\tt Sum/2} }{1}
+\contentsline {subsection}{\numberline {2.1} About Tail Recursion}{1}
+\contentsline {section}{\numberline {3} Implementation}{1}
+\contentsline {section}{\numberline {4} Demonstrations}{1}
+\contentsline {subsection}{\numberline {4.1} {\tt Egsum/0} }{2}
+\contentsline {subsection}{\numberline {4.2} {\tt Demos/1}}{2}
+\contentsline {subsection}{\numberline {4.3} Using {\tt Demos/1}.}{2}
+\contentsline {section}{\numberline {5} Conclusion}{2}
+\contentsline {section}{\numberline {A}License}{2}
+\contentsline {subsection}{\numberline {A.1}nowarranty.txt}{2}
+\contentsline {subsection}{\numberline {A.2}warranty.txt}{2}
+\contentsline {subsection}{\numberline {A.3}conditions.txt}{2}

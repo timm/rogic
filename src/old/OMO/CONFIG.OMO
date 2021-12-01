@@ -1,0 +1,19 @@
+verbose=1.
+
+%language
+language= "ada 95".
+
+% external inputs
+ei = 3.
+
+% external output
+eo= 4.
+
+% internal local files
+ilf=20.
+
+% external interface files
+eif = 20.
+
+% external inquiry
+eq= 30.

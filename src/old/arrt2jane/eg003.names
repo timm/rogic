@@ -1,0 +1,11 @@
+5, 4, 3, 2, 1, 0
+ r1/goal: continuous.
+ f1/r1: continuous.
+ f2/r1: continuous.
+ p1/f1: continuous.
+ p1/f2: continuous.
+ p2/f1: continuous.
+ f2: continuous.
+ f1: continuous.
+p2: continuous.
+p1: continuous.

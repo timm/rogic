@@ -1,0 +1,56 @@
+WWoorrkkiinngg  MMeemmoorryy  MMaannaaggeemmeenntt
+
+    Assertions are hashed on some index.
+
+    Assertions are grouped into _N_1 numeric levels and "zap" can reset all
+    working memory elements from level "N2" and above.
+
+HHeeaaddeerr
+
+  FFllaaggss  **//
+
+     :- dynamic(wme/3). /*
+
+BBooddyy    **//
+
+      make(W) :- 
+        wme(W,I,_), hash_term(I,H), assert(hashed(H,W)). /*
+
+  FFiinnddiinngg  WWMMEEss  **//
+
+     wmes(L) :- wmes(-1,L).
+     wmes(N,All) :- 
+        setof(L=wme(W,I,L), N^(wme(W,I,L),L>=N), Temp)
+        -> maplist(arg(2),Temp,All)
+        ;  All=[]. /*
+
+  RReesseett  **//
+
+     reset :-  
+        forall((wme(W,_,_),functor(W,F,A)), dynamic(F/A)). /*
+
+  ZZaapp
+
+    Zap from level "N" and above. */
+
+     zap :- zap(-1).
+     zap(N) :-
+        wmes(N,All),
+        forall(member(wme(W,_,_),All), retractall(hashed(_,W))). /*
+
+  RReeppoorrtt
+
+    Report upwards from level "N". */
+
+     report :- report(-1).
+     report(N) :-
+        wmes(N,All),
+        member(wme(W,_,_),All),
+        functor(W,F,A),
+        format('% ~w\n',F/A),
+        W,
+        numbervars(W,0,_),
+        format('~p.\n',W),
+        fail.
+     report(_). 
+

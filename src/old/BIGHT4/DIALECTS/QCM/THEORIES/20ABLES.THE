@@ -1,0 +1,11 @@
+name =  '20. buckets (ablers & strings)'.
+
+objects(m) = [tank,spoutFlow,l3,l4,l5].
+objects(e) = [switch,bucket].
+ 
+bucket ++ l3.
+l3 ++ tank.
+tank ++ l4.
+l5 ++ spoutFlow.
+if switch then l4 ++ l5.
+

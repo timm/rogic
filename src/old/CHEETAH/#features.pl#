@@ -1,0 +1,97 @@
+
+feature(F=V) :-
+  clause(rule(_,?X=Y,Label,Cost,Chances,_,_),do(_,_,_)),
+  member(F=V,[head=(X=Y),label=Label,cost=Cost,chances=Chances]).
+
+features(F=Vs) :-
+	bagof(V,F^feature(F=V),Vs).
+
+allComputedValues(X,Cost,Chances) :-
+	feature(label=X),
+	once((computedRuleValue(X,cost,Cost);Cost=0)),
+	once((computedRuleValue(X,chances,Chances);Chances=1)).
+
+collectData(F,N,Report,Stats) :-
+	tell(F),
+	collectData1(N,Report,Stats),
+	told.
+
+collectData1(N,Report,[minc=MinC,breakc=Cost1,maxc=MaxC,minch=MinCh,breakch=Chances1,maxch=MaxCh|Out]) :-
+	bagof(Cost/Chances,N^collectData2(N,Cost,Chances,Report),All),
+	maplist(arg(1),All,Costs0),
+	maplist(arg(2),All,Chances0),
+	part(Costs0,0.33,  MinC, Cost1,   MaxC),
+	part(Chances0,0.33,MinCh,Chances1,MaxCh),
+	withins(All,MinCh   /MinC,   Chances1/Cost1,LoLo),
+	withins(All,MinCh   /Cost1,  Chances1/MaxC,LoHi),
+	withins(All,Chances1/MinC,   MaxCh   /Cost1,HiLo),
+	withins(All,Chances1/Cost1,  MaxCh   /MaxC,HiHi),
+	maplist(lengthOf,[all=All,lolo=LoLo,lohi=LoHi,hilo=HiLo,hihi=HiHi],Out).
+
+lengthOf(X=Y,X=L) :- length(Y,L).
+		
+withins([],_,_,[]).
+withins([H|T],Bottom,Top,[H|Rest]) :- 
+	within(H,Bottom,Top),!,
+	withins(T,Bottom,Top,Rest).
+withins([_|T],Bottom,Top,Rest) :-
+	withins(T,Bottom,Top,Rest).
+
+within(Cost/Chances,BottomChances/BottomCost,TopChances/TopCost) :-
+	Cost >= BottomCost,
+	Chances >= BottomChances,
+	Cost < TopCost,
+	Chances < TopChances.
+
+part(L0,N,Min,Border,Max) :-
+	msort(L0,[Min|L1]),
+	last(Max,L1),
+	L=[Min|L1],
+	length(L,Size0),
+	Size is round(Size0*N),
+	nth1(Size,L,Border).
+
+collectData2(N,Cost,Log,Report) :- 
+	between(1,N,Step),
+	(0 is Step mod 20 -> write(user,Step),nl(user) ; true),
+	G=goodProject,
+	go([],[G=t],_,Wme),
+	o([findings,reasons,best=Best,orsCostCombine=CC],Wme,_),
+	member(G=v(t,Cost,Chances),Best),
+	Chances > 0,
+	Log is log(Chances),
+	(Report=y
+        ->    forall(label(known,V),
+	       (member(V=v(Value,_,_),Best)
+	        -> value2Print(Value,Value1),
+		   format('~w,',[Value1])
+	        ;  format('-1,',[Value]))),
+	    forall(allComputedValues(_,RCost,RChances),
+	           format('~w,~w,',[RCost,RChances])),
+	    format('~w,~w,~w\n',[CC,Cost,Log])).
+
+value2Print(t,1).
+value2Print(f,-1).
+
+dd :-
+	bagof(V,label(known,V),Knowns),
+	features(label=Labels),
+	showl(Knowns,'(d)/data = [\'',
+	             '\',\n\t\'',
+		     '\''),
+	forall(member(Label,Labels),
+	       format(', \n\t\'~wCost\', \n\t\'~wChances\'',[Label,Label])),
+	write(' ,\n\torsCostCombine,\n\tclass].'),nl.
+
+yy(Data,Names,Stats,N) :-
+	[jim],
+	[art1],
+	tell(Names),
+	dd,
+	told,
+	collectData(Data,N,y,Report),
+	tell(Stats),
+	forall(member(A=B,Report),
+	       format('~w, ~w\n',[A,B])),
+	told.
+	

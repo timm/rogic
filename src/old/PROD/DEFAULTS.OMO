@@ -1,0 +1,6 @@
+program   = "OMO".
+version   = "0.1".
+copyright = "2002".
+copywho   = "Tim Menzies".
+motto     = "Are we there yet?".
+verbose   = 1.

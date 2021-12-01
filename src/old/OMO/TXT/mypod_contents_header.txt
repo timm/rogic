@@ -1,0 +1,10 @@
+<html>
+<LINK REL="stylesheet" HREF="menu.css" TYPE="text/css">
+<body bgcolor=FFFFCC>
+<font face="Arial,Verdana,Helvetica">
+<center><img align=center
+src="../img/ssc062.jpg"  border=1 width=100></center>
+<small><h3>AKE v0.1</h3>
+Some  
+<a target="_top" href="http://menzies.us">Timm scripts</a>
+for abductive knowledge engineering.

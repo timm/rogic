@@ -1,0 +1,8 @@
+name = '000. absolute simplest'.
+
+objects(e) = [aa].
+objects(m) = [bb].
+
+aa ++ bb.
+
+

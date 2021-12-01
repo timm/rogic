@@ -1,0 +1,22 @@
+sharedData of targetSystem  helps coherence of system 
+sharedData of targetSystem  helps  extensibility of function 
+sharedData of targetSystem  makes spacePerformance of system 
+sharedData of targetSystem  hurts reusability of system.
+
+abstractDataType of targetSystems  hurts modifiability of processes 
+abstractDataType of targetSystems  helps modififiablity of dataRep 
+abstractDataType of targetSystems  helps updatability of functions 
+abstractDataType of targetSystems  hurts timePerformance of sytems.
+
+
+implicitInnovation of targetSystem  hurts modificability of dataRep 
+implicitInnovation of targetSystem  makes extensibiity of function 
+implicitInnovation of targetSystem  hurts spacePerformance of system 
+implicitInnovation of targetSystem  hurts timePerformance of system 
+implicitInnovation of targetSystem  helps reusabilify of system.
+
+
+pipeAndFilter of targetSystems 	makes simplicity of system 
+pipeAndFilter of targetSystems 	breaks modifiability of dataRep 
+pipeAndFilter of targetSystems 	helps updatability of function 
+pipeAndFilter of targetSystems 	helps resubaility of system.

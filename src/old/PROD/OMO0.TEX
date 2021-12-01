@@ -1,0 +1,21 @@
+\section{Pre-load actions}
+\subsection{Operators}
+Something to mark decisions we are considering
+\begin{Verbatim}
+:- op(1,xf,?).
+\end{Verbatim}
+Something to mark range declarations.
+\begin{Verbatim}
+:- op(701,xfx,of).
+\end{Verbatim}
+\subsection{Flags}
+\begin{Verbatim}
+:- discontiguous (of/3),(range/3),(goal/2).
+:- dynamic (of/3),(range/3),(goal/2).
+\end{Verbatim}
+\subsection{Hooks}
+Define some expected value, and its associated
+range predicate.
+\begin{Verbatim}
+term_expansion(X of Y,Z) :- ofs(X of Y,Z).
+\end{Verbatim}

@@ -1,0 +1,10 @@
+cat c:/temp/qq/*.delta \
+| gawk -F\| 'NF>0 {key=$1" | "$2
+		 n[key]=n[key]+$3
+		 x[key]++
+		  
+		}
+        END {for (i in n) 
+		print i " | " int(n[i]/x[i]*100)/100 
+}' \
+| sort -t"|" +0 +1 > c:/temp/xx

@@ -1,0 +1,180 @@
+*[a7c7u7t7Ed7e7x7,a7d7r7x7,c7h7r7o7n7i7Cd7e7x7
+		,c7h7r7o7n7i7Cd7i7a7z7,c7h7r7o7n7i7Cg7l7u7c7o7s7e7,c7h7r7o7n7i7Ci7n7s7u7l7i7n7
+		,c7h7r7o7n7i7Ct7o7l7b7u7t7,d7e7x7,d7i7a7z7
+		,e7t7h7e7r7s7t7r7,g7e7n7t7l7e7,g7u7a7n7
+		,h7g7h7In7j7,h7y7p7o7x7,i7n7s7u7l7i7n710
+		,i7n7s7u7l7i7n730,i7n7s7u7l7i7n7Bo7l7i7s7,m7s7g7
+		,p7a7r7g7,p7t7u7,s7t7r7e7s7s7
+		,s7w7i7m7s7t7r7,t7o7l7b7u7t710,t7o7l7b7u7t720
+		,t7o7l7b7u7t730,t7w7o7Dg7,y7o7h7
+                ,a7c7t7h7,a7c7t7h7Pr7o7d7u7c7t7i7o7n7,a7l7u7m7i7n7i7u7m7,b7r7a7i7n7Gl7u7c7o7s7e7
+		,b7r7a7i7n7Gl7u7c7o7s7e7Up7t7a7k7e7,c7a7t7e7c7h7o7l7e7,c7a7t7e7c7h7o7l7e7Di7s7p7
+		,c7a7t7e7c7h7o7l7e7Pr7o7d7,c7o7r7t7i7c7o7i7d7Pr7o7d7u7c7t7i7o7n7,c7o7r7t7i7s7o7l7
+		,c7o7r7t7i7s7o7l7Pr7o7d7u7c7t7i7o7n7,c7r7f7,d7a7
+		,d7a72Hv7a7,d7a7Pr7o7d7u7c7t7i7o7n7,d7h7p7g7
+		,f7i7v7e7HIAA,f7r7o7m7Gu7t7,f7r7o7m7Li7v7e7r7
+		,f7r7o7m7Pa7n7c7r7e7a7s7,g7h7Pr7o7d7u7c7t7i7o7n7,g7h7r7h7
+		,g7l7u7c7a7g7o7n7,g7l7u7c7a7g7o7n7Di7s7,g7l7u7c7a7g7o7n7Pr7o7d7
+		,g7l7u7c7o7c7o7r7t7i7c7o7i7d7,g7l7u7c7o7s7e7,h7g7h7
+		,h7v7a7,i7n7s7u7l7i7n7,n7e7
+		,n7e72d7h7p7g7,n7e72Ep7i7n7,n7e7Co7n7t7r7o7l7
+		,n7e7Pr7o7d7u7c7t7i7o7n7,p7Hg7h7,p7n7s7
+		,p7Pr7l7,p7r7l7,p7r7l7Re7l7e7a7s7e7
+		,s7a7t7e7i7t7y7,s7e7r7o7t7o7n7i7n7,s7e7r7o7t7o7n7i7n7Pr7o7d7u7c7t7i7o7n7
+		,s7e7r7o7t7o7n7i7n7TOf7i7v7e7HIAA,s7n7s7,s7r7if
+		,t74,t7e7m7p71,t7e7m7p72
+		,t7e7m7p73,t7o7Ki7d7n7e7y7s7,t7o7Ti7s7s7u7e7
+		,v7a7g7u7s7].
+ 
+
+*c7r7f7  ++  a7c7t7h7Pr7o7d7u7c7t7i7o7n7.
+*a7c7t7h7Pr7o7d7u7c7t7i7o7n7  +-+  a7c7t7h7.
+*h7y7p7o7x7  --  a7c7t7h7Pr7o7d7u7c7t7i7o7n7.
+*a7c7t7h7  ++  c7o7r7t7i7s7o7l7Pr7o7d7u7c7t7i7o7n7.
+*if no g7u7a7n7 then   s7n7s7  ++  c7o7r7t7i7s7o7l7Pr7o7d7u7c7t7i7o7n7.
+*if no a7d7r7x7 then c7o7r7t7i7s7o7l7Pr7o7d7u7c7t7i7o7n7  +-+  c7o7r7t7i7s7o7l7.
+*c7o7r7t7i7c7o7i7d7Pr7o7d7u7c7t7i7o7n7  +--  c7o7r7t7i7s7o7l7.
+*g7l7u7c7o7c7o7r7t7i7c7o7i7d7  --  a7c7t7h7Pr7o7d7u7c7t7i7o7n7.
+*c7o7r7t7i7c7o7i7d7Pr7o7d7u7c7t7i7o7n7  +-+  g7l7u7c7o7c7o7r7t7i7c7o7i7d7.
+*d7e7x7  ++  g7l7u7c7o7c7o7r7t7i7c7o7i7d7.
+*a7c7u7t7Ed7e7x7  ++  g7l7u7c7o7c7o7r7t7i7c7o7i7d7.
+*c7h7r7o7n7i7Cd7e7x7  ++  g7l7u7c7o7c7o7r7t7i7c7o7i7d7.
+*if no a7d7r7x7 then c7a7t7e7c7h7o7l7e7Pr7o7d7  +-+  c7a7t7e7c7h7o7l7e7.
+*c7a7t7e7c7h7o7l7e7Di7s7p7  +--  c7a7t7e7c7h7o7l7e7.
+*if no g7u7a7n7 then s7n7s7  ++  c7a7t7e7c7h7o7l7e7Pr7o7d7.
+*d7a7Pr7o7d7u7c7t7i7o7n7  +-+  d7a7.
+*d7a72Hv7a7  +--  d7a7.
+*p7r7l7  ++  d7a7.
+*a7l7u7m7i7n7i7u7m7  --  d7a7Pr7o7d7u7c7t7i7o7n7.
+*if no m7s7g7 then d7a72Hv7a7  +-+  h7v7a7.
+*p7a7r7g7  --  d7a72Hv7a7.
+*g7l7u7c7a7g7o7n7Pr7o7d7  +-+  g7l7u7c7a7g7o7n7.
+*g7l7u7c7a7g7o7n7Di7s7  +--  g7l7u7c7a7g7o7n7.
+*if no g7u7a7n7 then s7n7s7  ++  g7l7u7c7a7g7o7n7Pr7o7d7.
+*g7l7u7c7o7s7e7  --  g7l7u7c7a7g7o7n7Pr7o7d7.
+*i7n7s7u7l7i7n7  --  g7l7u7c7a7g7o7n7Pr7o7d7.
+*c7h7r7o7n7i7Cg7l7u7c7o7s7e7  ++  g7l7u7c7o7s7e7.
+*f7r7o7m7Gu7t7  +-+  g7l7u7c7o7s7e7.
+*f7r7o7m7Li7v7e7r7  +-+  g7l7u7c7o7s7e7.
+*b7r7a7i7n7Gl7u7c7o7s7e7Up7t7a7k7e7  +--  g7l7u7c7o7s7e7.
+*g7l7u7c7o7s7e7  ++  b7r7a7i7n7Gl7u7c7o7s7e7Up7t7a7k7e7.
+*t7o7Ti7s7s7u7e7  +--  g7l7u7c7o7s7e7.
+*b7r7a7i7n7Gl7u7c7o7s7e7Up7t7a7k7e7  +-+  b7r7a7i7n7Gl7u7c7o7s7e7.
+*t7e7m7p71  ++  t7o7Ti7s7s7u7e7.
+*g7l7u7c7o7s7e7  ++  t7e7m7p71.
+*i7n7s7u7l7i7n7  ++  t7e7m7p71.
+*t7e7m7p72  ++  f7r7o7m7Li7v7e7r7.
+*i7n7s7u7l7i7n7  --  t7e7m7p72.
+*g7l7u7c7o7c7o7r7t7i7c7o7i7d7  ++  t7e7m7p72.
+*p7n7s7  --  t7e7m7p72.
+*c7a7t7e7c7h7o7l7e7  ++  t7e7m7p72.
+*if no g7u7a7n7 then s7n7s7  --  t7e7m7p72.
+*g7l7u7c7a7g7o7n7  ++  t7e7m7p72.
+*t7w7o7Dg7  --  b7r7a7i7n7Gl7u7c7o7s7e7Up7t7a7k7e7.
+*f7r7o7m7Pa7n7c7r7e7a7s7  +-+  i7n7s7u7l7i7n7.
+*t7o7Ki7d7n7e7y7s7  +--  i7n7s7u7l7i7n7.
+*i7n7s7u7l7i7n7  ++  t7o7Ki7d7n7e7y7s7.
+*if g7u7a7n7 then  s7n7s7  --  t7e7m7p73.
+*c7a7t7e7c7h7o7l7e7  --  t7e7m7p73.
+*g7l7u7c7a7g7o7n7  ++  t7e7m7p73.
+*g7l7u7c7o7s7e7  ++  t7e7m7p73.
+*p7n7s7  ++  t7e7m7p73.
+*t7e7m7p73  ++  f7r7o7m7Pa7n7c7r7e7a7s7.
+*i7n7s7u7l7i7n7Bo7l7i7s7  ++  i7n7s7u7l7i7n7.
+*i7n7s7u7l7i7n710  ++  i7n7s7u7l7i7n7.
+*i7n7s7u7l7i7n730  ++  i7n7s7u7l7i7n7.
+*c7h7r7o7n7i7Ci7n7s7u7l7i7n7  ++  i7n7s7u7l7i7n7.
+*t7o7l7b7u7t710  ++  f7r7o7m7Pa7n7c7r7e7a7s7.
+*t7o7l7b7u7t720  ++  f7r7o7m7Pa7n7c7r7e7a7s7.
+*t7o7l7b7u7t730  ++  f7r7o7m7Pa7n7c7r7e7a7s7.
+*c7h7r7o7n7i7Ct7o7l7b7u7t7  ++  f7r7o7m7Pa7n7c7r7e7a7s7.
+*n7e7Pr7o7d7u7c7t7i7o7n7  +--  d7a7.
+*if no m7s7g7 then n7e7Pr7o7d7u7c7t7i7o7n7  +-+  n7e7.
+*n7e72d7h7p7g7  +--  n7e7.
+*n7e72Ep7i7n7  +--  n7e7.
+*if no m7s7g7 then   n7e72d7h7p7g7  +-+  d7h7p7g7.
+*d7h7p7g7  ++  c7r7f7.
+*d7h7p7g7  ++  s7n7s7.
+*s7t7r7e7s7s7  ++  n7e7Co7n7t7r7o7l7.
+*g7l7u7c7o7c7o7r7t7i7c7o7i7d7  --  n7e7Co7n7t7r7o7l7.
+*b7r7a7i7n7Gl7u7c7o7s7e7  --  n7e7Co7n7t7r7o7l7.
+*n7e7Co7n7t7r7o7l7  ++  n7e7Pr7o7d7u7c7t7i7o7n7.
+*n7e7Co7n7t7r7o7l7  ++  n7e72d7h7p7g7.
+*n7e7  ++  n7e72d7h7p7g7.
+*a7l7u7m7i7n7i7u7m7  --  n7e72d7h7p7g7.
+*n7e7  +-+  n7e72Ep7i7n7.
+*h7g7h7  ++  n7e7Pr7o7d7u7c7t7i7o7n7.
+*i7n7s7u7l7i7n7  --  n7e7Pr7o7d7u7c7t7i7o7n7.
+*s7w7i7m7s7t7r7  ++  s7t7r7e7s7s7.
+*e7t7h7e7r7s7t7r7  ++  s7t7r7e7s7s7.
+*y7o7h7  ++  n7e7Pr7o7d7u7c7t7i7o7n7.
+*p7a7r7g7  --  n7e72d7h7p7g7.
+*g7e7n7t7l7e7  ++  s7t7r7e7s7s7.
+*d7i7a7z7  --  n7e7Co7n7t7r7o7l7.
+*c7h7r7o7n7i7Cd7i7a7z7  --  n7e7Co7n7t7r7o7l7.
+*p7n7s7  ++  v7a7g7u7s7.
+*i7n7s7u7l7i7n7  ++  p7n7s7.
+*f7i7v7e7HIAA  ++  p7n7s7.
+*s7n7s7  --  p7n7s7.
+*d7a7  --  p7r7l7Re7l7e7a7s7e7.
+*d7a7  --  p7Pr7l7.
+*p7r7l7Re7l7e7a7s7e7  +--  p7Pr7l7.
+*if no h7y7p7o7x7 then p7r7l7Re7l7e7a7s7e7  +-+  p7r7l7.
+*f7i7v7e7HIAA  ++  s7a7t7e7i7t7y7.
+*b7r7a7i7n7Gl7u7c7o7s7e7  --  s7a7t7e7i7t7y7.
+*if no m7s7g7 then s7e7r7o7t7o7n7i7n7Pr7o7d7u7c7t7i7o7n7  +-+  s7e7r7o7t7o7n7i7n7.
+*s7e7r7o7t7o7n7i7n7TOf7i7v7e7HIAA  +--  s7e7r7o7t7o7n7i7n7.
+*s7e7r7o7t7o7n7i7n7TOf7i7v7e7HIAA  +-+  f7i7v7e7HIAA.
+*h7g7h7  --  s7e7r7o7t7o7n7i7n7Pr7o7d7u7c7t7i7o7n7.
+*t74  --  s7e7r7o7t7o7n7i7n7Pr7o7d7u7c7t7i7o7n7.
+*t74  ++  s7e7r7o7t7o7n7i7n7TOf7i7v7e7HIAA.
+*s7e7r7o7t7o7n7i7n7  ++  s7e7r7o7t7o7n7i7n7TOf7i7v7e7HIAA.
+*b7r7a7i7n7Gl7u7c7o7s7e7  ++  s7e7r7o7t7o7n7i7n7Pr7o7d7u7c7t7i7o7n7.
+*i7n7s7u7l7i7n7  ++  s7e7r7o7t7o7n7i7n7Pr7o7d7u7c7t7i7o7n7.
+*p7n7s7  ++  s7e7r7o7t7o7n7i7n7Pr7o7d7u7c7t7i7o7n7.
+*p7n7s7  ++  s7e7r7o7t7o7n7i7n7TOf7i7v7e7HIAA.
+*p7a7r7g7  --  s7e7r7o7t7o7n7i7n7TOf7i7v7e7HIAA.
+*m7s7g7  --  s7e7r7o7t7o7n7i7n7Pr7o7d7u7c7t7i7o7n7.
+*p7n7s7  --  s7n7s7.
+*g7h7Pr7o7d7u7c7t7i7o7n7  +--  p7Hg7h7.
+*if h7y7p7o7x7 then  g7h7Pr7o7d7u7c7t7i7o7n7  +-+  h7g7h7.
+*h7g7h7In7j7  ++  h7g7h7.
+*f7i7v7e7HIAA  ++  g7h7r7h7.
+*g7h7r7h7  --  p7Hg7h7.
+*g7h7r7h7  ++  g7h7Pr7o7d7u7c7t7i7o7n7.
+*g7l7u7c7o7s7e7  ++  g7h7Pr7o7d7u7c7t7i7o7n7.
+*g7l7u7c7o7s7e7  ++  p7Hg7h7.
+*s7r7if  --  p7Hg7h7.
+*s7r7if  --  g7h7Pr7o7d7u7c7t7i7o7n7.
+*c7r7f7  ++  s7r7if.
+
+*r7x7= [[], [m7s7g7], [d7i7a7z7], [g7u7a7n7], [p7a7r7g7], [h7y7p7o7x7], [t7w7o7Dg7], [a7c7u7t7Ed7e7x7],
+ [g7e7n7t7l7e7],[c7h7r7o7n7i7Cd7e7x7], [s7w7i7m7s7t7r7 ], [  e7t7h7e7r7s7t7r7 ], [  p7t7u7,  y7o7h7 ], [  t7o7l7b7u7t710 ],
+ [  t7o7l7b7u7t720 ], [  i7n7s7u7l7i7n710 ], [  i7n7s7u7l7i7n730 ], [  m7s7g7,  p7a7r7g7 ], [  c7h7r7o7n7i7Ct7o7l7b7u7t7 ], 
+[  c7h7r7o7n7i7Cg7l7u7c7o7s7e7 ], [  c7h7r7o7n7i7Ci7n7s7u7l7i7n7 ], [  g7e7n7t7l7e7 , y7o7h7 ], [  g7u7a7n7 , t7w7o7Dg7 ],
+ [p7t7u7 , s7w7i7m7s7t7r7 ], [  p7t7u7,  e7t7h7e7r7s7t7r7 ], [  d7i7a7z7,  c7h7r7o7n7i7Cd7i7a7z7 ], [  h7y7p7o7x7 , h7g7h7In7j7 ], 
+[  a7c7u7t7Ed7e7x7 , s7w7i7m7s7t7r7 ], [c7h7r7o7n7i7Cd7e7x7 , s7w7i7m7s7t7r7 ], [  c7h7r7o7n7i7Cg7l7u7c7o7s7e7 , c7h7r7o7n7i7Ct7o7l7b7u7t7]].
+
+*d7a7=[10,5,10,-,20,10,10,-,-,-,10,15,-,9,10,-,-,20,10,7,10,-,-,10,10,10,10,-,-,10].
+*n7e7=[10,10,5,7,20,10,8,10,15,15,10,8,3,9,10,11,10,20,10,10,9,5,7,9,10,10,10,10,10,10].
+*h7g7h7=[10,-,-,-,-,-,-,-,-,-,-,-,-,-,-,50,5,-,-,-,-,-,-,-,-,-,-,-,-,-].
+*h7v7a7=[10,10,10,-,2,10,20,-,-,-,12,12,-,11,10,-,-,2,10,10,10,-,-,18,20,10,10,-,-,10].
+*a7c7t7h7=[-,10,-,20,-,-,-,-,10,8,1,20,20,20,-,-,-,-,-,-,-,-,30,-,20,20,10,-,45,1].
+*d7h7p7g7=[10,10,12,30,2,10,20,15,10,10,20,23,30,11,10,9,20,2,10,10,11,15,21,15,23,10,10,20,21,10].
+*g7l7u7c7o7s7e7=[10,-,-,5,-,-,20,-,-,-,-,-,-,5,5,5,3,-,7,12,5,-,9,-,-,-,-,-,-,8].
+*i7n7s7u7l7i7n7=[10,-,-,5,-,-,15,-,-,-,-,-,-,50,20,-,-,-,10,10,20,-,10,-,-,-,-,-,-,10].
+*c7o7r7t7i7s7o7l7=[10,-,90,50,-,-,50,10,8,5,100,100,20,50,40,8,9,-,10,10,25,30,50,90,90,45,-,50,6,10].
+*f7i7v7e7HIAA=[10,10,5,-,2,20,10,-,10,-,9,10,9,10,10,20,-,2,15,7,10,9,-,18,18,5,10,-,-,15].
+*g7l7u7c7a7g7o7n7=[10,-,-,-,-,-,15,-,-,-,-,-,-,10,10,10,50,-,10,10,-,-,-,-,-,-,-,-,-,10].
+*s7e7r7o7t7o7n7i7n7=[10,15,20,-,20,10,12,-,10,-,12,12,11,10,10,10,-,20,10,10,10,11,-,12,12,20,10,-,-,10].
+
+*d7o7n7e7.
+
+
+
+
+
+
+
+
+

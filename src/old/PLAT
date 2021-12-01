@@ -1,0 +1,30 @@
+
+Platform Risk
+|--TIME
+| |--sced+time
+| |--time+pcap
+| |--time+acap
+| |--cplx+time+sced
+| |--time+stor+sced
+| |--time+pvol+sced
+| |--ruse+time
+| |--time+tool
+| |--prec+time
+| |--flex+time
+| |--resl+time
+|--DATA
+| |--stor+acap
+| |--stor+pcap+ruse
+| |--ruse+stor
+| |--cplx+stor+sced
+| |--time+stor+sced
+| |--prec+stor
+| |--flex+stor
+| |--resl+stor
+|--PVOL
+   |--sced+pvol
+   |--pvol+vexp
+   |--pvol+sced+pcap
+   |--fime+pvol+sced
+   |--pcon+pvol
+   |--prec+pvol

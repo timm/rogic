@@ -1,0 +1,302 @@
+::_me    
+Tim Menzies
+::_email 
+<Z<>tim@menzies.usZ<>>
+::_homepage
+http://menzies.us
+::_copyyear
+2003
+::_podHome
+http://www.csee.wvu.edu/~menzies/pods/dev
+::_line
+<p>&nbsp;
+::_lines
+=include _line
+=include _line
+=include _line
+=include _line
+=include _line
+=include _line
+=include _line
+=include _line
+=include _line
+=include _line
+::_page
+=include _lines
+=include _lines
+=include _lines
+=include _lines
+=include _lines
+=include _lines
+=include _lines
+=include _lines
+=include _lines
+=include _lines
+::_footer
+
+=head1 About this Document
+
+Copyright (C)
+#=include _copyyear
+by
+#=include _me
+#=include _email
+home page=
+#=include _homepage
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; 
+see http://www.gnu.org/copyleft/gpl.htmlZ<>.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+=head2 Disclaimer
+
+The content from or through this web page are provided 'as is' and the
+author makes no warranties or representations regarding the accuracy
+or completeness of the information.  Your use of this web page and
+information is at your own risk. You assume full responsibility and
+risk of loss resulting from the use of this web page or information.
+If your use of materials from this page results in the need for
+servicing, repair or correction of equipment, you assume any costs
+thereof.  Follow all external links at your own risk and liability.
+
+=begin html
+
+=include _page
+
+=end html
+
+::_Crawford94
+
+=item Crawford94
+
+I< Experimental Results on the Application of
+                  Satisfiability Algorithms to Scheduling Problems>,
+(1994)
+by J. Crawford and A. Baker,
+AAAI '94,
+
+::_deKleer86
+=item DeKleer86
+
+I<An Assumption-Based TMS>,
+(1986),
+by J. DeKleer,
+Artificial Intelligence,
+vol. 28,
+pages  163-196
+
+::_Ho95
+=item Ho95
+
+I<Very Simple Classification Rules Perform Well on Most Commonly Used Datasets>
+(1993)
+by Robert C. Holte;
+Machine Learning; 
+vol. 3, pp. 63-91;
+http://www.csee.wvu.edu/~menzies/dm/papers/simple_rules.pdf
+::_ibins.awk
+=item ibins.awk
+
+I<ibins.awk>
+(2003)
+by Tim Menzies;
+see http://www.csee.wvu.edu/~menzies/pods/dev/ibins.awk
+
+
+::_include.awk
+=item include.awk
+
+I<include.awk>
+(2003)
+by Tim Menzies;
+WVU CSEE web page;
+http://www.csee.wvu.edu/~menzies/pods/dev/include.html
+
+::_iprep.awk
+=item iprep.awk
+
+I<iprep.awk>
+(2003)
+by Tim Menzies;
+WVU CSEE web page;
+http://www.csee.wvu.edu/~menzies/pods/dev/iprep.html
+
+::_JL95
+=item JL95
+
+I<Estimating Continuous Distributions
+in Bayesian Classifiers>
+(1995)
+by George H. John and Pat Langley;
+I<Proceedings of the Eleventh Conference on Uncertainty in Artificial Intelligence>;
+Morgan Kaufmann;
+http://citeseer.nj.nec.com/john95estimating.html
+
+::_Me03a
+=item Me03a
+
+I<Faster Web Pages>
+(2003)
+by Tim Menzies;
+WVU CSEE web page;
+http://www.csee.wvu.edu/~menzies/pods/dev/pod.html
+
+::_Me03b
+=item Me03b
+
+I<Gnuplot and Pod>
+(2003)
+by Tim Menzies;
+WVU CSEE web page;
+http://www.csee.wvu.edu/~menzies/pods/dev/gnuplot.html
+
+::_Me03c
+=item Me03c
+
+I<Applications of Abduction: 
+Testing Very Long Qualitative Simulations>,
+(2003),
+T.J. Menzies and R.F. Cohen and S. Waugh and S. Goss,
+IEEE Transactions of Data and 
+Knowledge Engineering,
+November/December,
+pages 1362-1375,
+http://menzies.us/pdf/97iedge.pdf
+
+:: _Newell82
+=item Newell82
+
+I<The Knowledge Level>
+(1982)
+by A. Newell,
+Artificial Intelligence,
+Vol. 18,
+pages 87-127
+
+:: _Newell91
+=item Newell91
+
+I<Formulating the Problem Space Computational
+                  Model>
+(1991)
+A. Newell and G.R. Yost and J.E Laird and
+                  P.S. Rosenbloom and E. Altmann,
+in [L<The Soar Papers|Rosen93>],
+volume 2, 
+pages 1321-1359.
+
+:: _Newell93
+=item Newell93
+
+I<Reflections on the {K}nowledge {L}evel>
+(1993)
+by A. Newell,
+Artificial Intelligence,
+Feburary,
+Vol. 59,
+pages 31-38
+
+::_Parkes99
+
+=item Parkes99
+
+I<Lifted Search Engines for Satisfiability>,
+(1999),
+Lifted Search Engines for
+Satisfiability. PhD thesis, University of Oregon,
+http://citeseer.nj.nec.com/parkes99lifted.html.
+
+
+::_prep.awk
+=item prep.awk
+
+I<prep.awk>
+(2003)
+by Tim Menzies;
+WVU CSEE web page;
+http://www.csee.wvu.edu/~menzies/pods/dev/prep.html
+
+:: _Rosen93
+
+=item Rosen93
+
+I<The SOAR Papers>
+(1993)
+P.S. Rosenbloom and J.E. Laird and A. Newell (editors),
+The MIT Press
+
+::_stats.awk
+=item stats.awk
+
+I<stats.awk>
+(2003)
+by Tim Menzies;
+see http://www.csee.wvu.edu/~menzies/pods/dev/stats.awk
+
+
+::_stats2plot.awk
+=item stats2plot.awk
+
+I<stats2plot.awk>
+(2003)
+by Tim Menzies;
+see http://www.csee.wvu.edu/~menzies/pods/dev/stats2plot.awk
+
+::_unbundle.awk
+
+=item unbundle.awk
+
+I<unbundle.awk>
+(2003)
+by Tim Menzies;
+WVU CSEE web page;
+http://www.csee.wvu.edu/~menzies/pods/dev/unbundle.html
+
+::_Wa03
+=item Wa03
+
+I<Programming Perl>
+(2000)
+by Larry Wall, Tom Christiansen, Jon Orwant;
+O'Reilly & Associates; 3rd edition;
+ISBN: 0596000278;
+http://www.wall.org/~larry/perl.html
+
+::_WF02
+=item WF02
+
+I<Data Mining: Practical Machine Learning Tools and Techniques with Java Implementations>
+(1999)
+by Ian H. Witten, Eibe Frank;
+Morgan Kaufmann; 1st edition;
+BSBN: 1558605525;
+http://www.cs.waikato.ac.nz/~ml/weka/book.html
+
+:: _Yost89
+
+=item Yost89
+
+I<A Problem Space Approach to Expert System
+                  Specification>
+(1989)
+by G.R. Yost and A. Newell,
+IJCAI'89,
+pages 621-627.
+
+::_YW02
+=item YW02
+
+I<On Why Discretization Works for Naive-Bayes Classifiers>
+(2003?x)
+by Ying Yang, Geoff I. Webb;
+Source unknown;
+http://citeseer.nj.nec.com/585700.html
+

@@ -1,0 +1,278 @@
+top=99
+
+collectReset() {
+	rm c:/temp/qq/*.out 
+        rm c:/temp/qq/*.dot 
+        rm c:/temp/qq/*.res
+	rm c:/temp/qq/*.pl
+	rm c:/temp/qq/*.tex
+	rm c:/temp/qq/*.delta	
+}
+collect() {
+for i in  c:/temp/qq/?0000*learnt
+do
+	./tarzan $i config1.pl
+done
+}
+
+analyze() {
+n=`ls c:/temp/qq/$1*k.out | wc -l `
+cat c:/temp/qq/$1*k.out | grep $2| gawk -F, '
+	BEGIN {OS=""}
+	NF>8  {  printf("%s",trim($8))
+		for(i=9;i<=NF;i++) 
+			printf(",%s", trim($i))
+		print " "
+	
+	      }
+	NF==8 {print trim($NF)
+	      } 
+function trim(x,	y) {
+	y=x
+	gsub(/ /,"",y)
+	return y
+}
+' | sort | uniq -c  \
+  | gawk '{print $2"-" int($1*100/n)}' n="$n"
+}
+
+analyzesReset() {
+if [ -f c:/temp/tarzans.out ]
+then rm c:/temp/tarzans.out
+fi
+}
+
+analyzes() {
+all="t_lo t_md  t_hi  t_vhi"
+for i in $all
+do
+  for j in $all
+  do
+    if [ ! "$i" = "$j" ]
+    then for n in  10000 20000  30000  40000 50000
+         do
+	    for x in `analyze $n "to,$i,from,$j"`
+            do
+               report=`(echo -n "$i $j $n "; echo "$x" | sed 's/-/ /' | sed 's/=/ /')`
+               echo $report >> c:/temp/tarzans.out
+               echo $report		 
+            done	    	    
+         done
+    fi
+  done
+done  
+}
+
+report() {
+       gawk '
+	{here=$1"-"$2"-"$4"="$5
+	 keys[here]=1
+	 x[here,$3]=$6
+}
+END     {for (i in keys) {
+                  printf("%s ",i)
+		  for(j=10000;j<=50000;j=j+10000) {
+			   sum[j]=0
+		           if ( x[i,j]==0 )
+                                     printf("   0")
+			   else {printf(" %s", pad(x[i,j]))
+                                 if ( x[i,j] > top ) 
+                                    sum[j]= 1
+                                 else sum[j]=0  }     
+                                } 
+                  if ( sum[30000] + sum[40000] +  sum[50000] == 3 )
+	          	print " !"
+                  else print " "
+}                        }  
+function pad(x) {
+	if ( x < 10 )
+	  return "  " x
+	if ( x < 100 )
+	  return " " x
+	return x
+}
+                      ' top="$top" c:/temp/tarzans.out
+}
+
+
+changes() {
+report \
+| sed 's/-/ /g' \
+| grep "!" | sed 's/!//' \
+| sort +0 +1 +2 \
+| gawk '
+	{ if ( $1==l1 && $2==l2 )
+		print
+	  else { l1=$1; l2=$2;
+		 print ""
+		 print}}' 
+}
+
+candidates() {
+	grep "=\[" c:/temp/qq/changes.tex  | sed 's/& //' | sort | uniq | gawk '
+		 	{ i++
+                          n[i]=$0}
+		END	{ print "forall(experiments([" 
+			  if (i > 0)
+			     print n[1]
+			  for (j=2;j<=i;j++)
+				print ", " n[j]
+			  print "],_,_),true)"
+                        }'
+}
+ 
+deltas() {
+	x=`cat c:/temp/qq/rx`
+	drive="c"
+	junk="c:/temp"
+	me="$drive:/usr/tim/src/pl/tarzan"
+	pl="c:/program files/pl/bin/plwin.exe" 
+	if 	[ -f  "c:/temp/qq/*.delta" ]
+	then 	rm "c:/temp/qq/*.delta"
+	fi
+	for i in  c:/temp/qq/?0000*learnt
+	do
+		stem=`echo $i | sed 's/\..*//'`
+		p="${stem}_pl.pl"
+		echo $stem
+		( echo  "treeFile('$p'). "
+    		  echo ":- load_files(['$me/tarzan.pl',config1],[silent(true)]), tell('$stem.delta'), $x,told,halt."
+  		) > $junk/tarzan_run.pl
+	 	"$pl" -G8M -L8M -f $junk/tarzan_run.pl  > /dev/null 2> /dev/null
+	done
+}
+
+barCharts() {
+	 cat   c:/temp/qq/*.delta   \
+	| gawk -F"|" '
+	                    {k="silly"}
+		$2~/t_lo/   {k=0}
+		$2~/t_md/   {k=1}
+		$2~/t_hi/   {k=2}
+		$2~/t_vhi/  {k=3}
+		NF > 0      {gsub(/ /,"",$1) 
+		             key=$1"~"$2
+			     a[key]=$3 + a[key]
+		             n[key]++
+			     order[key]=k}
+		END         {for(i in a) 
+				if ((a[i]/n[i]) > max)
+					max=a[i]/n[i]
+			     max=int(max)
+			     for(i in a) { 
+	                       temp=i
+			       c=gsub(/],/," ",temp) 
+			       print i " "   c " " int(a[i]/n[i]) " " max}
+		            } '  \
+	| sort -n +2 -i +0 \
+	| gawk 'BEGIN {first=1 
+		      m=4}
+
+		     {gsub(/~/,"",$0)
+		      gsub(/],/,"],",$1)}
+                m==4 {name=$1; 
+                      hi=$4}
+	        m==3 {lo=$4}
+		m==2 {md=$4}
+	        m==1 {vhi=$4}
+		     {m=m-1}
+		m==0 && first {first=0
+				name="Current situation"}
+		m==0 {m=4
+		      sub(/^\[/,"",name)
+		      gsub(/\]\]/"]",name)
+		      gsub(/,/,", ",name)
+		      print "\\res{" name"}{" $5"}{" lo "}{"  md "}{" hi "}{" vhi "}" 
+                }' \
+	| gawk 'BEGIN{m=5}
+		 m==1{	print
+			print"\\\\"
+			m=5
+			next}
+		 m>1 {	print
+			print " &"
+		      	m--}
+		 
+		 END {for(i=m;i>1;i--)
+			print " &"
+		     }'  
+}
+changesReport(){
+	gawk 'BEGIN {inside=0}
+			{ gsub(/_/,"",$0)}
+		NF<1 && inside==1 {inside=0
+                                   print "\\end{tabular}\\end{center}"}
+                NF<1  {inside=1
+                         print "\\begin{center}" 
+			 print "\\begin{tabular}{|c|c|c|c|c|c|c|c|}\\cline{4-8}"  
+		 	 print "\\multicolumn{3}{c|}{}&"  
+			 print "\\multicolumn{5}{c|}{Monte Carlo sampling size}"  
+			 print "\\\\\\hline "  
+			 print "To & From & Change & 10K & 20K & 30K & 40K & 50K"  
+			 print "\\\\\\hline\\hline"
+		    }
+                NF>1  {
+                         print $1
+                         for(i=2;i<=NF;i++)
+	     		       print "& " $i
+			       print "\\\\\\hline"}
+		END  {print "\\end{tabular}\\end{center}"}'
+}
+
+iwants2table() {
+	junk="c:/temp"
+	pl="c:/program files/pl/bin/plcon.exe" 
+	(echo ":- load_files([iwants2table,'$1'],[silent(true)])."
+	echo  ":- tell('$junk/qq/inputs.tmp'), forall(go,true),told,halt."
+	)   > $junk/tarzan_run.pl
+	"$pl" -G8M -L8M -f $junk/tarzan_run.pl   > /dev/null 2> /dev/null
+	(cat << EOF
+\begin{figure}[!b]
+\begin{center}
+{\footnotesize
+\begin{tabular}{|p{0.5cm}|p{6cm}|p{1cm}p{1cm}|p{1.5cm}|p{1cm}|}\cline{3-5}
+\multicolumn{2}{c|}{}&
+\multicolumn{3}{c|}{range: 0=very low; \newline 5=extremely high}&
+\multicolumn{1}{c}{}\\\\\cline{3-6}
+\multicolumn{2}{c|}{} & current\newline value(s)  & @certainty \newline (3=certain,\newline 0=don't know) &
+proposed \newline new\newline values & could \newline
+reduce\newline risk?\\\\\cline{3-6}
+EOF
+	cat $junk/qq/inputs.tmp  | sed 's/\[//g' | sed 's/\]//g'
+	cat << EOF
+\end{tabular}
+}
+\end{center}
+\caption[Utility of changing different parameters.]{Utility of
+changing different   parameters. Blank
+copies of this form may be found at 
+\protect\url{http://sunset.usc.edu/COCOMOII/expert_cocomo/expert_cocomo.html}.}
+\end{figure}
+EOF
+)  	>  $junk/qq/inputs.tex	 
+}
+
+
+counters() {
+n=`ls c:/temp/qq/?0000*.learnt | wc -l`
+grep "_" c:/temp/qq/*.dot | grep ">" | gawk '{print $NF}'  | sort | uniq -c \
+| gawk '{print int($1/n) " " $2}' n="$n"
+}
+
+echo "working at the ${top}% level"
+#collectReset
+#collect
+#iwants2table iwants.pl
+#counters
+#echo -n "Continue? " 
+#sleep 10
+#analyzesReset
+#analyzes
+#changes | changesReport > c:/temp/qq/changes.tex
+#candidates > c:/temp/qq/rx
+#cat c:/temp/qq/rx
+#echo -n "`candidates | wc -l` candidates. Continue? "
+#sleep 10
+deltas
+barCharts > c:/temp/qq/delta.tex
+

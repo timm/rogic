@@ -1,0 +1,66 @@
+wme=[time   := 1
+    ,id
+    ,depth  :=0
+    ,goal
+    ,it
+    ,route  :=[1=[]]
+    ].
+
+wme+reset(G)    --> o goal := G, o depth:=0,o time := 1, o route :=[1=[]].
+wme+prove(G,Id) --> %{nl,write(Id/G)},
+	o reset(G), o id := Id, o G.
+
+wme+proveSteady(O) -->
+	{aoIndex(val,O,X),
+	clause(o(X,wme, 1,_,_),o(hop(_,  One o Two),_,_)),
+	clause(o(X,wme,-1,_,_),o(hop(_,  Three o Four),_,_)),
+	Two @> Four},
+	o assert(val of O = 0),
+        o One o Two o Three o Four.
+
+wme+assert(G) --> o hop(G,true).
+wme+hop(G,Then) -->
+       %o showr,
+	o time=T,
+	o id=Id,
+	o now(Now),
+       % {mayspy(o,hop(G))},
+	o assume(G,T,Id,Id1),
+	({Id1 < Id} 
+	->   %{write(0)},
+	     o push(G)
+	;    {\+ member(G,Now)},
+	     %o +depth so D,{nl,forall(between(1,D,_),(tab(2),write('|'))),write(' '),write(G)},
+	     o push(G),
+	     o Then).
+
+wme+push(G) -->  
+	o route was [T=Now|Then] now [T=[G|Now]|Then].
+wme+showr -->
+	o now(N),
+	{forall(member(X,N), format(' ~p,',[X])),nl
+	}.
+wme+now(Now) -->
+	o time=T
+	o route was R now [T=Now|R1],
+	{less1(R,T=Now,R1)}. 
+wme+assume(A of O = NewV,T,_,Id1) -->
+	{a(A,O,T,Id1,OldV),
+	!, 
+	OldV=NewV}.
+wme+assume(A of O = V,T,Id,Id) --> 
+	{assert(a(A,O,T,Id,V))
+	 }.
+wme+assume(A of O  = V,T,Id,_) --> 
+	{retract(a(A,O,T,Id,V))
+	}, 	
+	fail.
+
+wme+ direct(       1, 1).
+wme+ direct(      -1,-1).
+wme+ creator(      1, 1).
+wme+ destroyer(    1,-1).
+wme+ invcreator(  -1, 1).
+wme+ invdestroyer(-1,-1).
+wme+ inverse(      1,-1).
+wme+ inverse(     -1, 1).

@@ -1,0 +1,77 @@
+
+Yes
+go.
+
+    ****************************************************************
+    *Welcome to [7mTinA[m, a program to construct diagnostic strategies.*
+    *                                                              *
+    *                  [7mT[mhis [7mi[ms [7mn[mot [7mA[mcquisition!  :-)               *
+    **hit***********************any****************************key**
+
+What do you want to know? 
+1  applicable_strategies
+2  give_some_strategies_and_why_not_applicable_due_to_user_constraints
+3  supply_strategy_and_get_criteria_and_method_tree
+
+Select option : 
+1.
+
+A situation is defined by characteristics of the case domain. 
+
+There are some pre-specified situation from which you have to choose. 
+1  technical_domain_simple
+2  technical_domain_complex
+3  camcorder
+4  almost_camcorder
+5  medical_domain
+6  empirical_domain
+
+Select option : 
+6.
+
+The situation is the following: 
+
+  probability_information
+  hypothesis_set_independent
+  tests_associated_to_hypotheses
+  additional_observations
+  user_knowledgeable_symptoms
+  complete_association_set
+  non_intermittency_assumption
+  single_fault_assumption
+
+Strategy number: 1
+  user_judgement
+  associate
+  probability_filter
+  select_random
+  compiled_test
+  symptom_detection
+  delete
+
+Tree: 
+prime_diagnostic_method
+    ask_user_method
+      user_judgement
+    empirical_hypothesis_generation_method
+      associate
+      probability_filter
+    hypothesis_discrimination_method
+        random_select_hypothesis_method
+          select_random
+        compiled_test_method
+          compiled_test
+      symptom_detection
+        interpret_in_isolation_method
+          delete
+
+What next? 
+1  exit
+2  continue
+
+Select option : 
+1.
+
+
+Yes
+noprotocol.

@@ -1,0 +1,11 @@
+name = '10. bath'.
+
+objects(e) = [tighten,loosen,push,pull].
+objects(m) = [tapFlow,tub,plugFlow].
+
+tighten  --  tapFlow .
+loosen   ++  tapFlow. 
+tapFlow  +-+ tub .
+plugFlow +-- tub .
+push     ++  plugFlow .
+pull     --  plugFlow. 

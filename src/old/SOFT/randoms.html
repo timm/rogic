@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>randoms</title>
+<link rel="stylesheet" href="mypod.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#random_predicates">Random Predicates</a></li>
+	<li><a href="#one_random_solution">One Random Solution</a></li>
+	<li><a href="#best">Best</a></li>
+	<li><a href="#random_types">Random Types</a></li>
+	<ul>
+
+		<li><a href="#random_strings_*/">Random Strings */</a></li>
+		<li><a href="#random_symbols_*/">Random Symbols */</a></li>
+		<li><a href="#random_members_of_a_list_*/">Random Members of a List */</a></li>
+		<li><a href="#random_numeric_taken_from_some_range">Random Numeric Taken From Some Range</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="random_predicates">Random Predicates</a></h1>
+<p>Lets thrash around a little.</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="one_random_solution">One Random Solution</a></h1>
+<pre>
+ one(X) :- 
+        setof(One,X^one1(X,One),All0), 
+        member(_/X,All).</pre>
+<pre>
+ one1(X,Score/X) :- 
+        X, 
+        Score is rand(2147483647). /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="best">Best</a></h1>
+<p>Same code as above, but with some assessment criteria thrown in. */</p>
+<pre>
+ best(X) :- 
+        setof(One,X^best1(X,One),All0), 
+        beam(X,All0,All), 
+        member(_/X,All).</pre>
+<pre>
+ best1(X,Score/X) :- 
+        X, 
+        score(X,Score0), 
+        bound(X,Score0), 
+        Score is -1 * Score0. /*</pre>
+<p>If we have no knowledge of <code>X</code>, give it a random number. */</p>
+<pre>
+ score(_,N) :- 
+        N is  rand(2147483647). /*</pre>
+<p>If we have knowledge of minimum values for a score,  test it here. */</p>
+<pre>
+ bound(_,Score) :- 
+        Score &gt; 0. /*</pre>
+<p>Sometimes, we may just want to select the top <em>N</em> values:
+makes this a beam search. The default
+case is that there is no selection knowledge. */</p>
+<pre>
+ beam(_,L,L).  */</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="random_types">Random Types</a></h1>
+<p>
+</p>
+<h2><a name="random_strings_*/">Random Strings */</a></h2>
+<pre>
+ rstring(_,X)  :- nonvar(X),!.
+ rstring(A,X)  :- gensym(A,X). /*</pre>
+<p>
+</p>
+<h2><a name="random_symbols_*/">Random Symbols */</a></h2>
+<pre>
+ rsym(X) :- rsym(g,X).</pre>
+<pre>
+ rsym(_,X)  :- nonvar(X),!, atom(X).
+ rsym(A,X)  :- gensym(A,X). /*</pre>
+<p>
+</p>
+<h2><a name="random_members_of_a_list_*/">Random Members of a List */</a></h2>
+<pre>
+ rin(X,L) :- number(X),!, member(Y,L), X =:= Y. 
+ rin(X,L) :- nonvar(X),!, member(X,L). 
+ rin(X,L) :- one(member(X,L)).  /*</pre>
+<p>
+</p>
+<h2><a name="random_numeric_taken_from_some_range">Random Numeric Taken From Some Range</a></h2>
+<p>The default case is that we step from some <code>Min</code>
+to <code>Max</code> number in incremets of one. */</p>
+<pre>
+ rin(Min,Max,X) :- rin(Min,Max,1,X). /*</pre>
+<p>The usual case is that we step from some <code>Min</code>
+to <code>Max</code> number in incremets of <code>I</code>. */</p>
+<pre>
+ rin(Min,Max,_,X) :- nonvar(X),!, number(X),Min =&lt; X, X =&lt; Max.
+ rin(Min,Max,I,X) :- one(rin1(Min,Max,I,X)).</pre>
+<pre>
+ rin1(Min,Max,O,X) :-
+        Steps is integer((Max-Min)/O),
+        between(0,Steps,Step), 
+        Num is Min + Step*O),
+        X is min(Temp,Max).</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

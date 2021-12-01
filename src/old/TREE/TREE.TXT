@@ -1,0 +1,1493 @@
+a. general literatureXXXXX
+    a.0. general
+        a.0.1. biographies/autobiographies
+        a.0.2. conference proceedings
+        a.0.3. general literary works 
+    a.1. introductory and survey
+    a.2. reference 
+    a.m. miscellaneous
+b. hardwareXXX
+    b.0. general
+    b.1. control structures and microprogramming 
+        b.1.0. general
+        b.1.1. control design styles
+            b.1.1.1. hardwired control
+            b.1.1.2. microprogrammed logic arrays
+            b.1.1.3. writable control store
+        b.1.2. control structure performance analysis and design aids
+            b.1.2.1. automatic synthesis
+            b.1.2.2. formal models
+            b.1.2.3. simulation
+        b.1.3. control structure reliability, testing, and fault-tolerance 
+            b.1.3.1. diagnostics
+            b.1.3.2. error-checking
+            b.1.3.3. redundant design
+            b.1.3.4. test generation
+        b.1.4. microprogram design aids 
+            b.1.4.1. firmware engineering
+            b.1.4.2. languages and compilers
+            b.1.4.3. machine-independent microcode generation
+            b.1.4.4. optimization
+            b.1.4.5. verification
+        b.1.5. microcode applications
+            b.1.5.1. direct data manipulation
+            b.1.5.2. firmware support of operating systems/instruction sets
+            b.1.5.3. instruction set interpretation
+            b.1.5.4. peripheral control
+            b.1.5.5. special-purpose
+        b.1.m. miscellaneous
+    b.2. arithmetic and logic structuresX
+        b.2.0. general
+        b.2.1. design styles 
+            b.2.1.1. calculator
+            b.2.1.2. parallel
+            b.2.1.3. pipeline
+        b.2.2. performance analysis and design aids 
+            b.2.2.1. simulation
+            b.2.2.2. verification
+            b.2.2.3. worst-case analysis
+        b.2.3. reliability, testing, and fault-tolerance 
+            b.2.3.1. diagnostics
+            b.2.3.2. error-checking
+            b.2.3.3. redundant design
+            b.2.3.4. test generation
+        b.2.4. high-speed arithmetic 
+            b.2.4.1. algorithms 
+            b.2.4.2. cost/performance 
+        b.2.m. miscellaneous
+    b.3. memory structures
+        b.3.0. general
+        b.3.1. semiconductor memories 
+            b.3.1.1. dynamic memory 
+            b.3.1.2. read-only memory 
+            b.3.1.3. static memory 
+        b.3.2. design styles 
+            b.3.2.1. associative memories
+            b.3.2.2. cache memories
+            b.3.2.3. interleaved memories
+            b.3.2.4. mass storage 
+            b.3.2.5. primary memory
+            b.3.2.6. sequential-access memory
+            b.3.2.7. shared memory
+            b.3.2.8. virtual memory
+        b.3.3. performance analysis and design aids 
+            b.3.3.1. formal models
+            b.3.3.2. simulation
+            b.3.3.3. worst-case analysis
+        b.3.4. reliability, testing, and fault-tolerance 
+            b.3.4.1. diagnostics
+            b.3.4.2. error-checking
+            b.3.4.3. redundant design
+            b.3.4.4. test generation
+        b.3.m. miscellaneous
+    b.4. input/output and data communications?
+        b.4.0. general
+        b.4.1. data communications devicesX
+            b.4.1.1. processors
+            b.4.1.2. receivers 
+            b.4.1.3. transmitters
+        b.4.2. input/output devicesX
+            b.4.2.1. channels and controllers
+            b.4.2.2. data terminals and printers
+            b.4.2.3. image display
+            b.4.2.4. voice
+        b.4.3. interconnections ?
+            b.4.3.1. asynchronous/synchronous operation?
+            b.4.3.2. fiber opticsX
+            b.4.3.3. interfaces?
+            b.4.3.4. parallel i/o 
+            b.4.3.5. physical structures X
+            b.4.3.6. topology 
+        b.4.4. performance analysis and design aids 
+            b.4.4.1. formal models
+            b.4.4.2. simulation
+            b.4.4.3. verification
+            b.4.4.4. worst-case analysis
+        b.4.5. reliability, testing, and fault-tolerance ?
+            b.4.5.1. built-in tests
+            b.4.5.2. diagnostics
+            b.4.5.3. error-checking
+            b.4.5.4. hardware reliability
+            b.4.5.5. redundant design
+            b.4.5.6. test generation
+        b.4.m. miscellaneous
+    b.5. register-transfer-level implementation
+        b.5.0. general
+        b.5.1. design
+            b.5.1.1. arithmetic and logic units
+            b.5.1.2. control design
+            b.5.1.3. data-path design
+            b.5.1.4. memory design
+            b.5.1.5. styles 
+        b.5.2. design aids
+            b.5.2.1. automatic synthesis
+            b.5.2.2. hardware description languages
+            b.5.2.3. optimization
+            b.5.2.4. simulation
+            b.5.2.5. verification
+        b.5.3. reliability and testing 
+            b.5.3.1. built-in tests
+            b.5.3.2. error-checking
+            b.5.3.3. redundant design
+            b.5.3.4. test generation
+            b.5.3.5. testability
+        b.5.m. miscellaneous
+    b.6. logic designX
+        b.6.0. general
+        b.6.1. design styles
+            b.6.1.1. cellular arrays and automata
+            b.6.1.2. combinational logic
+            b.6.1.3. logic arrays
+            b.6.1.4. memory control and access
+            b.6.1.5. memory used as logic
+            b.6.1.6. parallel circuits
+            b.6.1.7. sequential circuits
+        b.6.2. reliability and testing 
+            b.6.2.1. built-in tests
+            b.6.2.2. error-checking
+            b.6.2.3. redundant design
+            b.6.2.4. test generation
+            b.6.2.5. testability
+        b.6.3. design aids
+            b.6.3.1. automatic synthesis
+            b.6.3.2. hardware description languages
+            b.6.3.3. optimization
+            b.6.3.4. simulation
+            b.6.3.5. switching theory
+            b.6.3.6. verification
+        b.6.m. miscellaneous
+    b.7. integrated circuitsXX
+        b.7.0. general
+        b.7.1. types and design styles
+            b.7.1.1. advanced technologies
+            b.7.1.2. algorithms implemented in hardware
+            b.7.1.3. gate arrays
+            b.7.1.4. input/output circuits
+            b.7.1.5. memory technologies
+            b.7.1.6. microprocessors and microcomputers
+            b.7.1.7. standard cells
+            b.7.1.8. vlsi 
+        b.7.2. design aids
+            b.7.2.1. graphics
+            b.7.2.2. layout
+            b.7.2.3. placement and routing
+            b.7.2.4. simulation
+            b.7.2.5. verification
+        b.7.3. reliability and testing 
+            b.7.3.1. built-in tests
+            b.7.3.2. error-checking
+            b.7.3.3. redundant design
+            b.7.3.4. test generation
+            b.7.3.5. testability
+        b.7.m. miscellaneous
+    b.8. performance and reliability ?
+        b.8.0. general X
+        b.8.1. reliability, testing, and fault-tolerance ?
+        b.8.2. performance analysis and design aids ?
+        b.8.m. miscellaneous 
+    b.m. miscellaneous
+        b.m.1. design management!
+c. computer systems organization??
+    c.0. general?!!
+        c.0.1. hardware/software interfaces
+        c.0.2. instruction set design X
+        c.0.3. modeling of computer architecture X
+        c.0.4. system architectures?
+        c.0.5. systems specification methodology?
+    c.1. processor architecturesXX
+        c.1.0. general
+        c.1.1. single data stream architectures
+            c.1.1.1. multiple-instruction-stream, single-data-stream processors 
+            c.1.1.2. pipeline processors
+            c.1.1.3. risc/cisc, vliw architectures 
+            c.1.1.4. single-instruction-stream, single-data-stream processors 
+            c.1.1.5. von neumann architectures
+        c.1.2. multiple data stream architectures 
+            c.1.2.1. array and vector processors
+            c.1.2.2. associative processors
+            c.1.2.3. connection machines
+            c.1.2.4. interconnection architectures 
+            c.1.2.5. multiple-instruction-stream, multiple-data-stream processors 
+            c.1.2.6. parallel processors
+            c.1.2.7. pipeline processors
+            c.1.2.8. single-instruction-stream, multiple-data-stream processors 
+        c.1.3. other architecture styles
+            c.1.3.1. adaptable architectures
+            c.1.3.2. analog computers 
+            c.1.3.3. capability architectures
+            c.1.3.4. cellular architecture 
+            c.1.3.5. data-flow architectures
+            c.1.3.6. heterogeneous 
+            c.1.3.7. high-level language architectures
+            c.1.3.8. neural nets
+            c.1.3.9. pipeline processors 
+            c.1.3.10. stack-oriented processors
+        c.1.4. parallel architectures 
+            c.1.4.1. distributed architectures 
+            c.1.4.2. mobile processors 
+        c.1.m. miscellaneous
+            c.1.m.1. analog computers
+            c.1.m.2. hybrid systems
+    c.2. computer-communication networks?
+        c.2.0. general
+            c.2.0.1. data communications
+            c.2.0.2. open systems interconnection reference model 
+            c.2.0.3. security and protection 
+        c.2.1. network architecture and design
+            c.2.1.1. asynchronous transfer mode 
+            c.2.1.2. centralized networks
+            c.2.1.3. circuit-switching networks
+            c.2.1.4. distributed networks
+            c.2.1.5. frame relay networks 
+            c.2.1.6. isdn 
+            c.2.1.7. network communications
+            c.2.1.8. network topology
+            c.2.1.9. packet-switching networks 
+            c.2.1.10. store and forward networks
+            c.2.1.11. wireless communication 
+        c.2.2. network protocols
+            c.2.2.1. applications 
+            c.2.2.2. protocol architecture 
+            c.2.2.3. protocol verification
+            c.2.2.4. routing protocols 
+        c.2.3. network operationsX
+            c.2.3.1. network management
+            c.2.3.2. network monitoring
+            c.2.3.3. public networks
+        c.2.4. distributed systems?
+            c.2.4.1. client/server 
+            c.2.4.2. distributed applications
+            c.2.4.3. distributed databases
+            c.2.4.4. network operating systems
+        c.2.5. local and wide-area networks ?
+            c.2.5.1. access schemes
+            c.2.5.2. buses
+            c.2.5.3. ethernet 
+            c.2.5.4. high-speed 
+            c.2.5.5. internet 
+            c.2.5.6. token rings 
+        c.2.6. internetworking X
+            c.2.6.1. routers 
+            c.2.6.2. standards 
+        c.2.m. miscellaneous
+    c.3. special-purpose and application-based systems ??
+        c.3.1. microprocessor/microcomputer applications
+        c.3.2. process control systems
+        c.3.3. real-time and embedded systems 
+        c.3.4. signal processing systems
+        c.3.5. smartcards 
+    c.4. performance of systems??????!!
+        c.4.1. design studies
+        c.4.2. fault tolerance 
+        c.4.3. measurement techniques
+        c.4.4. modeling techniques
+        c.4.5. performance attributes
+        c.4.6. reliability, availability, and serviceability
+    c.5. computer system implementationX
+        c.5.0. general
+        c.5.1. large and medium computers
+            c.5.1.1. super computers
+        c.5.2. minicomputers
+        c.5.3. microcomputers
+            c.5.3.1. microprocessors
+            c.5.3.2. personal computers
+            c.5.3.3. portable devices 
+            c.5.3.4. workstations
+        c.5.4. vlsi systems
+        c.5.5. servers 
+        c.5.m. miscellaneous
+    c.m. miscellaneousXXX
+d. software?????????
+    d.0. generalXXX
+    d.1. programming techniques ???X
+        d.1.0. generalX
+        d.1.1. applicative programming
+        d.1.2. automatic programming 
+        d.1.3. concurrent programming?
+            d.1.3.1. distributed programming
+            d.1.3.2. parallel programming
+        d.1.4. sequential programming
+        d.1.5. object-oriented programming??
+        d.1.6. logic programming?
+        d.1.7. visual programmingX
+        d.1.m. miscellaneousXX
+    d.2. software engineering ??????
+        d.2.0. general 
+            d.2.0.1. protection mechanisms
+            d.2.0.2. standards!
+        d.2.1. requirements/specifications ??!!!!!
+            d.2.1.1. elicitation methods 
+            d.2.1.2. languages
+            d.2.1.3. methodologies 
+            d.2.1.4. tools!
+        d.2.2. design tools and techniques ???!!!
+            d.2.2.1. computer-aided software engineering 
+            d.2.2.2. decision tables
+            d.2.2.3. evolutionary prototyping X
+            d.2.2.4. flow charts?
+            d.2.2.5. modules and interfaces
+            d.2.2.6. object-oriented design methods 
+            d.2.2.7. petri netsX
+            d.2.2.8. programmer workbench
+            d.2.2.9. software libraries?
+            d.2.2.10. state diagrams 
+            d.2.2.11. structured programming
+            d.2.2.12. top-down programming
+            d.2.2.13. user interfaces
+        d.2.3. coding tools and techniques 
+            d.2.3.1. object-oriented programming 
+            d.2.3.2. pretty printers
+            d.2.3.3. program editors
+            d.2.3.4. reentrant code
+            d.2.3.5. standards
+            d.2.3.6. structured programming 
+            d.2.3.7. top-down programming 
+        d.2.4. software/program verification ?!!!!!!!!!!!!!
+            d.2.4.1. assertion checkers
+            d.2.4.2. class invariants 
+            d.2.4.3. correctness proofs
+            d.2.4.4. formal methods 
+            d.2.4.5. model checking 
+            d.2.4.6. programming by contract 
+            d.2.4.7. reliability
+            d.2.4.8. statistical methods 
+            d.2.4.9. validation
+        d.2.5. testing and debugging!!!!!!!!!
+            d.2.5.1. code inspections and walk-throughs
+            d.2.5.2. debugging aids
+            d.2.5.3. diagnostics
+            d.2.5.4. distributed debugging 
+            d.2.5.5. dumps
+            d.2.5.6. error handling and recovery!
+            d.2.5.7. monitors
+            d.2.5.8. symbolic execution
+            d.2.5.9. testing tools 
+            d.2.5.10. tracing
+        d.2.6. programming environmentsX
+            d.2.6.1. graphical environments 
+            d.2.6.2. integrated environments 
+            d.2.6.3. interactive environments 
+            d.2.6.4. programmer workbench 
+        d.2.7. distribution, maintenance, and enhancement 
+            d.2.7.1. corrections
+            d.2.7.2. documentation!
+            d.2.7.3. enhancement
+            d.2.7.4. extensibility
+            d.2.7.5. portability
+            d.2.7.6. restructuring, reverse engineering, and reengineering 
+            d.2.7.7. version control
+        d.2.8. metrics ?X!!!
+            d.2.8.1. complexity measures!
+            d.2.8.2. performance measures
+            d.2.8.3. process metrics !!
+            d.2.8.4. product metrics !!!
+            d.2.8.5. software science
+        d.2.9. management !!!!
+            d.2.9.1. copyrights
+            d.2.9.2. cost estimation
+            d.2.9.3. life cycle
+            d.2.9.4. productivity
+            d.2.9.5. programming teams
+            d.2.9.6. software configuration management
+            d.2.9.7. software process models 
+            d.2.9.8. software quality assurance !
+            d.2.9.9. time estimation
+        d.2.10. design 
+            d.2.10.1. methodologies
+            d.2.10.2. representation
+        d.2.11. software architectures 
+            d.2.11.1. data abstraction 
+            d.2.11.2. domain-specific architectures 
+            d.2.11.3. information hiding 
+            d.2.11.4. languages 
+            d.2.11.5. patterns 
+        d.2.12. interoperability 
+            d.2.12.1. data mapping 
+            d.2.12.2. distributed objects 
+            d.2.12.3. interface definition languages 
+        d.2.13. reusable software ?
+            d.2.13.1. domain engineering 
+            d.2.13.2. reusable libraries 
+            d.2.13.3. reuse models 
+        d.2.m. miscellaneousX
+            d.2.m.1. rapid prototyping
+            d.2.m.2. reusable software
+    d.3. programming languagesX
+        d.3.0. general
+            d.3.0.1. standards
+        d.3.1. formal definitions and theory ?????XX
+            d.3.1.1. semantics
+            d.3.1.2. syntax
+        d.3.2. language classifications
+            d.3.2.1. applicative 
+            d.3.2.2. concurrent, distributed, and parallel languages
+            d.3.2.3. constraint and logic languages 
+            d.3.2.4. data-flow languages
+            d.3.2.5. design languages
+            d.3.2.6. extensible languages
+            d.3.2.7. macro and assembly languages
+            d.3.2.8. microprogramming languages
+            d.3.2.9. multiparadigm languages 
+            d.3.2.10. nondeterministic languages
+            d.3.2.11. nonprocedural languages
+            d.3.2.12. object-oriented languages
+            d.3.2.13. specialized application languages
+            d.3.2.14. very high-level languages
+        d.3.3. language constructs and features ?
+            d.3.3.1. abstract data types
+            d.3.3.2. classes and objects 
+            d.3.3.3. concurrent programming structures
+            d.3.3.4. constraints 
+            d.3.3.5. control structures
+            d.3.3.6. coroutines
+            d.3.3.7. data types and structures
+            d.3.3.8. dynamic storage management
+            d.3.3.9. frameworks 
+            d.3.3.10. inheritance 
+            d.3.3.11. input/output
+            d.3.3.12. modules, packages
+            d.3.3.13. patterns 
+            d.3.3.14. polymorphism 
+            d.3.3.15. procedures, functions, and subroutines
+            d.3.3.16. recursion
+        d.3.4. processors
+            d.3.4.1. code generation
+            d.3.4.2. compilers
+            d.3.4.3. debuggers 
+            d.3.4.4. incremental compilers 
+            d.3.4.5. interpreters
+            d.3.4.6. memory management 
+            d.3.4.7. optimization
+            d.3.4.8. parsing
+            d.3.4.9. preprocessors
+            d.3.4.10. retargetable compilers 
+            d.3.4.11. run-time environments
+            d.3.4.12. translator writing systems and compiler generators
+        d.3.m. miscellaneous
+    d.4. operating systems ???X
+        d.4.0. general
+        d.4.1. process management
+            d.4.1.1. concurrency
+            d.4.1.2. deadlocks
+            d.4.1.3. multiprocessing/multiprogramming/multitasking 
+            d.4.1.4. mutual exclusion
+            d.4.1.5. scheduling
+            d.4.1.6. synchronization
+            d.4.1.7. threads 
+        d.4.2. storage management
+            d.4.2.1. allocation/deallocation strategies
+            d.4.2.2. distributed memories
+            d.4.2.3. garbage collection 
+            d.4.2.4. main memory
+            d.4.2.5. secondary storage
+            d.4.2.6. segmentation
+            d.4.2.7. storage hierarchies
+            d.4.2.8. swapping
+            d.4.2.9. virtual memory
+        d.4.3. file systems management ?
+            d.4.3.1. access methods
+            d.4.3.2. directory structures
+            d.4.3.3. distributed file systems
+            d.4.3.4. file organization
+            d.4.3.5. maintenance
+        d.4.4. communications management 
+            d.4.4.1. buffering
+            d.4.4.2. input/output
+            d.4.4.3. message sending
+            d.4.4.4. network communication
+            d.4.4.5. terminal management
+        d.4.5. reliability?!
+            d.4.5.1. backup procedures
+            d.4.5.2. checkpoint/restart
+            d.4.5.3. fault-tolerance
+            d.4.5.4. verification
+        d.4.6. security and protection ?!
+            d.4.6.1. access controls
+            d.4.6.2. authentication
+            d.4.6.3. cryptographic controls
+            d.4.6.4. information flow controls
+            d.4.6.5. invasive software 
+            d.4.6.6. security kernels
+            d.4.6.7. verification
+        d.4.7. organization and design
+            d.4.7.1. batch processing systems
+            d.4.7.2. distributed systems
+            d.4.7.3. hierarchical design
+            d.4.7.4. interactive systems
+            d.4.7.5. real-time systems and embedded systems
+        d.4.8. performance ???!
+            d.4.8.1. measurementsX
+            d.4.8.2. modeling and prediction??
+            d.4.8.3. monitorsX
+            d.4.8.4. operational analysis?X
+            d.4.8.5. queueing theoryX
+            d.4.8.6. simulation?
+            d.4.8.7. stochastic analysis
+        d.4.9. systems programs and utilities
+            d.4.9.1. command and control languages
+            d.4.9.2. linkers
+            d.4.9.3. loaders
+            d.4.9.4. window managers
+        d.4.m. miscellaneous
+    d.m. miscellaneousXXXXXX
+        d.m.1. software psychology
+e. data?X
+    e.0. generalX
+    e.1. data structures
+        e.1.1. arrays?
+        e.1.2. distributed data structures ?
+        e.1.3. graphs and networks X
+        e.1.4. lists, stacks, and queues 
+        e.1.5. records 
+        e.1.6. tables
+        e.1.7. trees
+    e.2. data storage representations?
+        e.2.1. composite structures
+        e.2.2. contiguous representations
+        e.2.3. hash-table representations
+        e.2.4. linked representations
+        e.2.5. object representation 
+        e.2.6. primitive data items
+    e.3. data encryption
+        e.3.1. code breaking 
+        e.3.2. data encryption standard 
+        e.3.3. public key cryptosystems
+        e.3.4. standards 
+    e.4. coding and information theory ?
+        e.4.1. data compaction and compression
+        e.4.2. error control codes
+        e.4.3. formal models of communication
+        e.4.4. nonsecret encoding schemes
+    e.5. files ???
+        e.5.1. backup/recovery
+        e.5.2. optimization
+        e.5.3. organization/structure
+        e.5.4. sorting/searching
+    e.m. miscellaneousX
+f. theory of computation?
+    f.0. general
+    f.1. computation by abstract devicesX
+        f.1.0. general
+        f.1.1. models of computation ?
+            f.1.1.1. automata 
+            f.1.1.2. bounded-action devices 
+            f.1.1.3. computability theory
+            f.1.1.4. relations between models
+            f.1.1.5. self-modifying machines 
+            f.1.1.6. unbounded-action devices 
+        f.1.2. modes of computation
+            f.1.2.1. alternation and nondeterminism
+            f.1.2.2. interactive and reactive computation 
+            f.1.2.3. online computation
+            f.1.2.4. parallelism and concurrency
+            f.1.2.5. probabilistic computation
+            f.1.2.6. relations among modes
+            f.1.2.7. relativized computation
+        f.1.3. complexity measures and classes ?
+            f.1.3.1. complexity hierarchies
+            f.1.3.2. machine-independent complexity
+            f.1.3.3. reducibility and completeness
+            f.1.3.4. relations among complexity classes
+            f.1.3.5. relations among complexity measures
+        f.1.m. miscellaneous
+    f.2. analysis of algorithms and problem complexity ?
+        f.2.0. generalX
+        f.2.1. numerical algorithms and problems ?
+            f.2.1.1. computation of transforms ?
+            f.2.1.2. computations in finite fieldsX
+            f.2.1.3. computations on matrices?
+            f.2.1.4. computations on polynomials
+            f.2.1.5. number-theoretic computations X
+        f.2.2. nonnumerical algorithms and problems ??
+            f.2.2.1. complexity of proof procedures
+            f.2.2.2. computations on discrete structures?
+            f.2.2.3. geometrical problems and computations
+            f.2.2.4. pattern matchingX
+            f.2.2.5. routing and layout
+            f.2.2.6. sequencing and scheduling?
+            f.2.2.7. sorting and searchingX
+        f.2.3. tradeoffs between complexity measures 
+        f.2.m. miscellaneousX
+    f.3. logics and meanings of programsX
+        f.3.0. general
+        f.3.1. specifying and verifying and reasoning about programs ???X
+            f.3.1.1. assertions
+            f.3.1.2. invariantsX
+            f.3.1.3. logics of programs?
+            f.3.1.4. mechanical verification
+            f.3.1.5. pre- and post-conditionsX
+            f.3.1.6. specification techniques?
+        f.3.2. semantics of programming languages X
+            f.3.2.1. algebraic approaches to semantics
+            f.3.2.2. denotational semantics
+            f.3.2.3. operational semantics
+            f.3.2.4. partial evaluation 
+            f.3.2.5. process models 
+            f.3.2.6. program analysis 
+        f.3.3. studies of program constructs 
+            f.3.3.1. control primitives
+            f.3.3.2. functional constructs
+            f.3.3.3. object-oriented constructs 
+            f.3.3.4. program and recursion schemes
+            f.3.3.5. type structure
+        f.3.m. miscellaneous
+    f.4. mathematical logic and formal languages?
+        f.4.0. generalX
+        f.4.1. mathematical logic ??
+            f.4.1.1. computability theory
+            f.4.1.2. computational logic
+            f.4.1.3. lambda calculus and related systems
+            f.4.1.4. logic and constraint programming 
+            f.4.1.5. mechanical theorem proving
+            f.4.1.6. modal logic 
+            f.4.1.7. model theory
+            f.4.1.8. proof theory
+            f.4.1.9. recursive function theory
+            f.4.1.10. set theory 
+            f.4.1.11. temporal logic 
+        f.4.2. grammars and other rewriting systems X
+            f.4.2.1. decision problems
+            f.4.2.2. grammar types 
+            f.4.2.3. parallel rewriting systems 
+            f.4.2.4. parsing
+            f.4.2.5. thue systems
+        f.4.3. formal languages ??
+            f.4.3.1. algebraic language theory
+            f.4.3.2. classes defined by grammars or automata 
+            f.4.3.3. classes defined by resource-bounded automata
+            f.4.3.4. decision problems
+            f.4.3.5. operations on languages
+        f.4.m. miscellaneousX
+    f.m. miscellaneous
+g. mathematics of computing?
+    g.0. general
+    g.1. numerical analysis
+        g.1.0. general
+            g.1.0.1. computer arithmetic
+            g.1.0.2. conditioning 
+            g.1.0.3. error analysis
+            g.1.0.4. interval arithmetic 
+            g.1.0.5. multiple precision arithmetic 
+            g.1.0.6. numerical algorithms
+            g.1.0.7. parallel algorithms
+            g.1.0.8. stability 
+        g.1.1. interpolation 
+            g.1.1.1. difference formulas
+            g.1.1.2. extrapolation
+            g.1.1.3. interpolation formulas
+            g.1.1.4. smoothing
+            g.1.1.5. spline and piecewise polynomial interpolation
+        g.1.2. approximation
+            g.1.2.1. approximation of surfaces and contours 
+            g.1.2.2. chebyshev approximation and theory
+            g.1.2.3. elementary function approximation
+            g.1.2.4. fast fourier transforms 
+            g.1.2.5. least squares approximation
+            g.1.2.6. linear approximation
+            g.1.2.7. minimax approximation and algorithms
+            g.1.2.8. nonlinear approximation
+            g.1.2.9. rational approximation
+            g.1.2.10. special function approximations 
+            g.1.2.11. spline and piecewise polynomial approximation
+            g.1.2.12. wavelets and fractals 
+        g.1.3. numerical linear algebra
+            g.1.3.1. conditioning
+            g.1.3.2. determinants
+            g.1.3.3. eigenvalues and eigenvectors 
+            g.1.3.4. error analysis
+            g.1.3.5. linear systems 
+            g.1.3.6. matrix inversion
+            g.1.3.7. pseudoinverses
+            g.1.3.8. singular value decomposition 
+            g.1.3.9. sparse, structured, and very large systems 
+        g.1.4. quadrature and numerical differentiation 
+            g.1.4.1. adaptive and iterative quadrature 
+            g.1.4.2. automatic differentiation 
+            g.1.4.3. equal interval integration
+            g.1.4.4. error analysis
+            g.1.4.5. finite difference methods
+            g.1.4.6. gaussian quadrature
+            g.1.4.7. iterative methods
+            g.1.4.8. multidimensional 
+        g.1.5. roots of nonlinear equations
+            g.1.5.1. continuation 
+            g.1.5.2. convergence
+            g.1.5.3. error analysis
+            g.1.5.4. iterative methods
+            g.1.5.5. polynomials, methods for
+            g.1.5.6. systems of equations
+        g.1.6. optimization
+            g.1.6.1. constrained optimization
+            g.1.6.2. convex programming 
+            g.1.6.3. global optimization 
+            g.1.6.4. gradient methods
+            g.1.6.5. integer programming
+            g.1.6.6. least squares methods
+            g.1.6.7. linear programming
+            g.1.6.8. nonlinear programming
+            g.1.6.9. quadratic programming methods 
+            g.1.6.10. simulated annealing 
+            g.1.6.11. stochastic programming 
+            g.1.6.12. unconstrained optimization 
+        g.1.7. ordinary differential equations
+            g.1.7.1. boundary value problems
+            g.1.7.2. chaotic systems 
+            g.1.7.3. convergence and stability
+            g.1.7.4. differential-algebraic equations 
+            g.1.7.5. error analysis
+            g.1.7.6. finite difference methods 
+            g.1.7.7. initial value problems
+            g.1.7.8. multistep and multivalue methods 
+            g.1.7.9. one-step 
+            g.1.7.10. stiff equations
+        g.1.8. partial differential equations
+            g.1.8.1. domain decomposition methods 
+            g.1.8.2. elliptic equations
+            g.1.8.3. finite difference methods 
+            g.1.8.4. finite element methods
+            g.1.8.5. finite volume methods 
+            g.1.8.6. hyperbolic equations
+            g.1.8.7. inverse problems 
+            g.1.8.8. iterative solution techniques 
+            g.1.8.9. method of lines
+            g.1.8.10. multigrid and multilevel methods 
+            g.1.8.11. parabolic equations
+            g.1.8.12. spectral methods 
+        g.1.9. integral equations
+            g.1.9.1. delay equations 
+            g.1.9.2. fredholm equations
+            g.1.9.3. integro-differential equations
+            g.1.9.4. volterra equations
+        g.1.10. applications 
+        g.1.m. miscellaneous
+    g.2. discrete mathematics
+        g.2.0. general
+        g.2.1. combinatorics 
+            g.2.1.1. combinatorial algorithms
+            g.2.1.2. counting problems
+            g.2.1.3. generating functions
+            g.2.1.4. permutations and combinations
+            g.2.1.5. recurrences and difference equations
+        g.2.2. graph theory 
+            g.2.2.1. graph algorithms
+            g.2.2.2. graph labeling 
+            g.2.2.3. hypergraphs 
+            g.2.2.4. network problems
+            g.2.2.5. path and circuit problems
+            g.2.2.6. trees
+        g.2.3. applications 
+        g.2.m. miscellaneous
+    g.3. probability and statistics?
+        g.3.1. contingency table analysis 
+        g.3.2. correlation and regression analysis 
+        g.3.3. distribution functions 
+        g.3.4. experimental design 
+        g.3.5. markov processes 
+        g.3.6. multivariate statistics 
+        g.3.7. nonparametric statistics 
+        g.3.8. probabilistic algorithms 
+        g.3.9. queueing theory 
+        g.3.10. random number generation
+        g.3.11. reliability and life testing 
+        g.3.12. renewal theory 
+        g.3.13. robust regression 
+        g.3.14. statistical computing
+        g.3.15. statistical software
+        g.3.16. stochastic processes 
+        g.3.17. survival analysis 
+        g.3.18. time series analysis 
+    g.4. mathematical software
+        g.4.1. algorithm design and analysis 
+        g.4.2. certification and testing
+        g.4.3. documentation 
+        g.4.4. efficiency
+        g.4.5. parallel and vector implementations 
+        g.4.6. portability
+        g.4.7. reliability and robustness
+        g.4.8. user interfaces 
+        g.4.9. verification
+    g.m. miscellaneous
+        g.m.1. queueing theory
+h. information systems?X
+    h.0. generalX
+    h.1. models and principles
+        h.1.0. general
+        h.1.1. systems and information theory ?
+            h.1.1.1. general systems theory
+            h.1.1.2. information theory
+            h.1.1.3. value of information
+        h.1.2. user/machine systems
+            h.1.2.1. human factors
+            h.1.2.2. human information processing
+            h.1.2.3. software psychology 
+        h.1.m. miscellaneous
+    h.2. database management ??
+        h.2.0. general
+            h.2.0.1. security, integrity, and protection
+        h.2.1. logical design
+            h.2.1.1. data models
+            h.2.1.2. normal forms
+            h.2.1.3. schema and subschema
+        h.2.2. physical design
+            h.2.2.1. access methods
+            h.2.2.2. deadlock avoidance
+            h.2.2.3. recovery and restart
+        h.2.3. languages 
+            h.2.3.1. data description languages 
+            h.2.3.2. data manipulation languages 
+            h.2.3.3. database programming languages
+            h.2.3.4. query languages
+            h.2.3.5. report writers
+        h.2.4. systems
+            h.2.4.1. concurrency
+            h.2.4.2. distributed databases 
+            h.2.4.3. multimedia databases 
+            h.2.4.4. object-oriented databases 
+            h.2.4.5. parallel databases 
+            h.2.4.6. query processing
+            h.2.4.7. relational databases 
+            h.2.4.8. rule-based databases 
+            h.2.4.9. textual databases 
+            h.2.4.10. transaction processing
+        h.2.5. heterogeneous databases
+            h.2.5.1. data translation
+            h.2.5.2. program translation
+        h.2.6. database machines
+        h.2.7. database administration?
+            h.2.7.1. data dictionary/directory
+            h.2.7.2. data warehouse and repository 
+            h.2.7.3. logging and recovery
+            h.2.7.4. security, integrity, and protection 
+        h.2.8. database applications?
+            h.2.8.1. data mining 
+            h.2.8.2. image databases 
+            h.2.8.3. scientific databases 
+            h.2.8.4. spatial databases and gis 
+            h.2.8.5. statistical databases 
+        h.2.m. miscellaneous
+    h.3. information storage and retrieval?
+        h.3.0. general
+        h.3.1. content analysis and indexing?!
+            h.3.1.1. abstracting methods
+            h.3.1.2. dictionaries
+            h.3.1.3. indexing methods
+            h.3.1.4. linguistic processing
+            h.3.1.5. thesauruses
+        h.3.2. information storage
+            h.3.2.1. file organization
+            h.3.2.2. record classification
+        h.3.3. information search and retrieval?!
+            h.3.3.1. clustering
+            h.3.3.2. information filtering 
+            h.3.3.3. query formulation
+            h.3.3.4. relevance feedback 
+            h.3.3.5. retrieval models
+            h.3.3.6. search process
+            h.3.3.7. selection process
+        h.3.4. systems and software
+            h.3.4.1. current awareness systems 
+            h.3.4.2. distributed systems 
+            h.3.4.3. information networks
+            h.3.4.4. performance evaluation 
+            h.3.4.5. question-answering systems
+            h.3.4.6. user profiles and alert services 
+        h.3.5. online information services
+            h.3.5.1. commercial services 
+            h.3.5.2. data sharing 
+            h.3.5.3. web-based services 
+        h.3.6. library automation
+            h.3.6.1. large text archives
+        h.3.7. digital libraries 
+            h.3.7.1. collection 
+            h.3.7.2. dissemination 
+            h.3.7.3. standards 
+            h.3.7.4. systems issues 
+            h.3.7.5. user issues 
+        h.3.m. miscellaneous
+    h.4. information systems applications
+        h.4.0. general
+        h.4.1. office automation 
+            h.4.1.1. desktop publishing 
+            h.4.1.2. equipment
+            h.4.1.3. groupware 
+            h.4.1.4. spreadsheets
+            h.4.1.5. time management 
+            h.4.1.6. word processing
+            h.4.1.7. workflow management 
+        h.4.2. types of systems
+            h.4.2.1. decision support 
+            h.4.2.2. logistics
+        h.4.3. communications applications
+            h.4.3.1. bulletin boards
+            h.4.3.2. computer conferencing, teleconferencing, and videoconferencing 
+            h.4.3.3. electronic mail
+            h.4.3.4. information browsers 
+            h.4.3.5. videotex
+        h.4.m. miscellaneous!
+    h.5. information interfaces and presentation 
+        h.5.0. general
+        h.5.1. multimedia information systems
+            h.5.1.1. animations
+            h.5.1.2. artificial, augmented, and virtual realities 
+            h.5.1.3. audio input/output
+            h.5.1.4. evaluation/methodology
+            h.5.1.5. hypertext navigation and maps
+            h.5.1.6. video 
+        h.5.2. user interfaces 
+            h.5.2.1. auditory 
+            h.5.2.2. benchmarking 
+            h.5.2.3. ergonomics
+            h.5.2.4. evaluation/methodology
+            h.5.2.5. graphical user interfaces 
+            h.5.2.6. haptic i/o 
+            h.5.2.7. input devices and strategies 
+            h.5.2.8. interaction styles 
+            h.5.2.9. natural language 
+            h.5.2.10. prototyping 
+            h.5.2.11. screen design 
+            h.5.2.12. standardization 
+            h.5.2.13. style guides 
+            h.5.2.14. theory and methods
+            h.5.2.15. training, help, and documentation
+            h.5.2.16. user-centered design 
+            h.5.2.17. user interface management systems 
+            h.5.2.18. voice i/o 
+            h.5.2.19. windowing systems
+        h.5.3. group and organization interfaces
+            h.5.3.1. asynchronous interaction
+            h.5.3.2. collaborative computing 
+            h.5.3.3. computer-supported cooperative work 
+            h.5.3.4. evaluation/methodology
+            h.5.3.5. organizational design
+            h.5.3.6. synchronous interaction
+            h.5.3.7. theory and models
+            h.5.3.8. web-based interaction 
+        h.5.4. hypertext/hypermedia 
+            h.5.4.1. architectures 
+            h.5.4.2. navigation 
+            h.5.4.3. theory 
+            h.5.4.4. user issues 
+        h.5.5. sound and music computing 
+            h.5.5.1. methodologies and techniques 
+            h.5.5.2. modeling 
+            h.5.5.3. signal analysis, synthesis, and processing 
+            h.5.5.4. systems 
+        h.5.m. miscellaneous 
+    h.m. miscellaneousX
+i. computing methodologies????
+    i.0. generalX
+    i.1. symbolic and algebraic manipulation 
+        i.1.0. general
+        i.1.1. expressions and their representation 
+            i.1.1.1. representations 
+            i.1.1.2. simplification of expressions
+        i.1.2. algorithms 
+            i.1.2.1. algebraic algorithms
+            i.1.2.2. analysis of algorithms
+            i.1.2.3. nonalgebraic algorithms
+        i.1.3. languages and systems 
+            i.1.3.1. evaluation strategies
+            i.1.3.2. nonprocedural languages
+            i.1.3.3. special-purpose algebraic systems
+            i.1.3.4. special-purpose hardware
+            i.1.3.5. substitution mechanisms
+        i.1.4. applications
+        i.1.m. miscellaneous
+    i.2. artificial intelligence???
+        i.2.0. general
+            i.2.0.1. cognitive simulation
+            i.2.0.2. philosophical foundations
+        i.2.1. applications and expert systems X
+            i.2.1.1. cartography
+            i.2.1.2. games
+            i.2.1.3. industrial automation
+            i.2.1.4. law
+            i.2.1.5. medicine and science
+            i.2.1.6. natural language interfaces
+            i.2.1.7. office automation
+        i.2.2. automatic programming ??
+            i.2.2.1. automatic analysis of algorithms
+            i.2.2.2. program modification
+            i.2.2.3. program synthesis
+            i.2.2.4. program transformation
+            i.2.2.5. program verification
+        i.2.3. deduction and theorem proving ??X
+            i.2.3.1. answer/reason extraction
+            i.2.3.2. deduction 
+            i.2.3.3. inference engines 
+            i.2.3.4. logic programming
+            i.2.3.5. mathematical induction
+            i.2.3.6. metatheory
+            i.2.3.7. nonmonotonic reasoning and belief revision
+            i.2.3.8. resolution
+            i.2.3.9. uncertainty, ``fuzzy,'' and probabilistic reasoning
+        i.2.4. knowledge representation formalisms and methods ??
+            i.2.4.1. frames and scripts
+            i.2.4.2. modal logic 
+            i.2.4.3. predicate logic
+            i.2.4.4. relation systems
+            i.2.4.5. representation languages
+            i.2.4.6. representations 
+            i.2.4.7. semantic networks
+            i.2.4.8. temporal logic 
+        i.2.5. programming languages and software 
+            i.2.5.1. expert system tools and techniques
+        i.2.6. learning 
+            i.2.6.1. analogies
+            i.2.6.2. concept learning
+            i.2.6.3. connectionism and neural nets
+            i.2.6.4. induction
+            i.2.6.5. knowledge acquisition
+            i.2.6.6. language acquisition
+            i.2.6.7. parameter learning
+        i.2.7. natural language processingX
+            i.2.7.1. discourse
+            i.2.7.2. language generation
+            i.2.7.3. language models
+            i.2.7.4. language parsing and understanding
+            i.2.7.5. machine translation
+            i.2.7.6. speech recognition and synthesis
+            i.2.7.7. text analysis
+        i.2.8. problem solving, control methods, and search 
+            i.2.8.1. backtracking
+            i.2.8.2. control theory 
+            i.2.8.3. dynamic programming
+            i.2.8.4. graph and tree search strategies
+            i.2.8.5. heuristic methods
+            i.2.8.6. plan execution, formation, and generation
+            i.2.8.7. scheduling 
+        i.2.9. robotics?
+            i.2.9.1. autonomous vehicles 
+            i.2.9.2. commercial robots and applications 
+            i.2.9.3. kinematics and dynamics 
+            i.2.9.4. manipulators
+            i.2.9.5. operator interfaces 
+            i.2.9.6. propelling mechanisms
+            i.2.9.7. sensors
+            i.2.9.8. workcell organization and planning 
+        i.2.10. vision and scene understanding X
+            i.2.10.1. 3d/stereo scene analysis 
+            i.2.10.2. architecture and control structures
+            i.2.10.3. intensity, color, photometry, and thresholding
+            i.2.10.4. modeling and recovery of physical attributes
+            i.2.10.5. motion
+            i.2.10.6. perceptual reasoning
+            i.2.10.7. representations, data structures, and transforms
+            i.2.10.8. shape
+            i.2.10.9. texture
+            i.2.10.10. video analysis 
+        i.2.11. distributed artificial intelligence?!
+            i.2.11.1. coherence and coordination
+            i.2.11.2. intelligent agents 
+            i.2.11.3. languages and structures
+            i.2.11.4. multiagent systems 
+        i.2.m. miscellaneous
+    i.3. computer graphics?X
+        i.3.0. general
+        i.3.1. hardware architecture 
+            i.3.1.1. graphics processors
+            i.3.1.2. hardcopy devices
+            i.3.1.3. input devices
+            i.3.1.4. parallel processing
+            i.3.1.5. raster display devices
+            i.3.1.6. storage devices
+            i.3.1.7. three-dimensional displays
+            i.3.1.8. vector display devices
+        i.3.2. graphics systems 
+            i.3.2.1. distributed/network graphics
+            i.3.2.2. remote systems
+            i.3.2.3. stand-alone systems
+        i.3.3. picture/image generation
+            i.3.3.1. antialiasing
+            i.3.3.2. bitmap and framebuffer operations
+            i.3.3.3. digitizing and scanning
+            i.3.3.4. display algorithms
+            i.3.3.5. line and curve generation
+            i.3.3.6. viewing algorithms
+        i.3.4. graphics utilities
+            i.3.4.1. application packages
+            i.3.4.2. device drivers
+            i.3.4.3. graphics editors
+            i.3.4.4. graphics packages
+            i.3.4.5. meta files
+            i.3.4.6. paint systems
+            i.3.4.7. picture description languages
+            i.3.4.8. software support
+            i.3.4.9. virtual device interfaces
+        i.3.5. computational geometry and object modeling?
+            i.3.5.1. boundary representations
+            i.3.5.2. constructive solid geometry 
+            i.3.5.3. curve, surface, solid, and object representations
+            i.3.5.4. geometric algorithms, languages, and systems
+            i.3.5.5. hierarchy and geometric transformations
+            i.3.5.6. modeling packages
+            i.3.5.7. object hierarchies
+            i.3.5.8. physically based modeling
+            i.3.5.9. splines
+        i.3.6. methodology and techniques
+            i.3.6.1. device independence
+            i.3.6.2. ergonomics
+            i.3.6.3. graphics data structures and data types
+            i.3.6.4. interaction techniques
+            i.3.6.5. languages
+            i.3.6.6. standards
+        i.3.7. three-dimensional graphics and realism?
+            i.3.7.1. animation
+            i.3.7.2. color, shading, shadowing, and texture
+            i.3.7.3. fractalsX
+            i.3.7.4. hidden line/surface removal
+            i.3.7.5. radiosity
+            i.3.7.6. raytracing?
+            i.3.7.7. virtual realityX
+            i.3.7.8. visible line/surface algorithms?
+        i.3.8. applications
+        i.3.m. miscellaneous
+    i.4. image processing and computer vision X
+        i.4.0. general
+            i.4.0.1. image displays
+            i.4.0.2. image processing software
+        i.4.1. digitization and image capture 
+            i.4.1.1. camera calibration 
+            i.4.1.2. imaging geometry 
+            i.4.1.3. quantization
+            i.4.1.4. radiometry 
+            i.4.1.5. reflectance 
+            i.4.1.6. sampling
+            i.4.1.7. scanning
+        i.4.2. compression 
+            i.4.2.1. approximate methods
+            i.4.2.2. exact coding
+        i.4.3. enhancement
+            i.4.3.1. filtering
+            i.4.3.2. geometric correction
+            i.4.3.3. grayscale manipulation
+            i.4.3.4. registration
+            i.4.3.5. sharpening and deblurring
+            i.4.3.6. smoothing
+        i.4.4. restoration
+            i.4.4.1. inverse filtering
+            i.4.4.2. kalman filtering
+            i.4.4.3. pseudoinverse restoration
+            i.4.4.4. wiener filtering
+        i.4.5. reconstruction
+            i.4.5.1. series expansion methods
+            i.4.5.2. summation methods
+            i.4.5.3. transform methods
+        i.4.6. segmentation
+            i.4.6.1. edge and feature detection
+            i.4.6.2. pixel classification
+            i.4.6.3. region growing, partitioning
+            i.4.6.4. relaxation 
+        i.4.7. feature measurement
+            i.4.7.1. feature representation 
+            i.4.7.2. invariants
+            i.4.7.3. moments
+            i.4.7.4. projections
+            i.4.7.5. size and shape
+            i.4.7.6. texture
+        i.4.8. scene analysis
+            i.4.8.1. color 
+            i.4.8.2. depth cues
+            i.4.8.3. motion 
+            i.4.8.4. object recognition 
+            i.4.8.5. photometry
+            i.4.8.6. range data
+            i.4.8.7. sensor fusion
+            i.4.8.8. shading 
+            i.4.8.9. shape 
+            i.4.8.10. stereo
+            i.4.8.11. surface fitting 
+            i.4.8.12. time-varying imagery
+            i.4.8.13. tracking 
+        i.4.9. applications
+        i.4.10. image representation
+            i.4.10.1. hierarchical
+            i.4.10.2. morphological
+            i.4.10.3. multidimensional
+            i.4.10.4. statistical
+            i.4.10.5. volumetric
+        i.4.m. miscellaneous
+    i.5. pattern recognition?
+        i.5.0. general
+        i.5.1. models?
+            i.5.1.1. deterministic
+            i.5.1.2. fuzzy set
+            i.5.1.3. geometric
+            i.5.1.4. neural nets
+            i.5.1.5. statistical
+            i.5.1.6. structural
+        i.5.2. design methodology
+            i.5.2.1. classifier design and evaluation
+            i.5.2.2. feature evaluation and selection
+            i.5.2.3. pattern analysis
+        i.5.3. clustering
+            i.5.3.1. algorithmsX
+            i.5.3.2. similarity measuresX
+        i.5.4. applications?
+            i.5.4.1. computer vision
+            i.5.4.2. signal processing
+            i.5.4.3. text processing
+            i.5.4.4. waveform analysis
+        i.5.5. implementation ?
+            i.5.5.1. interactive systems
+            i.5.5.2. special architectures
+        i.5.m. miscellaneous
+    i.6. simulation and modeling ?????
+        i.6.0. general
+        i.6.1. simulation theory
+            i.6.1.1. model classification
+            i.6.1.2. systems theory
+            i.6.1.3. types of simulation *
+        i.6.2. simulation languagesX
+        i.6.3. applications
+        i.6.4. model validation and analysis??
+        i.6.5. model development?
+            i.6.5.1. modeling methodologies
+        i.6.6. simulation output analysis?
+        i.6.7. simulation support systems
+            i.6.7.1. environments
+        i.6.8. types of simulationX
+            i.6.8.1. animation
+            i.6.8.2. combined
+            i.6.8.3. continuous
+            i.6.8.4. discrete event
+            i.6.8.5. distributed
+            i.6.8.6. gaming
+            i.6.8.7. monte carlo
+            i.6.8.8. parallel
+            i.6.8.9. visual
+        i.6.m. miscellaneous
+    i.7. document and text processing ?XX
+        i.7.0. general
+        i.7.1. document and text editing 
+            i.7.1.1. document management 
+            i.7.1.2. languages
+            i.7.1.3. spelling
+            i.7.1.4. version control 
+        i.7.2. document preparation
+            i.7.2.1. desktop publishing
+            i.7.2.2. format and notation
+            i.7.2.3. hypertext/hypermedia
+            i.7.2.4. index generation 
+            i.7.2.5. languages and systems
+            i.7.2.6. markup languages 
+            i.7.2.7. multi/mixed media
+            i.7.2.8. photocomposition/typesetting
+            i.7.2.9. scripting languages 
+            i.7.2.10. standards
+        i.7.3. index generation
+        i.7.4. electronic publishing 
+        i.7.5. document capture 
+            i.7.5.1. document analysis 
+            i.7.5.2. graphics recognition and interpretation 
+            i.7.5.3. optical character recognition 
+            i.7.5.4. scanning 
+        i.7.m. miscellaneous
+    i.m. miscellaneousX
+j. computer applicationsXX
+    j.0. general
+    j.1. administrative data processing
+        j.1.1. business
+        j.1.2. education
+        j.1.3. financial 
+        j.1.4. government
+        j.1.5. law
+        j.1.6. manufacturing
+        j.1.7. marketing
+        j.1.8. military
+    j.2. physical sciences and engineering
+        j.2.1. aerospace
+        j.2.2. archaeology 
+        j.2.3. astronomy
+        j.2.4. chemistry
+        j.2.5. earth and atmospheric sciences
+        j.2.6. electronics
+        j.2.7. engineering
+        j.2.8. mathematics and statistics
+        j.2.9. physics
+    j.3. life and medical sciences
+        j.3.1. biology and genetics 
+        j.3.2. health
+        j.3.3. medical information systems
+    j.4. social and behavioral sciences
+        j.4.1. economics
+        j.4.2. psychology
+        j.4.3. sociology
+    j.5. arts and humanities
+        j.5.1. architecture 
+        j.5.2. arts, fine and performing
+        j.5.3. fine arts 
+        j.5.4. language translation
+        j.5.5. linguistics
+        j.5.6. literature
+        j.5.7. music
+        j.5.8. performing arts 
+    j.6. computer-aided engineering
+        j.6.1. computer-aided design 
+        j.6.2. computer-aided manufacturing 
+    j.7. computers in other systems ??X
+        j.7.1. command and control
+        j.7.2. consumer products
+        j.7.3. industrial control
+        j.7.4. military
+        j.7.5. process control
+        j.7.6. publishing
+        j.7.7. real time
+    j.m. miscellaneous
+k. computing milieuxXXXXXXX
+    k.0. general
+    k.1. the computer industry
+        k.1.1. markets
+        k.1.2. standards
+        k.1.3. statistics
+        k.1.4. suppliers
+    k.2. history of computing
+        k.2.1. hardware
+        k.2.2. people
+        k.2.3. software
+        k.2.4. systems
+        k.2.5. theory
+    k.3. computers and education
+        k.3.0. general
+        k.3.1. computer uses in education
+            k.3.1.1. collaborative learning 
+            k.3.1.2. computer-assisted instruction 
+            k.3.1.3. computer-managed instruction 
+            k.3.1.4. distance learning 
+        k.3.2. computer and information science educationX
+            k.3.2.1. accreditation 
+            k.3.2.2. computer science education
+            k.3.2.3. curriculum
+            k.3.2.4. information systems education
+            k.3.2.5. literacy 
+            k.3.2.6. self-assessment
+        k.3.m. miscellaneous
+            k.3.m.1. accreditation
+            k.3.m.2. computer literacy
+    k.4. computers and society
+        k.4.0. general
+        k.4.1. public policy issues
+            k.4.1.1. abuse and crime involving computers 
+            k.4.1.2. computer-related health issues 
+            k.4.1.3. ethics 
+            k.4.1.4. human safety
+            k.4.1.5. intellectual property rights 
+            k.4.1.6. privacy
+            k.4.1.7. regulation
+            k.4.1.8. transborder data flow
+            k.4.1.9. use/abuse of power 
+        k.4.2. social issues
+            k.4.2.1. abuse and crime involving computers
+            k.4.2.2. assistive technologies for persons with disabilities 
+            k.4.2.3. employment
+            k.4.2.4. handicapped persons/special needs
+        k.4.3. organizational impacts
+            k.4.3.1. automation 
+            k.4.3.2. computer-supported collaborative work 
+            k.4.3.3. employment 
+            k.4.3.4. reengineering 
+        k.4.4. electronic commerce 
+            k.4.4.1. cybercash, digital cash 
+            k.4.4.2. distributed commercial transactions 
+            k.4.4.3. electronic data interchange 
+            k.4.4.4. intellectual property 
+            k.4.4.5. payment schemes 
+            k.4.4.6. security 
+        k.4.m. miscellaneous
+    k.5. legal aspects of computing
+        k.5.0. general
+        k.5.1. hardware/software protection ??XX
+            k.5.1.1. copyrights
+            k.5.1.2. licensing ?
+            k.5.1.3. patents?
+            k.5.1.4. proprietary rightsX
+            k.5.1.5. trade secretsX
+        k.5.2. governmental issues
+            k.5.2.1. censorship 
+            k.5.2.2. regulation
+            k.5.2.3. taxation
+        k.5.m. miscellaneous
+            k.5.m.1. contracts
+            k.5.m.2. hardware patents
+    k.6. management of computing and information systems
+        k.6.0. general
+            k.6.0.1. economics
+        k.6.1. project and people management
+            k.6.1.1. life cycle
+            k.6.1.2. management techniques 
+            k.6.1.3. staffing
+            k.6.1.4. strategic information systems planning 
+            k.6.1.5. systems analysis and design
+            k.6.1.6. systems development
+            k.6.1.7. training
+        k.6.2. installation management
+            k.6.2.1. benchmarks
+            k.6.2.2. computer selection
+            k.6.2.3. computing equipment management
+            k.6.2.4. performance and usage measurement
+            k.6.2.5. pricing and resource allocation
+        k.6.3. software management ????????X!
+            k.6.3.1. software development
+            k.6.3.2. software maintenance
+            k.6.3.3. software process 
+            k.6.3.4. software selection
+        k.6.4. system management???XX
+            k.6.4.1. centralization/decentralization
+            k.6.4.2. management audit
+            k.6.4.3. quality assurance
+        k.6.5. security and protection ??
+            k.6.5.1. authentication?
+            k.6.5.2. insuranceX
+            k.6.5.3. invasive software 
+            k.6.5.4. physical securityX
+            k.6.5.5. unauthorized access X
+        k.6.m. miscellaneous
+            k.6.m.1. insurance*
+            k.6.m.2. security*
+    k.7. the computing profession
+        k.7.0. general
+        k.7.1. occupations
+        k.7.2. organizations
+        k.7.3. testing, certification, and licensing
+        k.7.4. professional ethics 
+            k.7.4.1. codes of ethics 
+            k.7.4.2. codes of good practice 
+            k.7.4.3. ethical dilemmas 
+        k.7.m. miscellaneous
+            k.7.m.1. codes of good practice
+            k.7.m.2. ethics
+    k.8. personal computing
+        k.8.1. games*
+        k.8.1. application packages
+            k.8.1.1. data communications
+            k.8.1.2. database processing
+            k.8.1.3. freeware/shareware 
+            k.8.1.4. graphics
+            k.8.1.5. spreadsheets
+            k.8.1.6. word processing
+            k.8.1.1. data communications
+            k.8.1.2. database processing
+            k.8.1.3. freeware/shareware 
+            k.8.1.4. graphics
+            k.8.1.5. spreadsheets
+            k.8.1.6. word processing
+        k.8.0. general
+            k.8.0.1. games
+        k.8.1. games*
+        k.8.1. application packages
+            k.8.1.1. data communications
+            k.8.1.2. database processing
+            k.8.1.3. freeware/shareware 
+            k.8.1.4. graphics
+            k.8.1.5. spreadsheets
+            k.8.1.6. word processing
+            k.8.1.1. data communications
+            k.8.1.2. database processing
+            k.8.1.3. freeware/shareware 
+            k.8.1.4. graphics
+            k.8.1.5. spreadsheets
+            k.8.1.6. word processing
+        k.8.2. hardware
+        k.8.3. management/maintenance
+        k.8.m. miscellaneous 
+    k.m. miscellaneous

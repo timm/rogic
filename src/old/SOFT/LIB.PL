@@ -1,0 +1,33 @@
+/* 
+
+=head1 Library 
+
+=head2 Random clause */
+
+ one(X) :- 
+	setof(One,X^one1(X,One),All0), 
+	beam(X,All0,All), 
+	member(_/X,All).
+
+ one1(X,Score/X) :- 
+	X, 
+	score(X,Score0), 
+	bound(X,Score0), 
+	Score is -1 * Score0. /*
+
+If we have no knowledge of C<X>, give it a random number. */
+
+ score(_,N) :- 
+	N is  rand(2147483647). /*
+
+If we have knowledge of minimum values for a score,  test it here. */
+
+ bound(_,Score) :- 
+	Score > 0. /*
+
+Sometimes, we may just want to select the top I<N> values:
+makes this a beam search
+
+But right now, we have no selection knowledge. */
+
+ beam(_,L,L).  

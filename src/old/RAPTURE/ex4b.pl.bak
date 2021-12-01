@@ -1,0 +1,75 @@
+% = is find
+% := is assignment
+% ! is create
+
+%=================================================
+% very general
+
+:- op(800,xfx,:=).
+
+
+=(This of That,What,X,X) :-
+	type(That,What),
+	member(This of That=What,X,X).
+	
+%handling lists
+=(This,What,In,Out) :-
+	This 
+	oneLess(In,This/Temp=What,Out).
+
+:=(This`,New,In,[This=New|Less]) :-
+	oneLess(In,This=_,Less),!.
+:=(This,New,In,[This=New|In]).
+
+oneLess([H|T],H,T).
+oneLess([H|T],One,[H|Less]) :- oneLess(T,One,Less).
+
+%=================================================
+%moderately general
+
+another(P0,P1,X,X) :-
+	pid(P1,X,X),
+	P1 \= P0.
+
+%=================================================
+% specific
+
+% vars have a name and a type def. each set or get processing it
+% wme: x of type =
+=(This,What,In,In) :-
+	member(This=What,In),!.
+
+%type(Rule, Value,Value)
+
+type(T,V) :- type(T,V,V).
+
+type(pid(N),X,X)          :- type(posint(N),X,X).
+type(posint(N),X,X)       :- between(1,N,X).
+type(bit,X,X)             :- type(posint(2),X,X).
+type(list(Size,Type),L,L) :- between(0,Size,N),length(L,N),maplist(type(Type),L,L).
+
+%e.g. 
+%value(
+value(X of Type = Value) :- type(Type,Value,Value).
+
+
+def(X of Y,In,Out) :-
+	:=(X of Y = _,In,Out).
+
+main -->
+	def(flag of list(2,bit)),
+	flag/0 := 0,
+	flag/1 := 0,
+	turn   := 0,
+	user.
+
+user -->
+	pid(P),
+	flag/P  := 1,
+	turn    := P,
+	another(P,P1),
+	(flag/P1 =0
+    ;turn    =  P1
+	),
+	flag/P  := 0.
+

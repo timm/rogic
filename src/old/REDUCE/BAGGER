@@ -1,0 +1,38 @@
+#!/bin/bash
+
+usage='usage: rogic file'
+
+
+header() {
+cat <<- EOF
+
+	Welcome to Bagger (Version 0.2)
+	Copyright (c) 2001 Tim Menzies (tim@menzies.com)
+	Copy policy: GPL-2 (see www.gnu.org)
+	Never forget:  the chips need pepsi.
+
+EOF
+}
+
+quotes() {
+cat quotes | gawk 'BEGIN  {  RS=""
+                FS="\n"
+                }
+                {quote[n++]=$0}
+          END   {srand();
+                 print quote[int(n*rand())+1]
+                 print ""}' 
+}
+
+#comment this out for silents
+header;quotes
+
+
+#quiet load
+pre="load_files("; post=",[silent(true)])"
+# verbose load
+#pre=""; post=""
+
+GO="$pre[utils,rtypes,as,loading,header,$1]$post"
+
+pl -g "$GO"

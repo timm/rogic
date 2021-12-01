@@ -1,0 +1,20 @@
+The steps for documenting a {\PROD} file are:
+\be
+\item
+Copy `template.pl` into your various source
+code files `file1.pl`, `file2.pl`, etc.
+\item
+Edit `file1.pl`, `file2.pl`, etc as required.
+\item
+Edit the file `preps` to list all your `*.pl` files; e.g.
+{\footnotesize\begin{verbatim}
+perl prep file1
+prep prep file2
+\end{verbatim}}
+\item
+Execute the file `preps`
+Convert `file1.pl`, `file2.pl` etc to  `file1.tex`, `file2.pl`
+{\footnotesize\begin{verbatim}
+
+\end{verbatim}}
+\ee

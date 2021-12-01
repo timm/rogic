@@ -1,0 +1,7 @@
+
+term_expansion(<> X,Out) :-
+	bagof(Y,X^xpand(X,Y),Out).
+
+
+xpand(X0 or Y0,Z) :-(Z0=X0;Z0=Y0),xpand(Z0,Z).
+

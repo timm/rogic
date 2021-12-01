@@ -1,0 +1,25 @@
+:- [usual].
+
+* model 'loop
+#1: 1-[e=1]'.
+
+%vars
+* uds : a,b,c.
+
+%rules
+* b + a.
+* c + b.
+* d + c.
+* e + d.
+* b + d.
+
+%obs
+*rx   = [[], [a]]
+,
+[e    = [2,   3]
+].
+
+*end.
+
+
+

@@ -1,0 +1,81 @@
+four steps:
+
+check what the customer has selected looking for groceries 
+to see if something may be missing, 
+with a  view towards suggesting additions to the customer.
+
+bag the large items with sepcial attention to putting 
+big bottles in first
+
+bag the medium items, taking care to put frozen 
+things in freezer bags
+
+bag the small items, putting them wherever there is room
+
+b1 if   the step is check order
+	there is a bag of potato chips
+	there is no soft drink bottle
+then add one bottle of pepsi to the order
+
+b2 if   the step is check order
+then    discontinue the check-order step 
+	start the bag large items step
+
+b3 if 	the step is bag large items
+	there is a large item to be bagged
+	there is a large bottle to be bagged
+	there is a bag with < 6 large items
+then    put the bottle in the bag
+
+b4      if there step is bag large items
+	there is a large item to be bagged
+	there is a bag with < 6 large items
+then    put the large item in the bag
+
+b5      if there step is bag large items
+	there is a large item to be bagged
+then 	start a fresh bag
+
+b6 if   the step is bag large items
+then    discontinue the bag large items step 
+        start the bag small items step
+
+b7 if   the step is bag medium items
+	there is a medium item to be bagged
+	there is an empty bag or a bag with medium items
+	the bag is not yet full
+	the medium item is frozen
+	the medium item is not in an insulate freezer bag
+then    put the medium item in an insulated freezer bag
+
+b8 if   the step is bag medium items
+	there is a medium item to be bagged
+	there is an empty bag or a bag with medium items
+then    put the medium item in the bag
+
+b9 if   the step is bag medium items
+	there is a medium item to be bagged
+then    start a fresh bag
+
+b10 if  the step is bag medium items
+	then discontinue the bag medium items step
+	start the bags small items step
+
+b11 if  the step is bag small items
+	there is a small item
+	there is a bag that is not yet full
+	the bag does not contain bottles
+then    put the small item in the bag
+
+b12 if  the step is bag small s_items
+	there is a small item
+	there is a bag that is not yet full
+then    put the small item in the bag
+
+b13 if  the step is bag small items
+	there is a small item
+then    start a fresh bag
+
+b14 if  the step in bag small items
+then    discontinue the bag small items step and
+	stop

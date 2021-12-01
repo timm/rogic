@@ -1,0 +1,81 @@
+before doing anything
+
+   2466	cch
+   2428	cCH <---
+   2167	Cch <--- 
+   2939	CCH
+        ^^
+cost----||---- chances
+
+high cost    if >  $5
+high chances if > 0.85
+
+so, likesSweat appears 1.5 times as much in cCH than in Cch
+[1.5, 'Cch', likesSweat, f]
+[1.5, 'Cch', orsCostCombine, max]
+[1.5, 'Cch', r11cost, 0.9998]
+[1.5, 'Cch', r11cost, 1.33307]
+[1.5, 'Cch', r11cost, 1.9996]
+[1.5, 'Cch', r11cost, 2.66613]
+[1.5, 'Cch', r8chances, 0.8884]
+[1.5, 'Cch', swimming, t]
+
+[1.5, 'CCH', baseball, xx]
+[1.5, 'CCH', football, xx]
+[1.5, 'CCH', likesSweat, f]
+[1.5, 'CCH', orsCostCombine, max]
+[1.5, 'CCH', r10chances, 0]
+[1.5, 'CCH', r10chances, 0.444356]
+[1.5, 'CCH', r10chances, 0.888711]
+[1.5, 'CCH', r8chances, 0]
+[1.5, 'CCH', r8chances, 0.4442]
+[1.5, 'CCH', r8chances, 0.8884]
+[1.5, 'CCH', r8cost, 0.9996]
+[1.5, 'CCH', r9chances, 0]
+[1.5, 'CCH', r9chances, 0.444378]
+[1.5, 'CCH', r9chances, 0.888756]
+[1.5, 'CCH', running, xx]
+[1.5, 'CCH', swimming, t]
+[2, 'CCH', baseball, xx]
+[2, 'CCH', football, xx]
+[2, 'CCH', likesSweat, f]
+[2, 'CCH', orsCostCombine, max]
+[2, 'CCH', r10chances, 0]
+[2, 'CCH', r10chances, 0.444356]
+[2, 'CCH', r8chances, 0.4442]
+[2, 'CCH', r9chances, 0]
+[2, 'CCH', r9chances, 0.444378]
+[2, 'CCH', r9chances, 0.888756]
+[2, 'CCH', running, xx]
+[2, 'CCH', swimming, t]
+[2.5, 'CCH', likesSweat, f]
+[2.5, 'CCH', swimming, t]
+[3, 'CCH', likesSweat, f]
+[3, 'CCH', swimming, t]
+[3.5, 'CCH', likesSweat, f]
+[3.5, 'CCH', swimming, t]
+
+[1.5, cch, r10chances, 0]
+[1.5, cch, r11chances, 1.333]
+[1.5, cch, r11chances, 2.22167]
+[1.5, cch, r11chances, 2.666]
+[1.5, cch, r11chances, 3.11033]
+
+comment out the exercise rules:
+
+   6919	cch
+   1041	cCH
+    240	Cch   <--- the bad ones are now reduced ++
+   1800	CCH
+
+============
+
+before: mean cost    = 5.5058
+        mean chances = 0.764017
+
+after 
+        mean chances= 0.946593
+        mean cost   = 2.77654
+
+
+see exp.eps and exp1.eps

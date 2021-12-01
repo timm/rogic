@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>list.pl Lists</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#list_stuff">List Stuff</a></li>
+	<ul>
+
+		<li><a href="#operators">Operators</a></li>
+		<li><a href="#halve(+list,front,mid,back):_split_a_list_in_half"><code>halve(+List,?Front,?Mid,?Back)</code>: split a list in half</a></li>
+		<li><a href="#inorder(+l0,l)_lets_un_implement_a_predicate"><code>inOrder(+L0,L)</code> lets un implement a predicate</a></li>
+		<li><a href="#ordered_sets">Ordered Sets</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="list_stuff">List Stuff</a></h1>
+<pre>
+  :- ensure_loaded([list0,list1]).</pre>
+<p>
+</p>
+<h2><a name="operators">Operators</a></h2>
+<pre>
+ :- op(800,xfx,(in)).</pre>
+<p>
+</p>
+<h2><a name="halve(+list,front,mid,back):_split_a_list_in_half"><code>halve(+List,?Front,?Mid,?Back)</code>: split a list in half</a></h2>
+<p>Originally by Richard O'Keefe, I think.</p>
+<pre>
+ halve([X],[],X,[]).
+ halve([X,Y|L],[X|Front],Mid,Back) :-
+        halve1(L,[Y|L],Front,[Mid|Back]).
+ %
+ halve1([_,_|Count], [H|T], [H|F], B) :- !, halve1(Count, T, F, B).
+ halve1(_, B, [], B).</pre>
+<p>
+</p>
+<h2><a name="inorder(+l0,l)_lets_un_implement_a_predicate_that_generates_an_i<inorder>_traversal_of_a_list."><code>inOrder(+L0,L)</code> lets un implement a predicate
+that generates an <em>inOrder</em> traversal of a list.</a></h2>
+<pre>
+ inOrder(L0,L)  :- bagof(M,L0^inOrder1(L0,M),L).
+ inOrder1(L0,M) :- msort(L0,L), inOrder11(L,M).
+ inOrder11(L,M) :-
+        halve(L,Front,M0,Back),
+        (M0=M
+        ;inOrder11(Front,M)
+        ;inOrder11(Back,M)).</pre>
+<p>
+</p>
+<h2><a name="ordered_sets">Ordered Sets</a></h2>
+<p>If a set is always ordered then certain operations can be optimized.
+For example, adding items:</p>
+<pre>
+ oset_add([], El, [El]). 
+ oset_add([H|T], El, Add) :-
+    compare(Order, H, El),
+    addel(Order, H, T, El, Add).</pre>
+<pre>
+ addel(&lt;, H, T,  El, [H|Add]) :- oset_add(T, El, Add).
+ addel(=, H, T, _El, [H|T]). 
+ addel(&gt;, H, T,  El, [El,H|T]).</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

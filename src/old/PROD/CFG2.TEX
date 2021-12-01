@@ -1,0 +1,15 @@
+\section{Start-up Actions}
+ None here but in your application $X$,
+	you should have a start-up actions
+    to {\tt sneak} in {\tt defaults.X}, then
+{\tt config.X} file, then process the command line.
+E.g.
+\begin{LISTING}
+:- sneak(
+        ['defaults.x' % see \tion{defaults}
+        ,'config.x'   % see \tion{config}
+        ]).
+
+:- commandLine.
+\end{LISTING}
+

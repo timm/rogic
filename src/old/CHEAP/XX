@@ -1,0 +1,163 @@
+:- op(1002,xfy,ror).
+:- op(1001,xfy,rand).
+:- op(701,fx,?).
+:- op(1,fx,~).
+
+:- discontiguous def/4.
+
+term_expansion(( ?X = Y  --> Z),Out) :- 
+	xpand((?X = Y --> Z),Out).
+
+goal_expansion(ror(X, Y,A,B), do(X ror  Y,A,B)).
+goal_expansion(rand(X,Y,A,B), do(X rand Y,A,B)).
+
+do([],W,W).
+do([X|Y])    --> maybe ->  do(X), memos, do(Y); do(Y), memos, do(X). 
+do(X rand Y) --> maybe ->  do(X), do(Y)       ; do(Y), do(X).
+do(X ror  Y) --> maybe -> (do(X) ; do(Y))     ; (do(Y); do(X)).
+do(?X =    Y) --> do1(X,Y).
+do((X,Y))    --> do(X), do(Y).
+do((X;Y))    --> do(X); do(Y).
+do(X =    Y) --> {X=Y}.
+do(neg(1,-1),_,_).
+do(neg(-1,1),_,_).
+
+
+maybe --> {0 is random(2)}.
+
+do1(X,Y,W0,W) :-
+	wme(Path0,Before,W0),
+	set_newel(Path0,X=Y,Path),
+	wme(Path,Before,W1),
+	(set_oldel(Before,X=Z)
+        -> Y=Z,
+	   W=W1,
+	   write(end(X)),nl
+        ;  def(X,Y,W1,W)).
+
+xpand((?In = Out --> Y),[(def(In,Out,W0,W) :- Head),(Head :- Body)]) :-
+	appendl(In,Out,All),
+	X =.. All,
+	expand_term((X --> Y),(Head :- Body)),
+	Head =.. L,
+	append(_,[W0,W],L).
+
+appendl(X0,Y0,L) :- 
+	asList(X0,X),
+	asList(Y0,Y), 
+	append(X,Y,L).
+
+
+wme(L1,L2,L1/L2) :- 
+	isList(L1),
+	isList(L2),
+	!.
+
+memos(Path/Before0,[]/Before) :-
+	set_union(Path,Before0,Before).
+
+
+set_newel([],Key=Value,[Key=Value]).
+set_newel([Key0=Value0|T],Key=Value,Add) :-
+	compare(Order,Key0,Key),
+	set_newel(Order,Key0=Value0,T, Key=Value,Add).
+
+set_newel(<,H,     T,    X,[H        |Add]) :- set_newel(T,X,Add).
+set_newel(>,H,     T,Key=X,[Key=X,H|T]).
+
+set_oldel([Key0=_|T],Key=Value) :-
+	compare(Order,Key0,Key),
+	set_oldel(Order,T, Key=Value).
+
+set_oldel(<,T,    X) :- set_oldel(T,X).
+set_oldel(=,_,_).
+
+set_union([], Union, Union).
+set_union([H1|T1], L2, Union) :-     
+	union2(L2, H1, T1, Union).
+
+union2([], H1, T1, [H1|T1]).
+union2([H2|T2], H1, T1, Union) :- 
+	compare(Order, H1, H2), 
+	union3(Order, H1, T1, H2, T2, Union).
+
+union3(<, H1, T1,  H2, T2, [H1|Union]) :-    union2(T1, H2, T2, Union).
+union3(=, H1, T1, _H2, T2, [H1|Union]) :- 	set_union(T1, T2, Union).
+union3(>, H1, T1,  H2, T2, [H2|Union]) :-    union2(T2, H1, T1, Union).
+
+isList([]).
+isList([_|_]).
+
+asList(X,X) :- is_list(X),!.
+asList(X,[X]).
+
+?(A=B,C,D) :- 
+	do(?A=B,C,D).
+
+?a = X -->  
+	?b = X ror X = 1  ror X = 2  ror  X = 3    ror X = 4 ror X = 5 ror X= 1 .
+?b = X -->  
+	X = 10  ror X = 20  ror  X = 30   ror  X = 40 ror X = 50 ror X= 10 .
+
+?nna = X     --> ?coldSwim = X ror ?temp = Y, neg(X,Y).
+?cortico = X --> ?acth = X.
+?temp = X    --> ?cortico = X ror ?dex = X.
+?acth = X    --> ?temp = Y, neg(X,Y)  ror ?nna = X.
+
+demo(W) :-
+	wme([],[coldSwim=1],W0),
+	do([?nna=1,?cortico=1,?cortico=1],W0,W).
+
+%=========================
+
+
+
+as1(A) :-	
+	between(1,1000,_),
+	a(A,_,_).
+
+s :-
+	bagof(X,as1(X),L), dist(5,5,100,L).
+
+% histogram stuff
+bins(L,B) :-
+    msort(L,L1),
+    bins(L1,[],B).
+
+bins([],X,X).
+bins([H|T],[H-N0|Rest],Out) :- !,
+    N is N0 + 1,
+    bins(T,[H-N|Rest],Out).
+bins([H|T],In,Out) :-
+    bins(T,[H-1|In],Out).
+
+dist(L) :- dist(5,5,3,L).
+  
+dist(W1,W2,W3,L) :-
+    sformat(S,'~~~wP  ~~~wP ~~~wS\n',[W1,W2,W3]),
+    bins(L,Bins),
+    nl,
+    format(S,[item,frequency,0]),
+    forall(member(What-N,Bins),format(S,[What,N,N])).
+
+% misc print utilities (needed for the bistogram stuff)
+
+:- format_predicate('P',padChars(_,_)).
+
+padChars(default,A) :- padChars(5,A).
+padChars(S,A) :-
+    name(A,List),
+    length(List,N),
+    Pad is S - N,
+        forall(between(1,Pad,_),put(32)),
+        write(A).
+
+:- format_predicate('S',twiddle(_,_)).
+
+twiddle(default,A) :- twiddle(25,A).
+twiddle(W,N) :-
+    N1 is round(N/W),
+        forall(between(1,N1,_),put(126)).
+
+
+	

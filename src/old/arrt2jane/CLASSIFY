@@ -1,0 +1,80 @@
+#!c:/cygwin/bin/bash
+
+. classifyrc
+
+DAT=$1.dat
+DATA=$1.data
+NAME=$1.name
+NAMES=$1.names
+SORTS=$1.sort
+SIZE=$2
+GRAINS=$3
+
+let DIV=$SIZE/$GRAINS
+let DIV=$DIV-$DIV%1
+
+for i in $DAT $DATA $SORTS $NAME $NAMES
+do
+    if   [ -f $i   ]
+    then rm $i
+    fi
+done
+
+getdata() {
+    "$PL" -g "load_files([arrt],[silent(true)]),gos($2,$1),halt"
+}
+getdd() {
+    "$PL" -g "load_files([arrt,eg003],[silent(true)]),dd,halt"
+}
+
+echo "simulating $SIZE times..."
+getdata $1 $2 > $DAT
+
+echo "collecting data dictionary..."
+getdd $1 > $NAME
+
+echo "collecting classification data..."
+cat $DAT \
+|gawk -F, '{print $NF}'  \
+|sort -n  \
+|gawk -F, '0==(NR % div) { x[NR/div]=$1; n++}
+            END {
+                 for(i=1;i<=n;i++) {
+                    print i ","  x[i]
+                    }}' div=$DIV  > $SORTS
+
+echo "classifying..."
+gawk -F, '
+          pass==1 {n++
+                   lower[$1]=upper[n-1] 
+                   upper[$1]=$2}
+          pass==2 {for(i=2;i<NF;i++) {
+                     printf("%s,",$i) }
+                   class=n-1
+                   for(i=1;i<=n;i++) {
+                     if ( $NF >= lower[i] && $NF < upper[i] ) class=i-1
+                   }
+                   print  class}
+                  ' pass=1 $SORTS pass=2 $DAT > $DATA
+
+
+(let i=$GRAINS
+while [ $i -gt 0 ]
+do
+    echo -n "$i, "
+    let i=$i-1
+done
+echo 0
+gawk -F, '{for(i=2;i<NF;i++) {
+               print $i ": continuous." }
+          }' $NAME )> $NAMES
+
+echo "learning..."
+"$TAR2"  $1 > $1.tar
+echo -n "done. read now?"
+
+read x
+
+cat $1.tar | less
+
+

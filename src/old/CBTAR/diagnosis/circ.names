@@ -1,0 +1,32 @@
+0,1,2,3,4,5,6,7,8,9
+|3,2,1,0
+|9,8,7,6,5,4,3,2,1,0
+
+switch1a: on, off
+switch2a: on, off
+switch3a: on, off
+switch1b: on, off
+switch2b: on, off
+switch3b: on, off
+switch1c: on, off
+switch2c: on, off
+switch3c: on, off
+bulb1a: light,dark
+bulb2a: light,dark
+bulb3a: light,dark
+bulb1b: light,dark
+bulb2b: light,dark
+bulb3b: light,dark
+bulb1c: light,dark
+bulb2c: light,dark
+bulb3c: light,dark
+bulb1aState: blown,ok
+bulb2aState: blown,ok
+bulb3aState: blown,ok
+bulb1bState: blown,ok
+bulb2bState: blown,ok
+bulb3bState: blown,ok
+bulb1cState: blown,ok
+bulb2cState: blown,ok
+bulb3cState: blown,ok
+

@@ -1,0 +1,26 @@
+name = '13. ands + assumptions (with strings)'.
+
+objects(e) = [hh,ii,kk].
+objects(m) = [aa,bb,jj,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,cc,dd,ee,ff,gg].
+
+hh ++ gg .
+ii -- gg .
+gg ++ l1 .
+l1 -- l2.
+l2 -- l3.
+l3 ++ aa.
+gg ++ bb .
+aa ++ cc .
+aa ++ dd .
+aa ++ jj.
+bb ++ l4.
+l4 ++ l5.
+l5 -- l6.
+l6 -- jj.
+bb ++ ee.
+bb ++ ff.
+kk ++ l7.
+l7 -- l8.
+l8 -- l9.
+l9 ++ bb.
+ 

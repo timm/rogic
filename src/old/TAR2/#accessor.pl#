@@ -1,0 +1,99 @@
+% expansion magic
+
+term_expansion(X/Y=Z,Out) :- makeAccessors(X/Y=Z,Out).
+
+makeAccessors(X,Outs) :-
+        bagof(One,X^makeAccessor(X,One),Outs).
+MAKEAccessor(A/_=_,(:- op(999,fx, (A)))).
+MAKEAccessor(A/_=_,(:- discontiguous (A)/1, (A)/3, (A)/5)).
+	
+MAKEAccessor(Handle/_=_,accessor(Term,Op)) :-
+	functor(Term,Handle,3),
+	arg(1,Term,Op).
+
+MAKEAccessor(Handle/_=_,baseAccessor(Term,Attr)) :-
+	functor(Term,Handle,5),
+	arg(1,Term,Attr).
+MAKEAccessor(Handle/Functor=_,Out) :-
+	runiv((handlE(X) :- handlE(X,_,_)),
+              [handlE=Handle,functoR=Functor],
+	      Out).
+MAKEAccessor(Handle/Functor=Fields,Out) :-
+	length(Fields,Arity),
+	functor(Term,Functor,Arity),
+	clause(handlE(A,B,C),D),
+	runiv((handlE(A,B,C) :- D),[terM=Term,functoR=Functor,handlE=Handle],Out).
+MAKEAccessor(Handle/Functor=_,Out) :-
+	runiv(term_expansion(handlE(X),handlE(X,Y,Y)),
+              [handlE=Handle,functoR/Functor],
+	      Out).
+makeAccessor(Handle/Functor=Fields,Out) :-
+        length(Fields,Arity),
+        functor(Term1,Functor,Arity),
+        functor(Term2,Functor,Arity),
+        nth1(Pos,Fields,Item),
+        joinArgs(Pos,Old,New,Term1,Term2),
+        Out =.. [Handle,Item,Old,New,Term1,Term2].
+
+joinArgs(N,Old,New,T1,T2) :-
+        T1 =.. [_|L0],
+        T2 =.. [_|L],
+        joinArgs(1,N,L0,Old,New,L).
+joinArgs(N,N,[Old|Rest],Old,New,[New|Rest]).
+joinArgs(N0,N1,[X|L0],Old,New,[X|L]) :-
+        N0 < N1,
+        N2 is N0 + 1,
+        joinArgs(N2,N1,L0,Old,New,L).
+
+% lint magic
+goal_expansion(X,_) :-
+        baseAccessor(X,Attr),
+        nonvar(Attr),
+        \+ call(X),
+        source_location(File, Line),
+        format('E> ~w, near line ~w\n\t~w : unknown attribute\n',
+               [File,Line,Attr]),
+        fail.
+
+goal_expansion(X,_) :-
+        accessor(X,Op),
+        nonvar(Op),
+        \+ clause(X,_),
+        source_location(File, Line),
+        functor(Op,Functor,Arity),
+        format('E> ~w, near line ~w\n\t ~w : unknown operation\n',
+               [File, Line,Functor/Arity]),
+        fail.
+
+% optimization magic
+/*goal_expansion(X,(One,Two)) :-
+	optimizing(_),
+	accessor(X,A),
+	nonvar(A),
+	A = [H0,H1|T],!,
+	accessor(One,H0),
+	accessor(Two,[H1|T]).
+*/
+goal_expansion(X,Out) :-
+        optimizing(_),
+	accessor(X,A),
+        nonvar(A),
+        clause(X,Out).
+
+goal_expansion(X,true) :-
+	optimizing(2),
+        baseAccessor(X,A),
+        nonvar(A),
+        call(X).
+
+runiv(Term0, Swaps,Term) :-
+        Term0 =..L0,
+        once(maplist(runiv1(Swaps), L0, L)),
+        Term =.. L.
+
+runiv1(_,H,H)  :- var(H).
+runiv1(Swaps,Old,New)  :- atomic(Old), member(Old=New,Swaps),!.
+runiv1(_,H,H) :- atomic(H).
+runiv1(Swaps,H0,H) :- runiv(H0,Swaps,H).
+
+

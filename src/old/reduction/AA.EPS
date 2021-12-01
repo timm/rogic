@@ -1,0 +1,1354 @@
+%!PS-Adobe-2.0
+%%Creator: dot version gviz1.5.1 (09-29-99)
+%%For: (timm) Tim Menzies
+%%Title: G
+%%Pages: (atend)
+%%BoundingBox: 36 36 763 2044
+%%EndComments
+%%BeginProlog
+save
+/DotDict 200 dict def
+DotDict begin
+
+%%BeginResource: procset
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+	dup 1 exch div /InvScaleFactor exch def
+	dup scale
+} bind def
+
+% styles
+/solid { } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw aligned label in bounding box aligned to current point
+% alignfactor tells what fraction to place on the left.
+% -.5 is centered.
+/alignedtext {			% text labelwidth fontsz alignfactor
+	/alignfactor exch def
+	/fontsz exch def
+	/width exch def
+	/text exch def
+	gsave
+		% even if node or edge is dashed, don't paint text with dashes
+		[] 0 setdash
+		currentpoint newpath moveto
+		text stringwidth pop
+		alignfactor mul fontsz -.3 mul rmoveto
+		text show
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+%%EndProlog
+%%Page: 1 1
+%%PageBoundingBox: 36 36 763 2044
+%%PageOrientation: Portrait
+gsave
+35 35 728 2009 boxprim clip newpath
+36 36 translate
+0 0 1 beginpage
+0 0 translate 0 rotate
+0.000 0.000 0.000 graphcolor
+14.00 /Times-Roman set_font
+
+%	f(149)
+gsave 10 dict begin
+newpath 169 252 moveto
+105 252 lineto
+105 216 lineto
+169 216 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 235 moveto (Too fast!) 50 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(96)
+gsave 10 dict begin
+newpath 476 144 moveto
+368 144 lineto
+368 108 lineto
+476 108 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 127 moveto (Incorrect outputs) 95 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(149) -> f(96)
+newpath 170 231 moveto
+201 227 247 221 274 210 curveto
+308 198 355 169 387 148 curveto
+stroke
+newpath 384 147 moveto
+394 144 lineto
+387 151 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(99)
+gsave 10 dict begin
+newpath 179 198 moveto
+95 198 lineto
+95 162 lineto
+179 162 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 181 moveto (Wrong units) 69 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(99) -> f(96)
+newpath 179 172 moveto
+227 163 306 148 360 137 curveto
+stroke
+newpath 357 135 moveto
+367 136 lineto
+357 140 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(102)
+gsave 10 dict begin
+newpath 171 144 moveto
+103 144 lineto
+103 108 lineto
+171 108 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 127 moveto (Imprecise) 55 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(102) -> f(96)
+newpath 172 126 moveto
+219 126 302 126 359 126 curveto
+stroke
+newpath 357 124 moveto
+367 126 lineto
+357 129 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(105)
+gsave 10 dict begin
+newpath 190 90 moveto
+84 90 lineto
+84 54 lineto
+190 54 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 73 moveto (Just plain wrong) 92 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(105) -> f(96)
+newpath 191 82 moveto
+239 92 309 105 360 115 curveto
+stroke
+newpath 357 112 moveto
+367 116 lineto
+357 117 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(108)
+gsave 10 dict begin
+newpath 190 36 moveto
+84 36 lineto
+84 0 lineto
+190 0 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 19 moveto (Ignored an input) 92 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(108) -> f(96)
+newpath 190 24 moveto
+219 28 253 34 274 42 curveto
+307 55 355 84 387 104 curveto
+stroke
+newpath 387 101 moveto
+394 108 lineto
+384 105 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(55)
+gsave 10 dict begin
+newpath 229 522 moveto
+45 522 lineto
+45 486 lineto
+229 486 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 505 moveto (Dangling / out of date pointers) 171 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(64)
+gsave 10 dict begin
+newpath 450 441 moveto
+394 441 lineto
+394 405 lineto
+450 405 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 424 moveto (Internal) 43 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(55) -> f(64)
+newpath 230 490 moveto
+246 487 262 484 274 480 curveto
+305 472 354 452 386 438 curveto
+stroke
+newpath 383 437 moveto
+393 435 lineto
+385 441 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(46)
+gsave 10 dict begin
+newpath 708 441 moveto
+588 441 lineto
+588 405 lineto
+708 405 lineto
+closepath
+stroke
+gsave 10 dict begin
+648 424 moveto (Robustness defects) 106 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(64) -> f(46)
+newpath 451 423 moveto
+483 423 535 423 578 423 curveto
+stroke
+newpath 577 421 moveto
+587 423 lineto
+577 426 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(79)
+gsave 10 dict begin
+newpath 173 468 moveto
+101 468 lineto
+101 432 lineto
+173 432 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 451 moveto (Undefined) 58 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(79) -> f(64)
+newpath 174 447 moveto
+228 441 331 432 386 427 curveto
+stroke
+newpath 383 425 moveto
+393 426 lineto
+383 430 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(82)
+gsave 10 dict begin
+newpath 202 414 moveto
+72 414 lineto
+72 378 lineto
+202 378 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 397 moveto (Boundary conditions) 117 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(82) -> f(64)
+newpath 203 402 moveto
+259 408 338 415 384 419 curveto
+stroke
+newpath 383 416 moveto
+393 420 lineto
+383 421 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(85)
+gsave 10 dict begin
+newpath 212 360 moveto
+62 360 lineto
+62 324 lineto
+212 324 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 343 moveto (Infinite loops / deadlock) 136 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(85) -> f(64)
+newpath 212 352 moveto
+235 356 258 361 274 366 curveto
+290 372 295 394 310 399 curveto
+310 399 352 408 385 415 curveto
+stroke
+newpath 384 412 moveto
+393 417 lineto
+383 417 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(120)
+gsave 10 dict begin
+newpath 267 306 moveto
+7 306 lineto
+7 270 lineto
+267 270 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 289 moveto (Unassigned/uninitialized variable/parameter) 247 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(120) -> f(64)
+newpath 263 306 moveto
+267 308 271 310 274 312 curveto
+301 329 285 381 310 399 curveto
+330 414 358 412 383 413 curveto
+stroke
+newpath 383 411 moveto
+393 414 lineto
+383 415 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(49)
+gsave 10 dict begin
+newpath 230 684 moveto
+44 684 lineto
+44 648 lineto
+230 648 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 667 moveto (Out-of-range or missing inputs) 172 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(61)
+gsave 10 dict begin
+newpath 452 576 moveto
+392 576 lineto
+392 540 lineto
+452 540 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 559 moveto (External) 47 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(49) -> f(61)
+newpath 231 656 moveto
+247 652 263 648 274 642 curveto
+295 632 290 594 310 582 curveto
+331 571 357 572 381 569 curveto
+stroke
+newpath 381 567 moveto
+391 568 lineto
+381 571 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(61) -> f(46)
+newpath 452 540 moveto
+493 515 567 471 612 445 curveto
+stroke
+newpath 608 444 moveto
+618 441 lineto
+611 449 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(91)
+gsave 10 dict begin
+newpath 189 630 moveto
+85 630 lineto
+85 594 lineto
+189 594 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 613 moveto (Race conditions) 89 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(91) -> f(61)
+newpath 189 602 moveto
+246 591 335 575 384 565 curveto
+stroke
+newpath 381 563 moveto
+391 564 lineto
+381 568 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(111)
+gsave 10 dict begin
+newpath 246 576 moveto
+28 576 lineto
+28 540 lineto
+246 540 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 559 moveto (Unanticipated combination of inputs) 204 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(111) -> f(61)
+newpath 247 558 moveto
+294 558 345 558 380 558 curveto
+stroke
+newpath 381 556 moveto
+391 558 lineto
+381 561 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(114)
+gsave 10 dict begin
+newpath 502 387 moveto
+342 387 lineto
+342 351 lineto
+502 351 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 370 moveto (Fails to recover gracefully) 146 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(114) -> f(46)
+newpath 498 387 moveto
+524 393 553 400 578 407 curveto
+stroke
+newpath 578 404 moveto
+587 409 lineto
+577 409 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(138)
+gsave 10 dict begin
+newpath 184 738 moveto
+90 738 lineto
+90 702 lineto
+184 702 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 721 moveto (Poor metadata) 80 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(142)
+gsave 10 dict begin
+newpath 465 738 moveto
+379 738 lineto
+379 702 lineto
+465 702 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 721 moveto (Data streams) 72 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(138) -> f(142)
+newpath 184 720 moveto
+234 720 314 720 367 720 curveto
+stroke
+newpath 368 718 moveto
+378 720 lineto
+368 723 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(125)
+gsave 10 dict begin
+newpath 718 684 moveto
+578 684 lineto
+578 648 lineto
+718 648 lineto
+closepath
+stroke
+gsave 10 dict begin
+648 667 moveto (Poor external interface) 127 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(142) -> f(125)
+newpath 466 710 moveto
+495 703 535 693 570 685 curveto
+stroke
+newpath 567 683 moveto
+577 683 lineto
+568 688 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(132)
+gsave 10 dict begin
+newpath 471 684 moveto
+373 684 lineto
+373 648 lineto
+471 648 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 667 moveto (Undocumented) 85 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(132) -> f(125)
+newpath 472 666 moveto
+500 666 535 666 567 666 curveto
+stroke
+newpath 567 664 moveto
+577 666 lineto
+567 669 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(135)
+gsave 10 dict begin
+newpath 485 630 moveto
+359 630 lineto
+359 594 lineto
+485 594 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 613 moveto (Inconsistent/unclear) 112 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(135) -> f(125)
+newpath 486 627 moveto
+511 633 541 640 568 647 curveto
+stroke
+newpath 568 644 moveto
+577 649 lineto
+567 649 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(29)
+gsave 10 dict begin
+newpath 232 1035 moveto
+42 1035 lineto
+42 999 lineto
+232 999 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 1018 moveto (Inadequate event response time) 175 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(26)
+gsave 10 dict begin
+newpath 449 1022 moveto
+395 1022 lineto
+395 986 lineto
+449 986 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 1005 moveto (Time) 29 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(29) -> f(26)
+newpath 232 1013 moveto
+285 1010 349 1007 387 1005 curveto
+stroke
+newpath 385 1003 moveto
+395 1005 lineto
+385 1008 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(11)
+gsave 10 dict begin
+newpath 716 900 moveto
+580 900 lineto
+580 864 lineto
+716 864 lineto
+closepath
+stroke
+gsave 10 dict begin
+648 883 moveto (Resource Use Defects) 123 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(26) -> f(11)
+newpath 449 996 moveto
+475 989 513 977 534 966 curveto
+558 953 594 926 618 906 curveto
+stroke
+newpath 617 904 moveto
+626 900 lineto
+620 908 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(36)
+gsave 10 dict begin
+newpath 164 981 moveto
+110 981 lineto
+110 945 lineto
+164 945 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 964 moveto (Stack) 31 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(14)
+gsave 10 dict begin
+newpath 480 954 moveto
+364 954 lineto
+364 918 lineto
+480 918 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 937 moveto (Run time memory) 101 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(36) -> f(14)
+newpath 164 960 moveto
+208 956 295 948 356 943 curveto
+stroke
+newpath 354 941 moveto
+364 942 lineto
+354 946 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(14) -> f(11)
+newpath 480 922 moveto
+507 916 540 908 570 900 curveto
+stroke
+newpath 569 898 moveto
+579 898 lineto
+570 903 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(39)
+gsave 10 dict begin
+newpath 164 927 moveto
+110 927 lineto
+110 891 lineto
+164 891 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 910 moveto (Heap) 29 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(39) -> f(14)
+newpath 164 912 moveto
+208 916 295 924 356 929 curveto
+stroke
+newpath 354 926 moveto
+364 930 lineto
+354 931 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(42)
+gsave 10 dict begin
+newpath 164 873 moveto
+110 873 lineto
+110 837 lineto
+164 837 lineto
+closepath
+stroke
+gsave 10 dict begin
+137 856 moveto (Other) 31 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(42) -> f(14)
+newpath 164 858 moveto
+195 862 245 870 274 879 curveto
+290 885 295 907 310 912 curveto
+310 912 330 917 354 922 curveto
+stroke
+newpath 355 920 moveto
+364 924 lineto
+354 924 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(17)
+gsave 10 dict begin
+newpath 482 900 moveto
+362 900 lineto
+362 864 lineto
+482 864 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 883 moveto (Executable storage) 105 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(17) -> f(11)
+newpath 482 882 moveto
+509 882 541 882 569 882 curveto
+stroke
+newpath 569 880 moveto
+579 882 lineto
+569 885 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(33)
+gsave 10 dict begin
+newpath 457 846 moveto
+387 846 lineto
+387 810 lineto
+457 810 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 829 moveto (Bus usage) 57 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(33) -> f(11)
+newpath 458 836 moveto
+488 843 533 854 571 864 curveto
+stroke
+newpath 570 861 moveto
+579 866 lineto
+569 866 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	f(286)
+gsave 10 dict begin
+newpath 526 792 moveto
+318 792 lineto
+318 756 lineto
+526 756 lineto
+closepath
+stroke
+gsave 10 dict begin
+422 775 moveto (Unknown limits on resource usage) 194 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	f(286) -> f(11)
+newpath 518 792 moveto
+524 794 529 796 534 798 curveto
+559 811 594 838 619 858 curveto
+stroke
+newpath 621 856 moveto
+627 864 lineto
+618 860 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(256)
+gsave 10 dict begin
+137 1125 69 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1126 moveto (Use existing libraries) 118 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(243)
+gsave 10 dict begin
+422 1098 41 18 ellipse_path
+stroke
+gsave 10 dict begin
+422 1099 moveto (Code reuse) 62 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(256) -> p(243)
+newpath 202 1119 moveto
+254 1114 325 1107 371 1103 curveto
+stroke
+newpath 371 1101 moveto
+381 1102 lineto
+371 1105 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(259)
+gsave 10 dict begin
+137 1071 51 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1072 moveto (Make reusable) 81 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(259) -> p(243)
+newpath 186 1076 moveto
+239 1081 322 1088 374 1093 curveto
+stroke
+newpath 371 1090 moveto
+381 1094 lineto
+371 1095 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(233)
+gsave 10 dict begin
+137 1233 48 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1234 moveto (Team players) 75 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(230)
+gsave 10 dict begin
+422 1206 65 18 ellipse_path
+stroke
+gsave 10 dict begin
+422 1207 moveto (Good programmers) 109 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(233) -> p(230)
+newpath 184 1229 moveto
+230 1224 300 1218 353 1213 curveto
+stroke
+newpath 350 1211 moveto
+360 1212 lineto
+350 1216 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(236)
+gsave 10 dict begin
+137 1179 74 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1180 moveto (Technically competent) 127 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(236) -> p(230)
+newpath 206 1186 moveto
+250 1190 306 1195 351 1199 curveto
+stroke
+newpath 350 1196 moveto
+360 1200 lineto
+350 1201 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(249)
+gsave 10 dict begin
+137 1395 55 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1396 moveto (Model checking) 90 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(218)
+gsave 10 dict begin
+422 1341 35 18 ellipse_path
+stroke
+gsave 10 dict begin
+422 1342 moveto (Analysis) 49 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(249) -> p(218)
+newpath 185 1386 moveto
+240 1375 331 1359 382 1348 curveto
+stroke
+newpath 379 1346 moveto
+389 1347 lineto
+379 1351 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(252)
+gsave 10 dict begin
+137 1341 64 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1342 moveto (Formal verification) 108 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(252) -> p(218)
+newpath 202 1341 moveto
+255 1341 330 1341 377 1341 curveto
+stroke
+newpath 377 1339 moveto
+387 1341 lineto
+377 1344 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(339)
+gsave 10 dict begin
+137 1287 27 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1288 moveto (Other) 31 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(339) -> p(218)
+newpath 163 1292 moveto
+213 1302 322 1322 381 1333 curveto
+stroke
+newpath 380 1330 moveto
+389 1335 lineto
+379 1335 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(209)
+gsave 10 dict begin
+137 1611 55 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1612 moveto (Test automation) 90 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(206)
+gsave 10 dict begin
+422 1530 31 18 ellipse_path
+stroke
+gsave 10 dict begin
+422 1531 moveto (Testing) 42 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(209) -> p(206)
+newpath 188 1604 moveto
+217 1599 252 1593 274 1587 curveto
+307 1578 357 1557 390 1544 curveto
+stroke
+newpath 387 1543 moveto
+397 1541 lineto
+389 1547 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(212)
+gsave 10 dict begin
+137 1557 49 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1558 moveto (Test selection) 77 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(212) -> p(206)
+newpath 185 1552 moveto
+241 1547 332 1539 384 1534 curveto
+stroke
+newpath 381 1532 moveto
+391 1533 lineto
+381 1537 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(215)
+gsave 10 dict begin
+137 1503 62 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1504 moveto (Regression testing) 103 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(215) -> p(206)
+newpath 196 1509 moveto
+252 1515 332 1522 381 1526 curveto
+stroke
+newpath 381 1524 moveto
+391 1527 lineto
+381 1528 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(268)
+gsave 10 dict begin
+137 1449 119 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1450 moveto (Match testing to status of development) 217 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(268) -> p(206)
+newpath 222 1462 moveto
+241 1465 260 1469 274 1473 curveto
+307 1482 358 1502 390 1516 curveto
+stroke
+newpath 389 1513 moveto
+397 1519 lineto
+387 1517 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(182)
+gsave 10 dict begin
+137 1773 97 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1774 moveto (Garbage collection in language) 174 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(185)
+gsave 10 dict begin
+422 1719 111 18 ellipse_path
+stroke
+gsave 10 dict begin
+422 1720 moveto (Language appropriate to application) 202 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(182) -> p(185)
+newpath 205 1760 moveto
+246 1753 298 1742 340 1735 curveto
+stroke
+newpath 339 1733 moveto
+349 1733 lineto
+340 1738 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(191)
+gsave 10 dict begin
+137 1719 70 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1720 moveto (Pointerless languages) 120 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(191) -> p(185)
+newpath 208 1719 moveto
+236 1719 269 1719 300 1719 curveto
+stroke
+newpath 300 1717 moveto
+310 1719 lineto
+300 1722 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(200)
+gsave 10 dict begin
+137 1665 73 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1666 moveto (Well defined language) 126 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(200) -> p(185)
+newpath 195 1676 moveto
+237 1684 294 1695 339 1703 curveto
+stroke
+newpath 340 1701 moveto
+349 1705 lineto
+339 1705 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(174)
+gsave 10 dict begin
+137 1935 137 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1936 moveto (Examine high water marks on stack and heap) 253 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(171)
+gsave 10 dict begin
+422 1881 34 18 ellipse_path
+stroke
+gsave 10 dict begin
+422 1882 moveto (Memory) 48 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(174) -> p(171)
+newpath 215 1920 moveto
+269 1910 337 1897 380 1889 curveto
+stroke
+newpath 379 1887 moveto
+389 1887 lineto
+380 1892 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(161)
+gsave 10 dict begin
+648 1827 77 18 ellipse_path
+stroke
+gsave 10 dict begin
+648 1828 moveto (Measure resource usage) 133 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(171) -> p(161)
+newpath 453 1873 moveto
+488 1866 542 1853 585 1842 curveto
+stroke
+newpath 584 1840 moveto
+594 1840 lineto
+585 1845 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(177)
+gsave 10 dict begin
+137 1881 86 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1882 moveto (Measure allocated memory) 152 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(177) -> p(171)
+newpath 224 1881 moveto
+275 1881 338 1881 379 1881 curveto
+stroke
+newpath 377 1879 moveto
+387 1881 lineto
+377 1884 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(282)
+gsave 10 dict begin
+137 1827 88 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1828 moveto (Measure size of stored code) 155 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(282) -> p(171)
+newpath 202 1839 moveto
+256 1849 333 1864 379 1873 curveto
+stroke
+newpath 380 1871 moveto
+389 1875 lineto
+379 1875 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(203)
+gsave 10 dict begin
+137 1989 40 18 ellipse_path
+stroke
+gsave 10 dict begin
+137 1990 moveto (Debuggers) 60 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(197)
+gsave 10 dict begin
+422 1989 61 18 ellipse_path
+stroke
+gsave 10 dict begin
+422 1990 moveto (Good tool support) 101 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(203) -> p(197)
+newpath 178 1989 moveto
+223 1989 298 1989 353 1989 curveto
+stroke
+newpath 350 1987 moveto
+360 1989 lineto
+350 1992 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(164)
+gsave 10 dict begin
+422 1827 54 18 ellipse_path
+stroke
+gsave 10 dict begin
+422 1828 moveto (CPU utilization) 87 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(164) -> p(161)
+newpath 476 1827 moveto
+501 1827 532 1827 560 1827 curveto
+stroke
+newpath 560 1825 moveto
+570 1827 lineto
+560 1830 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+
+%	p(168)
+gsave 10 dict begin
+422 1773 27 18 ellipse_path
+stroke
+gsave 10 dict begin
+422 1774 moveto (Time) 29 14.00 -0.50 alignedtext
+end grestore
+end grestore
+
+%	p(168) -> p(161)
+newpath 447 1779 moveto
+481 1786 539 1801 585 1812 curveto
+stroke
+newpath 585 1809 moveto
+594 1814 lineto
+584 1814 lineto
+closepath
+gsave 0 setgray stroke grestore fill
+endpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+end
+restore
+%%EOF

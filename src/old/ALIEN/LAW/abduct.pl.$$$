@@ -1,0 +1,59 @@
+:- [basic,lib/tick, records,lib/oset, types/e, types/v,types/obj].
+ 
+record(h(in,out,facts,a=[],ac=[],ab=[],worlds=[])).
+record(xplain(ins,outs,cost,edges=[],env,type)).
+
+xplain0(now(E))    --> xplain0(edges(Es)), {member(E,Edges)}.
+xplain0(edge(E))   --> xplain0(edges(Es)), {member(E0,Es),member(E,E0)}.
+xplain0(vertex(V)) --> xplain0(edge(Id)),  {join(e,Id,vertex(V))}. 
+
+xplain0(vertices(Vs),X,X) :- setof(V,X^xplain0(vertex(V),X,X),Vs).
+xplain0(tick)       --> xplain0(edges(Old,[[]|Old])).
+xplain0(addEdge(E),xplain(_,  Outs,Cost0,Edges0,Env0,Type),
+		   xplain([V],Outs,Cost, Edges, Env, Type)) :-
+		 :-
+	join(e,E,[cost(C),from(V)]),
+	inStar(V),                     
+        \+culled(V),
+	addIfNoConflict(Edges0,E,Edges),
+	Cost is Cost0 + C,
+	(ac(V) -> Env=[V] ; Env=Env0).
+ 
+xplain0(addAc(X))   --> h0(ac(Old,New)),   {merge_set([X],Old,New)}.
+
+% this predicate does three jobs: stops loops,
+% inserts new vertices in their right order,
+% rejects conflicting vertices
+
+addIfNoConflict([], El, [El]).  
+addIfNoConflict([H|T], El, Add) :- 
+	\+ conflict([H],E1),	
+	compare(Order, H, El), 
+	aINC1(Order, H, T, El, Add).
+
+conflict(Edges,E2) :-
+	member(E1,Edges),
+	join(e,E1,from(V1)), 
+    	join(e,E2,from(V2)),
+     	join(v,V1,contradicts(V2)).
+
+aINC1(<, H, T,  El,  [H|Add]) :- 
+	addIfNoConflict(T, El, Add).
+% "=" is the loop case... just fail
+%aINC1(=,
+% can add if no conflict in rest
+aINC1(>, H, T,  El,  [El,H|T]) :- 
+	\+ conflict([H|T],E1).
+
+
+ht5(In,Out,Facts,Worlds) :-
+	create(h,[in(In),out(Out),facts(Facts)],H0),
+	factSweep,
+	forewardsSweep,
+	backwardsSweep,
+	worldsSweep,
+	best(worlds,Worlds0,Worlds).
+	
+
+factSweep :-
+	

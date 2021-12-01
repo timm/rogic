@@ -1,0 +1,259 @@
+% abduct.pl
+
+% Call made to perform abduction over time:
+%
+%	timeAbduct(FileStem, Dialect, Link-Feat-For, Comp-Meas)
+%
+% Options:
+% Dialect		- which language to use (usually eqcm, as this is
+%			  used the same as qcm for implicit connections)
+%	qcm		- qualitative compartmental modelling
+%	eqcm		- explicit qcm (including explicit time information)
+% Link			- model linking strategies
+%	implicit	- implicit linking of models over time
+%	explicit	- follows explicit time links in joining models
+% Feat			- what feature is used for linking
+%	node		- connect models over time using direct node links
+%	edge		- connect models over time by following existing edges
+% For			- which time step models to link (forward linking)
+%	one		- link current model only to next model
+%	all		- link current model to all subsequent models
+% Comp			- how to form data comparisons
+%	inter		- comparisons made between two trials
+%	intra		- comparisons made between time steps in one trial
+% Meas			- amount of data measured (%)
+
+
+%-----------------------------------------------------------------------------
+% Time Abduction
+%-----------------------------------------------------------------------------
+% Perform time-based abduction by compiling and duplicating model (reading
+% .the and .run files to produce .ntt), asserting the resulting WMEs, and
+% then perform abduction over each data file.
+timeAbduct(FileStem, Dialect, Link-Feat-For, Comp-Meas) :-
+	compileModel(FileStem,Dialect,KnownTerms),
+	readTimeData(FileStem,Dialect,Comp-Meas,Link,KnownTerms,Data,Times),
+	dupModel(FileStem, Dialect, Link-Feat-For, Comp, Times),
+	!,
+	theory_file(Dialect, FileStem, '.ntt', DupName),
+	reads(DupName, Model),
+	ensures(Model), !,
+	validateModel(FileStem, Dialect, Data).
+
+timeAbduct(FileStem, LParams, Comp-Meas) :-
+	timeAbduct(FileStem, eqcm, LParams, Comp-Meas).
+
+
+%-----------------------------------------------------------------------------
+% Model Compilation
+%-----------------------------------------------------------------------------
+% Compile standard model producing graph file .net.
+compileModel(FileStem, Dialect, KnownTerms) :-
+	% add time-based WMEs, if required
+	(wme(theory, t(_,_,_))
+	-> true
+	 | assert(wme(theory,t(_,_,_))),
+	   assert(wme(theory,when(_,_))),
+	   wmeSetUp
+	),
+
+	% compile model (code from compile in shdilect) then clearWMEs
+	load_dialect(Dialect),
+	theory_file(Dialect, FileStem, '.the', Theory),
+	theory_file(Dialect, FileStem, '.net', Network),
+	compile_theory(Dialect, Theory, Network),
+
+	% housekeeping (note we assume no events)
+	bagof(Term, selectM(Term), KnownTerms),
+	wmeClear(names).
+
+% select a measure from the known values.
+selectM(Term) :- o(_, Term, measure).
+selectM(Term) :- o(_, Term, timeMeasure).
+
+
+%-----------------------------------------------------------------------------
+% Model Validation - copy of Tim's code
+%-----------------------------------------------------------------------------
+% Code from fastValidate to perform actual model validation.
+validateModel(FileStem, Dialect, Data) :-
+	noprotocol,
+	theory_file(Dialect, FileStem, '.out', OutFile),
+	
+	write('% '), print(logFile(FileStem)), nl,
+	tPrintOff,
+	protocol(OutFile),
+	watch_it_run_time(Data),
+	fail.
+validateModel(_, _, _) :- noprotocol.
+
+
+% Note that a large proportion of the output produced here is redundant
+watch_it_run_time(Data) :-
+	% assert information
+	myflag(nthExp,_,1),
+	myflag(expPercent,_,0),
+	myflag(abductionTime,_,0),
+
+	% write out prerun information: experiment name and model specs
+	nl, write(':- style_check(-discontiguous).'), nl,
+	write(':- discontiguous fSweepNumbers/7, result/8, ticks/1, about/4.'),
+	nl, nl, write('%about(d,nands,nOrs,fanout).'), nl,
+	d(ExpName),
+	model_specs(NAnds,NOrs,Fanout),
+	print(about(ExpName,NAnds,NOrs,Fanout)), write('.'), nl,
+
+	% select data, perform abduction accounting for abduction time
+	StartTime is cputime,
+	member(Exp-In-Out, Data),
+	shmainTime(In, Out, Proofs, AB, A, Time1, Worlds),
+	myflag(nthExp,NthExp,NthExp+1),
+	Time2 is cputime,
+	validate(Worlds, Proofs, BestCover0, BestWorlds),
+
+	tick(proofs,done),
+	Time3 is (cputime - Time2) + Time1,
+	myflag(abductionTime,AbductionTime0,AbductionTime0 + Time3),
+	AbductionTime is AbductionTime0 + Time3,
+
+	% perform calculations on performance
+	myflag(expPercent, ExpPercent, ExpPercent+BestCover0),
+	CurrentExplicableRate is ((ExpPercent+BestCover0)/NthExp)*100,
+	sformat(OutTime, '~1f', Time3),
+	BestCover1 is BestCover0 * 100,
+	sformat(BestCover, '~1f', BestCover1),
+	length(BestWorlds, NBestWorlds),
+	length(Worlds, NWorlds),
+	redProofStats(Proofs, AboutProofs),
+	format('~n%#~d~n',NthExp),
+
+	% write results
+
+	% New addition to print proofs
+%	printTimeProofs(Proofs, 1),
+
+	redSweepNumbers(NthExp,AB,A,Worlds),
+	(NthExp = 1 -> write('%result(expName, compNumber, exp,'), nl | true),
+	write('result('),
+	print(ExpName),				write(', '),
+	print(NthExp),				write(', '),
+	print(Exp),				write(','), nl,
+	(NthExp = 1 ->	write('%nProofs/avSize/sd/min/max, '),
+			write('nWs, nBWs, bestPercCov, time_secs).'), nl
+		     |	true),
+	write(AboutProofs),			write(', '),
+	write(NWorlds),				write(', '),
+	write(NBestWorlds),			write(', '),
+	write(BestCover),			write(', '),
+	write(OutTime),				write(').'), nl,
+
+	format('~n%mean explicable : ~1f %',CurrentExplicableRate),
+	format('~n%abduction time  : ~2f secs',AbductionTime),
+	TotalTime is cputime - StartTime,
+	format('~n%total run time  : ~2f secs~n',TotalTime),
+	tick_done(proofs).
+
+
+%-----------------------------------------------------------------------------
+% Perform abduction for each .run.* file (containing time-based observations)
+%-----------------------------------------------------------------------------
+shmainTime(In0, Out0, Proofs, AB, A, Time2, W) :-
+	% throw away old information (data?) and assert new information
+	tick_init(proofs),
+	tick(proofs, data),
+	Perc=10,
+	In1=In0,
+	percRandomSelect(Out0, Perc, Out1),
+	print(Out1),nl,
+	wmeClear(datum),
+	in_wrap_time(In1, In),
+	ensures(In),
+	out_wrap_time(Out1, Out),
+	ensures(Out),
+
+	% call world generation (includes culling unwanted steadies and and
+	% nodes using factSweep redefinition)
+	Time1 is cputime,
+	itOr(worlds(Proofs,AB,A,W), [], W),
+	Time2 is cputime - Time1,
+	itOr(not(var(Proofs)),	    [], Proofs),
+	itOr(not(var(AB)),	    [], AB),
+	itOr(not(var(A)),	    [], A).
+
+
+in_wrap_time([],[]).
+in_wrap_time([delta(Object,Time,Value)|T], [in(V)|Rest]) :-
+	vertexId(V, Object, Time, Value),
+	in_wrap_time(T, Rest).
+
+out_wrap_time([],[]).
+out_wrap_time([delta(Object,Time,Value)|T], [out(V)|Rest]) :-
+	vertexId(V, Object, Time, Value),
+	out_wrap_time(T, Rest).
+
+% Determine vertex id matching object, time and value.
+vertexId(Vid, Object, Time, Value) :-
+	t(TSid, Time, Time),
+	l(Lid, Object, Value),
+	lvi(Lid, Vid),
+	when(Vid, TSid).
+
+
+%-----------------------------------------------------------------------------
+% Modified existing code (from proofStats - shdemos, sweepNumbers - shmain)
+%-----------------------------------------------------------------------------
+redProofStats(P, '0 / 0 - [0, 0] - []') :-  var(P),!.
+redProofStats([],'0 / 0 - [0, 0] - []') :-  !.
+redProofStats(Proofs,AboutString) :-
+	proofSizes(Proofs,Sizes0),
+	msort(Sizes0,Sizes),
+	stats(Sizes,N,Min,Max,_Sum,AverageSize,Sd),
+	sformat(AboutString,'~d/~1f/~1f/~d/~d',[N,AverageSize,Sd,Min,Max]).
+
+redSweepNumbers(ExpNo,AB,A,Worlds) :-
+        length(AB,ABL),
+        n(v(_,_,_),Vs),
+        n(inStar(_),In),
+        length(Worlds,NW),
+        n(ac(_),AC),
+        length(A,LA),
+        Pin is (In * 100)/Vs,
+        Pac is (AC * 100)/Vs,
+        Pa  is (LA  * 100)/Vs,
+	(ExpNo = 1
+         -> format('~n%~q.',[fSweepNumbers(a,ac,ab,pinStar,pa,pac,worlds)])
+	  | true),
+        format('~n~q.~n~n',[fSweepNumbers(LA,AC,ABL,Pin,Pa,Pac,NW)]).
+
+
+/*
+%-----------------------------------------------------------------------------
+% Code for printing time-based proofs (from printProofs in shdemos.pl)
+%-----------------------------------------------------------------------------
+% Print proof information.
+printTimeProofs([], _).
+printTimeProofs([Proof|Proofs], N) :-
+	p(vertices, Proof, V0),
+	p(type, Proof, Type),
+	p(x, Proof, X0),
+	p(ab, Proof, AB0),
+	vertexIdsToVertexNamesAndTimes([X0|V0], [X|V]),
+	vertexIdsToVertexNamesAndTimes(AB0, AB),
+	writef('%10l = %t\n', [proof(N),X/Type]),
+	writef('%r%t\n', [' ',13,ab=AB]),
+	writef('%r%t\n', [' ',13,v=V]),
+	N1 is N + 1,
+	printTimeProofs(Proofs, N1).
+
+% Convert vertex ids into vertex information.
+vertexIdsToVertexNamesAndTimes([],[]).
+vertexIdsToVertexNamesAndTimes([V|Vs],[Object=Value-Time|Rest]) :-
+	vertexValues(V,Object,Value,Time),
+	vertexIdsToVertexNamesAndTimes(Vs,Rest).
+
+% Determine vertex values from vertex id.
+vertexValues(Vid, Object, Value, Time) :-
+	l(Vid, Object, Value),	% note assumed that Vid and Lid the same
+	when(Vid, TSid),
+	t(TSid, Time, Time).
+*/

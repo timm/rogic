@@ -1,0 +1,20 @@
+
+?- line2atoms(X).
+|: there is something i wanted to say
+
+X = [there, is, something, i, wanted, to, say] 
+
+Yes
+?-  line2atoms(X).
+|: 23
+
+X = [23] 
+
+Yes
+?- line2atoms(X)? 
+|: punctuation- not well handled, yet.
+
+X = ['punctuation-', not, well, 'handled,', 'yet.'] 
+
+Yes
+?- noprotocol.

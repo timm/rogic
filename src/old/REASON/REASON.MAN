@@ -1,0 +1,48 @@
+MMOOOOSSEE
+
+    _M_O_O_S_E is a new M=model O=of S=software E=engineering. The premise of
+    _M_O_O_S_E is that we only build what we can test.
+
+    */
+
+    /*
+
+HHeeaaddeerr  **//
+
+    /*
+
+  LLooaaddss  **//
+
+    :- ensure_loaded([lib,randoms]).
+
+    /*
+
+  OOppeerraattoorrss  **//
+
+     :- op(1199,fx,@).
+     :- op(999,fx,&). /*
+
+  FFllaaggss  **//
+
+    /*
+
+  HHooookkss  **//
+
+    /*
+
+  HHaacckkss  **//
+
+    /*
+
+BBooddyy  **//
+
+    &X :- one(X).
+
+    /*
+
+FFooootteerr  **//
+
+    /*
+
+  SSttaarrtt--uupp  CCoommmmaannddss  **//
+

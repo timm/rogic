@@ -1,0 +1,7 @@
+name =  '22. travel (abler +-+)'.
+
+objects(m) = [packing,mileage].
+objects(e) = [car,wonderlust].
+
+wonderlust ++ packing.
+if car then packing +-+ mileage.

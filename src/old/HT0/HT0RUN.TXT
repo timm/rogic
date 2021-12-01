@@ -1,0 +1,129 @@
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 512 -i 
+ht0  -n1 1 -n2 1 -l 112 -i 
+ht0  -n1 1 -n2 1 -l 112 -i 
+ht0  -n1 1 -n2 1 -l 112 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 512 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 999 -i 
+ht0  -n1 1 -n2 1 -l 512 -i 
+ht0  -n1 1 -n2 1 -l 112 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -re -i 
+ht0  -n1 1 -n2 1 -l 112 -re -i 
+ht0  -n1 1 -n2 1 -l 512 -re -i 
+ht0  -n1 1 -n2 1 -l 112 -re -i 
+ht0  -n1 1 -n2 1 -l 28 -re -i 
+ht0  -n1 1 -n2 1 -l 28 -re -i 
+ht0  -n1 1 -n2 1 -l 28 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -l 28 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -l 28 -re -i 
+ht0  -n1 1 -n2 1 -l 16 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -l 16 -re -i 
+ht0  -n1 1 -n2 1 -l 16 -re -i 
+ht0  -n1 1 -n2 1 -l 16 -re -i 
+ht0  -n1 1 -n2 1 -l 16 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -l 16 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 1 -i 
+ht0  -n1 1 -n2 1 -l 28 -i 
+ht0  -n1 1 -n2 1 -l 28 -rc -i 
+ht0  -n1 1 -n2 1 -rc -i 
+ht0  -n1 1 -n2 1 -rc -i 
+ht0  -n1 1 -n2 1 -rc -i 
+ht0  -n1 1 -n2 1 -rc -i 
+ht0  -n1 1 -n2 1 -rc -i 
+ht0  -i 
+ht0  -i 
+ht0  -i 
+ht0  -n1 1 -n2 1 -re -i 
+ht0  -n1 1 -n2 1 -re -l t999 -i 
+ht0  -n1 1 -n2 1 -re -l 999 -i 
+ht0  -n1 1 -n2 1 -re -l 999 -i 
+ht0  -n1 1 -n2 2 -re -i 
+ht0  -n1 1 -n2 2 -re -l 999 -i 
+ht0  -l 16 -i 
+ht0  -l 16 -i 
+ht0  -l 16 -i 
+ht0  -l 16 -i 
+ht0  -l 16 -i 
+ht0  -l 28 -i 
+ht0  -l 28 -i 
+ht0  -l 28 -i 
+ht0  -l 28 -i 
+ht0  -i -l 28 
+ht0  -l 28 -i 
+ht0  -l 28 -i 
+ht0  -l 16 -i 
+ht0  29 -i 
+ht0  -l 29 -i 
+ht0  -l 29 -i 
+ht0  -l 29 -i 
+ht0  -l 777 -i 
+ht0  -l 777 -i 
+ht0  -i -l x777 
+ht0  -i -l x777 
+ht0  -i -l t77 
+ht0  -i -l 777 
+ht0  -l 777 -i 
+ht0  -l 28 -i 
+ht0  -l 112 -i 
+ht0  -l 28i 
+ht0  -l 28 -i 
+ht0  -l 512 
+ht0  -l 512 -i 
+ht0  -l 666 -i 
+ht0  -l 666 -i 
+ht0  -l 999 -i 
+ht0  -l 512 -i 
+ht0  -l 112 -i 
+ht0  -l 28 -i 

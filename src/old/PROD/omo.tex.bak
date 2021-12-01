@@ -1,0 +1,61 @@
+\documentclass[twocolumn,global]{svjour}
+\usepackage{prod}\begin{document}
+
+\theprogram{OMO} 
+\thetocdepth{2} % e.g. 2
+\thewp{~menzies/src/pl/prod/omo.pl}
+\thepapers{refs}
+\thetitle{Software cost estimation}
+\theauthor{Tim Menzies}
+\thereference{memo9@.ai.wvu.2003. 
+            Available from 
+            \url{http://tim.menzies.com/pdf/03omo.pdf}}
+\theinstitute{Lane Department of Computer Science,
+             West Virginia University,
+             PO Box 6109, Morgantown,
+             WV, 26506-6109, USA;\\
+             \url{http://tim.menzies.us};
+             \url{tim@menzies.us} 
+             }
+\theacknowledgement{his research was conducted at West Virginia
+  University under NASA contract
+  NCC2-0979 and NCC5-685.
+  The work was sponsored by
+  the NASA Office of Safety and Mission Assurance under the Software
+  Assurance Research Program led by the NASA IV\&V Facility.  Reference
+  herein to any specific commercial product, process, or service by
+  trade name, trademark, manufacturer, or otherwise, does not constitute
+  or imply its endorsement by the
+United States Government.}
+\theabstract{
+COCOMO is a software effort estimation tool.
+{\ME} is COCOMO written in SWI-Prolog~\cite{swiprolog}}
+
+
+\section{ What is COCOMO?}
+\input{cocomo}
+\section{ Requires }\begin{Verbatim}
+:- load_files([lib        % grab standard stuff \cite{prod6}
+              ,cfg        % options controller \cite{prod7}
+              ,gpl0, gpl1 % GPL-2 license stuff \cite{prod8}
+              ,omo0       % pre-load actions
+              %,omolib     % local libraries
+              ,omo1       % predicates
+              ,omo2       % start-up commands
+              ,ufp2sloc   % function points per LOC database
+              ],[silent(yes),if(changed)]).
+\end{Verbatim}
+\input{omo0}
+\input{omo1}
+\input{omolib}
+\input{omokb1}
+\input{omo2}
+
+\section{ Bugs }
+None known but many suspected.
+
+
+
+\theend
+\end{document}
+

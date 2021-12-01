@@ -1,0 +1,31 @@
+
+:- style_check(-discontiguous).
+:- discontiguous fSweepNumbers/5, result/10,ticks/1,about/4. 
+
+%about(d,nands,nOrs,fanout).
+about('11. two x shapes (generates 4 worlds, ignores 2)', 6, 40, 0.869565).
+
+
+
+
+%#1
+
+%fSweepNumbers(a, ac, ab, pinStar, pa, pac, worlds).
+fSweepNumbers(12, 8, 4, 54.3478, 26.087, 17.3913, 4).
+
+%% result(expName,comparisonNumber,slowOrFast,exp1,exp2,
+result('11. two x shapes (generates 4 worlds, ignores 2)', 1, slow, [], [aa, bb, hh, ii], 
+ %causes > changes/steadies,
+ 4 > 5 / 0, 
+ % clumping?/ inStarPercentClumpAble,nClumps
+ clumpOff/0, 0, 
+ %nProofs/averageProofSize/sd - [minSize,maxSize] - all,
+ 6/3.3/0.5-[3,4]-[3, 3, 3, 3, 4, 4], 
+ %nWorlds, nBestWorlds, bestPercentCovered, time_seconds).
+ 4, 1, 20.0, 0.1).
+
+%mean explicable : 20.0 %
+%abduction time  : 0.06 secs
+%total run time  : 0.07 secs
+
+ticks([total - 0.06 / 100, validate - 0.01 / 17, worldsSweep - 0.01 / 17, backwardsSweep - 0.02 / 33, forwardSweep - 0.01 / 17, prep - 0 / 0, data - 0.01 / 17]).

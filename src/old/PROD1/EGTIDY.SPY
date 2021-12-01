@@ -1,0 +1,12 @@
+% output from ':- demos(egtidy).'
+
+a :-
+	b,
+	c,
+	(   d
+	->  true
+	;   e
+	).
+f.
+
+% runtime = 0 sec(s)

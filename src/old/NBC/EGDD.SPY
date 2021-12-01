@@ -1,0 +1,29 @@
+% output from ':- demos(egdd).'
+
+:-flag(eg, A, 0).
+:-index(eg(1, 1, 0, 1)).
+:-dynamic eg/4.
+
+eg_(id_, A, B, eg(A, C, D, E), eg(B, C, D, E)).
+eg_(deptNo, A, B, eg(C, A, D, E), eg(C, B, D, E)).
+eg_(name, A, B, eg(C, D, A, E), eg(C, D, B, E)).
+eg_(age, A, B, eg(C, D, E, A), eg(C, D, E, B)).
+
+oo(eg(A, B, C, D), E, F) :-
+	eg_(E, eg(A, B, C, D), F).
+
+meta(eg, 4, eg_, [1, 1, 0, 1], 
+		[id_, deptNo, name, age], 
+		[any, num, [x, y, z], num], 
+		eg(A, B, C, 1), 
+		eg(D, E, F, G)
+).
+
+portray(eg(A, B, C, D)) :-
+	write(eg/4).
+goal_expansion(eg_(A, B, C), D) :-
+	clause1(eg_(A, B, C), D).
+goal_expansion(eg_(A, B, C, D, E), true) :-
+	clause1(eg_(A, B, C, D, E), true).
+
+% runtime = 0.0100144 sec(s)

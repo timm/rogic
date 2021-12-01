@@ -1,0 +1,8 @@
+/*
+
+=head1 Software cost esitmation
+
+COCOMO is a software effort estimation tool.
+OMO is COCOMO written in SWI-Prolog. */
+
+ :- ensure_loaded([omo0,omo1])

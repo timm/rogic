@@ -1,0 +1,31 @@
+
+edge(r9, goal, 1, +).
+edge(r11, r9, 1, +).
+edge(r12, r9, 1, +).
+edge(r10, r9, 1, +).
+edge(f13, r11, 0.9, *).
+edge(f14, r11, 0.8, *).
+edge(f15, r11, 0.7, *).
+edge(f13, r12, 0.6, *).
+edge(f14, r12, 0.5, *).
+edge(f15, r12, 0.4, *).
+edge(p16, f14, 0.22, -).
+edge(p16, f15, 0.33, -).
+edge(p17, f14, 0.55, -).
+edge(p17, f15, 0.66, -).
+edge(p18, f14, 0.88, -).
+edge(p18, f15, 0.99, -).
+
+node(r, r10, 10).
+node(r, r12, 1).
+node(r, r11, 1).
+node(r, goal, 0).
+node(r, r9, 0).
+node(f, f15, 0).
+node(f, f14, 0).
+node(f, f13, 0).
+node(p, p18, 0).
+node(p, p17, 0).
+node(p, p16, 0).
+
+known(p16).

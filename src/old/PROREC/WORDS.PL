@@ -1,0 +1,2340 @@
+/* %\documentstyle[a4,cite,varioref,makeidx,fancyheadings,lastpage,epsf,epic,ecltree]{book}
+\documentclass[a4paper]{book}
+\usepackage{cite,varioref,makeidx,fancyheadings,lastpage,epsf,epic,ecltree}
+
+\columnsep 0.25in
+% \topmargin -1.1in
+%\textwidth 15.95cm
+
+%%%%%% begin standard timm latex macros
+
+\newcommand{\home} {
+	Department of Software Development, Monash University,
+	Melbourne, VIC 3145, Australia\\
+	+61-3-903-1033(ph)+61-3-903-2745(fax)
+	{\bf Email: timm@insect.sd.monash.edu.au}
+}
+
+\newenvironment{tip}{\medskip\par\noindent
+  \begin{equation}\footnotesize\begin{minipage}{.9\textwidth}}{%
+  \end{minipage}\normalsize\end{equation}}
+
+
+\newenvironment{prol}{\medskip\par\noindent
+  \begin{equation}\footnotesize\begin{minipage}{.9\textwidth}}{%
+  \end{minipage}\normalsize\end{equation}}
+
+%\newcommand{\changequote}[1]{\let\origchn\chaptername
+%\renewcommand{\chaptername}{\strut
+%\rlap{\hbox to \linewidth{\hfill\vtop to 0pt{\hbox{#1}\vss}}}\origchn}}
+
+
+
+
+
+%\newcommand{\max}{{\em max}}
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bi}{\begin{itemize}}
+
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\my}[1]{\mbox{\(\cal #1\)}}
+\newcommand{\myy}[2]{\( {\cal {#1}}_{#2} \)}
+\newcommand{\kla}{$\my{KL}_A$~}
+\newcommand{\klb}{$\my{KL}_B$~}
+\newcommand{\myset}[1]{{\tt\{#1\}}}
+\newcommand{\src}[1]{Listing \vref{#1}}
+\newcommand{\ilabel}[1]{\index{#1}\label{#1}}
+\newcommand{\code}[1]{{\small\sf{\sc{#1}}}}
+
+\newcommand{\myyy}[3]{\({{\cal #1}}_{{\em #2}}^{{\em #3}}\)} 
+
+%\newsavebox{\fminibox}
+%\newlength{\fminilength}
+%\newenvironment{fminipage}[1][\linewidth]
+% {\setlength{\fminilength}{#1}%
+%\addtolength{\fminilength}{-2\fboxsep}%
+%\addtolength{\fminilength}{-2\fboxrule}%
+%\begin{lrbox}{\fminibox}\begin{minipage}{\fminilength}}
+% {\end{minipage}\end{lrbox}\noindent\fbox{\usebox{\fminibox}}}
+
+%%%%%% end standard timm latex macros
+
+%%%%%% fancies
+
+\lhead[\fancyplain{}{\sl\rightmark}]{\fancyplain{}{\sl\leftmark}}
+\rhead[\fancyplain{}{\sl \leftmark}]{\fancyplain{}{\sl \rightmark}}
+\cfoot{{\sl page~\thepage~of~\pageref{LastPage}}}
+\chead{}
+\lfoot{}
+\rfoot{}
+%\footrulewidth 0.4pt
+
+
+%%%%%% fancies
+
+\makeindex
+
+\title{
+Prolog Programming for Software Engineering and Maintenance~\\~\\
+or:\\
+Prolog Programming
+in the Large\\~\\
+or:\\
+A Tutorial on Building
+Large Prolog Systems\\~\\
+or:\\
+The {\sl Trogan} Toolkit}
+
+\author{
+Tim Menzies\\~\newline~\newline
+Dept. of Software Development,\\ Monash University,\\
+Caulfield East, Melbourne,\\
+Melbourne, Australia, 3185.\\~\newline
+{\tt
+timm@insect.sd.monash.edu.au}\\
+{\tt  http:// www.sd.monash.edu.au/$\sim$timm}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Dedications}
+
+This book is dedicated to:
+\bi
+\item {\bf Erwin Schroedinger} who rightly says:
+\begin{quote}
+If you cannot- in the long run- tell everyone what you have been
+doing, your doing has been worthless.
+\end{quote}
+
+\item {\bf Peter Norvig} whose {\em Paradigms of Artificial
+Intelligence} is an inspiration to all educators.
+
+\item {\bf Roland Sammut} and {\bf Michael Wise} who originally taught
+me Prolog.
+
+\item {\bf Claude Sammut} who I believed when he said that
+Prolog can be used for real world applications.
+
+\item {\bf Guy L. Steele}, the man who wrote two of the greatest
+technical documents in the world: {\em Common Lisp, the Language} and
+{\tt The Hacker's Dictionary}.  Any man who writes a PhD thesis where
+the font sizes change twenty times in a single sentence is my kind of
+Guy\footnote{I've been waiting years to make that joke...}!
+
+\item {\bf Graham Mann} who always challenges me to reach further.
+
+\item All the students of Prolog who have helped me
+worked through this
+document: 
+Fakir Mohideen Shahul,
+Simon Goss.
+This text benefited enormously through their input. Many thanks.
+
+\ei
+
+\tableofcontents
+
+\pagestyle{fancy}
+
+%\newsavebox\myquotation
+%\sbox\myquotation{\parbox[t]{0.3\linewidth}{
+% {\em Those of us who have been trained as architects have this desire
+%perhaps at the very center of our lives: that one day, somewhere,
+%somehow, we shall build one building which is wonderful, beautiful,
+%breathtaking, a place where people can walk and dream for centuries.}
+% Christopher Alexander\vspace{0.1cm}}}
+% {\changequote{\copy\myquotation}
+
+\chapter{Introduction}
+
+
+
+
+
+%  \chapter{Introduction}
+
+\begin{quote} 
+{\em Those of us who have been trained as architects have this desire
+perhaps at the very center of our lives: that one day, somewhere,
+somehow, we shall build one building which is wonderful, beautiful,
+breathtaking, a place where people can walk and dream for centuries.}
+Christopher Alexander
+\end{quote}
+
+This document is about using Prolog to {\em emulate} and {\em extend}
+current software engineering practice. By ``emulating current software
+engineering practice'', we mean:
+
+\bi
+\item
+Data modeling. A wide range of implementation details follow naturally from
+a data modeling analysis of a domain.
+\item
+Object-oriented modeling. The {\em unified notation} of Booch and Rumbaugh 
+give us a snapshots of the constructs used in OO analysis.
+\item
+Rule-based programming. Rules are good for capturing constraints, triggers,
+and declarative knowledge about a domain.
+\ei
+
+By ``extending current software engineering practice'', we mean:
+\bi
+\item
+The construction of application-specific case tools to be used to
+capture a specification.
+\item
+Automatic specification verification.
+\item
+Automatic specification validation.
+\item 
+A metrics suite suitable for a variety of representations.
+\item
+Use of this metrics suite to critically analyse the strengths and
+weaknesses of current software engineering and knowledge engineering
+practice (the {\sl Trojan} Project)
+\ei
+
+We will use Prolog for all of this.
+Prolog is a poorly understood language:
+\bi
+\item
+It is misleading to
+characterise the language as a backward chaining depth-first search
+theorem prover. Prolog is more accurately characterised as a language
+that performs resolution
+over Horn clauses.
+These Horn clauses can contain arbitrary structures.
+Prolog can be used to implement search strategies over arbitrary structures.
+\item
+
+When using Prolog, we do not just write down theorems about the domain
+under analysis, then let the Prolog theorem prover derive the
+deductive consequences.  
+Rather, we use Prolog's arbitrary structure
+processing ability to build domain-specific specification
+languages. These languages can both record a specification and execute
+it. The ability to execute a developing specification is an important
+aid in maturing knowledge about that specification. These application
+languages can be represented in numerous ways such as (e.g.)
+forward-chaining rules, backward-chaining rules, frames, or abductive
+inference engines.
+
+\item
+Also, using Prolog, we can partially evaluate these specifications into
+a more optimised form. That is, where real-time performance is not critical,
+we can use Prolog as the delivery language for the system.
+\item
+We have seen much truly awful Prolog code. Prolog programs can have
+an elegant succinctness to them which we find appealing. 
+We plan to lead by example and demonstrate numerous such succinct and elegant
+programs.
+\ei
+
+Our enthusiasm for Prolog is not due to a poor understanding of other
+paradigms. We have returned to Prolog
+after years of commercial work with Prolog, Lisp, and Smalltalk.
+We are now convinced that the only tame the
+software engineering problem is to use meta-level
+logics.  Using such meta-level logics, we can build automatic
+tools that can assess a specification written in an application
+language. Such assessments can simplify software
+maintenance.
+
+In our view, 
+practical Prolog code will have the following features:
+\bi
+\item
+A variety of search strategies.
+\item
+Interpreters of high-level specification languages.
+\item 
+Optimisers of these specification languages using partial evaluation.
+\item 
+Maintenance tools based on meta-level programming.
+\item And tools for reducing the complexity of building the above features.
+\ei
+
+Note that some of the problems we tackle have been addressed in
+non-standard Prolog extensions (e.g. Mercury, G\"{o}del, etc). 
+We elect to remain with standard
+Prolog. Numerous commercial strength standard Prolog systems are
+available. Good introductory Prolog texts are commonly available
+(e.g. Bratko, Sterling). Rather than
+move on to a new language, we prefer to study what can be achieved with
+commercially accessible tools.
+The systems we build should be small extensions to standard Prolog. 
+
+\section{Notes}
+
+This document was written at great speed, partly in order to
+support my students who need tutorial assistance in understanding 
+by code.
+Hence:
+\bi
+\item
+Much of
+the code shown here will be presented in a stream-of-consciousness manner.
+One day, we {\em might} structure it better and turn it into a real book.
+However, currently, this document is a note pad for recording my current
+ideas in a form that is accessible to others.
+\item
+In order to simplify explaining this code to students:
+\bi
+\item
+I apply the 80-20 rule. If $N$ lines of code gives me 80\% of the
+functionality that I want and the remaining 20\% of the functionality
+needs $M>N$ more lines of code, then I stay with the $N$ system.
+\item
+First, I build it clean. Second, I build it fast. For example,
+the {\tt defRecord/2} code of Chapter~\ref{chp:records} is elegant, but
+slow. This code permits the succint description of the
+processing of complicated terms.  After using it for a while,
+we will then add an optimiser that removes the overheads of {\tt defRecord/2}.
+\ei
+\ei
+
+In order to assist with the navigation of our tangled stream-of-thought,
+we provide the following structure:
+\bi
+\item
+An index at the back for all our defined programs.
+\item 
+If a particular predicate is to be improved as the book progresses,
+then version one of that predicate will be called {\tt fooA},
+version two, {\tt fooB}, etc.
+\item 
+A set of {\tt test} predicates that demonstrate the functionality.
+For example, the test of predicate {\tt foo} would be {\tt fooTest}.
+\item Each chapter has the same structure:
+\bi
+\item A initial {\em motivation section} presenting some example of what this
+chapter is about.
+\item  A following {\em manual section} giving a succinct description of the high-level
+calls of the code in the chapter.
+\item An {\em implementation section} giving a blow-by-blow account of the
+software, with full source code listings.
+\item An final {\em assessment section} that discusses the system in action;
+e.g. runtime performance reports.
+\ei
+\ei
+
+
+Despite the speed with which this document was written, all 
+the code described here really works as advertised.
+We passed out \LaTeX source code, plus some extra comment characters, 
+directly to our SWI-Prolog interpreter. 
+I am grateful David Poole for
+showing us this ``latex-as-prolog'' trick since it
+simplifies enormously the documentation
+of our code.
+
+Except for where I insert {\tt NOT ANSI PROLOG} signs,
+the code contained here is portable, I think. However, since I ahve not
+actually tested this, I will need others to do so. Please let me
+know if I use any any non-standard predicates which I don't document.
+
+\part{Getting Started}
+
+\chapter{Records}~\label{chp:records}
+
+\section{Motivation}
+
+In this chapter, we will simplify part
+of the implementation of a forward-chaining system using record
+structures in Prolog. \src{yuck} show code that pre-processes a rule
+like \src{rule4}.
+
+\begin{prol}\begin{verbatim}*/
+% operators used in this paper.
+:- op(999,xfx,if),  op(998,xfx,then), op(997,xfx,or), 
+   op(996,xfx,and), op(995,fx,not),   op(50,xf,++),     
+   op(50,xf,--),    op(50,xfx,in),    op(50,fx,self),
+   op(10,fx,rule),  op(9,xfx,at).
+/*\end{verbatim}\index{operator definitions}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+rule    'check for badly paying job; version 4' 
+at      10     % rule priority
+if      employee(Name,Job,_Age) and 
+        salary(Job,0)
+then    print(error(Name-poorlyPaid(Job))).
+/*\end{verbatim}\label{rule4}
+\index{check for badly paying job; version 4}
+\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+rTransB(rule Name at Priority if Lhs0 then Rhs, 
+        rule(Name,UsedIds,Ages,Specificity,Priority,Lhs,Rhs)) :-
+        rTransB(Lhs0,Lhs,[],Ages,0,Specificity,[],UsedIds).
+
+rTransB(A0 and B0,A and B, Ages0,Ages,Spec0,Spec, UsedIds0,UsedIds):-!, 
+        rTransB(A0,A, Ages0,Ages1, Spec0,Spec1, UsedIds0,UsedIds1),
+        rTransB(B0,B,Ages1, Ages, Spec1,Spec, UsedIds1,UsedIds).
+rTransB(A0 or B0, A or B, Ages0,Ages, Spec0,Spec, UsedIds0,UsedIds):-!,
+        rTransB(A0,A, Ages0,Ages1, Spec0,Spec1, UsedIds0,UsedIds1),
+        rTransB(B0,B, Ages1,Ages,  Spec1,Spec, UsedIds1,UsedIds).
+rTransB(not A0, not A,Ages0,Ages, Spec0,Spec, UsedIds0,UsedIds) :- !,
+       rTransB(A0,A, Ages0,Ages, Spec0,Spec, UsedIds0,UsedIds).
+rTransB(A0,A,Ages0,[Age|Ages0],Spec0,Spec, UsedIds0,[Id|UsedIds0]) :-
+        A0 =.. [Functor|Args],
+        A  =.. [Functor,Id,Age|Args],
+        Spec is Spec0 + 1.
+/*\end{verbatim}\label{yuck}\index{rTransB/2}\end{prol}
+
+We will define a new predicate
+{\tt defRecord/2} 
+which we can use to simplify \src{yuck} to \src{dream0}.
+
+\begin{prol}\begin{verbatim}
+:- defRecord(rule, [
+        name,usedIds=[],ages=[],specificity=0,priority=0,lhs,rhs]). 
+\end{verbatim}\index{defRecord/2!usage}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+rTrans(rule Name at Priority if Lhs0 then Rhs,Rule) :- 
+        create(rule,[name=Name, priority=Priority, 
+                     rhs=Rhs,lhs=Lhs], Rule0),
+        rTrans(Lhs0,Lhs,Rule0,Rule).
+
+rTrans(A0 and B0,A and B) --> !, rTrans(A0,A), rTrans(B0,B).
+rTrans(A0 or B0, A or B)  --> !, rTrans(A0,A), rTrans(B0,B).
+rTrans(not A0, not A)     --> !, rTrans(A0,A).
+rTrans(A0,A) -->
+         {A0 =.. [Functor|Args],
+          A  =.. [Functor,Id,Age|Args]} ,
+        o([ages<<Age,specificity++,usedIds<<Id]).
+/*\end{verbatim}
+\label{dream0}
+\index{rTrans/2}
+\index{rTrans/4}
+\end{prol}
+
+Note that the simplification was achieved by defining a {\tt rule}
+record that allows multiple fields to be passed around in one argument.
+Such record structures have many advantages:
+
+\bi
+
+\item Communities of programmers can work on the same project.
+Each programmer needs not know all the details of their colleagues
+work. Rather, they only need to know certain high-level details
+about the data structures passed from their colleagues' code. If the internals
+of those passed structures ever change, then as long as the high-level
+details do not change, those changes will not imply changes to the
+rest of the system.
+
+\item 
+It is simple to extend a basic record structure to an abstract data
+type/ object-oriented framework.
+
+\ei
+
+Prolog has no built-in record structures and so Prolog
+programmers are hence not
+isolated from the internal structure of the data they are
+processing. Indeed, the pattern-matching style of Prolog encourages
+programmers to use the inner details of their data when building their
+systems. 
+
+Something like a record structure can be implemented using the  
+Prolog
+meta-level predicates {\tt arg/3, functor/3, =../2}.  See below.
+
+\section{Manual Entry for {\tt DefRecord/2}}
+
+\begin{description}
+
+\item[{\tt defRecord(Type,Inits)}]~\\
+Creates a new record of type {\tt Type} with initial values {\tt Inits}.
+{\tt Type} is an atom. {\tt Inits} is a list  of atoms or {\tt atom = Value0}.
+When a new record is created (see {\tt create/2} and {\tt create/3}),
+each field will be either {\tt Value0} (if supplied) or a variable. 
+Record contents
+can be queried using {\tt o/2} or modified using {\tt o/3}.
+The record's print form is set to a succinct report. For a full print of
+a record's contents, use {\tt printRec/1}. 
+Example:
+
+\begin{prol}\begin{verbatim}
+:-  defRecord(person,[name,age,duties]),
+    create(person,[age=5,duties=[]],P0),
+    o([age++,duties<<eat],P0,P),
+    print(P), nl, write(P), nl, printRec(P).
+
+[Rec:person / 3]
+person(G4920, 6, [eat])
+
+name = G4920
+age = 6
+duties = [eat]
+\end{verbatim}\index{defRecord/2!usage}\index{defRecord/2!manual}
+\end{prol}
+
+{\tt DefRecord/2} works best for terms passed as arguments between predicates.
+For processing asserted records, see {\tt update/2}, {\tt access/2}
+and {\tt access/3}.
+
+\item[{\tt create(Type,NewRecord)}]\index{create/2!manual}~\\ 
+Creates a {\tt NewRecord} of the specified {\tt Type}. 
+
+\item[{\tt create(Type,Inits,NewRecord)}]\index{create/3!manual}~\\ 
+Creates a {\tt NewRecord} of the specified {\tt Type}. 
+Default values are over-ridden with {\tt Inits}.
+
+\item[{\tt printRec(Record)}]\index{printRec/1!manual}~\\ 
+Prints {\tt Record}, naming every field.
+
+\item[{\tt o(Commands,Record0,Record1)}]\index{o/3!manual}~\\ 
+Processes the fields in
+{\tt Record0} according to the {\tt Commands}. Any
+resulting modifications are returned in {\tt Record1}. 
+Modifications are undone during backtracking.
+{\tt Command} is
+one of:
+\begin{description}
+\item[{\tt Field == Value}]~\\ Matches {\tt Value} to the current contents of {\tt Field}.
+\item[{\tt Field = Value}]~\\  Replaces the old value of {\tt Field} with {\tt Value}.
+\item[{\tt Field >= Value}]~\\  Tests if the contents of {\tt Field} are {\tt >= Value}.
+\item[{\tt Field > Value}]~\\  Tests if the contents of {\tt Field} are {\tt > Value}.
+\item[{\tt Field < Value}]~\\  Tests if the contents of {\tt Field} are {\tt < Value}.
+\item[{\tt Field =< Value}]~\\  Tests if the contents of {\tt Field} are {\tt =< Value}.
+\item[{\tt Field in List}]~\\  Tests if the contents of {\tt Field} are one of
+ {\tt List}.
+\item[{\tt Field++}]~\\  Modifies the contents of {\tt Field}; adds one.
+\item[{\tt Field--}]~\\  Modifies the contents of {\tt Field}; subtracts one.
+\item[{\tt Field - N}]~\\  Modifies the contents of {\tt Field}; subtracts {\tt N}.
+\item[{\tt Field + N}]~\\  Modifies the contents of {\tt Field}; adds {\tt N}.
+\item[{\tt Field << X}]~\\  Modifies the contents of {\tt Field}; appends
+{\tt X} to the front of the list in {\tt Field}.
+
+\item[$\backslash+ {\tt Command}$]~\\  
+Negation of one of the above commands. Modifications
+not returned.
+\item[{\tt Commands}]~\\  
+A list that is a combination of any of the above commands. 
+Executed left to right.
+\end{description}
+\item[{\tt o(Command,Record)}]\index{o/2!manual}~\\ 
+Queries {\tt Record} according to {\tt Command}. Modifications not returned.
+
+\item[{\tt access(Type,Record)}]\index{access/2!manual}~\\
+{\tt Record} is a record of the specified {\tt Type} that has been
+asserted into the global Prolog database using {\tt assert/1} or 
+{\tt change/2}. 
+
+\item[{\tt access(Type,Tests,Record)}]\index{access/3!manual}~\\
+{\tt Record} is a record of the specified {\tt Type} which satisfies {\tt Tests}
+that has been
+asserted into the global Prolog database using {\tt assert/1} 
+or {\tt update/2}.
+ 
+\item[{\tt update(Record,Changes)}]\index{update/3!manual}~\\
+{\tt Record} will be modifed according to {\tt Commands}
+then asserted into the global Prolog database.
+\end{description}
+
+\section{An Extended Example}
+
+\subsection{A Forward Chainer}
+
+Consider the
+forward chaining 
+interpreter of \src{fChainA}.
+
+\begin{prol}\begin{verbatim}*/
+fChainA :-  fChainA([]). % initialise the bindings
+fChainA(Bindings0) :-
+        rule Name if Lhs then Rhs,
+        satisfied(Lhs),
+        newBinding(Name,Lhs,Bindings0,Bindings), !,
+        execute(Rhs),
+        fChainA(Bindings).
+fChainA(_).
+
+satisfied(A  or B) :- !, (satisfied(A) ; satisfied(B)).
+satisfied(A and B) :- !, satisfied(A), satisfied(B).
+satisfied(not A)   :- !, \+ satisfied(A).
+satisfied(A)       :- A.
+
+%don't repeat old bindings      
+newBinding(Name,Lhs,Bindings, [Name-Lhs|Bindings]) :- 
+       \+ member(Name-Lhs,Bindings).
+
+execute(A and B)   :- !, execute(A), execute(B).
+execute(A)         :- A.
+/*\end{verbatim}\label{fChainA}
+\index{fChainA/0}
+\index{fChainA/1}
+\index{satisfied/1}
+\index{newBindings/4}
+\index{execute/1}
+\end{prol}
+
+This interpreter could process rules like the one shown in
+\src{rule1}.
+
+\begin{prol}\begin{verbatim}*/
+rule    'check for badly paying job'
+if      employee(Name,Job,_Age) and 
+        salary(Job,0)
+then    print(error(Name-poorlyPaid(Job))).
+/*\end{verbatim}\label{rule1}
+\index{check for badly paying job}
+\end{prol}
+
+There are many ways to
+improve
+{\tt fChainA/1}; e.g. indexing the search
+{\tt Bindings} list in {\tt newBindings/4}.  
+For the purposes of demonstrating our records-in-Prolog technique,
+we will explore certain re-write techniques for the KB.
+This re-write technique assumes
+that all the database terms are ground (i.e. not variables) and have a
+unique numeric {\tt Id}. 
+Suppose the forward
+chainer has access to the {\tt Id}s used in the rule (as in
+\src{rule2}).
+
+\begin{prol}\begin{verbatim}*/
+rule    'check for badly paying job; version 2' 
+==      [Id1,Id2]
+if      employee(Id1,Name,Job,_Age) and 
+        salary(Id2,Job,0)
+then    print(error(Name-poorlyPaid(Job))).
+/*\end{verbatim}\label{rule2}
+\index{check for badly paying job; version 2}
+\end{prol}
+
+Using \src{fChainB}, we  can now reduce the size of the
+structures examined in the {\tt newBindings/4} test.
+
+\begin{prol}\begin{verbatim}*/
+fChainB :-  fChainB([]). % initialise the bindings
+fChainB(Bindings0) :-
+        rule Name == UsedIds if Lhs then Rhs,
+        satisfied(Lhs),
+        newBinding(Name,UsedIds,Bindings0,Bindings), !,
+        execute(Rhs),
+        fChainB(Bindings).
+fChainB(_).
+/*\end{verbatim}\label{fChainB}\index{fChainB/0}
+\index{fChainB/1}\end{prol}
+
+If we assume that all facts store their {\tt Id} as their first
+argument, then a KB translator could automate the process of collecting
+the {tt Id}s.  If this was done, then \src{rule2} could be shorter;
+e.g. \src{rule3}.
+\begin{prol}\begin{verbatim}*/
+rule    'check for badly paying job; version 3' 
+if      employee(Name,Job,_Age) and 
+        salary(Job,0)
+then    print(error(Name-poorlyPaid(Job))).
+/*\end{verbatim}\label{rule3}
+\index{check for badly paying job; version 3}\end{prol}
+
+The rest of this
+section describes a translator that automatically converts
+rules like \src{rule3} into a more useful internal
+form; e.g. \src{rule2}.
+
+\subsection{Rule Translator}
+
+Our version 1 rule translator
+updates a list of {\tt Id}s
+as it performs a recursive descent of the rule {\tt Lhs}.
+ 
+\begin{prol}\begin{verbatim}*/
+rTransA(Name if Lhs0 then Rhs, 
+        Name==UsedIds if Lhs then Rhs) :-
+        rTransA(Lhs0,Lhs, 
+           [],     % initialise used Ids to the empty set
+           UsedIds % final value of the used Ids
+        ).
+
+rTransA(A0 and B0,A and B,UsedIds0,UsedIds) :- !, 
+        rTransA(A0,A,UsedIds0,UsedIds1),
+        rTransA(B0,B,UsedIds1,UsedIds).
+rTransA(A0 or B0, A or B,UsedIds0,UsedIds) :- !,
+        rTransA(A0,A,UsedIds0,UsedIds1),
+        rTransA(B0,B,UsedIds1,UsedIds).
+rTransA(not A0, not A, UsedIds0,UsedIds) :- !,
+       rTransA(A0,A,UsedIds0,UsedIds).
+/*\end{verbatim}\label{rTransA}\index{rTransA/2}\end{prol}
+
+The ``engine room'' of the process is the last {\tt rTransA/4}
+clause in \src{rTransAbase}. 
+
+\begin{prol}\begin{verbatim}*/
+rTransA(A0,A,UsedIds0,[Id|UsedIds0]) :-
+        A0 =.. [Functor|Args],
+        A  =.. [Functor,Id|Args].
+/*\end{verbatim}\label{rTransAbase}\index{rTransA/2}\end{prol}
+
+This clause uses the {tt univ} predicate ({\tt =..}) to bust 
+apart the input term {\tt A0} and inserts a new
+first argument {\tt Id}. This new {\tt Id} is then added to the
+{\tt UsedIds0} list. \src{rTransAtest} will now generate
+\src{rTransAout}.
+ 
+\begin{prol}\begin{verbatim}*/
+rTransATest(What) :-
+        rule  What if Lhs0 then Rhs0,
+        rTransA(rule What if Lhs0 then Rhs0,Out),
+        print(Out),nl.
+/*\end{verbatim}\label{rTransAtest}\index{rTransATest/1}\index{rTransA/2!test}\end{prol}
+
+\begin{prol}\begin{verbatim}
+:- rTransATest('check for badly paying job; version 3').
+
+rule    'check for badly paying job; version 3' 
+==      [G1036,G932] 
+if      employee(G932, G788, G792, G796) and 
+        salary(G1036, G792, 0) 
+then    print(error(G788 - poorlyPaid(G792))).
+\end{verbatim}\label{rTransAout}\index{rTransATest/1!output}\end{prol}
+
+\subsection{Conflict Resolution Strategies}
+
+Now consider what happens to {\tt rTrans/1}
+if we extend the forward chainer. For example,
+the {\tt newBindings/4} test implements
+conflict resolution by {\em refraction}; i.e. don't do the same
+thing twice. Other conflict resolution strategies require more
+information about the rules:
+\bi
+
+\item
+Conflict resolution by {\em specificity} favours rules
+with larger {\tt Lhs}.
+To implement specificity, our rule translator should also return
+the
+number of tests in the {\tt Lhs}.
+\item
+Conflict resolution by {\em recency}  favours
+rules whose {\tt Lhs} matches assertions that are the most recent.
+We will assume that whenever an assertion is
+modified, its {\tt assertionAge} argument (stored at position 2)
+is updated by one\footnote{We could make the {\tt Id} parameter
+serve double duty and make it also act as the {\tt assertionAge}.
+We will not since we need to complicate
+our translator for demonstration purposes.}.
+To implement recency, our rule translator should also return the
+average {\tt assertionAge}s of the matched assertions.    
+\item
+Conflict resolution by {\em priority} favours rules with a
+larger number priority rating supplied by the user. To use
+priority, we need to extend our rule syntax (e.g. see \src{rule4}).
+\ei
+
+Our new rule translator will convert rules like \src{rule4}
+into
+the {\tt rule/7} format
+shown in \src{defrule7}:
+
+\begin{prol}\begin{verbatim}
+rule(Name,UsedIds,Ages,Specificity,Priority,Lhs,Rhs).
+\end{verbatim}\label{defrule7}\end{prol}
+
+If we extend {\tt rTransA/2}
+such that extra arguments are
+passed
+to collect this new information,
+then we get {\tt rTransB/2} shown in \src{yuck}.
+If we test {\tt rTransB} using the code of \src{rTransBtest}
+we get the desired output shown in \src{rTransBtestout}.
+
+\begin{prol}\begin{verbatim}*/
+rTransBTest(What) :-
+        rule  What at Priority if Lhs0 then Rhs0,
+        rTransB(rule What at Priority if Lhs0 then Rhs0,Out),
+        print(Out),nl.
+/*\end{verbatim}\label{rTransBtest}\index{rTransBTest/1}\index{rTransB/2!test}\end{prol}
+
+\begin{prol}\begin{verbatim}
+:- rTransBTest('check for badly paying job; version 4').
+
+rule('check for badly paying job; version 4',  % Name 
+   [G2108,G1964],                              % UsedIds
+   [G2096,G1952],                              % Ages
+   2,                                          % Specificity
+   10,                                         % Priority
+   employee(G1964, G1952, G1800, G1804, G1808) % Lhs
+   and salary(G2108, G2096, G1804, 0),                   
+   print(error(G1800 - poorlyPaid(G1804)))     % Rhs
+).
+\end{verbatim}
+\label{rTransBtestout}
+\index{rTransBTest/1!output}
+\end{prol}
+
+\subsection{The Desired Rule Translator}
+
+Note that it is a tedious task to add all
+the required parameters to the sub-routines of {\tt rTrans/2}
+in \src{yuck}. 
+In
+practice,
+this tedium complicates maintenance, discourages program improvement,
+and may introduce errors into the program.
+Ideally, we would like some
+record structure that we could pass around
+as a single parameter. 
+Further, we would like a
+set
+of common operations defined on the fields of that record; for example:
+
+\bi
+\item
+{\tt Field\verb+<<+Item}: append {\tt Item} to the list stored
+in {\tt Field}.
+\item
+{\tt Field\verb2++2}: increment the number stored in {\tt Field}
+by one.
+\ei
+
+Once so defined, then the rule translator would look like
+\src{rTransC/2}.
+\begin{prol}\begin{verbatim}
+:- defRecord(rule,[name,lhs,rhs,
+                   usedIds=[],    ages=[],
+                   specificity=0, priority=0]). 
+\end{verbatim}\index{defRecord/2!usage}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+rTransC(rule Name at Priority if Lhs0 then Rhs,Rule) :- 
+        create(rule,[name=Name, priority=Priority, 
+                     rhs=Rhs,   lhs=Lhs], Rule0),
+        rTransC(Lhs0,Lhs,Rule0,Rule).
+
+rTransC(A0 and B0,A and B,R0,R) :- !, 
+        rTransC(A0,A,R0,R1), rTransC(B0,B,R1,R).
+rTransC(A0 or B0, A or B, R0,R) :- !, 
+        rTransC(A0,A,R0,R1), rTransC(B0,B,R1,R).
+rTransC(not A0,   not A,  R0,R) :- !, 
+        rTransC(A0,A,R0,R).
+rTransC(A0,       A,      R0,R) :-
+        A0 =.. [Functor|Args],
+        A  =.. [Functor,Id,Age|Args],
+        o([ages<<Age,specificity++,usedIds<<Id],R0,R).
+/*\end{verbatim}
+\label{rTransC/2}
+\index{rTransC/2}
+\index{rTransC/4}
+\end{prol}
+
+{\tt rTransC/4} uses the {\tt o/3} predicate to
+access the record structures.
+This is a, currently fictional, predicate
+that modifies the second argument to produce the third argument using
+the instructions stored in the first argument.
+Note that the programmer is now more isolated from the internals
+of
+our rule structure.
+\bi
+\item
+The first argument to {\tt o/3} need not be in any particular
+order.
+\item If new fields are added to {\tt rule} using the {\tt
+defRecord/2} command, then the code for {\tt rTransC} will not need
+to be changed.
+\ei
+
+
+Using DCG syntax, we can even avoid the tedium of coding how different
+versions of the rule are passed around as the last two arguments of
+each {\tt rTransC/4} clause. This re-coding is shown in \src{dream0}.
+
+\section{Implementation}
+
+\subsection{Primitive Accessors and Updates}
+
+Records are defined using {\tt defRecord/2}. The first argument is a
+symbol identifying the record type, and the second argument is a list
+of fields for that record, optionally with initialisations. 
+For
+example, we can define a {\tt Person} record
+with four fields as per \src{defPerson}.
+Note that our default {\tt Person}'s fourth field ({\tt shoeSize}
+has an initial value of 12).
+
+\begin{prol}\begin{verbatim}
+:- defRecord(person,[
+        name,duties,age,shoeSize=12])
+\end{verbatim}\label{defPerson}
+\index{defRecord/2!usage}
+\end{prol}
+
+Once a record is defined, a set of {\em primitive accessors} are
+automatically asserted for each field in the record. The accessors for
+{\tt person/4} are shown in \src{person03}.
+
+\begin{prol}\begin{verbatim}
+% example person0/3: asserted by defRecord/2
+person0(name,     person(Name, _,      _,   _),        Name).
+person0(duties,   person(_,    Duties, _,   _),        Duties).
+person0(age,      person(_,    _,      Age, _),        Age).
+person0(shoeSize, person(_,    _,      _,   ShoeSize), ShoeSize).
+\end{verbatim}\label{person03}\index{person0/3}
+\index{primitives!accessor!example}
+\end{prol}
+
+Note the convention. If the record name is {\tt X} then the primitive
+accessor
+is {\tt X0/3}.  Further, {\tt X0/5} is a {\em primitive update} predicate that is
+automatically
+defined which lets us swap values (e.g \src{person05}.
+
+\begin{prol}\begin{verbatim}
+% example person0/5: asserted by defRecord/2. replace X1 by X2
+person0(name,    person(X1,B,  C,  D),  X1, person(X2,B,  C,  D),  X2).
+person0(duties,  person(A,  X1,C,  D),  X1, person(A,  X2,C,  D),  X2).
+person0(age,     person(A,  B,  X1,D),  X1, person(A,  B,  X2,D),  X2).
+person0(shoeSize,person(A,  B,  C,  X1),X1, person(A,  B,  C,  X2),X2).
+\end{verbatim}\label{person05}
+\index{person0/5}
+\index{primitives!update!example}
+\end{prol}
+
+A programmer can use these primitives
+without knowledge of the internal structures
+of each record; e.g. \verb+person0(name,Person,Name)+
+returns the {\tt Name} of {\tt Person}. If the definition of
+{\tt Person} was to change in the future, {\tt defRecord/2}
+will automatically rewrite {\tt person0/3} and {\tt person0/5}.
+
+\subsection{Using the Primitives}
+
+Note that to use the primitives, the accessor needs knowledge
+of the magic name {\tt person0}. A generic shell needs to map from
+these magic names to a more general predicate. This is
+task of {\tt o1/3}.
+
+\begin{prol}\begin{verbatim}
+% example o1/3: asserted by defRecord
+o1(person(A,B,C,D),E,F) :- 
+        person0(E, person(A,B,C,D),F).
+\end{verbatim}\label{o1/3}\index{o1/3}\end{prol}
+
+The {\tt swap/5} predicate maps the generic processing
+into the primitive update predicate.
+
+\begin{prol}\begin{verbatim}
+% swap/5 asserted by defRecord
+swap(person(A,B,C,D),E,F,G,H) :- 
+        person0(F,person(A,B,C,D),E,G,H).
+\end{verbatim}\label{swap/5}\index{swap/5!example}\end{prol}
+
+In operation, there will be many {\tt o1/3, swap/5} and (e.g.) {\tt person0}
+assertions. We use Prolog's default indexing strategy (functor of
+first argument) to optimise the search for the correct predicate.
+{\tt o1/3} is indexed by the term passed into its first argument.
+The primitives are indexed by the name of the principle functor and their
+first arguments.
+
+Calls to {\tt o1/3} are via {\tt o0/3}.
+{\tt o0/3} extracts a field or prints an error message
+if it can't find it. 
+
+\begin{prol}\begin{verbatim}*/
+o0(F,Term,V) :- o1(Term,F,V0),!,V = V0.
+o0(F,Term,V) :- oops(['failed field access',F = V,' in',print(Term)]).
+
+oops(X) :- writeList(['%..E>'|X]),fail.
+
+writeList([H|T]) :- 
+        write(H), member(Item,T),write(' '), writeListItem(Item), fail.
+writeList(_) :- nl.
+
+writeListItem(print(X)) :- !, print(X).
+writeListItem(X) :- write(X).
+
+/*\end{verbatim}\index{o0/3}\index{oops/1}\index{writeList/1}\end{prol}
+
+\subsection{The General Shell}
+
+A programmer using the {\tt defRecord} system can ignore the
+{\tt o1/3, o0/3} and {\tt swap/5} predicates. The high-level
+general record accessor is the {\tt o/3} predicate.
+
+\begin{prol}\begin{verbatim}*/
+% updates
+o(Field=New, T0,T)    :- o0(Field,T0,_), swap(T0,_,Field,T,New).
+% accessors
+o(Field==X,     T, T) :- o0(Field,   T,X).
+/*\end{verbatim}\label{o3a}\index{o/3}\end{prol}
+
+{\tt o/3} implements certain common record operations.
+
+\begin{prol}\begin{verbatim}*/
+% queries
+o(Field>=Value, T, T) :-    o(Field==X,   T,T), X >= Value.     
+o(Field> Value, T, T) :-    o(Field==X,   T,T), X > Value.
+o(Field\=Value, T, T) :-    o(Field==X,   T,T), X \= Value.
+o(Field< Value, T, T) :-    o(Field==X,   T,T), X < Value.
+o(Field=<Value, T, T) :-    o(Field==X,   T,T), X =< Value.     
+o(Field in List,T, T) :-    o(Field==X,   T,T), member(X,List). 
+o(self T,       T, T).
+/*\end{verbatim}\index{o/3}\end{prol}
+
+\typeout{EXPLAIN self}
+
+\begin{prol}\begin{verbatim}*/
+% updates
+o(Field++, T0,T) :- o(Field + 1,       T0,T).                   
+o(Field--, T0,T) :- o(Field + -1 ,     T0,T).                   
+o(Field-N, T0,T) :- o(Field + (-1 * N),T0,T).                   
+o(Field<<X, T0,T) :-                                            
+        o(Field==Old,T0,T1),                                    
+        New = [X|Old],                                          
+        o(Field=New,T1,T).                                      
+o(Field+N, T0,T) :-                                             
+        o(Field==Old,T0,T1),                                    
+        New is Old + N, 
+        o(Field=New,T1,T).
+/*\end{verbatim}\index{o/3}\end{prol}
+
+We implement queries with {\tt o/2}.
+
+\begin{prol}\begin{verbatim}*/
+% queries only (ignore the output)
+o(Gs,T) :- o(Gs,T,_).
+/*\end{verbatim}\index{o/2}\end{prol}
+
+We also support multiple
+queries by calling {\tt o/3} for each item in a list.
+
+\begin{prol}\begin{verbatim}*/
+o([],T,T).
+o([G|Gs],T0,T) :- 
+        o(G,T0,T1), 
+        o(Gs,T1,T).
+/*\end{verbatim}\index{o/3}\index{o/3!multiple calls}\end{prol}
+
+\subsection{{\tt DefRecord/2} Side-Effects}
+
+We have seen above that a call to {\tt defRecord/2} asserts
+several predicates:
+\bi
+\item primitive accessor predicates; e.g. \src{person03}.
+\item primitive update predicates; e.g. \src{person05}.
+\item mapping predicates that connect a general record accessor
+shell to the primitives; i.e. {\tt o1/3} and {\tt swap/5}
+(see Listings \src{o1/3}~\&\ref{swap/5}).
+\ei
+
+{\tt DefRecord/2}  also asserts two more predicates:
+\bi
+\item
+{\tt Create/2} stores the default new record.
+Recall that in our {\tt person/4} record, {\tt shoeSize} was the
+fourth argument with an initial value of 12 (see \src{defPerson}). {\tt DefRecord/2}
+therefore
+asserts:
+\begin{prol}\begin{verbatim}
+% create/2 asserted by defRecord
+create(person, person(A, B, C, 12)).
+\end{verbatim}\index{create/2!example}\end{prol}
+We define 
+{\tt Create/3} to allow for over-riding the default
+initial values of a new record:
+\begin{prol}\begin{verbatim}*/
+create(Thing,Inits,New) :- 
+        create(Thing,New0), 
+        o(Inits,New0,New).
+/*\end{verbatim}\index{create/3}\end{prol}
+\item
+{\tt DefRecord/2} changes the print behaviour for records. Since
+records may be very complex structures, 
+we do not show them in print statements.
+\begin{prol}\begin{verbatim}
+portray(person(A, B, C, D)) :- 
+        write('[Rec:'), write(person / 4), write(']').
+\end{verbatim}\label{portray/1}\index{portray/1!example}\end{prol}
+\item
+{\tt DefRecord/2} stores skeletons of all the structures it asserts
+in
+{\tt Meta/4}.
+\begin{prol}\begin{verbatim}
+% meta/4 asserted by defRecord
+meta(person, person(A, B, C, D), 
+             person0(E, F, G),     % primitive accessor
+             person0(H, I, J, K,L) % primitive update predicate
+).
+\end{verbatim}\index{meta/4!example}\end{prol}
+{\tt meta/4}
+is useful for 
+clearing away of out-dated records (see {\tt undefineRecord/1} in \src{undefineRecord/1}).
+
+\ei
+\begin{prol}\begin{verbatim}*/
+undefineRecord(Type) :-
+        retract(meta(Type,Skeleton, Match,Swap)), % already exists
+        !,
+        writeList(['%Re-defining [',Type,'].']),
+        retractall(create(Type,_)),
+        retractall((o1(Skeleton, _, _))),
+        retractall(Match),
+        retractall((swap(Skeleton, _,_,_,_))),
+        retractall(Swap),
+        retractall(portray(Skeleton)).
+undefineRecord(Type) :-
+        writeList(['%Defining [',Type,'].']).      % new
+	
+/*\end{verbatim}\label{undefineRecord/1}\index{undefineRecord/1}\end{prol}
+
+{\tt meta/4} is also the basis of other useful utilites. 
+{\tt Example/2} produces a ``skeleton'' version of a {\tt Type}; i.e.
+with all its arguments as variables.
+{\tt Access/2}
+returns {\tt Type}s that have been asserted into the global Prolog database.
+{\tt Access/3} tests that the accessed records satisfy some tests.
+{\tt Update/2} changes terms that have been asserted to the global
+Prolog database.
+\begin{prol}\begin{verbatim}*/
+example(Type,Eg) :- meta(Type,Eg,_,_).
+
+access(Type,Eg)       :- example(Type,Eg), Eg.
+access(Type,Tests,Eg) :- access(Type,Eg), o(Tests,Eg).
+
+update(X0,Changes)   :- o(Changes,X0,X), retract(X0), assert(X).
+/*\end{verbatim}\label{access/2}\index{access/3}\index{update/2}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+databaseTest :-
+        defRecord(databaseTest,[name,age]),
+        create(databaseTest,[age=1],New), 
+        assert(New),
+        access(databaseTest,[age==1],Found1),
+        printRec(Found1),
+        update(Found1,age++),
+        access(databaseTest,[age==2],Found2),
+        printRec(Found2).
+/*\end{verbatim}\label{databaseTest/0}\index{access/3!test}
+\index{update/2!test}\index{access/2!example}\index{update/2!example}\end{prol}
+
+\begin{prol}\begin{verbatim}
+:- databaseTest.
+%Defining [ databaseTest ].
+
+name = G852
+age = 1
+
+name = G1044
+age = 2
+\end{verbatim}\index{databaseTest/0!output}\end{prol}
+\subsection{Print Routines}
+
+{\tt printRec/1}, {\tt records} and {\tt record}
+permit the pretty printing of a
+record as well as showing all the above structures.
+
+\begin{prol}\begin{verbatim}*/
+% pretty print a record
+printRec(V) :- var(V),!,oops(['variable passed to [printRec]']).
+printRec(R) :- nl,o1(R,F,V), print(F=V),nl, fail.
+printRec(_).
+
+% print all assertions by defRecord/2.
+records :- record(_), fail.
+records.
+
+% print all assertions relating to Type
+record(Type) :-
+        meta(Type, Skeleton,Match,Swap), nl, 
+        write('%------| '),write(Type),
+        write(' |----------------------------'),nl,
+        myListing([     meta(Type, Skeleton,Match,Swap), 
+                      portray(Skeleton), create(Type,Skeleton),
+                      o1(Skeleton,_,_), swap(Skeleton,_,_,_,_), 
+                      Match,Swap]).
+
+myListing(L) :- 
+        member(X,L), nl, clause(X,Y), portray_clause((X :- Y)), 
+        fail.
+myListing(_).
+/*\end{verbatim}
+\index{printRec/1}
+\index{record/1}
+\index{myListing/1}
+\end{prol}
+
+\subsection{Inside {\tt DefRecord/2}}
+
+Defining a record is quite simple. {\tt DefRecord/2} retracts old
+assertions relating to a record (using {\tt undefineRecord/2}), 
+creates a magic internal name for the
+primitive accessors and primitive update predicates, then calls {\tt
+defRecord1/5}
+to generate the new assertions.
+
+\begin{prol}\begin{verbatim}*/
+defRecord(Functor,Inits) :-
+        undefineRecord(Functor),
+        length(Inits,Arity),
+        magicRecordNames(Functor,MagicName),
+        defRecord1(Functor,Arity,Inits,MagicName,Assertion),
+        assert(Assertion),
+        fail.
+defRecord(_,_).
+
+magicRecordNames(Functor,Out) :-
+        name(Functor,L0),
+        name('0',Zero),
+        append(L0,Zero,Out0),
+        name(Out,Out0).
+/*\end{verbatim}\index{defRecord/2}\index{magicRecordNames/2}\end{prol}
+
+Most of the implementation of {\tt defRecord1/5} is straight-forward. 
+\begin{prol}\begin{verbatim}*/
+defRecord1(Functor,Arity,_,_,
+        (portray(Term) :- write('[Rec:'),
+                          write(Functor/Arity),write(']'))) :-
+       functor(Term,Functor,Arity).
+
+defRecord1(Functor,Arity,_Inits,MagicName,
+                   meta(Functor,Skeleton,MatchG,SwapG)) :-
+        functor(Skeleton,Functor,Arity),
+        functor(MatchG,MagicName,3),
+        functor(SwapG,MagicName,5).
+
+defRecord1(Functor,Arity,_,MagicName,
+                   (o1(Term,Field,Value) :- Body)) :-
+        Body =.. [MagicName,Field,Term,Value],
+        functor(Term,Functor,Arity).
+
+defRecord1(Functor,Arity,_,MagicName,
+                   (swap(Term0,V0,Field,Term,V) :- Body)) :-
+        Body =.. [MagicName,Field,Term0,V0,Term,V],
+        functor(Term0,Functor,Arity).
+
+% create the primitive accessors
+defRecord1(Functor,Arity,Inits,MagicName,MatchGoal) :-
+        aField(Inits,Pos,Field),
+        MatchGoal =.. [MagicName,Field,Term,Value],
+        functor(Term,Functor,Arity),
+        arg(Pos,Term,Value).
+/*\end{verbatim}\index{defRecord1/3}\end{prol}        
+
+The {\tt create/2} assertion has to be built by running down the
+{\tt Inits} list and, if an initial value has been offered, installing
+that value into the newly created term at the correct position.
+The details of this processing is handled by {\tt installInitValues/3}
+(see \src{misc-support}).
+
+\begin{prol}\begin{verbatim}*/
+defRecord1(Functor,Arity,Inits,_,
+                   create(Functor,Creation)) :-
+        functor(Creation,Functor,Arity),
+        installInitValues(Inits,1,Creation).
+/*\end{verbatim}\index{defRecord1/5}\end{prol}        
+
+To create the primitive updates, two new terms must be built. 
+Next, for $a$ in 1 to the arity $A$, all the non-$a-th$ arguments must
+be unified across to each other. The $a-th$ argument in each term then
+becomes a handle for the old value and the new value. The details of
+this
+process is handled by {\tt swapVars/6} (see \src{misc-support}).
+
+\begin{prol}\begin{verbatim}*/
+defRecord1(Functor,Arity,Inits,MagicName,Swap) :-
+        aField(Inits,Pos,Field),
+        Swap =.. [MagicName,Field,Term0,Old,Term,New],
+        functor(Term,Functor,Arity),
+        functor(Term0,Functor,Arity),
+        Term0 =.. [_|T0_fields],
+        Term  =.. [_|T_fields],
+        swapVars(T0_fields,T_fields,1,Pos,Old,New).
+/*\end{verbatim}\index{defRecord1/5}\end{prol}       
+
+\subsection{Support Code}
+This section contains the low-level routines that supports the above
+processing.
+
+\begin{prol}\begin{verbatim}*/
+aField(Inits,Pos,Field) :-
+        nth(Inits,Pos/Item),
+        (Item = (Name = _)
+        ->        Field = Name
+        ;        Field = Item). 
+
+installInitValues([],_,_).
+installInitValues([_=InitValue|FieldNames],N0,Term0) :- !,
+        arg(N0,Term0,InitValue),
+        N is N0 + 1,
+        installInitValues(FieldNames,N,Term0).        
+installInitValues([_|FieldNames],N0,Term0) :-
+        N is N0 + 1,
+        installInitValues(FieldNames,N,Term0).  
+
+swapVars([Value0|T],[Value  |T],Pos,Pos,Value0,Value) :- !.
+swapVars([H|T1],[H|T2],N0,Pos,Value0,Value) :- 
+        N is N0 + 1,
+        swapVars(T1,T2,N,Pos,Value0,Value).
+/*\end{verbatim}\label{misc-support}
+\index{aField/3}
+\index{installInitValues/3}
+\index{swapVars/6}
+\index{}
+\index{}
+\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+average(L,Av) :- sum(L,Sum),length(L,N), Av is Sum/N.
+
+sum(L,Sum) :- sum(L,0,Sum).
+sum([],Out,Out).
+sum([H|T],In, Sum) :- Temp is H + In, sum(T,Temp,Sum).
+
+nth(L,Out) :- nth(L,1,Out).
+nth([H|_],N,N/H).
+nth([_|T],N,Out) :- N1 is N + 1, nth(T,N1,Out).
+/*\end{verbatim}\index{average/2}\index{sum/2}\index{sum/3}
+\index{nth/2}\index{nth/3}
+\end{prol}
+
+\section{Assessment}
+
+\subsection{{\tt DefRecord} in Action}
+
+The code of \src{oTest} now generates the output shown in
+\src{oTestOut1} and \src{oTestOut2}.
+\begin{prol}\begin{verbatim}*/
+oTest :-
+        defRecord(oTest,[age,duties]),
+        record(oTest),
+        create(oTest,[age=5,duties=[]],R0),
+        nl,write('oTest0: '), 
+        printRec(R0),
+        % use the system in query mode
+        o([age>=4, age>4, age\=20, age<100, 
+           age=<100, age in [3,4,5]], R0),
+        % use the system in update mode        
+        o([age=45, age++, age++,   age--,   
+           duties<<planning  ,duties<<auditing
+           ], R0,R1),
+        nl, write('oTest1: '), 
+        printRec(R1).
+/*\end{verbatim}\label{oTest}\index{oTest/0}\index{o/2!test}\index{o/3!test}\index{printRec/1!test}\end{prol}
+\begin{prol}\begin{verbatim}
+:- oTest.
+
+%Defining [ oTest ].
+
+%------| oTest |----------------------------
+
+meta(oTest, oTest(A, B), oTest0(C, D, E), oTest0(F, G, H, I, J)).
+
+portray(oTest(A, B)) :- write('[Rec:'), write(oTest / 2), write(']').
+
+create(oTest, oTest(A, B)).
+
+o1(oTest(A, B), C, D) :- oTest0(C, oTest(A, B), D).
+
+swap(oTest(A, B), C, D, E, F) :- oTest0(D, oTest(A, B), C, E, F).
+
+oTest0(age, oTest(A, B), A).
+oTest0(duties, oTest(A, B), B).
+
+oTest0(age, oTest(A, B), A, oTest(C, B), C).
+oTest0(duties, oTest(A, B), B, oTest(A, C), C).
+\end{verbatim}\label{oTestOut1}\index{oTest/0!output}\end{prol}
+\begin{prol}\begin{verbatim}
+oTest0: 
+age = 5
+duties = []
+
+oTest1: 
+age = 46
+duties = [auditing,planning]
+\end{verbatim}\label{oTestOut2}\index{oTest/0!output}\end{prol}
+
+\subsection{Timing Experiments}
+
+\src{defRecordTimingTest/0} assesses the cost of this record system
+by comparing the time required for 500 runs of 
+{\tt rTransB/2} with 500 runs of {\tt rTrans/2} for a big rule (generated
+in \src{bigRule}).
+
+\begin{prol}\begin{verbatim}*/
+defRecordTimingTest :-
+        defRecord(rule, [
+          name,usedIds=[],ages=[],specificity=0,priority=0,lhs,rhs]),
+        defRecordTimingTest1(Rule1),
+        defRecordTimingTest1(Rule2),
+        timeIt(rTransB(Rule1,_),500,T1),
+        timeIt(rTrans( Rule2,_),500,T2),
+        defRecordTimingTest1(Rule3),rTrans( Rule3,Out2), 
+        defRecordTimingTest1(Rule4),rTransB(Rule4,Out1), 
+        (\+var(Out1), \+ var(Out2), Out1 = Out2 
+        -> write('same output; good') 
+        ; write('different output; bad')), nl,
+        SlowDown is (T2 - T1) /T1,
+        print(rTransB(T1)), nl,print(rTrans(T2)), nl,
+        print(costOfDefRecord(SlowDown)),nl.
+/*\end{verbatim}\ilabel{defRecordTimingTest/0}\index{defRecord/2!test}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+% generate a BIG rule
+defRecordTimingTest1(rule test at 10 if Lhs then print(1)) :-
+        functor(C1, a,10), functor(C2, b,10), functor(C3, c,10),
+        functor(C4, d,10), functor(C5, e,10), functor(C6, f,10),
+        functor(C7, g,10), functor(C8, h,10), functor(C9, i,10),
+        functor(C10,j,10), functor(C11,k,10), functor(C12,l,10),
+        functor(C13,m,10), functor(C14,n,10), functor(C15,o,10),
+        Lhs =    
+          (C1 and not C2 or (C3 and not (C4 or C5)) and 
+           not (not C6 or C7 and not (C8 or C9)) or
+           C10 and (C11 or C12 and not C13 and C14 or C15)).
+/*\end{verbatim}\label{bigRule}\index{rTransTimeTest1/0}\end{prol}
+
+{\tt defRecordTimingTest/1} uses the timing predicate of
+\src{timeIt/2}.
+
+\begin{prol}\begin{verbatim}*/
+timeIt(G,T) :- timeIt(G,10,T).
+
+timeIt(G,N,Time) :- 
+        timeIt1(true,N,T1),timeIt1(G,N,T2),Time is T2 -T1.
+
+timeIt1(Goal, N,T) :- 
+        T1 is cputime, timeIt2(Goal,N), 
+        T2 is cputime, T is (T2 - T1)/N.
+
+timeIt2(Goal, Repeats) :- between(1,Repeats,_), Goal, fail.
+timeIt2(_,_).
+/*\end{verbatim}\label{timeIt/2}\index{timeIt/2}\index{timeIt/3}\end{prol}
+
+When executed using SWI-Prolog version 2.0.8 on a Pentium 75 machine
+running Slackware Linux version 1.3.2
+with 24MB of ram and 32MB of swap space, the following output was observed.
+
+\begin{prol}\begin{verbatim}
+same output; good
+rTransB(0.001780)
+rTrans(0.009220)
+costOfDefRecord(4.179775)
+\end{verbatim}\label{defRecordTimingTest}\index{rTransTimeTest/0!output}\end{prol}
+
+That is, the {\tt defRecord} system adds a factor of four to the
+matching time of variables in a term.  
+This observation prompted an exploration of where the time went
+during the execution of {\tt o/3}. The {\tt rTransE/4} predicate
+ignores the {\tt o,o0,o1} layers and calls {\tt rule0/5}
+directly to implement updates (the final clause of {\tt rTransE/5}
+is shown in \src{rTransE/4}. 
+
+
+\begin{prol}\begin{verbatim}*/
+rTransE(A0,A,T0,T) :-
+          A0 =.. [Functor|Args],
+          A  =.. [Functor,Id,Age|Args] ,
+        rule0(ages,       T0,Ages, T1,[Age|Ages]),
+        rule0(specificity,T1,Spec0,T2,Spec), Spec is Spec0 + 1,
+        rule0(usedIds,    T2,Ids,  T,[Id|Ids]).
+/*\end{verbatim}\ilabel{rTransE/4}\end{prol}
+
+When executed in a test similiar
+to \src{defRecordTimingTest/0}, the following output was seen:
+\begin{prol}\begin{verbatim}
+same output; good
+rTransE(0.009140)
+rTransB(0.001840)
+costOfDefRecordWithNoShell(3.967391)
+\end{verbatim}\label{costOfDefRecordWithNoShell}\end{prol}
+ 
+Note that the numbers of \src{costOfDefRecordWithNoShell} is are about
+the same as \src{defRecordTimingTest}.  That is, the overheads of
+traversing the {\tt o,o0,o1} layers is miniscule compare to the cost
+of the pattern matches within the primitive access and update
+predicates.
+
+For the meantime, we elect to stay with the succinctness of {\tt
+defRecord/2} since this leads to clearer code. However, we note that
+some time soon, we will have to write an optimiser for code that uses
+the {\tt DefRecord} system.  Note that such optimisations would
+require meta-knowledge of the structure of the terms that they are
+optimising; i.e. they would need something like {\tt defRecord/2}.
+
+\chapter{Forward Chaining}
+
+\section{Motivation}
+
+In this chapter, we will implement a forward chainer that supports
+conflict resolution
+by (listed in precedence order):
+refraction, priority, recency, and
+specificity. 
+
+\begin{prol}\begin{verbatim}*/
+fChainC :- 
+	wmesCreateA(W),
+	fChainC(W,_).
+fChainC(W) :- 
+	fChainC(W,_).
+fChainC(W0,W) :-
+        match(Matches,W0),!,     % what rules could fire?
+        select(Matches,One),     % select one to be fired
+        act(One,W1),             % fire it
+        fChainC(W1,W).           % loop
+fChainC(W,W).
+
+match(Matches,W) :-
+        setof([Priority,   % most important conflict resolution rule
+               Age,        % next most important
+               Specificity % least important
+              ]  - (Rule/NewBindings),      
+            W^match1(Rule,NewBindings,Age,Specificity,Priority,W),
+         Matches).
+
+match1(Rule,NewBindings,Age,Specificity,Priority,W) :-
+        access(rule1,[wmeIn==W,priority==Priority0,
+                      specificity==Specificity0,
+                      name==Name,
+                      ages==Age0,lhs == Lhs],
+               Rule),
+        Lhs,
+        newBindingsA(Rule,NewBindings,W),
+        average(Age0,Age1),
+	negates([Age1,Priority0,Specificity0],
+                [Age, Priority, Specificity]),
+	writeList(['%--triggerred',Name]).
+
+newBindingsA(Rule,NewBindings,W) :-
+	o(refractionMemory==OldBindings,W),
+	o([usedIds==Used0,name==Name],Rule),
+	sort(Used0,Used),
+	create(refractionMemory,[name=Name,usedIds=Used],NewBindings),
+	\+ member(NewBindings,OldBindings).
+
+negates([],[]).
+negates([H0|T0],[H|T]) :- H is -1 * H0, negates(T0,T).
+/*\end{verbatim}\label{fChainC}\index{fChainC/0}\index{fChainC/1}\index{match/2}
+\index{match1/7}
+\end{prol}
+
+In \src{fChainC}, {\tt match/2} uses the sorting power of
+{\tt setof/3} to prioriterise the 
+different conflict resolution strategies into (most to least)
+user-supplied priority, assertion age, then specificity. 
+{\tt match/2} returns a list sorted according to the
+conflict resolution rules. The head of that list is hence the best
+rule to fire (see {\tt select/2} in \src{fChainCa}).
+
+{\tt match1/7} does not not use
+{\tt newBindings/4} to update the {\tt Bindings} parameter
+since, if it did, then each item of the {\tt Matches}
+list returned by {\tt match/2} would have a copy of the new
+version of {\tt Bindings}. The {\tt Bindings} parameter is
+now reset inside {\tt act/3} in \src{fChainCa}.
+{\tt match1/7} also:
+\bi
+\item
+Computes the average age of the used 
+assertions, the negates them; i.e. the newest assertions will
+now be sorted before
+the older assertions.
+\item
+Sorts the {\tt UsedIds} list. This will have two effects. Firstly,
+any duplicate {\tt Id}s will be removed, thus reducing the matching
+required for refraction. Secondly, {\tt Lhs} which match $N$
+clauses ($N > 1$)
+from the same clause list will only fire once. 
+\ei
+
+\begin{prol}\begin{verbatim}*/
+select([_ - Rule/NewBindings|_],Rule/NewBindings) :-
+	o(name==Name,Rule),
+	writeList(['%--selecting',Name]).
+	
+
+act(Rule/NewBindings,W) :-
+	%fWrite(Rule),
+	o([wmeOut==W0,rhs==Rhs],Rule),
+	o(refractionMemory<<NewBindings,W0,W), 
+	Rhs,
+	!.
+act(Rule/_,_) :-
+	o(name==Name,Rule),
+	oops(['failed action [',Name,']']).
+
+fWrite(Term) :-
+	Term =.. L,
+	nth(L,Nth/Item),
+	write(Nth : Item),
+	nl,
+        fail.
+fWrite(_).
+/*\end{verbatim}\label{fChainCa}\index{select/2}\index{act/3}\end{prol}
+
+Note that the work of {\tt fChain/1} is greatly simplified by having
+the rules in the right format.  Most of the code of this chapter is
+concerned with converting rules of the form of \src{fChainCRule/3} into
+the {\tt rule/7} format used in {\tt match1/7}.
+
+
+\begin{prol}\begin{verbatim}*/
+% new operators for this chapter
+:- op(999,xfx,:), op(800,xfy,with), op(10,xfx,@), op(10,fx,*).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+fChainCRule(demo1,
+        (wmeDefineA(emp,[name,age,showSize,job]), % wmes for demo1
+         wmeDefineA(salary,[job,income]),
+         wmeDefineA(log,[event,what])),
+        [   rule     :    demo1
+            ,priority :    10
+            ,if       :    log@L  with what  == somethingToDo and
+                           emp@E  with name  == Who with age > 60
+                                  with job   == cleaner and 
+                           salary with job   == cleaner 
+                                  with  income < 30000
+            ,write    :    'promoting' and Who
+            ,modify   :    E with job = executiveCleaner
+            ,assert   :    log with event = promote 
+                                with what = Who
+            ,retract  :    L]).
+/*\end{verbatim}\ilabel{fChainCRule/3}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+reservedWmeField(id, id).
+reservedWmeField(age,'$wage').
+
+:- dynamic isWme/1.
+
+wmeDefineA(W,Inits) :-
+        wmeUndefine(W),
+        reservedWmeField(id,Id),   next(Id,Id0),
+        reservedWmeField(age,Age), next(Age,Age0),
+        defRecord(W,[Id=Id0, Age=Age0|Inits]),
+        wmeExampleA(W,Eg),
+        assert((portray(Eg):-wmePrintA(Eg))),
+        assert(isWme(W)).
+
+wmeUndefine(W) :-
+	wmeExampleA(W,Eg),
+	!,
+	retractall(portray(Eg)),
+	retractall(isWme(W)),
+	undefineRecord(W).
+wmeUndefine(_).
+
+wmeUndefines :- wmeUndefine(_), fail.
+wmeUndefines.	
+
+next(X,Y) :- flag(X,Y,Y+1). 
+wmes(Ws)  :- setof(W,isWme(W),Ws).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+wmePrintA(Wme) :-
+        functor(Wme,Type,_),arg(1,Wme,Id), arg(2,Wme,Age),
+        write('{'), write(Type), write('#'), write(Id), 
+        write('.'), write(Age),  write('}').
+
+wmeExampleA(Type,Eg) :-  
+        example(Type,Eg).
+wmeExampleA(Type,Eg,Id,Age) :- 
+        wmeExampleA(Type,Eg), arg(1,Eg,Id),arg(2,Eg,Age).
+
+wmeCreateA(Type,Inits,New) :- 
+	reservedWmeField(age,A),
+	next(A,Age), 
+        create(Type,[A=Age|Inits],New).
+wmeCreateA(Type,New)       :- wmeCreateA(Type,[],New).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}
+:-  wmeDefineA(supplier,[city,phoneNumber]),
+    wmeCreateA(supplier,S),
+    wmePrintA(S),
+    nl,printRec(S).
+
+%Defining [ supplier ].
+{supplier#3.3}
+
+id = 3
+'$wage' = 3
+city = G3260
+phoneNumber = G3264
+\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+aboutOp1(X,Field,About) :- aboutOp1(X,About), arg(1,X,Field).
+
+aboutOp1(_ >= _, query). aboutOp1(_ >  _, query).
+aboutOp1(_ \= _, query). aboutOp1(_ <  _, query).
+aboutOp1(_ =< _, query). aboutOp1(_ in _, query).
+aboutOp1(_ == _, query). aboutOp1(self _, query).
+
+aboutOp1(_ ++,   update). aboutOp1(_ --,   update).
+aboutOp1(_ +  _, update). aboutOp1(_ =  _, update).
+aboutOp1(_ << _, update).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+typeId(Type@Pointer,_,_) :- 
+        \+ (ground(Type) , var(Pointer)),
+        !, oops(['bad wme pointer',Type@Pointer]).
+typeId(Type@_,_,_) :- 
+        \+ isWme(Type),
+        !, oops(['unknown wme type',Type]).
+typeId(Type@(Type-Id),Type,Id) :- !.
+typeId(Type,Type,_).
+
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+queries2List(X0 with Y0,Wme,[X|Y] ) :- !, 
+        isQuery(X0,Wme,X),
+        queries2List(Y0,Wme,Y).
+queries2List(X0,Wme,[X] ) :- 
+        isQuery(X0,Wme,X).
+
+isQuery(X,Wme,_) :- 
+        aboutOp1(X,update),
+        !,
+        arg(0,Wme,Type), oops(['update found in IF',Type - X]).
+isQuery(Query,Wme,_) :-
+        aboutOp1(Query,Field,query),
+        \+ o(Field==_,Wme),
+        !,
+        arg(0,Wme,Type), oops(['unknown field in IF',Type - Field]).
+isQuery(Query,_,Query).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+updates2List(X0 with Y0,Wme,[X|Y] ) :- !, 
+        isUpdate(X0,Wme,X),
+        updates2List(Y0,Wme,Y).
+updates2List(X0,Wme,[X]) :-  
+        isUpdate(X0,Wme,X).
+
+isUpdate(Query,Wme,_) :- 
+        aboutOp1(Query,query),
+        !,
+        oops(['query in modify',Wme - Query]).
+isUpdate(Query,Wme,_) :-
+        aboutOp1(Query,Field,update),
+        \+ o(Field==_,Wme),
+        !,
+        oops(['unknown field in modify',Wme - Field]).
+isUpdate(Update,_,Update).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+defAssertion(Type,Inits) :-
+        length(Inits,Arity),
+        (dynamic Type/Arity),
+        defRecord(Type,Inits).
+
+:- defAssertion(rule1,[name,lhs,rhs,usedIds=[],ages=[],
+                   specificity=0, priority=0,
+                   help = '.' , 
+                   write=true,    do=true, 
+                   if=fail,       modify=true,
+                   retract=true,  assert=true,
+                   wmeIn,wmeOut
+                   ]).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+defRule(Spec) :- defRule(Spec,_).
+defRule([rule : Name|Attributes],Rule) :-
+        undefineRule(Name),
+        create(rule1,[name=Name],Rule0),
+        os(Attributes,Rule0,Rule1),
+        rTransF(Rule1,Rule),
+        assert(Rule).
+
+undefineRules :- access(rule1,Rule),retract(Rule), fail.
+undefineRules.
+
+os([],X,X).
+os([Field : Value|Items],X0,X) :- 
+        o(Field=Value,X0,X1), os(Items,X1,X).
+
+undefineRule(Name) :- 
+        access(rule1,name==Name,Rule),!,
+        writeList(['%Re-defining rule [',Name,']']),
+        retract(Rule).
+undefineRule(Name) :-
+        writeList(['%Defining rule [',Name,']']).
+/*\end{verbatim}\end{prol}
+
+
+\begin{prol}\begin{verbatim}*/
+rTransF(Rule0,Rule) :- 
+        o([if ==I0,     do==D0,      write==P0,  help==H0,
+                        retract==R0, modify==M0, assert==A0],
+          Rule0,Rule1), 
+        rTransFIf(I0,I,W0,W1,Rule1,Rule2),
+        rTransFDo(D0,D),
+        rTransFWrite(P0,P),
+        rTransFHelp(H0,H),
+        rTransFRetract(R0,R,W1,W2),
+        rTransFModify(M0,M,W2,W3),
+        rTransFAssert(A0,A,W3,W),
+        o([wmeIn=W0, wmeOut=W, help=H, lhs=I, rhs=(P,D,R,M,A)],
+          Rule2,Rule).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+rTransFIf(A0 and B0,(A,B),W0,W)  --> !,
+        rTransFIf(A0,A,W0,W1), 
+        rTransFIf(B0,B,W1,W).
+rTransFIf(A0 or B0,(A;B),W0,W)  --> !, 
+        rTransFIf(A0,A,W0,W1), 
+        rTransFIf(B0,B,W1,W).
+rTransFIf(not A0,(\+ A),W0,W) --> !, 
+        rTransFIf(A0,A,W0,W).
+rTransFIf({A},A,W,W) --> !, [].
+rTransFIf(X with Fields,Query,W0,W) --> {
+        Query = (wmeFindA(Type,Id,Age,Wme,W0,W), o(Todo,Wme)),
+        typeId(X,Type,Id),
+        wmeExampleA(Type,Wme,Id,Age),
+        queries2List(Fields,Wme,Todo),
+        length(Todo,Spec0),
+        Spec is Spec0 + 1
+        },
+        o([usedIds<<Id,ages<<Age,specificity+Spec]).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+rTransFDo(X and Y0,(X,Y)) :- !,rTransFDo(Y0,Y).
+rTransFDo({X},     X) :- !.
+rTransFDo(X,       X).
+
+rTransFWrite(X,write(X)) :- var(X), !.
+rTransFWrite(true,true) :- !.
+rTransFWrite(X and Y,(write(X), write(' '),Rest)) :-  !,
+        rTransFWrite(Y,Rest).
+rTransFWrite(X,(write(X),nl)).
+
+rTransFHelp(X,Y) :- rTransFWrite('>>' and X,Y).
+
+rTransFRetract(X0 and Y0,(X,Y),W0,W) :- !,
+        rTransFRetract(X0,X,W0,W1),
+        rTransFRetract(Y0,Y,W1,W).
+rTransFRetract(true,true,W,W) :- !.
+rTransFRetract(Type-Id,
+               wmeRetractA(Type,Id,W0,W),W0,W).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+rTransFModify(X0 and Y0,(X,Y),W0,W) :- !,
+        rTransFModify(X0,X,W0,W1),
+        rTransFModify(Y0,Y,W1,W).
+rTransFModify(true,true,W,W) :- !.
+rTransFModify(Type-Id with Changes0,
+              wmeChangeA(Type,Id,Changes,W0,W),W0,W) :-
+        wmeExampleA(Type,Wme),
+        updates2List(Changes0,Wme,Changes).
+
+rTransFAssert(X0 and Y0,(X,Y),W0,W) :- !,
+       rTransFAssert(X0,X,W0,W1),
+       rTransFAssert(Y0,Y,W1,W).
+rTransFAssert(true,true,W,W) :- !.
+rTransFAssert(Type with Inits0,
+              wmeAssertA(Type,Inits,W0,W),W0,W) :-
+        wmeExampleA(Type,Wme),
+        updates2List(Inits0,Wme,Inits).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+% to be called after all other wmes are known
+wmesSetupA :- 
+        wmeDefineA(refractionMemory,[name,usedIds]),
+	wmes(Wmes0), 
+	addInits(Wmes0,Wmes),
+        defRecord(workingMemory,Wmes).
+
+addInits([],[]).
+addInits([X|T0],[X=[]|T]) :- addInits(T0,T).
+
+wmesInitsA(W) :- 
+        create(workingMemory,W0),
+	o(refractionMemory=[],W0,W).
+
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+wmeFindA(Type,Id,Age,Wme,W0,W) :- 
+        workingMemory0(Type,W0,Types0,W,[Wme|Types1]),
+        wmeExampleA(Type,Wme,Id,Age),
+        oneLess(Types0,Wme,Types1).
+
+wmeChangeA(Type,Id, Changes,W0,W) :-
+        workingMemory0(Type,W0,Types0,W,[Wme|Types1]),
+        wmeExampleA(Type,Wme0,Id,_),
+        oneLess(Types0,Wme0,Types1),
+        reservedWmeField(age,AgeField),
+        next(AgeField,NewAge),
+        o([AgeField=NewAge|Changes],Wme0,Wme).
+
+oneLess([A|B], A, B).
+oneLess([A|B], C, [A|D]) :- oneLess(B, C, D).
+/*\end{verbatim}\end{prol}
+{\tt wmeExampleA}
+
+\begin{prol}\begin{verbatim}*/
+wmeAssertA(Type,Inits,W0,W) :-
+        workingMemory0(Type,W0,Types0,W,[New|Types0]),
+        wmeCreateA(Type,Inits,New).
+
+wmeAssertsA(Type,Headers,Data,W0,W) :-
+	wmeCreateA(Type,New),
+	wmeAssertsA1(Data,Headers,Headers,Type,New,W0,W).
+ 
+wmeAssertsA1([],_,_,W,W).
+wmeAssertsA1(Data0,Headers,Type,W0,W) :-
+	wmeAssertsA2(Headers, Data0,Data,Inits),
+	wmeAssertA(Type,Inits,W0,W1),
+	wmeAssertsA1(Data,Headers,Type,W1,W).
+
+wmeAssertsA2([],Data,Data,[]).
+wmeAssertsA2([Field|Fields],[Datum|Data],Todo,[Field=Datum|Rest]) :-
+	wmeAssertsA2(Fields,Data,Todo,Rest).
+
+wmeRetractA(Type,Id,W0,W) :- 
+        workingMemory0(Type,W0,Types0,W,Types),
+        wmeExampleA(Type,Wme,Id,_),
+        oneLess(Types0,Wme,Types).
+
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+defRuleTest :- 
+        fChainCRule(demo1,Setup,Rule0),
+	Setup,
+        defRule(Rule0,Rule),
+        o([lhs==Lhs,rhs==Rhs,
+           name==Name, wmeIn==W0,wmeOut==W,
+           specificity==Spec, priority==Prior],Rule),
+        portray_clause((rule([name==Name, wmeIn==W0,wmeOut==W,
+                              specificity==Spec, priority==Prior]) 
+                       :- lhs,Lhs,rhs,Rhs)).	
+/*\end{verbatim}\end{prol}
+
+\footnotesize
+\begin{verbatim}
+%Defining [ emp ].
+%Defining [ salary ].
+%Defining [ log ].
+rule : demo1
+Defining rule [ demo1 ]
+rule [name == demo1,wmeIn == A,wmeOut == B,specificity == 9,priority == 10] :-
+        lhs,
+        wmeFindA(log, C, D, log(C, D, E, F), A, G),
+        o([what == somethingToDo], log(C, D, E, F)),
+        wmeFindA(emp, H, I, emp(H, I, J, K, L, M), G, N),
+        o([name == O,age > 60,job == cleaner], emp(H, I, J, K, L, M)),
+        wmeFindA(salary, P, Q, salary(P, Q, R, S), N, T),
+        o([job == cleaner,income < 30000], salary(P, Q, R, S)),
+        rhs,
+        write('promoting '),
+        write(' '),
+        write(O),
+        true,
+        wmeRetractA(log, C, T, U),
+        wmeChangeA(emp, H, job = executiveCleaner, U, V),
+        wmeAssertA(log, [event = promote,what = O], V, B).
+\end{verbatim}
+\normalsize
+
+\begin{prol}\begin{verbatim}*/
+fChainTest :-
+	wmesSetupA,	
+        fChainTestInits(W0),
+        fChainC(W0).
+
+fChainTestInits(W) :-	
+        undefineWmes,
+	fChainCRule(demo1,Setup,ARule),
+	Setup,
+	defRule(ARule),
+	defRule([rule     : wmes0
+                ,priority : 1000
+                ,if       : log    with self L1 and 
+                            emp    with self E1 and
+                            salary with self S1
+                ,write    : 'Initial memory'
+                ,do       : printRec(L1) and printRec(E1) and 
+                            printRec(S1)]),
+	defRule([rule     : wmesLast
+                ,if       : log    with self L2 and 
+                            emp    with self E2 and
+                            salary with self S2
+                ,write: 'Final memory'  
+                ,do   : printRec(L2) and printRec(E2) and 
+                        printRec(S2)]),
+        wmesSetupA,
+	wmesInitsA(W0),
+	wmeAssertA(emp,   [name =tim,age =61, job=cleaner],W0,W1),
+	wmeAssertA(log,   [what=somethingToDo],            W1,W2),
+	wmeAssertA(salary,[job=cleaner,income=20000],      W2,W).
+/*\end{verbatim}\end{prol}
+
+\begin{prol}\begin{verbatim}*/
+printRecs(Rs) :- member(R,Rs), printRec(R), fail.
+printRecs(_).
+
+printCs((X,Y)) :- !, tab(8), print(X), nl, printCs(Y).
+printCs(X)     :- tab(8), print(X), nl.
+/*\end{verbatim}\end{prol}
+\begin{prol}\begin{verbatim}
+%--triggerred demo1
+%--triggerred wmes0
+%--triggerred wmesLast
+%--selecting wmes0
+
+Initial memory
+
+id=21 '$wage'=30 event=G30268 what=somethingToDo
+
+id=19 '$wage'=29 name=tim age=61 showSize=G30272 job=cleaner
+
+id=20 '$wage'=31 job=cleaner income=20000
+\end{verbatim}\end{prol}
+\begin{prol}\begin{verbatim}
+%--triggerred demo1
+%--triggerred wmesLast
+%--selecting demo1
+
+promoting tim
+\end{verbatim}\end{prol}
+\begin{prol}\begin{verbatim}
+%--triggerred wmesLast
+%--selecting wmesLast
+
+Final memory
+
+id=21 '$wage'=33 event=promote what=tim
+
+id=19 '$wage'=32 name=tim age=61 showSize=G42508 job=executiveCleaner
+
+id=20 '$wage'=31 job=cleaner income=20000
+\end{verbatim}\end{prol}
+\begin{prol}\begin{verbatim}*/
+bagger :-
+	wmesSetupA,	
+        baggerWmes(W0),
+	baggerFacts(W0,W),
+	baggerRules,
+        fChainC(W).
+
+baggerWmes(W0) :-
+	undefineWmes,
+	defWme(step,[name]),
+        defWme(grocery,[name,container,size,frozen]),
+        wmesSetupA,
+	wmesInitsA(W0).
+
+baggerFacts -->
+	wmeAssertA(step,[name=checkOrder]),
+        wmeAssertsA(
+         grocery,
+         [name,        container,               size,           frozen],
+         [bread,       bag(plastic),		medium,		n,
+          glop,        jar,			small,		n,
+          granola,     box(cardboard),		large,		n,
+          iceCream,    carton(cardboard), 	medium, 	y,
+          pepsi,       bottle,			large,		n,
+          potatoChips, bag(plastic),		medium,		n]).
+/*\end{verbatim}\end{prol}
+
+
+\begin{prol}\begin{verbatim}*/
+%baggerRules :-
+%	undefineRules,	
+%	defRule([rule   : b1
+%                 ,if	: task with name == checkOrder and
+%                          item with name == potatoChips and
+%                          not item with type == bottle 
+%                 ,assert : item name == pepsi
+%%%%% ]).
+	
+/*\end{verbatim}\end{prol}
+
+\section{Manual Entry}
+\section{Implementation}
+\section{Assessment}
+
+\chapter{For Sha}
+
+\begin{prol}\begin{verbatim}*/
+
+
+% generate a term that is N long, add it to WME it, access x% of it 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% inits
+wmesInitsB([]). % new working memory for oset
+
+wmesInitsC(_) :-  % new working memory for asserts
+	meta(_,Term,_,_),
+	retractall(Term),
+	functor(Term,F,A),
+	(dynamic F/A),
+	fail.
+wmesInitsC(_).
+
+wmesInitsC3(_) :- %  working memory for asserts (triples)
+	(dynamic triple/3),
+	(dynamic isTriple/1),
+	retractall(triple(_,_,_)),
+	retractall(isTriple(_)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% find a term
+wmesFindB(Id,_Table,Term,W,W) :-  % oset
+	
+	member(Term,W),
+	arg(1,Term,Id). % sha!!
+wmesFindC(Id, Table, Term,W,W) :-   % find assert
+	meta(Table,Term,_,_),
+	Term,
+	arg(1,Term,Id).
+wmesFindC3(Id,_Table,Id,W,W) :- % find a triple
+	isTriple(Id).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% extract from a term the required field
+wmesExtractB(_Id,Field,Term,Value) :-
+	o(Field==Value,Term).
+
+wmesExtractC(_Id,Field,Term,Value) :-
+	o(Field==Value,Term).
+
+wmesExtractC3(Id,Field,_,Value) :-
+	triple(Id,Field,Value).
+
+wmesExtracts([],_Id,_Term,[]).
+wmesExtracts([Field|Fields],Id,Term,[Value|Values]) :-
+	wmesExtract(Id,Field,Term,Value),
+	wmesExtracts(Fields,Id,Term,Values).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% wmeAssert
+wmesAssertB(Id,Term,W,[Term|W]) :-
+	arg(1,Term,Id).
+
+wmesAssertC(Id,Term,W,W) :- 
+	arg(1,Term,Id),
+	assert(Term).
+	
+
+wmesAssertC3(Id,Term,W,W) :-
+	assert(isTriple(Id)),
+	o1(Term,Field,Value),
+	assert(triple(Id,Field,Value)),
+	fail.
+wmesAssertC3(Id,_Term,W,W) :-
+	assert(isTriple(Id)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% which schema are we currently using
+wmesInits(X) :- b, wmesInitsB(X).
+wmesInits(X) :- c, wmesInitsC(X).
+wmesInits(X) :- c3, wmesInitsC3(X).
+
+wmesFind(Id,Table, X,W0,W)    :- b, wmesFindB(Id, Table, X,W0,W).
+wmesFind(Id,Table, X,W0,W)    :- c, wmesFindC(Id, Table, X,W0,W).
+wmesFind(Id,Table, X,W0,W)    :- c3,wmesFindC3(Id,Table, X,W0,W).
+
+wmesAssert(Id, X,W0,W)    :- b,  wmesAssertB(Id,X,W0,W).
+wmesAssert(Id, X,W0,W)    :- c,  wmesAssertC(Id,X,W0,W).
+wmesAssert(Id, X,W0,W)    :- c3, wmesAssertC3(Id,X,W0,W).
+
+wmesExtract(Id,Field,X,V) :- b,  wmesExtractB(Id,Field,X,V).
+wmesExtract(Id,Field,X,V) :- c,  wmesExtractC(Id,Field,X,V).
+wmesExtract(Id,Field,X,V) :- c3, wmesExtractC3(Id,Field,X,V).
+	
+:- dynamic b/0, c/0, c3/0.
+
+b.
+c.
+c3.
+
+shaTest :-
+	retractall(b),
+	retractall(c),
+	retractall(c3),
+	defRecord(timeControl,[
+			type=b,
+                        repeats=100,
+                        size=10,
+			accessed=20,
+			tableName=fact]),
+	create(timeControl,Control),
+	shaTest1(Control).
+
+shaTest1(Control) :-
+	o([size==S,   type== Type, accessed==Percent,
+           repeats==R,tableName==Table],Control),
+	assert(Type),
+	randomFields(S,Fields,Names),
+	defRecord(Table,[id|Fields]),
+	wmesInits(Wme0),
+	flag(id,Id,Id+1),
+	create(Table,id=Id,New),
+	wmesAssert(Id,New,Wme0,Wme1),
+	Get is integer(S * (Percent/100)), 
+	shaTest2(R,Get,Table,Names,Wme1,Wme),
+	write(Wme).
+
+randomFields(0,[],[]).
+randomFields(N0,[F=N0|Fields],[F|Names]) :- 
+	gensym(field,F),
+	N0 > 0, 
+	N is N0 - 1,
+	randomFields(N,Fields,Names).
+ 
+shaTest2(0,_Get,_Table,_Names,Wmes,Wmes).
+shaTest2(R0,Get,Table,Names,Wmes0,Wmes) :-
+	R0 > 0,
+	R is R0 -1,
+	random_members(Names,Get,SomeFields),
+	wmesFind(Id,Table,Wme,Wmes0,Wmes1),
+	wmesExtracts(SomeFields,Id,Wme,Values),
+	print(Id-Values),nl,
+	shaTest2(R,Get,Table,Names,Wmes1,Wmes).
+	
+random_members(List,N,Members) :-
+        length(List,Max),
+        random_numbers(N,Max,Numbers),
+        random_members1(Numbers,1,List,Members).
+
+random_members1([],_,_,[]).
+random_members1([N|Rest],N,[H|T],[H|Others]) :- !,
+        N1 is N + 1,
+        random_members1(Rest,N1,T,Others).
+random_members1([H|Rest],N,[_|T],Out) :-
+        N1 is N + 1,
+        random_members1([H|Rest],N1,T,Out).
+
+random_numbers(N,Max,S) :-
+        set_new(S0),
+        random_numbers(N,Max,S0,S).
+
+random_numbers(0,_,S,S) :- !.
+random_numbers(N,Max,S0,S) :-
+        Random is random(Max) + 1,
+        (set_newel(S0,Random,S1)
+        ->      N1 is N - 1,
+                random_numbers(N1,Max,S1,S)
+        ;       random_numbers(N,Max,S0,S)).
+
+set_new([]).
+
+
+
+%----- set add new element
+% fails if new element already in set.
+set_newel([], El, [El]). 
+set_newel([H|T], El, Add) :- 
+        compare(Order, H, El), newel(Order, H, T, El, Add).
+
+newel(<, H, T,  El, [H|Add]) :- set_newel(T, El, Add).
+%newel(=, H, T, _El, [H|T]). 
+newel(>, H, T,  El, [El,H|T]).
+
+
+/*\end{verbatim}\end{prol}
+
+\part{Driving Away}
+
+data modeling
+
+object-oriented modeling
+
+rule-based programming
+
+\part{Flying}
+
+writing application languages
+
+verification
+
+validation
+
+\part{Landing (with a Bump?)}
+
+assessing KE/SE methodologies.
+the {\sl trojan} project: do we really
+do what we think we do when we do what we think we are doing it?
+
+situated cognition
+
+\appendix{Literate Programming}
+
+This document is an example of literate programming in Prolog.
+The literate programming FAQ defines literate programming as follows.
+
+Literate programming is the combination of documentation and source
+together in a fashion suited for reading by human beings.  In fact,
+literate programs should be enjoyable reading, even inviting!  
+In general, literate programs combine source
+and documentation in a single file.  Literate programming tools then
+parse the file to produce either readable documentation or compilable
+source.  The WEB style of literate programming was created by D.E. Knuth
+during the development of his TeX typsetting software.
+
+All the original work revolves around a particular literate programming
+tool called WEB.  Knuth says:
+\bi
+\item  
+     The philosophy behind WEB is that an experienced system
+     programmer, who wants to provide the best possible
+     documentation of his or her software products, needs two
+     things simultaneously: a language like TeX for formatting,
+     and a language like C for programming.  Neither type of
+     language can provide the best documentation by itself; but
+     when both are appropriately combined, we obtain a system
+     that is much more useful than either language separately.
+   \item    
+     The structure of a software program may be thought of as a
+     web that is made up of many interconnected pieces.  To
+     document such a program we want to explain each individual
+     part of the web and how it relates to its neighbours. The
+     typographic tools provided by TeX give us an opportunity to
+     explain the local structure of each part by making that
+     structure visible, and the programming tools provided by
+     languages such as C or Fortran make it possible for us to
+     specify the algorithms formally and unambigously. By
+     combining the two, we can develop a style of programming
+     that maximizes our ability to perceive the structure of a
+     complex piece of software, and at the same time the
+     documented programs can be mechanically translated into a
+     working software system that matches the documentation.
+\ei
+
+
+{\small
+\printindex
+}
+
+{\small
+\bibliographystyle{myplain}
+\bibliography{../../refs/refs}
+}
+
+{\footnotesize
+Some of the Menzies papers can be found at
+{\em  http:// www.sd.monash.edu.au/ $\sim$timm/pub/
+docs/papersonly.html}}.
+
+
+\end{document}*/

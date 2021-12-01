@@ -1,0 +1,6 @@
+% output from ':- demos(eg(rand3)).'
+
+[19.9046, 19.8058, 19.9218, 18.5095, 16.278, 19.9178, 17.6314, 19.1668, 19.66, 19.3593]
+are random numbers 90% between 10 and 20.
+
+% runtime = 0 sec(s)

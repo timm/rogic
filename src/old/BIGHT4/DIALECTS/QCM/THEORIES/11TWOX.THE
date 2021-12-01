@@ -1,0 +1,18 @@
+name = '11. two x shapes (generates 4 worlds, ignores 2)'.
+
+objects(e) = [aa,bb,hh,ii].
+objects(m) = [cc,dd,ee,ff,gg,jj,kk,ll].
+
+aa ++ cc .
+bb -- cc .
+cc ++ ee .
+cc ++ ff .
+cc ++ dd .
+dd ++ gg .
+dd ++ ll.
+hh ++ jj.
+ii -- jj.
+jj ++ gg.
+jj ++ kk.
+
+

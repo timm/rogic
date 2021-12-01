@@ -1,0 +1,101 @@
+
+o(new, A, B) :-
+	o([path is[], known is[], debug is t, goals is[], maxProved is 0, done is[], todo is[], tries1 is 4, tries2 is 4, best is[], nGoals is 0, inputs is[]], A, B).
+o(A is B, C, D) :-
+	wme(A, E, B, F, C, D).
+o(reset(A), B, C) :-
+	wme(A, D, E, E, B, C).
+o(A=B, C, D) :-
+	wme(A, B, B, E, C, D).
+o(A^B^C, D, E) :-
+	wme(A, B, C, F, D, E).
+o(+A, B, C) :-
+	wme(A, D, E, F, B, G),
+	E is D+1,
+	C=G.
+o(-A, B, C) :-
+	wme(A, D, E, F, B, G),
+	E is D-1,
+	C=G.
+o(A>=B, C, D) :-
+	wme(A, E, E, F, C, G),
+	E>=B,
+	D=G.
+o(A>B, C, D) :-
+	wme(A, E, E, F, C, G),
+	E>B,
+	D=G.
+o(A<B, C, D) :-
+	wme(A, E, E, F, C, G),
+	E<B,
+	D=G.
+o(A=<B, C, D) :-
+	wme(A, E, E, F, C, G),
+	E=<B,
+	D=G.
+o(in(A, B), C, D) :-
+	wme(A, E, E, F, C, G),
+	member(B, E),
+	D=G.
+o(A<<B, C, D) :-
+	wme(A, E, [B|E], F, C, D).
+o(A>>B, C, D) :-
+	wme(A, [B|E], E, F, C, D).
+o([], A, A).
+o([A|B], C, D) :-
+	o(A, C, E),
+	o(B, E, D).
+o(show, A, B) :-
+	nl,
+	C=A,
+	o(numbervars, C, D),
+	o(E=F, D, G),
+	format('~12P = ~w\n', [E, F]),
+	fail,
+	B=G.
+o(show, A, A).
+o(numbervars, A, A) :-
+	numbervars(A, 0, B).
+o(A/B, A, B).
+o(newPath, A, B) :-
+	wme(reset(path), A, B).
+o(known0(A), B, C) :-
+	sort(A, D),
+	length(D, E),
+	F=B,
+	wme(known, G, D, H, F, I),
+	wme(nGoals, J, E, K, I, C).
+o(maxxed, A, B) :-
+	wme(done, C, C, D, A, E),
+	wme(nGoals, F, F, G, E, H),
+	length(C, F),
+	B=H.
+o(go, A, B) :-
+	ht0(A, B).
+o(spy(A=B), C, D) :-
+	wme(debug, t, t, E, C, F), !,
+	wme(path, G, G, H, F, I),
+	numbervars( (A=B, G), 0, J),
+	forall(member(K, G), write('.. ')),
+	print(?A=B),
+	nl,
+	D=I.
+o(spy(A), B, B).
+o(end(A), B, C) :-
+	wme(debug, t, t, D, B, E), !,
+	print(A),
+	nl,
+	nl,
+	C=E.
+o(end(A), B, B).
+o(say(A), B, C) :-
+	wme(debug, t, t, D, B, E), !,
+	print(A),
+	nl,
+	C=E.
+o(say(A), B, B).
+o(nl, A, B) :-
+	wme(debug, t, t, C, A, D), !,
+	nl,
+	B=D.
+o(nl, A, A).

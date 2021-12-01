@@ -1,0 +1,97 @@
+:- [shell,patterns].
+
+class(emp
+usePatterns(oo(_),
+	['#me'/string_ 
+        ,'#dad'/t_ 
+        ,'#id'/Id
+        ,'#var'/aa
+        ,'#N'/1
+        ,'#new'/str(_)
+        ,'#blank'/string_(Id,_,_)
+        ]).
+
+/*
+% Pirate, a small OO case tool (Version 0.1)
+% Application ... tut.pl
+% Author ........ 
+% Source ........ /home/timm/apps/pirate/demos/tut
+% Date .......... 04/03/98 (Wednesday)
+
+:- ['/home/timm/apps/pirate/pout/bin/pirate.pl'].
+:- style_check(-atom).
+
+&something be &something.
+&type      be &something
+	   does :test are of boolean.   % test applies the rule symbol
+
+&boolean   be &type.
+&string    be &type.
+&atom      be &type.
+&number    be &type.
+&date      be &type.
+&time      be &type.
+ 
+
+:- viewpoint(connie(0.1)/timm).
+
+&authorizationLevel be &something
+	has :options are in (none,some,many,all).
+
+&phone be &something
+	has :county are of    &posInt
+	has :area   are of    &posInt
+	has :digits are in    0 to 99999999.
+
+&posInt be &number
+	has :$rule=posInt.
+
+&person be &something
+	has  :name    are of &string
+	has  :address are of &string
+	has  :phone   are of &phone       % note: relationship-ness is
+                                          % when not a builtin
+        has  :team    are of &person
+                      are 0 to many.
+
+&session be &something
+	has :startDate            are of &date
+	has :endDate              are of &date
+	has :startTime            are of &time
+	has :endTime              are of &time
+	does :howManyOverInteval  are of &posInt
+	does :howMuchOVerInterval are of &posInt.
+
+&cashier be &something
+	has :idNumber	          are of &posInt
+	has :password             are of &string
+	has :person               are of &person
+	has :currentSession       are of &session
+	has :authorizationLevel   are of &authorizationLevel
+				  are maybe
+	has :session              are of &session
+			          are 1 to 1 .. many
+	does :isAuthorized	  are of &boolean
+	does :accessPerfOverInteval  
+	does :howManyOverInterval are of &posInt
+	does :howMuchOverInterval are of &posInt.
+
+&store be &something
+	has  :name
+	has  :cashiers are many
+	               are of &cashier
+	does :getItemForUPC(upc are of &posint, fred are of &nurd) 
+                       are of &item
+	does :getCashierForNumber(&number) 	
+                       are of &cashier.
+
+&payment be &something
+	has	:amount.
+
+&cash be &payment
+	has :cashTendered.
+
+&sale be &something
+	has :payments are 1 to many
+		      are of &payment.
+*/

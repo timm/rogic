@@ -1,0 +1,239 @@
+\section{Motivations}
+
+Computer development systems can be divided up according to what
+they are trying to do. Systems based on ``C'' are usually
+optimized to {\em run} fast. Systems based on some normalized
+database design are optimized to be {\em maintained} quickly. And
+systems written in high-level languages are usually the ones where
+programs can be {\em written} quickly.
+
+This characterization of systems into ``fast to run'' or ``fast to
+maintain'' or ``fast to write'' is, of course, only an
+approximation. Clearly, these kinds of systems can be combined so
+that (e.g.) systems written in high-level languages can be quickly
+written then compiled to ``C'' so they run fast. Nevertheless, the
+emphasis in most programming courses is on procedural programs in
+languages such as ``C'' programming. This has the side-effect that
+most programmers never see how much of their work is influenced by
+the ``fast to run'' approach. As standard desktop machines get
+faster, it becomes practical to move beyond the ``fast to run''
+paradigm.
+
+So...
+
+\subsection{Must show software}
+
+Erwin Schroedinger once said {\em if you cannot- in the long run-
+tell everyone what you have been doing, your doing has been
+worthless.} Well, it took me a while to work it out but finally I
+realized that as a software engineering educator, I should be
+presenting software to my classes. Every class, lots of software.
+
+I've tried various languages and various formats and this is my latest attempt. In
+this experiment, the new  mix is:
+
+
+
+ \bi \item
+
+The programming language is
+Prolog~\cite{der96,me89zb,bratko01,ok90,sterling94}) since, for me
+anyway,  it lets me show the most functionality in the fewest lines.
+
+\item
+
+The examples are biased towards logic-for- software-engineering
+\ldots
+
+\item
+
+\dots coded up in a programming style not discussed extensively in
+the standard Prolog texts {\ldots}
+
+\item {\ldots} presented in a very hands-on programming style. \ei
+
+Also, I can't convince anyone that Prolog is pretty good without
+pretty good documentation. {\PROD} is a bunch of {\LaTeX} tricks that
+let me rapidly generate camera-ready documents from my Prolog code.
+
+Maybe you'll
+find it useful as a programming or teaching resource.
+
+\subsection{My Programming Style}
+
+Just so you know: I
+use a non-standard programming style which, in my view,
+is not adequately covered in the Prolog texts:
+
+\bi
+\item
+
+
+
+Ugly Prolog syntax is hidden away using operators (my motto: ``death to brackets'' (sorry about
+the brackets in this sentence, but I didn't design English)).
+
+\item
+
+Extensive used of named fields within terms.
+
+\item
+
+Extensive use of DCGs to carry around
+and update a model.
+
+\item
+
+A lot of load-time pre-processing.
+
+\item
+
+Compiling different representations into horn clauses, then writing
+general meta-interpreters for those clauses.
+
+\item
+
+Stochastic inference.
+
+
+\ei
+
+
+
+\subsection{ But why are you still using Prolog?}
+
+Well, it's like this. As long as:
+
+\bi
+
+
+\item
+
+I want to write state-of-the-art model-based software.
+
+\item
+
+I can keep up with the next generation of grad student programmers.
+
+\item
+
+I don't have unlimited programming time.
+
+\item
+
+There is a large international community of educators, researchers and vendors
+supplying high quality Prolog materials.
+
+\ei
+
+\noindent
+then, I'll stay with Prolog.  Here's my reasons:
+
+Prolog endures. It is an old language (1972) yet it keeps being taught, keeps being used industrially,  and high-quality textbooks and interpreters are readily available.
+Nevertheless,
+like many folk, I used Prolog in grad school then left it behind for something better.
+``Prolog?'',
+I used to say, ``that was something we used to do as kids''.
+
+Only
+thing was, the ``something better'' wasn't so much better. After nearly a decade  of real-world
+commercial programming in Prolog, then Lisp, then Smalltalk, I realized
+that my best logic programming code was smaller than my best functional or OO code.
+This was a surprise since I thought that (e.g.) OO would allow me to better structure my programs. (Actually, I stopped thinking that when I discovered the wonderfully messy and practical Perl programming language.
+Heck, my Prolog has to be at least as well structured as the average Perl program.)
+
+
+Anyway, then I became an academic again and I noticed a couple of things. Firstly,
+the machines were getting faster. It is now perfectly viable to deliver interpreted systems in a commercial setting
+(look at all the Perl code out there).
+
+While the machines get faster, I seem to be getting slower. I kept finding that I
+didn't have time to write huge programs.
+I had to return to my Prolog in order to get certain jobs done.
+
+Slow as I was, I found that I could still out-program my
+grad students.
+See, I'd thrash around for a weekend
+in Prolog and then give it to them saying ``code it in C, make it faster,
+make it better''. Trouble was, months later, they were still fighting their way through memory
+leaks, pointer problems, etc.
+
+Another reason for staying with Prolog is that,
+at least in my view,  logic programming techniques are being used more and more.
+For example, the reflection pattern proposed by OO design gurus (and implemented as e.g.
+Java beans or aspect-oriented programming)
+is just programmers realizing that things like {\tt clause/2} is astonishingly useful. But this is
+just a special case of my next point.
+
+Old-fashioned software is like obsessed over-trained athlete sprinting for the finish line.
+Such software
+runs fast since it doesn't look where it is going. But, it  will
+stumble and crash at the first  hole in the road.
+Modern model-based
+software builds and reflects over some model carefully crafted at runtime. Choices are recognized,
+and processed  via an on-going  analysis of the internal model.
+Prolog is just  terrific for implementing
+such reflection- 20 lines of meta-interpretation can give you soooo much.
+
+Q.E.D.
+
+
+
+
+
+
+
+\subsection{Some Credits}
+
+(These credits are  listed
+alphabetically by main handle; e.g. last name or web site title:)
+
+I have
+drawn much inspiration from
+many  folks over the years.
+So, some of these go waaay back:
+
+\bd
+
+
+\item[Graham Mann:]
+who always challenges me to reach further.
+
+\item[ Numerous grad students:]
+who always stared at me funny when I confused them, forcing
+me to say it again, better, simpler, more clearer. Special mention to:
+\bi
+\item Eliza Chaing
+\item Lindsay Mason
+\ei
+
+
+\item[Claude Sammut:] who I believed, all those years ago,  when he
+said that Prolog can be used for real world applications. For my
+masters back in the 1980s, he asked me to write a ``good'' Prolog
+expert system shell. Well, Claude, I've nearly got it right so I hope
+you'll give me a passing grade.
+
+\item[Roland Sammut and Michael Wise:]
+who originally taught
+me Prolog.
+
+\ed
+
+The following people have never meet me, probably don't know my name, or my
+face. But I always sought to rise to their
+exceptionally high standards:
+
+\bd
+
+\item[Peter Norvig:]
+whose {\em Paradigms of Artificial
+Intelligence} is an inspiration to all educators.
+
+\item[Guy L. Steele:]
+The man who wrote two of the greatest
+technical documents in the world: {\em Common Lisp, the Language} and
+{\em The Hacker's Dictionary}.  Any man who writes a PhD thesis where
+the font sizes change twenty times in a single sentence is my kind of
+Guy (I've been waiting decades to make that joke...).
+\ed

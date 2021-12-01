@@ -1,0 +1,113 @@
+% qcm
+
+
+%---------------------------------------
+% [names] related facts
+
+% o/3
+o(3, aa, event). 
+o(0, change(aa), eventChange). 
+o(6, bb, measure). 
+
+
+%---------------------------------------
+% [theory] related facts
+
+% d/1
+d('000. absolute simplest'). 
+
+% i/2
+i(7, 8). 
+i(7, 9). 
+i(8, 7). 
+i(8, 9). 
+i(9, 7). 
+i(9, 8). 
+i(4, 5). 
+i(5, 4). 
+i(1, 2). 
+i(2, 1). 
+i(5, 1). 
+i(1, 5). 
+i(4, 2). 
+i(2, 4). 
+
+% source/2
+source(1, name='000. absolute simplest'). 
+source(2, objects(e)=[aa]). 
+source(3, objects(m)=[bb]). 
+source(4, aa++bb). 
+
+% e/5
+e(10, 1, 7, 1, 4). 
+e(11, 2, 9, 1, 4). 
+
+% v/3
+v(5, 5, or). 
+v(4, 4, or). 
+v(2, 2, or). 
+v(1, 1, or). 
+v(9, 9, or). 
+v(8, 8, or). 
+v(7, 7, or). 
+
+% l/3
+l(5, aa, absent). 
+l(4, aa, present). 
+l(2, change(aa), left). 
+l(1, change(aa), arrived). 
+l(9, bb, down). 
+l(8, bb, std). 
+l(7, bb, up). 
+
+
+%---------------------------------------
+% [theoryDetail] related facts
+
+% coi/2
+coi(event, 3). 
+coi(eventChange, 0). 
+coi(measure, 6). 
+
+% ei/2
+ei(1, 10). 
+ei(2, 11). 
+
+% ebi/2
+ebi(7, 10). 
+ebi(9, 11). 
+
+% kids/2
+kids(2, [9]). 
+kids(1, [7]). 
+
+% lvi/2
+lvi(5, 5). 
+lvi(4, 4). 
+lvi(2, 2). 
+lvi(1, 1). 
+lvi(9, 9). 
+lvi(8, 8). 
+lvi(7, 7). 
+
+% oli/2
+oli(3, 5). 
+oli(3, 4). 
+oli(0, 2). 
+oli(0, 1). 
+oli(6, 9). 
+oli(6, 8). 
+oli(6, 7). 
+
+% parents/2
+parents(9, [2]). 
+parents(7, [1]). 
+
+% noGoods/2
+noGoods(5, [1, 4]). 
+noGoods(4, [2, 5]). 
+noGoods(2, [1, 4]). 
+noGoods(1, [2, 5]). 
+noGoods(9, [7, 8]). 
+noGoods(8, [7, 9]). 
+noGoods(7, [8, 9]). 

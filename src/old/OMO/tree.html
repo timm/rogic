@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>tree.pl Simple Tree Stuff</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#simple_tree_processing">Simple Tree Processing</a></li>
+	<ul>
+
+		<li><a href="#uses">Uses</a></li>
+	</ul>
+
+	<li><a href="#lookup_trees">Lookup trees</a></li>
+	<ul>
+
+		<li><a href="#find(+k0,v0,v,tree0,tree):_v0_in_tree0_becomes_v_in_tree."><code>find(+K0,?V0,?V,?Tree0,?Tree)</code>: <code>V0</code> in <code>Tree0</code> becomes <code>V</code> in <code>Tree</code>.</a></li>
+		<li><a href="#find(+k0,v,tree):_find_v_in_tree"><code>find(+K0,?V,?Tree)</code>: Find <code>V</code> in <code>Tree</code></a></li>
+		<li><a href="#finds(+[k=v|kvs],tree):_call_find_on_a_list_of_key/values"><code>finds(+[K=V|KVs],?Tree)</code>: Call find on a list of Key/Values</a></li>
+		<li><a href="#tprint(+tree):_display_a_tree"><code>tprint(+Tree)</code>: display a tree</a></li>
+	</ul>
+
+	<li><a href="#demo_code">Demo code</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="simple_tree_processing">Simple Tree Processing</a></h1>
+<pre>
+ :- ensure_loaded([tree0,tree1]).</pre>
+<p>
+</p>
+<h2><a name="uses">Uses</a></h2>
+<p>:- ensure_loaded([list,demos]).</p>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="lookup_trees">Lookup trees</a></h1>
+<p>Our trees have the form</p>
+<pre>
+ t(Key,Value,Left,Right)</pre>
+<p>where <code>Left</code> and <code>Right</code> are sub-trees.</p>
+<p>This tree system is naughty- it lets sub-trees be unbound.</p>
+<p>
+</p>
+<h2><a name="find(+k0,v0,v,tree0,tree):_v0_in_tree0_becomes_v_in_tree."><code>find(+K0,?V0,?V,?Tree0,?Tree)</code>: <code>V0</code> in <code>Tree0</code> becomes <code>V</code> in <code>Tree</code>.</a></h2>
+<p>Can also be used to insert items if <code>?Tree0</code> not ground.</p>
+<pre>
+ find(K, V0,V,t(K, V0,L, R),t(K, V, L,R)).
+ find(K0,V0,V,t(K1,V1,L0,R),t(K1,V1,L,R)) :-
+        K0 @&lt; K1,
+        find(K0,V0,V,L0,L).
+ find(K0,V0,V,t(K1,V1,L,R0),t(K1,V1,L,R)) :-
+        K0 @&gt; K1,
+        find(K0,V0,V,R0,R).</pre>
+<p>
+</p>
+<h2><a name="find(+k0,v,tree):_find_v_in_tree"><code>find(+K0,?V,?Tree)</code>: Find <code>V</code> in <code>Tree</code></a></h2>
+<p>Sometimes, we want to look up values without
+changing them.</p>
+<pre>
+ find(K,V,T,T) :- find(K,V,V,T,T).</pre>
+<p>
+</p>
+<h2><a name="finds(+[k=v|kvs],tree):_call_find_on_a_list_of_key/values"><code>finds(+[K=V|KVs],?Tree)</code>: Call find on a list of Key/Values</a></h2>
+<p>It can be useful to have a batch tree accessor. If</p>
+<pre>
+ finds(L,T) :- finds(L,t(_,_,_,_),T).</pre>
+<pre>
+ finds([],T,T).
+ finds([Key=Value|Rest]) --&gt; find(Key,Value), finds(Rest).</pre>
+<p>
+</p>
+<h2><a name="tprint(+tree):_display_a_tree"><code>tprint(+Tree)</code>: display a tree</a></h2>
+<p>Of course, we can't test anything unless we can
+print it.</p>
+<pre>
+ tprint(T) :- tprint(T,[],'|    '),!.</pre>
+<pre>
+ tprint(X,_,_) :- var(X),!.
+ tprint(t(K,V,L,R),Ins,B4) :-
+        forall(member(In,Ins),write(In)),
+        write(K=V),nl,
+        tprint(L,[B4|Ins],B4),
+        tprint(R,[B4|Ins],B4).</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="demo_code">Demo code</a></h1>
+<pre>
+ egFind :- egFind(_).
+ egFind(T) :-
+        L0= [a=1,b=2,c=3,d=4,e=5,f=6
+            ,g=7,h=8,i=9,j=10,k=11],
+        inOrder(L0,L),
+        once(finds(L,T)),
+        tprint(T).</pre>
+<pre>
+ egFinds :- demo(egFind).</pre>
+<pre>
+ %% egFind.spy (output from ':- demos(egFind).')
+f=6
+|    c=3
+|    |    b=2
+|    |    |    a=1
+|    |    e=5
+|    |    |    d=4
+|    i=9
+|    |    h=8
+|    |    |    g=7
+|    |    k=11
+|    |    |    j=10
+ %% runtime = 0 sec(s)</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

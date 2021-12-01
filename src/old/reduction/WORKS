@@ -1,0 +1,68 @@
+
+impacts(+, A, B) :-
+	sumof(C, A^D^E^impact(A, C, D, E), B).
+impacts(*, A, B) :-
+	prodof(C, A^D^E^impact(A, C, D, E), B).
+
+
+prod([], A, A).
+prod([A|B], C, D) :-
+	E is C*A,
+	prod(B, E, D).
+
+f(f, A, B, v1) :-
+	likely(1),
+	C=1,
+	D=0,
+	impacts(*, f, E),
+	A is C-C*E,
+	B is D.
+
+sum([], A, A).
+sum([A|B], C, D) :-
+	E is A+C,
+
+
+p(pa, 1, 1, v1) :-
+	likely(1).
+p(pb, 1, 1, v1) :-
+	likely(1).
+
+gen(A, B, C, D, E, F, F) :-
+	likely(C),
+	impacts(+, A, G),
+	E is D-D*G.
+
+sumof(A, B, C) :-
+	bagof(A, B, D), !,
+	sum(D, 0, C).
+sumof(A, B, 0).
+
+rand(A) :-
+	A is random(10000)/10000.
+
+impact(r0, A, B, v1) :-
+	likely(1),
+	C=0.9,
+	D=0,
+	f(f, E, F, G),
+	A is C-C*E,
+	B is D+F.
+impact(f, 0.2, A, v1) :-
+	p(pa, B, C, D).
+impact(f, 0.7, A, v1) :-
+	p(pb, B, C, D).
+
+prodof(A, B, C) :-
+	bagof(A, B, D), !,
+	prod(D, 1, C).
+prodof(A, B, 1).
+
+
+r(r0, A, B, v1) :-
+	gen(r0, true, 1, 100, A, 0, B).
+
+likely(A) :-
+	B is rand,
+	B<A.
+

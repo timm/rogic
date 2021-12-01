@@ -1,0 +1,20 @@
+digraph g {
+subgraph cluster0 {
+label="4";
+node [fontsize=15,shape=plaintext];
+   "and(13)" [label=" AND ",shape=plaintext];
+    "gas" -> "and(13)" [label="+ +"];
+   "roadworks= -1" [label="roadworks= -1",shape=box];
+   "mileage=0" [label="mileage=0",style=filled,color=grey,shape=ellipse];
+    "roadworks= -1" -> "mileage=0" [label="-"];
+   "wonderlust=0" [label="wonderlust=0",shape=box];
+    "wonderlust=0" -> "gas" [label="+"];
+   "and(13)" [label=" AND ",shape=plaintext];
+   "mileage=0" [label="mileage=0",style=filled,color=grey,shape=ellipse];
+    "and(13)" -> "mileage=0" [label=""];
+   "and(13)" [label=" AND ",shape=plaintext];
+    "now(roadworks)" -> "and(13)" [label="- -"];
+}
+subgraph cluster1{ label="key"; "Inputs" [shape=box]; "Goal (proven)" [shape=ellipse]; "Goal (unproven)" [shape=ellipse,style=filled,color=gray];
+}
+}

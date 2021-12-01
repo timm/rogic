@@ -1,0 +1,28 @@
+cch,cCH, Cch,CCH.
+
+orsCostCombine : sum,max
+r8cost : continuous
+r8chances : continuous
+r9cost : continuous
+r9chances : continuous
+r10cost : continuous
+r10chances : continuous
+r11cost : continuous
+r11chances : continuous
+true : t,f,xx
+baseball : t,f,xx
+content : t,f,xx
+enthusiasm : t,f,xx
+exercise : t,f,xx
+football : t,f,xx
+happy : t,f,xx
+healthy : t,f,xx
+likesSweat : t,f,xx
+overweight : t,f,xx
+rich : t,f,xx
+running : t,f,xx
+sick : t,f,xx
+smoker : t,f,xx
+swimming : t,f,xx
+tranquil : t,f,xx
+

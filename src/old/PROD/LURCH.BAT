@@ -1,0 +1,1 @@
+cmd /c "c:\program files\pl\bin\plwin.exe" -f lurch.pl -g true

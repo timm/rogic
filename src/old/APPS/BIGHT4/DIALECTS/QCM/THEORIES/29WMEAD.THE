@@ -1,0 +1,66 @@
+
+name = '29. Westmead CNS-ANS (t1-T40) in 20 Normals (Parkinsons Disease'.
+
+objects(e) = [].
+objects(m) = [ alpha, beta, delta, n1a, n1l, n2a,
+		n2l, p2a, p2l, p3a, p3l, rt, scl,
+		scra, scrl, theta ].  
+
+%1
+delta ++ beta. % what does purple, black, blue, brown pink, dashed lik mean?
+                % if i had to read your data as "in this experiment we
+	        % measured (e.g.) a b c and in that experiment we measured
+		% (e.g.) c d e, then what would you have to show? 
+		% what does pre/post stimulus mean?
+		% can i read your diagrams as a chance in x causes a change 
+		% in y if x >> y.
+%2
+beta ++ theta.
+%3
+theta ++ beta.
+%4
+alpha ++ beta.
+%5
+beta ++ alpha.
+%6
+alpha -- scra.
+%7
+theta -- n2a.
+%8
+alpha -- scra.
+%9
+n2a ++ scra.
+%10
+n1a ++ p2a.
+%11
+n1l -- p2a.
+%12
+p2a ++ n2a.
+%13
+p2a ++ n2l.
+%14
+p2l ++ n2a.
+%15
+p2l ++ n2l.
+%16
+n1l -- p3l.
+%17
+n2a -- n2l.
+%18
+n2l -- scra.
+%19
+n2l ++ p3l.
+%20
+scl -- rt.
+%21
+scl -- scr1.
+%22
+n2l ++ rt.
+%23
+p3l ++ rt.
+%24
+pl3 ++ scr1.
+%25
+p3l -- p3a.
+%26
+p3a -- p3l.

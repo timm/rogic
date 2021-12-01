@@ -1,0 +1,6 @@
+case $1 in
+	big)   cp big.css style.css;;
+        small) cp small.css style.css;;
+        tiny)  cp tiny.css style.css;;
+        *)     echo "usage: size [big|small|tiny]"
+esac

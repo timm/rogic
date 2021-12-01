@@ -1,0 +1,6 @@
+#!/bin/bash
+cat <<- EOF > runtemp.pl
+     :- [$1,test/y$1], go,halt.
+EOF
+
+pl -f runtemp.pl

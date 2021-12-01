@@ -1,0 +1,14 @@
+name = '015. strings growth test (explicable steady)'.
+
+objects(e) = [ee, ff].
+objects(m) = [bb, aa, dd, cc, gg,xx].
+
+ee -- bb. 
+bb ++ aa. 
+ff ++ dd.
+ee ++ dd. 
+dd ++ cc. 
+cc ++ aa.             
+cc ++ gg.
+cc ++ xx.
+

@@ -1,0 +1,349 @@
+
+=head1 Abudctive Knowledge Engineering
+
+Abductive knowledge engineering (AKE) is an experiment in building
+simpler tools for knowledge engineering. 
+
+
+AKE exploits a
+phenomenum seen in many domains; i.e. very often a small number
+of I<funnel> variables appear in all useful solutions.
+The metaphor here is that while software can shoot off in any direction,
+eventually all paths seem to run down through
+the same narrow funnel.
+
+This funnel
+phenomeunm has been called many things in many domains  such as:
+
+
+=over 8
+
+=item *
+
+Pareto's 80/20 rule (most of the solution can be found
+with just a little effort);
+
+=item *
+
+L<master-slave variables|Crawford94> in scheduling;
+
+=item *
+
+feature subset selection in data mining
+
+=item *
+
+backbones in L<constraint satisfaction problems|Parkes99>;
+
+=item *
+
+the minimal environments of the L<ATMS|DeKleer86>;
+
+=item *
+
+the base controversial assumptions of L<HT4|Me03c>.
+
+=back 
+
+Whatever the name, the core intuition is the same:
+what happens in the total space of a program
+is controlled by a small critical region within the
+program. If so, then it is possible that
+complete and complex
+methods for software development and execution may be overkill.
+
+AKE is both the test and the application of this possibility.
+All its mechanisms assume that finding a few
+funnel variables is enough to control a device.
+
+There is a slow way and a fast way to
+find the funnel. For example, computing
+the base controversial assumptions of HT4 is theoretically
+L<NP-hard|Me03c> and, in practice, HT4 ran in time exponential
+on model size.
+However, if the funnels control the
+search space, then we need not seek the funnel: they will
+find us. I<Any> stochastically selected pathway to goals
+must pass through the funnel (by definition). That is,
+repeated application of some fast stochastic search
+technique will stumble across the key controlling
+variables 
+(providing that search technique reaches the goals).
+
+
+
+=head2 Welcome to the Knowledge Level
+
+In Newell's Knowledge Level (KL) approach, intelligence is modeled as a search for
+appropriate I<operators> that convert some I<current state> to a
+I<goal state>. Domain-specific knowledge as used to select the
+operators according to I<the principle of rationality>; i.e.
+
+=over 8
+
+=item *
+
+An
+intelligent agent will select an operator which its knowledge tells it
+will lead the achievement of some of its goals. 
+
+=back
+
+If implemented, this
+KL is built on top of a I<symbol-level> containing data structures,
+algorithms, etc. However, to a KL agent, these sub-cognitive
+symbol-level constructs are the tools used "sub-consciously" as it
+performs its KL processing [L<Newell82>].
+
+Newell's subsequent exploration of the KL lead to a general rule-based
+language called SOAR [I<Rosen93>] which was the basis for the
+problem-space computational model (PSCM) [L<Yost89>]. Programming
+SOAR using the PSCM involves the consideration of multiple, nested
+problem spaces.  Whenever a "don't know what to do" state is
+reached, a new I<problem space> is forked to solve that problem. Newell
+concluded that the PSCM was the bridge between SOAR and true KL
+modeling [L<Newell91>,L<Newell93>].
+
+=head1 References
+
+=over 8
+
+
+=item Crawford94
+
+I< Experimental Results on the Application of
+                  Satisfiability Algorithms to Scheduling Problems>,
+(1994)
+by J. Crawford and A. Baker,
+AAAI '94,
+
+
+=item DeKleer86
+
+I<An Assumption-Based TMS>,
+(1986),
+by J. DeKleer,
+Artificial Intelligence,
+vol. 28,
+pages  163-196
+
+
+=item Me03c
+
+I<Applications of Abduction: 
+Testing Very Long Qualitative Simulations>,
+(2003),
+T.J. Menzies and R.F. Cohen and S. Waugh and S. Goss,
+IEEE Transactions of Data and 
+Knowledge Engineering,
+November/December,
+pages 1362-1375,
+http://menzies.us/pdf/97iedge.pdf
+
+
+=item Newell82
+
+I<The Knowledge Level>
+(1982)
+by A. Newell,
+Artificial Intelligence,
+Vol. 18,
+pages 87-127
+
+
+=item Newell91
+
+I<Formulating the Problem Space Computational
+                  Model>
+(1991)
+A. Newell and G.R. Yost and J.E Laird and
+                  P.S. Rosenbloom and E. Altmann,
+in [L<The Soar Papers|Rosen93>],
+volume 2, 
+pages 1321-1359.
+
+
+=item Newell93
+
+I<Reflections on the {K}nowledge {L}evel>
+(1993)
+by A. Newell,
+Artificial Intelligence,
+Feburary,
+Vol. 59,
+pages 31-38
+
+
+
+=item Parkes99
+
+I<Lifted Search Engines for Satisfiability>,
+(1999),
+Lifted Search Engines for
+Satisfiability. PhD thesis, University of Oregon,
+http://citeseer.nj.nec.com/parkes99lifted.html.
+
+
+
+
+=item Rosen93
+
+I<The SOAR Papers>
+(1993)
+P.S. Rosenbloom and J.E. Laird and A. Newell (editors),
+The MIT Press
+
+
+
+=item Yost89
+
+I<A Problem Space Approach to Expert System
+                  Specification>
+(1989)
+by G.R. Yost and A. Newell,
+IJCAI'89,
+pages 621-627.
+
+
+=back
+
+
+
+=head1 About this Document
+
+Copyright (C)
+2003
+by
+Tim Menzies
+<Z<>tim@menzies.usZ<>>
+home page=
+http://menzies.us
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; 
+see http://www.gnu.org/copyleft/gpl.htmlZ<>.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+=head2 Disclaimer
+
+The content from or through this web page are provided 'as is' and the
+author makes no warranties or representations regarding the accuracy
+or completeness of the information.  Your use of this web page and
+information is at your own risk. You assume full responsibility and
+risk of loss resulting from the use of this web page or information.
+If your use of materials from this page results in the need for
+servicing, repair or correction of equipment, you assume any costs
+thereof.  Follow all external links at your own risk and liability.
+
+=begin html
+
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+<p>&nbsp;
+
+=end html
+

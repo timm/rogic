@@ -1,0 +1,7 @@
+
+settingUp,n,10,len1,10,len2,10,ready,merge_set/set_union,100
+settingUp,n,100,len1,100,len2,100,ready,merge_set/set_union,100
+settingUp,n,1000,len1,999,len2,1000,ready,merge_set/set_union,91
+settingUp,n,2500,len1,2498,len2,2498,ready,merge_set/set_union,92
+settingUp,n,5000,len1,4998,len2,4998,ready,merge_set/set_union,99
+% time= 6.58948 secs

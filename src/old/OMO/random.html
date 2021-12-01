@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>random.pl Random</title>
+<link rel="stylesheet" href="./site/big.css" type="text/css" />
+<link rev="made" href="mailto:gp@familiehaase.de" />
+</head>
+
+<body>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#randomization_stuff">Randomization stuff</a></li>
+	<li><a href="#setup_code">Set-up Code</a></li>
+	<ul>
+
+		<li><a href="#uses">Uses</a></li>
+		<li><a href="#operators">Operators</a></li>
+		<li><a href="#flags">Flags</a></li>
+	</ul>
+
+	<li><a href="#continuous_distributions">Continuous Distributions</a></li>
+	<ul>
+
+		<li><a href="#rand">Rand</a></li>
+		<li><a href="#beta">Beta</a></li>
+		<li><a href="#normal">Normal</a></li>
+		<li><a href="#gamma">Gamma</a></li>
+	</ul>
+
+	<li><a href="#random_types">Random types</a></li>
+	<ul>
+
+		<li><a href="#rsym_(random_symbols)">Rsym (random symbols)</a></li>
+		<li><a href="#x_in_list)_(random_members_from_a_list)_*/"><code>X in List)</code> (random members from a list) */</a></li>
+		<li><a href="#any/1">any/1</a></li>
+		<li><a href="#x_from_range_(random_numbers_from_a_range)"><code>X from Range</code> (random numbers from a range)</a></li>
+		<li><a href="#rin/3_(random_integers_from_a_range)">Rin/3 (random integers from a range)</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="randomization_stuff">Randomization stuff</a></h1>
+<pre>
+ :- ensure_loaded([random0 ,random1]).</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="setup_code">Set-up Code</a></h1>
+<p>
+</p>
+<h2><a name="uses">Uses</a></h2>
+<pre>
+  :- ensure_loaded([io,maths]).</pre>
+<p>
+</p>
+<h2><a name="operators">Operators</a></h2>
+<pre>
+ :- op(750,xfx,in).
+ :- op(750,xfx,from).
+ :- op(749,xfx,by).
+ :- op(748,xfx,to).</pre>
+<p>
+</p>
+<h2><a name="flags">Flags</a></h2>
+<p>Define a <code>rand</code>om function.</p>
+<pre>
+ :- arithmetic_function(rand/0).</pre>
+<p>Define a <code>rand(Min,Max)</code> function.</p>
+<pre>
+ :- arithmetic_function(rand/2).</pre>
+<p>Define a <code>rand(Min,Max,Mean)</code> function.</p>
+<pre>
+ :- arithmetic_function(rand/3).</pre>
+<p>Define a <code>normal</code> function.</p>
+<pre>
+ :- arithmetic_function(normal/2).</pre>
+<p>Define a <code>beta</code> function.</p>
+<pre>
+ :- arithmetic_function(beta/1).</pre>
+<p>Define a <code>gamma</code> function.</p>
+<pre>
+ :- arithmetic_function(gamma/2).</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="continuous_distributions">Continuous Distributions</a></h1>
+<p>
+</p>
+<h2><a name="rand">Rand</a></h2>
+<pre>
+ rand(X) :- 
+    X is random(inf+1)/inf.</pre>
+<p>Generate a number <code>X</code> between  
+some <code>Min</code> and
+<code>Max</code> value.</p>
+<pre>
+ rand(Min,Max,X) :- 
+    X is Min + (Max-Min)*rand.</pre>
+<p>
+</p>
+<h2><a name="beta">Beta</a></h2>
+<p>Generate a number <code>X</code> 
+whose mean is <code>B%</code>
+between <code>Min</code> and
+<code>Max</code>.</p>
+<p>Technically, this is an application
+of a <code>beta</code> function.
+Here, I use a very simplistic method that
+only works for certain values of 
+<code>B</code>; i.e. <code>B=0.1,0.2,0.3,...,0.9,1</code>,</p>
+<pre>
+ rand(Min,Max,B,X) :-
+    X is Min + (Max-Min)*beta(B).</pre>
+<pre>
+ beta(B,X) :- beta1(B,X),!.
+ beta(B,X) :- B1 is 1 - B, beta1(B1,Y),X is 1 - Y.</pre>
+<pre>
+ beta1(0.50,X) :- X is rand.
+ beta1(0.60,X) :- X is rand^0.67.
+ beta1(0.67,X) :- X is rand^0.5.
+ beta1(0.75,X) :- X is rand^0.33.
+ beta1(0.80,X) :- X is rand^0.25.
+ beta1(0.9,X)  :- X is rand^(1/9).
+ beta1(1,1).</pre>
+<p>
+</p>
+<h2><a name="normal">Normal</a></h2>
+<p>Generate a random number from a normal distribution
+with mean <code>M</code> and standard deviation <code>S</code>.
+This number is generated using the 
+Box-Muller method
+(no, I don't understand it either-
+some mathematical tricky with polar
+co-ordinates).</p>
+<pre>
+ normal(M,S,N) :- 
+    box_muller(M,S,N).</pre>
+<pre>
+ box_muller(M,S,N) :-
+    wloop(W0,X),
+    W is sqrt((-2.0 * log(W0))/W0),
+    Y1 is X * W,
+    N is M + Y1*S.</pre>
+<pre>
+ wloop(W,X) :-
+    X1 is 2.0 * rand - 1,
+    X2 is 2.0 * rand - 1,
+    W0 is X1*X1 + X2*X2,
+    (W0  &gt;= 1.0 -&gt; wloop(W,X) ; W0=W, X = X1).</pre>
+<p>
+</p>
+<h2><a name="gamma">Gamma</a></h2>
+<p>Generate random numbers 
+from zero to infinity.</p>
+<p>/* 
+A standard random <code>gamma</code> 
+distribution has the mean</p>
+<pre>
+ mean=alpha/beta</pre>
+<p>The standard <code>alpha,beta</code> 
+terminology can be confusing
+to some audiences. Hence, I define what
+I think is a 
+more-intuitive <code>gamma</code>
+distribution where:</p>
+<pre>
+ myGamma(mean,alpha) = gamma(alpha,alpha/mean)</pre>
+<p>There is one other thing I do that is non-standard.
+The 
+<code>alpha</code> value is the <em>spread</em> of the 
+distribution and controls the
+clustering of  the distribution
+around the mean. As
+<code>alpha</code> increases,
+the <code>gamma</code> distribution 
+flattens out to become 
+more evenly-distributed about the mean. 
+That is, for large
+<code>alpha</code> (i.e. <code>alpha</code>&amp;ge&amp;20), 
+<code>gamma</code> can be modeled as a noraml
+function.
+*/</p>
+<pre>
+ gamma(Mean,Alpha,Out) :-
+    Beta is Mean/Alpha,
+    (Alpha &gt; 20
+    -&gt;  Mean is Alpha * Beta,
+        Sd is sqrt(Alpha*Beta*Beta),
+        Out is normal(Mean,Sd)
+    ;   gamma(Alpha,Beta,0,Out)).</pre>
+<pre>
+ gamma(0,_,X,X) :- !.
+ gamma(Alpha,Beta, In, Gamma) :-
+    Temp is In + ( -1 * Beta * log(1-rand)),
+    Alpha1 is Alpha - 1,
+    gamma(Alpha1,Beta,Temp,Gamma). /*</pre>
+<p>
+<a href="#__index__"><small>[TOP]</small></a>
+</p>
+<hr />
+<h1><a name="random_types">Random types</a></h1>
+<p>Nondeterministic programs sometimes need to grab a
+value for something. A <code>random type</code> is a Prolog
+trick for implementing that grab:</p>
+<ul>
+<li></li>
+If called with an unbound
+variable, the variable is bound to some value within a pre-defined
+range.
+<p></p>
+<li></li>
+If called with a bound variable, then the predicate fails unless
+the bound variable falls within a pre-defined range.
+<p></p></ul>
+<p>Note that these random types can be used in two ways:</p>
+<ul>
+<li></li>
+If a value is <em>unknown</em>, then an appropriate value can be guessed.
+<p></p>
+<li></li>
+If a value has been <em>supplied</em> by some other source, then
+that value can be assessed.
+<p></p></ul>
+<p>
+</p>
+<h2><a name="rsym_(random_symbols)">Rsym (random symbols)</a></h2>
+<p>Random symbols are real simple: */</p>
+<pre>
+ rsym(X)  :- nonvar(X),!.
+ rsym(X)  :- gensym(g,X). /*</pre>
+<p>Sometimes, random symbols start with
+some seed symbol. */</p>
+<pre>
+ rsym(_,X)  :- nonvar(X),!.
+ rsym(A,X)  :- gensym(A,X). /*</pre>
+<p>
+</p>
+<h2><a name="x_in_list)_(random_members_from_a_list)_*/"><code>X in List)</code> (random members from a list) */</a></h2>
+<pre>
+ X in L :- number(X),!, member(Y,L), X =:= Y.
+ X in L :- nonvar(X),!, member(X,L).
+ X in L :- any(member(X,L)). /*</pre>
+<p>
+</p>
+<h2><a name="any/1">any/1</a></h2>
+<p>Here's a utility that we'll see a lot in the near future. Finds
+all solutions to a goal and returns them in a random order. */</p>
+<pre>
+ any(X) :- anySome(X).</pre>
+<p>AnySome demands that there is at least one solution.</p>
+<pre>
+ anySome(X) :-
+   setof(N/X, (X,N is random(inf)), L),!,
+   member(_/X,L).
+ anySome(X) :- barph(noSolutionsFor(X)).</pre>
+<p>AnyOne just don't care.</p>
+<pre>
+ anyOne(X) :-
+   setof(N/X, (X,N is random(inf)), L),
+   member(_/X,L).</pre>
+<p>/*</p>
+<p>
+</p>
+<h2><a name="x_from_range_(random_numbers_from_a_range)"><code>X from Range</code> (random numbers from a range)</a></h2>
+<p>If the range is small (say, less
+than 50 items), it is practical to define <code>rin/4</code> such
+that, on backtracking, it returns all values in the range. */</p>
+<pre>
+ smallRange(X) :- X =&lt; 50. /*</pre>
+<p>If the range is large (say, more than 50 items),
+we'll sample the range use <code>rand/2</code> to extract numbers
+within the range <code>Min</code> to <code>Max</code>. Note that in this
+second case, it is possible that we'll generate repeated
+numbers in the range <code>Min</code> to <code>Max</code>. */</p>
+<pre>
+ X from Min to Max :-
+        nonvar(X),!,number(X),Min =&lt; X, X =&lt; Max.
+ X from Min to Max by Segments :-
+        Steps is integer((Max-Min)/Segments),
+        (smallRange(Steps)
+        -&gt;  any((between(0,Steps,Y)
+                 ,X1 is Min + Y*Segments))
+        ;   between(0,Steps,_),
+            X0 is rand(Min,Max),
+            X1  is round(X0/Segments)*Segments),
+         X is min(X1,Max). /*</pre>
+<p>
+</p>
+<h2><a name="rin/3_(random_integers_from_a_range)">Rin/3 (random integers from a range)</a></h2>
+<p>Here's the above code repeated for the case of
+integer steps between max and min: */</p>
+<pre>
+ X from Min to Max :- X from Min to Max by 1.</pre>
+<p><a href="#__index__"><small>[TOP]</small></a></p>
+
+</body>
+
+</html>

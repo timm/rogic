@@ -1,0 +1,16 @@
+program   = "OMO".
+version   = "0.1".
+copyright = "2002".
+copywho   = "Tim Menzies".
+motto     = "Are we there yet?".
+verbose   = 1.
+a = 2.94.
+b = 0.91.
+c = 3.67.
+d = 0.28.
+ksloc=100.
+
+% pecentage of code discarded de to requirements evolution (0..100)
+revl=n.
+pmat = n.
+pcap = n. 

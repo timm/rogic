@@ -1,0 +1,57 @@
+
+/*
+
+untreated distribution:
+
+Worth=1.000000
+Granularity=2 Promising=-2.000000 Useful=1.500000 nChanges=3
+Treatment:[No Treatment]
+
+              1:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [  2564 - 53%]
+              2:~~~~~~~~~~~~~~~~~~~~~~~         [  1996 - 41%]
+              3:~~~                             [   282 -  6%]
+
+	  
+what if
+
+Worth=1.890422
+Granularity=2 Promising=-2.000000 Useful=1.500000 nChanges=3
+Treatment:[
+       b3=ok
+       b2=ok
+       sw2=on]
+
+              1:~~~~                            [    42 -  8%]
+              2:~~~~~~~~~~~~~~~~~~~~~           [   198 - 38%]
+              3:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   282 - 54%]
+
+actually:
+
+ Worth=1.000000
+ Granularity=2 Promising=-2.000000 Useful=1.500000 nChanges=3
+ Treatment:[No Treatment]
+
+               1:~~~~                            [    42 -  8%]
+               2:~~~~~~~~~~~~~~~~~~~~~           [   198 - 38%]
+               3:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  [   282 - 54%]
+	   
+*/
+
+/*
+by the way: quirky- if switch1 off then there is no solution
+	
+/cygdrive/c/tim/src/pl/helen> sh dist.sh | sort -n
+1 off 3190
+1 on 1652
+2 blown 2070
+2 ok 2772
+3 blown 3304
+3 ok 1538
+4 off 3304
+4 on 1538
+5 ok 4842
+6 on 4842
+7 1 2564
+7 2 1996
+7 3 282
+*/

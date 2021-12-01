@@ -1,0 +1,6 @@
+program   = "BAR".
+version   = "0.1".
+copyright = "2002".
+copywho   = "Tim Menzies".
+motto     = "Can pretty dumb can be pretty smart?".
+verbose   = 1.

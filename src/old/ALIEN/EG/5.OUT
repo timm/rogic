@@ -1,0 +1,7 @@
+
+settingUp,n,10,len1,10,ready,ok,set_member_chk/memberchk,187
+settingUp,n,100,len1,100,ready,ok,set_member_chk/memberchk,200
+settingUp,n,1000,len1,1000,ready,ok,set_member_chk/memberchk,274
+settingUp,n,2500,len1,2500,ready,ok,set_member_chk/memberchk,292
+settingUp,n,5000,len1,4996,ready,ok,set_member_chk/memberchk,296
+settingUp,n,10000,len1,9997,ready,ok,set_member_chk/memberchk,293

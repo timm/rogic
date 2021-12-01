@@ -1,0 +1,23 @@
+\section{LURCH start-up actions}
+\begin{Verbatim}
+builtIns:- 
+    forall(predicate_property(X,built_in),
+    ensure(knownBuiltIn(X))).
+
+:- builtIns.
+
+Stange to say, I have to load the following
+% manually. don't know why \call{builtIns/2} does not
+catch them.
+:- ensure(knownBuiltIn(!)).          
+:- ensure(knownBuiltIn(integer(_))). 
+:- ensure(consult(_)).
+
+:- sneak(
+        ['defaults.lurch' % see \fig{defaults.lurch}
+        ,'config.lurch'   % see \fig{config.lurch}
+        ]).
+
+:- commandLine.
+:- ?verbose -> hello ; true.
+\end{Verbatim}

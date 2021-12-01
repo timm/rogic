@@ -1,0 +1,125 @@
+Tim,
+        Steve Cornford may be at the same out-of-town meeting that I am attending, in which case he would not be able to listen in on the Wed. morning teleconference either.
+Do you have the time and inclination to teleconference and tell us your approach in detail on, say, Thursday or Friday (Aug 2nd or Aug 3rd)?
+
+OK, back to work: I'm doubtful I correctly interpreted the second formatting change you described. I think I understood and implemented the other ones (1 and 3) OK.
+
+I am attaching two files:
+
+tiny.txt is a TIMMified (Translated Into Menzies Mumbojumbo) project consisting of just a simple tree of requirements (no FMs, PACTs, Impacts or Effects).
+In DDP, the tree looks something like:
+
+Get to Mars
+        Launch into Earth orbit
+        Earth orbit to Mars orbit
+        Land from Mars orbit
+
+and Launch... has weight 10, Earth... has weight 20, and Land... has weight 30.
+
+
+finalTIG_Holo1_Access97.txt is much much larger, and is the file Julia has been using to exercise the genetic algorithm (PACTs have costs, not necessarily costs that bear any relationship to reality, but sufficient to test the optimization algorithms!).
+Duh, I forgot to ask Julia what cost level she optimized to (I think I remember that she held the sum total of PACTs to at or below some ceiling, and sought the minimal risk [i.e., maximal requirement]  solution, but I forgot to ask her what the cost ceiling was!
+
+Below, the fragment of your reformatting instructions that I didn't completely understand:
+-------------------------------------
+2) different default faults. before, for leaf requirements, we used to say X,Y for args
+2,3
+ 
++r(r10,1,1,0,v1). % OLD
+ 
+now, say X,0 for args 2 and 3. e.g.
+ 
++r(r1,  10, 0,0,v1). % NEW: third argument is zero
+ 
+also, for non-leaf requirements, we used to say 0,X for args 2,3 e.g.
+ 
++r(r9,0,1,0,v1) :- r(11),r(12).
+ 
+now, we say X,0, e.g.
+ 
++r9(1,0,0,v1) :- r(11), r(12).
+-------------------------------------
+
+G'night!
+Martin
+
+
+At 08:06 AM 7/18/2001 -0700, Tim Menzies wrote: 
+
+hey martin,
+ 
+once again, i can't attend the teleconference. 1000 apologies. every week is a different excuse and this time i am on some hiring committee for an IT support person. in my absence, here are some slides on the ASE submission. let me know if you want a time when i walk through them with you and any interested jpl folks. 
+ 
+now that i can reproduce the calcs you sent me before, i want to get my senstiometer/optimiser to you. 
+ 
+you will need a machine with:
+ 
+1) cygwin installed (see http://sources.redhat.com/cygwin/download.html)
+ 
+2) swi prolog installed (from http://www.swi.psy.uva.nl/cgi-bin//nph-download/SWI-Prolog/w32pl409.exe)
+ 
+3) tar2 installed (attached- but this is the same as what i sent you last week).
+ 
+also, some minor changes to the export file for arrt. let me know if you can make these
+changes in your routines or if i should write a conversion utility:
+ 
+=================
+export file changes:
+ 
+1) my code assumes that there exists some special root requirement called "goal" which is above
+all other things. and so i added some terms:
+ 
++aka(goal,"goal",v1).
+ 
++r(goal,1,  0,0,v1) :- r1.
++r(r1,  10, 0,0,v1).
+ 
+the above example assumes that we have only one requirement (r1)
+ 
+2) different default faults. before, for leaf requirements, we used to say X,Y for args
+2,3
+ 
++r(r10,1,1,0,v1). % OLD
+ 
+now, say X,0 for args 2 and 3. e.g.
+ 
++r(r1,  10, 0,0,v1). % NEW: third argument is zero
+ 
+also, for non-leaf requirements, we used to say 0,X for args 2,3 e.g.
+ 
++r(r9,0,1,0,v1) :- r(11),r(12).
+ 
+now, we say X,0, e.g.
+ 
++r9(1,0,0,v1) :- r(11), r(12).
+ 
+3) few brackets. before we used to say things like
+ 
+r(11)
+r(12)
+f(12)
+p(10)
+ 
+now we say
+r11
+r12
+f12
+p10
+ 
+================
+ 
+assuming you or i make these changes, then the next thing would be for us to try an interesting example. suggest you send something to me, i debug it up here, then we see if  the code down there with you can work the same way.
+
+--
+Tim Menzies (phd,ai,unsw), professor,ECE,UBC,CA, 1-604-822-3381
+<tim@menzies.com> <http://tim.menzies.com>
+--
+Be part of the first International Workshop on Model-Based
+Requirements Engineering: http://www.bfsng.com/mbre01
+ 
+"You can point your finger at the moon, but the finger is not the moon"
+-- Old Zen saying
+
+
+
+

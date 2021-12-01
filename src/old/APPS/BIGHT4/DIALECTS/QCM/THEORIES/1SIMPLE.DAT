@@ -1,0 +1,7 @@
+
+
+%---------------------------------------
+% [data] related facts
+
+% data/3
+data('000. absolute simplest', [[], [aa]], [bb-[5, 10]]). 

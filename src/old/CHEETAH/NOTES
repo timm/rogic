@@ -1,0 +1,206 @@
+% if ordering is possible, then it can be X or rX
+% if optionally can do 1 or more, then it can be X or Xs.
+
+% ands, same as and so i just support and
+% not, - "s" meaningless cause we are only dealing with 1
+% no and nos the same so i just support no
+% rno and no exist cause it bagofs the clauses
+
+% costs get eaten once and once only 
+
+do( and(L)) --> doAnd(L, ordered).
+do(rand(L)) --> doAnd(L,rordered).
+do(rany(L)) --> doAny(L,rordered).
+do(  or(L)) --> doOr( L, ordered).
+do( ror(L)) --> doOr( L,rordered).
+do( ors(X)) --> doOrs(X, ordered).
+do(rors(X)) --> doOrs(X,rordered).
+do( not(X)) --> doNot(X).
+do( X =  Y) --> {X=Y}.
+do(?X \= Y) --> {neg(Y,Z)}, do(?X=Z). 
+do(?X =  Y) --> o spy(X=Y),{fail}.
+do(?X =  Y) --> 
+	o path  ^ Path0  ^ Path,
+	o known ^ Before ^ After,
+	{set_newel(Path0,X=Y,Path),% fails if not new
+	set_key(Before,X=Z,After,Status)}, 
+         % Status= (+) if its a new key
+        ({Status = (=)}
+         -> {v(value,Y,Z)},
+                   % this fails if ware assuming something
+		   % that clashes with old beliefs
+             {v(chances,Chances1,Z)},
+             o chances ^ Chances0 ^ Chances, % update chances, not cost
+             {Chances is Chances0 * Chances1}, 
+	     o(end(X))
+         ;  {v(value,Y,Z)},
+            do1(X,Y,Z)).
+  
+do1( no(X),Y,Z) --> !, 
+	{v(chances,Chances,Z), v(cost,Cost,Z)}, 
+	doNo(X=Y, ordered,Chances,Cost).
+do1(rno(X),Y,Z) --> !, 
+	{v(chances,Chances,Z),v(cost,Cost,Z)}, 
+	doNo(?X=Y,rordered,Chances,Cost).
+
+do1(X,     Y,Z) -->
+        {v(chances,Chances,Z),
+         v(cost,   Cost,   Z)},
+	rule(X,?X=Y,Cost0,Chances0),
+	o chances ^ Chances1 ^ Chances,
+        o cost    ^ Cost1    ^ Cost,
+        {Chances is Chances0 * Chances1,
+         Cost    is Cost0    + Cost1}.
+do1(X,     _,Z) -->
+        {\+ clause(rule(X,?X=_,_,_,_,_),_),
+         v(chances,1,Z),
+         v(cost,  0,  Z)}.
+
+v(value,   X, v(X,_,_)).
+v(cost,    X, v(_,X,_)).
+v(chances, X, v(_,_,X)).
+v(goal(G),G=X,Y) :- 
+	v(value,X,Y).
+v(print,  G,X) :- 
+	v(value,V,X), 
+	v(cost,C,X), 
+	v(chances,Ch,X),
+	format('~w=~w [cost=~w,chances=~w]',
+               [G,V,C,Ch]). 
+
+neg(X,Y) :- neg1(X,Y) ; neg1(Y,X).
+
+neg1(1,-1). 
+neg1(up,down). 
+neg1(t,f). 
+neg1(true,false).
+neg1(yes,no).
+neg1(y,n).
+
+?(A=B)     :- o(new,_,W), ?(A=B,W,_).
+?(A=B,C,D) :- do(?A=B,C,D).
+	
+show(X) :- touch(X,show,_).
+
+doOr(L,P) --> 
+	{pop(P,L,One,_)},
+        do(One).
+
+% and: cost is sum
+%    : chances is product
+doAnd(L,P) --> 
+	o cost    ^ Cost    ^ 0,
+	o chances ^ Chances ^ 1,
+	doAnd1(L,P,Costs,Chancess),
+        o andCost(Cost,Costs),
+        o andChance(Chances,Chancess).
+
+% ors: cost is min,max,average of costs
+%    : chances is sum
+doOrs(L,Pfind) --> 
+	o cost    ^ Cost    ^ 0,
+	o chances ^ Chances ^ 1,
+	doOrs1(L,Pfind,[],Costs,[],Chancess),
+	o orsCost(Cost,Costs),
+        o orsChance(Chances,Chancess).
+
+doAny(L,Pfind) --> 
+	o cost    ^ Cost    ^ 0,
+	o chances ^ Chances ^ 1,
+	doAny1(L,tense,Pfind,[],Costs,[],Chancess),
+	o orsCost(Cost,Costs),
+        o orsChance(Chances,Chancess).
+
+% not: cost is 0
+%      chances is 1 - kids
+doNot(X) -->
+	o chances ^ Chance0 ^ 1,
+	o cost = Cost,
+	do(X),
+	o cost  is Cost,
+        o chances = Chance1,
+	o chances ism Chance0 * (1 - Chance1).
+
+% no: cost    is min,max,average 
+%     chances is minus sum of chances
+doNo(One,Pfind,ChancesNew,CostNew) --> 
+	o cost    = Cost,
+	o chances = Chances0,
+        {doNoHows(One,Hows)},
+	doNos1(Hows,Pfind,[],Costs,[],Chancess0),
+	o orsCost(Cost,Costs),
+        o cost = CostNew,
+	o orsChancesCombine = C,
+        {combine(C,Chancess0,Chancess),
+         ChancesNew is max(0,Chances0 - Chancess)
+        },
+        o chances is ChancesNew.
+
+doNoHows(One,Hows) :-
+	bagof(How,One^doNoHow1(One,How),Hows).
+
+doNoHow1(X=Y,Cost/Chances/How) :- 
+	clause(rule(X,?X=Y,Cost,Chances,_,_),do(How,_,_)).
+
+%% various combination rules
+
+doAnd1([],_,[],[])    --> [].
+doAnd1([H|T],P,[C|Cs],[Ch|Chs]) --> 
+	{pop(P,[H|T],One,Next)}, 
+        o path=Path0,
+	do(One),  
+        o path is Path0, % very procedural
+	o cost^C^0,
+	o chances^Ch^1,
+	doAnd1(Next,P,Cs,Chs).
+
+doOrs1([],_,Cs,Cs,Ch,Ch)    --> [].
+doOrs1([H|T],P,Cs0,Cs, Chs0, Chs) --> 
+	{pop(P,[H|T],One,Next)},
+        o path = Path, 
+	(do(One)  
+	-> o cost   ^C ^0,
+	   o chances^Ch^1,
+           o path is Path,
+           doOrs1(Next,P,[C|Cs0],Cs,[Ch|Chs0],Chs)
+        ;  doOrs1(Next,P,Cs0,    Cs,Chs0,     Chs)).
+
+
+doAny1([],whatever,_,Cs,Cs,Ch,Ch)    --> [].
+doAny1([H|T],whatever,P,Cs0,Cs, Chs0, Chs) --> 
+	{pop(P,[H|T],One,Next)},
+        ({0 is random(2)}
+        -> (o path = Path, 
+	    (do(One)  
+	    -> o cost   ^C ^0,
+	       o chances^Ch^1,
+               o path is Path,
+               doAny1(Next,whatever,P,[C|Cs0],Cs,[Ch|Chs0],Chs)
+            ;  doAny1(Next,whatever,P,Cs0,    Cs, Chs0, Chs)))
+         ;  doAny1(   Next,whatever,P,Cs0,    Cs, Chs0, Chs)).
+
+doAny1([H|T],tense,P,Cs0,Cs, Chs0, Chs) --> 
+	{pop(P,[H|T],One,Next)},
+        o path = Path, 
+	(do(One)  
+	    -> o cost   ^C ^0,
+	       o chances^Ch^1,
+               o path is Path,
+               doAny1(Next,whatever,P,[C|Cs0],Cs,[Ch|Chs0],Chs)
+            ;  doAny1(Next,tense,P,Cs0,    Cs, Chs0, Chs)).
+
+doNos1([],          _,Cs, Cs,  Ch,   Ch) --> [].
+doNos1([H|T],P,Cs0,Cs, Chs0, Chs) --> 
+	{pop(P,[H|T],C/Ch/How,Next)},
+        o path = Path, 
+        o cost   is 0,
+	o chances is 1,
+	(do(How)  
+	-> o path is Path,
+           o cost = C1, 
+           o chances = Ch1, 
+           doNos1(Next,P,[C,C1|Cs0],Cs,[Ch,Ch1|Chs0],Chs)
+        ;  doNos1(Next,P,Cs0,       Cs,Chs0,         Chs)).
+
+pop(rordered,L0,   X,L) :- rone(L0,X,L).
+pop(ordered, [X|L],X,L).
