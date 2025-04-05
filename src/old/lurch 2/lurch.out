@@ -1,0 +1,29 @@
+
+(output seen after loading main.pl into prolog)
+
+?- demo(1).
+assumption=claim of c1
+assumption=sharedData of targetSystem
+assumption=claim of c2
+assumption=pipeAndFilter of targetSystem
+assumption=claim of c4
+assumption=implicitInvocation of targetSystem
+
+===> cost=3 benefit=1
+
+Yes
+?- demo(1).
+assumption=claim of c1
+assumption=sharedData of targetSystem
+assumption=claim of c2
+assumption=abstractDataType of targetSystem
+assumption=pipeAndFilter of targetSystem
+assumption=implicitInvocation of targetSystem
+assumption=claim of c3
+
+===> cost=4 benefit=1
+
+Yes
+?- 
+
+% halt
